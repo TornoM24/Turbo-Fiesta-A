@@ -11,7 +11,8 @@ func _ready():
 	print("Ready!")
 	pass # Replace with function body.
 
-
+if (x == 5):
+	print ("Hello")
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
