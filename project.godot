@@ -15,17 +15,12 @@ _global_script_class_icons={
 [application]
 
 config/name="turbo fiesta"
+run/main_scene="res://scenes/maps/hub.tscn"
 config/icon="res://icon.png"
-
-[autoload]
-
-UserData="*res://addons/github-integration/scripts/user_data.gd"
-IconLoaderGithub="*res://addons/github-integration/scripts/IconLoaderGithub.gd"
-RestHandler="*res://addons/github-integration/scripts/RestHandler.gd"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "github-integration", "vnen.tiled_importer" )
+enabled=PoolStringArray( "res://addons/vnen.tiled_importer/plugin.cfg" )
 
 [rendering]
 
