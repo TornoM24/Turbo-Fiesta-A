@@ -1,6 +1,12 @@
 [gd_scene format=2]
 
-[node name="Node2D" type="Node2D"]
+[node name="Main" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
 format = 1
+
+[node name="Player" type="Node2D" parent="."]
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Player"]
+
+[node name="Sprite" type="Sprite" parent="Player"]
