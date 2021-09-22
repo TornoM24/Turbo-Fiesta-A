@@ -18,6 +18,11 @@ config/name="turbo fiesta"
 run/main_scene="res://scenes/maps/hub.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Global="*res://data/Global.gd"
+Master="*res://data/Master.gd"
+
 [editor_plugins]
 
 enabled=PoolStringArray( "res://addons/vnen.tiled_importer/plugin.cfg" )
