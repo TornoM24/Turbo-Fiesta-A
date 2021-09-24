@@ -9,8 +9,6 @@ var allies = ["mc","1","2","3","4"]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-		for i in allies:
-			
 	pass # Replace with function body.
 
 
