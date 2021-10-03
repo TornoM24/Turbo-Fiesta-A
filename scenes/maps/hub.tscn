@@ -202,6 +202,6 @@ readonly = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="pressed" from="TitleScreen/Start" to="Player" method="_on_Start_pressed"]
 [connection signal="pressed" from="TitleScreen/Start" to="TitleScreen" method="_on_Start_pressed"]
+[connection signal="pressed" from="TitleScreen/Start" to="Player" method="_on_Start_pressed"]
 [connection signal="pressed" from="TitleScreen/Button" to="TitleScreen/Button/Credits" method="_on_Button_pressed"]

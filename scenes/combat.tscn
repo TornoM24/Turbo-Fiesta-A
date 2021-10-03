@@ -45,7 +45,6 @@ margin_right = 85.0
 margin_bottom = 420.0
 rect_scale = Vector2( 1, 1.01685 )
 text = "Attack"
-script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -88,5 +87,46 @@ position = Vector2( 700, 100 )
 texture = ExtResource( 5 )
 
 [node name="unit_box7" type="Sprite" parent="Party/boxes"]
+position = Vector2( 900, 100 )
+texture = ExtResource( 5 )
+
+[node name="Enemy" type="Node2D" parent="."]
+
+[node name="boxes2" type="Node2D" parent="Enemy"]
+position = Vector2( -600, 0 )
+
+[node name="unit_box" type="Sprite" parent="Enemy/boxes2"]
+position = Vector2( 800, 300 )
+texture = ExtResource( 5 )
+
+[node name="unit_box3" type="Sprite" parent="Enemy/boxes2"]
+position = Vector2( 700, 300 )
+texture = ExtResource( 5 )
+
+[node name="unit_box2" type="Sprite" parent="Enemy/boxes2"]
+position = Vector2( 900, 300 )
+texture = ExtResource( 5 )
+
+[node name="unit_box6" type="Sprite" parent="Enemy/boxes2"]
+position = Vector2( 800, 200 )
+texture = ExtResource( 5 )
+
+[node name="unit_box5" type="Sprite" parent="Enemy/boxes2"]
+position = Vector2( 700, 200 )
+texture = ExtResource( 5 )
+
+[node name="unit_box4" type="Sprite" parent="Enemy/boxes2"]
+position = Vector2( 900, 200 )
+texture = ExtResource( 5 )
+
+[node name="unit_box9" type="Sprite" parent="Enemy/boxes2"]
+position = Vector2( 800, 100 )
+texture = ExtResource( 5 )
+
+[node name="unit_box8" type="Sprite" parent="Enemy/boxes2"]
+position = Vector2( 700, 100 )
+texture = ExtResource( 5 )
+
+[node name="unit_box7" type="Sprite" parent="Enemy/boxes2"]
 position = Vector2( 900, 100 )
 texture = ExtResource( 5 )

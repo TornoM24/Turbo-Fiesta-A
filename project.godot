@@ -28,6 +28,10 @@ Master="*res://data/Master.gd"
 
 enabled=PoolStringArray(  )
 
+[gui]
+
+theme/custom_font="res://font/pixelmix.tres"
+
 [input]
 
 right={
