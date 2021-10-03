@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/derp.png-659d17883045d9f0b27864a9aac2aeb8.stex"
+path="res://.import/derp..png-b5a616976628848599b6d32741f4ef52.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://gfx/overworld char/derp.png"
-dest_files=[ "res://.import/derp.png-659d17883045d9f0b27864a9aac2aeb8.stex" ]
+source_file="res://gfx/overworld char/derp..png"
+dest_files=[ "res://.import/derp..png-b5a616976628848599b6d32741f4ef52.stex" ]
 
 [params]
 
