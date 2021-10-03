@@ -4,6 +4,7 @@
 [ext_resource path="res://gfx/tiles.png" type="Texture" id=2]
 [ext_resource path="res://scenes/maps/Credits.gd" type="Script" id=3]
 [ext_resource path="res://scenes/maps/testbutton.gd" type="Script" id=4]
+[ext_resource path="res://gfx/overworld char/derp..png" type="Texture" id=5]
 [ext_resource path="res://icon.png" type="Texture" id=6]
 [ext_resource path="res://font/Ready Player One.otf" type="DynamicFontData" id=7]
 [ext_resource path="res://scenes/maps/TitleScreen.gd" type="Script" id=8]
@@ -59,10 +60,6 @@
 1/z_index = 0
 script = SubResource( 1 )
 
-[sub_resource type="StreamTexture" id=3]
-flags = 4
-load_path = "res://.import/derp..png-b004ee7de5a16767928ee637aee18799.stex"
-
 [sub_resource type="CapsuleShape2D" id=4]
 radius = 16.0
 height = 70.0
@@ -100,7 +97,7 @@ __meta__ = {
 pause_mode = 2
 position = Vector2( 1.90735e-05, -6.67572e-06 )
 scale = Vector2( 0.4, 0.4 )
-texture = SubResource( 3 )
+texture = ExtResource( 5 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Player"]
 scale = Vector2( 0.5, 0.5 )
@@ -205,7 +202,6 @@ readonly = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[connection signal="pressed" from="TitleScreen/Start" to="Player" method="_on_Start_pressed"]
 [connection signal="pressed" from="TitleScreen/Start" to="TitleScreen" method="_on_Start_pressed"]
+[connection signal="pressed" from="TitleScreen/Start" to="Player" method="_on_Start_pressed"]
 [connection signal="pressed" from="TitleScreen/Button" to="TitleScreen/Button/Credits" method="_on_Button_pressed"]
