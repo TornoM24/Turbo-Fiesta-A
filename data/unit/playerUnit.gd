@@ -5,17 +5,23 @@ extends Node2D
 # var a = 2
 # var b = "text"
 
-var allies = ["mc","1","2","3","4"]
-var placeholder = preload("res://data/unit/playerUnit.tscn")
+var mhp = 100
+var hp = 100
+
+var mmp = 100
+var mp = 100
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var instance = placeholder.instance()
-	add_child(instance)
-	instance.position.x = 783
-	instance.position.y = 265
 	pass # Replace with function body.
 
+func updateResources():
+	var hpb = get_node("HPBar")
+	var mpb = get_node("MPBar")
+	hpb.value = hp
+	mpb.value = mp
 
+func _process(delta):
+	updateResources()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass

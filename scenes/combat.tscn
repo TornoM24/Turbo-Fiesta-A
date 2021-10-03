@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scenes/maps/runbutton.gd" type="Script" id=1]
 [ext_resource path="res://scenes/maps/scripts/control.gd" type="Script" id=2]
 [ext_resource path="res://scenes/controller.gd" type="Script" id=3]
+[ext_resource path="res://scenes/Party.gd" type="Script" id=4]
+[ext_resource path="res://gfx/unit/unit_box.png" type="Texture" id=5]
 
 [node name="Controller" type="Node2D"]
 script = ExtResource( 3 )
@@ -15,16 +17,76 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Panel" type="Panel" parent="Control"]
+margin_left = 6.10352e-05
+margin_top = 388.0
+margin_right = 1024.0
+margin_bottom = 600.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="testbutton" type="Button" parent="Control"]
-margin_left = 870.364
-margin_top = 544.619
-margin_right = 935.364
-margin_bottom = 564.619
+margin_left = 20.0
+margin_top = 550.0
+margin_right = 85.0
+margin_bottom = 570.0
 rect_scale = Vector2( 1, 1.01685 )
-text = "run fatty"
+text = "return"
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="attack" type="Button" parent="Control"]
+margin_left = 20.0
+margin_top = 400.0
+margin_right = 85.0
+margin_bottom = 420.0
+rect_scale = Vector2( 1, 1.01685 )
+text = "Attack"
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Party" type="Node2D" parent="."]
+script = ExtResource( 4 )
+
+[node name="boxes" type="Node2D" parent="Party"]
+
+[node name="unit_box" type="Sprite" parent="Party/boxes"]
+position = Vector2( 800, 300 )
+texture = ExtResource( 5 )
+
+[node name="unit_box3" type="Sprite" parent="Party/boxes"]
+position = Vector2( 700, 300 )
+texture = ExtResource( 5 )
+
+[node name="unit_box2" type="Sprite" parent="Party/boxes"]
+position = Vector2( 900, 300 )
+texture = ExtResource( 5 )
+
+[node name="unit_box6" type="Sprite" parent="Party/boxes"]
+position = Vector2( 800, 200 )
+texture = ExtResource( 5 )
+
+[node name="unit_box5" type="Sprite" parent="Party/boxes"]
+position = Vector2( 700, 200 )
+texture = ExtResource( 5 )
+
+[node name="unit_box4" type="Sprite" parent="Party/boxes"]
+position = Vector2( 900, 200 )
+texture = ExtResource( 5 )
+
+[node name="unit_box9" type="Sprite" parent="Party/boxes"]
+position = Vector2( 800, 100 )
+texture = ExtResource( 5 )
+
+[node name="unit_box8" type="Sprite" parent="Party/boxes"]
+position = Vector2( 700, 100 )
+texture = ExtResource( 5 )
+
+[node name="unit_box7" type="Sprite" parent="Party/boxes"]
+position = Vector2( 900, 100 )
+texture = ExtResource( 5 )
