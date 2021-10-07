@@ -30,7 +30,7 @@ enabled=PoolStringArray(  )
 
 [gui]
 
-theme/custom_font="res://font/pixelmix.tres"
+theme/custom_font="res://font/pixelmix_small2.tres"
 
 [input]
 

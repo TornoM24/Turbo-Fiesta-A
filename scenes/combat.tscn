@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://scenes/maps/runbutton.gd" type="Script" id=1]
 [ext_resource path="res://scenes/maps/scripts/control.gd" type="Script" id=2]
@@ -7,6 +7,14 @@
 [ext_resource path="res://gfx/unit/unit_box.png" type="Texture" id=5]
 [ext_resource path="res://pixel_button.tres" type="Theme" id=6]
 [ext_resource path="res://pixel_panel.theme" type="Theme" id=7]
+[ext_resource path="res://gfx/unit/hpbar_bg.png" type="Texture" id=8]
+[ext_resource path="res://gfx/unit/hpbar.png" type="Texture" id=9]
+[ext_resource path="res://gfx/unit/mpbar.png" type="Texture" id=10]
+[ext_resource path="res://gfx/unit/portrait_bg.png" type="Texture" id=11]
+[ext_resource path="res://gfx/unit/mc1/portrait.png" type="Texture" id=12]
+[ext_resource path="res://gfx/unit/atb_f_bar.png" type="Texture" id=13]
+[ext_resource path="res://gfx/unit/bar_over.png" type="Texture" id=14]
+[ext_resource path="res://scenes/ATBBar.gd" type="Script" id=15]
 
 [node name="Controller" type="Node2D"]
 script = ExtResource( 3 )
@@ -89,10 +97,291 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Panel" type="Panel" parent="Control/Panel"]
+[node name="CBPanel2" type="Panel" parent="Control/Panel"]
+margin_left = 624.0
+margin_top = -3.0
+margin_right = 1024.0
+margin_bottom = 209.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="G1" type="Node2D" parent="Control/Panel/CBPanel2"]
+
+[node name="HPBar" type="TextureProgress" parent="Control/Panel/CBPanel2/G1"]
+margin_left = 64.0
+margin_top = 24.0
+margin_right = 264.0
+margin_bottom = 32.0
+rect_pivot_offset = Vector2( 109.152, 12.4213 )
+value = 24.0
+texture_under = ExtResource( 8 )
+texture_over = ExtResource( 14 )
+texture_progress = ExtResource( 9 )
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MPBar" type="TextureProgress" parent="Control/Panel/CBPanel2/G1"]
+margin_left = 64.0
+margin_top = 32.0
+margin_right = 264.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 109.152, 12.4213 )
+value = 24.0
+texture_under = ExtResource( 8 )
+texture_over = ExtResource( 14 )
+texture_progress = ExtResource( 10 )
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ATBBar" type="TextureProgress" parent="Control/Panel/CBPanel2/G1"]
+margin_left = 112.0
+margin_top = 40.0
+margin_right = 264.0
+margin_bottom = 48.0
+rect_pivot_offset = Vector2( 109.152, 12.4213 )
+value = 24.0
+texture_under = ExtResource( 8 )
+texture_over = ExtResource( 14 )
+texture_progress = ExtResource( 13 )
+nine_patch_stretch = true
+script = ExtResource( 15 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Portrait" type="Sprite" parent="Control/Panel/CBPanel2/G1"]
+position = Vector2( 39, 29 )
+texture = ExtResource( 12 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/Panel/CBPanel2/G1"]
+margin_left = 64.0
+margin_top = 8.0
+margin_right = 264.0
+margin_bottom = 24.0
+text = "Hiro"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="G2" type="Node2D" parent="Control/Panel/CBPanel2"]
+position = Vector2( 0, 40 )
+
+[node name="HPBar" type="TextureProgress" parent="Control/Panel/CBPanel2/G2"]
+margin_left = 64.0
+margin_top = 24.0
+margin_right = 264.0
+margin_bottom = 32.0
+rect_pivot_offset = Vector2( 109.152, 12.4213 )
+value = 24.0
+texture_under = ExtResource( 8 )
+texture_over = ExtResource( 14 )
+texture_progress = ExtResource( 9 )
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MPBar" type="TextureProgress" parent="Control/Panel/CBPanel2/G2"]
+margin_left = 64.0
+margin_top = 32.0
+margin_right = 264.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 109.152, 12.4213 )
+value = 24.0
+texture_under = ExtResource( 8 )
+texture_over = ExtResource( 14 )
+texture_progress = ExtResource( 10 )
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Portrait" type="Sprite" parent="Control/Panel/CBPanel2/G2"]
+position = Vector2( 39, 29 )
+texture = ExtResource( 11 )
+
+[node name="G3" type="Node2D" parent="Control/Panel/CBPanel2"]
+position = Vector2( 0, 80 )
+
+[node name="HPBar" type="TextureProgress" parent="Control/Panel/CBPanel2/G3"]
+margin_left = 64.0
+margin_top = 24.0
+margin_right = 264.0
+margin_bottom = 32.0
+rect_pivot_offset = Vector2( 109.152, 12.4213 )
+value = 24.0
+texture_under = ExtResource( 8 )
+texture_over = ExtResource( 14 )
+texture_progress = ExtResource( 9 )
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MPBar" type="TextureProgress" parent="Control/Panel/CBPanel2/G3"]
+margin_left = 64.0
+margin_top = 32.0
+margin_right = 264.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 109.152, 12.4213 )
+value = 24.0
+texture_under = ExtResource( 8 )
+texture_over = ExtResource( 14 )
+texture_progress = ExtResource( 10 )
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Portrait" type="Sprite" parent="Control/Panel/CBPanel2/G3"]
+position = Vector2( 39, 29 )
+texture = ExtResource( 11 )
+
+[node name="G4" type="Node2D" parent="Control/Panel/CBPanel2"]
+position = Vector2( 0, 120 )
+
+[node name="HPBar" type="TextureProgress" parent="Control/Panel/CBPanel2/G4"]
+margin_left = 64.0
+margin_top = 24.0
+margin_right = 264.0
+margin_bottom = 32.0
+rect_pivot_offset = Vector2( 109.152, 12.4213 )
+value = 24.0
+texture_under = ExtResource( 8 )
+texture_over = ExtResource( 14 )
+texture_progress = ExtResource( 9 )
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MPBar" type="TextureProgress" parent="Control/Panel/CBPanel2/G4"]
+margin_left = 64.0
+margin_top = 32.0
+margin_right = 264.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 109.152, 12.4213 )
+value = 24.0
+texture_under = ExtResource( 8 )
+texture_over = ExtResource( 14 )
+texture_progress = ExtResource( 10 )
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Portrait" type="Sprite" parent="Control/Panel/CBPanel2/G4"]
+position = Vector2( 39, 29 )
+texture = ExtResource( 11 )
+
+[node name="G5" type="Node2D" parent="Control/Panel/CBPanel2"]
+position = Vector2( 0, 160 )
+
+[node name="HPBar" type="TextureProgress" parent="Control/Panel/CBPanel2/G5"]
+margin_left = 64.0
+margin_top = 24.0
+margin_right = 264.0
+margin_bottom = 32.0
+rect_pivot_offset = Vector2( 109.152, 12.4213 )
+value = 24.0
+texture_under = ExtResource( 8 )
+texture_over = ExtResource( 14 )
+texture_progress = ExtResource( 9 )
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MPBar" type="TextureProgress" parent="Control/Panel/CBPanel2/G5"]
+margin_left = 64.0
+margin_top = 32.0
+margin_right = 264.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 109.152, 12.4213 )
+value = 24.0
+texture_under = ExtResource( 8 )
+texture_over = ExtResource( 14 )
+texture_progress = ExtResource( 10 )
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Portrait" type="Sprite" parent="Control/Panel/CBPanel2/G5"]
+position = Vector2( 39, 29 )
+texture = ExtResource( 11 )
+
+[node name="Panel2" type="Panel" parent="Control/Panel"]
+visible = false
+modulate = Color( 1, 1, 1, 0.470588 )
+margin_right = 1024.0
+margin_bottom = 212.0
+theme = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CBPanel" type="Panel" parent="Control/Panel"]
+visible = false
 margin_left = 135.0
 margin_right = 635.0
 margin_bottom = 212.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="exit" type="Button" parent="Control/Panel/CBPanel"]
+margin_left = 470.0
+margin_top = 5.0
+margin_right = 495.0
+margin_bottom = 30.0
+theme = ExtResource( 6 )
+text = "X"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -178,3 +467,9 @@ texture = ExtResource( 5 )
 [node name="unit_box7" type="Sprite" parent="Enemy/boxes2"]
 position = Vector2( 900, 100 )
 texture = ExtResource( 5 )
+[connection signal="toggled" from="Control/Panel/attack" to="Control" method="_on_attack_toggled"]
+[connection signal="pressed" from="Control/Panel/defend" to="Control" method="_on_defend_pressed"]
+[connection signal="pressed" from="Control/Panel/special" to="Control" method="_on_special_pressed"]
+[connection signal="pressed" from="Control/Panel/item" to="Control" method="_on_item_pressed"]
+[connection signal="pressed" from="Control/Panel/CBPanel/exit" to="Control" method="_on_exit_pressed"]
+[connection signal="toggled" from="Control/Panel/CBPanel/exit" to="Control" method="_on_exit_toggled"]

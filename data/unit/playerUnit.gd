@@ -10,6 +10,8 @@ var hp = 100
 
 var mmp = 100
 var mp = 100
+
+var unitName = "Imposter Mongus"
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -25,3 +27,8 @@ func _process(delta):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+
+func _on_Select_pressed():
+	print ("Selected this unit.")
+	pass # Replace with function body.
