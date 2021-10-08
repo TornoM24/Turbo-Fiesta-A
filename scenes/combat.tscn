@@ -454,7 +454,7 @@ __meta__ = {
 visible = false
 position = Vector2( 488, 136 )
 frames = SubResource( 9 )
-frame = 6
+frame = 7
 speed_scale = 2.0
 playing = true
 
@@ -462,6 +462,7 @@ playing = true
 script = ExtResource( 4 )
 
 [node name="boxes" type="Node2D" parent="Party"]
+modulate = Color( 1, 1, 1, 0.498039 )
 
 [node name="unit_box" type="Sprite" parent="Party/boxes"]
 position = Vector2( 800, 300 )
@@ -502,6 +503,7 @@ texture = ExtResource( 5 )
 [node name="Enemy" type="Node2D" parent="."]
 
 [node name="boxes2" type="Node2D" parent="Enemy"]
+modulate = Color( 1, 1, 1, 0.498039 )
 position = Vector2( -600, 0 )
 
 [node name="unit_box" type="Sprite" parent="Enemy/boxes2"]
