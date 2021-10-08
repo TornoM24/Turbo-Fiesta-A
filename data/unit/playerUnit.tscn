@@ -103,8 +103,9 @@ texture = ExtResource( 5 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 16, 28 )
-scale = Vector2( 1.5, 1.5 )
+scale = Vector2( 2, 2 )
 frames = SubResource( 12 )
 frame = 3
 playing = true
+
 [connection signal="pressed" from="Select" to="." method="_on_Select_pressed"]

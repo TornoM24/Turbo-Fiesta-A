@@ -106,6 +106,7 @@ margin_top = 52.0
 margin_right = 120.0
 margin_bottom = 77.0
 rect_scale = Vector2( 1, 1.01685 )
+hint_tooltip = "Provides 50% general mitigation."
 theme = ExtResource( 6 )
 text = "Defend"
 __meta__ = {
@@ -272,6 +273,32 @@ __meta__ = {
 position = Vector2( 39, 29 )
 texture = ExtResource( 11 )
 
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/Panel/CBPanel2/G2"]
+margin_left = 64.0
+margin_top = 8.0
+margin_right = 264.0
+margin_bottom = 24.0
+text = "Hiro"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ATBBar" type="TextureProgress" parent="Control/Panel/CBPanel2/G2"]
+margin_left = 112.0
+margin_top = 40.0
+margin_right = 264.0
+margin_bottom = 48.0
+rect_pivot_offset = Vector2( 109.152, 12.4213 )
+value = 24.0
+texture_under = ExtResource( 8 )
+texture_over = ExtResource( 14 )
+texture_progress = ExtResource( 13 )
+nine_patch_stretch = true
+script = ExtResource( 15 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="G3" type="Node2D" parent="Control/Panel/CBPanel2"]
 position = Vector2( 0, 80 )
 
@@ -316,6 +343,32 @@ __meta__ = {
 [node name="Portrait" type="Sprite" parent="Control/Panel/CBPanel2/G3"]
 position = Vector2( 39, 29 )
 texture = ExtResource( 11 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/Panel/CBPanel2/G3"]
+margin_left = 64.0
+margin_top = 8.0
+margin_right = 264.0
+margin_bottom = 24.0
+text = "Hiro"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ATBBar" type="TextureProgress" parent="Control/Panel/CBPanel2/G3"]
+margin_left = 112.0
+margin_top = 40.0
+margin_right = 264.0
+margin_bottom = 48.0
+rect_pivot_offset = Vector2( 109.152, 12.4213 )
+value = 24.0
+texture_under = ExtResource( 8 )
+texture_over = ExtResource( 14 )
+texture_progress = ExtResource( 13 )
+nine_patch_stretch = true
+script = ExtResource( 15 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="G4" type="Node2D" parent="Control/Panel/CBPanel2"]
 position = Vector2( 0, 120 )
@@ -362,6 +415,32 @@ __meta__ = {
 position = Vector2( 39, 29 )
 texture = ExtResource( 11 )
 
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/Panel/CBPanel2/G4"]
+margin_left = 64.0
+margin_top = 8.0
+margin_right = 264.0
+margin_bottom = 24.0
+text = "Hiro"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ATBBar" type="TextureProgress" parent="Control/Panel/CBPanel2/G4"]
+margin_left = 112.0
+margin_top = 40.0
+margin_right = 264.0
+margin_bottom = 48.0
+rect_pivot_offset = Vector2( 109.152, 12.4213 )
+value = 24.0
+texture_under = ExtResource( 8 )
+texture_over = ExtResource( 14 )
+texture_progress = ExtResource( 13 )
+nine_patch_stretch = true
+script = ExtResource( 15 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="G5" type="Node2D" parent="Control/Panel/CBPanel2"]
 position = Vector2( 0, 160 )
 
@@ -406,6 +485,32 @@ __meta__ = {
 [node name="Portrait" type="Sprite" parent="Control/Panel/CBPanel2/G5"]
 position = Vector2( 39, 29 )
 texture = ExtResource( 11 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/Panel/CBPanel2/G5"]
+margin_left = 64.0
+margin_top = 8.0
+margin_right = 264.0
+margin_bottom = 24.0
+text = "Hiro"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ATBBar" type="TextureProgress" parent="Control/Panel/CBPanel2/G5"]
+margin_left = 112.0
+margin_top = 40.0
+margin_right = 264.0
+margin_bottom = 48.0
+rect_pivot_offset = Vector2( 109.152, 12.4213 )
+value = 24.0
+texture_under = ExtResource( 8 )
+texture_over = ExtResource( 14 )
+texture_progress = ExtResource( 13 )
+nine_patch_stretch = true
+script = ExtResource( 15 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Panel2" type="Panel" parent="Control/Panel"]
 visible = false
@@ -454,7 +559,6 @@ __meta__ = {
 visible = false
 position = Vector2( 488, 136 )
 frames = SubResource( 9 )
-frame = 7
 speed_scale = 2.0
 playing = true
 
@@ -541,6 +645,7 @@ texture = ExtResource( 5 )
 [node name="unit_box7" type="Sprite" parent="Enemy/boxes2"]
 position = Vector2( 900, 100 )
 texture = ExtResource( 5 )
+
 [connection signal="pressed" from="Control/Panel/buttonhost/attack" to="Control" method="_on_attack_pressed"]
 [connection signal="toggled" from="Control/Panel/buttonhost/attack" to="Control" method="_on_attack_toggled"]
 [connection signal="pressed" from="Control/Panel/buttonhost/defend" to="Control" method="_on_defend_pressed"]

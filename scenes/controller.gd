@@ -5,6 +5,8 @@ extends Node2D
 # var a = 2
 # var b = "text"
 
+var unitDict
+
 var allies = [1]
 var alliesUnit = []
 var placeholder = preload("res://data/unit/playerUnit.tscn")
@@ -12,8 +14,18 @@ var defaultSprite = preload ("res://gfx/unit/mc1/mc2.png")
 
 var selectedUnit
 var isSelecting = false
+
+func parseData():
+	var file = File.new()
+	file.open("res://data/abilities/abilites.cdb", file.READ)
+	var text = file.get_as_text()
+	var parse = JSON.parse(text)
+	unitDict = parse.result
+	file.close()	
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	parseData()
 	var instance = placeholder.instance()
 	add_child(instance)
 	instance.position.x = 783

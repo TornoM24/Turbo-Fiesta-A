@@ -1,0 +1,22 @@
+{
+	"sheets": [
+		{
+			"name": "kjsfsadf",
+			"columns": [
+				{
+					"typeStr": "1",
+					"name": "adsdasda"
+				}
+			],
+			"lines": [
+				{
+					"adsdasda": "asduadgjasgdgadajj djdalsjd"
+				}
+			],
+			"separators": [],
+			"props": {}
+		}
+	],
+	"customTypes": [],
+	"compress": false
+}

@@ -11,7 +11,7 @@ var hp = 100
 var mmp = 100
 var mp = 100
 
-var unitName = "Imposter Mongus"
+var unitName = "Aou Mogis"
 var selected = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
