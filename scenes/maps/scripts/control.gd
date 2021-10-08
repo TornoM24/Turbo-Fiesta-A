@@ -10,10 +10,10 @@ const SPEED = 500
 onready var skillPanel = get_node("Panel/CBPanel")
 onready var tsPanel = get_node("Panel/Panel2")
 
-onready var attackButton = get_node("Panel/attack")
-onready var defendButton = get_node("Panel/defend")
-onready var specialButton = get_node("Panel/special")
-onready var itemButton = get_node("Panel/item")
+onready var attackButton = get_node("Panel/buttonhost/attack")
+onready var defendButton = get_node("Panel/buttonhost/defend")
+onready var specialButton = get_node("Panel/buttonhost/special")
+onready var itemButton = get_node("Panel/buttonhost/item")
 
 var sPanelX = 0
 var sPanelY = 212
@@ -44,10 +44,6 @@ func _process(delta):
 #func _process(delta):
 #	pass
 
-
-func _on_attack_toggled(button_pressed):
-	pass # Replace with function body.
-
 func _on_exit_pressed():
 	var skillPanel = get_node("Panel/CBPanel")
 	var tsPanel = get_node("Panel/Panel2")
@@ -65,4 +61,8 @@ func _on_defend_pressed():
 
 
 func _on_item_pressed():
+	pass # Replace with function body.
+
+
+func _on_attack_pressed():
 	pass # Replace with function body.

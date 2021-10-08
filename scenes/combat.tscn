@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://scenes/maps/runbutton.gd" type="Script" id=1]
 [ext_resource path="res://scenes/maps/scripts/control.gd" type="Script" id=2]
@@ -15,6 +15,56 @@
 [ext_resource path="res://gfx/unit/atb_f_bar.png" type="Texture" id=13]
 [ext_resource path="res://gfx/unit/bar_over.png" type="Texture" id=14]
 [ext_resource path="res://scenes/ATBBar.gd" type="Script" id=15]
+[ext_resource path="res://gfx/unit/selector.png" type="Texture" id=16]
+[ext_resource path="res://pixel_button_red.tres" type="Theme" id=17]
+
+[sub_resource type="AtlasTexture" id=1]
+flags = 4
+atlas = ExtResource( 16 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=2]
+flags = 4
+atlas = ExtResource( 16 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=3]
+flags = 4
+atlas = ExtResource( 16 )
+region = Rect2( 64, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=4]
+flags = 4
+atlas = ExtResource( 16 )
+region = Rect2( 96, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=5]
+flags = 4
+atlas = ExtResource( 16 )
+region = Rect2( 128, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=6]
+flags = 4
+atlas = ExtResource( 16 )
+region = Rect2( 160, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=7]
+flags = 4
+atlas = ExtResource( 16 )
+region = Rect2( 192, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=8]
+flags = 4
+atlas = ExtResource( 16 )
+region = Rect2( 224, 0, 32, 32 )
+
+[sub_resource type="SpriteFrames" id=9]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
 
 [node name="Controller" type="Node2D"]
 script = ExtResource( 3 )
@@ -36,20 +86,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="testbutton" type="Button" parent="Control/Panel"]
-margin_left = 20.0
-margin_top = 172.0
-margin_right = 120.0
-margin_bottom = 197.0
-rect_scale = Vector2( 1, 1.01685 )
-theme = ExtResource( 6 )
-text = "return"
-script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="buttonhost" type="Node2D" parent="Control/Panel"]
 
-[node name="attack" type="Button" parent="Control/Panel"]
+[node name="attack" type="Button" parent="Control/Panel/buttonhost"]
 margin_left = 19.9999
 margin_top = 12.0
 margin_right = 120.0
@@ -61,7 +100,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="defend" type="Button" parent="Control/Panel"]
+[node name="defend" type="Button" parent="Control/Panel/buttonhost"]
 margin_left = 20.0
 margin_top = 52.0
 margin_right = 120.0
@@ -73,7 +112,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="special" type="Button" parent="Control/Panel"]
+[node name="special" type="Button" parent="Control/Panel/buttonhost"]
 margin_left = 20.0
 margin_top = 92.0
 margin_right = 120.0
@@ -85,7 +124,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="item" type="Button" parent="Control/Panel"]
+[node name="item" type="Button" parent="Control/Panel/buttonhost"]
 margin_left = 20.0
 margin_top = 132.0
 margin_right = 120.0
@@ -93,6 +132,18 @@ margin_bottom = 157.0
 rect_scale = Vector2( 1, 1.01685 )
 theme = ExtResource( 6 )
 text = "Items"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="execute" type="Button" parent="Control/Panel/buttonhost"]
+margin_left = 20.0
+margin_top = 172.0
+margin_right = 120.0
+margin_bottom = 197.0
+rect_scale = Vector2( 1, 1.01685 )
+theme = ExtResource( 17 )
+text = "Execute"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -386,6 +437,27 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="testbutton" type="Button" parent="Control/Panel"]
+margin_left = 904.0
+margin_top = -371.0
+margin_right = 1004.0
+margin_bottom = -346.0
+rect_scale = Vector2( 1, 1.01685 )
+theme = ExtResource( 6 )
+text = "return"
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Selector" type="AnimatedSprite" parent="Control"]
+visible = false
+position = Vector2( 488, 136 )
+frames = SubResource( 9 )
+frame = 6
+speed_scale = 2.0
+playing = true
+
 [node name="Party" type="Node2D" parent="."]
 script = ExtResource( 4 )
 
@@ -467,9 +539,10 @@ texture = ExtResource( 5 )
 [node name="unit_box7" type="Sprite" parent="Enemy/boxes2"]
 position = Vector2( 900, 100 )
 texture = ExtResource( 5 )
-[connection signal="toggled" from="Control/Panel/attack" to="Control" method="_on_attack_toggled"]
-[connection signal="pressed" from="Control/Panel/defend" to="Control" method="_on_defend_pressed"]
-[connection signal="pressed" from="Control/Panel/special" to="Control" method="_on_special_pressed"]
-[connection signal="pressed" from="Control/Panel/item" to="Control" method="_on_item_pressed"]
+[connection signal="pressed" from="Control/Panel/buttonhost/attack" to="Control" method="_on_attack_pressed"]
+[connection signal="toggled" from="Control/Panel/buttonhost/attack" to="Control" method="_on_attack_toggled"]
+[connection signal="pressed" from="Control/Panel/buttonhost/defend" to="Control" method="_on_defend_pressed"]
+[connection signal="pressed" from="Control/Panel/buttonhost/special" to="Control" method="_on_special_pressed"]
+[connection signal="pressed" from="Control/Panel/buttonhost/item" to="Control" method="_on_item_pressed"]
 [connection signal="pressed" from="Control/Panel/CBPanel/exit" to="Control" method="_on_exit_pressed"]
 [connection signal="toggled" from="Control/Panel/CBPanel/exit" to="Control" method="_on_exit_toggled"]

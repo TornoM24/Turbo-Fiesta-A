@@ -32,7 +32,8 @@
 									"Delay": true,
 									"Chance": 1,
 									"Subdiv": "Physical",
-									"GFX": ""
+									"GFX": "",
+									"TargetType": "one"
 								},
 								{
 									"Type": "Damage",
@@ -41,7 +42,8 @@
 									"Delay": true,
 									"Chance": 1,
 									"Subdiv": "Physical",
-									"GFX": ""
+									"GFX": "",
+									"TargetType": "one"
 								},
 								{
 									"Type": "Debuff",
@@ -50,7 +52,8 @@
 									"Hits": 0,
 									"Delay": false,
 									"Subdiv": "Bleed",
-									"GFX": ""
+									"GFX": "",
+									"TargetType": "one"
 								}
 							],
 							"Cost": 10,
@@ -140,6 +143,15 @@
 					"typeStr": "1",
 					"name": "Subdiv",
 					"display": null
+				},
+				{
+					"typeStr": "1",
+					"name": "TargetType"
+				},
+				{
+					"typeStr": "3",
+					"name": "Target",
+					"opt": true
 				},
 				{
 					"typeStr": "3",
