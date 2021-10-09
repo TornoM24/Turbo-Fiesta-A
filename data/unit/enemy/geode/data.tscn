@@ -10,19 +10,19 @@ script/source = "extends Node2D
 #onready var ref_Master = get_node (\"/root/Master\")
 var bMas = Master.ability_dict
 var unitDict = {
-	\"name\" : \"Hiro\",
-	\"bio\" : \"A young man on a journey to placeholder foo bar lorem ipsum sit dolor amet\",
+	\"name\" : \"Small Geode\",
+	\"bio\" : \"A small, living rock, peppered with valuable-looking crystals. How cruel of you.\",
 	\"stats\": {
-		\"hp\" : 30,
-		\"mp\" : 20,
-		\"atk\" : 10,
-		\"def\" : 8,
-		\"int\" : 5,
-		\"wis\" : 4,
-		\"apt\" : 3,
-		\"spd\" : 5
+		\"hp\" : 10,
+		\"mp\" : 0,
+		\"atk\" : 5,
+		\"def\" : 3,
+		\"int\" : 0,
+		\"wis\" : 2,
+		\"apt\" : 0,
+		\"spd\" : 3
 	},
-	\"abilities\": [bMas[\"attack_crimson_saber_hiro\"],bMas[\"buff_scarlet_blaze\"]]
+	\"abilities\": [bMas[\"attack_basic_attack\"]]
 }
 
 # Called when the node enters the scene tree for the first time.

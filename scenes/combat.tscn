@@ -524,9 +524,10 @@ __meta__ = {
 
 [node name="CBPanel" type="Panel" parent="Control/Panel"]
 visible = false
-margin_left = 135.0
-margin_right = 635.0
-margin_bottom = 212.0
+margin_left = 136.0
+margin_top = -3.0
+margin_right = 636.0
+margin_bottom = 209.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -542,6 +543,20 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="specialscroll" type="ScrollContainer" parent="Control/Panel/CBPanel"]
+margin_top = 8.0
+margin_right = 465.0
+margin_bottom = 208.0
+scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="Control/Panel/CBPanel/specialscroll"]
+margin_right = 450.0
+margin_bottom = 999.0
+rect_min_size = Vector2( 450, 999 )
+
 [node name="testbutton" type="Button" parent="Control/Panel"]
 margin_left = 904.0
 margin_top = -371.0
@@ -555,10 +570,21 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="targethelper" type="RichTextLabel" parent="Control/Panel"]
+margin_left = 312.0
+margin_top = 181.0
+margin_right = 608.0
+margin_bottom = 197.0
+text = "Right click to cancel targeting"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Selector" type="AnimatedSprite" parent="Control"]
 visible = false
 position = Vector2( 488, 136 )
 frames = SubResource( 9 )
+frame = 3
 speed_scale = 2.0
 playing = true
 
@@ -566,6 +592,7 @@ playing = true
 script = ExtResource( 4 )
 
 [node name="boxes" type="Node2D" parent="Party"]
+visible = false
 modulate = Color( 1, 1, 1, 0.498039 )
 
 [node name="unit_box" type="Sprite" parent="Party/boxes"]
@@ -645,7 +672,6 @@ texture = ExtResource( 5 )
 [node name="unit_box7" type="Sprite" parent="Enemy/boxes2"]
 position = Vector2( 900, 100 )
 texture = ExtResource( 5 )
-
 [connection signal="pressed" from="Control/Panel/buttonhost/attack" to="Control" method="_on_attack_pressed"]
 [connection signal="toggled" from="Control/Panel/buttonhost/attack" to="Control" method="_on_attack_toggled"]
 [connection signal="pressed" from="Control/Panel/buttonhost/defend" to="Control" method="_on_defend_pressed"]
