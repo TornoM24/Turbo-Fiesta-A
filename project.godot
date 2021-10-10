@@ -10,7 +10,6 @@ config_version=4
 
 _global_script_classes=[  ]
 _global_script_class_icons={
-
 }
 
 [application]
@@ -27,10 +26,6 @@ Master="*res://data/Master.gd"
 [display]
 
 mouse_cursor/custom_image="res://ui/pointer2.png"
-
-[editor_plugins]
-
-enabled=PoolStringArray(  )
 
 [gui]
 
