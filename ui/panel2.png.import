@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/atb_f_bar.png-24b1b67bee2029f5b8a62fed4082ba6e.stex"
+path="res://.import/panel2.png-acbc7218d7ee9fd6a3278b9dd021e671.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://gfx/unit/atb_f_bar.png"
-dest_files=[ "res://.import/atb_f_bar.png-24b1b67bee2029f5b8a62fed4082ba6e.stex" ]
+source_file="res://ui/panel2.png"
+dest_files=[ "res://.import/panel2.png-acbc7218d7ee9fd6a3278b9dd021e671.stex" ]
 
 [params]
 

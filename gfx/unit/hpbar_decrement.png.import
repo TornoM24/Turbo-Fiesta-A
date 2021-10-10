@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/atb_f_bar.png-24b1b67bee2029f5b8a62fed4082ba6e.stex"
+path="res://.import/hpbar_decrement.png-62d53883381ef88804f8cae6bfb3c9a1.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://gfx/unit/atb_f_bar.png"
-dest_files=[ "res://.import/atb_f_bar.png-24b1b67bee2029f5b8a62fed4082ba6e.stex" ]
+source_file="res://gfx/unit/hpbar_decrement.png"
+dest_files=[ "res://.import/hpbar_decrement.png-62d53883381ef88804f8cae6bfb3c9a1.stex" ]
 
 [params]
 

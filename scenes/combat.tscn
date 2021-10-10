@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://scenes/maps/runbutton.gd" type="Script" id=1]
 [ext_resource path="res://scenes/maps/scripts/control.gd" type="Script" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://scenes/ATBBar.gd" type="Script" id=15]
 [ext_resource path="res://gfx/unit/selector.png" type="Texture" id=16]
 [ext_resource path="res://pixel_button_red.tres" type="Theme" id=17]
+[ext_resource path="res://pixel_panel_2.theme" type="Theme" id=18]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 4
@@ -78,9 +79,9 @@ __meta__ = {
 }
 
 [node name="Panel" type="Panel" parent="Control"]
-margin_top = 387.0
-margin_right = 1024.0
-margin_bottom = 599.0
+margin_top = 448.0
+margin_right = 1280.0
+margin_bottom = 720.0
 theme = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -89,127 +90,129 @@ __meta__ = {
 [node name="buttonhost" type="Node2D" parent="Control/Panel"]
 
 [node name="attack" type="Button" parent="Control/Panel/buttonhost"]
-margin_left = 19.9999
-margin_top = 12.0
-margin_right = 120.0
-margin_bottom = 37.0
+margin_left = 24.0
+margin_top = 24.0
+margin_right = 136.0
+margin_bottom = 55.0
 rect_scale = Vector2( 1, 1.01685 )
 theme = ExtResource( 6 )
-text = "Attack"
+text = "ATTACK"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="defend" type="Button" parent="Control/Panel/buttonhost"]
-margin_left = 20.0
-margin_top = 52.0
-margin_right = 120.0
-margin_bottom = 77.0
+margin_left = 24.0
+margin_top = 72.0
+margin_right = 136.0
+margin_bottom = 103.0
 rect_scale = Vector2( 1, 1.01685 )
 hint_tooltip = "Provides 50% general mitigation."
 theme = ExtResource( 6 )
-text = "Defend"
+text = "DEFEND"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="special" type="Button" parent="Control/Panel/buttonhost"]
-margin_left = 20.0
-margin_top = 92.0
-margin_right = 120.0
-margin_bottom = 117.0
+margin_left = 24.0
+margin_top = 120.0
+margin_right = 136.0
+margin_bottom = 151.0
 rect_scale = Vector2( 1, 1.01685 )
 theme = ExtResource( 6 )
-text = "Special"
+text = "SPECIAL"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="item" type="Button" parent="Control/Panel/buttonhost"]
-margin_left = 20.0
-margin_top = 132.0
-margin_right = 120.0
-margin_bottom = 157.0
+margin_left = 24.0
+margin_top = 168.0
+margin_right = 136.0
+margin_bottom = 199.0
 rect_scale = Vector2( 1, 1.01685 )
 theme = ExtResource( 6 )
-text = "Items"
+text = "ITEMS"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="execute" type="Button" parent="Control/Panel/buttonhost"]
-margin_left = 20.0
-margin_top = 172.0
-margin_right = 120.0
-margin_bottom = 197.0
+margin_left = 24.0
+margin_top = 216.0
+margin_right = 136.0
+margin_bottom = 247.0
 rect_scale = Vector2( 1, 1.01685 )
 theme = ExtResource( 17 )
-text = "Execute"
+text = "EXECUTE"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="CBPanel2" type="Panel" parent="Control/Panel"]
-margin_left = 624.0
-margin_top = -3.0
-margin_right = 1024.0
-margin_bottom = 209.0
+margin_left = 640.0
+margin_right = 1280.0
+margin_bottom = 272.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="G1" type="Node2D" parent="Control/Panel/CBPanel2"]
-visible = false
 
 [node name="HPBar" type="TextureProgress" parent="Control/Panel/CBPanel2/G1"]
 margin_left = 64.0
-margin_top = 24.0
+margin_top = 32.0
 margin_right = 264.0
-margin_bottom = 32.0
+margin_bottom = 40.0
 rect_pivot_offset = Vector2( 109.152, 12.4213 )
-value = 24.0
+value = 50.0
 texture_under = ExtResource( 8 )
 texture_over = ExtResource( 14 )
 texture_progress = ExtResource( 9 )
 nine_patch_stretch = true
-stretch_margin_left = 1
-stretch_margin_top = 1
-stretch_margin_right = 1
-stretch_margin_bottom = 1
+stretch_margin_left = 2
+stretch_margin_top = 3
+stretch_margin_right = 2
+stretch_margin_bottom = 3
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="MPBar" type="TextureProgress" parent="Control/Panel/CBPanel2/G1"]
 margin_left = 64.0
-margin_top = 32.0
-margin_right = 264.0
-margin_bottom = 40.0
+margin_top = 40.0
+margin_right = 256.0
+margin_bottom = 48.0
 rect_pivot_offset = Vector2( 109.152, 12.4213 )
 value = 24.0
 texture_under = ExtResource( 8 )
 texture_over = ExtResource( 14 )
 texture_progress = ExtResource( 10 )
 nine_patch_stretch = true
-stretch_margin_left = 1
-stretch_margin_top = 1
-stretch_margin_right = 1
-stretch_margin_bottom = 1
+stretch_margin_left = 2
+stretch_margin_top = 3
+stretch_margin_right = 2
+stretch_margin_bottom = 3
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="ATBBar" type="TextureProgress" parent="Control/Panel/CBPanel2/G1"]
 margin_left = 112.0
-margin_top = 40.0
-margin_right = 264.0
-margin_bottom = 48.0
+margin_top = 48.0
+margin_right = 248.0
+margin_bottom = 56.0
 rect_pivot_offset = Vector2( 109.152, 12.4213 )
 value = 24.0
 texture_under = ExtResource( 8 )
 texture_over = ExtResource( 14 )
 texture_progress = ExtResource( 13 )
 nine_patch_stretch = true
+stretch_margin_left = 2
+stretch_margin_top = 3
+stretch_margin_right = 2
+stretch_margin_bottom = 3
 script = ExtResource( 15 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -225,48 +228,48 @@ margin_top = 8.0
 margin_right = 264.0
 margin_bottom = 24.0
 text = "Hiro"
+scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="G2" type="Node2D" parent="Control/Panel/CBPanel2"]
-visible = false
-position = Vector2( 0, 40 )
+position = Vector2( 0, 50 )
 
 [node name="HPBar" type="TextureProgress" parent="Control/Panel/CBPanel2/G2"]
 margin_left = 64.0
-margin_top = 24.0
+margin_top = 30.0
 margin_right = 264.0
-margin_bottom = 32.0
+margin_bottom = 38.0
 rect_pivot_offset = Vector2( 109.152, 12.4213 )
 value = 24.0
 texture_under = ExtResource( 8 )
 texture_over = ExtResource( 14 )
 texture_progress = ExtResource( 9 )
 nine_patch_stretch = true
-stretch_margin_left = 1
-stretch_margin_top = 1
-stretch_margin_right = 1
-stretch_margin_bottom = 1
+stretch_margin_left = 2
+stretch_margin_top = 3
+stretch_margin_right = 2
+stretch_margin_bottom = 3
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="MPBar" type="TextureProgress" parent="Control/Panel/CBPanel2/G2"]
 margin_left = 64.0
-margin_top = 32.0
+margin_top = 38.0
 margin_right = 264.0
-margin_bottom = 40.0
+margin_bottom = 46.0
 rect_pivot_offset = Vector2( 109.152, 12.4213 )
 value = 24.0
 texture_under = ExtResource( 8 )
 texture_over = ExtResource( 14 )
 texture_progress = ExtResource( 10 )
 nine_patch_stretch = true
-stretch_margin_left = 1
-stretch_margin_top = 1
-stretch_margin_right = 1
-stretch_margin_bottom = 1
+stretch_margin_left = 2
+stretch_margin_top = 3
+stretch_margin_right = 2
+stretch_margin_bottom = 3
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -281,64 +284,68 @@ margin_top = 8.0
 margin_right = 264.0
 margin_bottom = 24.0
 text = "Hiro"
+scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="ATBBar" type="TextureProgress" parent="Control/Panel/CBPanel2/G2"]
 margin_left = 112.0
-margin_top = 40.0
-margin_right = 264.0
-margin_bottom = 48.0
+margin_top = 46.0
+margin_right = 248.0
+margin_bottom = 54.0
 rect_pivot_offset = Vector2( 109.152, 12.4213 )
 value = 24.0
 texture_under = ExtResource( 8 )
 texture_over = ExtResource( 14 )
 texture_progress = ExtResource( 13 )
 nine_patch_stretch = true
+stretch_margin_left = 2
+stretch_margin_top = 3
+stretch_margin_right = 2
+stretch_margin_bottom = 3
 script = ExtResource( 15 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="G3" type="Node2D" parent="Control/Panel/CBPanel2"]
-visible = false
-position = Vector2( 0, 80 )
+position = Vector2( 0, 100 )
 
 [node name="HPBar" type="TextureProgress" parent="Control/Panel/CBPanel2/G3"]
 margin_left = 64.0
-margin_top = 24.0
+margin_top = 28.0
 margin_right = 264.0
-margin_bottom = 32.0
+margin_bottom = 36.0
 rect_pivot_offset = Vector2( 109.152, 12.4213 )
 value = 24.0
 texture_under = ExtResource( 8 )
 texture_over = ExtResource( 14 )
 texture_progress = ExtResource( 9 )
 nine_patch_stretch = true
-stretch_margin_left = 1
-stretch_margin_top = 1
-stretch_margin_right = 1
-stretch_margin_bottom = 1
+stretch_margin_left = 2
+stretch_margin_top = 3
+stretch_margin_right = 2
+stretch_margin_bottom = 3
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="MPBar" type="TextureProgress" parent="Control/Panel/CBPanel2/G3"]
 margin_left = 64.0
-margin_top = 32.0
-margin_right = 264.0
-margin_bottom = 40.0
+margin_top = 36.0
+margin_right = 256.0
+margin_bottom = 44.0
 rect_pivot_offset = Vector2( 109.152, 12.4213 )
 value = 24.0
 texture_under = ExtResource( 8 )
 texture_over = ExtResource( 14 )
 texture_progress = ExtResource( 10 )
 nine_patch_stretch = true
-stretch_margin_left = 1
-stretch_margin_top = 1
-stretch_margin_right = 1
-stretch_margin_bottom = 1
+stretch_margin_left = 2
+stretch_margin_top = 3
+stretch_margin_right = 2
+stretch_margin_bottom = 3
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -353,64 +360,68 @@ margin_top = 8.0
 margin_right = 264.0
 margin_bottom = 24.0
 text = "Hiro"
+scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="ATBBar" type="TextureProgress" parent="Control/Panel/CBPanel2/G3"]
 margin_left = 112.0
-margin_top = 40.0
-margin_right = 264.0
-margin_bottom = 48.0
+margin_top = 44.0
+margin_right = 248.0
+margin_bottom = 52.0
 rect_pivot_offset = Vector2( 109.152, 12.4213 )
 value = 24.0
 texture_under = ExtResource( 8 )
 texture_over = ExtResource( 14 )
 texture_progress = ExtResource( 13 )
 nine_patch_stretch = true
+stretch_margin_left = 2
+stretch_margin_top = 3
+stretch_margin_right = 2
+stretch_margin_bottom = 3
 script = ExtResource( 15 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="G4" type="Node2D" parent="Control/Panel/CBPanel2"]
-visible = false
-position = Vector2( 0, 120 )
+position = Vector2( 0, 150 )
 
 [node name="HPBar" type="TextureProgress" parent="Control/Panel/CBPanel2/G4"]
 margin_left = 64.0
-margin_top = 24.0
+margin_top = 26.0
 margin_right = 264.0
-margin_bottom = 32.0
+margin_bottom = 34.0
 rect_pivot_offset = Vector2( 109.152, 12.4213 )
 value = 24.0
 texture_under = ExtResource( 8 )
 texture_over = ExtResource( 14 )
 texture_progress = ExtResource( 9 )
 nine_patch_stretch = true
-stretch_margin_left = 1
-stretch_margin_top = 1
-stretch_margin_right = 1
-stretch_margin_bottom = 1
+stretch_margin_left = 2
+stretch_margin_top = 3
+stretch_margin_right = 2
+stretch_margin_bottom = 3
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="MPBar" type="TextureProgress" parent="Control/Panel/CBPanel2/G4"]
 margin_left = 64.0
-margin_top = 32.0
-margin_right = 264.0
-margin_bottom = 40.0
+margin_top = 34.0
+margin_right = 256.0
+margin_bottom = 42.0
 rect_pivot_offset = Vector2( 109.152, 12.4213 )
 value = 24.0
 texture_under = ExtResource( 8 )
 texture_over = ExtResource( 14 )
 texture_progress = ExtResource( 10 )
 nine_patch_stretch = true
-stretch_margin_left = 1
-stretch_margin_top = 1
-stretch_margin_right = 1
-stretch_margin_bottom = 1
+stretch_margin_left = 2
+stretch_margin_top = 3
+stretch_margin_right = 2
+stretch_margin_bottom = 3
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -425,50 +436,35 @@ margin_top = 8.0
 margin_right = 264.0
 margin_bottom = 24.0
 text = "Hiro"
+scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="ATBBar" type="TextureProgress" parent="Control/Panel/CBPanel2/G4"]
 margin_left = 112.0
-margin_top = 40.0
-margin_right = 264.0
-margin_bottom = 48.0
+margin_top = 42.0
+margin_right = 248.0
+margin_bottom = 50.0
 rect_pivot_offset = Vector2( 109.152, 12.4213 )
 value = 24.0
 texture_under = ExtResource( 8 )
 texture_over = ExtResource( 14 )
 texture_progress = ExtResource( 13 )
 nine_patch_stretch = true
+stretch_margin_left = 2
+stretch_margin_top = 3
+stretch_margin_right = 2
+stretch_margin_bottom = 3
 script = ExtResource( 15 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="G5" type="Node2D" parent="Control/Panel/CBPanel2"]
-visible = false
-position = Vector2( 0, 160 )
+position = Vector2( 0, 200 )
 
 [node name="HPBar" type="TextureProgress" parent="Control/Panel/CBPanel2/G5"]
-margin_left = 64.0
-margin_top = 24.0
-margin_right = 264.0
-margin_bottom = 32.0
-rect_pivot_offset = Vector2( 109.152, 12.4213 )
-value = 24.0
-texture_under = ExtResource( 8 )
-texture_over = ExtResource( 14 )
-texture_progress = ExtResource( 9 )
-nine_patch_stretch = true
-stretch_margin_left = 1
-stretch_margin_top = 1
-stretch_margin_right = 1
-stretch_margin_bottom = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="MPBar" type="TextureProgress" parent="Control/Panel/CBPanel2/G5"]
 margin_left = 64.0
 margin_top = 32.0
 margin_right = 264.0
@@ -477,12 +473,31 @@ rect_pivot_offset = Vector2( 109.152, 12.4213 )
 value = 24.0
 texture_under = ExtResource( 8 )
 texture_over = ExtResource( 14 )
+texture_progress = ExtResource( 9 )
+nine_patch_stretch = true
+stretch_margin_left = 2
+stretch_margin_top = 3
+stretch_margin_right = 2
+stretch_margin_bottom = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MPBar" type="TextureProgress" parent="Control/Panel/CBPanel2/G5"]
+margin_left = 64.0
+margin_top = 40.0
+margin_right = 256.0
+margin_bottom = 48.0
+rect_pivot_offset = Vector2( 109.152, 12.4213 )
+value = 24.0
+texture_under = ExtResource( 8 )
+texture_over = ExtResource( 14 )
 texture_progress = ExtResource( 10 )
 nine_patch_stretch = true
-stretch_margin_left = 1
-stretch_margin_top = 1
-stretch_margin_right = 1
-stretch_margin_bottom = 1
+stretch_margin_left = 2
+stretch_margin_top = 3
+stretch_margin_right = 2
+stretch_margin_bottom = 3
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -497,22 +512,63 @@ margin_top = 8.0
 margin_right = 264.0
 margin_bottom = 24.0
 text = "Hiro"
+scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="ATBBar" type="TextureProgress" parent="Control/Panel/CBPanel2/G5"]
 margin_left = 112.0
-margin_top = 40.0
-margin_right = 264.0
-margin_bottom = 48.0
+margin_top = 48.0
+margin_right = 248.0
+margin_bottom = 56.0
 rect_pivot_offset = Vector2( 109.152, 12.4213 )
 value = 24.0
 texture_under = ExtResource( 8 )
 texture_over = ExtResource( 14 )
 texture_progress = ExtResource( 13 )
 nine_patch_stretch = true
+stretch_margin_left = 2
+stretch_margin_top = 3
+stretch_margin_right = 2
+stretch_margin_bottom = 3
 script = ExtResource( 15 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="Control/Panel/CBPanel2"]
+margin_left = 448.0
+margin_right = 640.0
+margin_bottom = 272.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/Panel/CBPanel2/Panel"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 184.0
+margin_bottom = 264.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="Control/Panel/CBPanel2/Panel"]
+margin_left = 64.0
+margin_top = -32.0
+margin_right = 176.0
+theme = ExtResource( 18 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/Panel/CBPanel2/Panel/Panel"]
+margin_left = 40.0
+margin_top = 8.0
+margin_right = 80.0
+margin_bottom = 48.0
+text = "LOG"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -520,28 +576,26 @@ __meta__ = {
 [node name="Panel2" type="Panel" parent="Control/Panel"]
 visible = false
 modulate = Color( 1, 1, 1, 0.470588 )
-margin_right = 1024.0
-margin_bottom = 212.0
+margin_left = -40.0
+margin_right = 1328.0
+margin_bottom = 304.0
 theme = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="CBPanel" type="Panel" parent="Control/Panel"]
-visible = false
-margin_left = 136.0
-margin_top = -3.0
-margin_right = 636.0
-margin_bottom = 209.0
+margin_right = 632.0
+margin_bottom = 272.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="exit" type="Button" parent="Control/Panel/CBPanel"]
-margin_left = 470.0
-margin_top = 5.0
-margin_right = 495.0
-margin_bottom = 30.0
+margin_left = 592.0
+margin_top = 8.0
+margin_right = 617.0
+margin_bottom = 33.0
 theme = ExtResource( 6 )
 text = "X"
 __meta__ = {
@@ -550,17 +604,17 @@ __meta__ = {
 
 [node name="specialscroll" type="ScrollContainer" parent="Control/Panel/CBPanel"]
 margin_top = 8.0
-margin_right = 465.0
-margin_bottom = 208.0
+margin_right = 587.0
+margin_bottom = 264.0
 scroll_horizontal_enabled = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Panel" type="Panel" parent="Control/Panel/CBPanel/specialscroll"]
-margin_right = 450.0
+margin_right = 575.0
 margin_bottom = 999.0
-rect_min_size = Vector2( 450, 999 )
+rect_min_size = Vector2( 575, 999 )
 
 [node name="testbutton" type="Button" parent="Control/Panel"]
 margin_left = 904.0
@@ -590,6 +644,7 @@ __meta__ = {
 visible = false
 position = Vector2( 488, 136 )
 frames = SubResource( 9 )
+frame = 7
 speed_scale = 2.0
 playing = true
 

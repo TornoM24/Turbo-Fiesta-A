@@ -6,7 +6,7 @@ extends Node2D
 # var b = "text"
 
 var mhp = 100
-var hp = 100
+var hp = 90
 
 var mmp = 100
 var mp = 100

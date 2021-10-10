@@ -30,6 +30,14 @@ func updateStats ():
 		get_node (path+"HPBar").value = x.hp
 		get_node (path+"MPBar").value = x.mp
 		get_node (path+"ATBBar").value = x.atb_val
+		if get_node (path+"HPBar").value < 100:
+			#get_node (path+"HPBar").texture_progress = load ("res://gfx/unit/hpbar_decrement.png")
+			#get_node (path+"HPBar").stretch_margin_left = 5
+			pass
+		else:
+			#get_node (path+"HPBar").texture_progress = load ("res://gfx/unit/hpbar.png")
+			#get_node (path+"HPBar").stretch_margin_left = 1
+			pass
 		inc += 1
 		pass
 
@@ -99,6 +107,7 @@ func _process(delta):
 			targeting = false
 			tsPanel.visible = false
 			get_node ("Control/Panel/targethelper").visible = false
+			get_node ("Control/Panel/buttonhost/").visible=true
 	else:
 		Input.set_custom_mouse_cursor(pointN)
 	updateStats()

@@ -54,6 +54,6 @@ texture = ExtResource( 5 )
 position = Vector2( 16, 28 )
 scale = Vector2( 2, 2 )
 frames = ExtResource( 6 )
-frame = 7
+frame = 8
 playing = true
 [connection signal="pressed" from="Select" to="." method="_on_Select_pressed"]
