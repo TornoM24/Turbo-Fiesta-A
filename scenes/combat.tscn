@@ -159,6 +159,7 @@ __meta__ = {
 }
 
 [node name="G1" type="Node2D" parent="Control/Panel/CBPanel2"]
+visible = false
 
 [node name="HPBar" type="TextureProgress" parent="Control/Panel/CBPanel2/G1"]
 margin_left = 64.0
@@ -229,6 +230,7 @@ __meta__ = {
 }
 
 [node name="G2" type="Node2D" parent="Control/Panel/CBPanel2"]
+visible = false
 position = Vector2( 0, 40 )
 
 [node name="HPBar" type="TextureProgress" parent="Control/Panel/CBPanel2/G2"]
@@ -300,6 +302,7 @@ __meta__ = {
 }
 
 [node name="G3" type="Node2D" parent="Control/Panel/CBPanel2"]
+visible = false
 position = Vector2( 0, 80 )
 
 [node name="HPBar" type="TextureProgress" parent="Control/Panel/CBPanel2/G3"]
@@ -371,6 +374,7 @@ __meta__ = {
 }
 
 [node name="G4" type="Node2D" parent="Control/Panel/CBPanel2"]
+visible = false
 position = Vector2( 0, 120 )
 
 [node name="HPBar" type="TextureProgress" parent="Control/Panel/CBPanel2/G4"]
@@ -442,6 +446,7 @@ __meta__ = {
 }
 
 [node name="G5" type="Node2D" parent="Control/Panel/CBPanel2"]
+visible = false
 position = Vector2( 0, 160 )
 
 [node name="HPBar" type="TextureProgress" parent="Control/Panel/CBPanel2/G5"]
@@ -571,6 +576,7 @@ __meta__ = {
 }
 
 [node name="targethelper" type="RichTextLabel" parent="Control/Panel"]
+visible = false
 margin_left = 312.0
 margin_top = 181.0
 margin_right = 608.0
@@ -584,7 +590,6 @@ __meta__ = {
 visible = false
 position = Vector2( 488, 136 )
 frames = SubResource( 9 )
-frame = 3
 speed_scale = 2.0
 playing = true
 

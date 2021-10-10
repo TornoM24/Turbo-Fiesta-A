@@ -25,8 +25,11 @@ var targeting = false
 func updateStats ():
 	var inc = 0
 	for x in alliesUnit:
-		var path = "Control/Panel/CBPanel2/G" + str(inc + 1) + "/RichTextLabel"
-		get_node (path).text = x.get_node ("Data").unitDict.name + " (" + str(x.hp) + "/" + str(x.mhp) + ")"
+		var path = "Control/Panel/CBPanel2/G" + str(inc + 1) + "/"
+		get_node (path+"RichTextLabel").text = x.get_node ("Data").unitDict.name + " (" + str(x.hp) + "/" + str(x.mhp) + ")"
+		get_node (path+"HPBar").value = x.hp
+		get_node (path+"MPBar").value = x.mp
+		get_node (path+"ATBBar").value = x.atb_val
 		inc += 1
 		pass
 
@@ -40,7 +43,7 @@ func parseData():
 
 # Called when the node enters the scene tree for the first time.
 func attachdata (instance):
-	var obj = load("res://data/unit/"+instance.unitName+"/data.tscn").instance()
+	var obj = load("res://data/unit/"+instance.unitName+"/"+instance.unitName+"_data.tscn").instance()
 	var idlePath = load("res://data/unit/"+instance.unitName+"/art/"+instance.unitName+"_idle.tres")
 	instance.add_child (obj)
 	instance.get_node ("AnimatedSprite").frames = idlePath
@@ -48,15 +51,19 @@ func attachdata (instance):
 	pass
 
 func spawnAllies ():
-	for x in range (0,2):
-		for y in range (0,2):
+	var incrementer = 0
+	for x in range (0,3):
+		for y in range (0,3):
 			if Master.formation[x][y] != "empty":
+				print ("spawning " + Master.formation[x][y])
+				incrementer +=1 
+				get_node("Control/Panel/CBPanel2/G" + str(incrementer)).visible = true
 				var instance = placeholder.instance()
 				add_child(instance)
-				instance.position.x = 680 + (100*x)
+				instance.position.x = 580 + (100*x) + (50*y)
 				instance.position.y = 60 + (100*y)
 				#instance.get_node("Sprite").texture = defaultSprite
-				instance.unitName = "hiro"
+				instance.unitName = Master.formation[x][y]
 				instance = attachdata (instance)
 				alliesUnit.append(instance)
 			
