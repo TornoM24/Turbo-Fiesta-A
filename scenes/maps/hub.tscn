@@ -137,18 +137,17 @@ texture = ExtResource( 5 )
 [node name="Down" type="AnimatedSprite" parent="Player"]
 scale = Vector2( 2, 2 )
 frames = SubResource( 5 )
-frame = 1
 playing = true
 
 [node name="Side" type="AnimatedSprite" parent="Player"]
 scale = Vector2( 2, 2 )
 frames = SubResource( 8 )
-frame = 1
 playing = true
 
 [node name="Up" type="AnimatedSprite" parent="Player"]
 scale = Vector2( 2, 2 )
 frames = SubResource( 11 )
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
@@ -193,6 +192,7 @@ __meta__ = {
 }
 
 [node name="menupanel" type="Panel" parent="Player/Camera2D/Control"]
+visible = false
 margin_left = -128.0
 margin_top = -232.0
 margin_right = 136.0
