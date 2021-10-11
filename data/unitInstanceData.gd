@@ -13,7 +13,7 @@ var abilities = []
 var equipAbilities = []
 
 var unitName = "Aou Mogis"
-# Called when the node enters the scene tree for the first time.
+
 func updateStats (parameter, amount):
 	stats[parameter] += amount
 	pass

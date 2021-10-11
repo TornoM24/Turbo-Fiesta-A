@@ -97,13 +97,15 @@ var unit_list = {
 	}
 }
 #Player's formation; this is the default configuration to prevent bugs.
-var formation = [["empty","empty","empty"],["empty","hiro","stella"],["empty","empty","empty"]]
-var party = ["hiro","stella"]
+var formation = []
+var party = []
 var partyPosition = Vector2(0,0)
 var inventory = []
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	print ("singleton Master loaded")
+	party = ["hiro","stella"]
+	formation = [["empty","empty","empty"],["empty","hiro","stella"],["empty","empty","empty"]]
 	pass # Replace with function body.
 
 func _process(delta):
