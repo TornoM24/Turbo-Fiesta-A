@@ -80,7 +80,7 @@ __meta__ = {
 
 [node name="Panel" type="Panel" parent="Control"]
 margin_top = 448.0
-margin_right = 1280.0
+margin_right = 640.0
 margin_bottom = 720.0
 theme = ExtResource( 7 )
 __meta__ = {
@@ -152,7 +152,7 @@ __meta__ = {
 
 [node name="CBPanel2" type="Panel" parent="Control/Panel"]
 margin_left = 640.0
-margin_right = 1280.0
+margin_right = 1088.0
 margin_bottom = 272.0
 __meta__ = {
 "_edit_use_anchors_": false
@@ -555,9 +555,9 @@ __meta__ = {
 }
 
 [node name="Panel" type="Panel" parent="Control/Panel/CBPanel2/Panel"]
-margin_left = 64.0
+margin_left = 40.0
 margin_top = -32.0
-margin_right = 176.0
+margin_right = 152.0
 theme = ExtResource( 18 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -585,6 +585,7 @@ __meta__ = {
 }
 
 [node name="CBPanel" type="Panel" parent="Control/Panel"]
+visible = false
 margin_right = 632.0
 margin_bottom = 272.0
 __meta__ = {
@@ -617,10 +618,10 @@ margin_bottom = 999.0
 rect_min_size = Vector2( 575, 999 )
 
 [node name="testbutton" type="Button" parent="Control/Panel"]
-margin_left = 904.0
-margin_top = -371.0
-margin_right = 1004.0
-margin_bottom = -346.0
+margin_left = 1160.0
+margin_top = -432.0
+margin_right = 1260.0
+margin_bottom = -407.0
 rect_scale = Vector2( 1, 1.01685 )
 theme = ExtResource( 6 )
 text = "return"
@@ -644,7 +645,7 @@ __meta__ = {
 visible = false
 position = Vector2( 488, 136 )
 frames = SubResource( 9 )
-frame = 7
+frame = 6
 speed_scale = 2.0
 playing = true
 
@@ -732,6 +733,7 @@ texture = ExtResource( 5 )
 [node name="unit_box7" type="Sprite" parent="Enemy/boxes2"]
 position = Vector2( 900, 100 )
 texture = ExtResource( 5 )
+
 [connection signal="pressed" from="Control/Panel/buttonhost/attack" to="Control" method="_on_attack_pressed"]
 [connection signal="toggled" from="Control/Panel/buttonhost/attack" to="Control" method="_on_attack_toggled"]
 [connection signal="pressed" from="Control/Panel/buttonhost/defend" to="Control" method="_on_defend_pressed"]

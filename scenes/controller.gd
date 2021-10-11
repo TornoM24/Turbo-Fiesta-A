@@ -68,7 +68,7 @@ func spawnAllies ():
 				get_node("Control/Panel/CBPanel2/G" + str(incrementer)).visible = true
 				var instance = placeholder.instance()
 				add_child(instance)
-				instance.position.x = 580 + (100*x) + (50*y)
+				instance.position.x = 780 + (100*x) + (50*y)
 				instance.position.y = 60 + (100*y)
 				#instance.get_node("Sprite").texture = defaultSprite
 				instance.unitName = Master.formation[x][y]
@@ -76,6 +76,9 @@ func spawnAllies ():
 				alliesUnit.append(instance)
 			
 func _ready():
+	for x in range (1,5):
+		var path = "Control/Panel/CBPanel2/G" + str(x + 1) + "/"
+		get_node (path).visible = false
 	spawnAllies()
 	#parseData()
 

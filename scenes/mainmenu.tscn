@@ -1,0 +1,65 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://pixel_button.tres" type="Theme" id=1]
+[ext_resource path="res://scenes/newgame.gd" type="Script" id=2]
+[ext_resource path="res://font/pixelmix_large.tres" type="DynamicFont" id=3]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Panel" type="Panel" parent="."]
+margin_right = 1280.0
+margin_bottom = 720.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+margin_left = 896.0
+margin_top = 192.0
+margin_right = 1280.0
+margin_bottom = 384.0
+bbcode_enabled = true
+bbcode_text = "featuring:
+
+[wave amp=50 freq=2]My Balls[/wave]
+
+Also, My Balls
+
+IN MEMORIAM
+
+[wave amp=50 freq=2]My Actual Balls[/wave]"
+text = "featuring:
+
+My Balls
+
+Also, My Balls
+
+IN MEMORIAM
+
+My Actual Balls"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="newgame" type="Button" parent="."]
+margin_left = 1024.0
+margin_top = 416.0
+margin_right = 1152.0
+margin_bottom = 448.0
+theme = ExtResource( 1 )
+text = "New Game"
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+margin_left = 896.0
+margin_top = 136.0
+margin_right = 1264.0
+margin_bottom = 224.0
+custom_fonts/normal_font = ExtResource( 3 )
+text = "Eat My Shorts"
+__meta__ = {
+"_edit_use_anchors_": false
+}
