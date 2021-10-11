@@ -100,6 +100,7 @@ var unit_list = {
 var formation = [["empty","empty","empty"],["empty","hiro","stella"],["empty","empty","empty"]]
 var party = ["hiro","stella"]
 var partyPosition = Vector2(0,0)
+var inventory = []
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	print ("singleton Master loaded")

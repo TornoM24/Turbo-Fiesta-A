@@ -138,14 +138,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="execute" type="Button" parent="Control/Panel/buttonhost"]
+[node name="escape" type="Button" parent="Control/Panel/buttonhost"]
 margin_left = 24.0
 margin_top = 216.0
 margin_right = 136.0
 margin_bottom = 247.0
 rect_scale = Vector2( 1, 1.01685 )
 theme = ExtResource( 17 )
-text = "EXECUTE"
+text = "ESCAPE"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -163,7 +163,7 @@ __meta__ = {
 [node name="HPBar" type="TextureProgress" parent="Control/Panel/CBPanel2/G1"]
 margin_left = 64.0
 margin_top = 32.0
-margin_right = 264.0
+margin_right = 256.0
 margin_bottom = 40.0
 rect_pivot_offset = Vector2( 109.152, 12.4213 )
 value = 50.0
@@ -201,7 +201,7 @@ __meta__ = {
 [node name="ATBBar" type="TextureProgress" parent="Control/Panel/CBPanel2/G1"]
 margin_left = 112.0
 margin_top = 48.0
-margin_right = 248.0
+margin_right = 256.0
 margin_bottom = 56.0
 rect_pivot_offset = Vector2( 109.152, 12.4213 )
 value = 24.0
@@ -227,7 +227,7 @@ margin_left = 64.0
 margin_top = 8.0
 margin_right = 264.0
 margin_bottom = 24.0
-text = "Hiro"
+bbcode_enabled = true
 scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false
@@ -239,7 +239,7 @@ position = Vector2( 0, 50 )
 [node name="HPBar" type="TextureProgress" parent="Control/Panel/CBPanel2/G2"]
 margin_left = 64.0
 margin_top = 30.0
-margin_right = 264.0
+margin_right = 256.0
 margin_bottom = 38.0
 rect_pivot_offset = Vector2( 109.152, 12.4213 )
 value = 24.0
@@ -258,7 +258,7 @@ __meta__ = {
 [node name="MPBar" type="TextureProgress" parent="Control/Panel/CBPanel2/G2"]
 margin_left = 64.0
 margin_top = 38.0
-margin_right = 264.0
+margin_right = 256.0
 margin_bottom = 46.0
 rect_pivot_offset = Vector2( 109.152, 12.4213 )
 value = 24.0
@@ -283,7 +283,7 @@ margin_left = 64.0
 margin_top = 8.0
 margin_right = 264.0
 margin_bottom = 24.0
-text = "Hiro"
+bbcode_enabled = true
 scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false
@@ -292,7 +292,7 @@ __meta__ = {
 [node name="ATBBar" type="TextureProgress" parent="Control/Panel/CBPanel2/G2"]
 margin_left = 112.0
 margin_top = 46.0
-margin_right = 248.0
+margin_right = 256.0
 margin_bottom = 54.0
 rect_pivot_offset = Vector2( 109.152, 12.4213 )
 value = 24.0
@@ -315,7 +315,7 @@ position = Vector2( 0, 100 )
 [node name="HPBar" type="TextureProgress" parent="Control/Panel/CBPanel2/G3"]
 margin_left = 64.0
 margin_top = 28.0
-margin_right = 264.0
+margin_right = 256.0
 margin_bottom = 36.0
 rect_pivot_offset = Vector2( 109.152, 12.4213 )
 value = 24.0
@@ -359,7 +359,7 @@ margin_left = 64.0
 margin_top = 8.0
 margin_right = 264.0
 margin_bottom = 24.0
-text = "Hiro"
+bbcode_enabled = true
 scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false
@@ -368,7 +368,7 @@ __meta__ = {
 [node name="ATBBar" type="TextureProgress" parent="Control/Panel/CBPanel2/G3"]
 margin_left = 112.0
 margin_top = 44.0
-margin_right = 248.0
+margin_right = 256.0
 margin_bottom = 52.0
 rect_pivot_offset = Vector2( 109.152, 12.4213 )
 value = 24.0
@@ -391,7 +391,7 @@ position = Vector2( 0, 150 )
 [node name="HPBar" type="TextureProgress" parent="Control/Panel/CBPanel2/G4"]
 margin_left = 64.0
 margin_top = 26.0
-margin_right = 264.0
+margin_right = 256.0
 margin_bottom = 34.0
 rect_pivot_offset = Vector2( 109.152, 12.4213 )
 value = 24.0
@@ -435,7 +435,7 @@ margin_left = 64.0
 margin_top = 8.0
 margin_right = 264.0
 margin_bottom = 24.0
-text = "Hiro"
+bbcode_enabled = true
 scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false
@@ -444,7 +444,7 @@ __meta__ = {
 [node name="ATBBar" type="TextureProgress" parent="Control/Panel/CBPanel2/G4"]
 margin_left = 112.0
 margin_top = 42.0
-margin_right = 248.0
+margin_right = 256.0
 margin_bottom = 50.0
 rect_pivot_offset = Vector2( 109.152, 12.4213 )
 value = 24.0
@@ -467,7 +467,7 @@ position = Vector2( 0, 200 )
 [node name="HPBar" type="TextureProgress" parent="Control/Panel/CBPanel2/G5"]
 margin_left = 64.0
 margin_top = 32.0
-margin_right = 264.0
+margin_right = 256.0
 margin_bottom = 40.0
 rect_pivot_offset = Vector2( 109.152, 12.4213 )
 value = 24.0
@@ -511,7 +511,7 @@ margin_left = 64.0
 margin_top = 8.0
 margin_right = 264.0
 margin_bottom = 24.0
-text = "Hiro"
+bbcode_enabled = true
 scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false
@@ -520,7 +520,7 @@ __meta__ = {
 [node name="ATBBar" type="TextureProgress" parent="Control/Panel/CBPanel2/G5"]
 margin_left = 112.0
 margin_top = 48.0
-margin_right = 248.0
+margin_right = 256.0
 margin_bottom = 56.0
 rect_pivot_offset = Vector2( 109.152, 12.4213 )
 value = 24.0
@@ -624,7 +624,7 @@ margin_right = 1260.0
 margin_bottom = -407.0
 rect_scale = Vector2( 1, 1.01685 )
 theme = ExtResource( 6 )
-text = "return"
+text = "RETURN"
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false

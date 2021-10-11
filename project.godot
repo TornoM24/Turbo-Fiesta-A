@@ -22,6 +22,7 @@ config/icon="res://icon.png"
 
 Global="*res://data/Global.gd"
 Master="*res://data/Master.gd"
+LootTable="*res://data/LootTable.gd"
 
 [display]
 
@@ -29,6 +30,10 @@ window/size/width=1280
 window/size/height=720
 window/size/resizable=false
 mouse_cursor/custom_image="res://ui/pointer2.png"
+
+[editor_plugins]
+
+enabled=PoolStringArray(  )
 
 [gui]
 

@@ -13,6 +13,7 @@ var selected = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	get_node("Button").connect ("pressed",get_tree().get_node ("Controller"),"_is_ability_pressed",[self])
 	pass # Replace with function body.
 
 

@@ -19,6 +19,8 @@ onready var tsPanel = get_node("Control/Panel/Panel2")
 
 var selectedUnit
 var selectedTarget
+var targetAbility
+
 var isSelecting = false
 
 var alliesUnit = []
@@ -34,7 +36,8 @@ func updateStats ():
 	var inc = 0
 	for x in alliesUnit:
 		var path = "Control/Panel/CBPanel2/G" + str(inc + 1) + "/"
-		get_node (path+"RichTextLabel").text = x.get_node ("Data").unitDict.name + " (" + str(x.hp) + "/" + str(x.mhp) + ")"
+		get_node (path+"RichTextLabel").bbcode_enabled = true
+		get_node (path+"RichTextLabel").bbcode_text = x.get_node ("Data").unitDict.name + " [color=red]" + str(x.hp) + "[/color]" + " | [color=#00c8ff]" + str(x.mp) + "[/color]"
 		get_node (path+"HPBar").value = x.hp
 		get_node (path+"MPBar").value = x.mp
 		get_node (path+"ATBBar").value = x.atb_val
@@ -132,10 +135,35 @@ func init_battle (battleData):
 				instance.unitName = battleData.formation[x][y]
 				instance = attachdataenemy (instance)
 				enemyUnit.append(instance)
+func causeDamage (target,amount):
+	target.hp -= amount
+	var label = load ("res://ui/dmglabel.tscn")
+	var dmgLabel = label.instance()
+	add_child (dmgLabel)
+	dmgLabel.global_position = target.global_position
+	dmgLabel.get_node("RichTextLabel").bbcode_text = "[color=red][wave amp=50 freq=2]"+str(amount)+"[/wave]"
+
+func cancelTargeting ():
+	targeting = false
+	get_node ("Control/Panel/targethelper").visible = false
+	get_node ("Control/Panel/buttonhost/").visible=true
+	tsPanel.hide()
+	
 
 func _process(delta):
 	var buttonhost = get_node ("Control/Panel/buttonhost")
 	var selector = get_node("Control/Selector")
+	
+	for enemy in enemyUnit:
+		if enemy.selected:
+			if targeting:
+				selectedTarget = enemy
+				print ("targeting " + enemy.unitName + "!!!")
+				enemy.selected = false
+				cancelTargeting()
+				causeDamage (selectedTarget,selectedUnit.stats.atk)
+			else:
+				enemy.selected = false
 	for ally in alliesUnit:
 		if ally.selected:
 			if !targeting:
@@ -146,7 +174,11 @@ func _process(delta):
 				selector.position = Vector2(selectedUnit.position.x+16,selectedUnit.position.y-40)
 				ally.selected = false
 			else:
+				selectedTarget = ally
+				print ("targeting " + ally.unitName + "!!!")
 				ally.selected = false
+				cancelTargeting()
+				causeDamage (selectedTarget,selectedUnit.stats.atk)
 		else:
 			if !isSelecting:
 				buttonhost.visible = false

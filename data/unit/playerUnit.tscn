@@ -88,4 +88,6 @@ playing = true
 position = Vector2( 15, 50 )
 scale = Vector2( 2, 2 )
 
+[connection signal="mouse_entered" from="Select" to="." method="_on_Select_mouse_entered"]
+[connection signal="mouse_exited" from="Select" to="." method="_on_Select_mouse_exited"]
 [connection signal="pressed" from="Select" to="." method="_on_Select_pressed"]

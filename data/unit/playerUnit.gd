@@ -14,7 +14,9 @@ var mp = 100
 var atb_prog = 0
 var atb_val = 0
 
-var stats = []
+var stats = {
+	"atk":10
+}
 var effects = [] 
 
 var unitName = "Aou Mogis"
@@ -47,4 +49,28 @@ func _process(delta):
 func _on_Select_pressed():
 	print ("Selected the unit "+unitName)
 	selected = true
+	pass # Replace with function body.
+
+
+func _on_Select_mouse_entered():
+	var x = get_node ("UnitSprite")
+	var y = get_node ("AnimatedSprite")
+	x.modulate.r = 1.2
+	x.modulate.g = 1.2
+	x.modulate.b = 1.2
+	y.modulate.r = 1.2
+	y.modulate.g = 1.2
+	y.modulate.b = 1.2
+	pass # Replace with function body.
+
+
+func _on_Select_mouse_exited():
+	var x = get_node ("UnitSprite")
+	var y = get_node ("AnimatedSprite")
+	x.modulate.r = 1
+	x.modulate.g = 1
+	x.modulate.b = 1
+	y.modulate.r = 1
+	y.modulate.g = 1
+	y.modulate.b = 1
 	pass # Replace with function body.
