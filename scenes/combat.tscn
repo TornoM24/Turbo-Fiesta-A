@@ -171,9 +171,9 @@ texture_under = ExtResource( 8 )
 texture_over = ExtResource( 14 )
 texture_progress = ExtResource( 9 )
 nine_patch_stretch = true
-stretch_margin_left = 2
+stretch_margin_left = 3
 stretch_margin_top = 3
-stretch_margin_right = 2
+stretch_margin_right = 3
 stretch_margin_bottom = 3
 __meta__ = {
 "_edit_use_anchors_": false
@@ -190,9 +190,9 @@ texture_under = ExtResource( 8 )
 texture_over = ExtResource( 14 )
 texture_progress = ExtResource( 10 )
 nine_patch_stretch = true
-stretch_margin_left = 2
+stretch_margin_left = 3
 stretch_margin_top = 3
-stretch_margin_right = 2
+stretch_margin_right = 3
 stretch_margin_bottom = 3
 __meta__ = {
 "_edit_use_anchors_": false
@@ -209,9 +209,9 @@ texture_under = ExtResource( 8 )
 texture_over = ExtResource( 14 )
 texture_progress = ExtResource( 13 )
 nine_patch_stretch = true
-stretch_margin_left = 2
+stretch_margin_left = 3
 stretch_margin_top = 3
-stretch_margin_right = 2
+stretch_margin_right = 3
 stretch_margin_bottom = 3
 script = ExtResource( 15 )
 __meta__ = {
@@ -247,9 +247,9 @@ texture_under = ExtResource( 8 )
 texture_over = ExtResource( 14 )
 texture_progress = ExtResource( 9 )
 nine_patch_stretch = true
-stretch_margin_left = 2
+stretch_margin_left = 3
 stretch_margin_top = 3
-stretch_margin_right = 2
+stretch_margin_right = 3
 stretch_margin_bottom = 3
 __meta__ = {
 "_edit_use_anchors_": false
@@ -266,9 +266,9 @@ texture_under = ExtResource( 8 )
 texture_over = ExtResource( 14 )
 texture_progress = ExtResource( 10 )
 nine_patch_stretch = true
-stretch_margin_left = 2
+stretch_margin_left = 3
 stretch_margin_top = 3
-stretch_margin_right = 2
+stretch_margin_right = 3
 stretch_margin_bottom = 3
 __meta__ = {
 "_edit_use_anchors_": false
@@ -300,9 +300,9 @@ texture_under = ExtResource( 8 )
 texture_over = ExtResource( 14 )
 texture_progress = ExtResource( 13 )
 nine_patch_stretch = true
-stretch_margin_left = 2
+stretch_margin_left = 3
 stretch_margin_top = 3
-stretch_margin_right = 2
+stretch_margin_right = 3
 stretch_margin_bottom = 3
 script = ExtResource( 15 )
 __meta__ = {
@@ -323,9 +323,9 @@ texture_under = ExtResource( 8 )
 texture_over = ExtResource( 14 )
 texture_progress = ExtResource( 9 )
 nine_patch_stretch = true
-stretch_margin_left = 2
+stretch_margin_left = 3
 stretch_margin_top = 3
-stretch_margin_right = 2
+stretch_margin_right = 3
 stretch_margin_bottom = 3
 __meta__ = {
 "_edit_use_anchors_": false
@@ -342,9 +342,9 @@ texture_under = ExtResource( 8 )
 texture_over = ExtResource( 14 )
 texture_progress = ExtResource( 10 )
 nine_patch_stretch = true
-stretch_margin_left = 2
+stretch_margin_left = 3
 stretch_margin_top = 3
-stretch_margin_right = 2
+stretch_margin_right = 3
 stretch_margin_bottom = 3
 __meta__ = {
 "_edit_use_anchors_": false
@@ -376,9 +376,9 @@ texture_under = ExtResource( 8 )
 texture_over = ExtResource( 14 )
 texture_progress = ExtResource( 13 )
 nine_patch_stretch = true
-stretch_margin_left = 2
+stretch_margin_left = 3
 stretch_margin_top = 3
-stretch_margin_right = 2
+stretch_margin_right = 3
 stretch_margin_bottom = 3
 script = ExtResource( 15 )
 __meta__ = {
@@ -399,9 +399,9 @@ texture_under = ExtResource( 8 )
 texture_over = ExtResource( 14 )
 texture_progress = ExtResource( 9 )
 nine_patch_stretch = true
-stretch_margin_left = 2
+stretch_margin_left = 3
 stretch_margin_top = 3
-stretch_margin_right = 2
+stretch_margin_right = 3
 stretch_margin_bottom = 3
 __meta__ = {
 "_edit_use_anchors_": false
@@ -418,9 +418,9 @@ texture_under = ExtResource( 8 )
 texture_over = ExtResource( 14 )
 texture_progress = ExtResource( 10 )
 nine_patch_stretch = true
-stretch_margin_left = 2
+stretch_margin_left = 3
 stretch_margin_top = 3
-stretch_margin_right = 2
+stretch_margin_right = 3
 stretch_margin_bottom = 3
 __meta__ = {
 "_edit_use_anchors_": false
@@ -452,9 +452,9 @@ texture_under = ExtResource( 8 )
 texture_over = ExtResource( 14 )
 texture_progress = ExtResource( 13 )
 nine_patch_stretch = true
-stretch_margin_left = 2
+stretch_margin_left = 3
 stretch_margin_top = 3
-stretch_margin_right = 2
+stretch_margin_right = 3
 stretch_margin_bottom = 3
 script = ExtResource( 15 )
 __meta__ = {
@@ -475,9 +475,9 @@ texture_under = ExtResource( 8 )
 texture_over = ExtResource( 14 )
 texture_progress = ExtResource( 9 )
 nine_patch_stretch = true
-stretch_margin_left = 2
+stretch_margin_left = 3
 stretch_margin_top = 3
-stretch_margin_right = 2
+stretch_margin_right = 3
 stretch_margin_bottom = 3
 __meta__ = {
 "_edit_use_anchors_": false
@@ -494,9 +494,9 @@ texture_under = ExtResource( 8 )
 texture_over = ExtResource( 14 )
 texture_progress = ExtResource( 10 )
 nine_patch_stretch = true
-stretch_margin_left = 2
+stretch_margin_left = 3
 stretch_margin_top = 3
-stretch_margin_right = 2
+stretch_margin_right = 3
 stretch_margin_bottom = 3
 __meta__ = {
 "_edit_use_anchors_": false
@@ -528,9 +528,9 @@ texture_under = ExtResource( 8 )
 texture_over = ExtResource( 14 )
 texture_progress = ExtResource( 13 )
 nine_patch_stretch = true
-stretch_margin_left = 2
+stretch_margin_left = 3
 stretch_margin_top = 3
-stretch_margin_right = 2
+stretch_margin_right = 3
 stretch_margin_bottom = 3
 script = ExtResource( 15 )
 __meta__ = {
@@ -545,7 +545,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Control/Panel/CBPanel2/Panel"]
+[node name="log" type="RichTextLabel" parent="Control/Panel/CBPanel2/Panel"]
 margin_left = 8.0
 margin_top = 8.0
 margin_right = 184.0
@@ -632,11 +632,12 @@ __meta__ = {
 
 [node name="targethelper" type="RichTextLabel" parent="Control/Panel"]
 visible = false
-margin_left = 312.0
-margin_top = 181.0
+margin_left = 216.0
+margin_top = 224.0
 margin_right = 608.0
-margin_bottom = 197.0
+margin_bottom = 251.0
 text = "Right click to cancel targeting"
+scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -645,7 +646,7 @@ __meta__ = {
 visible = false
 position = Vector2( 488, 136 )
 frames = SubResource( 9 )
-frame = 6
+frame = 3
 speed_scale = 2.0
 playing = true
 
@@ -695,43 +696,44 @@ texture = ExtResource( 5 )
 [node name="Enemy" type="Node2D" parent="."]
 
 [node name="boxes2" type="Node2D" parent="Enemy"]
+visible = false
 modulate = Color( 1, 1, 1, 0.498039 )
 position = Vector2( -600, 0 )
 
 [node name="unit_box" type="Sprite" parent="Enemy/boxes2"]
-position = Vector2( 800, 300 )
+position = Vector2( 852, 296 )
 texture = ExtResource( 5 )
 
 [node name="unit_box3" type="Sprite" parent="Enemy/boxes2"]
-position = Vector2( 700, 300 )
+position = Vector2( 752, 296 )
 texture = ExtResource( 5 )
 
 [node name="unit_box2" type="Sprite" parent="Enemy/boxes2"]
-position = Vector2( 900, 300 )
+position = Vector2( 1016, 352 )
 texture = ExtResource( 5 )
 
 [node name="unit_box6" type="Sprite" parent="Enemy/boxes2"]
-position = Vector2( 800, 200 )
+position = Vector2( 852, 196 )
 texture = ExtResource( 5 )
 
 [node name="unit_box5" type="Sprite" parent="Enemy/boxes2"]
-position = Vector2( 700, 200 )
+position = Vector2( 752, 196 )
 texture = ExtResource( 5 )
 
 [node name="unit_box4" type="Sprite" parent="Enemy/boxes2"]
-position = Vector2( 900, 200 )
+position = Vector2( 952, 224 )
 texture = ExtResource( 5 )
 
 [node name="unit_box9" type="Sprite" parent="Enemy/boxes2"]
-position = Vector2( 800, 100 )
+position = Vector2( 888, 96 )
 texture = ExtResource( 5 )
 
 [node name="unit_box8" type="Sprite" parent="Enemy/boxes2"]
-position = Vector2( 700, 100 )
+position = Vector2( 760, 96 )
 texture = ExtResource( 5 )
 
 [node name="unit_box7" type="Sprite" parent="Enemy/boxes2"]
-position = Vector2( 900, 100 )
+position = Vector2( 1016, 96 )
 texture = ExtResource( 5 )
 
 [connection signal="pressed" from="Control/Panel/buttonhost/attack" to="Control" method="_on_attack_pressed"]

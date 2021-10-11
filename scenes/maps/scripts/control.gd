@@ -85,4 +85,8 @@ func _on_item_pressed():
 
 
 func _on_attack_pressed():
+	tsPanel.visible = !tsPanel.visible
+	get_parent().targeting = true
+	get_parent().get_node ("Control/Panel/targethelper").visible = true
+	get_parent().get_node ("Control/Panel/buttonhost").visible = false
 	pass # Replace with function body.

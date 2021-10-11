@@ -1,11 +1,12 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://data/unit/playerUnit.gd" type="Script" id=1]
 [ext_resource path="res://gfx/unit/hpbar_bg.png" type="Texture" id=2]
 [ext_resource path="res://gfx/unit/hpbar.png" type="Texture" id=3]
 [ext_resource path="res://gfx/unit/mpbar.png" type="Texture" id=4]
 [ext_resource path="res://data/unit/shadow.png" type="Texture" id=5]
-[ext_resource path="res://data/unit/hiro/art/hiro_idle.tres" type="SpriteFrames" id=6]
+[ext_resource path="res://gfx/unit/bar_over.png" type="Texture" id=6]
+[ext_resource path="res://gfx/unit/atb_f_bar.png" type="Texture" id=7]
 
 [node name="Unit" type="Node2D"]
 script = ExtResource( 1 )
@@ -22,25 +23,53 @@ __meta__ = {
 
 [node name="HPBar" type="TextureProgress" parent="."]
 visible = false
-margin_top = -4.0
-margin_right = 32.0
+margin_left = -8.0
+margin_top = -8.0
+margin_right = 36.0
 value = 50.0
 texture_under = ExtResource( 2 )
+texture_over = ExtResource( 6 )
 texture_progress = ExtResource( 3 )
 nine_patch_stretch = true
+stretch_margin_left = 3
+stretch_margin_top = 3
+stretch_margin_right = 3
+stretch_margin_bottom = 3
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="MPBar" type="TextureProgress" parent="."]
 visible = false
-margin_top = -8.0
+margin_top = -4.0
 margin_right = 32.0
-margin_bottom = -4.0
 value = 50.0
 texture_under = ExtResource( 2 )
 texture_progress = ExtResource( 4 )
 nine_patch_stretch = true
+stretch_margin_left = 2
+stretch_margin_top = 2
+stretch_margin_right = 2
+stretch_margin_bottom = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ATBBar" type="TextureProgress" parent="."]
+visible = false
+margin_left = -8.0
+margin_top = -16.0
+margin_right = 36.0
+margin_bottom = -8.0
+value = 50.0
+texture_under = ExtResource( 2 )
+texture_over = ExtResource( 6 )
+texture_progress = ExtResource( 7 )
+nine_patch_stretch = true
+stretch_margin_left = 3
+stretch_margin_top = 3
+stretch_margin_right = 3
+stretch_margin_bottom = 3
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -53,7 +82,10 @@ texture = ExtResource( 5 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 16, 28 )
 scale = Vector2( 2, 2 )
-frames = ExtResource( 6 )
-frame = 8
 playing = true
+
+[node name="UnitSprite" type="Sprite" parent="."]
+position = Vector2( 15, 50 )
+scale = Vector2( 2, 2 )
+
 [connection signal="pressed" from="Select" to="." method="_on_Select_pressed"]

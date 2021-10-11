@@ -97,7 +97,7 @@ animations = [ {
 
 [sub_resource type="CapsuleShape2D" id=12]
 radius = 16.0
-height = 70.0
+height = 0.0
 
 [sub_resource type="DynamicFont" id=13]
 font_data = ExtResource( 7 )
