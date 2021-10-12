@@ -12,5 +12,10 @@ func _ready():
 	button.connect("pressed", self, "_button_pressed")
 
 func _button_pressed():
-	var path = get_parent().get_node ("menupanel")
-	path.visible = !path.visible
+	var path_menu = get_parent().get_node ("menupanel")
+	var path_inventory = get_parent().get_node ("inventorypanel")
+	path_menu.visible = !path_menu.visible
+	if path_inventory.visible:
+		path_inventory.hide()
+	KinematicBody2D.gd.speed = 0
+	

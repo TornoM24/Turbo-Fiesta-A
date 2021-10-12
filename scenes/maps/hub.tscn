@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=2]
+[gd_scene load_steps=50 format=2]
 
 [ext_resource path="res://scenes/maps/KinematicBody2D.gd" type="Script" id=1]
 [ext_resource path="res://gfx/tileset/tilesetfield.png" type="Texture" id=2]
@@ -21,9 +21,27 @@
 [ext_resource path="res://gfx/tileset/obj/house_field_01.png" type="Texture" id=19]
 [ext_resource path="res://gfx/tileset/obj/ruin_house.png" type="Texture" id=20]
 [ext_resource path="res://scenes/maps/obj/Container.tscn" type="PackedScene" id=21]
+[ext_resource path="res://scenes/maps/inventory.gd" type="Script" id=22]
+[ext_resource path="res://scenes/maps/exit.gd" type="Script" id=23]
+[ext_resource path="res://gfx/icons/slot.png" type="Texture" id=24]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 48, 32, 0, 32, 0, 0, 48, 8 )
+
+[sub_resource type="ConvexPolygonShape2D" id=20]
+points = PoolVector2Array( 47.9586, 9.44337, 0.793869, 9.44337, 0.793869, 1.35, 47.9586, 1.35 )
+
+[sub_resource type="ConvexPolygonShape2D" id=21]
+points = PoolVector2Array( 47.6796, 4.9329, 0.793869, 4.9329, 0.793869, 0.188499, 47.6796, 0.188499 )
+
+[sub_resource type="ConvexPolygonShape2D" id=22]
+points = PoolVector2Array( 15.4949, 29.9558, 0, 29.9558, 0, 7.62933, 15.4949, 7.62933 )
+
+[sub_resource type="ConvexPolygonShape2D" id=23]
+points = PoolVector2Array( 16, 30.7931, 1.16937, 30.7931, 1.16937, 2.88494, 16, 2.88494 )
+
+[sub_resource type="ConvexPolygonShape2D" id=24]
+points = PoolVector2Array( 47.9566, 18.5155, 0.233673, 18.5155, 0.233673, 0.375237, 47.9566, 0.375237 )
 
 [sub_resource type="ConvexPolygonShape2D" id=2]
 points = PoolVector2Array( 23.9466, 4.91683, 47.163, 20.058, 47.163, 38.1152, 44.9871, 52.8256, 3.15722, 52.6641, 0.954468, 38.1152, 0.730156, 20.7309 )
@@ -274,19 +292,12 @@ resource_local_to_scene = true
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 14/z_index = 0
-15/name = "straightRight.png 15"
+15/name = "tilesetfield.png 15"
 15/texture = ExtResource( 2 )
 15/tex_offset = Vector2( 0, 0 )
 15/modulate = Color( 1, 1, 1, 1 )
-15/region = Rect2( 192, 16, 16, 16 )
-15/tile_mode = 2
-15/autotile/icon_coordinate = Vector2( 0, 0 )
-15/autotile/tile_size = Vector2( 16, 16 )
-15/autotile/spacing = 0
-15/autotile/occluder_map = [  ]
-15/autotile/navpoly_map = [  ]
-15/autotile/priority_map = [  ]
-15/autotile/z_index_map = [  ]
+15/region = Rect2( 176, 16, 32, 16 )
+15/tile_mode = 0
 15/occluder_offset = Vector2( 0, 0 )
 15/navigation_offset = Vector2( 0, 0 )
 15/shape_offset = Vector2( 0, 0 )
@@ -295,19 +306,12 @@ resource_local_to_scene = true
 15/shape_one_way_margin = 0.0
 15/shapes = [  ]
 15/z_index = 0
-16/name = "intersectionTopLeft.png"
+16/name = "tilesetfield.png 16"
 16/texture = ExtResource( 2 )
 16/tex_offset = Vector2( 0, 0 )
 16/modulate = Color( 1, 1, 1, 1 )
-16/region = Rect2( 176, 32, 16, 16 )
-16/tile_mode = 2
-16/autotile/icon_coordinate = Vector2( 0, 0 )
-16/autotile/tile_size = Vector2( 16, 16 )
-16/autotile/spacing = 0
-16/autotile/occluder_map = [  ]
-16/autotile/navpoly_map = [  ]
-16/autotile/priority_map = [  ]
-16/autotile/z_index_map = [  ]
+16/region = Rect2( 176, 32, 32, 32 )
+16/tile_mode = 0
 16/occluder_offset = Vector2( 0, 0 )
 16/navigation_offset = Vector2( 0, 0 )
 16/shape_offset = Vector2( 0, 0 )
@@ -321,14 +325,7 @@ resource_local_to_scene = true
 17/tex_offset = Vector2( 0, 0 )
 17/modulate = Color( 1, 1, 1, 1 )
 17/region = Rect2( 208, 16, 32, 32 )
-17/tile_mode = 2
-17/autotile/icon_coordinate = Vector2( 0, 0 )
-17/autotile/tile_size = Vector2( 16, 16 )
-17/autotile/spacing = 0
-17/autotile/occluder_map = [  ]
-17/autotile/navpoly_map = [  ]
-17/autotile/priority_map = [  ]
-17/autotile/z_index_map = [  ]
+17/tile_mode = 0
 17/occluder_offset = Vector2( 0, 0 )
 17/navigation_offset = Vector2( 0, 0 )
 17/shape_offset = Vector2( 0, 0 )
@@ -342,14 +339,7 @@ resource_local_to_scene = true
 18/tex_offset = Vector2( 0, 0 )
 18/modulate = Color( 1, 1, 1, 1 )
 18/region = Rect2( 240, 16, 64, 48 )
-18/tile_mode = 2
-18/autotile/icon_coordinate = Vector2( 0, 0 )
-18/autotile/tile_size = Vector2( 16, 16 )
-18/autotile/spacing = 0
-18/autotile/occluder_map = [  ]
-18/autotile/navpoly_map = [  ]
-18/autotile/priority_map = [  ]
-18/autotile/z_index_map = [  ]
+18/tile_mode = 0
 18/occluder_offset = Vector2( 0, 0 )
 18/navigation_offset = Vector2( 0, 0 )
 18/shape_offset = Vector2( 0, 0 )
@@ -358,110 +348,110 @@ resource_local_to_scene = true
 18/shape_one_way_margin = 0.0
 18/shapes = [  ]
 18/z_index = 0
-19/name = "straightLeft.png"
-19/texture = ExtResource( 2 )
+19/name = "ruin_house.png 19"
+19/texture = ExtResource( 20 )
 19/tex_offset = Vector2( 0, 0 )
 19/modulate = Color( 1, 1, 1, 1 )
-19/region = Rect2( 176, 16, 16, 16 )
-19/tile_mode = 2
-19/autotile/icon_coordinate = Vector2( 0, 0 )
-19/autotile/tile_size = Vector2( 16, 16 )
-19/autotile/spacing = 0
-19/autotile/occluder_map = [  ]
-19/autotile/navpoly_map = [  ]
-19/autotile/priority_map = [  ]
-19/autotile/z_index_map = [  ]
+19/region = Rect2( 64, 16, 48, 16 )
+19/tile_mode = 0
 19/occluder_offset = Vector2( 0, 0 )
 19/navigation_offset = Vector2( 0, 0 )
 19/shape_offset = Vector2( 0, 0 )
 19/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+19/shape = SubResource( 20 )
 19/shape_one_way = false
-19/shape_one_way_margin = 0.0
-19/shapes = [  ]
+19/shape_one_way_margin = 1.0
+19/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 20 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
 19/z_index = 0
-20/name = "intersectionBottomLeft.png"
-20/texture = ExtResource( 2 )
+20/name = "ruin_house.png 20"
+20/texture = ExtResource( 20 )
 20/tex_offset = Vector2( 0, 0 )
 20/modulate = Color( 1, 1, 1, 1 )
-20/region = Rect2( 176, 48, 16, 16 )
-20/tile_mode = 2
-20/autotile/icon_coordinate = Vector2( 0, 0 )
-20/autotile/tile_size = Vector2( 16, 16 )
-20/autotile/spacing = 0
-20/autotile/occluder_map = [  ]
-20/autotile/navpoly_map = [  ]
-20/autotile/priority_map = [  ]
-20/autotile/z_index_map = [  ]
+20/region = Rect2( 64, 48, 48, 16 )
+20/tile_mode = 0
 20/occluder_offset = Vector2( 0, 0 )
 20/navigation_offset = Vector2( 0, 0 )
 20/shape_offset = Vector2( 0, 0 )
 20/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+20/shape = SubResource( 21 )
 20/shape_one_way = false
-20/shape_one_way_margin = 0.0
-20/shapes = [  ]
+20/shape_one_way_margin = 1.0
+20/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 21 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
 20/z_index = 0
-21/name = "intersectBottomLeft.png 21"
-21/texture = ExtResource( 2 )
+21/name = "ruin_house.png 21"
+21/texture = ExtResource( 20 )
 21/tex_offset = Vector2( 0, 0 )
 21/modulate = Color( 1, 1, 1, 1 )
-21/region = Rect2( 176, 48, 16, 16 )
-21/tile_mode = 2
-21/autotile/icon_coordinate = Vector2( 0, 0 )
-21/autotile/tile_size = Vector2( 16, 16 )
-21/autotile/spacing = 0
-21/autotile/occluder_map = [  ]
-21/autotile/navpoly_map = [  ]
-21/autotile/priority_map = [  ]
-21/autotile/z_index_map = [  ]
+21/region = Rect2( 128, 16, 16, 48 )
+21/tile_mode = 0
 21/occluder_offset = Vector2( 0, 0 )
 21/navigation_offset = Vector2( 0, 0 )
 21/shape_offset = Vector2( 0, 0 )
 21/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+21/shape = SubResource( 22 )
 21/shape_one_way = false
-21/shape_one_way_margin = 0.0
-21/shapes = [  ]
+21/shape_one_way_margin = 1.0
+21/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 22 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
 21/z_index = 0
-22/name = "interectionTopRight.png"
-22/texture = ExtResource( 2 )
+22/name = "ruin_house.png 22"
+22/texture = ExtResource( 20 )
 22/tex_offset = Vector2( 0, 0 )
 22/modulate = Color( 1, 1, 1, 1 )
-22/region = Rect2( 192, 48, 16, 16 )
-22/tile_mode = 2
-22/autotile/icon_coordinate = Vector2( 0, 0 )
-22/autotile/tile_size = Vector2( 16, 16 )
-22/autotile/spacing = 0
-22/autotile/occluder_map = [  ]
-22/autotile/navpoly_map = [  ]
-22/autotile/priority_map = [  ]
-22/autotile/z_index_map = [  ]
+22/region = Rect2( 144, 16, 16, 48 )
+22/tile_mode = 0
 22/occluder_offset = Vector2( 0, 0 )
 22/navigation_offset = Vector2( 0, 0 )
 22/shape_offset = Vector2( 0, 0 )
 22/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+22/shape = SubResource( 23 )
 22/shape_one_way = false
-22/shape_one_way_margin = 0.0
-22/shapes = [  ]
+22/shape_one_way_margin = 1.0
+22/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 23 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
 22/z_index = 0
-23/name = "intersectionBottomRight.png 23"
-23/texture = ExtResource( 2 )
+23/name = "ruin_house.png 23"
+23/texture = ExtResource( 20 )
 23/tex_offset = Vector2( 0, 0 )
 23/modulate = Color( 1, 1, 1, 1 )
-23/region = Rect2( 192, 48, 16, 16 )
-23/tile_mode = 2
-23/autotile/icon_coordinate = Vector2( 0, 0 )
-23/autotile/tile_size = Vector2( 16, 16 )
-23/autotile/spacing = 0
-23/autotile/occluder_map = [  ]
-23/autotile/navpoly_map = [  ]
-23/autotile/priority_map = [  ]
-23/autotile/z_index_map = [  ]
+23/region = Rect2( 16, 64, 48, 32 )
+23/tile_mode = 0
 23/occluder_offset = Vector2( 0, 0 )
 23/navigation_offset = Vector2( 0, 0 )
 23/shape_offset = Vector2( 0, 0 )
 23/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+23/shape = SubResource( 24 )
 23/shape_one_way = false
-23/shape_one_way_margin = 0.0
-23/shapes = [  ]
+23/shape_one_way_margin = 1.0
+23/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 24 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
 23/z_index = 0
 script = SubResource( 4 )
 
@@ -520,6 +510,10 @@ a = Vector2( 0, -32 )
 radius = 16.0
 height = 0.0
 
+[sub_resource type="StyleBoxTexture" id=25]
+texture = ExtResource( 24 )
+region_rect = Rect2( 0, 0, 16, 16 )
+
 [sub_resource type="DynamicFont" id=16]
 font_data = ExtResource( 7 )
 
@@ -548,7 +542,7 @@ tile_set = SubResource( 5 )
 cell_size = Vector2( 16, 16 )
 cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 format = 1
-tile_data = PoolIntArray( 196630, 14, 0 )
+tile_data = PoolIntArray( -262141, 22, 0, -196607, 14, 0, -196604, 23, 0, -196601, 14, 0, -131062, 21, 0, -65532, 5, 0, -65530, 5, 0, 65535, -1610612721, 0, 0, -1610612721, 0, 1, -1610612721, 0, 2, -1610612721, 0, 3, -1610612721, 0, 4, -1610612721, 0, 5, -1610612721, 0, 6, -1610612721, 0, 7, -1610612721, 0, 8, -1610612719, 0, 65546, 19, 0, 65554, -1073741805, 0, 131075, 5, 0, 131079, 5, 0, 131080, 1610612751, 0, 131082, 20, 0, 131086, 5, 0, 131089, 7, 0, 131091, 15, 0, 131095, 5, 0, 196614, 5, 0, 196616, 1610612751, 0, 196618, 5, 0, 196620, 14, 0, 196623, -1073741803, 0, 196624, 22, 0, 196625, 21, 0, 196627, 15, 0, 196630, 14, 0, 262152, 1610612751, 0, 262158, 23, 0, 262162, 3, 0, 262163, 15, 0, 262165, 6, 0, 262169, 7, 0, 327687, 5, 0, 327688, 1610612751, 0, 327690, 8, 0, 327691, 5, 0, 327698, 1, 0, 327699, 15, 0, 327704, 19, 0, 327707, 8, 0, 393224, -1073741807, 0, 393226, -1073741809, 0, 393227, -1073741809, 0, 393228, -1073741809, 0, 393229, -1073741809, 0, 393230, -1073741809, 0, 393231, -1073741809, 0, 393232, -1073741809, 0, 393233, -1073741809, 0, 393234, -1073741809, 0, 393235, 16, 0, 393237, -1073741809, 0, 393238, -1073741809, 0, 393239, -1073741809, 0, 393240, -1073741809, 0, 393241, -1073741809, 0, 393242, -1073741809, 0, 393243, -1073741809, 0, 393244, -1073741809, 0, 458779, 21, 0, 524300, 8, 0, 524301, 1, 0, 524302, 14, 0, 524304, 19, 0, 524307, 15, 0, 524309, 23, 0, 524311, 14, 0, 524313, 19, 0, 589831, 5, 0, 589840, 1610612756, 0, 589843, 15, 0, 589849, 20, 0, 655371, 5, 0, 655377, 1, 0, 655378, 1610612754, 0, 655381, 4, 0, 655382, 6, 0, 720911, -1073741809, 0, 720912, -1073741809, 0, 720913, -1073741809, 0, 720918, -1610612721, 0, 720919, -1610612721, 0, 720920, -1610612721, 0, 720921, -1610612721, 0 )
 __meta__ = {
 "_editor_description_": " "
 }
@@ -666,6 +660,204 @@ script = ExtResource( 18 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="inventory" type="Button" parent="Player/Camera2D/Control/menupanel"]
+margin_left = 64.0
+margin_top = 176.0
+margin_right = 192.0
+margin_bottom = 200.0
+theme = ExtResource( 10 )
+text = "Inventory"
+script = ExtResource( 22 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="inventorypanel" type="Panel" parent="Player/Camera2D/Control"]
+visible = false
+margin_left = -257.0
+margin_top = -154.0
+margin_right = 263.0
+margin_bottom = 166.0
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="exit" type="Button" parent="Player/Camera2D/Control/inventorypanel"]
+margin_left = 477.0
+margin_top = 11.0
+margin_right = 509.0
+margin_bottom = 43.0
+theme = ExtResource( 17 )
+text = "X"
+script = ExtResource( 23 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="gridcontainer" type="GridContainer" parent="Player/Camera2D/Control"]
+visible = false
+margin_left = -102.0
+margin_top = -111.0
+margin_right = 4.0
+margin_bottom = -27.0
+rect_scale = Vector2( 3, 3 )
+columns = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="slot1" type="Panel" parent="Player/Camera2D/Control/gridcontainer"]
+margin_right = 18.0
+margin_bottom = 18.0
+rect_min_size = Vector2( 18, 18 )
+custom_styles/panel = SubResource( 25 )
+
+[node name="slot2" type="Panel" parent="Player/Camera2D/Control/gridcontainer"]
+margin_left = 22.0
+margin_right = 40.0
+margin_bottom = 18.0
+rect_min_size = Vector2( 18, 18 )
+custom_styles/panel = SubResource( 25 )
+
+[node name="slot3" type="Panel" parent="Player/Camera2D/Control/gridcontainer"]
+margin_left = 44.0
+margin_right = 62.0
+margin_bottom = 18.0
+rect_min_size = Vector2( 18, 18 )
+custom_styles/panel = SubResource( 25 )
+
+[node name="slot4" type="Panel" parent="Player/Camera2D/Control/gridcontainer"]
+margin_left = 66.0
+margin_right = 84.0
+margin_bottom = 18.0
+rect_min_size = Vector2( 18, 18 )
+custom_styles/panel = SubResource( 25 )
+
+[node name="slot5" type="Panel" parent="Player/Camera2D/Control/gridcontainer"]
+margin_left = 88.0
+margin_right = 106.0
+margin_bottom = 18.0
+rect_min_size = Vector2( 18, 18 )
+custom_styles/panel = SubResource( 25 )
+
+[node name="slot6" type="Panel" parent="Player/Camera2D/Control/gridcontainer"]
+margin_top = 22.0
+margin_right = 18.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 18, 18 )
+custom_styles/panel = SubResource( 25 )
+
+[node name="slot7" type="Panel" parent="Player/Camera2D/Control/gridcontainer"]
+margin_left = 22.0
+margin_top = 22.0
+margin_right = 40.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 18, 18 )
+custom_styles/panel = SubResource( 25 )
+
+[node name="slot8" type="Panel" parent="Player/Camera2D/Control/gridcontainer"]
+margin_left = 44.0
+margin_top = 22.0
+margin_right = 62.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 18, 18 )
+custom_styles/panel = SubResource( 25 )
+
+[node name="slot9" type="Panel" parent="Player/Camera2D/Control/gridcontainer"]
+margin_left = 66.0
+margin_top = 22.0
+margin_right = 84.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 18, 18 )
+custom_styles/panel = SubResource( 25 )
+
+[node name="slot10" type="Panel" parent="Player/Camera2D/Control/gridcontainer"]
+margin_left = 88.0
+margin_top = 22.0
+margin_right = 106.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 18, 18 )
+custom_styles/panel = SubResource( 25 )
+
+[node name="slot11" type="Panel" parent="Player/Camera2D/Control/gridcontainer"]
+margin_top = 44.0
+margin_right = 18.0
+margin_bottom = 62.0
+rect_min_size = Vector2( 18, 18 )
+custom_styles/panel = SubResource( 25 )
+
+[node name="slot12" type="Panel" parent="Player/Camera2D/Control/gridcontainer"]
+margin_left = 22.0
+margin_top = 44.0
+margin_right = 40.0
+margin_bottom = 62.0
+rect_min_size = Vector2( 18, 18 )
+custom_styles/panel = SubResource( 25 )
+
+[node name="slot13" type="Panel" parent="Player/Camera2D/Control/gridcontainer"]
+margin_left = 44.0
+margin_top = 44.0
+margin_right = 62.0
+margin_bottom = 62.0
+rect_min_size = Vector2( 18, 18 )
+custom_styles/panel = SubResource( 25 )
+
+[node name="slot14" type="Panel" parent="Player/Camera2D/Control/gridcontainer"]
+margin_left = 66.0
+margin_top = 44.0
+margin_right = 84.0
+margin_bottom = 62.0
+rect_min_size = Vector2( 18, 18 )
+custom_styles/panel = SubResource( 25 )
+
+[node name="slot15" type="Panel" parent="Player/Camera2D/Control/gridcontainer"]
+margin_left = 88.0
+margin_top = 44.0
+margin_right = 106.0
+margin_bottom = 62.0
+rect_min_size = Vector2( 18, 18 )
+custom_styles/panel = SubResource( 25 )
+
+[node name="slot16" type="Panel" parent="Player/Camera2D/Control/gridcontainer"]
+margin_top = 66.0
+margin_right = 18.0
+margin_bottom = 84.0
+rect_min_size = Vector2( 18, 18 )
+custom_styles/panel = SubResource( 25 )
+
+[node name="slot17" type="Panel" parent="Player/Camera2D/Control/gridcontainer"]
+margin_left = 22.0
+margin_top = 66.0
+margin_right = 40.0
+margin_bottom = 84.0
+rect_min_size = Vector2( 18, 18 )
+custom_styles/panel = SubResource( 25 )
+
+[node name="slot18" type="Panel" parent="Player/Camera2D/Control/gridcontainer"]
+margin_left = 44.0
+margin_top = 66.0
+margin_right = 62.0
+margin_bottom = 84.0
+rect_min_size = Vector2( 18, 18 )
+custom_styles/panel = SubResource( 25 )
+
+[node name="slot19" type="Panel" parent="Player/Camera2D/Control/gridcontainer"]
+margin_left = 66.0
+margin_top = 66.0
+margin_right = 84.0
+margin_bottom = 84.0
+rect_min_size = Vector2( 18, 18 )
+custom_styles/panel = SubResource( 25 )
+
+[node name="slot20" type="Panel" parent="Player/Camera2D/Control/gridcontainer"]
+margin_left = 88.0
+margin_top = 66.0
+margin_right = 106.0
+margin_bottom = 84.0
+rect_min_size = Vector2( 18, 18 )
+custom_styles/panel = SubResource( 25 )
 
 [node name="TitleScreen" type="Control" parent="."]
 visible = false

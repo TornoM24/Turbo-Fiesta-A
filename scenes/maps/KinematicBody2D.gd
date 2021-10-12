@@ -48,6 +48,7 @@ func _process(delta):
 		velocity.y -= 1
 		hideAllBut(up)
 		up.speed_scale = 1
+	
 		
 	if (!Input.is_action_pressed("up") && !Input.is_action_pressed("down") && !Input.is_action_pressed("left") && !Input.is_action_pressed("right")):
 		down.speed_scale = 0.25
