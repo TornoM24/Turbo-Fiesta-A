@@ -1,5 +1,9 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 [gd_scene load_steps=48 format=2]
+=======
+[gd_scene load_steps=51 format=2]
+>>>>>>> 5e962e1d12ce8ae47aff5634425c498888a122c4
 =======
 [gd_scene load_steps=51 format=2]
 >>>>>>> 5e962e1d12ce8ae47aff5634425c498888a122c4
@@ -47,8 +51,11 @@ points = PoolVector2Array( 16, 30.7931, 1.16937, 30.7931, 1.16937, 2.88494, 16, 
 points = PoolVector2Array( 47.9566, 18.5155, 0.233673, 18.5155, 0.233673, 0.375237, 47.9566, 0.375237 )
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 [sub_resource type="ConvexPolygonShape2D" id=7]
 =======
+=======
+>>>>>>> 5e962e1d12ce8ae47aff5634425c498888a122c4
 [sub_resource type="ConvexPolygonShape2D" id=26]
 points = PoolVector2Array( 32.3909, 98.7495, 70.067, 97.8425, 63.9271, 94.4935, 37.6935, 93.726 )
 
@@ -464,8 +471,11 @@ resource_local_to_scene = true
 } ]
 23/z_index = 0
 <<<<<<< HEAD
+<<<<<<< HEAD
 script = SubResource( 9 )
 =======
+=======
+>>>>>>> 5e962e1d12ce8ae47aff5634425c498888a122c4
 24/name = "tree.png"
 24/texture = ExtResource( 2 )
 24/tex_offset = Vector2( 0, 0 )

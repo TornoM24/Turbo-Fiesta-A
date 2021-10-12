@@ -18,7 +18,11 @@ func _button_pressed():
 	if path_inventory.visible:
 		path_inventory.hide()
 <<<<<<< HEAD
+<<<<<<< HEAD
 	#Player.gd.speed = 0
+=======
+
+>>>>>>> 5e962e1d12ce8ae47aff5634425c498888a122c4
 =======
 
 >>>>>>> 5e962e1d12ce8ae47aff5634425c498888a122c4
