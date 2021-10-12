@@ -1,4 +1,8 @@
-[gd_scene load_steps=50 format=2]
+<<<<<<< HEAD
+[gd_scene load_steps=48 format=2]
+=======
+[gd_scene load_steps=51 format=2]
+>>>>>>> 5e962e1d12ce8ae47aff5634425c498888a122c4
 
 [ext_resource path="res://scenes/maps/KinematicBody2D.gd" type="Script" id=1]
 [ext_resource path="res://gfx/tileset/tilesetfield.png" type="Texture" id=2]
@@ -23,35 +27,41 @@
 [ext_resource path="res://scenes/maps/obj/Container.tscn" type="PackedScene" id=21]
 [ext_resource path="res://scenes/maps/inventory.gd" type="Script" id=22]
 [ext_resource path="res://scenes/maps/exit.gd" type="Script" id=23]
-[ext_resource path="res://gfx/icons/slot.png" type="Texture" id=24]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 48, 32, 0, 32, 0, 0, 48, 8 )
 
-[sub_resource type="ConvexPolygonShape2D" id=20]
+[sub_resource type="ConvexPolygonShape2D" id=2]
 points = PoolVector2Array( 47.9586, 9.44337, 0.793869, 9.44337, 0.793869, 1.35, 47.9586, 1.35 )
 
-[sub_resource type="ConvexPolygonShape2D" id=21]
+[sub_resource type="ConvexPolygonShape2D" id=3]
 points = PoolVector2Array( 47.6796, 4.9329, 0.793869, 4.9329, 0.793869, 0.188499, 47.6796, 0.188499 )
 
-[sub_resource type="ConvexPolygonShape2D" id=22]
+[sub_resource type="ConvexPolygonShape2D" id=4]
 points = PoolVector2Array( 15.4949, 29.9558, 0, 29.9558, 0, 7.62933, 15.4949, 7.62933 )
 
-[sub_resource type="ConvexPolygonShape2D" id=23]
+[sub_resource type="ConvexPolygonShape2D" id=5]
 points = PoolVector2Array( 16, 30.7931, 1.16937, 30.7931, 1.16937, 2.88494, 16, 2.88494 )
 
-[sub_resource type="ConvexPolygonShape2D" id=24]
+[sub_resource type="ConvexPolygonShape2D" id=6]
 points = PoolVector2Array( 47.9566, 18.5155, 0.233673, 18.5155, 0.233673, 0.375237, 47.9566, 0.375237 )
 
+<<<<<<< HEAD
+[sub_resource type="ConvexPolygonShape2D" id=7]
+=======
+[sub_resource type="ConvexPolygonShape2D" id=26]
+points = PoolVector2Array( 32.3909, 98.7495, 70.067, 97.8425, 63.9271, 94.4935, 37.6935, 93.726 )
+
 [sub_resource type="ConvexPolygonShape2D" id=2]
+>>>>>>> 5e962e1d12ce8ae47aff5634425c498888a122c4
 points = PoolVector2Array( 23.9466, 4.91683, 47.163, 20.058, 47.163, 38.1152, 44.9871, 52.8256, 3.15722, 52.6641, 0.954468, 38.1152, 0.730156, 20.7309 )
 
-[sub_resource type="ConvexPolygonShape2D" id=3]
+[sub_resource type="ConvexPolygonShape2D" id=8]
 points = PoolVector2Array( 24, 16, 24, 16, 24, 16 )
 
-[sub_resource type="GDScript" id=4]
+[sub_resource type="GDScript" id=9]
 
-[sub_resource type="TileSet" id=5]
+[sub_resource type="TileSet" id=10]
 resource_local_to_scene = true
 0/name = "tilesetfield.png 0"
 0/texture = ExtResource( 2 )
@@ -254,20 +264,20 @@ resource_local_to_scene = true
 9/navigation_offset = Vector2( 0, 0 )
 9/shape_offset = Vector2( 0, 0 )
 9/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-9/shape = SubResource( 2 )
+9/shape = SubResource( 7 )
 9/shape_one_way = false
 9/shape_one_way_margin = 1.0
 9/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 2 ),
+"shape": SubResource( 7 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 }, {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 3 ),
+"shape": SubResource( 8 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 9/z_index = 0
@@ -358,14 +368,14 @@ resource_local_to_scene = true
 19/navigation_offset = Vector2( 0, 0 )
 19/shape_offset = Vector2( 0, 0 )
 19/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-19/shape = SubResource( 20 )
+19/shape = SubResource( 2 )
 19/shape_one_way = false
 19/shape_one_way_margin = 1.0
 19/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 20 ),
+"shape": SubResource( 2 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 19/z_index = 0
@@ -379,14 +389,14 @@ resource_local_to_scene = true
 20/navigation_offset = Vector2( 0, 0 )
 20/shape_offset = Vector2( 0, 0 )
 20/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-20/shape = SubResource( 21 )
+20/shape = SubResource( 3 )
 20/shape_one_way = false
 20/shape_one_way_margin = 1.0
 20/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 21 ),
+"shape": SubResource( 3 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 20/z_index = 0
@@ -400,14 +410,14 @@ resource_local_to_scene = true
 21/navigation_offset = Vector2( 0, 0 )
 21/shape_offset = Vector2( 0, 0 )
 21/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-21/shape = SubResource( 22 )
+21/shape = SubResource( 4 )
 21/shape_one_way = false
 21/shape_one_way_margin = 1.0
 21/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 22 ),
+"shape": SubResource( 4 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 21/z_index = 0
@@ -421,14 +431,14 @@ resource_local_to_scene = true
 22/navigation_offset = Vector2( 0, 0 )
 22/shape_offset = Vector2( 0, 0 )
 22/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-22/shape = SubResource( 23 )
+22/shape = SubResource( 5 )
 22/shape_one_way = false
 22/shape_one_way_margin = 1.0
 22/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 23 ),
+"shape": SubResource( 5 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 22/z_index = 0
@@ -442,85 +452,106 @@ resource_local_to_scene = true
 23/navigation_offset = Vector2( 0, 0 )
 23/shape_offset = Vector2( 0, 0 )
 23/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-23/shape = SubResource( 24 )
+23/shape = SubResource( 6 )
 23/shape_one_way = false
 23/shape_one_way_margin = 1.0
 23/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 24 ),
+"shape": SubResource( 6 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 23/z_index = 0
+<<<<<<< HEAD
+script = SubResource( 9 )
+=======
+24/name = "tree.png"
+24/texture = ExtResource( 2 )
+24/tex_offset = Vector2( 0, 0 )
+24/modulate = Color( 1, 1, 1, 1 )
+24/region = Rect2( 320, 16, 96, 112 )
+24/tile_mode = 0
+24/occluder_offset = Vector2( 0, 0 )
+24/navigation_offset = Vector2( 0, 0 )
+24/shape_offset = Vector2( 0, 0 )
+24/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+24/shape = SubResource( 26 )
+24/shape_one_way = false
+24/shape_one_way_margin = 1.0
+24/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 26 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+24/z_index = 0
 script = SubResource( 4 )
+>>>>>>> 5e962e1d12ce8ae47aff5634425c498888a122c4
 
-[sub_resource type="AtlasTexture" id=6]
+[sub_resource type="AtlasTexture" id=11]
 atlas = ExtResource( 9 )
 region = Rect2( 0, 0, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=7]
+[sub_resource type="AtlasTexture" id=12]
 atlas = ExtResource( 9 )
 region = Rect2( 16, 0, 16, 16 )
 
-[sub_resource type="SpriteFrames" id=8]
+[sub_resource type="SpriteFrames" id=13]
 animations = [ {
-"frames": [ SubResource( 6 ), SubResource( 7 ) ],
+"frames": [ SubResource( 11 ), SubResource( 12 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
 } ]
 
-[sub_resource type="AtlasTexture" id=9]
+[sub_resource type="AtlasTexture" id=14]
 atlas = ExtResource( 9 )
 region = Rect2( 0, 16, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=10]
+[sub_resource type="AtlasTexture" id=15]
 atlas = ExtResource( 9 )
 region = Rect2( 16, 16, 16, 16 )
 
-[sub_resource type="SpriteFrames" id=11]
+[sub_resource type="SpriteFrames" id=16]
 animations = [ {
-"frames": [ SubResource( 9 ), SubResource( 10 ) ],
+"frames": [ SubResource( 14 ), SubResource( 15 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
 } ]
 
-[sub_resource type="AtlasTexture" id=12]
+[sub_resource type="AtlasTexture" id=17]
 atlas = ExtResource( 9 )
 region = Rect2( 0, 32, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=13]
+[sub_resource type="AtlasTexture" id=18]
 atlas = ExtResource( 9 )
 region = Rect2( 16, 32, 16, 16 )
 
-[sub_resource type="SpriteFrames" id=14]
+[sub_resource type="SpriteFrames" id=19]
 animations = [ {
-"frames": [ SubResource( 12 ), SubResource( 13 ) ],
+"frames": [ SubResource( 17 ), SubResource( 18 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
 } ]
 
-[sub_resource type="SegmentShape2D" id=19]
+[sub_resource type="SegmentShape2D" id=20]
 a = Vector2( 0, -32 )
 
-[sub_resource type="CapsuleShape2D" id=15]
+[sub_resource type="CapsuleShape2D" id=21]
 radius = 16.0
 height = 0.0
 
-[sub_resource type="StyleBoxTexture" id=25]
-texture = ExtResource( 24 )
-region_rect = Rect2( 0, 0, 16, 16 )
-
-[sub_resource type="DynamicFont" id=16]
+[sub_resource type="DynamicFont" id=22]
 font_data = ExtResource( 7 )
 
-[sub_resource type="DynamicFont" id=17]
+[sub_resource type="DynamicFont" id=23]
 font_data = ExtResource( 7 )
 
-[sub_resource type="DynamicFont" id=18]
+[sub_resource type="DynamicFont" id=24]
 size = 64
 font_data = ExtResource( 7 )
 
@@ -528,7 +559,7 @@ font_data = ExtResource( 7 )
 
 [node name="TileMap" type="TileMap" parent="."]
 scale = Vector2( 2, 2 )
-tile_set = SubResource( 5 )
+tile_set = SubResource( 10 )
 cell_size = Vector2( 16, 16 )
 cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 format = 1
@@ -538,11 +569,11 @@ __meta__ = {
 }
 
 [node name="TileMap" type="TileMap" parent="TileMap"]
-tile_set = SubResource( 5 )
+tile_set = SubResource( 10 )
 cell_size = Vector2( 16, 16 )
 cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 format = 1
-tile_data = PoolIntArray( -262141, 22, 0, -196607, 14, 0, -196604, 23, 0, -196601, 14, 0, -131062, 21, 0, -65532, 5, 0, -65530, 5, 0, 65535, -1610612721, 0, 0, -1610612721, 0, 1, -1610612721, 0, 2, -1610612721, 0, 3, -1610612721, 0, 4, -1610612721, 0, 5, -1610612721, 0, 6, -1610612721, 0, 7, -1610612721, 0, 8, -1610612719, 0, 65546, 19, 0, 65554, -1073741805, 0, 131075, 5, 0, 131079, 5, 0, 131080, 1610612751, 0, 131082, 20, 0, 131086, 5, 0, 131089, 7, 0, 131091, 15, 0, 131095, 5, 0, 196614, 5, 0, 196616, 1610612751, 0, 196618, 5, 0, 196620, 14, 0, 196623, -1073741803, 0, 196624, 22, 0, 196625, 21, 0, 196627, 15, 0, 196630, 14, 0, 262152, 1610612751, 0, 262158, 23, 0, 262162, 3, 0, 262163, 15, 0, 262165, 6, 0, 262169, 7, 0, 327687, 5, 0, 327688, 1610612751, 0, 327690, 8, 0, 327691, 5, 0, 327698, 1, 0, 327699, 15, 0, 327704, 19, 0, 327707, 8, 0, 393224, -1073741807, 0, 393226, -1073741809, 0, 393227, -1073741809, 0, 393228, -1073741809, 0, 393229, -1073741809, 0, 393230, -1073741809, 0, 393231, -1073741809, 0, 393232, -1073741809, 0, 393233, -1073741809, 0, 393234, -1073741809, 0, 393235, 16, 0, 393237, -1073741809, 0, 393238, -1073741809, 0, 393239, -1073741809, 0, 393240, -1073741809, 0, 393241, -1073741809, 0, 393242, -1073741809, 0, 393243, -1073741809, 0, 393244, -1073741809, 0, 458779, 21, 0, 524300, 8, 0, 524301, 1, 0, 524302, 14, 0, 524304, 19, 0, 524307, 15, 0, 524309, 23, 0, 524311, 14, 0, 524313, 19, 0, 589831, 5, 0, 589840, 1610612756, 0, 589843, 15, 0, 589849, 20, 0, 655371, 5, 0, 655377, 1, 0, 655378, 1610612754, 0, 655381, 4, 0, 655382, 6, 0, 720911, -1073741809, 0, 720912, -1073741809, 0, 720913, -1073741809, 0, 720918, -1610612721, 0, 720919, -1610612721, 0, 720920, -1610612721, 0, 720921, -1610612721, 0 )
+tile_data = PoolIntArray( -524288, 24, 0, -262141, 22, 0, -196607, 14, 0, -196604, 23, 0, -196601, 14, 0, -131062, 21, 0, -65532, 5, 0, -65530, 5, 0, 65535, -1610612721, 0, 0, -1610612721, 0, 1, -1610612721, 0, 2, -1610612721, 0, 3, -1610612721, 0, 4, -1610612721, 0, 5, -1610612721, 0, 6, -1610612721, 0, 7, -1610612721, 0, 8, -1610612719, 0, 65546, 19, 0, 65554, -1073741805, 0, 131074, 24, 0, 131080, 1610612751, 0, 131082, 20, 0, 131086, 5, 0, 131089, 7, 0, 131091, 15, 0, 131095, 5, 0, 196616, 1610612751, 0, 196618, 5, 0, 196620, 14, 0, 196623, -1073741803, 0, 196624, 22, 0, 196625, 21, 0, 196627, 15, 0, 196630, 14, 0, 262152, 1610612751, 0, 262158, 23, 0, 262162, 3, 0, 262163, 15, 0, 262165, 6, 0, 262169, 7, 0, 327688, 1610612751, 0, 327690, 8, 0, 327691, 5, 0, 327698, 1, 0, 327699, 15, 0, 327704, 19, 0, 327707, 8, 0, 393224, -1073741807, 0, 393226, -1073741809, 0, 393227, -1073741809, 0, 393228, -1073741809, 0, 393229, -1073741809, 0, 393230, -1073741809, 0, 393231, -1073741809, 0, 393232, -1073741809, 0, 393233, -1073741809, 0, 393234, -1073741809, 0, 393235, 16, 0, 393237, -1073741809, 0, 393238, -1073741809, 0, 393239, -1073741809, 0, 393240, -1073741809, 0, 393241, -1073741809, 0, 393242, -1073741809, 0, 393243, -1073741809, 0, 393244, -1073741809, 0, 458779, 21, 0, 524300, 8, 0, 524301, 1, 0, 524302, 14, 0, 524304, 19, 0, 524307, 15, 0, 524309, 23, 0, 524311, 14, 0, 524313, 19, 0, 589831, 5, 0, 589840, 1610612756, 0, 589843, 15, 0, 589849, 20, 0, 655371, 5, 0, 655377, 1, 0, 655378, 1610612754, 0, 655381, 4, 0, 655382, 6, 0, 655387, 24, 0, 720911, -1073741809, 0, 720912, -1073741809, 0, 720913, -1073741809, 0, 720918, -1610612721, 0, 720919, -1610612721, 0, 720920, -1610612721, 0, 720921, -1610612721, 0 )
 __meta__ = {
 "_editor_description_": " "
 }
@@ -563,19 +594,19 @@ texture = ExtResource( 5 )
 
 [node name="Down" type="AnimatedSprite" parent="Player"]
 scale = Vector2( 2, 2 )
-frames = SubResource( 8 )
+frames = SubResource( 13 )
 frame = 1
 playing = true
 
 [node name="Side" type="AnimatedSprite" parent="Player"]
 scale = Vector2( 2, 2 )
-frames = SubResource( 11 )
+frames = SubResource( 16 )
 frame = 1
 playing = true
 
 [node name="Up" type="AnimatedSprite" parent="Player"]
 scale = Vector2( 2, 2 )
-frames = SubResource( 14 )
+frames = SubResource( 19 )
 playing = true
 
 [node name="Area2D" type="Area2D" parent="Player"]
@@ -583,11 +614,11 @@ collision_layer = 2
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Player/Area2D"]
 position = Vector2( 0, -8 )
-shape = SubResource( 19 )
+shape = SubResource( 20 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 scale = Vector2( 1, 1.00746 )
-shape = SubResource( 15 )
+shape = SubResource( 21 )
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 current = true
@@ -681,6 +712,7 @@ margin_top = -154.0
 margin_right = 263.0
 margin_bottom = 166.0
 __meta__ = {
+"_edit_use_anchors_": false,
 "_editor_description_": ""
 }
 
@@ -708,156 +740,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="slot1" type="Panel" parent="Player/Camera2D/Control/gridcontainer"]
-margin_right = 18.0
-margin_bottom = 18.0
-rect_min_size = Vector2( 18, 18 )
-custom_styles/panel = SubResource( 25 )
+[node name="ScrollContainer" type="ScrollContainer" parent="Player/Camera2D/Control/gridcontainer"]
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="slot2" type="Panel" parent="Player/Camera2D/Control/gridcontainer"]
-margin_left = 22.0
-margin_right = 40.0
-margin_bottom = 18.0
-rect_min_size = Vector2( 18, 18 )
-custom_styles/panel = SubResource( 25 )
-
-[node name="slot3" type="Panel" parent="Player/Camera2D/Control/gridcontainer"]
-margin_left = 44.0
-margin_right = 62.0
-margin_bottom = 18.0
-rect_min_size = Vector2( 18, 18 )
-custom_styles/panel = SubResource( 25 )
-
-[node name="slot4" type="Panel" parent="Player/Camera2D/Control/gridcontainer"]
-margin_left = 66.0
-margin_right = 84.0
-margin_bottom = 18.0
-rect_min_size = Vector2( 18, 18 )
-custom_styles/panel = SubResource( 25 )
-
-[node name="slot5" type="Panel" parent="Player/Camera2D/Control/gridcontainer"]
-margin_left = 88.0
-margin_right = 106.0
-margin_bottom = 18.0
-rect_min_size = Vector2( 18, 18 )
-custom_styles/panel = SubResource( 25 )
-
-[node name="slot6" type="Panel" parent="Player/Camera2D/Control/gridcontainer"]
-margin_top = 22.0
-margin_right = 18.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 18, 18 )
-custom_styles/panel = SubResource( 25 )
-
-[node name="slot7" type="Panel" parent="Player/Camera2D/Control/gridcontainer"]
-margin_left = 22.0
-margin_top = 22.0
-margin_right = 40.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 18, 18 )
-custom_styles/panel = SubResource( 25 )
-
-[node name="slot8" type="Panel" parent="Player/Camera2D/Control/gridcontainer"]
-margin_left = 44.0
-margin_top = 22.0
-margin_right = 62.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 18, 18 )
-custom_styles/panel = SubResource( 25 )
-
-[node name="slot9" type="Panel" parent="Player/Camera2D/Control/gridcontainer"]
-margin_left = 66.0
-margin_top = 22.0
-margin_right = 84.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 18, 18 )
-custom_styles/panel = SubResource( 25 )
-
-[node name="slot10" type="Panel" parent="Player/Camera2D/Control/gridcontainer"]
-margin_left = 88.0
-margin_top = 22.0
-margin_right = 106.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 18, 18 )
-custom_styles/panel = SubResource( 25 )
-
-[node name="slot11" type="Panel" parent="Player/Camera2D/Control/gridcontainer"]
-margin_top = 44.0
-margin_right = 18.0
-margin_bottom = 62.0
-rect_min_size = Vector2( 18, 18 )
-custom_styles/panel = SubResource( 25 )
-
-[node name="slot12" type="Panel" parent="Player/Camera2D/Control/gridcontainer"]
-margin_left = 22.0
-margin_top = 44.0
-margin_right = 40.0
-margin_bottom = 62.0
-rect_min_size = Vector2( 18, 18 )
-custom_styles/panel = SubResource( 25 )
-
-[node name="slot13" type="Panel" parent="Player/Camera2D/Control/gridcontainer"]
-margin_left = 44.0
-margin_top = 44.0
-margin_right = 62.0
-margin_bottom = 62.0
-rect_min_size = Vector2( 18, 18 )
-custom_styles/panel = SubResource( 25 )
-
-[node name="slot14" type="Panel" parent="Player/Camera2D/Control/gridcontainer"]
-margin_left = 66.0
-margin_top = 44.0
-margin_right = 84.0
-margin_bottom = 62.0
-rect_min_size = Vector2( 18, 18 )
-custom_styles/panel = SubResource( 25 )
-
-[node name="slot15" type="Panel" parent="Player/Camera2D/Control/gridcontainer"]
-margin_left = 88.0
-margin_top = 44.0
-margin_right = 106.0
-margin_bottom = 62.0
-rect_min_size = Vector2( 18, 18 )
-custom_styles/panel = SubResource( 25 )
-
-[node name="slot16" type="Panel" parent="Player/Camera2D/Control/gridcontainer"]
-margin_top = 66.0
-margin_right = 18.0
-margin_bottom = 84.0
-rect_min_size = Vector2( 18, 18 )
-custom_styles/panel = SubResource( 25 )
-
-[node name="slot17" type="Panel" parent="Player/Camera2D/Control/gridcontainer"]
-margin_left = 22.0
-margin_top = 66.0
-margin_right = 40.0
-margin_bottom = 84.0
-rect_min_size = Vector2( 18, 18 )
-custom_styles/panel = SubResource( 25 )
-
-[node name="slot18" type="Panel" parent="Player/Camera2D/Control/gridcontainer"]
-margin_left = 44.0
-margin_top = 66.0
-margin_right = 62.0
-margin_bottom = 84.0
-rect_min_size = Vector2( 18, 18 )
-custom_styles/panel = SubResource( 25 )
-
-[node name="slot19" type="Panel" parent="Player/Camera2D/Control/gridcontainer"]
-margin_left = 66.0
-margin_top = 66.0
-margin_right = 84.0
-margin_bottom = 84.0
-rect_min_size = Vector2( 18, 18 )
-custom_styles/panel = SubResource( 25 )
-
-[node name="slot20" type="Panel" parent="Player/Camera2D/Control/gridcontainer"]
-margin_left = 88.0
-margin_top = 66.0
-margin_right = 106.0
-margin_bottom = 84.0
-rect_min_size = Vector2( 18, 18 )
-custom_styles/panel = SubResource( 25 )
+[node name="Panel" type="Panel" parent="Player/Camera2D/Control/gridcontainer/ScrollContainer"]
 
 [node name="TitleScreen" type="Control" parent="."]
 visible = false
@@ -873,7 +761,7 @@ margin_left = 120.0
 margin_top = 232.0
 margin_right = 1160.0
 margin_bottom = 250.0
-custom_fonts/font = SubResource( 16 )
+custom_fonts/font = SubResource( 22 )
 text = "GAME UNKNOWN"
 align = 1
 valign = 1
@@ -900,7 +788,7 @@ margin_left = 504.0
 margin_top = 264.0
 margin_right = 776.0
 margin_bottom = 336.0
-custom_fonts/font = SubResource( 17 )
+custom_fonts/font = SubResource( 23 )
 text = "                    Shitty RPG 
             Goodluck with it"
 readonly = true
@@ -932,7 +820,7 @@ __meta__ = {
 [node name="CreditsName" type="TextEdit" parent="TitleScreen/Button/Credits"]
 margin_right = 480.0
 margin_bottom = 376.0
-custom_fonts/font = SubResource( 18 )
+custom_fonts/font = SubResource( 24 )
 text = "Credits:
 Torno
 Vinh 
@@ -943,6 +831,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[connection signal="pressed" from="TitleScreen/Start" to="TitleScreen" method="_on_Start_pressed"]
 [connection signal="pressed" from="TitleScreen/Start" to="Player" method="_on_Start_pressed"]
+[connection signal="pressed" from="TitleScreen/Start" to="TitleScreen" method="_on_Start_pressed"]
 [connection signal="pressed" from="TitleScreen/Button" to="TitleScreen/Button/Credits" method="_on_Button_pressed"]

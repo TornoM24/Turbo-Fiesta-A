@@ -17,5 +17,9 @@ func _button_pressed():
 	path_menu.visible = !path_menu.visible
 	if path_inventory.visible:
 		path_inventory.hide()
-	KinematicBody2D.gd.speed = 0
+<<<<<<< HEAD
+	#Player.gd.speed = 0
+=======
+
+>>>>>>> 5e962e1d12ce8ae47aff5634425c498888a122c4
 	
