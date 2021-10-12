@@ -90,6 +90,9 @@ __meta__ = {
 }
 
 [node name="buttonhost" type="Node2D" parent="Control/Panel"]
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="attack" type="Button" parent="Control/Panel/buttonhost"]
 margin_left = 24.0
@@ -100,6 +103,7 @@ rect_scale = Vector2( 1, 1.01685 )
 theme = ExtResource( 6 )
 text = "ATTACK"
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -113,6 +117,7 @@ hint_tooltip = "Provides 50% general mitigation."
 theme = ExtResource( 6 )
 text = "DEFEND"
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -125,6 +130,7 @@ rect_scale = Vector2( 1, 1.01685 )
 theme = ExtResource( 6 )
 text = "SPECIAL"
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -137,6 +143,7 @@ rect_scale = Vector2( 1, 1.01685 )
 theme = ExtResource( 6 )
 text = "ITEMS"
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -149,6 +156,7 @@ rect_scale = Vector2( 1, 1.01685 )
 theme = ExtResource( 17 )
 text = "ESCAPE"
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -665,7 +673,7 @@ __meta__ = {
 visible = false
 position = Vector2( 488, 136 )
 frames = SubResource( 9 )
-frame = 5
+frame = 4
 speed_scale = 2.0
 playing = true
 

@@ -16,12 +16,8 @@ func _button_pressed():
 	var path_inventory = get_parent().get_node ("inventorypanel")
 	var path_grid = get_parent().get_node ("gridcontainer")
 	path_menu.visible = !path_menu.visible
-<<<<<<< HEAD
 	if path_inventory.visible:
 		path_inventory.hide()
-=======
 	path_inventory.hide()
 	path_grid.hide()
-
->>>>>>> 2796be2735b2dcb578714c816038bb2e5f8ff414
 	
