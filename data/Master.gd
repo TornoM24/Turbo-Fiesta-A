@@ -8,12 +8,14 @@ var working = true
 var ability_dict = {
 	"attack_basic_attack":{
 		"name": "Attack",
+		"id":"attack_basic_attack",
 		"cost": 0,
 		"effects": [
 			{
 				"type": "damage",
 				"target": "single",
 				"elements": ["physical"],
+				"scaling": ["atk"],
 				"power": 100,
 				"acc": 100,
 			}
@@ -21,13 +23,15 @@ var ability_dict = {
 	},
 	"attack_crimson_saber_hiro":{
 		"name": "[Hiro] Crimson Saber",
-		"desc": "Manifests Hiro's Crimson Saber, then strikes a single enemy, dealing weak fire/physical damage.",
+		"id":"attack_crimson_saber_hiro",
+		"desc": "Strikes a single enemy, dealing fire/physical damage.",
 		"cost": 0,
 		"effects": [
 			{
 				"type": "damage",
 				"target": "single",
 				"elements": ["physical","fire"],
+				"scaling": ["atk"],
 				"power": 100,
 				"acc": 100,
 			}
@@ -35,6 +39,7 @@ var ability_dict = {
 	},
 	"buff_scarlet_blaze":{
 		"name": "[Hiro] Scarlet Blaze",
+		"id":"buff_scarlet_blaze",
 		"desc": "Increases SPD by 50% and increases ATK by 25% for 5 turns.",
 		"cost": 10,
 		"effects": [
@@ -52,17 +57,47 @@ var ability_dict = {
 			}
 		]
 	},
+	"buff_all_heal_hiro":{
+		"name": "[Hiro] Don't die on me!",
+		"id":"buff_all_heal_hiro",
+		"desc": "Heals all allies slightly.",
+		"cost": 10,
+		"effects": [
+			{
+				"type": "healing",
+				"target": "all allies",
+				"scaling" : ["wis","int"],
+				"power": 75
+			}
+		]
+	},
 	"attack_stardust_ray_stella":{
 		"name": "[Stella] Stardust Ray",
-		"desc": "Deploys a Starbit to deal weak light/magic damage to a single enemy.",
+		"id":"attack_stardust_ray_stella",
+		"desc": "Shoots an enemy, dealing light/magic damage.",
 		"cost": 0,
 		"effects": [
 			{
 				"type": "damage",
 				"target": "single",
+				"scaling" : ["int"],
 				"elements": ["magic","light"],
 				"power": 100,
 				"acc": 100,
+			}
+		]
+	},
+	"spell_resa":{
+		"name": "Resa",
+		"id":"spell_resa",
+		"desc": "Heals a target for a slight amount of health.",
+		"cost": 5,
+		"effects": [
+			{
+				"type": "healing",
+				"target": "single",
+				"scaling" : ["wis","int"],
+				"power": 100,
 			}
 		]
 	}
@@ -78,12 +113,13 @@ var equip_dict = {
 			"spd":5,
 			"def":1
 		},
-		"effects":{
-			"restoration":{
+		"effects":[
+			{
+				"type":"restoration",
 				"resource":"hp",
 				"power":5
 			}
-		}
+		]
 	}
 }
 

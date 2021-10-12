@@ -33,8 +33,8 @@ func logSomething (textToAdd):
 	mlog.bbcode_enabled = true
 	mlog.bbcode_text += textToAdd + ""
 	pass
-
-func updateStats ():
+const BAR_SPEED = 1
+func updateStats (delta):
 	var inc = 0
 	for x in alliesUnit:
 		var path = "Control/Panel/CBPanel2/G" + str(inc + 1) + "/"
@@ -42,9 +42,16 @@ func updateStats ():
 		get_node (path+"RichTextLabel").bbcode_enabled = true
 		get_node (path+"RichTextLabel").bbcode_text = x.get_node ("Data").unitDict.name + " [color=red]" + str(x.reference.stats.hp) + "[/color]" + " | [color=#00c8ff]" + str(x.reference.stats.mp) + "[/color]"
 		#x.reference.stats.hp += 1
-		#print ((float(x.reference.stats.hp)/x.reference.stats.mhp)*100)
-		get_node (path+"HPBar").value = (float(x.reference.stats.hp)/x.reference.stats.mhp)*100
-		get_node (path+"MPBar").value = (float(x.reference.stats.mp)/x.reference.stats.mmp)*100
+		#print (x.unitName + " " + str(int((float(x.reference.stats.hp)/x.reference.stats.mhp)*100)))
+		#print (x.unitName + str(int((float(x.reference.stats.hp)/x.reference.stats.mhp)*100))+ "/" + str(get_node (path+"MPBar").value))
+		get_node (path+"HPBar").targetValue = int((float(x.reference.stats.hp)/x.reference.stats.mhp)*100)
+		get_node (path+"MPBar").value = int((float(x.reference.stats.mp)/x.reference.stats.mmp)*100)
+		if get_node (path+"HPBar").targetValue < get_node (path+"HPBar").value:
+			print ("reducing value")
+			get_node (path+"HPBar").value -= 1
+		elif get_node (path+"HPBar").targetValue > get_node (path+"HPBar").value:
+			print ("increasing value")
+			get_node (path+"HPBar").value += 1
 		get_node (path+"ATBBar").value = x.atb_val
 		if get_node (path+"HPBar").value < 100:
 			#get_node (path+"HPBar").texture_progress = load ("res://gfx/unit/hpbar_decrement.png")
@@ -153,22 +160,67 @@ func init_battle (battleData):
 				instance = attachdataenemy (instance)
 				enemyUnit.append(instance)
 
-func causeDamage (target,amount):
-	target.stats.hp -= amount
+func causeEffect (target,amount,eff):
 	var label = load ("res://ui/dmglabel.tscn")
-	var dmgLabel = label.instance()
-	add_child (dmgLabel)
-	dmgLabel.global_position = target.global_position
-	dmgLabel.get_node("RichTextLabel").bbcode_text = "[color=red][wave amp=50 freq=2]"+str(amount)+"[/wave]"
-	logSomething (target.stats.name + " takes " + str (amount) + " damage!\n")
+	for block in eff:
+		var inc = 0
+		var fPower = 0
+		for x in block.scaling:
+			inc += 1
+		for x in block.scaling:
+			fPower += selectedUnit.stats[x]/inc
+		fPower = ceil(float(fPower * block.power/100))
+		if block.type == "damage":
+			if block.target == "single":
+				var dmgLabel = label.instance()
+				target.stats.hp -= fPower
+				if target.stats.hp > target.stats.mhp:
+					target.stats.hp = target.stats.mhp
+				add_child (dmgLabel)
+				dmgLabel.global_position = target.global_position + Vector2 (0, -10)
+				dmgLabel.get_node("RichTextLabel").bbcode_text = "[wave amp=50 freq=2]"+str(fPower)+"[/wave]"
+				dmgLabel.modulate.r = 2
+				logSomething (target.stats.name + " takes [color=red]" + str (fPower) + "[/color] damage!\n")
+		if block.type == "healing":
+			if block.target == "single":
+				var dmgLabel = label.instance()
+				target.stats.hp += fPower
+				if target.stats.hp > target.stats.mhp:
+					target.stats.hp = target.stats.mhp
+				add_child (dmgLabel)
+				dmgLabel.global_position = target.global_position+ Vector2 (0, -10)
+				dmgLabel.get_node("RichTextLabel").bbcode_text = "[wave amp=50 freq=2]"+str(fPower)+"[/wave]"
+				dmgLabel.modulate.g = 2
+				logSomething (target.stats.name + " heals for [color=green]" + str (fPower) + "[/color] hp!\n")
+			if block.target == "all allies":
+				for x in alliesUnit:
+					var dmgLabel = label.instance()
+					x.stats.hp += fPower
+					if x.stats.hp > x.stats.mhp:
+						x.stats.hp = x.stats.mhp
+					add_child (dmgLabel)
+					dmgLabel.global_position = x.global_position+ Vector2 (0, -10)
+					dmgLabel.get_node("RichTextLabel").bbcode_text = "[wave amp=50 freq=2]"+str(fPower)+"[/wave]"
+					dmgLabel.modulate.g = 2
+				logSomething ("All allies heal for [color=green]" + str (fPower) + "[/color] hp!\n")
 
 func cancelTargeting ():
 	targeting = false
 	get_node ("Control/Panel/targethelper").visible = false
 	get_node ("Control/Panel/buttonhost/").visible=true
+	for x in get_node ("Control/Panel/CBPanel/specialscroll/Panel").get_children():
+		x.queue_free()
 	tsPanel.hide()
 	
-
+var phEff = [
+	{
+		"type": "healing",
+		"target": "single",
+		"elements": ["physical"],
+		"power": 10,
+		"acc": 100,
+	}
+]
 func _process(delta):
 	var buttonhost = get_node ("Control/Panel/buttonhost")
 	var selector = get_node("Control/Selector")
@@ -180,7 +232,8 @@ func _process(delta):
 				print ("targeting " + enemy.unitName + "!!!")
 				enemy.selected = false
 				cancelTargeting()
-				causeDamage (selectedTarget,selectedUnit.reference.stats.atk)
+				logSomething (selectedUnit.stats.name + " uses " + targetAbility.name + "!\n")
+				causeEffect (selectedTarget,selectedUnit.reference.stats.atk,targetAbility.effects)
 				selectedUnit.atb_val = 0
 				isSelecting = false
 				selector.visible = false
@@ -203,7 +256,7 @@ func _process(delta):
 				print ("targeting " + ally.unitName + "!!!")
 				ally.selected = false
 				cancelTargeting()
-				causeDamage (selectedTarget,selectedUnit.reference.stats.atk)
+				causeEffect (selectedTarget,selectedUnit.reference.stats.atk,targetAbility.effects)
 				selectedUnit.atb_val = 0
 				isSelecting = false
 				selector.visible = false
@@ -226,7 +279,7 @@ func _process(delta):
 			get_node ("Control/Panel/buttonhost/").visible=true
 	else:
 		Input.set_custom_mouse_cursor(pointN)
-	updateStats()
+	updateStats(delta)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass

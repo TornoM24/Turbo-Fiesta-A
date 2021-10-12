@@ -54,6 +54,7 @@ func _on_special_pressed():
 		newButton.get_node ("Button").text = ability.name + " (" + str(ability.cost) + ")"
 		newButton.get_node ("Button").hint_tooltip = ability.desc
 		newButton.uName = ability.name
+		newButton.aName = ability.id
 		get_node("Panel/CBPanel/specialscroll/Panel").add_child(newButton)
 		print (newButton.get_parent().get_parent().get_parent().get_parent().get_parent().name)
 		newButton.global_position = newButton.get_parent().rect_global_position + Vector2(20 + xOffset,20 + yOffset)
@@ -67,13 +68,27 @@ func _on_special_pressed():
 	
 func _on_ability_pressed(bHost):
 	print ("get pressed!")
-	bHost.selected = false
-	skillPanel.visible = false
-	#tsPanel.visible = false
-	bHost.visible = false
+	var selector = get_parent().get_node("Control/Selector")
+	var flag = false
+	for x in Master.ability_dict[bHost.aName].effects:
+		if x.target == "all allies":
+			var par = get_parent()
+			get_parent().causeEffect (par.selectedTarget,0,Master.ability_dict[bHost.aName].effects)
+			get_parent().cancelTargeting()
+			par.skillPanel.visible = false
+			par.selectedUnit.atb_val = 0
+			par.isSelecting = false
+			selector.visible = false
+		else:
+			bHost.selected = false
+			skillPanel.visible = false
+			#tsPanel.visible = false
+			bHost.visible = false
+			get_parent().targeting = true
+			get_parent().targetAbility = Master.ability_dict[bHost.aName]
+			get_node ("Panel/targethelper").visible = true
+			 
 	bHost.queue_free()
-	get_parent().targeting = true
-	get_node ("Panel/targethelper").visible = true
 			
 
 func _on_defend_pressed():
@@ -89,4 +104,5 @@ func _on_attack_pressed():
 	get_parent().targeting = true
 	get_parent().get_node ("Control/Panel/targethelper").visible = true
 	get_parent().get_node ("Control/Panel/buttonhost").visible = false
+	get_parent().targetAbility = Master.ability_dict["attack_basic_attack"]
 	pass # Replace with function body.

@@ -17,17 +17,4 @@ func _button_pressed():
 	path_menu.visible = !path_menu.visible
 	if path_inventory.visible:
 		path_inventory.hide()
-<<<<<<< HEAD
-
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-	#Player.gd.speed = 0
-=======
-
->>>>>>> 5e962e1d12ce8ae47aff5634425c498888a122c4
-=======
-
->>>>>>> 5e962e1d12ce8ae47aff5634425c498888a122c4
->>>>>>> parent of 5a42c24 (aaa)
 	
