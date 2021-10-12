@@ -14,15 +14,14 @@ var mp = 100
 var atb_prog = 0
 var atb_val = 0
 
-var stats = {
-	"atk":10
-}
+var stats = {}
 var effects = [] 
 
 var unitName = "Aou Mogis"
 var selected = false
 
 var queue = []
+var reference
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -31,15 +30,15 @@ func _ready():
 func updateResources():
 	var hpb = get_node("HPBar")
 	var mpb = get_node("MPBar")
-	hpb.value = hp
-	mpb.value = mp
+	hpb.value = (float(stats.hp)/stats.mhp)*100
+	#mpb.value =  (float(stats.mp)/
 
 func _process(delta):
 	updateResources()
 	
 	atb_prog += delta
 	if atb_prog >= 0.01:
-		atb_val += 1
+		atb_val += float (stats.spd)/10
 		atb_prog = 0
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

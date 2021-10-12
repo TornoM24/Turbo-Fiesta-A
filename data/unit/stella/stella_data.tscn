@@ -9,6 +9,7 @@ script/source = "extends Node2D
 # var b = \"text\"
 #onready var ref_Master = get_node (\"/root/Master\")
 var bMas = Master.ability_dict
+var unitName = \"stella\"
 var unitDict = {
 	\"name\" : \"Stella\",
 	\"bio\" : \"Hiro's childhood friend, who ooh eeh eeh ah ah ting tang walla walla bing bang\",

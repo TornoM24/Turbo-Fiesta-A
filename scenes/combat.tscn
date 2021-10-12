@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://scenes/maps/runbutton.gd" type="Script" id=1]
 [ext_resource path="res://scenes/maps/scripts/control.gd" type="Script" id=2]
@@ -18,6 +18,7 @@
 [ext_resource path="res://gfx/unit/selector.png" type="Texture" id=16]
 [ext_resource path="res://pixel_button_red.tres" type="Theme" id=17]
 [ext_resource path="res://pixel_panel_2.theme" type="Theme" id=18]
+[ext_resource path="res://scenes/readyhelper.gd" type="Script" id=19]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 4
@@ -642,11 +643,23 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="readyhelper" type="RichTextLabel" parent="Control/Panel"]
+margin_left = 840.0
+margin_top = -24.0
+margin_right = 1120.0
+margin_bottom = 3.0
+text = "Character not ready yet!"
+scroll_active = false
+script = ExtResource( 19 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Selector" type="AnimatedSprite" parent="Control"]
 visible = false
 position = Vector2( 488, 136 )
 frames = SubResource( 9 )
-frame = 3
+frame = 5
 speed_scale = 2.0
 playing = true
 

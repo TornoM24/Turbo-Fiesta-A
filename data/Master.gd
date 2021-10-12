@@ -102,10 +102,19 @@ var party = []
 var partyPosition = Vector2(0,0)
 var inventory = []
 # Called when the node enters the scene tree for the first time.
+
+func fabricate (name):
+	var inst = load ("res://data/unitInstanceData.tscn").instance()
+	add_child(inst.initialize (load("res://data/unit/"+name+"/"+name+"_data.tscn").instance()))
+	inst.name = inst.unitName+"_data"
+	#inst.updateStats ("atk",10)
+	return inst
+
 func _ready():
 	print ("singleton Master loaded")
-	party = ["hiro","stella"]
-	formation = [["empty","empty","empty"],["empty","hiro","stella"],["empty","empty","empty"]]
+	party = [fabricate("hiro"),fabricate("stella")]
+	formation = [[-1,-1,-1],[-1,0,1],[-1,-1,-1]]
+	print (get_node("hiro_data").name)
 	pass # Replace with function body.
 
 func _process(delta):

@@ -9,11 +9,12 @@ script/source = "extends Node2D
 # var b = \"text\"
 #onready var ref_Master = get_node (\"/root/Master\")
 var bMas = Master.ability_dict
+var unitName = \"geode\"
 var unitDict = {
 	\"name\" : \"Small Geode\",
 	\"bio\" : \"A small, living rock, peppered with valuable-looking crystals. How cruel of you.\",
 	\"stats\": {
-		\"hp\" : 10,
+		\"hp\" : 20,
 		\"mp\" : 0,
 		\"atk\" : 5,
 		\"def\" : 3,

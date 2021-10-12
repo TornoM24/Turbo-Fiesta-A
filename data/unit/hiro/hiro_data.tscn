@@ -9,6 +9,7 @@ script/source = "extends Node2D
 # var b = \"text\"
 #onready var ref_Master = get_node (\"/root/Master\")
 var bMas = Master.ability_dict
+var unitName = \"hiro\"
 var unitDict = {
 	\"name\" : \"Hiro\",
 	\"bio\" : \"A young man on a journey to placeholder foo bar lorem ipsum sit dolor amet\",
@@ -20,7 +21,8 @@ var unitDict = {
 		\"int\" : 5,
 		\"wis\" : 4,
 		\"apt\" : 3,
-		\"spd\" : 5
+		\"spd\" : 5,
+		\"luk\" : 8
 	},
 	\"abilities\": [bMas[\"attack_crimson_saber_hiro\"],bMas[\"buff_scarlet_blaze\"]]
 }

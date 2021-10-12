@@ -30,16 +30,21 @@ var targeting = false
 
 func logSomething (textToAdd):
 	var mlog = get_node ("Control/Panel/CBPanel2/Panel/log")
+	mlog.bbcode_enabled = true
+	mlog.bbcode_text += textToAdd + ""
 	pass
 
 func updateStats ():
 	var inc = 0
 	for x in alliesUnit:
 		var path = "Control/Panel/CBPanel2/G" + str(inc + 1) + "/"
+		x.reference.stats = x.stats
 		get_node (path+"RichTextLabel").bbcode_enabled = true
-		get_node (path+"RichTextLabel").bbcode_text = x.get_node ("Data").unitDict.name + " [color=red]" + str(x.hp) + "[/color]" + " | [color=#00c8ff]" + str(x.mp) + "[/color]"
-		get_node (path+"HPBar").value = x.hp
-		get_node (path+"MPBar").value = x.mp
+		get_node (path+"RichTextLabel").bbcode_text = x.get_node ("Data").unitDict.name + " [color=red]" + str(x.reference.stats.hp) + "[/color]" + " | [color=#00c8ff]" + str(x.reference.stats.mp) + "[/color]"
+		#x.reference.stats.hp += 1
+		#print ((float(x.reference.stats.hp)/x.reference.stats.mhp)*100)
+		get_node (path+"HPBar").value = (float(x.reference.stats.hp)/x.reference.stats.mhp)*100
+		get_node (path+"MPBar").value = (float(x.reference.stats.mp)/x.reference.stats.mmp)*100
 		get_node (path+"ATBBar").value = x.atb_val
 		if get_node (path+"HPBar").value < 100:
 			#get_node (path+"HPBar").texture_progress = load ("res://gfx/unit/hpbar_decrement.png")
@@ -50,6 +55,7 @@ func updateStats ():
 			#get_node (path+"HPBar").stretch_margin_left = 1
 			pass
 		inc += 1
+		#x.reference.stats = x.stats
 		pass
 	for x in enemyUnit:
 		x.get_node ("HPBar").value = x.hp
@@ -71,10 +77,14 @@ func parseData():
 
 # Called when the node enters the scene tree for the first time.
 func attachdata (instance):
-	var obj = load("res://data/unit/"+instance.unitName+"/"+instance.unitName+"_data.tscn").instance()
+	var obj = load("res://data/unit/"+instance.unitName+"/"+instance.unitName+"_data.tscn"	).instance()
 	var idlePath = load("res://data/unit/"+instance.unitName+"/art/"+instance.unitName+"_idle.tres")
 	instance.add_child (obj)
 	instance.get_node ("AnimatedSprite").frames = idlePath
+	instance.reference = Master.get_node (instance.unitName+"_data")
+	instance.stats = instance.reference.stats
+	instance.stats.name = instance.reference.stats.name
+	print ("attaching " + instance.reference.name)
 	return instance
 	pass
 
@@ -83,6 +93,9 @@ func attachdataenemy (instance):
 	var idlePath = load("res://data/unit/enemy/"+instance.unitName+"/art/"+instance.unitName+".png")
 	instance.add_child (obj)
 	instance.get_node ("UnitSprite").texture = idlePath
+	instance.stats = obj.unitDict.stats
+	instance.stats.mhp = obj.unitDict.stats.hp
+	instance.stats.name = obj.unitDict.name
 	return instance
 	pass
 
@@ -90,8 +103,8 @@ func spawnAllies ():
 	var incrementer = 0
 	for x in range (0,3):
 		for y in range (0,3):
-			if Master.formation[x][y] != "empty":
-				print ("spawning " + Master.formation[x][y])
+			if Master.formation[x][y] != -1:
+				print ("spawning " + Master.party[Master.formation[x][y]].name)
 				incrementer +=1 
 				get_node("Control/Panel/CBPanel2/G" + str(incrementer)).visible = true
 				var instance = placeholder.instance()
@@ -99,14 +112,18 @@ func spawnAllies ():
 				instance.position.x = 780 + (100*x) + (50*y)
 				instance.position.y = 60 + (100*y)
 				#instance.get_node("Sprite").texture = defaultSprite
-				instance.unitName = Master.formation[x][y]
+				instance.unitName = Master.party[Master.formation[x][y]].unitName
 				instance = attachdata (instance)
+				instance.stats = instance.reference.stats
+				print ("a "+str(instance.stats.hp))
+				print ("b "+str(instance.stats.mhp))
 				alliesUnit.append(instance)
 			
 var phBD = {
 	"formation": [["empty","empty","empty"],["empty","geode","empty"],["empty","empty","empty"]],
 	"field": "plains"
 }
+
 func _ready():
 	for x in range (1,5):
 		var path = "Control/Panel/CBPanel2/G" + str(x + 1) + "/"
@@ -135,13 +152,15 @@ func init_battle (battleData):
 				instance.unitName = battleData.formation[x][y]
 				instance = attachdataenemy (instance)
 				enemyUnit.append(instance)
+
 func causeDamage (target,amount):
-	target.hp -= amount
+	target.stats.hp -= amount
 	var label = load ("res://ui/dmglabel.tscn")
 	var dmgLabel = label.instance()
 	add_child (dmgLabel)
 	dmgLabel.global_position = target.global_position
 	dmgLabel.get_node("RichTextLabel").bbcode_text = "[color=red][wave amp=50 freq=2]"+str(amount)+"[/wave]"
+	logSomething (target.stats.name + " takes " + str (amount) + " damage!\n")
 
 func cancelTargeting ():
 	targeting = false
@@ -161,24 +180,33 @@ func _process(delta):
 				print ("targeting " + enemy.unitName + "!!!")
 				enemy.selected = false
 				cancelTargeting()
-				causeDamage (selectedTarget,selectedUnit.stats.atk)
+				causeDamage (selectedTarget,selectedUnit.reference.stats.atk)
+				selectedUnit.atb_val = 0
+				isSelecting = false
+				selector.visible = false
 			else:
 				enemy.selected = false
 	for ally in alliesUnit:
 		if ally.selected:
 			if !targeting:
-				buttonhost.visible = true
-				selectedUnit = ally
-				isSelecting = true
-				selector.visible = true
-				selector.position = Vector2(selectedUnit.position.x+16,selectedUnit.position.y-40)
+				if !ally.atb_val < 100:
+					buttonhost.visible = true
+					selectedUnit = ally
+					isSelecting = true
+					selector.visible = true
+					selector.position = Vector2(selectedUnit.position.x+16,selectedUnit.position.y-40)
+				else:
+					get_node("Control/Panel/readyhelper").modulate.a = 1
 				ally.selected = false
 			else:
 				selectedTarget = ally
 				print ("targeting " + ally.unitName + "!!!")
 				ally.selected = false
 				cancelTargeting()
-				causeDamage (selectedTarget,selectedUnit.stats.atk)
+				causeDamage (selectedTarget,selectedUnit.reference.stats.atk)
+				selectedUnit.atb_val = 0
+				isSelecting = false
+				selector.visible = false
 		else:
 			if !isSelecting:
 				buttonhost.visible = false

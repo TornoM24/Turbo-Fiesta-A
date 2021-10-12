@@ -14,6 +14,14 @@ var equipAbilities = []
 
 var unitName = "Aou Mogis"
 
+func initialize (prefab):
+	self.stats = prefab.unitDict.stats
+	self.stats.mhp = prefab.unitDict.stats.hp
+	self.stats.mmp = prefab.unitDict.stats.mp
+	self.stats.name = prefab.unitDict.name
+	self.unitName = prefab.unitName
+	return self
+
 func updateStats (parameter, amount):
 	stats[parameter] += amount
 	pass
