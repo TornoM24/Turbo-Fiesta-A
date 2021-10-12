@@ -1,6 +1,6 @@
-[gd_scene load_steps=51 format=2]
+[gd_scene load_steps=57 format=2]
 
-[ext_resource path="res://scenes/maps/KinematicBody2D.gd" type="Script" id=1]
+[ext_resource path="res://scenes/maps/Player.gd" type="Script" id=1]
 [ext_resource path="res://gfx/tileset/tilesetfield.png" type="Texture" id=2]
 [ext_resource path="res://scenes/maps/Credits.gd" type="Script" id=3]
 [ext_resource path="res://scenes/maps/testbutton.gd" type="Script" id=4]
@@ -24,6 +24,9 @@
 [ext_resource path="res://scenes/maps/inventory.gd" type="Script" id=22]
 [ext_resource path="res://scenes/maps/exit.gd" type="Script" id=23]
 [ext_resource path="res://gfx/icons/slot.png" type="Texture" id=24]
+[ext_resource path="res://ui/button_depressed_inv.png" type="Texture" id=25]
+[ext_resource path="res://ui/button_normal_inv.png" type="Texture" id=26]
+[ext_resource path="res://ui/button_hover_inv.png" type="Texture" id=27]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 48, 32, 0, 32, 0, 0, 48, 8 )
@@ -535,16 +538,28 @@ radius = 16.0
 height = 0.0
 
 [sub_resource type="StyleBoxTexture" id=23]
+texture = ExtResource( 27 )
+region_rect = Rect2( 0, 0, 24, 24 )
+
+[sub_resource type="StyleBoxTexture" id=24]
+texture = ExtResource( 25 )
+region_rect = Rect2( 0, 0, 24, 24 )
+
+[sub_resource type="StyleBoxTexture" id=25]
+texture = ExtResource( 26 )
+region_rect = Rect2( 0, 0, 12, 12 )
+
+[sub_resource type="StyleBoxTexture" id=26]
 texture = ExtResource( 24 )
 region_rect = Rect2( 0, 0, 16, 16 )
 
-[sub_resource type="DynamicFont" id=24]
+[sub_resource type="DynamicFont" id=27]
 font_data = ExtResource( 7 )
 
-[sub_resource type="DynamicFont" id=25]
+[sub_resource type="DynamicFont" id=28]
 font_data = ExtResource( 7 )
 
-[sub_resource type="DynamicFont" id=26]
+[sub_resource type="DynamicFont" id=29]
 size = 64
 font_data = ExtResource( 7 )
 
@@ -588,18 +603,17 @@ texture = ExtResource( 5 )
 [node name="Down" type="AnimatedSprite" parent="Player"]
 scale = Vector2( 2, 2 )
 frames = SubResource( 14 )
-frame = 1
 playing = true
 
 [node name="Side" type="AnimatedSprite" parent="Player"]
 scale = Vector2( 2, 2 )
 frames = SubResource( 17 )
-frame = 1
 playing = true
 
 [node name="Up" type="AnimatedSprite" parent="Player"]
 scale = Vector2( 2, 2 )
 frames = SubResource( 20 )
+frame = 1
 playing = true
 
 [node name="Area2D" type="Area2D" parent="Player"]
@@ -648,6 +662,20 @@ expand = true
 script = ExtResource( 16 )
 __meta__ = {
 "_edit_use_anchors_": false
+}
+
+[node name="inventory" type="Button" parent="Player/Camera2D/Control"]
+margin_left = -583.0
+margin_top = -352.0
+margin_right = -543.0
+margin_bottom = -312.0
+theme = ExtResource( 10 )
+custom_styles/hover = SubResource( 23 )
+custom_styles/pressed = SubResource( 24 )
+custom_styles/normal = SubResource( 25 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
 }
 
 [node name="menupanel" type="Panel" parent="Player/Camera2D/Control"]
@@ -736,42 +764,42 @@ __meta__ = {
 margin_right = 18.0
 margin_bottom = 18.0
 rect_min_size = Vector2( 18, 18 )
-custom_styles/panel = SubResource( 23 )
+custom_styles/panel = SubResource( 26 )
 
 [node name="slot2" type="Panel" parent="Player/Camera2D/Control/gridcontainer"]
 margin_left = 22.0
 margin_right = 40.0
 margin_bottom = 18.0
 rect_min_size = Vector2( 18, 18 )
-custom_styles/panel = SubResource( 23 )
+custom_styles/panel = SubResource( 26 )
 
 [node name="slot3" type="Panel" parent="Player/Camera2D/Control/gridcontainer"]
 margin_left = 44.0
 margin_right = 62.0
 margin_bottom = 18.0
 rect_min_size = Vector2( 18, 18 )
-custom_styles/panel = SubResource( 23 )
+custom_styles/panel = SubResource( 26 )
 
 [node name="slot4" type="Panel" parent="Player/Camera2D/Control/gridcontainer"]
 margin_left = 66.0
 margin_right = 84.0
 margin_bottom = 18.0
 rect_min_size = Vector2( 18, 18 )
-custom_styles/panel = SubResource( 23 )
+custom_styles/panel = SubResource( 26 )
 
 [node name="slot5" type="Panel" parent="Player/Camera2D/Control/gridcontainer"]
 margin_left = 88.0
 margin_right = 106.0
 margin_bottom = 18.0
 rect_min_size = Vector2( 18, 18 )
-custom_styles/panel = SubResource( 23 )
+custom_styles/panel = SubResource( 26 )
 
 [node name="slot6" type="Panel" parent="Player/Camera2D/Control/gridcontainer"]
 margin_top = 22.0
 margin_right = 18.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 18, 18 )
-custom_styles/panel = SubResource( 23 )
+custom_styles/panel = SubResource( 26 )
 
 [node name="slot7" type="Panel" parent="Player/Camera2D/Control/gridcontainer"]
 margin_left = 22.0
@@ -779,7 +807,7 @@ margin_top = 22.0
 margin_right = 40.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 18, 18 )
-custom_styles/panel = SubResource( 23 )
+custom_styles/panel = SubResource( 26 )
 
 [node name="slot8" type="Panel" parent="Player/Camera2D/Control/gridcontainer"]
 margin_left = 44.0
@@ -787,7 +815,7 @@ margin_top = 22.0
 margin_right = 62.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 18, 18 )
-custom_styles/panel = SubResource( 23 )
+custom_styles/panel = SubResource( 26 )
 
 [node name="slot9" type="Panel" parent="Player/Camera2D/Control/gridcontainer"]
 margin_left = 66.0
@@ -795,7 +823,7 @@ margin_top = 22.0
 margin_right = 84.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 18, 18 )
-custom_styles/panel = SubResource( 23 )
+custom_styles/panel = SubResource( 26 )
 
 [node name="slot10" type="Panel" parent="Player/Camera2D/Control/gridcontainer"]
 margin_left = 88.0
@@ -803,14 +831,14 @@ margin_top = 22.0
 margin_right = 106.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 18, 18 )
-custom_styles/panel = SubResource( 23 )
+custom_styles/panel = SubResource( 26 )
 
 [node name="slot11" type="Panel" parent="Player/Camera2D/Control/gridcontainer"]
 margin_top = 44.0
 margin_right = 18.0
 margin_bottom = 62.0
 rect_min_size = Vector2( 18, 18 )
-custom_styles/panel = SubResource( 23 )
+custom_styles/panel = SubResource( 26 )
 
 [node name="slot12" type="Panel" parent="Player/Camera2D/Control/gridcontainer"]
 margin_left = 22.0
@@ -818,7 +846,7 @@ margin_top = 44.0
 margin_right = 40.0
 margin_bottom = 62.0
 rect_min_size = Vector2( 18, 18 )
-custom_styles/panel = SubResource( 23 )
+custom_styles/panel = SubResource( 26 )
 
 [node name="slot13" type="Panel" parent="Player/Camera2D/Control/gridcontainer"]
 margin_left = 44.0
@@ -826,7 +854,7 @@ margin_top = 44.0
 margin_right = 62.0
 margin_bottom = 62.0
 rect_min_size = Vector2( 18, 18 )
-custom_styles/panel = SubResource( 23 )
+custom_styles/panel = SubResource( 26 )
 
 [node name="slot14" type="Panel" parent="Player/Camera2D/Control/gridcontainer"]
 margin_left = 66.0
@@ -834,7 +862,7 @@ margin_top = 44.0
 margin_right = 84.0
 margin_bottom = 62.0
 rect_min_size = Vector2( 18, 18 )
-custom_styles/panel = SubResource( 23 )
+custom_styles/panel = SubResource( 26 )
 
 [node name="slot15" type="Panel" parent="Player/Camera2D/Control/gridcontainer"]
 margin_left = 88.0
@@ -842,14 +870,14 @@ margin_top = 44.0
 margin_right = 106.0
 margin_bottom = 62.0
 rect_min_size = Vector2( 18, 18 )
-custom_styles/panel = SubResource( 23 )
+custom_styles/panel = SubResource( 26 )
 
 [node name="slot16" type="Panel" parent="Player/Camera2D/Control/gridcontainer"]
 margin_top = 66.0
 margin_right = 18.0
 margin_bottom = 84.0
 rect_min_size = Vector2( 18, 18 )
-custom_styles/panel = SubResource( 23 )
+custom_styles/panel = SubResource( 26 )
 
 [node name="slot17" type="Panel" parent="Player/Camera2D/Control/gridcontainer"]
 margin_left = 22.0
@@ -857,7 +885,7 @@ margin_top = 66.0
 margin_right = 40.0
 margin_bottom = 84.0
 rect_min_size = Vector2( 18, 18 )
-custom_styles/panel = SubResource( 23 )
+custom_styles/panel = SubResource( 26 )
 
 [node name="slot18" type="Panel" parent="Player/Camera2D/Control/gridcontainer"]
 margin_left = 44.0
@@ -865,7 +893,7 @@ margin_top = 66.0
 margin_right = 62.0
 margin_bottom = 84.0
 rect_min_size = Vector2( 18, 18 )
-custom_styles/panel = SubResource( 23 )
+custom_styles/panel = SubResource( 26 )
 
 [node name="slot19" type="Panel" parent="Player/Camera2D/Control/gridcontainer"]
 margin_left = 66.0
@@ -873,7 +901,7 @@ margin_top = 66.0
 margin_right = 84.0
 margin_bottom = 84.0
 rect_min_size = Vector2( 18, 18 )
-custom_styles/panel = SubResource( 23 )
+custom_styles/panel = SubResource( 26 )
 
 [node name="slot20" type="Panel" parent="Player/Camera2D/Control/gridcontainer"]
 margin_left = 88.0
@@ -881,7 +909,7 @@ margin_top = 66.0
 margin_right = 106.0
 margin_bottom = 84.0
 rect_min_size = Vector2( 18, 18 )
-custom_styles/panel = SubResource( 23 )
+custom_styles/panel = SubResource( 26 )
 
 [node name="TitleScreen" type="Control" parent="."]
 visible = false
@@ -897,7 +925,7 @@ margin_left = 120.0
 margin_top = 232.0
 margin_right = 1160.0
 margin_bottom = 250.0
-custom_fonts/font = SubResource( 24 )
+custom_fonts/font = SubResource( 27 )
 text = "GAME UNKNOWN"
 align = 1
 valign = 1
@@ -924,7 +952,7 @@ margin_left = 504.0
 margin_top = 264.0
 margin_right = 776.0
 margin_bottom = 336.0
-custom_fonts/font = SubResource( 25 )
+custom_fonts/font = SubResource( 28 )
 text = "                    Shitty RPG 
             Goodluck with it"
 readonly = true
@@ -956,7 +984,7 @@ __meta__ = {
 [node name="CreditsName" type="TextEdit" parent="TitleScreen/Button/Credits"]
 margin_right = 480.0
 margin_bottom = 376.0
-custom_fonts/font = SubResource( 26 )
+custom_fonts/font = SubResource( 29 )
 text = "Credits:
 Torno
 Vinh 
