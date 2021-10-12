@@ -605,17 +605,18 @@ texture = ExtResource( 5 )
 [node name="Down" type="AnimatedSprite" parent="Player"]
 scale = Vector2( 2, 2 )
 frames = SubResource( 14 )
+frame = 1
 playing = true
 
 [node name="Side" type="AnimatedSprite" parent="Player"]
 scale = Vector2( 2, 2 )
 frames = SubResource( 17 )
+frame = 1
 playing = true
 
 [node name="Up" type="AnimatedSprite" parent="Player"]
 scale = Vector2( 2, 2 )
 frames = SubResource( 20 )
-frame = 1
 playing = true
 
 [node name="Area2D" type="Area2D" parent="Player"]
