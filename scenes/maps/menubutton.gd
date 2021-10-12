@@ -19,6 +19,7 @@ func _button_pressed():
 		path_inventory.hide()
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 	#Player.gd.speed = 0
 =======
 
@@ -26,4 +27,7 @@ func _button_pressed():
 =======
 
 >>>>>>> 5e962e1d12ce8ae47aff5634425c498888a122c4
+=======
+	KinematicBody2D.gd.speed = 0
+>>>>>>> parent of 9e1bd8a (stuff)
 	
