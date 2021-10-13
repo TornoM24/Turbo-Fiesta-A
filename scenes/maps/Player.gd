@@ -4,6 +4,7 @@ export (int) var speed = 200
 const MOVE_SPEED = 1
 
 var velocity = Vector2()
+var stamina = 100
 
 onready var down=get_node ("Down")
 onready var side=get_node ("Side")
@@ -23,6 +24,20 @@ func hideAllBut (x):
 	
 
 func _process(delta):
+	get_node ("Camera2D/Control/stamina").value = stamina
+	if Input.is_action_pressed("shift"):
+		if stamina > 0:
+			speed = 400
+			get_node ("smoke").emitting = true
+			stamina -= 0.01
+	else:
+		if stamina < 100:
+			speed = 200
+			get_node ("smoke").emitting = false
+			stamina += 0.02
+	if stamina <= 0:
+		get_node ("smoke").emitting = false
+		speed = 200
 	velocity = Vector2()
 	if Input.is_action_pressed("right"):
 		velocity.x += 1
