@@ -43,6 +43,7 @@ func _process(delta):
 		get_node ("smoke").emitting = false
 		speed = 200
 	velocity = Vector2()
+	
 	if Input.is_action_pressed("right"):
 		velocity.x += 1
 		hideAllBut(side)
@@ -78,7 +79,10 @@ func _process(delta):
 	velocity = velocity.normalized() * speed
 	velocity = move_and_slide(velocity)
 	Master.partyPosition = global_position
-
+	
+	var circle = CircleShape2D.new()
+	circle.set_radius(100)
+	
 func _on_Start_pressed():
 	show()
 	pass # Replace with function body.
