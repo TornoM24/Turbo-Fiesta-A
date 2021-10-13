@@ -9,6 +9,7 @@ var ability_dict = {
 	"attack_basic_attack":{
 		"name": "Attack",
 		"id":"attack_basic_attack",
+		"type":"phys",
 		"cost": 0,
 		"effects": [
 			{

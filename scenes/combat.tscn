@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://scenes/maps/runbutton.gd" type="Script" id=1]
 [ext_resource path="res://scenes/maps/scripts/control.gd" type="Script" id=2]
@@ -20,6 +20,7 @@
 [ext_resource path="res://pixel_panel_2.theme" type="Theme" id=18]
 [ext_resource path="res://scenes/readyhelper.gd" type="Script" id=19]
 [ext_resource path="res://scenes/HPBar.gd" type="Script" id=20]
+[ext_resource path="res://font/pixelmix_small2.tres" type="DynamicFont" id=21]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 4
@@ -565,7 +566,9 @@ margin_left = 8.0
 margin_top = 8.0
 margin_right = 184.0
 margin_bottom = 264.0
+custom_fonts/normal_font = ExtResource( 21 )
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -673,7 +676,7 @@ __meta__ = {
 visible = false
 position = Vector2( 488, 136 )
 frames = SubResource( 9 )
-frame = 1
+frame = 3
 speed_scale = 2.0
 playing = true
 

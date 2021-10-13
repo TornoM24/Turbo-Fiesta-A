@@ -86,8 +86,10 @@ func parseData():
 func attachdata (instance):
 	var obj = load("res://data/unit/"+instance.unitName+"/"+instance.unitName+"_data.tscn"	).instance()
 	var idlePath = load("res://data/unit/"+instance.unitName+"/art/"+instance.unitName+"_idle.tres")
+	var attackPath = load("res://data/unit/"+instance.unitName+"/art/"+instance.unitName+"_attack.tres")
 	instance.add_child (obj)
 	instance.get_node ("AnimatedSprite").frames = idlePath
+	instance.get_node ("Attack").frames = attackPath
 	instance.reference = Master.get_node (instance.unitName+"_data")
 	instance.stats = instance.reference.stats
 	instance.stats.name = instance.reference.stats.name
@@ -118,6 +120,7 @@ func spawnAllies ():
 				add_child(instance)
 				instance.position.x = 780 + (100*x) + (50*y)
 				instance.position.y = 60 + (100*y)
+				instance.origin = instance.position
 				#instance.get_node("Sprite").texture = defaultSprite
 				instance.unitName = Master.party[Master.formation[x][y]].unitName
 				instance = attachdata (instance)
@@ -168,9 +171,10 @@ func getPower (block):
 		fPower += selectedUnit.stats[x]/inc
 		fPower = ceil(float(fPower * block.power/100))
 	return fPower
-func causeEffect (target,amount,eff):
+func causeEffect (target,ability):
 	var label = load ("res://ui/dmglabel.tscn")
 	var fPower = 0
+	var eff = ability.effects
 	for block in eff:
 		if block.type == "damage":
 			fPower = getPower (block)
@@ -237,7 +241,8 @@ func _process(delta):
 				enemy.selected = false
 				cancelTargeting()
 				logSomething (selectedUnit.stats.name + " uses " + targetAbility.name + "!\n")
-				causeEffect (selectedTarget,selectedUnit.reference.stats.atk,targetAbility.effects)
+				selectedUnit.sprite_attack (targetAbility, selectedTarget)
+				#causeEffect (selectedTarget,targetAbility)
 				selectedUnit.atb_val = 0
 				isSelecting = false
 				selector.visible = false
@@ -261,7 +266,8 @@ func _process(delta):
 				print ("targeting " + ally.unitName + "!!!")
 				ally.selected = false
 				cancelTargeting()
-				causeEffect (selectedTarget,selectedUnit.reference.stats.atk,targetAbility.effects)
+				selectedUnit.sprite_attack (targetAbility, selectedTarget)
+				#causeEffect (selectedTarget,targetAbility)
 				selectedUnit.atb_val = 0
 				isSelecting = false
 				selector.visible = false

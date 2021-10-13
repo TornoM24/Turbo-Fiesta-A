@@ -5,6 +5,8 @@ extends Node2D
 # var a = 2
 # var b = "text"
 
+var origin = Vector2()
+
 var mhp = 100
 var hp = 90
 
@@ -23,8 +25,17 @@ var selected = false
 var queue = []
 var reference
 
+var inAnimation = false
+var inRecovery = false
+var animStun = false
+
+var type
+var ability 
+var target
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	#var timeTween = Tween.new()
+	#add_child(timeTween)
 	pass # Replace with function body.
 
 func updateResources():
@@ -32,18 +43,62 @@ func updateResources():
 	var mpb = get_node("MPBar")
 	hpb.value = (float(stats.hp)/stats.mhp)*100
 	#mpb.value =  (float(stats.mp)/
+const SPEED_MOD = 2000
+var yVelo = -1.3
 
+func effCall ():
+	get_parent().causeEffect (target,ability)
+
+func animReset():
+	get_node ("AnimatedSprite").hide()
+	get_node ("Attack").show()
+	get_node ("Attack").frame=0
+	get_node ("Attack").playing=true
+	
+func animBreak():
+	get_node ("AnimatedSprite").show()
+	get_node ("Attack").hide()
+	get_node ("Attack").frame=0
+	get_node ("Attack").playing=false
+	
 func _process(delta):
 	updateResources()
-	
 	atb_prog += delta
-	if atb_prog >= 0.01:
+	if atb_prog >= 0.01 && !inAnimation &&!animStun:
 		atb_val += float (stats.spd)/10
 		atb_prog = 0
+	if inAnimation:
+		if type !="ranged":
+			position=position.move_toward(target.position + Vector2 (50,0), delta * SPEED_MOD)
+			if global_position == target.position + Vector2 (50,0):
+				animReset()
+				inAnimation = false
+		else:
+			animReset()
+			inAnimation = false
+	if inRecovery:
+		if type !="ranged":
+			position=position.move_toward(origin, delta * SPEED_MOD)
+			if global_position == origin:
+				animBreak()
+				inRecovery = false
+				animStun = false
+		else:
+			animBreak()
+			inRecovery = false
+			animStun = false
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
-
+func sprite_attack (abi, tar):
+	ability = abi
+	type = ability.type
+	target = tar
+	print (type)
+	inAnimation = true
+	animStun = true
+	yVelo = -2.6
+	
 
 func _on_Select_pressed():
 	print ("Selected the unit "+unitName)
@@ -72,4 +127,10 @@ func _on_Select_mouse_exited():
 	y.modulate.r = 1
 	y.modulate.g = 1
 	y.modulate.b = 1
+	pass # Replace with function body.
+
+
+func _on_Attack_animation_finished():
+	get_node ("AnimatedSprite").show()
+	get_node ("Attack").hide()
 	pass # Replace with function body.
