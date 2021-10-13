@@ -1,17 +1,32 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://pixel_button.tres" type="Theme" id=1]
 [ext_resource path="res://data/abilities/ability_button.gd" type="Script" id=2]
+[ext_resource path="res://font/pixelmix_small2.tres" type="DynamicFont" id=3]
 
 [node name="Host" type="Node2D"]
 script = ExtResource( 2 )
 
 [node name="Button" type="Button" parent="."]
 margin_right = 64.0
-margin_bottom = 18.0
+margin_bottom = 56.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 theme = ExtResource( 1 )
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MPLabel" type="RichTextLabel" parent="."]
+margin_left = 8.0
+margin_top = 48.0
+margin_right = 72.0
+margin_bottom = 64.0
+custom_fonts/mono_font = ExtResource( 3 )
+custom_fonts/normal_font = ExtResource( 3 )
+bbcode_enabled = true
+scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false
 }

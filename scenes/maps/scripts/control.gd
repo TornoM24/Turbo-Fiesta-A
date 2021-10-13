@@ -40,7 +40,33 @@ func _on_exit_pressed():
 	tsPanel.visible = false
 	get_node ("Panel/buttonhost/").visible=true
 	pass # Replace with function body.
-
+func generateTip (ability):
+	var tipText = ""
+	var inc = 0
+	for x in ability.effects:
+		inc +=1
+		if x.type == "damage":
+			var scalers = ""
+			var elements = ""
+			var xinc = 0
+			for y in x.scaling:
+				xinc += 1
+				if xinc>1:
+					scalers += "/"+ y 
+				else:
+					scalers += y
+			xinc = 0
+			for z in x.elements:
+				xinc += 1
+				if xinc>1:
+					elements += "/"+ z
+				else:
+					elements += z
+			scalers=scalers.to_upper()
+			elements=elements.to_upper()
+			tipText += "EFFECT "+ str (inc)+ ": Deals " + str(x.power) + "% of character's " + scalers + " as " + elements + " damage."
+	return tipText
+		
 func _on_special_pressed():
 	skillPanel.visible = !skillPanel.visible
 	tsPanel.visible = !tsPanel.visible
@@ -51,19 +77,20 @@ func _on_special_pressed():
 	for ability in unitGet.get_node ("Data").unitDict["abilities"]:
 		var newButton = abilityButton.instance()
 		#print (ability.name)
-		newButton.get_node ("Button").text = ability.name + " (" + str(ability.cost) + ")"
-		newButton.get_node ("Button").hint_tooltip = ability.desc
+		newButton.get_node ("Button").text = ability.name
+		newButton.get_node ("Button").hint_tooltip = ability.desc + "\n\n" + generateTip (ability)
 		newButton.uName = ability.name
 		newButton.aName = ability.id
 		get_node("Panel/CBPanel/specialscroll/Panel").add_child(newButton)
 		print (newButton.get_parent().get_parent().get_parent().get_parent().get_parent().name)
 		newButton.global_position = newButton.get_parent().rect_global_position + Vector2(20 + xOffset,20 + yOffset)
 		newButton.get_node ("Button").connect ("pressed",newButton.get_parent().get_parent().get_parent().get_parent().get_parent(), "_on_ability_pressed", [newButton])
+		newButton.get_node ("MPLabel").bbcode_text = "MP [color=#00c8ff]" + str(ability.cost) + "[/color]"
 		#if xOffset == 0:
 		#	xOffset = 200
 		#else:
 		#	xOffset = 0
-		yOffset += 30
+		yOffset += 70
 		get_node ("Panel/buttonhost/").visible=false
 	
 func _on_ability_pressed(bHost):

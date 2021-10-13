@@ -15,6 +15,11 @@ var selected = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	get_node("Button").connect ("pressed",get_parent().get_parent().get_parent().get_node ("Controller"),"_is_ability_pressed",[self])
+	var texture = ImageTexture.new()
+	var image = Image.new()
+	image.load("res://ui/pointer.png")
+	texture.create_from_image(image)
+	get_node("Button").icon = texture
 	pass # Replace with function body.
 
 

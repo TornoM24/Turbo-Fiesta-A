@@ -24,6 +24,7 @@ var ability_dict = {
 	"attack_crimson_saber_hiro":{
 		"name": "[Hiro] Crimson Saber",
 		"id":"attack_crimson_saber_hiro",
+		"type":"phys",
 		"desc": "Strikes a single enemy, dealing fire/physical damage.",
 		"cost": 0,
 		"effects": [
@@ -40,6 +41,7 @@ var ability_dict = {
 	"buff_scarlet_blaze":{
 		"name": "[Hiro] Scarlet Blaze",
 		"id":"buff_scarlet_blaze",
+		"type":"phys",
 		"desc": "Increases SPD by 50% and increases ATK by 25% for 5 turns.",
 		"cost": 10,
 		"effects": [
@@ -58,8 +60,9 @@ var ability_dict = {
 		]
 	},
 	"buff_all_heal_hiro":{
-		"name": "[Hiro] Don't die on me!",
+		"name": "[Hiro] 'Don't die on me!'",
 		"id":"buff_all_heal_hiro",
+		"type":"white",
 		"desc": "Heals all allies slightly.",
 		"cost": 10,
 		"effects": [
@@ -74,6 +77,7 @@ var ability_dict = {
 	"attack_stardust_ray_stella":{
 		"name": "[Stella] Stardust Ray",
 		"id":"attack_stardust_ray_stella",
+		"type":"ranged",
 		"desc": "Shoots an enemy, dealing light/magic damage.",
 		"cost": 0,
 		"effects": [
@@ -87,9 +91,10 @@ var ability_dict = {
 			}
 		]
 	},
-	"spell_resa":{
-		"name": "Resa",
-		"id":"spell_resa",
+	"spell_pur":{ #Pur, Pura, Purafa, Purafaca, Purafacta
+		"name": "Pur",
+		"id":"spell_pur",
+		"type":"white",
 		"desc": "Heals a target for a slight amount of health.",
 		"cost": 5,
 		"effects": [
@@ -106,7 +111,7 @@ var ability_dict = {
 var equip_dict = {
 	"hiro_heirloom":{
 		"name": "Hiro's Heirloom Medallion",
-		"desc": "A medallion passed down through Hiro's family. Contains a picture of my fat fucking dick",
+		"desc": "A medallion passed down through Hiro's family. Contains a picture of his parents.",
 		"stats": {
 			"hp":10,
 			"mp":10,

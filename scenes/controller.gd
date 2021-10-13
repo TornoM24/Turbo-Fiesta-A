@@ -47,10 +47,10 @@ func updateStats (delta):
 		get_node (path+"HPBar").targetValue = int((float(x.reference.stats.hp)/x.reference.stats.mhp)*100)
 		get_node (path+"MPBar").value = int((float(x.reference.stats.mp)/x.reference.stats.mmp)*100)
 		if get_node (path+"HPBar").targetValue < get_node (path+"HPBar").value:
-			print ("reducing value")
+			#print ("reducing value")
 			get_node (path+"HPBar").value -= 1
 		elif get_node (path+"HPBar").targetValue > get_node (path+"HPBar").value:
-			print ("increasing value")
+			#print ("increasing value")
 			get_node (path+"HPBar").value += 1
 		get_node (path+"ATBBar").value = x.atb_val
 		if get_node (path+"HPBar").value < 100:
@@ -159,18 +159,21 @@ func init_battle (battleData):
 				instance.unitName = battleData.formation[x][y]
 				instance = attachdataenemy (instance)
 				enemyUnit.append(instance)
-
+func getPower (block):
+	var inc = 0
+	var fPower = 0
+	for x in block.scaling:
+		inc += 1
+	for x in block.scaling:
+		fPower += selectedUnit.stats[x]/inc
+		fPower = ceil(float(fPower * block.power/100))
+	return fPower
 func causeEffect (target,amount,eff):
 	var label = load ("res://ui/dmglabel.tscn")
+	var fPower = 0
 	for block in eff:
-		var inc = 0
-		var fPower = 0
-		for x in block.scaling:
-			inc += 1
-		for x in block.scaling:
-			fPower += selectedUnit.stats[x]/inc
-		fPower = ceil(float(fPower * block.power/100))
 		if block.type == "damage":
+			fPower = getPower (block)
 			if block.target == "single":
 				var dmgLabel = label.instance()
 				target.stats.hp -= fPower
@@ -182,6 +185,7 @@ func causeEffect (target,amount,eff):
 				dmgLabel.modulate.r = 2
 				logSomething (target.stats.name + " takes [color=red]" + str (fPower) + "[/color] damage!\n")
 		if block.type == "healing":
+			fPower = getPower (block)
 			if block.target == "single":
 				var dmgLabel = label.instance()
 				target.stats.hp += fPower
@@ -243,11 +247,12 @@ func _process(delta):
 		if ally.selected:
 			if !targeting:
 				if !ally.atb_val < 100:
-					buttonhost.visible = true
-					selectedUnit = ally
-					isSelecting = true
-					selector.visible = true
-					selector.position = Vector2(selectedUnit.position.x+16,selectedUnit.position.y-40)
+					if !skillPanel.visible:
+						buttonhost.visible = true
+						selectedUnit = ally
+						isSelecting = true
+						selector.visible = true
+						selector.position = Vector2(selectedUnit.position.x+16,selectedUnit.position.y-40)
 				else:
 					get_node("Control/Panel/readyhelper").modulate.a = 1
 				ally.selected = false

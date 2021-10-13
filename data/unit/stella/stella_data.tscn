@@ -24,7 +24,7 @@ var unitDict = {
 		\"spd\" : 4,
 		\"luk\" : 8
 	},
-	\"abilities\": [bMas[\"attack_stardust_ray_stella\"],bMas[\"spell_resa\"]]
+	\"abilities\": [bMas[\"attack_stardust_ray_stella\"],bMas[\"spell_pur\"]]
 }
 
 # Called when the node enters the scene tree for the first time.
