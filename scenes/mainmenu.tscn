@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://pixel_button.tres" type="Theme" id=1]
 [ext_resource path="res://scenes/newgame.gd" type="Script" id=2]
 [ext_resource path="res://font/pixelmix_large.tres" type="DynamicFont" id=3]
+[ext_resource path="res://scenes/loadgame.gd" type="Script" id=4]
 
 [node name="Node2D" type="Node2D"]
 
@@ -49,6 +50,18 @@ margin_bottom = 448.0
 theme = ExtResource( 1 )
 text = "New Game"
 script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="loadgame" type="Button" parent="."]
+margin_left = 1024.0
+margin_top = 480.0
+margin_right = 1152.0
+margin_bottom = 512.0
+theme = ExtResource( 1 )
+text = "Load Game"
+script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

@@ -12,7 +12,6 @@ func _ready():
 	button.connect("pressed", self, "_button_pressed")
 
 func _button_pressed():
-	print("go")
-	Master.new_game()
+	print("loadgo")
 	Master.load_game()
 	get_node("/root/Global").goto_scene("res://scenes/maps/hub.tscn")

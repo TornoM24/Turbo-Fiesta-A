@@ -47,7 +47,7 @@ const SPEED_MOD = 2000
 var yVelo = -1.3
 
 func effCall ():
-	get_parent().causeEffect (target,ability)
+	get_parent().causeEffect (target,self,ability)
 
 func animReset():
 	get_node ("AnimatedSprite").hide()

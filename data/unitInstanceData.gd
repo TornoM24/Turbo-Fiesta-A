@@ -9,10 +9,33 @@ var stats = {}
 var bonusStats = {}
 var equipment = []
 var abilities = []
+var level = 1
+var xp = 0
 
 var equipAbilities = []
 
 var unitName = "Aou Mogis"
+
+func save ():
+	var save_dict = {
+		"unitName" : unitName,
+		"stats": stats,
+		"level": level,
+		"bonusStats": bonusStats,
+		"equipment": equipment,
+		"abilities": abilities
+	}
+	return save_dict
+
+func load_data(data):
+	#name = unitName+"_data"
+	unitName = data["unitName"]
+	stats = data["stats"]
+	level = data["level"]
+	bonusStats = data["bonusStats"]
+	equipment = data["equipment"]
+	abilities = data["abilities"]
+	return self
 
 func initialize (prefab):
 	self.stats = prefab.unitDict.stats

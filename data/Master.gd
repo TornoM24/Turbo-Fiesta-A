@@ -134,6 +134,9 @@ var equip_dict = {
 	}
 }
 
+var effect_dict = {
+	
+}
 #Lists data locations for all units in the game
 var unit_list = {
 	"allies": {
@@ -149,7 +152,63 @@ var party = []
 var partyPosition = Vector2(0,0)
 var inventory = []
 # Called when the node enters the scene tree for the first time.
+func save():
+	var unitInstances = []
+	for x in party:
+		unitInstances.append (x.save())
+	var save_dict = {
+		"filename" : get_filename(),
+		"parent" : get_parent().get_path(),
+		"position" : partyPosition,
+		"party" : unitInstances,
+		"formation": formation,
+		"inventory": inventory,
+	}
+	return save_dict
 
+func load_game():
+	for x in get_children():
+		#print ("clearing " + x.name)
+		x.queue_free()
+		remove_child(x)
+		#print ("why is " + x.name)
+	#for x in get_children():
+		#print ("why is " + x.name)
+	self.party.clear()
+	var save_game = File.new()
+	if not save_game.file_exists("res://save/savegame.save"):
+		return # Error! We don't have a save to load.
+	save_game.open("res://save/savegame.save", File.READ)
+	#while save_game.get_position() < save_game.get_len():
+	var node_data = parse_json(save_game.get_as_text())
+	for i in node_data.keys():
+			if i == "filename" or i == "parent":
+				continue
+			elif i == "party":
+				for j in node_data.party:
+					var inst = load ("res://data/unitInstanceData.tscn").instance()
+					self.add_child(inst.load_data(j))
+					print ("is " + inst.unitName)
+					inst.name = inst.unitName+"_data"
+					print ("instancing and placing " + inst.name)
+					Master.party.append (inst)
+			else:
+				print ("loading property " + i)
+				self.set (i,node_data[i])
+		
+func save_game():
+	print ("attempting to save...")
+	var save_game = File.new()
+	save_game.open("res://save/savegame.save", File.WRITE)
+	save_game.store_string(to_json(save()))
+	save_game.close()
+	print ("successfully saved.")
+
+func new_game ():
+	party = [fabricate("hiro"),fabricate("stella")]
+	formation = [[-1,-1,-1],[-1,0,1],[-1,-1,-1]]
+	save_game()
+	
 func fabricate (name):
 	var inst = load ("res://data/unitInstanceData.tscn").instance()
 	add_child(inst.initialize (load("res://data/unit/"+name+"/"+name+"_data.tscn").instance()))
@@ -158,10 +217,8 @@ func fabricate (name):
 	return inst
 
 func _ready():
-	print ("singleton Master loaded")
-	party = [fabricate("hiro"),fabricate("stella")]
-	formation = [[-1,-1,-1],[-1,0,1],[-1,-1,-1]]
-	print (get_node("hiro_data").name)
+	print ("singleton Master loaded successfully")
+	#print (get_node("hiro_data").name)
 	pass # Replace with function body.
 
 func _process(delta):

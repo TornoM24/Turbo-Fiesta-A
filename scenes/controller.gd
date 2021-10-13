@@ -33,7 +33,7 @@ func logSomething (textToAdd):
 	mlog.bbcode_enabled = true
 	mlog.bbcode_text += textToAdd + ""
 	pass
-const BAR_SPEED = 1
+const BAR_SPEED = 0.1
 func updateStats (delta):
 	var inc = 0
 	for x in alliesUnit:
@@ -43,15 +43,23 @@ func updateStats (delta):
 		get_node (path+"RichTextLabel").bbcode_text = x.get_node ("Data").unitDict.name + " [color=red]" + str(x.reference.stats.hp) + "[/color]" + " | [color=#00c8ff]" + str(x.reference.stats.mp) + "[/color]"
 		#x.reference.stats.hp += 1
 		#print (x.unitName + " " + str(int((float(x.reference.stats.hp)/x.reference.stats.mhp)*100)))
-		#print (x.unitName + str(int((float(x.reference.stats.hp)/x.reference.stats.mhp)*100))+ "/" + str(get_node (path+"MPBar").value))
-		get_node (path+"HPBar").targetValue = int((float(x.reference.stats.hp)/x.reference.stats.mhp)*100)
-		get_node (path+"MPBar").value = int((float(x.reference.stats.mp)/x.reference.stats.mmp)*100)
+		#print (x.unitName + str(int((float(x.reference.stats.hp)/x.reference.stats.mhp)*100))+ "/" + str(get_node (path+"HPBar").value))
+		get_node (path+"HPBar").targetValue = int((float(x.stats.hp)/x.stats.mhp)*100)
+		get_node (path+"MPBar").targetValue = int((float(x.stats.mp)/x.stats.mmp)*100)
 		if get_node (path+"HPBar").targetValue < get_node (path+"HPBar").value:
 			#print ("reducing value")
 			get_node (path+"HPBar").value -= 1
 		elif get_node (path+"HPBar").targetValue > get_node (path+"HPBar").value:
 			#print ("increasing value")
 			get_node (path+"HPBar").value += 1
+			
+		if get_node (path+"MPBar").targetValue < get_node (path+"MPBar").value:
+			#print ("reducing value")
+			get_node (path+"MPBar").value -= 1
+		elif get_node (path+"MPBar").targetValue > get_node (path+"MPBar").value:
+			#print ("increasing value")
+			get_node (path+"MPBar").value += 1
+			
 		get_node (path+"ATBBar").value = x.atb_val
 		if get_node (path+"HPBar").value < 100:
 			#get_node (path+"HPBar").texture_progress = load ("res://gfx/unit/hpbar_decrement.png")
@@ -112,6 +120,7 @@ func spawnAllies ():
 	var incrementer = 0
 	for x in range (0,3):
 		for y in range (0,3):
+			#print (Master.formation [x].len)
 			if Master.formation[x][y] != -1:
 				print ("spawning " + Master.party[Master.formation[x][y]].name)
 				incrementer +=1 
@@ -171,10 +180,13 @@ func getPower (block):
 		fPower += selectedUnit.stats[x]/inc
 		fPower = ceil(float(fPower * block.power/100))
 	return fPower
-func causeEffect (target,ability):
+func causeEffect (target,source,ability):
 	var label = load ("res://ui/dmglabel.tscn")
 	var fPower = 0
 	var eff = ability.effects
+	print ("mp first " + str(source.mp))
+	source.stats.mp -= ability.cost
+	print ("mp after " + str(source.mp))
 	for block in eff:
 		if block.type == "damage":
 			fPower = getPower (block)
