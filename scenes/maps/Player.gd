@@ -27,14 +27,18 @@ func _process(delta):
 	get_node ("Camera2D/Control/stamina").value = stamina
 	if Input.is_action_pressed("shift"):
 		if stamina > 0:
-			speed = 400
-			get_node ("smoke").emitting = true
-			stamina -= 0.01
+			if velocity != Vector2(0,0):
+				speed = 400
+				get_node ("smoke").emitting = true
+				stamina -= 0.01
 	else:
 		if stamina < 100:
 			speed = 200
-			get_node ("smoke").emitting = false
+			if velocity != Vector2(0,0):
+				get_node ("smoke").emitting = false
 			stamina += 0.02
+	if stamina <= 0:
+		speed = 200
 	if stamina <= 0:
 		get_node ("smoke").emitting = false
 		speed = 200
@@ -62,6 +66,7 @@ func _process(delta):
 	if Input.is_action_pressed("up"):
 		velocity.y -= 1
 		hideAllBut(up)
+		up.playing = true
 		up.speed_scale = 1
 	
 		
