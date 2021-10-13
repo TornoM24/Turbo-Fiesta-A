@@ -100,7 +100,7 @@ func _on_ability_pressed(bHost):
 	for x in Master.ability_dict[bHost.aName].effects:
 		if x.target == "all allies":
 			var par = get_parent()
-			get_parent().causeEffect (par.selectedTarget,0,Master.ability_dict[bHost.aName].effects)
+			get_parent().causeEffect (par.selectedTarget,Master.ability_dict[bHost.aName])
 			get_parent().cancelTargeting()
 			par.skillPanel.visible = false
 			par.selectedUnit.atb_val = 0

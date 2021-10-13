@@ -10,6 +10,7 @@ var ability_dict = {
 		"name": "Attack",
 		"id":"attack_basic_attack",
 		"type":"phys",
+		"icon":"sword",
 		"cost": 0,
 		"effects": [
 			{
@@ -26,6 +27,7 @@ var ability_dict = {
 		"name": "[Hiro] Crimson Saber",
 		"id":"attack_crimson_saber_hiro",
 		"type":"phys",
+		"icon":"sword",
 		"desc": "Strikes a single enemy, dealing fire/physical damage.",
 		"cost": 0,
 		"effects": [
@@ -64,6 +66,7 @@ var ability_dict = {
 		"name": "[Hiro] 'Don't die on me!'",
 		"id":"buff_all_heal_hiro",
 		"type":"white",
+		"icon":"wht_mag",
 		"desc": "Heals all allies slightly.",
 		"cost": 10,
 		"effects": [
@@ -79,6 +82,7 @@ var ability_dict = {
 		"name": "[Stella] Stardust Ray",
 		"id":"attack_stardust_ray_stella",
 		"type":"ranged",
+		"icon":"shoot",
 		"desc": "Shoots an enemy, dealing light/magic damage.",
 		"cost": 0,
 		"effects": [
@@ -96,6 +100,7 @@ var ability_dict = {
 		"name": "Pur",
 		"id":"spell_pur",
 		"type":"white",
+		"icon":"wht_mag",
 		"desc": "Heals a target for a slight amount of health.",
 		"cost": 5,
 		"effects": [
