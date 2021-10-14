@@ -1,9 +1,17 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://pixel_panel.theme" type="Theme" id=1]
+[ext_resource path="res://ui/partyview.gd" type="Script" id=2]
+[ext_resource path="res://gfx/unit/bar_over.png" type="Texture" id=3]
+[ext_resource path="res://gfx/unit/hpbar_bg.png" type="Texture" id=4]
+[ext_resource path="res://gfx/unit/hpbar.png" type="Texture" id=5]
+[ext_resource path="res://gfx/unit/mpbar.png" type="Texture" id=6]
+[ext_resource path="res://gfx/unit/xpbar.png" type="Texture" id=7]
+[ext_resource path="res://gfx/overworld char/derp..png" type="Texture" id=8]
 
 [node name="partyview" type="Node2D"]
 position = Vector2( 72, 0 )
+script = ExtResource( 2 )
 
 [node name="Panel" type="Panel" parent="."]
 margin_left = 976.0
@@ -20,6 +28,7 @@ margin_left = 768.0
 margin_top = 64.0
 margin_right = 960.0
 margin_bottom = 640.0
+rect_pivot_offset = Vector2( -1064, 344 )
 theme = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -65,3 +74,99 @@ theme = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="HPBar" type="TextureProgress" parent="CP5"]
+margin_left = 16.0
+margin_top = 488.0
+margin_right = 176.0
+margin_bottom = 520.0
+rect_pivot_offset = Vector2( 109.152, 12.4213 )
+value = 100.0
+texture_under = ExtResource( 4 )
+texture_over = ExtResource( 3 )
+texture_progress = ExtResource( 5 )
+nine_patch_stretch = true
+stretch_margin_left = 3
+stretch_margin_top = 3
+stretch_margin_right = 3
+stretch_margin_bottom = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HPLabel" type="RichTextLabel" parent="CP5/HPBar"]
+margin_top = 8.0
+margin_right = 160.0
+margin_bottom = 32.0
+bbcode_enabled = true
+bbcode_text = "[center]80/80"
+text = "80/80"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MPBar" type="TextureProgress" parent="CP5"]
+margin_left = 16.0
+margin_top = 528.0
+margin_right = 176.0
+margin_bottom = 560.0
+rect_pivot_offset = Vector2( 109.152, 12.4213 )
+value = 100.0
+texture_under = ExtResource( 4 )
+texture_over = ExtResource( 3 )
+texture_progress = ExtResource( 6 )
+nine_patch_stretch = true
+stretch_margin_left = 3
+stretch_margin_top = 3
+stretch_margin_right = 3
+stretch_margin_bottom = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MPLabel" type="RichTextLabel" parent="CP5/MPBar"]
+margin_top = 8.0
+margin_right = 160.0
+margin_bottom = 32.0
+bbcode_enabled = true
+bbcode_text = "[center]80/80"
+text = "80/80"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EXPBar" type="TextureProgress" parent="CP5"]
+margin_left = 16.0
+margin_top = 464.0
+margin_right = 176.0
+margin_bottom = 480.0
+rect_pivot_offset = Vector2( 109.152, 12.4213 )
+value = 100.0
+texture_under = ExtResource( 4 )
+texture_over = ExtResource( 3 )
+texture_progress = ExtResource( 7 )
+nine_patch_stretch = true
+stretch_margin_left = 3
+stretch_margin_top = 3
+stretch_margin_right = 3
+stretch_margin_bottom = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label1" type="RichTextLabel" parent="CP5"]
+margin_left = 16.0
+margin_top = 432.0
+margin_right = 176.0
+margin_bottom = 456.0
+bbcode_enabled = true
+bbcode_text = "[center]HIRO LV87"
+text = "HIRO LV87"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="CP5"]
+position = Vector2( 96, 216 )
+scale = Vector2( 2.39474, 1.716 )
+texture = ExtResource( 8 )
