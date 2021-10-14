@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://data/unit/playerUnit.gd" type="Script" id=1]
 [ext_resource path="res://gfx/unit/hpbar_bg.png" type="Texture" id=2]
@@ -9,6 +9,14 @@
 [ext_resource path="res://gfx/unit/atb_f_bar.png" type="Texture" id=7]
 [ext_resource path="res://data/unit/hiro/art/hiro_attack.tres" type="SpriteFrames" id=8]
 [ext_resource path="res://data/unit/Attack.gd" type="Script" id=9]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [  ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
 
 [node name="Unit" type="Node2D"]
 script = ExtResource( 1 )
@@ -84,6 +92,7 @@ texture = ExtResource( 5 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 16, 28 )
 scale = Vector2( 2, 2 )
+frames = SubResource( 1 )
 playing = true
 
 [node name="Attack" type="AnimatedSprite" parent="."]

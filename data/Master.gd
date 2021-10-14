@@ -149,7 +149,7 @@ var unit_list = {
 #Player's formation; this is the default configuration to prevent bugs.
 var formation = []
 var party = []
-var partyPosition = Vector2(0,0)
+var partyPosition = Vector2()
 var inventory = []
 # Called when the node enters the scene tree for the first time.
 func save():
@@ -159,7 +159,8 @@ func save():
 	var save_dict = {
 		"filename" : get_filename(),
 		"parent" : get_parent().get_path(),
-		"position" : partyPosition,
+		"x" : partyPosition.x,
+		"y" : partyPosition.y,
 		"party" : unitInstances,
 		"formation": formation,
 		"inventory": inventory,
@@ -192,6 +193,10 @@ func load_game():
 					inst.name = inst.unitName+"_data"
 					print ("instancing and placing " + inst.name)
 					Master.party.append (inst)
+			elif i == "x":
+				partyPosition.x = node_data.x
+			elif i == "y":
+				partyPosition.y = node_data.y
 			else:
 				print ("loading property " + i)
 				self.set (i,node_data[i])

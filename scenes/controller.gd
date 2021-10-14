@@ -6,6 +6,7 @@ extends Node2D
 # var b = "text"
 
 var unitDict
+var rng = RandomNumberGenerator.new()
 
 #var allies = [1]
 
@@ -112,6 +113,7 @@ func attachdataenemy (instance):
 	instance.get_node ("UnitSprite").texture = idlePath
 	instance.stats = obj.unitDict.stats
 	instance.stats.mhp = obj.unitDict.stats.hp
+	instance.abilities = obj.unitDict.abilities
 	instance.stats.name = obj.unitDict.name
 	return instance
 	pass
@@ -144,6 +146,7 @@ var phBD = {
 }
 
 func _ready():
+	rng.randomize()
 	for x in range (1,5):
 		var path = "Control/Panel/CBPanel2/G" + str(x + 1) + "/"
 		get_node (path).visible = false
@@ -171,13 +174,13 @@ func init_battle (battleData):
 				instance.unitName = battleData.formation[x][y]
 				instance = attachdataenemy (instance)
 				enemyUnit.append(instance)
-func getPower (block):
+func getPower (block,source):
 	var inc = 0
 	var fPower = 0
 	for x in block.scaling:
 		inc += 1
 	for x in block.scaling:
-		fPower += selectedUnit.stats[x]/inc
+		fPower += source.stats[x]/inc
 		fPower = ceil(float(fPower * block.power/100))
 	return fPower
 func causeEffect (target,source,ability):
@@ -189,7 +192,7 @@ func causeEffect (target,source,ability):
 	print ("mp after " + str(source.mp))
 	for block in eff:
 		if block.type == "damage":
-			fPower = getPower (block)
+			fPower = getPower (block,source)
 			if block.target == "single":
 				var dmgLabel = label.instance()
 				target.stats.hp -= fPower
@@ -201,7 +204,7 @@ func causeEffect (target,source,ability):
 				dmgLabel.modulate.r = 2
 				logSomething (target.stats.name + " takes [color=red]" + str (fPower) + "[/color] damage!\n")
 		if block.type == "healing":
-			fPower = getPower (block)
+			fPower = getPower (block,source)
 			if block.target == "single":
 				var dmgLabel = label.instance()
 				target.stats.hp += fPower
@@ -260,6 +263,16 @@ func _process(delta):
 				selector.visible = false
 			else:
 				enemy.selected = false
+		if enemy.atb_val > 99:
+			var ch = rng.randf_range (0,enemy.abilities.size())
+			var tar = -1
+			while alliesUnit[tar].stats.hp <= 0:
+				tar = rng.randf_range (0, alliesUnit.size())
+			logSomething (enemy.stats.name + " uses " + enemy.abilities[ch].name + "!\n")
+			#enemy.sprite_attack (enemy.abilities[ch],alliesUnit[tar])
+			enemy.glow_cast (enemy.abilities[ch],alliesUnit[tar])
+			enemy.atb_val = 0
+
 	for ally in alliesUnit:
 		if ally.selected:
 			if !targeting:
