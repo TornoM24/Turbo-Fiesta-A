@@ -29,6 +29,7 @@ var reference
 var inAnimation = false
 var inRecovery = false
 var animStun = false
+var alive = true
 
 var type
 var ability 
@@ -88,6 +89,9 @@ func _process(delta):
 			animBreak()
 			inRecovery = false
 			animStun = false
+	if stats.hp <= 0:
+		stats.hp = 0
+		alive = false
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
@@ -97,6 +101,7 @@ func glow ():
 	spr.modulate.r = 1.5
 	spr.modulate.g = 1.5
 	spr.modulate.b = 1.5
+	
 const GLOW_SPEED = 0.075
 func glow_cast (abi, tar):
 	ability = abi

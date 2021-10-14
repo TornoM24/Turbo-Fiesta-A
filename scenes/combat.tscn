@@ -682,9 +682,24 @@ __meta__ = {
 visible = false
 position = Vector2( 488, 136 )
 frames = SubResource( 9 )
-frame = 3
+frame = 6
 speed_scale = 2.0
 playing = true
+
+[node name="oc" type="Node2D" parent="Control"]
+z_index = 999
+z_as_relative = false
+
+[node name="occluder" type="Panel" parent="Control/oc"]
+visible = false
+modulate = Color( 0, 0, 0, 1 )
+margin_left = -24.0
+margin_top = -24.0
+margin_right = 1320.0
+margin_bottom = 760.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Party" type="Node2D" parent="."]
 script = ExtResource( 4 )

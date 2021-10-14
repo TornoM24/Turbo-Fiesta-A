@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=2]
+[gd_scene load_steps=71 format=2]
 
 [ext_resource path="res://scenes/maps/Player.gd" type="Script" id=1]
 [ext_resource path="res://gfx/tileset/tilesetfield.png" type="Texture" id=2]
@@ -30,37 +30,56 @@
 [ext_resource path="res://scenes/maps/inventorybutton.gd" type="Script" id=28]
 [ext_resource path="res://gfx/sprint.png" type="Texture" id=29]
 [ext_resource path="res://scenes/maps/save.gd" type="Script" id=30]
+[ext_resource path="res://gfx/tileset/water.png" type="Texture" id=31]
+[ext_resource path="res://gfx/disk_mask.png" type="Texture" id=32]
+[ext_resource path="res://gfx/water_normal.png" type="Texture" id=33]
+[ext_resource path="res://gfx/water_uv_offset.png" type="Texture" id=34]
+[ext_resource path="res://scenes/maps/water.gd" type="Script" id=35]
+[ext_resource path="res://gfx/water_2D.shader" type="Shader" id=36]
 
-[sub_resource type="ConvexPolygonShape2D" id=1]
+[sub_resource type="ShaderMaterial" id=34]
+shader = ExtResource( 36 )
+shader_param/shadow_color = Color( 0.117647, 0.14902, 0.745098, 1 )
+shader_param/tile_factor = 2.0
+shader_param/aspect_ratio = 0.562
+shader_param/texture_offset_scale = Vector2( 1, 0.496 )
+shader_param/texture_offset_height = 0.04
+shader_param/texture_offset_time_scale = 0.03
+shader_param/sine_time_scale = 1.0
+shader_param/sine_offset_scale = Vector2( 0.4, 1.4 )
+shader_param/sine_wave_size = 0.06
+shader_param/texture_offset_uv = ExtResource( 34 )
+
+[sub_resource type="ConvexPolygonShape2D" id=35]
 points = PoolVector2Array( 48, 32, 0, 32, 0, 0, 48, 8 )
 
-[sub_resource type="ConvexPolygonShape2D" id=2]
+[sub_resource type="ConvexPolygonShape2D" id=36]
 points = PoolVector2Array( 47.9586, 9.44337, 0.793869, 9.44337, 0.793869, 1.35, 47.9586, 1.35 )
 
-[sub_resource type="ConvexPolygonShape2D" id=3]
+[sub_resource type="ConvexPolygonShape2D" id=37]
 points = PoolVector2Array( 47.6796, 4.9329, 0.793869, 4.9329, 0.793869, 0.188499, 47.6796, 0.188499 )
 
-[sub_resource type="ConvexPolygonShape2D" id=4]
+[sub_resource type="ConvexPolygonShape2D" id=38]
 points = PoolVector2Array( 15.4949, 29.9558, 0, 29.9558, 0, 7.62933, 15.4949, 7.62933 )
 
-[sub_resource type="ConvexPolygonShape2D" id=5]
+[sub_resource type="ConvexPolygonShape2D" id=39]
 points = PoolVector2Array( 16, 30.7931, 1.16937, 30.7931, 1.16937, 2.88494, 16, 2.88494 )
 
-[sub_resource type="ConvexPolygonShape2D" id=6]
+[sub_resource type="ConvexPolygonShape2D" id=40]
 points = PoolVector2Array( 47.9566, 18.5155, 0.233673, 18.5155, 0.233673, 0.375237, 47.9566, 0.375237 )
 
-[sub_resource type="ConvexPolygonShape2D" id=7]
+[sub_resource type="ConvexPolygonShape2D" id=41]
 points = PoolVector2Array( 32.3909, 98.7495, 70.067, 97.8425, 63.9271, 94.4935, 37.6935, 93.726 )
 
-[sub_resource type="ConvexPolygonShape2D" id=8]
+[sub_resource type="ConvexPolygonShape2D" id=42]
 points = PoolVector2Array( 23.9466, 4.91683, 47.163, 20.058, 47.163, 38.1152, 44.9871, 52.8256, 3.15722, 52.6641, 0.954468, 38.1152, 0.730156, 20.7309 )
 
-[sub_resource type="ConvexPolygonShape2D" id=9]
+[sub_resource type="ConvexPolygonShape2D" id=43]
 points = PoolVector2Array( 24, 16, 24, 16, 24, 16 )
 
-[sub_resource type="GDScript" id=10]
+[sub_resource type="GDScript" id=44]
 
-[sub_resource type="TileSet" id=11]
+[sub_resource type="TileSet" id=45]
 resource_local_to_scene = true
 0/name = "tilesetfield.png 0"
 0/texture = ExtResource( 2 )
@@ -263,20 +282,20 @@ resource_local_to_scene = true
 9/navigation_offset = Vector2( 0, 0 )
 9/shape_offset = Vector2( 0, 0 )
 9/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-9/shape = SubResource( 8 )
+9/shape = SubResource( 42 )
 9/shape_one_way = false
 9/shape_one_way_margin = 1.0
 9/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 8 ),
+"shape": SubResource( 42 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 }, {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 9 ),
+"shape": SubResource( 43 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 9/z_index = 0
@@ -290,14 +309,14 @@ resource_local_to_scene = true
 14/navigation_offset = Vector2( 0, 0 )
 14/shape_offset = Vector2( 0, 0 )
 14/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-14/shape = SubResource( 1 )
+14/shape = SubResource( 35 )
 14/shape_one_way = false
 14/shape_one_way_margin = 1.0
 14/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 1 ),
+"shape": SubResource( 35 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 14/z_index = 0
@@ -367,14 +386,14 @@ resource_local_to_scene = true
 19/navigation_offset = Vector2( 0, 0 )
 19/shape_offset = Vector2( 0, 0 )
 19/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-19/shape = SubResource( 2 )
+19/shape = SubResource( 36 )
 19/shape_one_way = false
 19/shape_one_way_margin = 1.0
 19/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 2 ),
+"shape": SubResource( 36 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 19/z_index = 0
@@ -388,14 +407,14 @@ resource_local_to_scene = true
 20/navigation_offset = Vector2( 0, 0 )
 20/shape_offset = Vector2( 0, 0 )
 20/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-20/shape = SubResource( 3 )
+20/shape = SubResource( 37 )
 20/shape_one_way = false
 20/shape_one_way_margin = 1.0
 20/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 3 ),
+"shape": SubResource( 37 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 20/z_index = 0
@@ -409,14 +428,14 @@ resource_local_to_scene = true
 21/navigation_offset = Vector2( 0, 0 )
 21/shape_offset = Vector2( 0, 0 )
 21/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-21/shape = SubResource( 4 )
+21/shape = SubResource( 38 )
 21/shape_one_way = false
 21/shape_one_way_margin = 1.0
 21/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 4 ),
+"shape": SubResource( 38 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 21/z_index = 0
@@ -430,14 +449,14 @@ resource_local_to_scene = true
 22/navigation_offset = Vector2( 0, 0 )
 22/shape_offset = Vector2( 0, 0 )
 22/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-22/shape = SubResource( 5 )
+22/shape = SubResource( 39 )
 22/shape_one_way = false
 22/shape_one_way_margin = 1.0
 22/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 5 ),
+"shape": SubResource( 39 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 22/z_index = 0
@@ -451,14 +470,14 @@ resource_local_to_scene = true
 23/navigation_offset = Vector2( 0, 0 )
 23/shape_offset = Vector2( 0, 0 )
 23/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-23/shape = SubResource( 6 )
+23/shape = SubResource( 40 )
 23/shape_one_way = false
 23/shape_one_way_margin = 1.0
 23/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 6 ),
+"shape": SubResource( 40 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 23/z_index = 0
@@ -472,26 +491,26 @@ resource_local_to_scene = true
 24/navigation_offset = Vector2( 0, 0 )
 24/shape_offset = Vector2( 0, 0 )
 24/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-24/shape = SubResource( 7 )
+24/shape = SubResource( 41 )
 24/shape_one_way = false
 24/shape_one_way_margin = 1.0
 24/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 7 ),
+"shape": SubResource( 41 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 24/z_index = 0
-script = SubResource( 10 )
+script = SubResource( 44 )
 
-[sub_resource type="Gradient" id=12]
+[sub_resource type="Gradient" id=46]
 colors = PoolColorArray( 1, 1, 1, 1, 0, 0, 0, 0 )
 
-[sub_resource type="GradientTexture" id=13]
-gradient = SubResource( 12 )
+[sub_resource type="GradientTexture" id=47]
+gradient = SubResource( 46 )
 
-[sub_resource type="ParticlesMaterial" id=14]
+[sub_resource type="ParticlesMaterial" id=48]
 flag_disable_z = true
 spread = 180.0
 gravity = Vector3( 0, 0, 0 )
@@ -501,94 +520,115 @@ orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 scale = 2.0
 scale_random = 1.0
-color_ramp = SubResource( 13 )
+color_ramp = SubResource( 47 )
 
-[sub_resource type="AtlasTexture" id=15]
+[sub_resource type="AtlasTexture" id=49]
 atlas = ExtResource( 9 )
 region = Rect2( 0, 0, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=16]
+[sub_resource type="AtlasTexture" id=50]
 atlas = ExtResource( 9 )
 region = Rect2( 16, 0, 16, 16 )
 
-[sub_resource type="SpriteFrames" id=17]
+[sub_resource type="SpriteFrames" id=51]
 animations = [ {
-"frames": [ SubResource( 15 ), SubResource( 16 ) ],
+"frames": [ SubResource( 49 ), SubResource( 50 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
 } ]
 
-[sub_resource type="AtlasTexture" id=18]
+[sub_resource type="AtlasTexture" id=52]
 atlas = ExtResource( 9 )
 region = Rect2( 0, 16, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=19]
+[sub_resource type="AtlasTexture" id=53]
 atlas = ExtResource( 9 )
 region = Rect2( 16, 16, 16, 16 )
 
-[sub_resource type="SpriteFrames" id=20]
+[sub_resource type="SpriteFrames" id=54]
 animations = [ {
-"frames": [ SubResource( 18 ), SubResource( 19 ) ],
+"frames": [ SubResource( 52 ), SubResource( 53 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
 } ]
 
-[sub_resource type="AtlasTexture" id=21]
+[sub_resource type="AtlasTexture" id=55]
 atlas = ExtResource( 9 )
 region = Rect2( 0, 32, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=22]
+[sub_resource type="AtlasTexture" id=56]
 atlas = ExtResource( 9 )
 region = Rect2( 16, 32, 16, 16 )
 
-[sub_resource type="SpriteFrames" id=23]
+[sub_resource type="SpriteFrames" id=57]
 animations = [ {
-"frames": [ SubResource( 21 ), SubResource( 22 ) ],
+"frames": [ SubResource( 55 ), SubResource( 56 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
 } ]
 
-[sub_resource type="SegmentShape2D" id=24]
+[sub_resource type="SegmentShape2D" id=58]
 a = Vector2( 0, -32 )
 
-[sub_resource type="CapsuleShape2D" id=25]
+[sub_resource type="CapsuleShape2D" id=59]
 radius = 16.0
 height = 0.0
 
-[sub_resource type="StyleBoxTexture" id=26]
+[sub_resource type="StyleBoxTexture" id=60]
 texture = ExtResource( 27 )
 region_rect = Rect2( 0, 0, 24, 24 )
 
-[sub_resource type="StyleBoxTexture" id=27]
+[sub_resource type="StyleBoxTexture" id=61]
 texture = ExtResource( 25 )
 region_rect = Rect2( 0, 0, 24, 24 )
 
-[sub_resource type="StyleBoxTexture" id=28]
+[sub_resource type="StyleBoxTexture" id=62]
 texture = ExtResource( 26 )
 region_rect = Rect2( 0, 0, 12, 12 )
 
-[sub_resource type="StyleBoxTexture" id=29]
+[sub_resource type="StyleBoxTexture" id=63]
 texture = ExtResource( 24 )
 region_rect = Rect2( 0, 0, 16, 16 )
 
-[sub_resource type="DynamicFont" id=30]
+[sub_resource type="DynamicFont" id=64]
 font_data = ExtResource( 7 )
 
-[sub_resource type="DynamicFont" id=31]
+[sub_resource type="DynamicFont" id=65]
 font_data = ExtResource( 7 )
 
-[sub_resource type="DynamicFont" id=32]
+[sub_resource type="DynamicFont" id=66]
 size = 64
 font_data = ExtResource( 7 )
 
+[sub_resource type="OccluderPolygon2D" id=67]
+polygon = PoolVector2Array( 640, 536, 728, 536, 728, 472, 680, 464, 640, 464 )
+
 [node name="Main" type="Node2D"]
+
+[node name="water" type="Sprite" parent="."]
+modulate = Color( 0.454902, 0.537255, 1, 1 )
+light_mask = 2
+material = SubResource( 34 )
+position = Vector2( 960, 408 )
+scale = Vector2( 13.828, 8.548 )
+texture = ExtResource( 31 )
+normal_map = ExtResource( 33 )
+script = ExtResource( 35 )
+
+[node name="Light2D" type="Light2D" parent="water"]
+position = Vector2( 34.7122, -101.076 )
+scale = Vector2( 1.27713, 1.71196 )
+texture = ExtResource( 32 )
+color = Color( 1, 0.74902, 0, 1 )
+range_height = 66.0
+range_item_cull_mask = 2
 
 [node name="TileMap" type="TileMap" parent="."]
 scale = Vector2( 2, 2 )
-tile_set = SubResource( 11 )
+tile_set = SubResource( 45 )
 cell_size = Vector2( 16, 16 )
 cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 format = 1
@@ -598,7 +638,7 @@ __meta__ = {
 }
 
 [node name="TileMap" type="TileMap" parent="TileMap"]
-tile_set = SubResource( 11 )
+tile_set = SubResource( 45 )
 cell_size = Vector2( 16, 16 )
 cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 show_collision = true
@@ -620,7 +660,7 @@ position = Vector2( 0, 15 )
 emitting = false
 amount = 16
 local_coords = false
-process_material = SubResource( 14 )
+process_material = SubResource( 48 )
 texture = ExtResource( 29 )
 
 [node name="Sprite" type="Sprite" parent="Player"]
@@ -632,19 +672,19 @@ texture = ExtResource( 5 )
 
 [node name="Down" type="AnimatedSprite" parent="Player"]
 scale = Vector2( 2, 2 )
-frames = SubResource( 17 )
+frames = SubResource( 51 )
 frame = 1
 playing = true
 
 [node name="Side" type="AnimatedSprite" parent="Player"]
 scale = Vector2( 2, 2 )
-frames = SubResource( 20 )
+frames = SubResource( 54 )
 frame = 1
 playing = true
 
 [node name="Up" type="AnimatedSprite" parent="Player"]
 scale = Vector2( 2, 2 )
-frames = SubResource( 23 )
+frames = SubResource( 57 )
 playing = true
 
 [node name="Area2D" type="Area2D" parent="Player"]
@@ -652,11 +692,11 @@ collision_layer = 2
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Player/Area2D"]
 position = Vector2( 0, -8 )
-shape = SubResource( 24 )
+shape = SubResource( 58 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 scale = Vector2( 1, 1.00746 )
-shape = SubResource( 25 )
+shape = SubResource( 59 )
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 current = true
@@ -701,9 +741,9 @@ margin_top = -352.0
 margin_right = -543.0
 margin_bottom = -312.0
 theme = ExtResource( 10 )
-custom_styles/hover = SubResource( 26 )
-custom_styles/pressed = SubResource( 27 )
-custom_styles/normal = SubResource( 28 )
+custom_styles/hover = SubResource( 60 )
+custom_styles/pressed = SubResource( 61 )
+custom_styles/normal = SubResource( 62 )
 script = ExtResource( 28 )
 __meta__ = {
 "_edit_use_anchors_": false,
@@ -809,42 +849,42 @@ __meta__ = {
 margin_right = 18.0
 margin_bottom = 18.0
 rect_min_size = Vector2( 18, 18 )
-custom_styles/panel = SubResource( 29 )
+custom_styles/panel = SubResource( 63 )
 
 [node name="slot2" type="Panel" parent="Player/Camera2D/Control/gridcontainer"]
 margin_left = 22.0
 margin_right = 40.0
 margin_bottom = 18.0
 rect_min_size = Vector2( 18, 18 )
-custom_styles/panel = SubResource( 29 )
+custom_styles/panel = SubResource( 63 )
 
 [node name="slot3" type="Panel" parent="Player/Camera2D/Control/gridcontainer"]
 margin_left = 44.0
 margin_right = 62.0
 margin_bottom = 18.0
 rect_min_size = Vector2( 18, 18 )
-custom_styles/panel = SubResource( 29 )
+custom_styles/panel = SubResource( 63 )
 
 [node name="slot4" type="Panel" parent="Player/Camera2D/Control/gridcontainer"]
 margin_left = 66.0
 margin_right = 84.0
 margin_bottom = 18.0
 rect_min_size = Vector2( 18, 18 )
-custom_styles/panel = SubResource( 29 )
+custom_styles/panel = SubResource( 63 )
 
 [node name="slot5" type="Panel" parent="Player/Camera2D/Control/gridcontainer"]
 margin_left = 88.0
 margin_right = 106.0
 margin_bottom = 18.0
 rect_min_size = Vector2( 18, 18 )
-custom_styles/panel = SubResource( 29 )
+custom_styles/panel = SubResource( 63 )
 
 [node name="slot6" type="Panel" parent="Player/Camera2D/Control/gridcontainer"]
 margin_top = 22.0
 margin_right = 18.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 18, 18 )
-custom_styles/panel = SubResource( 29 )
+custom_styles/panel = SubResource( 63 )
 
 [node name="slot7" type="Panel" parent="Player/Camera2D/Control/gridcontainer"]
 margin_left = 22.0
@@ -852,7 +892,7 @@ margin_top = 22.0
 margin_right = 40.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 18, 18 )
-custom_styles/panel = SubResource( 29 )
+custom_styles/panel = SubResource( 63 )
 
 [node name="slot8" type="Panel" parent="Player/Camera2D/Control/gridcontainer"]
 margin_left = 44.0
@@ -860,7 +900,7 @@ margin_top = 22.0
 margin_right = 62.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 18, 18 )
-custom_styles/panel = SubResource( 29 )
+custom_styles/panel = SubResource( 63 )
 
 [node name="slot9" type="Panel" parent="Player/Camera2D/Control/gridcontainer"]
 margin_left = 66.0
@@ -868,7 +908,7 @@ margin_top = 22.0
 margin_right = 84.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 18, 18 )
-custom_styles/panel = SubResource( 29 )
+custom_styles/panel = SubResource( 63 )
 
 [node name="slot10" type="Panel" parent="Player/Camera2D/Control/gridcontainer"]
 margin_left = 88.0
@@ -876,14 +916,14 @@ margin_top = 22.0
 margin_right = 106.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 18, 18 )
-custom_styles/panel = SubResource( 29 )
+custom_styles/panel = SubResource( 63 )
 
 [node name="slot11" type="Panel" parent="Player/Camera2D/Control/gridcontainer"]
 margin_top = 44.0
 margin_right = 18.0
 margin_bottom = 62.0
 rect_min_size = Vector2( 18, 18 )
-custom_styles/panel = SubResource( 29 )
+custom_styles/panel = SubResource( 63 )
 
 [node name="slot12" type="Panel" parent="Player/Camera2D/Control/gridcontainer"]
 margin_left = 22.0
@@ -891,7 +931,7 @@ margin_top = 44.0
 margin_right = 40.0
 margin_bottom = 62.0
 rect_min_size = Vector2( 18, 18 )
-custom_styles/panel = SubResource( 29 )
+custom_styles/panel = SubResource( 63 )
 
 [node name="slot13" type="Panel" parent="Player/Camera2D/Control/gridcontainer"]
 margin_left = 44.0
@@ -899,7 +939,7 @@ margin_top = 44.0
 margin_right = 62.0
 margin_bottom = 62.0
 rect_min_size = Vector2( 18, 18 )
-custom_styles/panel = SubResource( 29 )
+custom_styles/panel = SubResource( 63 )
 
 [node name="slot14" type="Panel" parent="Player/Camera2D/Control/gridcontainer"]
 margin_left = 66.0
@@ -907,7 +947,7 @@ margin_top = 44.0
 margin_right = 84.0
 margin_bottom = 62.0
 rect_min_size = Vector2( 18, 18 )
-custom_styles/panel = SubResource( 29 )
+custom_styles/panel = SubResource( 63 )
 
 [node name="slot15" type="Panel" parent="Player/Camera2D/Control/gridcontainer"]
 margin_left = 88.0
@@ -915,14 +955,14 @@ margin_top = 44.0
 margin_right = 106.0
 margin_bottom = 62.0
 rect_min_size = Vector2( 18, 18 )
-custom_styles/panel = SubResource( 29 )
+custom_styles/panel = SubResource( 63 )
 
 [node name="slot16" type="Panel" parent="Player/Camera2D/Control/gridcontainer"]
 margin_top = 66.0
 margin_right = 18.0
 margin_bottom = 84.0
 rect_min_size = Vector2( 18, 18 )
-custom_styles/panel = SubResource( 29 )
+custom_styles/panel = SubResource( 63 )
 
 [node name="slot17" type="Panel" parent="Player/Camera2D/Control/gridcontainer"]
 margin_left = 22.0
@@ -930,7 +970,7 @@ margin_top = 66.0
 margin_right = 40.0
 margin_bottom = 84.0
 rect_min_size = Vector2( 18, 18 )
-custom_styles/panel = SubResource( 29 )
+custom_styles/panel = SubResource( 63 )
 
 [node name="slot18" type="Panel" parent="Player/Camera2D/Control/gridcontainer"]
 margin_left = 44.0
@@ -938,7 +978,7 @@ margin_top = 66.0
 margin_right = 62.0
 margin_bottom = 84.0
 rect_min_size = Vector2( 18, 18 )
-custom_styles/panel = SubResource( 29 )
+custom_styles/panel = SubResource( 63 )
 
 [node name="slot19" type="Panel" parent="Player/Camera2D/Control/gridcontainer"]
 margin_left = 66.0
@@ -946,7 +986,7 @@ margin_top = 66.0
 margin_right = 84.0
 margin_bottom = 84.0
 rect_min_size = Vector2( 18, 18 )
-custom_styles/panel = SubResource( 29 )
+custom_styles/panel = SubResource( 63 )
 
 [node name="slot20" type="Panel" parent="Player/Camera2D/Control/gridcontainer"]
 margin_left = 88.0
@@ -954,7 +994,7 @@ margin_top = 66.0
 margin_right = 106.0
 margin_bottom = 84.0
 rect_min_size = Vector2( 18, 18 )
-custom_styles/panel = SubResource( 29 )
+custom_styles/panel = SubResource( 63 )
 
 [node name="stamina" type="ProgressBar" parent="Player/Camera2D/Control"]
 margin_left = -624.0
@@ -979,7 +1019,7 @@ margin_left = 120.0
 margin_top = 232.0
 margin_right = 1160.0
 margin_bottom = 250.0
-custom_fonts/font = SubResource( 30 )
+custom_fonts/font = SubResource( 64 )
 text = "GAME UNKNOWN"
 align = 1
 valign = 1
@@ -1006,7 +1046,7 @@ margin_left = 504.0
 margin_top = 264.0
 margin_right = 776.0
 margin_bottom = 336.0
-custom_fonts/font = SubResource( 31 )
+custom_fonts/font = SubResource( 65 )
 text = "                    Shitty RPG 
             Goodluck with it"
 readonly = true
@@ -1038,7 +1078,7 @@ __meta__ = {
 [node name="CreditsName" type="TextEdit" parent="TitleScreen/Button/Credits"]
 margin_right = 480.0
 margin_bottom = 376.0
-custom_fonts/font = SubResource( 32 )
+custom_fonts/font = SubResource( 66 )
 text = "Credits:
 Torno
 Vinh 
@@ -1048,6 +1088,26 @@ readonly = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Light2D" type="Light2D" parent="."]
+visible = false
+position = Vector2( 416, 248 )
+scale = Vector2( 4.93396, 5.22919 )
+texture = ExtResource( 32 )
+color = Color( 0.952941, 0.623529, 0, 1 )
+energy = 0.34
+shadow_enabled = true
+shadow_color = Color( 1, 1, 1, 0 )
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+visible = false
+position = Vector2( 64, -360 )
+occluder = SubResource( 67 )
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="."]
+visible = false
+position = Vector2( -168, -352 )
+occluder = SubResource( 67 )
 
 [connection signal="pressed" from="TitleScreen/Start" to="Player" method="_on_Start_pressed"]
 [connection signal="pressed" from="TitleScreen/Start" to="TitleScreen" method="_on_Start_pressed"]

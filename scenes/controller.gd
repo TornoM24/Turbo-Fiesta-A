@@ -147,6 +147,8 @@ var phBD = {
 
 func _ready():
 	rng.randomize()
+	get_node ("Control/oc/occluder").hide()
+	get_node ("Control/oc/occluder").modulate.a = 0
 	for x in range (1,5):
 		var path = "Control/Panel/CBPanel2/G" + str(x + 1) + "/"
 		get_node (path).visible = false
@@ -247,74 +249,86 @@ var phEff = [
 func _process(delta):
 	var buttonhost = get_node ("Control/Panel/buttonhost")
 	var selector = get_node("Control/Selector")
-	
-	for enemy in enemyUnit:
-		if enemy.selected:
-			if targeting:
-				selectedTarget = enemy
-				print ("targeting " + enemy.unitName + "!!!")
-				enemy.selected = false
-				cancelTargeting()
-				logSomething (selectedUnit.stats.name + " uses " + targetAbility.name + "!\n")
-				selectedUnit.sprite_attack (targetAbility, selectedTarget)
-				#causeEffect (selectedTarget,targetAbility)
-				selectedUnit.atb_val = 0
-				isSelecting = false
-				selector.visible = false
-			else:
-				enemy.selected = false
-		if enemy.atb_val > 99:
-			var ch = rng.randf_range (0,enemy.abilities.size())
-			var tar = -1
-			while alliesUnit[tar].stats.hp <= 0:
-				tar = rng.randf_range (0, alliesUnit.size())
-			logSomething (enemy.stats.name + " uses " + enemy.abilities[ch].name + "!\n")
-			#enemy.sprite_attack (enemy.abilities[ch],alliesUnit[tar])
-			enemy.glow_cast (enemy.abilities[ch],alliesUnit[tar])
-			enemy.atb_val = 0
-
+	var deads = 0
 	for ally in alliesUnit:
-		if ally.selected:
-			if !targeting:
-				if !ally.atb_val < 100:
-					if !skillPanel.visible:
-						buttonhost.visible = true
-						selectedUnit = ally
-						isSelecting = true
-						selector.visible = true
-						selector.position = Vector2(selectedUnit.position.x+16,selectedUnit.position.y-40)
-				else:
-					get_node("Control/Panel/readyhelper").modulate.a = 1
-				ally.selected = false
-			else:
-				selectedTarget = ally
-				print ("targeting " + ally.unitName + "!!!")
-				ally.selected = false
-				cancelTargeting()
-				selectedUnit.sprite_attack (targetAbility, selectedTarget)
-				#causeEffect (selectedTarget,targetAbility)
-				selectedUnit.atb_val = 0
-				isSelecting = false
-				selector.visible = false
-		else:
-			if !isSelecting:
-				buttonhost.visible = false
-			else:
-				if Input.is_action_pressed("click"):
-					if get_viewport().get_mouse_position().y < 400 && !get_node("Control/Panel/CBPanel").visible && !targeting:
-						#isSelecting = false
-						#selector.visible = false
-						pass
-				pass
-	if targeting:
-		Input.set_custom_mouse_cursor(pointT)
-		if Input.is_action_pressed("right_click"):
-			targeting = false
-			tsPanel.visible = false
-			get_node ("Control/Panel/targethelper").visible = false
-			get_node ("Control/Panel/buttonhost/").visible=true
+		if ally.alive == false:
+			ally.stats.hp = 0
+			deads += 1
+	if deads == alliesUnit.size():
+		get_node ("Control/oc/occluder").show()
+		#yield(get_tree().create_timer(0.1), "timeout")
+		get_node ("Control/oc/occluder").modulate.a += delta
+		#print (str(get_node ("Control/oc/occluder").modulate.a))
+		if get_node ("Control/oc/occluder").modulate.a > 1:
+			get_node("/root/Global").goto_scene("res://scenes/gameover.tscn")
 	else:
-		Input.set_custom_mouse_cursor(pointN)
+		for enemy in enemyUnit:
+			if enemy.selected:
+				if targeting:
+					selectedTarget = enemy
+					print ("targeting " + enemy.unitName + "!!!")
+					enemy.selected = false
+					cancelTargeting()
+					logSomething (selectedUnit.stats.name + " uses " + targetAbility.name + "!\n")
+					selectedUnit.sprite_attack (targetAbility, selectedTarget)
+					#causeEffect (selectedTarget,targetAbility)
+					selectedUnit.atb_val = 0
+					isSelecting = false
+					selector.visible = false
+				else:
+					enemy.selected = false
+			if enemy.atb_val > 99:
+				var ch = rng.randf_range (0,enemy.abilities.size())
+				var tar = rng.randf_range (0, alliesUnit.size()) 
+				while alliesUnit[tar].stats.hp <= 0:
+					tar = rng.randf_range (0, alliesUnit.size())
+				logSomething (enemy.stats.name + " uses " + enemy.abilities[ch].name + "!\n")
+				#enemy.sprite_attack (enemy.abilities[ch],alliesUnit[tar])
+				enemy.glow_cast (enemy.abilities[ch],alliesUnit[tar])
+				enemy.atb_val = 0
+
+		for ally in alliesUnit:
+			if ally.selected:
+				if !targeting:
+					if !ally.atb_val < 100:
+						if !skillPanel.visible:
+							buttonhost.visible = true
+							selectedUnit = ally
+							isSelecting = true
+							selector.visible = true
+							selector.position = Vector2(selectedUnit.position.x+16,selectedUnit.position.y-40)
+					else:
+						get_node("Control/Panel/readyhelper").modulate.a = 1
+					ally.selected = false
+				else:
+					selectedTarget = ally
+					print ("targeting " + ally.unitName + "!!!")
+					ally.selected = false
+					cancelTargeting()
+					selectedUnit.sprite_attack (targetAbility, selectedTarget)
+					#causeEffect (selectedTarget,targetAbility)
+					selectedUnit.atb_val = 0
+					isSelecting = false
+					selector.visible = false
+			else:
+				if !isSelecting:
+					buttonhost.visible = false
+				else:
+					if Input.is_action_pressed("click"):
+						if get_viewport().get_mouse_position().y < 400 && !get_node("Control/Panel/CBPanel").visible && !targeting:
+							#isSelecting = false
+							#selector.visible = false
+							pass
+					pass
+		if targeting:
+			Input.set_custom_mouse_cursor(pointT)
+			if Input.is_action_pressed("right_click"):
+				targeting = false
+				tsPanel.visible = false
+				get_node ("Control/Panel/targethelper").visible = false
+				get_node ("Control/Panel/buttonhost/").visible=true
+		else:
+			Input.set_custom_mouse_cursor(pointN)
 	updateStats(delta)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

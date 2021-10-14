@@ -28,7 +28,7 @@ func _process(delta):
 	if Input.is_action_pressed("shift"):
 		if stamina > 0:
 			if velocity != Vector2(0,0):
-				speed = 400
+				speed = 5000
 				get_node ("smoke").emitting = true
 				stamina -= 0.01
 	else:
