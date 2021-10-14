@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://pixel_panel.theme" type="Theme" id=1]
 [ext_resource path="res://ui/partyview.gd" type="Script" id=2]
@@ -8,26 +8,35 @@
 [ext_resource path="res://gfx/unit/mpbar.png" type="Texture" id=6]
 [ext_resource path="res://gfx/unit/xpbar.png" type="Texture" id=7]
 [ext_resource path="res://gfx/overworld char/derp..png" type="Texture" id=8]
+[ext_resource path="res://font/kissinger_large.tres" type="DynamicFont" id=9]
+[ext_resource path="res://font/kissinger.tres" type="DynamicFont" id=10]
 
 [node name="partyview" type="Node2D"]
-position = Vector2( 72, 0 )
 script = ExtResource( 2 )
 
+[node name="Panel2" type="Panel" parent="."]
+margin_right = 1280.0
+margin_bottom = 704.0
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
 [node name="Panel" type="Panel" parent="."]
-margin_left = 976.0
-margin_top = 64.0
-margin_right = 1200.0
-margin_bottom = 640.0
+margin_left = 1048.0
+margin_top = 16.0
+margin_right = 1272.0
+margin_bottom = 592.0
 theme = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="CP1" type="Panel" parent="."]
-margin_left = 768.0
-margin_top = 64.0
-margin_right = 960.0
-margin_bottom = 640.0
+margin_left = 840.0
+margin_top = 16.0
+margin_right = 1032.0
+margin_bottom = 592.0
 rect_pivot_offset = Vector2( -1064, 344 )
 theme = ExtResource( 1 )
 __meta__ = {
@@ -35,10 +44,10 @@ __meta__ = {
 }
 
 [node name="CP2" type="Panel" parent="."]
-margin_left = 560.0
-margin_top = 64.0
-margin_right = 752.0
-margin_bottom = 640.0
+margin_left = 632.0
+margin_top = 16.0
+margin_right = 824.0
+margin_bottom = 592.0
 rect_pivot_offset = Vector2( 64, 312 )
 theme = ExtResource( 1 )
 __meta__ = {
@@ -46,30 +55,30 @@ __meta__ = {
 }
 
 [node name="CP3" type="Panel" parent="."]
-margin_left = 352.0
-margin_top = 64.0
-margin_right = 544.0
-margin_bottom = 640.0
+margin_left = 424.0
+margin_top = 16.0
+margin_right = 616.0
+margin_bottom = 592.0
 theme = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="CP4" type="Panel" parent="."]
-margin_left = 144.0
-margin_top = 64.0
-margin_right = 336.0
-margin_bottom = 640.0
+margin_left = 216.0
+margin_top = 16.0
+margin_right = 408.0
+margin_bottom = 592.0
 theme = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="CP5" type="Panel" parent="."]
-margin_left = -64.0
-margin_top = 64.0
-margin_right = 128.0
-margin_bottom = 640.0
+margin_left = 8.0
+margin_top = 16.0
+margin_right = 200.0
+margin_bottom = 592.0
 theme = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -77,7 +86,7 @@ __meta__ = {
 
 [node name="HPBar" type="TextureProgress" parent="CP5"]
 margin_left = 16.0
-margin_top = 488.0
+margin_top = 504.0
 margin_right = 176.0
 margin_bottom = 520.0
 rect_pivot_offset = Vector2( 109.152, 12.4213 )
@@ -95,11 +104,13 @@ __meta__ = {
 }
 
 [node name="HPLabel" type="RichTextLabel" parent="CP5/HPBar"]
-margin_top = 8.0
+margin_top = -16.0
 margin_right = 160.0
-margin_bottom = 32.0
+margin_bottom = 8.0
+rect_pivot_offset = Vector2( -97.5616, -53.0251 )
+custom_fonts/normal_font = ExtResource( 10 )
 bbcode_enabled = true
-bbcode_text = "[center]80/80"
+bbcode_text = "[right]80/80"
 text = "80/80"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -107,7 +118,7 @@ __meta__ = {
 
 [node name="MPBar" type="TextureProgress" parent="CP5"]
 margin_left = 16.0
-margin_top = 528.0
+margin_top = 544.0
 margin_right = 176.0
 margin_bottom = 560.0
 rect_pivot_offset = Vector2( 109.152, 12.4213 )
@@ -125,11 +136,12 @@ __meta__ = {
 }
 
 [node name="MPLabel" type="RichTextLabel" parent="CP5/MPBar"]
-margin_top = 8.0
+margin_top = -16.0
 margin_right = 160.0
-margin_bottom = 32.0
+margin_bottom = 8.0
+custom_fonts/normal_font = ExtResource( 10 )
 bbcode_enabled = true
-bbcode_text = "[center]80/80"
+bbcode_text = "[right]80/80"
 text = "80/80"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -137,7 +149,7 @@ __meta__ = {
 
 [node name="EXPBar" type="TextureProgress" parent="CP5"]
 margin_left = 16.0
-margin_top = 464.0
+margin_top = 472.0
 margin_right = 176.0
 margin_bottom = 480.0
 rect_pivot_offset = Vector2( 109.152, 12.4213 )
@@ -154,11 +166,24 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="EXPLabel" type="RichTextLabel" parent="CP5/EXPBar"]
+margin_top = -16.0
+margin_right = 160.0
+custom_fonts/normal_font = ExtResource( 10 )
+bbcode_enabled = true
+bbcode_text = "[right]80/80"
+text = "80/80"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Label1" type="RichTextLabel" parent="CP5"]
 margin_left = 16.0
-margin_top = 432.0
+margin_top = 440.0
 margin_right = 176.0
-margin_bottom = 456.0
+margin_bottom = 464.0
+custom_fonts/normal_font = ExtResource( 9 )
 bbcode_enabled = true
 bbcode_text = "[center]HIRO LV87"
 text = "HIRO LV87"
@@ -170,3 +195,17 @@ __meta__ = {
 position = Vector2( 96, 216 )
 scale = Vector2( 2.39474, 1.716 )
 texture = ExtResource( 8 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CP5"]
+margin_left = 16.0
+margin_top = 416.0
+margin_right = 176.0
+margin_bottom = 448.0
+custom_fonts/normal_font = ExtResource( 10 )
+bbcode_enabled = true
+bbcode_text = "[center] Crimson Daredevil"
+text = " Crimson Daredevil"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}

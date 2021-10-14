@@ -8,6 +8,10 @@
 
 config_version=4
 
+_global_script_classes=[  ]
+_global_script_class_icons={
+}
+
 [application]
 
 config/name="turbo fiesta"
@@ -20,6 +24,10 @@ Global="*res://data/Global.gd"
 Master="*res://data/Master.gd"
 LootTable="*res://data/LootTable.gd"
 
+[debug]
+
+settings/fps/force_fps=60
+
 [display]
 
 window/size/width=1280
@@ -30,6 +38,10 @@ mouse_cursor/custom_image="res://ui/pointer2.png"
 [editor_plugins]
 
 enabled=PoolStringArray(  )
+
+[global]
+
+font=false
 
 [gui]
 

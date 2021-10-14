@@ -129,7 +129,7 @@ func spawnAllies ():
 				get_node("Control/Panel/CBPanel2/G" + str(incrementer)).visible = true
 				var instance = placeholder.instance()
 				add_child(instance)
-				instance.position.x = 780 + (100*x) + (50*y)
+				instance.position.x = 680 + (100*x) + (50*y)
 				instance.position.y = 60 + (100*y)
 				instance.origin = instance.position
 				#instance.get_node("Sprite").texture = defaultSprite
@@ -246,14 +246,37 @@ var phEff = [
 		"acc": 100,
 	}
 ]
+var animTimer = 0
 func _process(delta):
 	var buttonhost = get_node ("Control/Panel/buttonhost")
 	var selector = get_node("Control/Selector")
 	var deads = 0
+	var wins = 0
 	for ally in alliesUnit:
 		if ally.alive == false:
 			ally.stats.hp = 0
 			deads += 1
+	
+	for enemy in enemyUnit:
+		if enemy.alive == false:
+			enemy.stats.hp = 0
+			enemy.enemyDie()
+		if enemy.deathAnimFinished:	
+			wins+=1
+	
+	if wins == enemyUnit.size():
+		get_node ("Control/oc/occluder").show()
+		animTimer += delta
+		while get_node ("Control/oc/occluder").modulate.a < 0.5:
+			if animTimer > 0.1:
+				print (str(get_node ("Control/oc/occluder").modulate.a))
+				get_node ("Control/oc/occluder").modulate.a += 0.1
+				animTimer = 0
+	else:
+		animTimer = 0
+		
+	
+			
 	if deads == alliesUnit.size():
 		get_node ("Control/oc/occluder").show()
 		#yield(get_tree().create_timer(0.1), "timeout")
@@ -263,29 +286,30 @@ func _process(delta):
 			get_node("/root/Global").goto_scene("res://scenes/gameover.tscn")
 	else:
 		for enemy in enemyUnit:
-			if enemy.selected:
-				if targeting:
-					selectedTarget = enemy
-					print ("targeting " + enemy.unitName + "!!!")
-					enemy.selected = false
-					cancelTargeting()
-					logSomething (selectedUnit.stats.name + " uses " + targetAbility.name + "!\n")
-					selectedUnit.sprite_attack (targetAbility, selectedTarget)
-					#causeEffect (selectedTarget,targetAbility)
-					selectedUnit.atb_val = 0
-					isSelecting = false
-					selector.visible = false
-				else:
-					enemy.selected = false
-			if enemy.atb_val > 99:
-				var ch = rng.randf_range (0,enemy.abilities.size())
-				var tar = rng.randf_range (0, alliesUnit.size()) 
-				while alliesUnit[tar].stats.hp <= 0:
-					tar = rng.randf_range (0, alliesUnit.size())
-				logSomething (enemy.stats.name + " uses " + enemy.abilities[ch].name + "!\n")
-				#enemy.sprite_attack (enemy.abilities[ch],alliesUnit[tar])
-				enemy.glow_cast (enemy.abilities[ch],alliesUnit[tar])
-				enemy.atb_val = 0
+			if enemy.alive:
+				if enemy.selected:
+					if targeting:
+						selectedTarget = enemy
+						print ("targeting " + enemy.unitName + "!!!")
+						enemy.selected = false
+						cancelTargeting()
+						logSomething (selectedUnit.stats.name + " uses " + targetAbility.name + "!\n")
+						selectedUnit.sprite_attack (targetAbility, selectedTarget)
+						#causeEffect (selectedTarget,targetAbility)
+						selectedUnit.atb_val = 0
+						isSelecting = false
+						selector.visible = false
+					else:
+						enemy.selected = false
+				if enemy.atb_val > 99:
+					var ch = rng.randf_range (0,enemy.abilities.size())
+					var tar = rng.randf_range (0, alliesUnit.size()) 
+					while alliesUnit[tar].stats.hp <= 0:
+						tar = rng.randf_range (0, alliesUnit.size())
+					logSomething (enemy.stats.name + " uses " + enemy.abilities[ch].name + "!\n")
+					#enemy.sprite_attack (enemy.abilities[ch],alliesUnit[tar])
+					enemy.glow_cast (enemy.abilities[ch],alliesUnit[tar])
+					enemy.atb_val = 0
 
 		for ally in alliesUnit:
 			if ally.selected:
@@ -313,7 +337,12 @@ func _process(delta):
 			else:
 				if !isSelecting:
 					buttonhost.visible = false
+					get_node ("Control/Panel").self_modulate.a = 0
+					get_node ("Control/Panel/namedisplay").modulate.a = 0
 				else:
+					get_node ("Control/Panel").self_modulate.a = 1
+					get_node ("Control/Panel/namedisplay").modulate.a = 1
+					get_node ("Control/Panel/namedisplay/RichTextLabel").bbcode_text = "[center]" + selectedUnit.stats.name
 					if Input.is_action_pressed("click"):
 						if get_viewport().get_mouse_position().y < 400 && !get_node("Control/Panel/CBPanel").visible && !targeting:
 							#isSelecting = false

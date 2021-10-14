@@ -47,6 +47,10 @@ func updateResources():
 	#mpb.value =  (float(stats.mp)/
 const SPEED_MOD = 2000
 var yVelo = -1.3
+var dying
+var deathAnimFinished = false
+func enemyDie():
+	dying = true
 
 func effCall ():
 	get_parent().causeEffect (target,self,ability)
@@ -64,37 +68,51 @@ func animBreak():
 	get_node ("Attack").playing=false
 	
 func _process(delta):
-	updateResources()
-	atb_prog += delta
-	if atb_prog >= 0.01 && !inAnimation &&!animStun:
-		atb_val += float (stats.spd)/10
-		atb_prog = 0
-	if inAnimation:
-		if type !="ranged":
-			position=position.move_toward(target.position + Vector2 (50,0), delta * SPEED_MOD)
-			if global_position == target.position + Vector2 (50,0):
+	if !dying:
+		updateResources()
+		atb_prog += delta
+		if atb_prog >= 0.01 && !inAnimation &&!animStun:
+			atb_val += float (stats.spd)/10
+			atb_prog = 0
+		if inAnimation:
+			if type !="ranged":
+				position=position.move_toward(target.position + Vector2 (50,0), delta * SPEED_MOD)
+				if global_position == target.position + Vector2 (50,0):
+					animReset()
+					inAnimation = false
+			else:
 				animReset()
 				inAnimation = false
-		else:
-			animReset()
-			inAnimation = false
-	if inRecovery:
-		if type !="ranged":
-			position=position.move_toward(origin, delta * SPEED_MOD)
-			if global_position == origin:
+		if inRecovery:
+			if type !="ranged":
+				position=position.move_toward(origin, delta * SPEED_MOD)
+				if global_position == origin:
+					animBreak()
+					inRecovery = false
+					animStun = false
+			else:
 				animBreak()
 				inRecovery = false
 				animStun = false
-		else:
-			animBreak()
-			inRecovery = false
-			animStun = false
-	if stats.hp <= 0:
-		stats.hp = 0
-		alive = false
+		if stats.hp <= 0:
+			stats.hp = 0
+			alive = false
+	else:
+		die()
+		yield(get_tree().create_timer(1), "timeout")
+		deathAnimFinished = true
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+func die():
+	var spr = get_node ("UnitSprite")
+	for x in range (0,20):
+		get_node("HPBar").hide()
+		get_node("ATBBar").hide()
+		animStun = true
+		spr.modulate.r = 1.5
+		spr.modulate.b = 1.5
+		spr.modulate.a -= 0.05
 func glow ():
 	var spr = get_node ("UnitSprite")
 	yield(get_tree().create_timer(0.10), "timeout")
