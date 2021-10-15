@@ -26,7 +26,7 @@ var unitDict = {
 		\"spd\" : 20,
 		\"luk\" : 8
 	},
-	\"abilities\": [bMas[\"attack_crimson_saber_hiro\"],bMas[\"buff_scarlet_blaze\"],bMas[\"buff_all_heal_hiro\"]]
+	\"abilities\": [bMas[\"attack_final_flare_hiro\"],bMas[\"attack_crimson_saber_hiro\"],bMas[\"buff_scarlet_blaze\"],bMas[\"buff_all_heal_hiro\"]]
 }
 
 # Called when the node enters the scene tree for the first time.

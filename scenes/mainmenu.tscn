@@ -15,13 +15,13 @@ __meta__ = {
 }
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
-margin_left = 896.0
+margin_left = 832.0
 margin_top = 192.0
-margin_right = 1280.0
+margin_right = 1216.0
 margin_bottom = 384.0
 bbcode_enabled = true
-bbcode_text = "featuring:
-
+bbcode_text = "[right]
+featuring:
 [wave amp=50 freq=2]My Balls[/wave]
 
 Also, My Balls
@@ -29,8 +29,8 @@ Also, My Balls
 IN MEMORIAM
 
 [wave amp=50 freq=2]My Actual Balls[/wave]"
-text = "featuring:
-
+text = "
+featuring:
 My Balls
 
 Also, My Balls
@@ -67,11 +67,13 @@ __meta__ = {
 }
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="."]
-margin_left = 896.0
+margin_left = 848.0
 margin_top = 136.0
-margin_right = 1264.0
+margin_right = 1216.0
 margin_bottom = 224.0
 custom_fonts/normal_font = ExtResource( 3 )
+bbcode_enabled = true
+bbcode_text = "[right]Eat My Shorts"
 text = "Eat My Shorts"
 __meta__ = {
 "_edit_use_anchors_": false

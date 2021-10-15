@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/mc2-1.png-29f10dcffb7b03f9686a45c4076bb9ce.stex"
+path="res://.import/panel7.png-86ef0c084a4207a57e14598a6e766f10.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://data/unit/stella/art/mc2-1.png"
-dest_files=[ "res://.import/mc2-1.png-29f10dcffb7b03f9686a45c4076bb9ce.stex" ]
+source_file="res://ui/panel7.png"
+dest_files=[ "res://.import/panel7.png-86ef0c084a4207a57e14598a6e766f10.stex" ]
 
 [params]
 

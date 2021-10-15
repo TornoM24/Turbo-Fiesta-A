@@ -23,10 +23,10 @@ var unitDict = {
 		\"int\" : 9,
 		\"wis\" : 10,
 		\"apt\" : 4,
-		\"spd\" : 4,
+		\"spd\" : 90,
 		\"luk\" : 8
 	},
-	\"abilities\": [bMas[\"attack_stardust_ray_stella\"],bMas[\"spell_pur\"]]
+	\"abilities\": [bMas[\"attack_stardust_ray_stella\"],bMas[\"spell_pur\"],bMas[\"spell_flare\"]]
 }
 
 # Called when the node enters the scene tree for the first time.

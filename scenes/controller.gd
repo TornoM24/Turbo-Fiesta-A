@@ -189,9 +189,9 @@ func causeEffect (target,source,ability):
 	var label = load ("res://ui/dmglabel.tscn")
 	var fPower = 0
 	var eff = ability.effects
-	print ("mp first " + str(source.mp))
+	#print ("mp first " + str(source.mp))
 	source.stats.mp -= ability.cost
-	print ("mp after " + str(source.mp))
+	#print ("mp after " + str(source.mp))
 	for block in eff:
 		if block.type == "damage":
 			fPower = getPower (block,source)
@@ -205,6 +205,17 @@ func causeEffect (target,source,ability):
 				dmgLabel.get_node("RichTextLabel").bbcode_text = "[wave amp=50 freq=2]"+str(fPower)+"[/wave]"
 				dmgLabel.modulate.r = 2
 				logSomething (target.stats.name + " takes [color=red]" + str (fPower) + "[/color] damage!\n")
+			if block.target == "self":
+				var dmgLabel = label.instance()
+				var power = block.power
+				source.stats.hp -= power
+				if source.stats.hp > source.stats.mhp:
+					source.stats.hp = source.stats.mhp
+				add_child (dmgLabel)
+				dmgLabel.global_position = source.global_position + Vector2 (0, -10)
+				dmgLabel.get_node("RichTextLabel").bbcode_text = "[wave amp=50 freq=2]"+str(power)+"[/wave]"
+				dmgLabel.modulate.r = 2
+				logSomething (source.stats.name + " takes [color=red]" + str (power) + "[/color] damage!\n")
 		if block.type == "healing":
 			fPower = getPower (block,source)
 			if block.target == "single":
@@ -256,6 +267,7 @@ func _process(delta):
 		if ally.alive == false:
 			ally.stats.hp = 0
 			deads += 1
+			ally.inDead = true
 	
 	for enemy in enemyUnit:
 		if enemy.alive == false:
@@ -265,12 +277,14 @@ func _process(delta):
 			wins+=1
 	
 	if wins == enemyUnit.size():
-		get_node ("Control/oc/occluder").show()
+		print ("ok u win bro")
+		var z = get_node ("Control/oc/occluder")
+		z.show()
 		animTimer += delta
-		while get_node ("Control/oc/occluder").modulate.a < 0.5:
-			if animTimer > 0.1:
-				print (str(get_node ("Control/oc/occluder").modulate.a))
-				get_node ("Control/oc/occluder").modulate.a += 0.1
+		if z.modulate.a < 0.5:
+			if animTimer > 0.01:
+				print (str(z.modulate.a))
+				z.modulate.a += 0.01
 				animTimer = 0
 	else:
 		animTimer = 0
@@ -312,7 +326,7 @@ func _process(delta):
 					enemy.atb_val = 0
 
 		for ally in alliesUnit:
-			if ally.selected:
+			if ally.selected && ally.alive:
 				if !targeting:
 					if !ally.atb_val < 100:
 						if !skillPanel.visible:

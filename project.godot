@@ -45,6 +45,7 @@ font=false
 
 [gui]
 
+theme/custom="res://pixel_panel.theme"
 theme/custom_font="res://font/pixelmix.tres"
 timers/tooltip_delay_sec=0.25
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://scenes/maps/runbutton.gd" type="Script" id=1]
 [ext_resource path="res://scenes/maps/scripts/control.gd" type="Script" id=2]
@@ -23,6 +23,8 @@
 [ext_resource path="res://font/pixelmix_small2.tres" type="DynamicFont" id=21]
 [ext_resource path="res://scenes/MPBar.gd" type="Script" id=22]
 [ext_resource path="res://pixel_panel_3.theme" type="Theme" id=23]
+[ext_resource path="res://pixel_panel_4.theme" type="Theme" id=24]
+[ext_resource path="res://gfx/bg/bg_plain.png" type="Texture" id=25]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 4
@@ -75,6 +77,11 @@ animations = [ {
 [node name="Controller" type="Node2D"]
 script = ExtResource( 3 )
 
+[node name="bg" type="Sprite" parent="."]
+position = Vector2( 640, 359 )
+scale = Vector2( 4, 4.01111 )
+texture = ExtResource( 25 )
+
 [node name="Control" type="Control" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0
@@ -89,6 +96,7 @@ margin_right = 256.0
 margin_bottom = 720.0
 theme = ExtResource( 7 )
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -649,8 +657,8 @@ __meta__ = {
 [node name="Panel" type="Panel" parent="Control/Panel/CBPanel/specialscroll"]
 self_modulate = Color( 1, 1, 1, 0 )
 margin_right = 575.0
-margin_bottom = 999.0
-rect_min_size = Vector2( 575, 999 )
+margin_bottom = 250.0
+rect_min_size = Vector2( 575, 250 )
 
 [node name="testbutton" type="Button" parent="Control/Panel"]
 margin_left = 1128.0
@@ -713,7 +721,7 @@ __meta__ = {
 visible = false
 position = Vector2( 488, 136 )
 frames = SubResource( 9 )
-frame = 5
+frame = 2
 speed_scale = 2.0
 playing = true
 
@@ -728,6 +736,16 @@ margin_left = -24.0
 margin_top = -24.0
 margin_right = 1320.0
 margin_bottom = 760.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Reader" type="Panel" parent="Control"]
+margin_left = 984.0
+margin_top = 8.0
+margin_right = 1576.0
+margin_bottom = 48.0
+theme = ExtResource( 24 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

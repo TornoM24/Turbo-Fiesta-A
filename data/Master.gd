@@ -24,7 +24,7 @@ var ability_dict = {
 		]
 	},
 	"attack_crimson_saber_hiro":{
-		"name": "[Hiro] Crimson Saber",
+		"name": "Crimson Saber",
 		"id":"attack_crimson_saber_hiro",
 		"type":"phys",
 		"icon":"sword",
@@ -41,10 +41,36 @@ var ability_dict = {
 			}
 		]
 	},
+	"attack_final_flare_hiro":{
+		"name": "Final Flare",
+		"id":"attack_final_flare_hiro",
+		"type":"ranged",
+		"icon":"sword",
+		"desc": "Unleashes Hiro's inner power, dealing massive fire damage to both him and the enemy.",
+		"cost": 0,
+		"effects": [
+			{
+				"type": "damage",
+				"target": "single",
+				"elements": ["fire"],
+				"scaling": ["atk"],
+				"power": 1000,
+				"acc": 100,
+			},
+			{
+				"type": "damage",
+				"target": "self",
+				"elements": ["fire"],
+				"scaling": ["atk"],
+				"power": 9999,
+				"acc": 100,
+			}
+		]
+	},
 	"buff_scarlet_blaze":{
-		"name": "[Hiro] Scarlet Blaze",
+		"name": "Scarlet Blaze",
 		"id":"buff_scarlet_blaze",
-		"type":"phys",
+		"type":"magic",
 		"desc": "Increases SPD by 50% and increases ATK by 25% for 5 turns.",
 		"cost": 10,
 		"effects": [
@@ -63,9 +89,9 @@ var ability_dict = {
 		]
 	},
 	"buff_all_heal_hiro":{
-		"name": "[Hiro] 'Don't die on me!'",
+		"name": "'Don't die on me!'",
 		"id":"buff_all_heal_hiro",
-		"type":"white",
+		"type":"magic",
 		"icon":"wht_mag",
 		"desc": "Heals all allies slightly.",
 		"cost": 10,
@@ -79,7 +105,7 @@ var ability_dict = {
 		]
 	},
 	"attack_stardust_ray_stella":{
-		"name": "[Stella] Stardust Ray",
+		"name": "Stardust Ray",
 		"id":"attack_stardust_ray_stella",
 		"type":"ranged",
 		"icon":"shoot",
@@ -96,10 +122,10 @@ var ability_dict = {
 			}
 		]
 	},
-	"spell_pur":{ #Pur, Pura, Purafa, Purafaca, Purafacta
+	"spell_pur":{ #Pur, Pura, Purada, Purafada, Purafacta
 		"name": "Pur",
 		"id":"spell_pur",
-		"type":"white",
+		"type":"magic",
 		"icon":"wht_mag",
 		"desc": "Heals a target for a slight amount of health.",
 		"cost": 5,
@@ -109,6 +135,40 @@ var ability_dict = {
 				"target": "single",
 				"scaling" : ["wis","int"],
 				"power": 100,
+			}
+		]
+	},
+	"spell_flare":{ #Flare, Flara, Flarada, Flarafada, Flarafacta
+		"name": "Flare",
+		"id":"spell_flare",
+		"type":"magic",
+		"icon":"blk_mag",
+		"desc": "Summons a ball of raw thermal energy, then casts it at the target.\n An elementary spell with numerous uses and a great amount of potential.\n[color=red]The flame sings its siren song, but only few feel its voice.[/color]",
+		"cost": 5,
+		"effects": [
+			{
+				"type": "damage",
+				"target": "single",
+				"scaling" : ["int"],
+				"elements" : ["fire"],
+				"power": 110,
+			}
+		]
+	},
+	"spell_alflare":{ #AlFlare, AlFlara, AlFlarada, AlFlarafada, AlFlarafacta
+		"name": "AlFlare",
+		"id":"spell_alflare",
+		"type":"magic",
+		"icon":"blk_mag",
+		"desc": "Summons several balls of thermal energy, which are then cast over a large area.\nMost often employed by affiliated mages due to its ease of use\nand incredible area-of-effect.",
+		"cost": 13,
+		"effects": [
+			{
+				"type": "damage",
+				"target": "single",
+				"scaling" : ["int"],
+				"elements" : ["fire"],
+				"power": 90,
 			}
 		]
 	}

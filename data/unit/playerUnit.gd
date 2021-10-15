@@ -30,6 +30,7 @@ var inAnimation = false
 var inRecovery = false
 var animStun = false
 var alive = true
+var inDead = false
 
 var type
 var ability 
@@ -51,6 +52,11 @@ var dying
 var deathAnimFinished = false
 func enemyDie():
 	dying = true
+func allyDie():
+	get_node ("AnimatedSprite").hide()
+	#get_node ("UnitSprite").texture = load ("res://data/unit/"+unitName+"/art/"+unitName+"_dead.png")
+	get_node ("UnitSprite").texture = load ("res://data/unit/hiro/art/hiro_dead.png")
+	get_node ("UnitSprite").show()
 
 func effCall ():
 	get_parent().causeEffect (target,self,ability)
@@ -68,6 +74,8 @@ func animBreak():
 	get_node ("Attack").playing=false
 	
 func _process(delta):
+	if inDead:
+		allyDie()
 	if !dying:
 		updateResources()
 		atb_prog += delta
@@ -75,7 +83,7 @@ func _process(delta):
 			atb_val += float (stats.spd)/10
 			atb_prog = 0
 		if inAnimation:
-			if type !="ranged":
+			if type !="ranged" and type!= "magic":
 				position=position.move_toward(target.position + Vector2 (50,0), delta * SPEED_MOD)
 				if global_position == target.position + Vector2 (50,0):
 					animReset()
@@ -84,7 +92,7 @@ func _process(delta):
 				animReset()
 				inAnimation = false
 		if inRecovery:
-			if type !="ranged":
+			if type !="ranged" and type!= "magic":
 				position=position.move_toward(origin, delta * SPEED_MOD)
 				if global_position == origin:
 					animBreak()
@@ -150,6 +158,11 @@ func sprite_attack (abi, tar):
 	#print (type)
 	inAnimation = true
 	animStun = true
+	if type == "magic":
+		get_node ("Attack").frames = load ("res://data/unit/"+unitName+"/art/"+unitName+"_cast.tres")
+		get_node ("CastParticles").emitting = true
+	else:
+		get_node ("Attack").frames = load ("res://data/unit/"+unitName+"/art/"+unitName+"_attack.tres")
 	yVelo = -2.6
 	origin = global_position
 	

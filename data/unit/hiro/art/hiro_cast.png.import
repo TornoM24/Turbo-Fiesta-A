@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/mc2-1.png-29f10dcffb7b03f9686a45c4076bb9ce.stex"
+path="res://.import/hiro_cast.png-955683393f370048a0acebb68913c6bb.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://data/unit/stella/art/mc2-1.png"
-dest_files=[ "res://.import/mc2-1.png-29f10dcffb7b03f9686a45c4076bb9ce.stex" ]
+source_file="res://data/unit/hiro/art/hiro_cast.png"
+dest_files=[ "res://.import/hiro_cast.png-955683393f370048a0acebb68913c6bb.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/mc2-1.png-29f10dcffb7b03f9686a45c4076bb9ce.stex"
+path="res://.import/bg_plain.png-dfe32ee9ae91783de303023e3126ccab.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://data/unit/stella/art/mc2-1.png"
-dest_files=[ "res://.import/mc2-1.png-29f10dcffb7b03f9686a45c4076bb9ce.stex" ]
+source_file="res://gfx/bg/bg_plain.png"
+dest_files=[ "res://.import/bg_plain.png-dfe32ee9ae91783de303023e3126ccab.stex" ]
 
 [params]
 

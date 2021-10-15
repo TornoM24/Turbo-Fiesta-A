@@ -1,0 +1,43 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://pixel_panel.theme" type="Theme" id=1]
+[ext_resource path="res://font/kissinger.tres" type="DynamicFont" id=2]
+[ext_resource path="res://ui/panel_set.gd" type="Script" id=3]
+
+[node name="panel" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="Panel" type="Panel" parent="."]
+margin_left = 272.0
+margin_top = 128.0
+margin_right = 1008.0
+margin_bottom = 256.0
+theme = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ability_desc" type="RichTextLabel" parent="Panel"]
+margin_left = 8.0
+margin_top = 40.0
+margin_right = 728.0
+margin_bottom = 120.0
+custom_fonts/normal_font = ExtResource( 2 )
+bbcode_enabled = true
+bbcode_text = "Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text "
+text = "Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ability_name" type="RichTextLabel" parent="Panel"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 728.0
+margin_bottom = 32.0
+bbcode_enabled = true
+bbcode_text = "Ability"
+text = "Ability"
+__meta__ = {
+"_edit_use_anchors_": false
+}

@@ -64,13 +64,18 @@ func generateTip (ability):
 					elements += z
 			scalers=scalers.to_upper()
 			elements=elements.to_upper()
-			tipText += "EFFECT "+ str (inc)+ ": Deals " + str(x.power) + "% of character's " + scalers + " as " + elements + " damage."
+			if x.target == "single":
+				tipText += "EFFECT "+ str (inc)+ ": Deals " + str(x.power) + "% of character's " + scalers + " as " + elements + " damage."
+			elif x.target == "self":
+				tipText += "EFFECT "+ str (inc)+ ": Deals " + str(x.power) + " " + elements + " damage to self."
+		tipText+= "\n\n"
 	return tipText
 		
 func _on_special_pressed():
 	skillPanel.visible = !skillPanel.visible
 	tsPanel.visible = !tsPanel.visible
 	get_node ("Panel/CBPanel/specialscroll").scroll_vertical = 0
+	get_node("Panel/CBPanel/specialscroll/Panel").rect_min_size.y = 0
 	var unitGet = get_parent().selectedUnit
 	var yOffset = 0
 	var xOffset = 0
@@ -82,41 +87,50 @@ func _on_special_pressed():
 		newButton.uName = ability.name
 		newButton.aName = ability.id
 		get_node("Panel/CBPanel/specialscroll/Panel").add_child(newButton)
-		print (newButton.get_parent().get_parent().get_parent().get_parent().get_parent().name)
+		#print (newButton.get_parent().get_parent().get_parent().get_parent().get_parent().name)
+		#print (newButton.get_tree().get_root().get_node("Controller/Control").name)
 		newButton.global_position = newButton.get_parent().rect_global_position + Vector2(20 + xOffset,20 + yOffset)
-		newButton.get_node ("Button").connect ("pressed",newButton.get_parent().get_parent().get_parent().get_parent().get_parent(), "_on_ability_pressed", [newButton])
+		#newButton.get_node ("Button").connect ("pressed",newButton.get_tree().get_root().get_node("Controller/Control"), "_on_ability_pressed", [newButton])
 		newButton.get_node ("MPLabel").bbcode_text = "MP [color=#00c8ff]" + str(ability.cost) + "[/color]"
 		#if xOffset == 0:
 		#	xOffset = 200
 		#else:
 		#	xOffset = 0
 		yOffset += 70
+		get_node("Panel/CBPanel/specialscroll/Panel").rect_min_size.y += yOffset - 70
 		get_node ("Panel/buttonhost/").visible=false
 	
-func _on_ability_pressed(bHost):
-	print ("get pressed!")
-	var selector = get_parent().get_node("Control/Selector")
-	var flag = false
-	for x in Master.ability_dict[bHost.aName].effects:
-		if x.target == "all allies":
-			var par = get_parent()
-			get_parent().causeEffect (par.selectedTarget,par.selectedUnit,Master.ability_dict[bHost.aName])
-			get_parent().cancelTargeting()
-			par.skillPanel.visible = false
-			par.selectedUnit.atb_val = 0
-			par.isSelecting = false
-			selector.visible = false
-		else:
-			bHost.selected = false
-			skillPanel.visible = false
-			#tsPanel.visible = false
-			bHost.visible = false
-			get_parent().targeting = true
-			get_parent().targetAbility = Master.ability_dict[bHost.aName]
-			get_node ("Panel/targethelper").visible = true
-			 
-	bHost.queue_free()
-			
+func ability_pressed(bHost, inputType):
+	#print (inputType)
+	if inputType == 1:
+		#print ("get pressed!")
+		var selector = get_parent().get_node("Control/Selector")
+		var flag = false
+		for x in Master.ability_dict[bHost.aName].effects:
+			if x.target == "all allies":
+				var par = get_parent()
+				get_parent().selectedUnit.sprite_attack(Master.ability_dict[bHost.aName],par.selectedUnit)
+				get_parent().cancelTargeting()
+				par.skillPanel.visible = false
+				par.selectedUnit.atb_val = 0
+				par.isSelecting = false
+				selector.visible = false
+			else:
+				bHost.selected = false
+				skillPanel.visible = false
+				#tsPanel.visible = false
+				bHost.visible = false
+				get_parent().targeting = true
+				get_parent().targetAbility = Master.ability_dict[bHost.aName]
+				get_node ("Panel/targethelper").visible = true
+		bHost.queue_free()
+	elif inputType == 2:
+		print ("aawawa")
+		var x = load("res://ui/ability_hint.tscn").instance()
+		x.generateTip (Master.ability_dict[bHost.aName])
+		get_parent().add_child(x)
+		#yield(get_tree().create_timer(0.001), "timeout") 
+		get_tree().paused = true
 
 func _on_defend_pressed():
 	pass # Replace with function body.

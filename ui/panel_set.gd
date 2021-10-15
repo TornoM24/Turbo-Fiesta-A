@@ -1,4 +1,4 @@
-extends AnimatedSprite
+extends Node2D
 
 
 # Declare member variables here. Examples:
@@ -10,16 +10,10 @@ extends AnimatedSprite
 func _ready():
 	pass # Replace with function body.
 
+func setText (title, desc):
+	get_node ("Panel/ability_name").bbcode_text = title
+	get_node ("Panel/ability_desc").bbcode_text = desc
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
-
-
-func _on_Attack_animation_finished():
-	self.playing = false
-	get_parent().inRecovery = true
-	get_parent().effCall()
-	get_parent().yVelo = -1.7
-	get_parent().get_node ("CastParticles").emitting = false
-	pass # Replace with function body.
