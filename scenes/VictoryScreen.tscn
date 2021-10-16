@@ -1,0 +1,35 @@
+[gd_scene format=2]
+
+[node name="VictoryScreen" type="Node2D"]
+
+[node name="Panel" type="Panel" parent="."]
+margin_left = 128.0
+margin_top = 64.0
+margin_right = 832.0
+margin_bottom = 640.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel2" type="Panel" parent="."]
+margin_left = 896.0
+margin_top = 64.0
+margin_right = 1152.0
+margin_bottom = 640.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VictoryLabel" type="RichTextLabel" parent="."]
+margin_left = 144.0
+margin_top = 80.0
+margin_right = 312.0
+margin_bottom = 144.0
+bbcode_enabled = true
+bbcode_text = "[wave]Victory!"
+text = "Victory!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Units" type="Node2D" parent="."]

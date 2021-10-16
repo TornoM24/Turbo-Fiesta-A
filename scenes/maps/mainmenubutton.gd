@@ -14,3 +14,4 @@ func _ready():
 func _button_pressed():
 	print("go")
 	get_node("/root/Global").goto_scene("res://scenes/mainmenu.tscn")
+	get_tree().paused = false

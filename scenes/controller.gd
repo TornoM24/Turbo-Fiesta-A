@@ -277,7 +277,7 @@ func _process(delta):
 			wins+=1
 	
 	if wins == enemyUnit.size():
-		print ("ok u win bro")
+		#print ("ok u win bro")
 		var z = get_node ("Control/oc/occluder")
 		z.show()
 		animTimer += delta
@@ -286,6 +286,8 @@ func _process(delta):
 				print (str(z.modulate.a))
 				z.modulate.a += 0.01
 				animTimer = 0
+		if z.modulate.a >= 0.5:
+			get_node("/root/Global").goto_scene("res://scenes/maps/hub.tscn")
 	else:
 		animTimer = 0
 		
