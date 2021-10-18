@@ -10,15 +10,14 @@ extends Button
 func _ready():
 	var button = self
 	button.connect("pressed", self, "_button_pressed")
+	button.connect("pressed", self, "_button_pressed")
 	button.connect("mouse_entered", self, "_mouse_entered")
 	button.connect("mouse_exited", self, "_mouse_exited")
 	oPos = self.rect_position
 
 func _button_pressed():
-	print("go")
-	Master.new_game()
-	Master.load_game()
-	get_node("/root/Global").goto_scene("res://scenes/maps/hub.tscn")
+	get_tree().quit()
+
 var oPos
 func _mouse_entered():
 	var tween = get_parent().get_node("Tween")
