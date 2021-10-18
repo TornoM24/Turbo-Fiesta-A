@@ -21,6 +21,7 @@ func open_menu():
 	path_menu.pause_mode = PAUSE_MODE_PROCESS
 	get_parent().get_node("oc").show()
 	get_parent().get_node("menupanel/partyview").cards_show()
+	get_parent().get_node("menupanel/partyview").switch_modes (false)
 	get_tree().paused = true
 
 func _button_pressed():

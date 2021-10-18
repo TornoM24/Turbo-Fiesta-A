@@ -39,6 +39,7 @@ __meta__ = {
 [node name="Tween" type="Tween" parent="."]
 
 [node name="C5" type="Node2D" parent="."]
+visible = false
 position = Vector2( 840, 16 )
 
 [node name="Card" type="Panel" parent="C5"]
@@ -178,6 +179,7 @@ __meta__ = {
 }
 
 [node name="C4" type="Node2D" parent="."]
+visible = false
 position = Vector2( 632, 16 )
 
 [node name="Card" type="Panel" parent="C4"]
@@ -317,6 +319,7 @@ __meta__ = {
 }
 
 [node name="C3" type="Node2D" parent="."]
+visible = false
 position = Vector2( 424, 16 )
 
 [node name="Card" type="Panel" parent="C3"]
@@ -456,6 +459,7 @@ __meta__ = {
 }
 
 [node name="C2" type="Node2D" parent="."]
+visible = false
 position = Vector2( 216, 16 )
 
 [node name="Card" type="Panel" parent="C2"]
@@ -732,3 +736,128 @@ scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="StatsPanel" type="Panel" parent="."]
+margin_left = 208.0
+margin_top = 16.0
+margin_right = 1032.0
+margin_bottom = 592.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tabs" type="TabContainer" parent="StatsPanel"]
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 808.0
+margin_bottom = 560.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Stats" type="Panel" parent="StatsPanel/Tabs"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 16.0
+margin_top = 16.0
+margin_right = -776.0
+margin_bottom = -536.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="RichTextLabel" parent="StatsPanel/Tabs/Stats"]
+margin_left = 8.0
+margin_top = 24.0
+margin_right = 256.0
+margin_bottom = 48.0
+bbcode_enabled = true
+bbcode_text = "STATS"
+text = "STATS"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="StatsPanel/Tabs/Stats"]
+margin_left = 16.0
+margin_top = 48.0
+margin_right = 256.0
+margin_bottom = 520.0
+rect_pivot_offset = Vector2( 1264, 616 )
+custom_fonts/normal_font = ExtResource( 10 )
+bbcode_enabled = true
+bbcode_text = "ATK : 10 [color=lime]⬆23[/color]
+ATK : 10
+ATK : 10
+ATK : 10
+ATK : 10
+ATK : 10
+ATK : 10
+ATK : 10
+ATK : 10
+ATK : 10
+ATK : 10
+ATK : 10
+ATK : 10
+ATK : 10
+"
+text = "ATK : 10 ⬆23
+ATK : 10
+ATK : 10
+ATK : 10
+ATK : 10
+ATK : 10
+ATK : 10
+ATK : 10
+ATK : 10
+ATK : 10
+ATK : 10
+ATK : 10
+ATK : 10
+ATK : 10
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Equipment" type="Control" parent="StatsPanel/Tabs"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 34.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="StatsPanel/Tabs/Equipment"]
+margin_left = 12.0
+margin_top = 6.0
+margin_right = 772.0
+margin_bottom = 110.0
+scroll_vertical_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="StatsPanel/Tabs/Equipment/ScrollContainer"]
+margin_right = 1520.0
+margin_bottom = 104.0
+rect_min_size = Vector2( 1520, 104 )
+
+[node name="Abilities" type="Control" parent="StatsPanel/Tabs"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 34.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="Growth" type="Control" parent="StatsPanel/Tabs"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 34.0
+margin_right = -4.0
+margin_bottom = -4.0

@@ -22,13 +22,13 @@ var ability_dict = {
 				"acc": 100,
 			}
 		]
-	},
+	},	
 	"attack_crimson_saber_hiro":{
 		"name": "Crimson Saber",
 		"id":"attack_crimson_saber_hiro",
 		"type":"phys",
 		"icon":"sword",
-		"desc": "Strikes a single enemy, dealing fire/physical damage.",
+		"desc": "Attacks with Hiro's Crimson Saber, dealing physical/fire damage.",
 		"cost": 0,
 		"effects": [
 			{
@@ -38,6 +38,24 @@ var ability_dict = {
 				"scaling": ["atk"],
 				"power": 100,
 				"acc": 100,
+			}
+		]
+	},
+	"attack_iai_alan":{
+		"name": "Iai Draw",
+		"id":"attack_iai_alan",
+		"type":"phys",
+		"icon":"sword",
+		"desc": "Performs a rapid draw, dealing physical damage with a high critical ratio.",
+		"cost": 0,
+		"effects": [
+			{
+				"type": "damage",
+				"target": "single",
+				"elements": ["physical"],
+				"scaling": ["atk"],
+				"power": 100,
+				"acc": 200,
 			}
 		]
 	},
@@ -143,7 +161,7 @@ var ability_dict = {
 		"id":"spell_flare",
 		"type":"magic",
 		"icon":"blk_mag",
-		"desc": "Summons a ball of raw thermal energy, then casts it at the target.\n An elementary spell with numerous uses and a great amount of potential.\n[color=red]The flame sings its siren song, but only few feel its voice.[/color]",
+		"desc": "Summons a ball of raw thermal energy, then casts it at the target.\n An elementary spell with numerous uses and a great amount of potential.\n[color=gray]The flame sings its siren song, but only few feel its voice.[/color]",
 		"cost": 5,
 		"effects": [
 			{
@@ -176,19 +194,60 @@ var ability_dict = {
 
 var equip_dict = {
 	"hiro_heirloom":{
-		"name": "Hiro's Heirloom Medallion",
-		"desc": "A medallion passed down through Hiro's family. Contains a picture of his parents.",
+		"name": "Hiro's Heirloom",
+		"desc": """
+			A strange medallion in Hiro's possession, which contains 
+			an unusual pebble-sized gemstone that radiates with energy. If 
+			touched, the gem shimmers with a vibrant, pulsing crimson light. 
+			The nostalgic red shine reminds Hiro of sanguine memories, which he 
+			holds dear to his heart.""",
 		"stats": {
 			"hp":10,
-			"mp":10,
-			"spd":5,
-			"def":1
+			"def":10
 		},
 		"effects":[
 			{
 				"type":"restoration",
 				"resource":"hp",
 				"power":5
+			}
+		]
+	},
+	"alan_foraged_blade":{
+		"name": "Foraged Blade",
+		"desc": """
+			A beautifully-forged curved sword from a distant land forgotten with time. 
+			Through an esoteric and long-gone process, the sharpened edge of the blade was 
+			forged to excel in slicing through unprotected flesh like paper with its smooth cutting edge. 
+			Found in Alan's possession, though when questioned he says he's simply 
+			'always had it', and to 'stop asking questions.'""",
+		"stats": {
+			"spd":2,
+			"atk":10
+		},
+		"effects":[
+			{
+				"type":"ability",
+				"misc":"attack_iai_alan"
+			}
+		]
+	},
+	"stella_shard_coat":{
+		"name": "Shard Coat",
+		"desc": """
+			A radiant, white-and-gold hoodie-style coat worn by Stella. 
+			The golden embellishments magnify the strength of magical power, and 
+			simultaneously appear to react to emotions that coalesce around 
+			the wearer by twitching energetically. According to Stella, 
+			these implements also approve of her wit, to the tired agreement of her companions.""",
+		"stats": {
+			"int":4,
+			"wis":8
+		},
+		"effects":[
+			{
+				"type":"effect",
+				"misc":"buff_golden_gleam"
 			}
 		]
 	}

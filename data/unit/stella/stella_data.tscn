@@ -13,7 +13,6 @@ var unitName = \"stella\"
 var unitDict = {
 	\"name\" : \"Stella\",
 	\"title\": \"Shining Stardust\",
-	\"awakened_title\": \"Celestial Cannon\",
 	\"bio\" : \"Hiro's childhood friend, who ooh eeh eeh ah ah ting tang walla walla bing bang\",
 	\"stats\": {
 		\"hp\" : 25,
@@ -23,7 +22,7 @@ var unitDict = {
 		\"int\" : 9,
 		\"wis\" : 10,
 		\"apt\" : 4,
-		\"spd\" : 90,
+		\"spd\" : 2,
 		\"luk\" : 8
 	},
 	\"abilities\": [bMas[\"attack_stardust_ray_stella\"],bMas[\"spell_pur\"],bMas[\"spell_flare\"]]

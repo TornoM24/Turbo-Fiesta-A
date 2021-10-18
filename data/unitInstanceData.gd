@@ -6,15 +6,47 @@ extends Node2D
 # var b = "text"
 
 var stats = {}
-var bonusStats = {}
+var bonusStats = {
+		"mhp" : 0,
+		"mmp" : 0,
+		"hp" : 0,
+		"mp" : 0,
+		"atk" : 0,
+		"def" : 0,
+		"int" : 0,
+		"wis" : 0,
+		"apt" : 0,
+		"spd" : 0,
+		"luk" : 0
+	}
 var equipment = []
 var abilities = []
 var level = 1
 var xp = 0
-
+var toNext = 10
 var equipAbilities = []
-
+var prefab
+var baseStats = {}
 var unitName = "Aou Mogis"
+
+
+func level_up():
+	level += 1
+	toNext = round( 0.04 * (pow(level, 3)) + 0.8 * (pow(level, 3)) + 2 * level)
+	for stat in stats.keys():
+		if !stat=="hp" and !stat=="mp" and !stat=="unitName" and !stat=="name":
+			bonusStats[stat] += round(baseStats[stat]/10)
+			stats[stat] += bonusStats[stat]
+			if !stats.hp<=0:
+				stats.hp = stats.mhp
+				stats.mp = stats.mmp
+	return level
+
+func give_xp (amount):
+	xp += amount
+	while xp>=toNext:
+		level_up()
+	return xp
 
 func save ():
 	var save_dict = {
@@ -22,8 +54,10 @@ func save ():
 		"stats": stats,
 		"level": level,
 		"bonusStats": bonusStats,
+		"baseStats": baseStats,
 		"equipment": equipment,
-		"abilities": abilities
+		"abilities": abilities,
+		"xp": xp,
 	}
 	return save_dict
 
@@ -33,16 +67,22 @@ func load_data(data):
 	stats = data["stats"]
 	level = data["level"]
 	bonusStats = data["bonusStats"]
+	baseStats = data["baseStats"]
 	equipment = data["equipment"]
 	abilities = data["abilities"]
+	xp = data["xp"]
+	toNext = round( 0.04 * (pow(level, 3)) + 0.8 * (pow(level, 3)) + 2 * level)
 	return self
 
 func initialize (prefab):
+	self.baseStats = prefab.unitDict.stats
 	self.stats = prefab.unitDict.stats
 	self.stats.mhp = prefab.unitDict.stats.hp
 	self.stats.mmp = prefab.unitDict.stats.mp
 	self.stats.name = prefab.unitDict.name
 	self.unitName = prefab.unitName
+	level = 1
+	toNext = round( 0.04 * (pow(level, 3)) + 0.8 * (pow(level, 3)) + 2 * level)
 	return self
 
 func updateStats (parameter, amount):

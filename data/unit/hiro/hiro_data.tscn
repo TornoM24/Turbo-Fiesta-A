@@ -13,17 +13,16 @@ var unitName = \"hiro\"
 var unitDict = {
 	\"name\" : \"Hiro\",
 	\"title\" : \"Scarlet Daredevil\",
-	\"awakened_title\" : \"Flare Impulse\",
 	\"bio\" : \"A young man on a journey to placeholder foo bar lorem ipsum sit dolor amet\",
 	\"stats\": {
 		\"hp\" : 30,
 		\"mp\" : 20,
-		\"atk\" : 900,
+		\"atk\" : 8,
 		\"def\" : 8,
 		\"int\" : 5,
 		\"wis\" : 4,
 		\"apt\" : 3,
-		\"spd\" : 20,
+		\"spd\" : 99,
 		\"luk\" : 8
 	},
 	\"abilities\": [bMas[\"attack_final_flare_hiro\"],bMas[\"attack_crimson_saber_hiro\"],bMas[\"buff_scarlet_blaze\"],bMas[\"buff_all_heal_hiro\"]]

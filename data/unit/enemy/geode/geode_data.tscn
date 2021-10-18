@@ -21,7 +21,7 @@ var unitDict = {
 		\"int\" : 0,
 		\"wis\" : 2,
 		\"apt\" : 0,
-		\"spd\" : 25,
+		\"spd\" : 2,
 		\"luk\" : 8
 	},
 	\"abilities\": [bMas[\"attack_basic_attack\"]]

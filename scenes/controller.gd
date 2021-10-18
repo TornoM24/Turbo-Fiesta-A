@@ -276,20 +276,7 @@ func _process(delta):
 		if enemy.deathAnimFinished:	
 			wins+=1
 	
-	if wins == enemyUnit.size():
-		#print ("ok u win bro")
-		var z = get_node ("Control/oc/occluder")
-		z.show()
-		animTimer += delta
-		if z.modulate.a < 0.5:
-			if animTimer > 0.01:
-				print (str(z.modulate.a))
-				z.modulate.a += 0.01
-				animTimer = 0
-		if z.modulate.a >= 0.5:
-			get_node("/root/Global").goto_scene("res://scenes/maps/hub.tscn")
-	else:
-		animTimer = 0
+
 		
 	
 			
@@ -300,7 +287,21 @@ func _process(delta):
 		#print (str(get_node ("Control/oc/occluder").modulate.a))
 		if get_node ("Control/oc/occluder").modulate.a > 1:
 			get_node("/root/Global").goto_scene("res://scenes/gameover.tscn")
-	else:
+	else:	
+		if wins == enemyUnit.size():
+			var z = get_node ("Control/oc/occluder")
+			z.show()
+			animTimer += delta
+			if z.modulate.a < 0.5:
+				if animTimer > 0.01:
+					print (str(z.modulate.a))
+					z.modulate.a += 0.01
+					animTimer = 0
+			if z.modulate.a >= 0.5:
+				var vScn = load("res://scenes/VictoryScreen.tscn").instance()
+				add_child (vScn)
+		else:
+			animTimer = 0
 		for enemy in enemyUnit:
 			if enemy.alive:
 				if enemy.selected:

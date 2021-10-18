@@ -1,0 +1,104 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://font/kissinger.tres" type="DynamicFont" id=1]
+
+[node name="Card" type="Node2D"]
+
+[node name="Panel" type="Panel" parent="."]
+margin_right = 240.0
+margin_bottom = 96.0
+rect_min_size = Vector2( 240, 96 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="RichTextLabel" parent="Panel"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 232.0
+margin_bottom = 24.0
+custom_fonts/normal_font = ExtResource( 1 )
+bbcode_text = "HP━━━━━━━━━━━━━━━━━━━━━━━━━"
+text = "HP━━━━━━━━━━━━━━━━━━━━━━━━━"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Total" type="RichTextLabel" parent="Panel"]
+margin_left = 8.0
+margin_top = 32.0
+margin_right = 232.0
+margin_bottom = 48.0
+custom_fonts/normal_font = ExtResource( 1 )
+bbcode_enabled = true
+bbcode_text = "[right]99"
+text = "99"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="RichTextLabel" parent="Panel/Total"]
+margin_right = 40.0
+margin_bottom = 16.0
+custom_fonts/normal_font = ExtResource( 1 )
+bbcode_enabled = true
+bbcode_text = "Total"
+text = "Total"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Growth" type="RichTextLabel" parent="Panel"]
+margin_left = 8.0
+margin_top = 56.0
+margin_right = 232.0
+margin_bottom = 72.0
+custom_fonts/normal_font = ExtResource( 1 )
+bbcode_enabled = true
+bbcode_text = "[right]99"
+text = "99"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="RichTextLabel" parent="Panel/Growth"]
+margin_right = 48.0
+margin_bottom = 16.0
+custom_fonts/normal_font = ExtResource( 1 )
+bbcode_enabled = true
+bbcode_text = "Growth"
+text = "Growth"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Equipment" type="RichTextLabel" parent="Panel"]
+margin_left = 8.0
+margin_top = 72.0
+margin_right = 232.0
+margin_bottom = 88.0
+custom_fonts/normal_font = ExtResource( 1 )
+bbcode_enabled = true
+bbcode_text = "[right]99"
+text = "99"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="RichTextLabel" parent="Panel/Equipment"]
+margin_right = 48.0
+margin_bottom = 16.0
+custom_fonts/normal_font = ExtResource( 1 )
+bbcode_enabled = true
+bbcode_text = "Equip"
+text = "Equip"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
