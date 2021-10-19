@@ -277,7 +277,11 @@ var inventory = []
 func save():
 	var unitInstances = []
 	for x in party:
+		print (x.xp)
 		unitInstances.append (x.save())
+	var itemInstances = []
+	for x in inventory:
+		itemInstances.append (x.save())
 	var save_dict = {
 		"filename" : get_filename(),
 		"parent" : get_parent().get_path(),
@@ -285,7 +289,7 @@ func save():
 		"y" : partyPosition.y,
 		"party" : unitInstances,
 		"formation": formation,
-		"inventory": inventory,
+		"inventory": itemInstances,
 	}
 	return save_dict
 
@@ -298,6 +302,7 @@ func load_game():
 	#for x in get_children():
 		#print ("why is " + x.name)
 	self.party.clear()
+	self.inventory.clear()
 	var save_game = File.new()
 	if not save_game.file_exists("res://save/savegame.save"):
 		return # Error! We don't have a save to load.
@@ -305,35 +310,45 @@ func load_game():
 	#while save_game.get_position() < save_game.get_len():
 	var node_data = parse_json(save_game.get_as_text())
 	for i in node_data.keys():
-			if i == "filename" or i == "parent":
-				continue
-			elif i == "party":
-				for j in node_data.party:
-					var inst = load ("res://data/unitInstanceData.tscn").instance()
-					self.add_child(inst.load_data(j))
-					print ("is " + inst.unitName)
-					inst.name = inst.unitName+"_data"
-					print ("instancing and placing " + inst.name)
-					Master.party.append (inst)
-					var toEquip = []
-					for k in inst.equipment:
-						var item = load ("res://data/itemInstanceData.tscn").instance()
-						inst.add_child (item.load_data(k))
-						print (item.xp)
-						item.name = k.id
-						toEquip.append (item)
-						print ("got " + item.itemName)
-					for item in toEquip:
-						print ("equipped " + item.itemName)
-						inst.equip (item)
-					
-			elif i == "x":
-				partyPosition.x = node_data.x
-			elif i == "y":
-				partyPosition.y = node_data.y
-			else:
-				print ("loading property " + i)
-				self.set (i,node_data[i])
+		if i == "filename" or i == "parent":
+			continue
+		elif i == "party":
+			for j in node_data.party:
+				var inst = load ("res://data/unitInstanceData.tscn").instance()
+				self.add_child(inst.load_data(j))
+				print ("is " + inst.unitName)
+				inst.name = inst.unitName+"_data"
+				print ("instancing and placing " + inst.name)
+				Master.party.append (inst)
+				var toEquip = []
+				print (j.keys())
+				var equipment = j.equipment
+				#print (equipment[0].itemName)
+				for k in equipment:
+					var item = load ("res://data/itemInstanceData.tscn").instance()
+					item = item.load_data(k)
+					#inst.add_child (item.load_data(k))
+					#print (item.xp)
+					print ("instantiated " + inst.unitName + "'s " + item.itemName)
+					item.name = k.id
+					toEquip.append (item)
+					print ("got " + item.itemName)
+				for item in toEquip:
+					print ("equipped " + item.itemName)
+					print (item.xp)
+					inst.equip (item)
+		elif i == "inventory":
+			for j in node_data.inventory:
+				var inst = load ("res://data/itemInstanceData.tscn").instance()
+				inst = inst.load_data(j)
+				self.add_equip(inst)
+		elif i == "x":
+			partyPosition.x = node_data.x
+		elif i == "y":
+			partyPosition.y = node_data.y
+		else:
+			print ("loading property " + i)
+			self.set (i,node_data[i])
 
 func reparent(child: Node, new_parent: Node):
 	var old_parent = child.get_parent()
@@ -352,6 +367,7 @@ func new_game ():
 	party = [fabricate("hiro"),fabricate("stella")]
 	Master.party[0].equip (give_equipment("hiro_heirloom"))
 	formation = [[-1,-1,-1],[-1,0,1],[-1,-1,-1]]
+	add_equip (give_equipment ("alan_foraged_blade"))
 	save_game()
 	
 func fabricate (name):
@@ -364,9 +380,15 @@ func fabricate (name):
 func give_equipment (name):
 	var inst = load ("res://data/itemInstanceData.tscn").instance()
 	print ("giving equipment..")
-	add_child(inst.initialize (equip_dict[name]))
+	inst.initialize (equip_dict[name])
 	inst.name = name
 	#inst.updateStats ("atk",10)
+	return inst
+
+func add_equip (inst):
+	self.add_child (inst)
+	inventory.append (inst)
+	print ("appended " + inst.itemName + " successfully")
 	return inst
 
 func _ready():

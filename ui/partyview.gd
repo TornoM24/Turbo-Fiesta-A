@@ -42,6 +42,7 @@ func draw_equip (unit):
 	var fnX = 0
 	for x in unit.equipment:
 		print (x.itemName)
+	for x in unit.equipment:
 		var equipment_item = equipment_prefab.instance()
 		CEPanel.add_child (equipment_item)
 		#print (x)
@@ -49,12 +50,29 @@ func draw_equip (unit):
 		equipment_item.get_node("Panel/RichTextLabel").bbcode_text = x.itemName
 		equipment_item.position = CEPanel.rect_position + Vector2 (20 + (fnX*88),20)
 		print ("drew equipment slot at position "+str(equipment_item.position))
-		equipsDrawn.append (equipment_item)
+		#equipsDrawn.append (equipment_item)
 		fnX += 1
 	var equipment_item = equipment_prefab.instance()
 	CEPanel.add_child (equipment_item)
 	equipment_item.position = CEPanel.rect_position + Vector2 (20 + (fnX*88),20)
+	var IPanel = get_node ("StatsPanel/Tabs/Equipment/Panel")
+	
+	fnX = 0
+	for x in Master.inventory:
+		var inv_item = equipment_prefab.instance()
+		IPanel.add_child (inv_item)
+		print (x)
+		inv_item.get_node("Panel/Sprite").texture = load ("res://gfx/equip/"+x.id+ ".png")
+		inv_item.get_node("Panel/RichTextLabel").bbcode_text = x.itemName
+		inv_item.position += Vector2 (20 + (fnX*88),20)
+		print ("drew inventory slot at position "+str(inv_item.position))
+		fnX += 1
+		#equipsDrawn.append (equipment_item)
 	pass
+func _input(ev):
+	if ev is InputEventKey and ev.is_action_pressed ("cheat") and not ev.is_echo():
+		Master.party[0].equip (Master.give_equipment("hiro_heirloom"))
+
 func switch_modes(viewMode):
 	#viewMode = !viewMode
 	if viewMode:
@@ -127,6 +145,7 @@ func cards_show ():
 		card.get_node("EXPBar/EXPLabel").bbcode_text = "[right]EXP " + str(ally.xp) + "/" + str(ally.toNext)
 
 func _button_pressed (button):
+	get_node ("StatsPanel/Tabs").current_tab = 0
 	number = int(button.get_parent().name.substr(1,-1))
 	print (button.get_parent().name)
 	switch_modes(true)

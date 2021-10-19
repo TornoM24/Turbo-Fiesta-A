@@ -52,6 +52,7 @@ func save ():
 	var itemInstances = []
 	for x in equipment:
 		itemInstances.append (x.save())
+		print ("saved " + x.itemName)
 	var save_dict = {
 		"unitName" : unitName,
 		"stats": stats,
@@ -71,7 +72,7 @@ func load_data(data):
 	level = data["level"]
 	bonusStats = data["bonusStats"]
 	baseStats = data["baseStats"]
-	equipment = data["equipment"]
+	#equipment = data["equipment"]
 	abilities = data["abilities"]
 	xp = data["xp"]
 	toNext = round( 0.04 * (pow(level, 3)) + 0.8 * (pow(level, 3)) + 2 * level)
@@ -97,8 +98,9 @@ func addPermanentAbility (reference):
 	pass
 
 func equip (item):
+	add_child (item)
 	equipment.append (item)
-	print ("successfully equipped " + item.itemName)
+	print ("successfully equipped " + item.itemName + " to unit " + unitName)
 
 func loadBonuses():
 	pass

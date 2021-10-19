@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/foraged_blade.png-8a1afeefaf5af91994ca140a9522a3d9.stex"
+path="res://.import/alan_foraged_blade.png-b9cb5244a9250eabca9108b651d5869a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://gfx/equip/foraged_blade.png"
-dest_files=[ "res://.import/foraged_blade.png-8a1afeefaf5af91994ca140a9522a3d9.stex" ]
+source_file="res://gfx/equip/alan_foraged_blade.png"
+dest_files=[ "res://.import/alan_foraged_blade.png-b9cb5244a9250eabca9108b651d5869a.stex" ]
 
 [params]
 
