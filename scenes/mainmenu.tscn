@@ -52,7 +52,9 @@ margin_left = 1024.0
 margin_top = 416.0
 margin_right = 1280.0
 margin_bottom = 464.0
+focus_mode = 0
 theme = ExtResource( 1 )
+enabled_focus_mode = 0
 text = "New Game"
 script = ExtResource( 2 )
 __meta__ = {
@@ -64,7 +66,9 @@ margin_left = 1024.0
 margin_top = 480.0
 margin_right = 1280.0
 margin_bottom = 528.0
+focus_mode = 0
 theme = ExtResource( 1 )
+enabled_focus_mode = 0
 text = "Load Game"
 script = ExtResource( 4 )
 __meta__ = {
@@ -76,7 +80,9 @@ margin_left = 1024.0
 margin_top = 608.0
 margin_right = 1280.0
 margin_bottom = 656.0
+focus_mode = 0
 theme = ExtResource( 1 )
+enabled_focus_mode = 0
 text = "Quit Game"
 script = ExtResource( 5 )
 __meta__ = {
@@ -88,7 +94,9 @@ margin_left = 1024.0
 margin_top = 544.0
 margin_right = 1280.0
 margin_bottom = 592.0
+focus_mode = 0
 theme = ExtResource( 1 )
+enabled_focus_mode = 0
 text = "Credits"
 script = ExtResource( 6 )
 __meta__ = {
@@ -111,19 +119,19 @@ __meta__ = {
 [node name="Tween" type="Tween" parent="."]
 
 [node name="creditpanel" type="Panel" parent="."]
-margin_left = 64.0
-margin_top = 64.0
-margin_right = 384.0
-margin_bottom = 448.0
+margin_left = 56.0
+margin_top = 56.0
+margin_right = 392.0
+margin_bottom = 456.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="RichTextLabel" type="RichTextLabel" parent="creditpanel"]
-margin_left = 8.0
-margin_top = 8.0
-margin_right = 312.0
-margin_bottom = 376.0
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 320.0
+margin_bottom = 384.0
 bbcode_enabled = true
 bbcode_text = "[wave]CREDITS[/wave]
 

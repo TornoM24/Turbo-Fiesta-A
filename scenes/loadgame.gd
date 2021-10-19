@@ -10,7 +10,6 @@ extends Button
 func _ready():
 	var button = self
 	button.connect("pressed", self, "_button_pressed")
-	button.connect("pressed", self, "_button_pressed")
 	button.connect("mouse_entered", self, "_mouse_entered")
 	button.connect("mouse_exited", self, "_mouse_exited")
 	oPos = self.rect_position

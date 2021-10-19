@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=2]
+[gd_scene load_steps=63 format=2]
 
 [ext_resource path="res://scenes/maps/Player.gd" type="Script" id=1]
 [ext_resource path="res://scenes/maps/obj/tilemap.tres" type="TileSet" id=2]
@@ -18,6 +18,7 @@
 [ext_resource path="res://scenes/maps/menubutton.gd" type="Script" id=16]
 [ext_resource path="res://pixel_button_red.tres" type="Theme" id=17]
 [ext_resource path="res://scenes/maps/exitmenu.gd" type="Script" id=18]
+[ext_resource path="res://pixel_button_arrow.tres" type="Theme" id=19]
 [ext_resource path="res://scenes/maps/obj/Container.tscn" type="PackedScene" id=21]
 [ext_resource path="res://scenes/maps/inventory.gd" type="Script" id=22]
 [ext_resource path="res://scenes/maps/exit.gd" type="Script" id=23]
@@ -343,7 +344,7 @@ __meta__ = {
 }
 
 [node name="menupanel" type="Panel" parent="Player/Camera2D/Control"]
-visible = false
+self_modulate = Color( 1, 1, 1, 0 )
 margin_left = 448.0
 margin_top = -344.0
 margin_right = 624.0
@@ -519,10 +520,10 @@ custom_styles/panel = SubResource( 30 )
 
 [node name="mainmenubutton" type="Button" parent="Player/Camera2D/Control/menupanel"]
 margin_left = 24.0
-margin_top = 304.0
-margin_right = 152.0
-margin_bottom = 328.0
-theme = ExtResource( 10 )
+margin_top = 296.0
+margin_right = 190.0
+margin_bottom = 344.0
+theme = ExtResource( 19 )
 text = "Main Menu"
 script = ExtResource( 15 )
 __meta__ = {
@@ -530,12 +531,12 @@ __meta__ = {
 }
 
 [node name="exitmenu" type="Button" parent="Player/Camera2D/Control/menupanel"]
-margin_left = 136.0
-margin_top = 8.0
-margin_right = 168.0
-margin_bottom = 40.0
-theme = ExtResource( 17 )
-text = "X"
+margin_left = 24.0
+margin_top = 16.0
+margin_right = 192.0
+margin_bottom = 64.0
+theme = ExtResource( 19 )
+text = "Back"
 script = ExtResource( 18 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -543,10 +544,10 @@ __meta__ = {
 
 [node name="inventory" type="Button" parent="Player/Camera2D/Control/menupanel"]
 margin_left = 24.0
-margin_top = 48.0
-margin_right = 152.0
-margin_bottom = 72.0
-theme = ExtResource( 10 )
+margin_top = 72.0
+margin_right = 190.0
+margin_bottom = 120.0
+theme = ExtResource( 19 )
 text = "Inventory"
 script = ExtResource( 22 )
 __meta__ = {
@@ -556,10 +557,10 @@ __meta__ = {
 
 [node name="party" type="Button" parent="Player/Camera2D/Control/menupanel"]
 margin_left = 24.0
-margin_top = 112.0
-margin_right = 152.0
-margin_bottom = 136.0
-theme = ExtResource( 10 )
+margin_top = 128.0
+margin_right = 190.0
+margin_bottom = 176.0
+theme = ExtResource( 19 )
 text = "Party"
 script = ExtResource( 37 )
 __meta__ = {
@@ -569,10 +570,10 @@ __meta__ = {
 
 [node name="formation" type="Button" parent="Player/Camera2D/Control/menupanel"]
 margin_left = 24.0
-margin_top = 176.0
-margin_right = 152.0
-margin_bottom = 200.0
-theme = ExtResource( 10 )
+margin_top = 184.0
+margin_right = 190.0
+margin_bottom = 232.0
+theme = ExtResource( 19 )
 text = "Formation"
 script = ExtResource( 40 )
 __meta__ = {
@@ -583,9 +584,9 @@ __meta__ = {
 [node name="save" type="Button" parent="Player/Camera2D/Control/menupanel"]
 margin_left = 24.0
 margin_top = 240.0
-margin_right = 152.0
-margin_bottom = 264.0
-theme = ExtResource( 10 )
+margin_right = 190.0
+margin_bottom = 288.0
+theme = ExtResource( 19 )
 text = "Save Game"
 script = ExtResource( 30 )
 __meta__ = {
@@ -617,6 +618,8 @@ __meta__ = {
 
 [node name="partyview" parent="Player/Camera2D/Control/menupanel" instance=ExtResource( 39 )]
 position = Vector2( -1088, -16 )
+
+[node name="Tween" type="Tween" parent="Player/Camera2D/Control/menupanel"]
 
 [node name="Over" type="TileMap" parent="."]
 scale = Vector2( 2, 2 )
