@@ -49,13 +49,16 @@ func give_xp (amount):
 	return xp
 
 func save ():
+	var itemInstances = []
+	for x in equipment:
+		itemInstances.append (x.save())
 	var save_dict = {
 		"unitName" : unitName,
 		"stats": stats,
 		"level": level,
 		"bonusStats": bonusStats,
 		"baseStats": baseStats,
-		"equipment": equipment,
+		"equipment": itemInstances,
 		"abilities": abilities,
 		"xp": xp,
 	}
@@ -92,6 +95,10 @@ func updateStats (parameter, amount):
 func addPermanentAbility (reference):
 	stats["abilities"].append (reference)
 	pass
+
+func equip (item):
+	equipment.append (item)
+	print ("successfully equipped " + item.itemName)
 
 func loadBonuses():
 	pass

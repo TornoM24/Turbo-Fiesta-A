@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://pixel_panel.theme" type="Theme" id=1]
 [ext_resource path="res://ui/partyview.gd" type="Script" id=2]
@@ -10,6 +10,8 @@
 [ext_resource path="res://gfx/overworld char/derp..png" type="Texture" id=8]
 [ext_resource path="res://font/kissinger_large.tres" type="DynamicFont" id=9]
 [ext_resource path="res://font/kissinger.tres" type="DynamicFont" id=10]
+[ext_resource path="res://ui/Equipment.gd" type="Script" id=11]
+[ext_resource path="res://ui/Button.gd" type="Script" id=12]
 
 [node name="partyview" type="Node2D"]
 pause_mode = 2
@@ -41,6 +43,7 @@ __meta__ = {
 [node name="C5" type="Node2D" parent="."]
 visible = false
 position = Vector2( 840, 16 )
+z_as_relative = false
 
 [node name="Card" type="Panel" parent="C5"]
 margin_right = 192.0
@@ -178,9 +181,19 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Button" type="Button" parent="C5"]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_right = 192.0
+margin_bottom = 576.0
+script = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="C4" type="Node2D" parent="."]
 visible = false
 position = Vector2( 632, 16 )
+z_as_relative = false
 
 [node name="Card" type="Panel" parent="C4"]
 margin_right = 192.0
@@ -318,9 +331,19 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Button" type="Button" parent="C4"]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_right = 192.0
+margin_bottom = 576.0
+script = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="C3" type="Node2D" parent="."]
 visible = false
 position = Vector2( 424, 16 )
+z_as_relative = false
 
 [node name="Card" type="Panel" parent="C3"]
 margin_right = 192.0
@@ -458,9 +481,19 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Button" type="Button" parent="C3"]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_right = 192.0
+margin_bottom = 576.0
+script = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="C2" type="Node2D" parent="."]
 visible = false
 position = Vector2( 216, 16 )
+z_as_relative = false
 
 [node name="Card" type="Panel" parent="C2"]
 margin_right = 192.0
@@ -598,8 +631,18 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Button" type="Button" parent="C2"]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_right = 192.0
+margin_bottom = 576.0
+script = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="C1" type="Node2D" parent="."]
 position = Vector2( 8, 16 )
+z_as_relative = false
 
 [node name="Card" type="Panel" parent="C1"]
 margin_right = 192.0
@@ -737,6 +780,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Button" type="Button" parent="C1"]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_right = 192.0
+margin_bottom = 576.0
+script = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="StatsPanel" type="Panel" parent="."]
 margin_left = 208.0
 margin_top = 16.0
@@ -828,21 +880,72 @@ margin_left = 4.0
 margin_top = 34.0
 margin_right = -4.0
 margin_bottom = -4.0
+script = ExtResource( 11 )
 
 [node name="ScrollContainer" type="ScrollContainer" parent="StatsPanel/Tabs/Equipment"]
 margin_left = 12.0
 margin_top = 6.0
 margin_right = 772.0
-margin_bottom = 110.0
-scroll_vertical_enabled = false
+margin_bottom = 134.0
+scroll_horizontal_enabled = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Panel" type="Panel" parent="StatsPanel/Tabs/Equipment/ScrollContainer"]
-margin_right = 1520.0
-margin_bottom = 104.0
-rect_min_size = Vector2( 1520, 104 )
+margin_right = 760.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 760, 128 )
+
+[node name="Panel" type="Panel" parent="StatsPanel/Tabs/Equipment"]
+margin_left = 12.0
+margin_top = 222.0
+margin_right = 772.0
+margin_bottom = 502.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="label1" type="RichTextLabel" parent="StatsPanel/Tabs/Equipment"]
+margin_left = 12.0
+margin_top = 142.0
+margin_right = 340.0
+margin_bottom = 182.0
+rect_pivot_offset = Vector2( 336, -8 )
+custom_fonts/normal_font = ExtResource( 10 )
+text = "Currently Equipped"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="costlabel" type="RichTextLabel" parent="StatsPanel/Tabs/Equipment"]
+margin_left = 628.0
+margin_top = 142.0
+margin_right = 764.0
+margin_bottom = 182.0
+rect_pivot_offset = Vector2( 336, -8 )
+custom_fonts/normal_font = ExtResource( 10 )
+bbcode_enabled = true
+bbcode_text = "[right]Cost: 30/30"
+text = "Cost: 30/30"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="label2" type="RichTextLabel" parent="StatsPanel/Tabs/Equipment"]
+margin_left = 12.0
+margin_top = 198.0
+margin_right = 340.0
+margin_bottom = 222.0
+custom_fonts/normal_font = ExtResource( 10 )
+text = "Inventory
+"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Abilities" type="Control" parent="StatsPanel/Tabs"]
 visible = false
@@ -861,3 +964,5 @@ margin_left = 4.0
 margin_top = 34.0
 margin_right = -4.0
 margin_bottom = -4.0
+
+[connection signal="tab_selected" from="StatsPanel/Tabs" to="." method="_on_Tabs_tab_selected"]

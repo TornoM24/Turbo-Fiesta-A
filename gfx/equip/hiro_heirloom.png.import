@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/medallion.png-501a064db5d4755ffd869198c13cad09.stex"
+path="res://.import/hiro_heirloom.png-ce1fde29d076ffa390779957973266ac.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://gfx/equip/medallion.png"
-dest_files=[ "res://.import/medallion.png-501a064db5d4755ffd869198c13cad09.stex" ]
+source_file="res://gfx/equip/hiro_heirloom.png"
+dest_files=[ "res://.import/hiro_heirloom.png-ce1fde29d076ffa390779957973266ac.stex" ]
 
 [params]
 

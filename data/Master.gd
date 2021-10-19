@@ -195,6 +195,7 @@ var ability_dict = {
 var equip_dict = {
 	"hiro_heirloom":{
 		"name": "Hiro's Heirloom",
+		"id" : "hiro_heirloom",
 		"desc": """
 			A strange medallion in Hiro's possession, which contains 
 			an unusual pebble-sized gemstone that radiates with energy. If 
@@ -215,6 +216,7 @@ var equip_dict = {
 	},
 	"alan_foraged_blade":{
 		"name": "Foraged Blade",
+		"id" : "alan_foraged_blade",
 		"desc": """
 			A beautifully-forged curved sword from a distant land forgotten with time. 
 			Through an esoteric and long-gone process, the sharpened edge of the blade was 
@@ -234,6 +236,7 @@ var equip_dict = {
 	},
 	"stella_shard_coat":{
 		"name": "Shard Coat",
+		"id" : "stella_shard_coat",
 		"desc": """
 			A radiant, white-and-gold hoodie-style coat worn by Stella. 
 			The golden embellishments magnify the strength of magical power, and 
@@ -312,6 +315,18 @@ func load_game():
 					inst.name = inst.unitName+"_data"
 					print ("instancing and placing " + inst.name)
 					Master.party.append (inst)
+					var toEquip = []
+					for k in inst.equipment:
+						var item = load ("res://data/itemInstanceData.tscn").instance()
+						inst.add_child (item.load_data(k))
+						print (item.xp)
+						item.name = k.id
+						toEquip.append (item)
+						print ("got " + item.itemName)
+					for item in toEquip:
+						print ("equipped " + item.itemName)
+						inst.equip (item)
+					
 			elif i == "x":
 				partyPosition.x = node_data.x
 			elif i == "y":
@@ -319,7 +334,12 @@ func load_game():
 			else:
 				print ("loading property " + i)
 				self.set (i,node_data[i])
-		
+
+func reparent(child: Node, new_parent: Node):
+	var old_parent = child.get_parent()
+	old_parent.remove_child(child)
+	new_parent.add_child(child)
+
 func save_game():
 	print ("attempting to save...")
 	var save_game = File.new()
@@ -330,6 +350,7 @@ func save_game():
 
 func new_game ():
 	party = [fabricate("hiro"),fabricate("stella")]
+	Master.party[0].equip (give_equipment("hiro_heirloom"))
 	formation = [[-1,-1,-1],[-1,0,1],[-1,-1,-1]]
 	save_game()
 	
@@ -337,6 +358,14 @@ func fabricate (name):
 	var inst = load ("res://data/unitInstanceData.tscn").instance()
 	add_child(inst.initialize (load("res://data/unit/"+name+"/"+name+"_data.tscn").instance()))
 	inst.name = inst.unitName+"_data"
+	#inst.updateStats ("atk",10)
+	return inst
+
+func give_equipment (name):
+	var inst = load ("res://data/itemInstanceData.tscn").instance()
+	print ("giving equipment..")
+	add_child(inst.initialize (equip_dict[name]))
+	inst.name = name
 	#inst.updateStats ("atk",10)
 	return inst
 
