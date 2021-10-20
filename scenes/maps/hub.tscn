@@ -271,6 +271,7 @@ z_as_relative = false
 current = true
 
 [node name="Control" type="Control" parent="Player/Camera2D"]
+visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 __meta__ = {
