@@ -19,6 +19,7 @@
 [ext_resource path="res://pixel_button_red.tres" type="Theme" id=17]
 [ext_resource path="res://scenes/maps/exitmenu.gd" type="Script" id=18]
 [ext_resource path="res://pixel_button_arrow.tres" type="Theme" id=19]
+[ext_resource path="res://gfx/water_tex.png" type="Texture" id=20]
 [ext_resource path="res://scenes/maps/obj/Container.tscn" type="PackedScene" id=21]
 [ext_resource path="res://scenes/maps/inventory.gd" type="Script" id=22]
 [ext_resource path="res://scenes/maps/exit.gd" type="Script" id=23]
@@ -29,7 +30,6 @@
 [ext_resource path="res://scenes/maps/inventorybutton.gd" type="Script" id=28]
 [ext_resource path="res://gfx/sprint.png" type="Texture" id=29]
 [ext_resource path="res://scenes/maps/save.gd" type="Script" id=30]
-[ext_resource path="res://gfx/tileset/water.png" type="Texture" id=31]
 [ext_resource path="res://gfx/disk_mask.png" type="Texture" id=32]
 [ext_resource path="res://gfx/water_normal.png" type="Texture" id=33]
 [ext_resource path="res://gfx/water_uv_offset.png" type="Texture" id=34]
@@ -154,13 +154,14 @@ font_data = ExtResource( 7 )
 modulate = Color( 0.454902, 0.537255, 1, 1 )
 light_mask = 2
 material = SubResource( 1 )
-position = Vector2( 960, 408 )
-scale = Vector2( 13.828, 8.548 )
-texture = ExtResource( 31 )
+position = Vector2( 976, 192 )
+scale = Vector2( 7, 3 )
+texture = ExtResource( 20 )
 normal_map = ExtResource( 33 )
 script = ExtResource( 35 )
 
 [node name="Light2D" type="Light2D" parent="water"]
+visible = false
 position = Vector2( 34.7122, -101.076 )
 scale = Vector2( 1.27713, 1.71196 )
 texture = ExtResource( 32 )
@@ -233,18 +234,17 @@ texture = ExtResource( 5 )
 [node name="Down" type="AnimatedSprite" parent="Player"]
 scale = Vector2( 2, 2 )
 frames = SubResource( 7 )
-frame = 1
 playing = true
 
 [node name="Side" type="AnimatedSprite" parent="Player"]
 scale = Vector2( 2, 2 )
 frames = SubResource( 10 )
-frame = 1
 playing = true
 
 [node name="Up" type="AnimatedSprite" parent="Player"]
 scale = Vector2( 2, 2 )
 frames = SubResource( 13 )
+frame = 1
 playing = true
 
 [node name="Area2D" type="Area2D" parent="Player"]
@@ -732,6 +732,8 @@ position = Vector2( 64, -360 )
 [node name="LightOccluder2D2" type="LightOccluder2D" parent="."]
 visible = false
 position = Vector2( -168, -352 )
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
 
 [connection signal="pressed" from="TitleScreen/Start" to="Player" method="_on_Start_pressed"]
 [connection signal="pressed" from="TitleScreen/Start" to="TitleScreen" method="_on_Start_pressed"]
