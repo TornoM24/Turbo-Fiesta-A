@@ -18,6 +18,7 @@ func _ready():
 func close_menu():
 	print ("closed menu")
 	get_parent().get_parent().get_node("oc").hide()
+	get_parent().get_parent().get_node("menubutton").show()
 	get_parent().get_node("partyview").hide()
 	get_tree().paused = false
 	get_parent().hide()

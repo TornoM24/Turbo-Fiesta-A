@@ -35,6 +35,7 @@ func get_full (stat):
 			return "LUCK"
 	
 var number = 1
+var maxNumber
 var equipsDrawn = []
 func draw_equip (unit):
 	var CEPanel = get_node ("StatsPanel/Tabs/Equipment/ScrollContainer/Panel")
@@ -72,7 +73,11 @@ func draw_equip (unit):
 func _input(ev):
 	if ev is InputEventKey and ev.is_action_pressed ("cheat") and not ev.is_echo():
 		Master.party[0].equip (Master.give_equipment("hiro_heirloom"))
-
+func gp_len ():
+	var maxn = 0
+	for x in Master.party:
+		maxn += 1
+	return maxn
 func switch_modes(viewMode):
 	#viewMode = !viewMode
 	if viewMode:
@@ -82,7 +87,7 @@ func switch_modes(viewMode):
 		var tween = get_node ("Tween")
 		topCard.z_index = 999
 		tween.interpolate_property(topCard, "position",
-			torigin, Vector2(8, 16), SWITCH_SPEED,
+			torigin, Vector2(8, -40), SWITCH_SPEED,
 		Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 		var nonTops = []
 		for x in range (1,6):
@@ -95,7 +100,7 @@ func switch_modes(viewMode):
 			card.z_index = 998
 			var origin = card.position
 			tween.interpolate_property(card, "position",
-				origin, Vector2(8, 16 + (8*(y+1))), SWITCH_SPEED,
+				origin, Vector2(8, -40 + (8*(y+1))), SWITCH_SPEED,
 			Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 			tween.start()
 		var StatsPanel = get_node ("StatsPanel")
@@ -118,7 +123,7 @@ func switch_modes(viewMode):
 			var tween = get_node ("Tween")
 			var origin = card.position
 			tween.interpolate_property(card, "position",
-				null, Vector2(8+(208*(x-1)), 16), SWITCH_SPEED,
+				null, Vector2(8+(208*(x-1)), -40), SWITCH_SPEED,
 			Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 			tween.start()
 		var StatsPanel = get_node ("StatsPanel")
@@ -164,4 +169,26 @@ func _on_Tabs_tab_selected(tab):
 				x.hide()
 		print ("on equips screen")
 		draw_equip (Master.party[number-1])
+	pass # Replace with function body.
+
+
+func _on_right_pressed():
+	number += 1
+	if number > gp_len():
+		number = 1
+	var ot = get_node ("StatsPanel/Tabs").current_tab
+	get_node ("StatsPanel/Tabs").current_tab = 0
+	get_node ("StatsPanel/Tabs").current_tab = ot
+	switch_modes (true)
+	pass # Replace with function body.
+
+
+func _on_left_pressed():
+	number -= 1
+	if number < 1:
+		number = gp_len()
+	var ot = get_node ("StatsPanel/Tabs").current_tab
+	get_node ("StatsPanel/Tabs").current_tab = 0
+	get_node ("StatsPanel/Tabs").current_tab = ot
+	switch_modes (true)
 	pass # Replace with function body.

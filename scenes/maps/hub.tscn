@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=2]
+[gd_scene load_steps=61 format=2]
 
 [ext_resource path="res://scenes/maps/Player.gd" type="Script" id=1]
 [ext_resource path="res://scenes/maps/obj/tilemap.tres" type="TileSet" id=2]
@@ -148,13 +148,6 @@ font_data = ExtResource( 7 )
 [sub_resource type="DynamicFont" id=21]
 font_data = ExtResource( 7 )
 
-[sub_resource type="DynamicFont" id=22]
-size = 64
-font_data = ExtResource( 7 )
-
-[sub_resource type="OccluderPolygon2D" id=23]
-polygon = PoolVector2Array( 640, 536, 728, 536, 728, 472, 680, 464, 640, 464 )
-
 [node name="Main" type="Node2D"]
 
 [node name="water" type="Sprite" parent="."]
@@ -195,7 +188,7 @@ cell_size = Vector2( 16, 16 )
 cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 show_collision = true
 format = 1
-tile_data = PoolIntArray( -524288, 24, 0, 131074, 24, 0, 655387, 24, 0, 720909, 17, 0, 720911, -1610612719, 0, 851981, 15, 0, 851983, 15, 0, 917517, 1610612751, 0, 917519, 1610612751, 0, 983053, -1073741807, 0, 983055, 1610612753, 0 )
+tile_data = PoolIntArray( 720909, 17, 0, 720911, -1610612719, 0, 851981, 15, 0, 851983, 15, 0, 917517, 1610612751, 0, 917519, 1610612751, 0, 983053, -1073741807, 0, 983055, 1610612753, 0 )
 __meta__ = {
 "_editor_description_": " "
 }
@@ -206,7 +199,7 @@ cell_size = Vector2( 16, 16 )
 cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 show_collision = true
 format = 1
-tile_data = PoolIntArray( -524288, 24, 0, 131074, 24, 0, 196619, 27, 0, 196620, 27, 0, 196621, 27, 0, 196625, 31, 0, 262155, 28, 0, 262156, 28, 0, 262157, 28, 0, 262158, 27, 0, 262159, 27, 0, 262160, 27, 0, 262162, 27, 0, 327691, 536870941, 0, 327692, 25, 0, 327693, 25, 0, 327694, 28, 0, 327695, 28, 0, 327696, 28, 0, 327697, 28, 0, 327698, 28, 0, 393230, 536870941, 0, 393231, 25, 0, 393232, 26, 0, 393233, 25, 0, 393234, 29, 0, 655387, 24, 0, 720909, 17, 0, 720911, -1610612719, 0, 851981, 15, 0, 851983, 15, 0, 917517, 1610612751, 0, 917519, 1610612751, 0, 983053, -1073741807, 0, 983055, 1610612753, 0 )
+tile_data = PoolIntArray( 196619, 27, 0, 196620, 27, 0, 196621, 27, 0, 196625, 31, 0, 262155, 28, 0, 262156, 28, 0, 262157, 28, 0, 262158, 27, 0, 262159, 27, 0, 262160, 27, 0, 262162, 27, 0, 327691, 536870941, 0, 327692, 25, 0, 327693, 25, 0, 327694, 28, 0, 327695, 28, 0, 327696, 28, 0, 327697, 28, 0, 327698, 28, 0, 393230, 536870941, 0, 393231, 25, 0, 393232, 26, 0, 393233, 25, 0, 393234, 29, 0, 720909, 17, 0, 720911, -1610612719, 0, 851981, 15, 0, 851983, 15, 0, 917517, 1610612751, 0, 917519, 1610612751, 0, 983053, -1073741807, 0, 983055, 1610612753, 0 )
 __meta__ = {
 "_editor_description_": " "
 }
@@ -271,7 +264,6 @@ z_as_relative = false
 current = true
 
 [node name="Control" type="Control" parent="Player/Camera2D"]
-visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 __meta__ = {
@@ -300,6 +292,7 @@ __meta__ = {
 }
 
 [node name="menubutton" type="TextureButton" parent="Player/Camera2D/Control"]
+show_behind_parent = true
 margin_left = -632.0
 margin_top = -352.0
 margin_right = -592.0
@@ -315,6 +308,7 @@ __meta__ = {
 }
 
 [node name="inventorybutton" type="Button" parent="Player/Camera2D/Control"]
+visible = false
 margin_left = -583.0
 margin_top = -352.0
 margin_right = -543.0
@@ -346,6 +340,7 @@ __meta__ = {
 }
 
 [node name="menupanel" type="Panel" parent="Player/Camera2D/Control"]
+visible = false
 self_modulate = Color( 1, 1, 1, 0 )
 margin_left = 448.0
 margin_top = -344.0
@@ -538,7 +533,7 @@ margin_top = 16.0
 margin_right = 192.0
 margin_bottom = 64.0
 theme = ExtResource( 19 )
-text = "Back"
+text = "Close Menu"
 script = ExtResource( 18 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -632,7 +627,7 @@ cell_size = Vector2( 16, 16 )
 cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 show_collision = true
 format = 1
-tile_data = PoolIntArray( -524288, 24, 0, 131074, 24, 0, 655387, 24, 0 )
+tile_data = PoolIntArray( -393209, 24, 0, -393199, 24, 0, 131073, 24, 0, 786460, 24, 0 )
 __meta__ = {
 "_editor_description_": " "
 }
@@ -710,7 +705,6 @@ __meta__ = {
 [node name="CreditsName" type="TextEdit" parent="TitleScreen/Button/Credits"]
 margin_right = 480.0
 margin_bottom = 376.0
-custom_fonts/font = SubResource( 22 )
 text = "Credits:
 Torno
 Vinh 
@@ -734,12 +728,10 @@ shadow_color = Color( 1, 1, 1, 0 )
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
 visible = false
 position = Vector2( 64, -360 )
-occluder = SubResource( 23 )
 
 [node name="LightOccluder2D2" type="LightOccluder2D" parent="."]
 visible = false
 position = Vector2( -168, -352 )
-occluder = SubResource( 23 )
 
 [connection signal="pressed" from="TitleScreen/Start" to="Player" method="_on_Start_pressed"]
 [connection signal="pressed" from="TitleScreen/Start" to="TitleScreen" method="_on_Start_pressed"]
