@@ -8,6 +8,7 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	connect ("pressed", get_parent().get_parent().get_parent().get_parent().get_parent().get_parent(), "_on_item_pressed", [self])
 	pass # Replace with function body.
 
 func _process(delta):
@@ -18,7 +19,7 @@ func _process(delta):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
-
+# 6 getparents
 var isGrabbed = false
 func _on_Button_button_down():
 	#print ("is dragging???")

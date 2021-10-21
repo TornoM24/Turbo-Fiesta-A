@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://pixel_panel.theme" type="Theme" id=1]
 [ext_resource path="res://ui/partyview.gd" type="Script" id=2]
@@ -15,6 +15,8 @@
 [ext_resource path="res://pixel_panel_arrow.theme" type="Theme" id=13]
 [ext_resource path="res://pixel_tabs.theme" type="Theme" id=14]
 [ext_resource path="res://pixel_button_2.tres" type="Theme" id=15]
+[ext_resource path="res://gfx/unit/unit_pedestal.png" type="Texture" id=16]
+[ext_resource path="res://data/unit/hiro/art/hiro_idle.tres" type="SpriteFrames" id=17]
 
 [node name="partyview" type="Node2D"]
 pause_mode = 2
@@ -184,6 +186,18 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Pedestal" type="Sprite" parent="C5/Card"]
+position = Vector2( 97, 370 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 16 )
+
+[node name="CharSprite" type="AnimatedSprite" parent="C5/Card"]
+position = Vector2( 97, 360 )
+scale = Vector2( 2, 2 )
+frames = ExtResource( 17 )
+frame = 4
+playing = true
+
 [node name="Button" type="Button" parent="C5"]
 self_modulate = Color( 1, 1, 1, 0 )
 margin_right = 192.0
@@ -333,6 +347,18 @@ scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Pedestal" type="Sprite" parent="C4/Card"]
+position = Vector2( 97, 370 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 16 )
+
+[node name="CharSprite" type="AnimatedSprite" parent="C4/Card"]
+position = Vector2( 97, 360 )
+scale = Vector2( 2, 2 )
+frames = ExtResource( 17 )
+frame = 7
+playing = true
 
 [node name="Button" type="Button" parent="C4"]
 self_modulate = Color( 1, 1, 1, 0 )
@@ -484,6 +510,18 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Pedestal" type="Sprite" parent="C3/Card"]
+position = Vector2( 97, 370 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 16 )
+
+[node name="CharSprite" type="AnimatedSprite" parent="C3/Card"]
+position = Vector2( 97, 360 )
+scale = Vector2( 2, 2 )
+frames = ExtResource( 17 )
+frame = 2
+playing = true
+
 [node name="Button" type="Button" parent="C3"]
 self_modulate = Color( 1, 1, 1, 0 )
 margin_right = 192.0
@@ -634,6 +672,18 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Pedestal" type="Sprite" parent="C2/Card"]
+position = Vector2( 97, 370 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 16 )
+
+[node name="CharSprite" type="AnimatedSprite" parent="C2/Card"]
+position = Vector2( 97, 360 )
+scale = Vector2( 2, 2 )
+frames = ExtResource( 17 )
+frame = 4
+playing = true
+
 [node name="Button" type="Button" parent="C2"]
 self_modulate = Color( 1, 1, 1, 0 )
 margin_right = 192.0
@@ -783,6 +833,18 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Pedestal" type="Sprite" parent="C1/Card"]
+position = Vector2( 95, 370 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 16 )
+
+[node name="CharSprite" type="AnimatedSprite" parent="C1/Card"]
+position = Vector2( 95, 360 )
+scale = Vector2( 2, 2 )
+frames = ExtResource( 17 )
+frame = 2
+playing = true
+
 [node name="Button" type="Button" parent="C1"]
 self_modulate = Color( 1, 1, 1, 0 )
 margin_right = 192.0
@@ -859,6 +921,8 @@ __meta__ = {
 }
 
 [node name="Title" type="RichTextLabel" parent="StatsPanel/Tabs/Stats"]
+anchor_top = 0.00784314
+anchor_bottom = 0.00784314
 margin_left = 28.0
 margin_top = 22.0
 margin_right = 276.0
