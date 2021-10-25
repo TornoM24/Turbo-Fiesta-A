@@ -191,6 +191,12 @@ var ability_dict = {
 		]
 	}
 }
+var passive_dict = {
+	"affinity_modular":{
+		"name":"set name here",
+		"id":"affinity_modular"
+	}
+}
 
 var equip_dict = {
 	"hiro_heirloom":{
