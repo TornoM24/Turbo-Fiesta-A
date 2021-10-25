@@ -195,3 +195,7 @@ func _on_left_pressed():
 	get_node ("StatsPanel/Tabs").current_tab = ot
 	switch_modes (true)
 	pass # Replace with function body.
+
+func _on_item_pressed (item):
+	Master.party[number].equip (item)
+	pass

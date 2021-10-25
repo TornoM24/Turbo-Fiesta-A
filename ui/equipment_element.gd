@@ -8,7 +8,7 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	connect ("pressed", get_parent().get_parent().get_parent().get_parent().get_parent().get_parent(), "_on_item_pressed", [self])
+	connect ("pressed", get_tree().get_root().get_node("partyview"), "_on_item_pressed", [self])
 	pass # Replace with function body.
 
 func _process(delta):
