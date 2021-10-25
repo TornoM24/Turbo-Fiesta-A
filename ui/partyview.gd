@@ -73,6 +73,7 @@ func draw_equip (unit):
 func _input(ev):
 	if ev is InputEventKey and ev.is_action_pressed ("cheat") and not ev.is_echo():
 		Master.party[0].equip (Master.give_equipment("hiro_heirloom"))
+	
 func gp_len ():
 	var maxn = 0
 	for x in Master.party:
