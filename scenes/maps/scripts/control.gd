@@ -101,6 +101,7 @@ func _on_special_pressed():
 		get_node ("Panel/buttonhost/").visible=false
 	
 func ability_pressed(bHost, inputType):
+	get_parent().hide_all()
 	#print (inputType)
 	if inputType == 1:
 		#print ("get pressed!")

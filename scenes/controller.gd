@@ -118,6 +118,10 @@ func attachdataenemy (instance):
 	return instance
 	pass
 var abilityPanels = []
+func hide_all():
+	for x in abilityPanels:
+		print ("hiding")
+		x.hide()
 func spawnAllies ():
 	var incrementer = 0
 	for x in range (0,3):
@@ -125,10 +129,10 @@ func spawnAllies ():
 			#print (Master.formation [x].len)
 			if Master.formation[x][y] != -1:
 				print ("spawning " + Master.party[Master.formation[x][y]].name)
-				abilityPanels.append (load ("res://ui/combat_abilities.tscn").instance())
 				incrementer +=1 
 				get_node("Control/Panel/CBPanel2/G" + str(incrementer)).visible = true
 				var instance = placeholder.instance()
+				
 				add_child(instance)
 				instance.position.x = 680 + (100*x) + (50*y)
 				instance.position.y = 60 + (100*y)
@@ -140,6 +144,11 @@ func spawnAllies ():
 				print ("a "+str(instance.stats.hp))
 				print ("b "+str(instance.stats.mhp))
 				alliesUnit.append(instance)
+				var aPanel = load ("res://ui/combat_abilities.tscn").instance()
+				add_child (aPanel)
+				aPanel.init (instance)
+				abilityPanels.append (aPanel)
+				aPanel.position.x += 256 * (incrementer-1)
 			
 var phBD = {
 	"formation": [["empty","empty","empty"],["empty","geode","empty"],["empty","empty","empty"]],
@@ -203,6 +212,7 @@ func causeEffect (target,source,ability):
 					target.stats.hp = target.stats.mhp
 				add_child (dmgLabel)
 				dmgLabel.global_position = target.global_position + Vector2 (0, -10)
+				dmgLabel.offset()
 				dmgLabel.get_node("RichTextLabel").bbcode_text = "[wave amp=50 freq=2]"+str(fPower)+"[/wave]"
 				dmgLabel.modulate.r = 2
 				logSomething (target.stats.name + " takes [color=red]" + str (fPower) + "[/color] damage!\n")

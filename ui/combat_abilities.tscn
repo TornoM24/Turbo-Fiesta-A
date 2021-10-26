@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://pixel_panel.theme" type="Theme" id=1]
 [ext_resource path="res://scenes/readyhelper.gd" type="Script" id=2]
 [ext_resource path="res://pixel_button_2.tres" type="Theme" id=3]
-[ext_resource path="res://pixel_panel_3.theme" type="Theme" id=4]
 [ext_resource path="res://pixel_button_red.tres" type="Theme" id=5]
 [ext_resource path="res://ui/combat_abilities.gd" type="Script" id=6]
 
@@ -92,9 +91,9 @@ __meta__ = {
 }
 
 [node name="readyhelper" type="RichTextLabel" parent="Panel"]
-margin_top = -40.0
+margin_top = -48.0
 margin_right = 280.0
-margin_bottom = -13.0
+margin_bottom = -21.0
 text = "Character not ready yet!"
 scroll_active = false
 script = ExtResource( 2 )
@@ -104,10 +103,10 @@ __meta__ = {
 
 [node name="namedisplay" type="Panel" parent="Panel"]
 margin_left = 24.0
-margin_top = -16.0
+margin_top = -24.0
 margin_right = 232.0
-margin_bottom = 16.0
-theme = ExtResource( 4 )
+margin_bottom = 8.0
+theme = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -123,3 +122,10 @@ fit_content_height = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Tween" type="Tween" parent="."]
+
+[connection signal="pressed" from="Panel/buttonhost/attack" to="." method="_on_attack_pressed"]
+[connection signal="pressed" from="Panel/buttonhost/defend" to="." method="_on_defend_pressed"]
+[connection signal="pressed" from="Panel/buttonhost/special" to="." method="_on_special_pressed"]
+[connection signal="pressed" from="Panel/buttonhost/item" to="." method="_on_item_pressed"]

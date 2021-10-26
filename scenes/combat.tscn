@@ -93,7 +93,7 @@ __meta__ = {
 
 [node name="Panel" type="Panel" parent="Control"]
 pause_mode = 1
-visible = false
+self_modulate = Color( 1, 1, 1, 0 )
 margin_top = 448.0
 margin_right = 256.0
 margin_bottom = 720.0
@@ -104,6 +104,7 @@ __meta__ = {
 }
 
 [node name="buttonhost" type="Node2D" parent="Control/Panel"]
+visible = false
 position = Vector2( 48, 8 )
 
 [node name="attack" type="Button" parent="Control/Panel/buttonhost"]
@@ -677,7 +678,6 @@ __meta__ = {
 }
 
 [node name="targethelper" type="RichTextLabel" parent="Control/Panel"]
-visible = false
 margin_top = -64.0
 margin_right = 392.0
 margin_bottom = -37.0
@@ -699,6 +699,8 @@ __meta__ = {
 }
 
 [node name="namedisplay" type="Panel" parent="Control/Panel"]
+visible = false
+self_modulate = Color( 1, 1, 1, 0 )
 margin_left = 24.0
 margin_top = -16.0
 margin_right = 232.0
@@ -724,7 +726,7 @@ __meta__ = {
 visible = false
 position = Vector2( 488, 136 )
 frames = SubResource( 9 )
-frame = 5
+frame = 3
 speed_scale = 2.0
 playing = true
 

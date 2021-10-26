@@ -22,7 +22,7 @@ var unitDict = {
 		\"int\" : 9,
 		\"wis\" : 10,
 		\"apt\" : 4,
-		\"spd\" : 2,
+		\"spd\" : 50,
 		\"luk\" : 8
 	},
 	\"abilities\": [bMas[\"attack_stardust_ray_stella\"],bMas[\"spell_pur\"],bMas[\"spell_flare\"]]
