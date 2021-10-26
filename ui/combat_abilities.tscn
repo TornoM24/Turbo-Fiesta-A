@@ -1,0 +1,125 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://pixel_panel.theme" type="Theme" id=1]
+[ext_resource path="res://scenes/readyhelper.gd" type="Script" id=2]
+[ext_resource path="res://pixel_button_2.tres" type="Theme" id=3]
+[ext_resource path="res://pixel_panel_3.theme" type="Theme" id=4]
+[ext_resource path="res://pixel_button_red.tres" type="Theme" id=5]
+[ext_resource path="res://ui/combat_abilities.gd" type="Script" id=6]
+
+[node name="abilitymenu" type="Node2D"]
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_horizontal_guides_": [  ]
+}
+
+[node name="Panel" type="Panel" parent="."]
+margin_top = 704.0
+margin_right = 256.0
+margin_bottom = 976.0
+theme = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="buttonhost" type="Node2D" parent="Panel"]
+position = Vector2( 48, 8 )
+
+[node name="attack" type="Button" parent="Panel/buttonhost"]
+margin_left = -40.0
+margin_top = 24.0
+margin_right = 200.0
+margin_bottom = 55.0
+rect_scale = Vector2( 1, 1.01685 )
+theme = ExtResource( 3 )
+text = "ATTACK"
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="defend" type="Button" parent="Panel/buttonhost"]
+margin_left = -40.0
+margin_top = 72.0
+margin_right = 200.0
+margin_bottom = 103.0
+rect_scale = Vector2( 1, 1.01685 )
+hint_tooltip = "Provides 50% general mitigation."
+theme = ExtResource( 3 )
+text = "DEFEND"
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="special" type="Button" parent="Panel/buttonhost"]
+margin_left = -40.0
+margin_top = 120.0
+margin_right = 200.0
+margin_bottom = 151.0
+rect_scale = Vector2( 1, 1.01685 )
+theme = ExtResource( 3 )
+text = "SPECIAL"
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="item" type="Button" parent="Panel/buttonhost"]
+margin_left = -40.0
+margin_top = 168.0
+margin_right = 200.0
+margin_bottom = 199.0
+rect_scale = Vector2( 1, 1.01685 )
+theme = ExtResource( 3 )
+text = "ITEMS"
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="escape" type="Button" parent="Panel/buttonhost"]
+margin_left = 24.0
+margin_top = 216.0
+margin_right = 136.0
+margin_bottom = 247.0
+rect_scale = Vector2( 1, 1.01685 )
+theme = ExtResource( 5 )
+text = "ESCAPE"
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="readyhelper" type="RichTextLabel" parent="Panel"]
+margin_top = -40.0
+margin_right = 280.0
+margin_bottom = -13.0
+text = "Character not ready yet!"
+scroll_active = false
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="namedisplay" type="Panel" parent="Panel"]
+margin_left = 24.0
+margin_top = -16.0
+margin_right = 232.0
+margin_bottom = 16.0
+theme = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel/namedisplay"]
+margin_top = 8.0
+margin_right = 200.0
+margin_bottom = 32.0
+bbcode_enabled = true
+bbcode_text = "[center]Hiro"
+text = "Hiro"
+fit_content_height = true
+__meta__ = {
+"_edit_use_anchors_": false
+}

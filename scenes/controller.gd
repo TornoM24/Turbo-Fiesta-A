@@ -117,7 +117,7 @@ func attachdataenemy (instance):
 	instance.stats.name = obj.unitDict.name
 	return instance
 	pass
-
+var abilityPanels = []
 func spawnAllies ():
 	var incrementer = 0
 	for x in range (0,3):
@@ -125,6 +125,7 @@ func spawnAllies ():
 			#print (Master.formation [x].len)
 			if Master.formation[x][y] != -1:
 				print ("spawning " + Master.party[Master.formation[x][y]].name)
+				abilityPanels.append (load ("res://ui/combat_abilities.tscn").instance())
 				incrementer +=1 
 				get_node("Control/Panel/CBPanel2/G" + str(incrementer)).visible = true
 				var instance = placeholder.instance()

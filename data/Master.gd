@@ -189,7 +189,22 @@ var ability_dict = {
 				"power": 90,
 			}
 		]
-	}
+	},
+	"spell_soul":{ #Soul, Soula, Soulada, Soulafada, Soulafacta
+		"name": "Soul",
+		"id":"buff_soul",
+		"type":"magic",
+		"desc": "Increases the damage of the caster's next magic cast slightly.\nThis spell is often used by mages to surprise their foes with a large burst of explosive power.\n[color=red]Power grows, but life wanes. No one notices, though. ",
+		"cost": 8,
+		"effects": [
+			{
+				"type": "buff",
+				"target": "self",
+				"param": "next_cast",
+				"power": 25
+			},
+		]
+	},
 }
 var passive_dict = {
 	"affinity_modular":{
