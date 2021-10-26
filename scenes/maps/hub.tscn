@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=2]
+[gd_scene load_steps=63 format=2]
 
 [ext_resource path="res://scenes/maps/Player.gd" type="Script" id=1]
 [ext_resource path="res://scenes/maps/obj/tilemap.tres" type="TileSet" id=2]
@@ -30,6 +30,7 @@
 [ext_resource path="res://scenes/maps/inventorybutton.gd" type="Script" id=28]
 [ext_resource path="res://gfx/sprint.png" type="Texture" id=29]
 [ext_resource path="res://scenes/maps/save.gd" type="Script" id=30]
+[ext_resource path="res://pixel_panel_arrow_n.theme" type="Theme" id=31]
 [ext_resource path="res://gfx/disk_mask.png" type="Texture" id=32]
 [ext_resource path="res://gfx/water_normal.png" type="Texture" id=33]
 [ext_resource path="res://gfx/water_uv_offset.png" type="Texture" id=34]
@@ -39,6 +40,7 @@
 [ext_resource path="res://scenes/maps/menupanel.gd" type="Script" id=38]
 [ext_resource path="res://ui/partyview.tscn" type="PackedScene" id=39]
 [ext_resource path="res://scenes/maps/formation.gd" type="Script" id=40]
+[ext_resource path="res://scenes/maps/moneypanel.gd" type="Script" id=41]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 36 )
@@ -518,9 +520,9 @@ custom_styles/panel = SubResource( 19 )
 
 [node name="mainmenubutton" type="Button" parent="Player/Camera2D/Control/menupanel"]
 margin_left = 24.0
-margin_top = 296.0
+margin_top = 240.0
 margin_right = 190.0
-margin_bottom = 344.0
+margin_bottom = 288.0
 theme = ExtResource( 19 )
 text = "Main Menu"
 script = ExtResource( 15 )
@@ -582,9 +584,9 @@ __meta__ = {
 
 [node name="save" type="Button" parent="Player/Camera2D/Control/menupanel"]
 margin_left = 24.0
-margin_top = 240.0
+margin_top = 184.0
 margin_right = 190.0
-margin_bottom = 288.0
+margin_bottom = 232.0
 theme = ExtResource( 19 )
 text = "Save Game"
 script = ExtResource( 30 )
@@ -619,6 +621,23 @@ __meta__ = {
 position = Vector2( -1088, -16 )
 
 [node name="Tween" type="Tween" parent="Player/Camera2D/Control/menupanel"]
+
+[node name="moneypanel" type="Panel" parent="Player/Camera2D/Control/menupanel"]
+margin_top = 560.0
+margin_right = 192.0
+margin_bottom = 632.0
+theme = ExtResource( 31 )
+script = ExtResource( 41 )
+
+[node name="moneylabel" type="RichTextLabel" parent="Player/Camera2D/Control/menupanel/moneypanel"]
+margin_left = 32.0
+margin_top = 24.0
+margin_right = 184.0
+margin_bottom = 48.0
+bbcode_enabled = true
+bbcode_text = "[right]100[color=#dcb44d]G"
+text = "100G"
+scroll_active = false
 
 [node name="Over" type="TileMap" parent="."]
 scale = Vector2( 2, 2 )

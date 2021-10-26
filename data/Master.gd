@@ -294,6 +294,7 @@ var formation = []
 var party = []
 var partyPosition = Vector2()
 var inventory = []
+var money
 # Called when the node enters the scene tree for the first time.
 func save():
 	var unitInstances = []
@@ -311,6 +312,7 @@ func save():
 		"party" : unitInstances,
 		"formation": formation,
 		"inventory": itemInstances,
+		"money": money
 	}
 	return save_dict
 
@@ -385,6 +387,7 @@ func save_game():
 	print ("successfully saved.")
 
 func new_game ():
+	money = 100
 	party = [fabricate("hiro"),fabricate("stella")]
 	Master.party[0].equip (give_equipment("hiro_heirloom"))
 	formation = [[-1,-1,-1],[-1,0,1],[-1,-1,-1]]
