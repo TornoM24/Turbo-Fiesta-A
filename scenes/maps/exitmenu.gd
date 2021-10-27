@@ -17,22 +17,37 @@ func _ready():
 
 func close_menu():
 	print ("closed menu")
-	get_parent().get_parent().get_node("oc").hide()
+	#get_parent().get_parent().get_node("oc").hide()
 	get_parent().get_parent().get_node("menubutton").show()
-	get_parent().get_node("partyview").hide()
+	fadeout()
+	#get_parent().get_node("partyview").hide()
 	get_tree().paused = false
-	get_parent().hide()
+	#get_parent().hide()
 
+func fadeout ():
+	var tween = get_parent().get_node ("Tween")
+	var menu = get_parent()
+	var oc = get_parent().get_parent().get_node("oc")
+	tween.interpolate_property(menu, "modulate",
+		Color (1,1,1,1), Color (1,1,1,0), 0.5,
+	Tween.TRANS_QUART, Tween.EASE_OUT)
+	tween.start()
+	tween.interpolate_property(oc, "modulate",
+		Color (1,1,1,1), Color (1,1,1,0), 0.5,
+	Tween.TRANS_QUART, Tween.EASE_OUT)
+	tween.start()
 func _button_pressed():
-	close_menu()
-
+	#if get_parent().visible && get_parent().get_node ("Tween").get_runtime <= 0:
+		#close_menu()
+	pass
 func _process(delta):
 	pass
 			
 func _input(event):
 	if event.is_action_released("esc"):
 		if get_parent().visible:
-			close_menu()
+			if get_parent().get_node ("Tween").get_runtime() <= 0:
+				close_menu()
 		else:
 			get_parent().get_parent().get_node("menubutton").open_menu()
 func _mouse_entered():

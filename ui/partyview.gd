@@ -106,6 +106,10 @@ func switch_modes(viewMode):
 			tween.start()
 		var StatsPanel = get_node ("StatsPanel")
 		StatsPanel.show()
+		tween.interpolate_property(StatsPanel, "modulate",
+			Color (1,1,1,0), Color (1,1,1,1), 0.5,
+		Tween.TRANS_QUART, Tween.EASE_OUT)
+		tween.start()
 		var unit = Master.party[number-1]
 		var stats = unit.stats
 		var fullname = ""
@@ -128,10 +132,19 @@ func switch_modes(viewMode):
 			Tween.TRANS_QUART, Tween.EASE_OUT)
 			tween.start()
 		var StatsPanel = get_node ("StatsPanel")
-		StatsPanel.hide()
+		var tween = get_node ("Tween")
+		tween.interpolate_property(StatsPanel, "modulate",
+			Color (1,1,1,1), Color (1,1,1,0), 0.5,
+		Tween.TRANS_QUART, Tween.EASE_OUT)
+		tween.start()
 	pass
 func cards_show ():
 	self.show()
+	var tween = get_node ("Tween")
+	tween.interpolate_property(self, "modulate",
+		Color (1,1,1,0), Color (1,1,1,1), 0.5,
+	Tween.TRANS_QUART, Tween.EASE_OUT)
+	tween.start()
 	var cardsToShow = Master.party.size()
 	var incr = 0
 	for x in range (1,6):
@@ -153,6 +166,7 @@ func cards_show ():
 		card.get_node("EXPBar/EXPLabel").bbcode_text = "[right]EXP " + str(ally.xp) + "/" + str(ally.toNext)
 
 func _button_pressed (button):
+	get_node ("StatsPanel/Tabs").current_tab = 1
 	get_node ("StatsPanel/Tabs").current_tab = 0
 	number = int(button.get_parent().name.substr(1,-1))
 	print (button.get_parent().name)
@@ -166,7 +180,7 @@ func _process (delta):
 
 
 func _on_Tabs_tab_selected(tab):
-	if tab == 1:
+	if tab == 0:
 		for x in get_node ("StatsPanel/Tabs/Equipment/ScrollContainer/Panel").get_children():
 			if x!=null:
 				x.hide()

@@ -15,7 +15,18 @@ func open_menu():
 	var path_menu = get_parent().get_node ("menupanel")
 	var path_inventory = get_parent().get_node ("menupanel/inventorypanel")
 	var path_grid = get_parent().get_node ("menupanel/gridcontainer")
-	path_menu.visible = !path_menu.visible
+	var oc = get_parent().get_node ("oc")
+	var tween = get_parent().get_node("menupanel/Tween")
+	tween.stop_all()
+	tween.interpolate_property(path_menu, "modulate",
+		Color (1,1,1,0), Color (1,1,1,1), 0.5,
+	Tween.TRANS_QUART, Tween.EASE_OUT)
+	tween.start()
+	tween.interpolate_property(oc, "modulate",
+		Color (1,1,1,0), Color (1,1,1,1), 0.5,
+	Tween.TRANS_QUART, Tween.EASE_OUT)
+	tween.start()
+	path_menu.show()
 	path_inventory.hide()
 	path_grid.hide()
 	path_menu.pause_mode = PAUSE_MODE_PROCESS
@@ -26,7 +37,8 @@ func open_menu():
 	get_tree().paused = true
 
 func _button_pressed():
-	open_menu()
+	if !get_parent().get_node ("menupanel").visible:
+		open_menu()
 	
 func _process(delta):
 	pass

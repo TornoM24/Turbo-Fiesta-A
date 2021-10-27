@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://pixel_panel.theme" type="Theme" id=1]
 [ext_resource path="res://ui/partyview.gd" type="Script" id=2]
@@ -18,12 +18,17 @@
 [ext_resource path="res://gfx/unit/unit_pedestal.png" type="Texture" id=16]
 [ext_resource path="res://data/unit/hiro/art/hiro_idle.tres" type="SpriteFrames" id=17]
 [ext_resource path="res://pixel_panel_wide.theme" type="Theme" id=18]
+[ext_resource path="res://ui/arrow_right.png" type="Texture" id=19]
+[ext_resource path="res://ui/StatsPanel.gd" type="Script" id=20]
 
 [node name="partyview" type="Node2D"]
 pause_mode = 2
 z_index = 4096
 z_as_relative = false
 script = ExtResource( 2 )
+__meta__ = {
+"_edit_horizontal_guides_": [  ]
+}
 
 [node name="Panel2" type="Panel" parent="."]
 visible = false
@@ -196,7 +201,7 @@ texture = ExtResource( 16 )
 position = Vector2( 97, 360 )
 scale = Vector2( 2, 2 )
 frames = ExtResource( 17 )
-frame = 3
+frame = 1
 playing = true
 
 [node name="Button" type="Button" parent="C5"]
@@ -358,7 +363,7 @@ texture = ExtResource( 16 )
 position = Vector2( 97, 360 )
 scale = Vector2( 2, 2 )
 frames = ExtResource( 17 )
-frame = 7
+frame = 2
 playing = true
 
 [node name="Button" type="Button" parent="C4"]
@@ -520,7 +525,7 @@ texture = ExtResource( 16 )
 position = Vector2( 97, 360 )
 scale = Vector2( 2, 2 )
 frames = ExtResource( 17 )
-frame = 2
+frame = 10
 playing = true
 
 [node name="Button" type="Button" parent="C3"]
@@ -682,7 +687,6 @@ texture = ExtResource( 16 )
 position = Vector2( 97, 360 )
 scale = Vector2( 2, 2 )
 frames = ExtResource( 17 )
-frame = 4
 playing = true
 
 [node name="Button" type="Button" parent="C2"]
@@ -843,7 +847,7 @@ texture = ExtResource( 16 )
 position = Vector2( 95, 360 )
 scale = Vector2( 2, 2 )
 frames = ExtResource( 17 )
-frame = 2
+frame = 10
 playing = true
 
 [node name="Button" type="Button" parent="C1"]
@@ -861,11 +865,13 @@ margin_left = 208.0
 margin_top = 16.0
 margin_right = 1032.0
 margin_bottom = 592.0
+script = ExtResource( 20 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="charswitch" type="Panel" parent="StatsPanel"]
+pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 40.0
@@ -879,25 +885,32 @@ __meta__ = {
 
 [node name="right" type="Button" parent="StatsPanel/charswitch"]
 margin_left = 72.0
-margin_top = 512.0
+margin_top = 648.0
 margin_right = 136.0
-margin_bottom = 544.0
+margin_bottom = 680.0
 theme = ExtResource( 15 )
-text = ">"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Sprite" type="Sprite" parent="StatsPanel/charswitch/right"]
+position = Vector2( 32, 16 )
+texture = ExtResource( 19 )
+
 [node name="left" type="Button" parent="StatsPanel/charswitch"]
 margin_left = 8.0
-margin_top = 512.0
+margin_top = 648.0
 margin_right = 72.0
-margin_bottom = 544.0
+margin_bottom = 680.0
 theme = ExtResource( 15 )
-text = "<"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Sprite2" type="Sprite" parent="StatsPanel/charswitch/left"]
+position = Vector2( 32, 16 )
+rotation = 3.14159
+texture = ExtResource( 19 )
 
 [node name="Stats" type="Panel" parent="StatsPanel"]
 self_modulate = Color( 1, 1, 1, 0 )
@@ -908,6 +921,7 @@ margin_top = 56.0
 margin_right = -640.0
 margin_bottom = -8.0
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -964,14 +978,15 @@ ATK : 10
 ATK : 10
 "
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
 [node name="Tabs" type="TabContainer" parent="StatsPanel"]
 margin_left = 200.0
-margin_top = 16.0
+margin_top = -16.0
 margin_right = 808.0
-margin_bottom = 560.0
+margin_bottom = 704.0
 theme = ExtResource( 14 )
 tab_align = 0
 __meta__ = {
@@ -989,18 +1004,18 @@ script = ExtResource( 11 )
 
 [node name="ScrollContainer" type="ScrollContainer" parent="StatsPanel/Tabs/Equipment"]
 margin_left = 12.0
-margin_top = 10.0
+margin_top = 26.0
 margin_right = 588.0
-margin_bottom = 130.0
-scroll_horizontal_enabled = false
+margin_bottom = 146.0
+scroll_vertical_enabled = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Panel" type="Panel" parent="StatsPanel/Tabs/Equipment/ScrollContainer"]
-margin_right = 100.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
+margin_right = 576.0
+margin_bottom = 120.0
+rect_min_size = Vector2( 576, 120 )
 
 [node name="Panel" type="Panel" parent="StatsPanel/Tabs/Equipment"]
 margin_left = 12.0
@@ -1013,9 +1028,9 @@ __meta__ = {
 
 [node name="label1" type="RichTextLabel" parent="StatsPanel/Tabs/Equipment"]
 margin_left = 12.0
-margin_top = 142.0
+margin_top = 146.0
 margin_right = 340.0
-margin_bottom = 182.0
+margin_bottom = 186.0
 rect_pivot_offset = Vector2( 336, -8 )
 custom_fonts/normal_font = ExtResource( 10 )
 text = "Currently Equipped"
@@ -1025,10 +1040,10 @@ __meta__ = {
 }
 
 [node name="costlabel" type="RichTextLabel" parent="StatsPanel/Tabs/Equipment"]
-margin_left = 628.0
-margin_top = 142.0
-margin_right = 764.0
-margin_bottom = 182.0
+margin_left = 452.0
+margin_top = 146.0
+margin_right = 588.0
+margin_bottom = 186.0
 rect_pivot_offset = Vector2( 336, -8 )
 custom_fonts/normal_font = ExtResource( 10 )
 bbcode_enabled = true
@@ -1056,7 +1071,7 @@ visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
-margin_top = 26.0
+margin_top = 30.0
 margin_right = -4.0
 margin_bottom = -4.0
 
@@ -1065,7 +1080,7 @@ visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
-margin_top = 26.0
+margin_top = 30.0
 margin_right = -4.0
 margin_bottom = -4.0
 
