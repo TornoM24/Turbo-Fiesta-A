@@ -122,6 +122,12 @@ func hide_all():
 	for x in abilityPanels:
 		print ("hiding")
 		x.hide()
+	
+func show_all():
+	for x in abilityPanels:
+		print ("showing")
+		x.show()
+		
 func spawnAllies ():
 	var incrementer = 0
 	for x in range (0,3):
@@ -251,7 +257,8 @@ func causeEffect (target,source,ability):
 					dmgLabel.modulate.g = 2
 				logSomething ("All allies heal for [color=green]" + str (fPower) + "[/color] hp!\n")
 
-func cancelTargeting ():
+func cancel_targeting ():
+	show_all()
 	targeting = false
 	get_node ("Control/Panel/targethelper").visible = false
 	get_node ("Control/Panel/buttonhost/").visible=true
@@ -320,7 +327,7 @@ func _process(delta):
 						selectedTarget = enemy
 						print ("targeting " + enemy.unitName + "!!!")
 						enemy.selected = false
-						cancelTargeting()
+						cancel_targeting()
 						logSomething (selectedUnit.stats.name + " uses " + targetAbility.name + "!\n")
 						selectedUnit.sprite_attack (targetAbility, selectedTarget)
 						#causeEffect (selectedTarget,targetAbility)
@@ -356,10 +363,11 @@ func _process(delta):
 					selectedTarget = ally
 					print ("targeting " + ally.unitName + "!!!")
 					ally.selected = false
-					cancelTargeting()
+					cancel_targeting()
 					selectedUnit.sprite_attack (targetAbility, selectedTarget)
 					#causeEffect (selectedTarget,targetAbility)
 					selectedUnit.atb_val = 0
+					
 					isSelecting = false
 					selector.visible = false
 			else:
@@ -380,10 +388,7 @@ func _process(delta):
 		if targeting:
 			Input.set_custom_mouse_cursor(pointT)
 			if Input.is_action_pressed("right_click"):
-				targeting = false
-				tsPanel.visible = false
-				get_node ("Control/Panel/targethelper").visible = false
-				get_node ("Control/Panel/buttonhost/").visible=true
+				cancel_targeting()
 		else:
 			Input.set_custom_mouse_cursor(pointN)
 	updateStats(delta)

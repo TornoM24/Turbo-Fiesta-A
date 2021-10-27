@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://scenes/maps/runbutton.gd" type="Script" id=1]
 [ext_resource path="res://scenes/maps/scripts/control.gd" type="Script" id=2]
@@ -25,6 +25,7 @@
 [ext_resource path="res://pixel_panel_3.theme" type="Theme" id=23]
 [ext_resource path="res://pixel_panel_4.theme" type="Theme" id=24]
 [ext_resource path="res://gfx/bg/bg_plain.png" type="Texture" id=25]
+[ext_resource path="res://scenes/CBPanel.gd" type="Script" id=26]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 4
@@ -632,8 +633,10 @@ __meta__ = {
 
 [node name="CBPanel" type="Panel" parent="Control/Panel"]
 visible = false
-margin_right = 640.0
+margin_left = -640.0
+margin_right = 6.10352e-05
 margin_bottom = 272.0
+script = ExtResource( 26 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -664,6 +667,8 @@ margin_right = 575.0
 margin_bottom = 250.0
 rect_min_size = Vector2( 575, 250 )
 
+[node name="Tween" type="Tween" parent="Control/Panel/CBPanel"]
+
 [node name="testbutton" type="Button" parent="Control/Panel"]
 margin_left = 1128.0
 margin_top = -64.0
@@ -678,6 +683,7 @@ __meta__ = {
 }
 
 [node name="targethelper" type="RichTextLabel" parent="Control/Panel"]
+visible = false
 margin_top = -64.0
 margin_right = 392.0
 margin_bottom = -37.0
@@ -726,7 +732,6 @@ __meta__ = {
 visible = false
 position = Vector2( 488, 136 )
 frames = SubResource( 9 )
-frame = 3
 speed_scale = 2.0
 playing = true
 

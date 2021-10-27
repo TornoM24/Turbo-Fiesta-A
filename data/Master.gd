@@ -41,6 +41,24 @@ var ability_dict = {
 			}
 		]
 	},
+	"attack_scarlet_razor_hiro":{
+		"name": "Crimson Saber",
+		"id":"attack_crimson_saber_hiro",
+		"type":"phys",
+		"icon":"sword",
+		"desc": "Attacks with Hiro's Scarlet Razor, dealing physical/fire damage.\nThe modifier on this attack increases by 1% for every stack of Impulse.",
+		"cost": 0,
+		"effects": [
+			{
+				"type": "damage",
+				"target": "single",
+				"elements": ["physical","fire"],
+				"scaling": ["atk"],
+				"power": 100,
+				"acc": 100,
+			}
+		]
+	},
 	"attack_iai_alan":{
 		"name": "Iai Draw",
 		"id":"attack_iai_alan",
@@ -60,54 +78,46 @@ var ability_dict = {
 		]
 	},
 	"attack_final_flare_hiro":{
-		"name": "Final Flare",
+		"name": "Bad Move",
 		"id":"attack_final_flare_hiro",
 		"type":"ranged",
 		"icon":"sword",
-		"desc": "Unleashes Hiro's inner power, dealing massive fire damage to both him and the enemy.",
+		"desc": "Deals 1 flat physical to user.\n[color=gray]Whoops!",
 		"cost": 0,
 		"effects": [
 			{
 				"type": "damage",
-				"target": "single",
-				"elements": ["fire"],
-				"scaling": ["atk"],
-				"power": 1000,
-				"acc": 100,
-			},
-			{
-				"type": "damage",
 				"target": "self",
-				"elements": ["fire"],
+				"elements": ["physical"],
 				"scaling": ["atk"],
-				"power": 9999,
+				"power": 1,
 				"acc": 100,
 			}
 		]
 	},
 	"buff_scarlet_blaze":{
-		"name": "Scarlet Blaze",
+		"name": "No Time to Think",
 		"id":"buff_scarlet_blaze",
 		"type":"magic",
-		"desc": "Increases SPD by 50% and increases ATK by 25% for 5 turns.",
-		"cost": 10,
+		"desc": "User steels themselves, gaining bonus DEF and ATK and attracting enemy attention.\n[color=gray]\nI won't let it happen again...!",
+		"cost": 20,
 		"effects": [
 			{
 				"type": "buff",
 				"target": "self",
-				"param": "SPD",
+				"param": "DEF",
 				"power": 50
 			},
 			{
 				"type": "buff",
 				"target": "self",
 				"param": "ATK",
-				"power": 25
+				"power": 20
 			}
 		]
 	},
 	"buff_all_heal_hiro":{
-		"name": "'Don't die on me!'",
+		"name": "'One more shot!'",
 		"id":"buff_all_heal_hiro",
 		"type":"magic",
 		"icon":"wht_mag",

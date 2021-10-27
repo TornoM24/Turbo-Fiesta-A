@@ -129,3 +129,4 @@ __meta__ = {
 [connection signal="pressed" from="Panel/buttonhost/defend" to="." method="_on_defend_pressed"]
 [connection signal="pressed" from="Panel/buttonhost/special" to="." method="_on_special_pressed"]
 [connection signal="pressed" from="Panel/buttonhost/item" to="." method="_on_item_pressed"]
+[connection signal="tween_all_completed" from="Tween" to="." method="_on_Tween_tween_all_completed"]

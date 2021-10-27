@@ -74,6 +74,8 @@ func load_data(data):
 	baseStats = data["baseStats"]
 	#equipment = data["equipment"]
 	abilities = data["abilities"]
+	for x in data["abilities"]:
+		print ("ability " + x.name)
 	xp = data["xp"]
 	toNext = round( 0.04 * (pow(level, 3)) + 0.8 * (pow(level, 3)) + 2 * level)
 	return self
@@ -84,6 +86,7 @@ func initialize (prefab):
 	self.stats.mhp = prefab.unitDict.stats.hp
 	self.stats.mmp = prefab.unitDict.stats.mp
 	self.stats.name = prefab.unitDict.name
+	self.abilities = prefab.unitDict.abilities
 	self.unitName = prefab.unitName
 	level = 1
 	toNext = round( 0.04 * (pow(level, 3)) + 0.8 * (pow(level, 3)) + 2 * level)

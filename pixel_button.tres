@@ -11,7 +11,7 @@ region_rect = Rect2( 0, 0, 24, 24 )
 margin_left = 4.0
 margin_right = 4.0
 margin_top = 4.0
-margin_bottom = 4.0
+margin_bottom = 8.0
 
 [sub_resource type="StyleBoxTexture" id=2]
 texture = ExtResource( 2 )
@@ -19,7 +19,7 @@ region_rect = Rect2( 0, 0, 24, 24 )
 margin_left = 4.0
 margin_right = 4.0
 margin_top = 4.0
-margin_bottom = 4.0
+margin_bottom = 8.0
 
 [sub_resource type="StyleBoxTexture" id=3]
 texture = ExtResource( 3 )
@@ -27,7 +27,7 @@ region_rect = Rect2( 0, 0, 24, 24 )
 margin_left = 4.0
 margin_right = 4.0
 margin_top = 4.0
-margin_bottom = 4.0
+margin_bottom = 8.0
 
 [resource]
 default_font = ExtResource( 1 )

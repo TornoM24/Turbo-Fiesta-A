@@ -53,6 +53,7 @@ var deathAnimFinished = false
 func enemyDie():
 	dying = true
 func allyDie():
+	#show()
 	get_node ("AnimatedSprite").hide()
 	#get_node ("UnitSprite").texture = load ("res://data/unit/"+unitName+"/art/"+unitName+"_dead.png")
 	get_node ("UnitSprite").texture = load ("res://data/unit/hiro/art/hiro_dead.png")
@@ -79,9 +80,10 @@ func _process(delta):
 	if !dying:
 		updateResources()
 		atb_prog += delta
-		if atb_prog >= 0.01 && !inAnimation &&!animStun:
-			atb_val += float (stats.spd)/10
-			atb_prog = 0
+		if !inDead:
+			if atb_prog >= 0.01 && !inAnimation &&!animStun:
+				atb_val += float (stats.spd)/10
+				atb_prog = 0
 		if inAnimation:
 			if type !="ranged" and type!= "magic":
 				position=position.move_toward(target.position + Vector2 (50,0), delta * SPEED_MOD)

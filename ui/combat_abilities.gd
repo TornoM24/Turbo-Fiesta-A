@@ -18,9 +18,9 @@ func init (unit):
 	get_node ("Panel/buttonhost/attack").connect ("pressed", get_tree().get_root().get_node ("Controller/Control"), "_on_attack_pressed")
 	get_node ("Panel/buttonhost/defend").connect ("pressed", get_tree().get_root().get_node ("Controller/Control"), "_on_defend_pressed")
 	get_node ("Panel/buttonhost/item").connect ("pressed", get_tree().get_root().get_node ("Controller/Control"), "_on_item_pressed")
-	get_node ("Panel/buttonhost/special").connect ("pressed", get_tree().get_root().get_node ("Controller/Control"), "_on_special_pressed")
+	get_node ("Panel/buttonhost/special").connect ("pressed", get_tree().get_root().get_node ("Controller/Control"), "_on_special_pressed", [self])
 	assignment = unit
-	parent.selectedUnit = assignment
+	#parent.selectedUnit = assignment
 	active = true
 	origin = position
 	pass
@@ -29,18 +29,45 @@ func _process(delta):
 	if active:
 		#print (assignment.stats.name + " " + str(assignment.atb_val))
 		if assignment.atb_val >= 100:
-			#print ("heeheehaha")
-			#position.y -= delta
-			var tween = get_node ("Tween")
-			tween.interpolate_property(self, "position",
-				null, Vector2(position.x, position.y-256), 0.1,
-			Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-			tween.start()
-			active = false
+			if position.y >= 0:
+				shift_up()
+		else: 
+			if position.y <= -256:
+				print (position.y)
+				shift_down()
 	pass
+
+func shift_up():
+	var tween = get_node ("Tween")
+	tween.interpolate_property(self, "position",
+		null, Vector2(position.x, position.y-256), 0.2,
+	Tween.TRANS_QUART, Tween.EASE_OUT)
+	tween.start()
+	
+func shift_down():
+	var tween = get_node ("Tween")
+	tween.interpolate_property(self, "position",
+		null, Vector2(position.x, position.y+256), 0.2,
+	Tween.TRANS_QUART, Tween.EASE_OUT)
+	tween.start()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
 
+func _on_attack_pressed():
+	parent.selectedUnit = assignment
+	parent.hide_all()
+	pass
+
+func _on_defend_pressed():
+	parent.selectedUnit = assignment
+	pass # Replace with function body.
+
+func _on_special_pressed():
+	parent.selectedUnit = assignment
+	parent.hide_all()
+	pass # Replace with function body.
 
 
+func _on_Tween_tween_all_completed():
+	pass # Replace with function body.

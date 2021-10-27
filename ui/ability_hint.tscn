@@ -31,7 +31,7 @@ __meta__ = {
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Panel"]
 margin_left = 8.0
-margin_top = 8.0
+margin_top = 72.0
 margin_right = 760.0
 margin_bottom = 568.0
 scroll_horizontal_enabled = false
@@ -41,8 +41,8 @@ __meta__ = {
 
 [node name="Control" type="Control" parent="Panel/ScrollContainer"]
 margin_right = 752.0
-margin_bottom = 560.0
-rect_min_size = Vector2( 752, 560 )
+margin_bottom = 480.0
+rect_min_size = Vector2( 752, 480 )
 
 [node name="Button" type="Button" parent="."]
 margin_left = 968.0

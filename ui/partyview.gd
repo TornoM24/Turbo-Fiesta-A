@@ -12,7 +12,7 @@ func _ready():
 		var card = get_node ("C"+str(x))
 		card.z_index = 998
 	pass
-export var SWITCH_SPEED = 0.05
+export var SWITCH_SPEED = 0.5
 func get_full (stat):
 	match stat:
 		"mhp" :
@@ -89,7 +89,7 @@ func switch_modes(viewMode):
 		topCard.z_index = 999
 		tween.interpolate_property(topCard, "position",
 			torigin, Vector2(8, -40), SWITCH_SPEED,
-		Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+		Tween.TRANS_QUART, Tween.EASE_OUT)
 		var nonTops = []
 		for x in range (1,6):
 			var card = get_node ("C"+str(x))
@@ -102,20 +102,20 @@ func switch_modes(viewMode):
 			var origin = card.position
 			tween.interpolate_property(card, "position",
 				origin, Vector2(8, -40 + (8*(y+1))), SWITCH_SPEED,
-			Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+			Tween.TRANS_QUART, Tween.EASE_OUT)
 			tween.start()
 		var StatsPanel = get_node ("StatsPanel")
 		StatsPanel.show()
 		var unit = Master.party[number-1]
 		var stats = unit.stats
 		var fullname = ""
-		StatsPanel.get_node("Tabs/Stats/RichTextLabel").bbcode_text = ""
+		StatsPanel.get_node("Stats/RichTextLabel").bbcode_text = ""
 		for stat in stats.keys():
 			if stat == "mhp" or stat == "mmp":
-				StatsPanel.get_node("Tabs/Stats/RichTextLabel").bbcode_text += get_full(stat) + " [right]" + str(stats[stat]) + "[color=lime] ⬆" + str(unit.bonusStats[stat]) + "[/color][/right]\n"
+				StatsPanel.get_node("Stats/RichTextLabel").bbcode_text += get_full(stat) + " [right]" + str(stats[stat]) + "[color=lime] ⬆" + str(unit.bonusStats[stat]) + "[/color][/right]\n"
 		for stat in stats.keys():
 			if !stat=="hp" and !stat=="mp" and !stat=="mhp" and !stat=="mmp" and !stat=="unitName" and !stat=="name":
-				StatsPanel.get_node("Tabs/Stats/RichTextLabel").bbcode_text += get_full(stat) + " [right]" + str(stats[stat]) + "[color=lime] ⬆" + str(unit.bonusStats[stat]) + "[/color][/right]\n"
+				StatsPanel.get_node("Stats/RichTextLabel").bbcode_text += get_full(stat) + " [right]" + str(stats[stat]) + "[color=lime] ⬆" + str(unit.bonusStats[stat]) + "[/color][/right]\n"
 		
 	if !viewMode:
 		print ("switching viewmode (condensed)")
@@ -125,7 +125,7 @@ func switch_modes(viewMode):
 			var origin = card.position
 			tween.interpolate_property(card, "position",
 				null, Vector2(8+(208*(x-1)), -40), SWITCH_SPEED,
-			Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+			Tween.TRANS_QUART, Tween.EASE_OUT)
 			tween.start()
 		var StatsPanel = get_node ("StatsPanel")
 		StatsPanel.hide()
