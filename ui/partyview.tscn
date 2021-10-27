@@ -201,7 +201,7 @@ texture = ExtResource( 16 )
 position = Vector2( 97, 360 )
 scale = Vector2( 2, 2 )
 frames = ExtResource( 17 )
-frame = 1
+frame = 3
 playing = true
 
 [node name="Button" type="Button" parent="C5"]
@@ -363,7 +363,7 @@ texture = ExtResource( 16 )
 position = Vector2( 97, 360 )
 scale = Vector2( 2, 2 )
 frames = ExtResource( 17 )
-frame = 2
+frame = 4
 playing = true
 
 [node name="Button" type="Button" parent="C4"]
@@ -525,7 +525,6 @@ texture = ExtResource( 16 )
 position = Vector2( 97, 360 )
 scale = Vector2( 2, 2 )
 frames = ExtResource( 17 )
-frame = 10
 playing = true
 
 [node name="Button" type="Button" parent="C3"]
@@ -687,6 +686,7 @@ texture = ExtResource( 16 )
 position = Vector2( 97, 360 )
 scale = Vector2( 2, 2 )
 frames = ExtResource( 17 )
+frame = 2
 playing = true
 
 [node name="Button" type="Button" parent="C2"]
@@ -847,7 +847,6 @@ texture = ExtResource( 16 )
 position = Vector2( 95, 360 )
 scale = Vector2( 2, 2 )
 frames = ExtResource( 17 )
-frame = 10
 playing = true
 
 [node name="Button" type="Button" parent="C1"]

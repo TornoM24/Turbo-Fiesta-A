@@ -49,17 +49,17 @@ func updateStats (delta):
 		get_node (path+"MPBar").targetValue = int((float(x.stats.mp)/x.stats.mmp)*100)
 		if get_node (path+"HPBar").targetValue < get_node (path+"HPBar").value:
 			#print ("reducing value")
-			get_node (path+"HPBar").value -= 1
+			get_node (path+"HPBar").value -= delta * 50
 		elif get_node (path+"HPBar").targetValue > get_node (path+"HPBar").value:
 			#print ("increasing value")
-			get_node (path+"HPBar").value += 1
+			get_node (path+"HPBar").value += delta * 50
 			
 		if get_node (path+"MPBar").targetValue < get_node (path+"MPBar").value:
 			#print ("reducing value")
-			get_node (path+"MPBar").value -= 1
+			get_node (path+"MPBar").value -= delta * 50
 		elif get_node (path+"MPBar").targetValue > get_node (path+"MPBar").value:
 			#print ("increasing value")
-			get_node (path+"MPBar").value += 1
+			get_node (path+"MPBar").value += delta * 50
 			
 		get_node (path+"ATBBar").value = x.atb_val
 		if get_node (path+"HPBar").value < 100:

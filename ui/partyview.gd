@@ -90,6 +90,7 @@ func switch_modes(viewMode):
 		tween.interpolate_property(topCard, "position",
 			torigin, Vector2(8, -40), SWITCH_SPEED,
 		Tween.TRANS_QUART, Tween.EASE_OUT)
+		tween.start()
 		var nonTops = []
 		for x in range (1,6):
 			var card = get_node ("C"+str(x))

@@ -73,11 +73,12 @@ func animBreak():
 	get_node ("Attack").hide()
 	get_node ("Attack").frame=0
 	get_node ("Attack").playing=false
-	
+var singleRun = false
 func _process(delta):
 	if inDead:
 		allyDie()
 	if !dying:
+		var tween = get_node ("Tween")
 		updateResources()
 		atb_prog += delta
 		if !inDead:
@@ -85,8 +86,14 @@ func _process(delta):
 				atb_val += float (stats.spd)/10
 				atb_prog = 0
 		if inAnimation:
-			if type !="ranged" and type!= "magic":
-				position=position.move_toward(target.position + Vector2 (50,0), delta * SPEED_MOD)
+			if type !="ranged" and type!= "magic" and ability.target != "all enemies":
+				if singleRun:
+					tween.interpolate_property(self, "position",
+						origin, target.position + Vector2 (50,0), 0.5,
+					Tween.TRANS_QUART, Tween.EASE_OUT)
+					tween.start()
+					singleRun = false
+				
 				if global_position == target.position + Vector2 (50,0):
 					animReset()
 					inAnimation = false
@@ -94,8 +101,13 @@ func _process(delta):
 				animReset()
 				inAnimation = false
 		if inRecovery:
-			if type !="ranged" and type!= "magic":
-				position=position.move_toward(origin, delta * SPEED_MOD)
+			if type !="ranged" and type!= "magic" and ability.target != "all enemies":
+				if singleRun:
+					tween.interpolate_property(self, "position",
+						null, origin, 0.5,
+					Tween.TRANS_QUART, Tween.EASE_OUT)
+					tween.start()
+					singleRun = false
 				if global_position == origin:
 					animBreak()
 					inRecovery = false
@@ -159,6 +171,7 @@ func sprite_attack (abi, tar):
 	target = tar
 	#print (type)
 	inAnimation = true
+	singleRun = true
 	animStun = true
 	if type == "magic":
 		get_node ("Attack").frames = load ("res://data/unit/"+unitName+"/art/"+unitName+"_cast.tres")
@@ -202,4 +215,5 @@ func _on_Select_mouse_exited():
 func _on_Attack_animation_finished():
 	get_node ("AnimatedSprite").show()
 	get_node ("Attack").hide()
+	singleRun = true
 	pass # Replace with function body.

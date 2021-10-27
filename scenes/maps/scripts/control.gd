@@ -86,7 +86,7 @@ func _on_special_pressed(button):
 		var newButton = abilityButton.instance()
 		#print (ability.name)
 		newButton.get_node ("Button").text = ability.name
-		newButton.get_node ("Button").hint_tooltip = ability.desc + "\n\n" + generateTip (ability)
+		#newButton.get_node ("Button").hint_tooltip = ability.desc + "\n\n" + generateTip (ability)
 		newButton.uName = ability.name
 		newButton.aName = ability.id
 		get_node("Panel/CBPanel/specialscroll/Panel").add_child(newButton)
@@ -99,6 +99,8 @@ func _on_special_pressed(button):
 		#	xOffset = 200
 		#else:
 		#	xOffset = 0
+		if ability.cost > unitGet.reference.stats.mp:
+			newButton.disable_button()
 		yOffset += 85
 		get_node("Panel/CBPanel/specialscroll/Panel").rect_min_size.y = yOffset
 		get_node ("Panel/buttonhost/").visible=false

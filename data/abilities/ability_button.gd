@@ -23,6 +23,9 @@ func _ready():
 	get_node("Button").icon = texture
 	pass # Replace with function body.
 
+func disable_button ():
+	get_node ("Button").disabled = true
+
 func _process(delta):
 	pass
 # Called every frame. 'delta' is the elapsed time since the previous frame.

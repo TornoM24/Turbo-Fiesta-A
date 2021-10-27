@@ -1,0 +1,400 @@
+[gd_scene load_steps=30 format=2]
+
+[ext_resource path="res://pixel_panel.theme" type="Theme" id=1]
+[ext_resource path="res://ui/button_depressed_menu.png" type="Texture" id=2]
+[ext_resource path="res://ui/button_hover_menu.png" type="Texture" id=3]
+[ext_resource path="res://ui/button_normal_menu.png" type="Texture" id=4]
+[ext_resource path="res://gfx/icons/slot.png" type="Texture" id=5]
+[ext_resource path="res://ui/button_normal_inv.png" type="Texture" id=6]
+[ext_resource path="res://ui/button_depressed_inv.png" type="Texture" id=7]
+[ext_resource path="res://ui/button_hover_inv.png" type="Texture" id=8]
+[ext_resource path="res://scenes/maps/Control.gd" type="Script" id=9]
+[ext_resource path="res://scenes/maps/oc.gd" type="Script" id=10]
+[ext_resource path="res://scenes/maps/testbutton.gd" type="Script" id=11]
+[ext_resource path="res://scenes/maps/exit.gd" type="Script" id=12]
+[ext_resource path="res://ui/partyview.tscn" type="PackedScene" id=13]
+[ext_resource path="res://scenes/maps/exitmenu.gd" type="Script" id=14]
+[ext_resource path="res://scenes/maps/menubutton.gd" type="Script" id=15]
+[ext_resource path="res://scenes/maps/party.gd" type="Script" id=16]
+[ext_resource path="res://scenes/maps/menupanel.gd" type="Script" id=17]
+[ext_resource path="res://scenes/maps/inventorybutton.gd" type="Script" id=18]
+[ext_resource path="res://scenes/maps/save.gd" type="Script" id=19]
+[ext_resource path="res://scenes/maps/inventory.gd" type="Script" id=21]
+[ext_resource path="res://scenes/maps/mainmenubutton.gd" type="Script" id=22]
+[ext_resource path="res://scenes/maps/formation.gd" type="Script" id=23]
+[ext_resource path="res://pixel_button.tres" type="Theme" id=24]
+[ext_resource path="res://pixel_button_red.tres" type="Theme" id=25]
+[ext_resource path="res://pixel_button_arrow.tres" type="Theme" id=26]
+
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 8 )
+region_rect = Rect2( 0, 0, 24, 24 )
+
+[sub_resource type="StyleBoxTexture" id=2]
+texture = ExtResource( 7 )
+region_rect = Rect2( 0, 0, 24, 24 )
+
+[sub_resource type="StyleBoxTexture" id=3]
+texture = ExtResource( 6 )
+region_rect = Rect2( 0, 0, 12, 12 )
+
+[sub_resource type="StyleBoxTexture" id=4]
+texture = ExtResource( 5 )
+region_rect = Rect2( 0, 0, 16, 16 )
+
+[node name="Control" type="Control"]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="stamina" type="ProgressBar" parent="."]
+margin_left = -624.0
+margin_top = 328.0
+margin_right = -472.0
+margin_bottom = 352.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="testbutton" type="Button" parent="."]
+margin_left = 488.0
+margin_top = 312.0
+margin_right = 614.0
+margin_bottom = 336.0
+theme = ExtResource( 24 )
+text = "test fight"
+script = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="menubutton" type="TextureButton" parent="."]
+show_behind_parent = true
+margin_left = -632.0
+margin_top = -352.0
+margin_right = -592.0
+margin_bottom = -312.0
+theme = ExtResource( 24 )
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 2 )
+texture_hover = ExtResource( 3 )
+expand = true
+script = ExtResource( 15 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="inventorybutton" type="Button" parent="."]
+visible = false
+margin_left = -583.0
+margin_top = -352.0
+margin_right = -543.0
+margin_bottom = -312.0
+theme = ExtResource( 24 )
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/normal = SubResource( 3 )
+script = ExtResource( 18 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="oc" type="Node2D" parent="."]
+visible = false
+position = Vector2( -128, -232 )
+z_index = 885
+z_as_relative = false
+script = ExtResource( 10 )
+
+[node name="occluder" type="Panel" parent="oc"]
+modulate = Color( 0, 0, 0, 0.901961 )
+margin_left = -552.0
+margin_top = -160.0
+margin_right = 792.0
+margin_bottom = 624.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="menupanel" type="Panel" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = 448.0
+margin_top = -344.0
+margin_right = 624.0
+margin_bottom = 280.0
+theme = ExtResource( 1 )
+script = ExtResource( 17 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="gridcontainer" type="GridContainer" parent="menupanel"]
+visible = false
+margin_left = 26.0
+margin_top = 121.0
+margin_right = 132.0
+margin_bottom = 205.0
+rect_scale = Vector2( 3, 3 )
+columns = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="slot1" type="Panel" parent="menupanel/gridcontainer"]
+margin_right = 18.0
+margin_bottom = 18.0
+rect_min_size = Vector2( 18, 18 )
+custom_styles/panel = SubResource( 4 )
+
+[node name="slot2" type="Panel" parent="menupanel/gridcontainer"]
+margin_left = 22.0
+margin_right = 40.0
+margin_bottom = 18.0
+rect_min_size = Vector2( 18, 18 )
+custom_styles/panel = SubResource( 4 )
+
+[node name="slot3" type="Panel" parent="menupanel/gridcontainer"]
+margin_left = 44.0
+margin_right = 62.0
+margin_bottom = 18.0
+rect_min_size = Vector2( 18, 18 )
+custom_styles/panel = SubResource( 4 )
+
+[node name="slot4" type="Panel" parent="menupanel/gridcontainer"]
+margin_left = 66.0
+margin_right = 84.0
+margin_bottom = 18.0
+rect_min_size = Vector2( 18, 18 )
+custom_styles/panel = SubResource( 4 )
+
+[node name="slot5" type="Panel" parent="menupanel/gridcontainer"]
+margin_left = 88.0
+margin_right = 106.0
+margin_bottom = 18.0
+rect_min_size = Vector2( 18, 18 )
+custom_styles/panel = SubResource( 4 )
+
+[node name="slot6" type="Panel" parent="menupanel/gridcontainer"]
+margin_top = 22.0
+margin_right = 18.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 18, 18 )
+custom_styles/panel = SubResource( 4 )
+
+[node name="slot7" type="Panel" parent="menupanel/gridcontainer"]
+margin_left = 22.0
+margin_top = 22.0
+margin_right = 40.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 18, 18 )
+custom_styles/panel = SubResource( 4 )
+
+[node name="slot8" type="Panel" parent="menupanel/gridcontainer"]
+margin_left = 44.0
+margin_top = 22.0
+margin_right = 62.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 18, 18 )
+custom_styles/panel = SubResource( 4 )
+
+[node name="slot9" type="Panel" parent="menupanel/gridcontainer"]
+margin_left = 66.0
+margin_top = 22.0
+margin_right = 84.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 18, 18 )
+custom_styles/panel = SubResource( 4 )
+
+[node name="slot10" type="Panel" parent="menupanel/gridcontainer"]
+margin_left = 88.0
+margin_top = 22.0
+margin_right = 106.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 18, 18 )
+custom_styles/panel = SubResource( 4 )
+
+[node name="slot11" type="Panel" parent="menupanel/gridcontainer"]
+margin_top = 44.0
+margin_right = 18.0
+margin_bottom = 62.0
+rect_min_size = Vector2( 18, 18 )
+custom_styles/panel = SubResource( 4 )
+
+[node name="slot12" type="Panel" parent="menupanel/gridcontainer"]
+margin_left = 22.0
+margin_top = 44.0
+margin_right = 40.0
+margin_bottom = 62.0
+rect_min_size = Vector2( 18, 18 )
+custom_styles/panel = SubResource( 4 )
+
+[node name="slot13" type="Panel" parent="menupanel/gridcontainer"]
+margin_left = 44.0
+margin_top = 44.0
+margin_right = 62.0
+margin_bottom = 62.0
+rect_min_size = Vector2( 18, 18 )
+custom_styles/panel = SubResource( 4 )
+
+[node name="slot14" type="Panel" parent="menupanel/gridcontainer"]
+margin_left = 66.0
+margin_top = 44.0
+margin_right = 84.0
+margin_bottom = 62.0
+rect_min_size = Vector2( 18, 18 )
+custom_styles/panel = SubResource( 4 )
+
+[node name="slot15" type="Panel" parent="menupanel/gridcontainer"]
+margin_left = 88.0
+margin_top = 44.0
+margin_right = 106.0
+margin_bottom = 62.0
+rect_min_size = Vector2( 18, 18 )
+custom_styles/panel = SubResource( 4 )
+
+[node name="slot16" type="Panel" parent="menupanel/gridcontainer"]
+margin_top = 66.0
+margin_right = 18.0
+margin_bottom = 84.0
+rect_min_size = Vector2( 18, 18 )
+custom_styles/panel = SubResource( 4 )
+
+[node name="slot17" type="Panel" parent="menupanel/gridcontainer"]
+margin_left = 22.0
+margin_top = 66.0
+margin_right = 40.0
+margin_bottom = 84.0
+rect_min_size = Vector2( 18, 18 )
+custom_styles/panel = SubResource( 4 )
+
+[node name="slot18" type="Panel" parent="menupanel/gridcontainer"]
+margin_left = 44.0
+margin_top = 66.0
+margin_right = 62.0
+margin_bottom = 84.0
+rect_min_size = Vector2( 18, 18 )
+custom_styles/panel = SubResource( 4 )
+
+[node name="slot19" type="Panel" parent="menupanel/gridcontainer"]
+margin_left = 66.0
+margin_top = 66.0
+margin_right = 84.0
+margin_bottom = 84.0
+rect_min_size = Vector2( 18, 18 )
+custom_styles/panel = SubResource( 4 )
+
+[node name="slot20" type="Panel" parent="menupanel/gridcontainer"]
+margin_left = 88.0
+margin_top = 66.0
+margin_right = 106.0
+margin_bottom = 84.0
+rect_min_size = Vector2( 18, 18 )
+custom_styles/panel = SubResource( 4 )
+
+[node name="mainmenubutton" type="Button" parent="menupanel"]
+margin_left = 24.0
+margin_top = 240.0
+margin_right = 190.0
+margin_bottom = 288.0
+theme = ExtResource( 26 )
+text = "Main Menu"
+script = ExtResource( 22 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="exitmenu" type="Button" parent="menupanel"]
+margin_left = 24.0
+margin_top = 16.0
+margin_right = 192.0
+margin_bottom = 64.0
+theme = ExtResource( 26 )
+text = "Close Menu"
+script = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="inventory" type="Button" parent="menupanel"]
+margin_left = 24.0
+margin_top = 72.0
+margin_right = 190.0
+margin_bottom = 120.0
+theme = ExtResource( 26 )
+text = "Inventory"
+script = ExtResource( 21 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="party" type="Button" parent="menupanel"]
+margin_left = 24.0
+margin_top = 128.0
+margin_right = 190.0
+margin_bottom = 176.0
+theme = ExtResource( 26 )
+text = "Party"
+script = ExtResource( 16 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="formation" type="Button" parent="menupanel"]
+visible = false
+margin_left = 24.0
+margin_top = 184.0
+margin_right = 190.0
+margin_bottom = 232.0
+theme = ExtResource( 26 )
+text = "Formation"
+script = ExtResource( 23 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="save" type="Button" parent="menupanel"]
+margin_left = 24.0
+margin_top = 184.0
+margin_right = 190.0
+margin_bottom = 232.0
+theme = ExtResource( 26 )
+text = "Save Game"
+script = ExtResource( 19 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="inventorypanel" type="Panel" parent="menupanel"]
+visible = false
+margin_left = -129.0
+margin_top = 78.0
+margin_right = 391.0
+margin_bottom = 398.0
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="exit" type="Button" parent="menupanel/inventorypanel"]
+margin_left = 477.0
+margin_top = 11.0
+margin_right = 509.0
+margin_bottom = 43.0
+theme = ExtResource( 25 )
+text = "X"
+script = ExtResource( 12 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="partyview" parent="menupanel" instance=ExtResource( 13 )]
+position = Vector2( -1088, -16 )
+
+[node name="Tween" type="Tween" parent="menupanel"]

@@ -9,6 +9,12 @@ var yOffset = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	print ("it is done")
+	var tween = get_node ("Tween")
+	#var origin = card.position
+	tween.interpolate_property(self, "modulate",
+		Color (1,1,1,0), Color (1,1,1,1), 0.2,
+	Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	tween.start()
 	pause_mode = Node.PAUSE_MODE_PROCESS
 	pass # Replace with function body.
 
@@ -18,7 +24,15 @@ func _ready():
 #	pass
 
 func generateTip (ability):
-	get_node ("Panel/AbilityName").bbcode_text = ability.name + " [Mana Cost : [color=#00c8ff]" + str(ability.cost) + "[/color]]"
+	
+	var texture = ImageTexture.new()
+	var image = Image.new()
+	image.load("res://gfx/icons/empty.png")
+	texture.create_from_image(image)
+	get_node ("Panel/Sprite").texture = image
+	
+	get_node ("Panel/Sprite/CostLabel").bbcode_text = "[center]MP [color=#00c8ff]" + str (ability.cost)
+	get_node ("Panel/AbilityName").bbcode_text = ability.name #+ "\n[Mana Cost : [color=#00c8ff]" + str(ability.cost) + "[/color]]"
 	var d = (load ("res://ui/panel_set.tscn").instance())
 	get_node("Panel/ScrollContainer/Control").add_child (d)
 	d.setText ("DESCRIPTION",ability.desc)

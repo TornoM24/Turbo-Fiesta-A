@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://data/unit/playerUnit.gd" type="Script" id=1]
 [ext_resource path="res://gfx/unit/hpbar_bg.png" type="Texture" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://data/unit/Attack.gd" type="Script" id=9]
 [ext_resource path="res://gfx/fx/cast_aura.png" type="Texture" id=10]
 [ext_resource path="res://gfx/fx/cast_particles.png" type="Texture" id=11]
+[ext_resource path="res://gfx/particles/cast_particles.tres" type="Material" id=12]
 
 [node name="Unit" type="Node2D"]
 script = ExtResource( 1 )
@@ -82,9 +83,11 @@ __meta__ = {
 position = Vector2( 16, 64 )
 scale = Vector2( 2, 2 )
 emitting = false
-amount = 20
-lifetime = 2.0
-randomness = 1.0
+amount = 50
+lifetime = 7.0
+preprocess = 10.0
+randomness = 0.5
+process_material = ExtResource( 12 )
 texture = ExtResource( 11 )
 
 [node name="CastAura" type="Sprite" parent="."]
@@ -114,6 +117,8 @@ script = ExtResource( 9 )
 [node name="UnitSprite" type="Sprite" parent="."]
 position = Vector2( 15, 50 )
 scale = Vector2( 2, 2 )
+
+[node name="Tween" type="Tween" parent="."]
 
 [connection signal="mouse_entered" from="Select" to="." method="_on_Select_mouse_entered"]
 [connection signal="mouse_exited" from="Select" to="." method="_on_Select_mouse_exited"]
