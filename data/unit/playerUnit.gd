@@ -86,7 +86,7 @@ func _process(delta):
 				atb_val += float (stats.spd)/10
 				atb_prog = 0
 		if inAnimation:
-			if type !="ranged" and type!= "magic" and ability.target != "all enemies":
+			if type !="ranged" and type!= "magic":
 				if singleRun:
 					tween.interpolate_property(self, "position",
 						origin, target.position + Vector2 (50,0), 0.5,
@@ -101,7 +101,7 @@ func _process(delta):
 				animReset()
 				inAnimation = false
 		if inRecovery:
-			if type !="ranged" and type!= "magic" and ability.target != "all enemies":
+			if type !="ranged" and type!= "magic":
 				if singleRun:
 					tween.interpolate_property(self, "position",
 						null, origin, 0.5,

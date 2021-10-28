@@ -38,7 +38,7 @@ func fadeout ():
 	tween.start()
 func _button_pressed():
 	#if get_parent().visible && get_parent().get_node ("Tween").get_runtime <= 0:
-		#close_menu()
+	close_menu()
 	pass
 func _process(delta):
 	pass

@@ -121,6 +121,7 @@ __meta__ = {
 }
 
 [node name="menupanel" type="Panel" parent="."]
+visible = false
 self_modulate = Color( 1, 1, 1, 0 )
 margin_left = 448.0
 margin_top = -344.0

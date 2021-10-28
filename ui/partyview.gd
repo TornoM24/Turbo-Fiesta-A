@@ -141,6 +141,7 @@ func switch_modes(viewMode):
 	pass
 func cards_show ():
 	self.show()
+	get_node ("Spreader").open()
 	var tween = get_node ("Tween")
 	tween.interpolate_property(self, "modulate",
 		Color (1,1,1,0), Color (1,1,1,1), 0.5,
