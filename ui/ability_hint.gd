@@ -6,6 +6,8 @@ extends Node2D
 # var b = "text"
 
 var yOffset = 0
+var sceneBase
+var freePath
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	print ("it is done")
@@ -24,12 +26,7 @@ func _ready():
 #	pass
 
 func generateTip (ability):
-	
-	var texture = ImageTexture.new()
-	var image = Image.new()
-	image.load("res://gfx/icons/empty.png")
-	texture.create_from_image(image)
-	get_node ("Panel/Sprite").texture = image
+	get_node ("Panel/Sprite").texture = load("res://gfx/icons/"+ability.icon+".png")
 	
 	get_node ("Panel/Sprite/CostLabel").bbcode_text = "[center]MP [color=#00c8ff]" + str (ability.cost)
 	get_node ("Panel/AbilityName").bbcode_text = ability.name #+ "\n[Mana Cost : [color=#00c8ff]" + str(ability.cost) + "[/color]]"
@@ -93,6 +90,9 @@ func generateTip (ability):
 
 
 func _on_Button_pressed():
-	get_tree().paused = false
+	if sceneBase == "combat":
+		get_tree().paused = false
+	else:
+		get_node (freePath).pause_mode = PAUSE_MODE_PROCESS
 	queue_free()
 	pass # Replace with function body.

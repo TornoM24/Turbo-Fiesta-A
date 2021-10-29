@@ -106,8 +106,6 @@ __meta__ = {
 [node name="oc" type="Node2D" parent="."]
 visible = false
 position = Vector2( -128, -232 )
-z_index = 885
-z_as_relative = false
 script = ExtResource( 10 )
 
 [node name="occluder" type="Panel" parent="oc"]
@@ -296,6 +294,11 @@ margin_bottom = 84.0
 rect_min_size = Vector2( 18, 18 )
 custom_styles/panel = SubResource( 4 )
 
+[node name="partyview" parent="menupanel" instance=ExtResource( 13 )]
+position = Vector2( -1088, -16 )
+z_index = 0
+z_as_relative = true
+
 [node name="mainmenubutton" type="Button" parent="menupanel"]
 margin_left = 24.0
 margin_top = 240.0
@@ -394,8 +397,5 @@ script = ExtResource( 12 )
 __meta__ = {
 "_editor_description_": ""
 }
-
-[node name="partyview" parent="menupanel" instance=ExtResource( 13 )]
-position = Vector2( -1088, -16 )
 
 [node name="Tween" type="Tween" parent="menupanel"]

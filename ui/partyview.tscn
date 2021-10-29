@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://pixel_panel.theme" type="Theme" id=1]
 [ext_resource path="res://ui/partyview.gd" type="Script" id=2]
@@ -22,9 +22,10 @@
 [ext_resource path="res://ui/StatsPanel.gd" type="Script" id=20]
 [ext_resource path="res://ui/spreader.png" type="Texture" id=21]
 [ext_resource path="res://ui/Spreader.gd" type="Script" id=22]
+[ext_resource path="res://ui/spreaderver.gd" type="Script" id=23]
+[ext_resource path="res://pixel_button.tres" type="Theme" id=24]
 
 [node name="partyview" type="Node2D"]
-pause_mode = 2
 z_index = 4096
 z_as_relative = false
 script = ExtResource( 2 )
@@ -32,12 +33,22 @@ __meta__ = {
 "_edit_horizontal_guides_": [  ]
 }
 
-[node name="Spreader" type="Sprite" parent="."]
+[node name="Spreader2" type="Sprite" parent="."]
+visible = false
 self_modulate = Color( 0.498039, 0.498039, 0.498039, 1 )
-position = Vector2( -639.625, 592 )
-scale = Vector2( 1.67881, 1 )
+position = Vector2( -832.375, 592 )
+scale = Vector2( 2.18274, 1 )
 texture = ExtResource( 21 )
 script = ExtResource( 22 )
+
+[node name="Spreader" type="Sprite" parent="."]
+visible = false
+self_modulate = Color( 0.498039, 0.498039, 0.498039, 1 )
+position = Vector2( 1208, -415.98 )
+rotation = 1.5708
+scale = Vector2( 1.09308, 0.963232 )
+texture = ExtResource( 21 )
+script = ExtResource( 23 )
 
 [node name="Panel2" type="Panel" parent="."]
 visible = false
@@ -209,7 +220,7 @@ texture = ExtResource( 16 )
 position = Vector2( 97, 360 )
 scale = Vector2( 2, 2 )
 frames = ExtResource( 17 )
-frame = 10
+frame = 6
 playing = true
 
 [node name="Button" type="Button" parent="C5"]
@@ -370,7 +381,7 @@ texture = ExtResource( 16 )
 position = Vector2( 97, 360 )
 scale = Vector2( 2, 2 )
 frames = ExtResource( 17 )
-frame = 11
+frame = 7
 playing = true
 
 [node name="Button" type="Button" parent="C4"]
@@ -531,7 +542,7 @@ texture = ExtResource( 16 )
 position = Vector2( 97, 360 )
 scale = Vector2( 2, 2 )
 frames = ExtResource( 17 )
-frame = 7
+frame = 3
 playing = true
 
 [node name="Button" type="Button" parent="C3"]
@@ -692,7 +703,7 @@ texture = ExtResource( 16 )
 position = Vector2( 97, 360 )
 scale = Vector2( 2, 2 )
 frames = ExtResource( 17 )
-frame = 9
+frame = 5
 playing = true
 
 [node name="Button" type="Button" parent="C2"]
@@ -852,7 +863,7 @@ texture = ExtResource( 16 )
 position = Vector2( 95, 360 )
 scale = Vector2( 2, 2 )
 frames = ExtResource( 17 )
-frame = 7
+frame = 3
 playing = true
 
 [node name="Button" type="Button" parent="C1"]
@@ -1011,7 +1022,7 @@ script = ExtResource( 11 )
 margin_left = 12.0
 margin_top = 26.0
 margin_right = 588.0
-margin_bottom = 146.0
+margin_bottom = 162.0
 scroll_vertical_enabled = false
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1019,8 +1030,8 @@ __meta__ = {
 
 [node name="Panel" type="Panel" parent="StatsPanel/Tabs/Equipment/ScrollContainer"]
 margin_right = 576.0
-margin_bottom = 120.0
-rect_min_size = Vector2( 576, 120 )
+margin_bottom = 136.0
+rect_min_size = Vector2( 576, 136 )
 
 [node name="Panel" type="Panel" parent="StatsPanel/Tabs/Equipment"]
 margin_left = 12.0
@@ -1033,9 +1044,9 @@ __meta__ = {
 
 [node name="label1" type="RichTextLabel" parent="StatsPanel/Tabs/Equipment"]
 margin_left = 12.0
-margin_top = 146.0
+margin_top = 162.0
 margin_right = 340.0
-margin_bottom = 186.0
+margin_bottom = 202.0
 rect_pivot_offset = Vector2( 336, -8 )
 custom_fonts/normal_font = ExtResource( 10 )
 text = "Currently Equipped"
@@ -1046,9 +1057,9 @@ __meta__ = {
 
 [node name="costlabel" type="RichTextLabel" parent="StatsPanel/Tabs/Equipment"]
 margin_left = 452.0
-margin_top = 146.0
+margin_top = 162.0
 margin_right = 588.0
-margin_bottom = 186.0
+margin_bottom = 202.0
 rect_pivot_offset = Vector2( 336, -8 )
 custom_fonts/normal_font = ExtResource( 10 )
 bbcode_enabled = true
@@ -1080,6 +1091,30 @@ margin_top = 30.0
 margin_right = -4.0
 margin_bottom = -4.0
 
+[node name="ScrollContainer" type="ScrollContainer" parent="StatsPanel/Tabs/Abilities"]
+margin_left = 12.0
+margin_top = 26.0
+margin_right = 588.0
+margin_bottom = 658.0
+scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="Control" parent="StatsPanel/Tabs/Abilities/ScrollContainer"]
+margin_right = 576.0
+margin_bottom = 632.0
+rect_min_size = Vector2( 576, 632 )
+
+[node name="Bonus" type="Control" parent="StatsPanel/Tabs"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 30.0
+margin_right = -4.0
+margin_bottom = -4.0
+
 [node name="Growth" type="Control" parent="StatsPanel/Tabs"]
 visible = false
 anchor_right = 1.0
@@ -1089,6 +1124,98 @@ margin_top = 30.0
 margin_right = -4.0
 margin_bottom = -4.0
 
+[node name="TabContainer" type="TabContainer" parent="StatsPanel/Tabs/Growth"]
+margin_left = 20.0
+margin_top = 18.0
+margin_right = 580.0
+margin_bottom = 666.0
+rect_pivot_offset = Vector2( -260, 194 )
+tab_align = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Stat Points" type="Control" parent="StatsPanel/Tabs/Growth/TabContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 30.0
+margin_right = -4.0
+margin_bottom = -4.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="StatsPanel/Tabs/Growth/TabContainer/Stat Points"]
+margin_left = 20.0
+margin_top = 50.0
+margin_right = 220.0
+margin_bottom = 74.0
+bbcode_enabled = true
+bbcode_text = "Spend Stat Points"
+text = "Spend Stat Points"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="StatsPanel/Tabs/Growth/TabContainer/Stat Points"]
+margin_left = 12.0
+margin_top = 74.0
+margin_right = 284.0
+margin_bottom = 370.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel2" type="Panel" parent="StatsPanel/Tabs/Growth/TabContainer/Stat Points"]
+margin_left = 12.0
+margin_top = 10.0
+margin_right = 228.0
+margin_bottom = 42.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="StatsPanel/Tabs/Growth/TabContainer/Stat Points/Panel2"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 208.0
+margin_bottom = 24.0
+bbcode_enabled = true
+bbcode_text = "[center]Remaining SP : [color=lime]9999"
+text = "Remaining SP : 9999"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Confirm" type="Button" parent="StatsPanel/Tabs/Growth/TabContainer/Stat Points"]
+margin_left = 212.0
+margin_top = 378.0
+margin_right = 276.0
+margin_bottom = 402.0
+theme = ExtResource( 24 )
+custom_fonts/font = ExtResource( 10 )
+text = "Confirm"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Reset" type="Button" parent="StatsPanel/Tabs/Growth/TabContainer/Stat Points"]
+margin_left = 132.0
+margin_top = 378.0
+margin_right = 196.0
+margin_bottom = 402.0
+theme = ExtResource( 24 )
+custom_fonts/font = ExtResource( 10 )
+text = "Reset"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="pressed" from="StatsPanel/charswitch/right" to="." method="_on_right_pressed"]
 [connection signal="pressed" from="StatsPanel/charswitch/left" to="." method="_on_left_pressed"]
 [connection signal="tab_selected" from="StatsPanel/Tabs" to="." method="_on_Tabs_tab_selected"]
+[connection signal="pressed" from="StatsPanel/Tabs/Growth/TabContainer/Stat Points/Confirm" to="." method="_on_Confirm_pressed"]
+[connection signal="pressed" from="StatsPanel/Tabs/Growth/TabContainer/Stat Points/Reset" to="." method="_on_Reset_pressed"]

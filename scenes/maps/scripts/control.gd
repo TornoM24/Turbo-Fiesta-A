@@ -99,6 +99,7 @@ func _on_special_pressed(button):
 		#	xOffset = 200
 		#else:
 		#	xOffset = 0
+		newButton.get_node ("Button").icon=load("res://gfx/icons/"+ability.icon+".png")
 		if ability.cost > unitGet.reference.stats.mp:
 			newButton.disable_button()
 		yOffset += 85
@@ -132,6 +133,7 @@ func ability_pressed(bHost, inputType):
 	elif inputType == 2:
 		print ("aawawa")
 		var x = load("res://ui/ability_hint.tscn").instance()
+		x.sceneBase = "combat"
 		x.generateTip (Master.ability_dict[bHost.aName])
 		get_parent().add_child(x)
 		#yield(get_tree().create_timer(0.001), "timeout") 

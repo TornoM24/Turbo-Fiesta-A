@@ -28,7 +28,8 @@ var equipAbilities = []
 var prefab
 var baseStats = {}
 var unitName = "Aou Mogis"
-
+var sp = 0
+var spendable = 0
 
 func level_up():
 	level += 1
@@ -40,6 +41,7 @@ func level_up():
 			if !stats.hp<=0:
 				stats.hp = stats.mhp
 				stats.mp = stats.mmp
+	sp += 2
 	return level
 
 func give_xp (amount):
@@ -62,6 +64,7 @@ func save ():
 		"equipment": itemInstances,
 		"abilities": abilities,
 		"xp": xp,
+		"sp": sp
 	}
 	return save_dict
 
@@ -74,6 +77,7 @@ func load_data(data):
 	baseStats = data["baseStats"]
 	#equipment = data["equipment"]
 	abilities = data["abilities"]
+	sp = data ["sp"]
 	for x in data["abilities"]:
 		print ("ability " + x.name)
 	xp = data["xp"]
@@ -88,6 +92,7 @@ func initialize (prefab):
 	self.stats.name = prefab.unitDict.name
 	self.abilities = prefab.unitDict.abilities
 	self.unitName = prefab.unitName
+	self.sp = 10
 	level = 1
 	toNext = round( 0.04 * (pow(level, 3)) + 0.8 * (pow(level, 3)) + 2 * level)
 	return self

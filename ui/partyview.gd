@@ -13,32 +13,14 @@ func _ready():
 		card.z_index = 998
 	pass
 export var SWITCH_SPEED = 0.5
-func get_full (stat):
-	match stat:
-		"mhp" :
-			return "MAX HP"
-		"mmp" :
-			return "MAX MP"
-		"atk" :
-			return "ATTACK"
-		"def" : 
-			return "DEFENSE"
-		"int" : 
-			return "INTELLIGENCE"
-		"wis" :
-			return "WISDOM"
-		"apt" :
-			return "APTITUDE"
-		"spd" :
-			return "SPEED"
-		"luk" : 
-			return "LUCK"
 	
 var number = 1
 var maxNumber
 var equipsDrawn = []
 func draw_equip (unit):
 	var CEPanel = get_node ("StatsPanel/Tabs/Equipment/ScrollContainer/Panel")
+	for x in CEPanel.get_children():
+		x.hide()
 	var equipment_prefab = load ("res://ui/equipment_element.tscn")
 	var fnX = 0
 	for x in unit.equipment:
@@ -79,6 +61,20 @@ func gp_len ():
 	for x in Master.party:
 		maxn += 1
 	return maxn
+
+func update_stats ():
+	var StatsPanel = get_node ("StatsPanel")
+	var unit = Master.party[number-1]
+	var stats = unit.stats
+	var fullname = ""
+	StatsPanel.get_node("Stats/RichTextLabel").bbcode_text = ""
+	for stat in stats.keys():
+		if stat == "mhp" or stat == "mmp":
+			StatsPanel.get_node("Stats/RichTextLabel").bbcode_text += Master.get_full(stat) + " [right]" + str(stats[stat]) + "[color=lime] ⬆" + str(unit.bonusStats[stat]) + "[/color][/right]\n"
+	for stat in stats.keys():
+		if !stat=="hp" and !stat=="mp" and !stat=="mhp" and !stat=="mmp" and !stat=="unitName" and !stat=="name":
+			StatsPanel.get_node("Stats/RichTextLabel").bbcode_text += Master.get_full(stat) + " [right]" + str(stats[stat]) + "[color=lime] ⬆" + str(unit.bonusStats[stat]) + "[/color][/right]\n"
+
 func switch_modes(viewMode):
 	#viewMode = !viewMode
 	if viewMode:
@@ -111,16 +107,8 @@ func switch_modes(viewMode):
 			Color (1,1,1,0), Color (1,1,1,1), 0.5,
 		Tween.TRANS_QUART, Tween.EASE_OUT)
 		tween.start()
-		var unit = Master.party[number-1]
-		var stats = unit.stats
-		var fullname = ""
-		StatsPanel.get_node("Stats/RichTextLabel").bbcode_text = ""
-		for stat in stats.keys():
-			if stat == "mhp" or stat == "mmp":
-				StatsPanel.get_node("Stats/RichTextLabel").bbcode_text += get_full(stat) + " [right]" + str(stats[stat]) + "[color=lime] ⬆" + str(unit.bonusStats[stat]) + "[/color][/right]\n"
-		for stat in stats.keys():
-			if !stat=="hp" and !stat=="mp" and !stat=="mhp" and !stat=="mmp" and !stat=="unitName" and !stat=="name":
-				StatsPanel.get_node("Stats/RichTextLabel").bbcode_text += get_full(stat) + " [right]" + str(stats[stat]) + "[color=lime] ⬆" + str(unit.bonusStats[stat]) + "[/color][/right]\n"
+		update_stats()
+		draw_equip(Master.party[number-1])
 		
 	if !viewMode:
 		print ("switching viewmode (condensed)")
@@ -142,6 +130,7 @@ func switch_modes(viewMode):
 func cards_show ():
 	self.show()
 	get_node ("Spreader").open()
+	get_node ("Spreader2").open()
 	var tween = get_node ("Tween")
 	tween.interpolate_property(self, "modulate",
 		Color (1,1,1,0), Color (1,1,1,1), 0.5,
@@ -179,8 +168,45 @@ func _process (delta):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
-
-
+func draw_abilities (unit):
+	var abilityControl = get_node ("StatsPanel/Tabs/Abilities/ScrollContainer/Control")
+	var yOffset = 0
+	for x in unit.abilities:
+		var aCard = load ("res://ui/ability_card.tscn").instance()
+		aCard.init (x)
+		abilityControl.add_child(aCard)
+		aCard.position.y = yOffset
+		yOffset += 120
+	abilityControl.rect_min_size.y = yOffset
+func update_sp (value):
+	if value != Master.party[number-1].sp:
+		get_node ("StatsPanel/Tabs/Growth/TabContainer/Stat Points/Panel2/RichTextLabel").bbcode_text = "Remaining SP : [color=yellow]" + str (value)
+	else:
+		get_node ("StatsPanel/Tabs/Growth/TabContainer/Stat Points/Panel2/RichTextLabel").bbcode_text = "Remaining SP : " + str (value)
+func draw_parameters (unit):
+	var statPan = get_node ("StatsPanel/Tabs/Growth/TabContainer/Stat Points/Panel")
+	var stats = unit.stats
+	var yOffset = 24
+	update_sp (unit.sp)
+	unit.spendable = unit.sp
+	for stat in stats.keys():
+		if stat == "mhp" or stat == "mmp":
+			var statBox = load ("res://ui/StatContainer.tscn").instance()
+			statBox.init (stat, unit.stats[stat])
+			statPan.add_child(statBox)
+			statBox.position = Vector2 (24, yOffset)
+			statBox.parent = self
+			statBox.unit = unit
+			yOffset += 32
+	for stat in stats.keys():
+		if !stat=="hp" and !stat=="mp" and !stat=="mhp" and !stat=="mmp" and !stat=="unitName" and !stat=="name":
+			var statBox = load ("res://ui/StatContainer.tscn").instance()
+			statBox.init (stat, unit.stats[stat])
+			statPan.add_child(statBox)
+			statBox.position = Vector2 (24, yOffset)
+			statBox.parent = self
+			statBox.unit = unit
+			yOffset += 32
 func _on_Tabs_tab_selected(tab):
 	if tab == 0:
 		for x in get_node ("StatsPanel/Tabs/Equipment/ScrollContainer/Panel").get_children():
@@ -188,6 +214,20 @@ func _on_Tabs_tab_selected(tab):
 				x.hide()
 		print ("on equips screen")
 		draw_equip (Master.party[number-1])
+	if tab == 1:
+		for x in get_node ("StatsPanel/Tabs/Abilities/ScrollContainer/Control").get_children():
+			if x!=null:
+				x.hide()
+		print ("on abilities screen")
+		draw_abilities (Master.party[number-1])
+	if tab == 3:
+		var bStat = get_node ("StatsPanel/Tabs/Growth/TabContainer")
+		if bStat.current_tab == 0:
+			for x in bStat.get_node ("Stat Points/Panel").get_children():
+				if x!=null:
+					x.hide()
+			print ("on abilities screen")
+			draw_parameters (Master.party[number-1])
 	pass # Replace with function body.
 
 
@@ -213,5 +253,31 @@ func _on_left_pressed():
 	pass # Replace with function body.
 
 func _on_item_pressed (item):
-	Master.party[number].equip (item)
+	Master.party[number-1].equip (item)
 	pass
+
+
+func _on_Confirm_pressed():
+	for x in get_node ("StatsPanel/Tabs/Growth/TabContainer/Stat Points/Panel").get_children():
+		var tt = x.stat
+		var unit = Master.party[number-1]
+		unit.stats[tt] = x.target
+		unit.sp = unit.spendable
+		update_sp (unit.sp)
+		x.val = unit.stats[tt]
+		x.check()
+		update_stats()
+	pass # Replace with function body.
+
+
+func _on_Reset_pressed():
+	for x in get_node ("StatsPanel/Tabs/Growth/TabContainer/Stat Points/Panel").get_children():
+		var tt = x.stat
+		var unit = Master.party[number-1]
+		x.val = unit.stats[tt]
+		x.target = x.val
+		unit.spendable = unit.sp
+		x.check()
+		update_sp(unit.sp)
+		update_stats()
+	pass # Replace with function body.

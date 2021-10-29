@@ -14,7 +14,7 @@ func _ready():
 func open():
 	var tween = get_parent().get_node ("Tween")
 	tween.interpolate_property(self, "position",
-		Vector2(-639.625,592), Vector2(780,592), 1,
+		Vector2(position.x,-608), Vector2(position.x,280), 0.5,
 	Tween.TRANS_QUART, Tween.EASE_OUT)
 	tween.start()
 # Called every frame. 'delta' is the elapsed time since the previous frame.

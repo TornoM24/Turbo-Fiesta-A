@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://pixel_panel_fade.theme" type="Theme" id=1]
-[ext_resource path="res://ui/ability_hint.gd" type="Script" id=2]
+[ext_resource path="res://ui/equipment_hint.gd" type="Script" id=2]
 [ext_resource path="res://pixel_button_red.tres" type="Theme" id=3]
-[ext_resource path="res://gfx/icons/empty.png" type="Texture" id=4]
+[ext_resource path="res://font/kissinger.tres" type="DynamicFont" id=4]
+[ext_resource path="res://gfx/equip/pedestal.png" type="Texture" id=5]
 
 [node name="tooltip" type="Node2D"]
 z_index = 4096
@@ -31,14 +32,14 @@ __meta__ = {
 }
 
 [node name="AbilityName" type="RichTextLabel" parent="Panel"]
-margin_left = 80.0
+margin_left = 104.0
 margin_top = 24.0
-margin_right = 592.0
+margin_right = 616.0
 margin_bottom = 64.0
 bbcode_enabled = true
-bbcode_text = "Sample Text
+bbcode_text = "Hiro's Heirloom
 "
-text = "Sample Text
+text = "Hiro's Heirloom
 "
 __meta__ = {
 "_edit_use_anchors_": false
@@ -59,18 +60,33 @@ margin_right = 740.0
 margin_bottom = 480.0
 rect_min_size = Vector2( 740, 480 )
 
-[node name="Sprite" type="Sprite" parent="Panel"]
-position = Vector2( 40, 40 )
-texture = ExtResource( 4 )
+[node name="Panel" type="Panel" parent="Panel"]
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 88.0
+margin_bottom = 88.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="CostLabel" type="RichTextLabel" parent="Panel/Sprite"]
-margin_left = -40.0
-margin_top = 32.0
-margin_right = 40.0
-margin_bottom = 72.0
+[node name="BG" type="Sprite" parent="Panel/Panel"]
+position = Vector2( 36, 36 )
+scale = Vector2( 1.125, 1.125 )
+texture = ExtResource( 5 )
+
+[node name="Sprite" type="Sprite" parent="Panel/Panel"]
+position = Vector2( 36, 36 )
+scale = Vector2( 1.125, 1.125 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel/Panel"]
+visible = false
+margin_top = 72.0
+margin_right = 72.0
+margin_bottom = 104.0
+custom_fonts/normal_font = ExtResource( 4 )
 bbcode_enabled = true
-bbcode_text = "[center]MP [color=#00c8ff]50"
-text = "MP 50"
+bbcode_text = "[center]None"
+text = "None"
 scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false

@@ -99,6 +99,7 @@ var ability_dict = {
 		"name": "No Time to Think",
 		"id":"buff_scarlet_blaze",
 		"type":"magic",
+		"icon":"magic",
 		"desc": "User steels themselves, gaining bonus DEF and ATK and attracting enemy attention.\n[color=gray]\nI won't let it happen again...!",
 		"cost": 20,
 		"effects": [
@@ -136,7 +137,7 @@ var ability_dict = {
 		"name": "Stardust Ray",
 		"id":"attack_stardust_ray_stella",
 		"type":"ranged",
-		"icon":"shoot",
+		"icon":"shoot2",
 		"desc": "Shoots an enemy, dealing light/magic damage.",
 		"cost": 0,
 		"effects": [
@@ -155,7 +156,7 @@ var ability_dict = {
 		"id":"spell_pur",
 		"type":"magic",
 		"icon":"wht_mag",
-		"desc": "Heals a target for a slight amount of health.",
+		"desc": "Heals a target for a slight amount of health.\n[color=grey]Sustain your life, and bask in artificial eternity.",
 		"cost": 5,
 		"effects": [
 			{
@@ -204,7 +205,8 @@ var ability_dict = {
 		"name": "Soul",
 		"id":"buff_soul",
 		"type":"magic",
-		"desc": "Increases the damage of the caster's next magic cast slightly.\nThis spell is often used by mages to surprise their foes with a large burst of explosive power.\n[color=red]Power grows, but life wanes. No one notices, though. ",
+		"icon":"blk_mag",
+		"desc": "Increases the damage of the caster's next magic cast slightly.\nThis spell is often used by mages to surprise their foes with a large burst of explosive power.\n[color=red]Power grows, but life wanes. Alas, none take notice. ",
 		"cost": 8,
 		"effects": [
 			{
@@ -424,6 +426,27 @@ func add_equip (inst):
 	inventory.append (inst)
 	print ("appended " + inst.itemName + " successfully")
 	return inst
+
+func get_full (stat):
+	match stat:
+		"mhp" :
+			return "MAX HP"
+		"mmp" :
+			return "MAX MP"
+		"atk" :
+			return "ATTACK"
+		"def" : 
+			return "DEFENSE"
+		"int" : 
+			return "INTELLIGENCE"
+		"wis" :
+			return "WISDOM"
+		"apt" :
+			return "APTITUDE"
+		"spd" :
+			return "SPEED"
+		"luk" : 
+			return "LUCK"
 
 func _ready():
 	print ("singleton Master loaded successfully")
