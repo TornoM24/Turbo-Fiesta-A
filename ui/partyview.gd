@@ -39,7 +39,7 @@ func sort_equip (eitem):
 
 func draw_equip (unit):
 	var CEPanel = get_node ("StatsPanel/Tabs/Equipment/ScrollContainer/Control")
-	get_node ("StatsPanel/Tabs/Equipment/costlabel").bbcode_text = "[right]Cost : ★" + str (unit.cost) + "/" + str (unit.maxCost)
+	get_node ("StatsPanel/Tabs/Equipment/costlabel").bbcode_text = "[right]Cost : ◉" + str (unit.cost) + "/" + str (unit.maxCost)
 	for x in get_node ("StatsPanel/Tabs/Equipment/ScrollContainer2/Control").get_children():
 		print ("attempting to hide "+x.item.itemName)
 		x.hide()
@@ -105,7 +105,7 @@ func update_stats ():
 			newCard.get_node ("Title").bbcode_text = ""+Master.get_full (stat)
 			newCard.get_node ("Total").bbcode_text = "[right][color=yellow]" + str(stats[stat]) + "[/color][color=lime] + " + str(unit.bonusStats[stat]) + ""
 			newCard.get_node ("RichTextLabel").bbcode_text = "[right]" + str(stats[stat] + unit.bonusStats[stat]) + ""
-			newCard.position.y = (inc * 58)
+			newCard.position.y = (inc * 36)
 			StatsPanel.get_node("Stats/RichTextLabel").bbcode_text += Master.get_full(stat) + " [right]" + str(stats[stat]) + "[color=lime] +" + str(unit.bonusStats[stat]) + "[/color][/right]\n"
 			inc += 1
 	for stat in stats.keys():
@@ -116,7 +116,7 @@ func update_stats ():
 			newCard.get_node ("Total").bbcode_text = "[right][color=yellow]" + str(stats[stat]) + "[/color][color=lime] + " + str(unit.bonusStats[stat]) + ""
 			newCard.get_node ("RichTextLabel").bbcode_text = "[right]" + str(stats[stat] + unit.bonusStats[stat]) + ""
 			StatsPanel.get_node("Stats/RichTextLabel").bbcode_text += Master.get_full(stat) + " [right]" + str(stats[stat]) + "[color=lime] +" + str(unit.bonusStats[stat]) + "[/color][/right]\n"
-			newCard.position.y = (inc * 58)
+			newCard.position.y = (inc * 36)
 			inc += 1
 	var incr = 0
 	unit.maxCost = unit.stats.apt

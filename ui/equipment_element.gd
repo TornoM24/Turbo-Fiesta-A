@@ -15,7 +15,7 @@ func init (item):
 	self.item = item
 	get_node("Panel/Sprite").texture = load ("res://gfx/equip/"+item.id+ ".png")
 	get_node("Panel/RichTextLabel").bbcode_text = item.itemName
-	get_node("Panel/RichTextLabel2").bbcode_text = "[right]★" + str (item.cost)
+	get_node("Panel/RichTextLabel2").bbcode_text = "[right]◉" + str (item.cost)
 
 func _process(delta):
 	if !visible:

@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://font/kissinger.tres" type="DynamicFont" id=1]
+[ext_resource path="res://font/Chrono.tres" type="DynamicFont" id=1]
 [ext_resource path="res://ui/button_plus_hover.png" type="Texture" id=2]
 [ext_resource path="res://ui/button_minus_hover.png" type="Texture" id=3]
 [ext_resource path="res://pixel_button.tres" type="Theme" id=4]

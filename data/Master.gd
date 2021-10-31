@@ -286,6 +286,24 @@ these implements also approve of her wit, to the tired agreement of her companio
 				"misc":"buff_golden_gleam"
 			}
 		]
+	},
+	"cozy_fleece":{
+		"name": "Enwool Fleece",
+		"id" : "cozy_fleece",
+		"desc": """A large, fluffy, and very warm bundle of enwool fleece. It's very
+comfortable, and often used by travelers in cold, wintery areas. It's cute too!""",
+		"cost": 1,
+		"stats": {
+			"hp": 20,
+			"def" :4
+		},
+		"effects":[
+			{
+				"type":"resist",
+				"param": "fire",
+				"power": 10
+			}
+		]
 	}
 }
 

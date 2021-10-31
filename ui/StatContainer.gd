@@ -15,9 +15,9 @@ func _ready():
 
 func check ():
 	if target > val:
-		get_node ("StatLabel").bbcode_text = Master.get_full(stat) + " " + str(val) + " ⮕[color=lime] " + str (target)
+		get_node ("StatLabel").bbcode_text = Master.get_full(stat) + " " + str(val) + " ▸[color=lime] " + str (target)
 	else:
-		get_node ("StatLabel").bbcode_text = Master.get_full(stat) + " " + str(val) + " ⮕ " + str (target)
+		get_node ("StatLabel").bbcode_text = Master.get_full(stat) + " " + str(val) + " ▸ " + str (target)
 		
 func init(stat, value):
 	self.stat = stat

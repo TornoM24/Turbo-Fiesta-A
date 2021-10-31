@@ -1,11 +1,12 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://pixel_panel_fade.theme" type="Theme" id=1]
 [ext_resource path="res://ui/equipment_hint.gd" type="Script" id=2]
 [ext_resource path="res://pixel_button_red.tres" type="Theme" id=3]
 [ext_resource path="res://font/kissinger.tres" type="DynamicFont" id=4]
 [ext_resource path="res://gfx/equip/pedestal.png" type="Texture" id=5]
-[ext_resource path="res://font/kissinger_large.tres" type="DynamicFont" id=6]
+[ext_resource path="res://font/ChronoLarge.tres" type="DynamicFont" id=6]
+[ext_resource path="res://font/Chrono.tres" type="DynamicFont" id=7]
 
 [node name="tooltip" type="Node2D"]
 z_index = 4096
@@ -52,10 +53,13 @@ __meta__ = {
 margin_top = 24.0
 margin_right = 200.0
 margin_bottom = 48.0
-custom_fonts/normal_font = ExtResource( 4 )
+custom_fonts/normal_font = ExtResource( 7 )
 bbcode_enabled = true
 bbcode_text = "Cost : 1"
 text = "Cost : 1"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Panel"]
 margin_left = 8.0

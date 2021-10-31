@@ -26,7 +26,7 @@ func generateTip (item):
 	get_node ("Panel/Panel/Sprite").texture = load("res://gfx/equip/"+item.id+".png")
 	var stars = ""
 	for x in range (0, item.cost):
-		stars += "★"
+		stars += "◉"
 	get_node ("Panel/ItemName").bbcode_text = item.itemName + " " + stars 
 	get_node ("Panel/ItemName/RichTextLabel").bbcode_text = "Cost : " + str (item.cost)
 	var d = (load ("res://ui/panel_set.tscn").instance())
