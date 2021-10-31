@@ -2,51 +2,50 @@ extends Node
 
 
 var rng = RandomNumberGenerator.new()
-
+var loot
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	rng.randomize()
-	rng.randf_range(0.0, 100.0) # Percent chance for items to drop
-	
 	pass # Replace with function body.
 
-# Loot by weight (w)
+# Loot by weight
 var lootTable = [
   {
-	item = 'balls',
-	weight = 10
+	item = 'sword',
+	weight = 10 #10
   },
   {
-	item = 'sword',
-	weight = 10
+	item = 'ore',
+	weight = 15 #25
   },
   {
 	item = 'shield',
-	weight = 10
+	weight = 10 #35
   },
   {
-	item = 'milk',
-	weight = 10
+	item = 'armor',
+	weight = 15 #50
+  },
+  {
+	item = null,
+	weight = 50 #100
   },
 ]
 
 var total_weight = 0
   
-func init():
-  # Calculate total weight and accumulate the weight for each item
+func _init():
 	for i in lootTable:
 		total_weight += i.weight
 		i.weight = total_weight
-	var loot = drop()
+	loot = _drop()
 	print(loot)
-
-
-func drop():
-	var rng = RandomNumberGenerator.new()
+	pass
+	
+func _drop():
+	randomize()
 	rng = rng.randi() % total_weight
 	for i in lootTable:
-	# if the RNG is <= item cumulated weight then drop that item
 		if rng <= i.weight && i.item != null:
 			return i
 	return null
