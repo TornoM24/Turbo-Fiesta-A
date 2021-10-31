@@ -1,13 +1,24 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://pixel_panel_fade.theme" type="Theme" id=1]
 [ext_resource path="res://ui/ability_hint.gd" type="Script" id=2]
 [ext_resource path="res://pixel_button_red.tres" type="Theme" id=3]
+[ext_resource path="res://gfx/icons/empty.png" type="Texture" id=4]
 
 [node name="tooltip" type="Node2D"]
 z_index = 4096
 z_as_relative = false
 script = ExtResource( 2 )
+
+[node name="Panel2" type="Panel" parent="."]
+self_modulate = Color( 0, 0, 0, 0.219608 )
+margin_left = -40.0
+margin_top = -48.0
+margin_right = 1312.0
+margin_bottom = 744.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Panel" type="Panel" parent="."]
 margin_left = 256.0
@@ -20,18 +31,22 @@ __meta__ = {
 }
 
 [node name="AbilityName" type="RichTextLabel" parent="Panel"]
-margin_left = 16.0
+margin_left = 80.0
 margin_top = 24.0
-margin_right = 704.0
+margin_right = 592.0
 margin_bottom = 64.0
 bbcode_enabled = true
+bbcode_text = "Sample Text
+"
+text = "Sample Text
+"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Panel"]
 margin_left = 8.0
-margin_top = 8.0
+margin_top = 96.0
 margin_right = 760.0
 margin_bottom = 568.0
 scroll_horizontal_enabled = false
@@ -40,9 +55,26 @@ __meta__ = {
 }
 
 [node name="Control" type="Control" parent="Panel/ScrollContainer"]
-margin_right = 752.0
-margin_bottom = 560.0
-rect_min_size = Vector2( 752, 560 )
+margin_right = 740.0
+margin_bottom = 480.0
+rect_min_size = Vector2( 740, 480 )
+
+[node name="Sprite" type="Sprite" parent="Panel"]
+position = Vector2( 40, 40 )
+texture = ExtResource( 4 )
+
+[node name="CostLabel" type="RichTextLabel" parent="Panel/Sprite"]
+margin_left = -40.0
+margin_top = 32.0
+margin_right = 40.0
+margin_bottom = 72.0
+bbcode_enabled = true
+bbcode_text = "[center]MP [color=#00c8ff]50"
+text = "MP 50"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Button" type="Button" parent="."]
 margin_left = 968.0
@@ -55,5 +87,7 @@ text = "X"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Tween" type="Tween" parent="."]
 
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

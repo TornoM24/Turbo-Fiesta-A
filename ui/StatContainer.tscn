@@ -1,0 +1,58 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://font/kissinger.tres" type="DynamicFont" id=1]
+[ext_resource path="res://ui/button_plus_hover.png" type="Texture" id=2]
+[ext_resource path="res://ui/button_minus_hover.png" type="Texture" id=3]
+[ext_resource path="res://pixel_button.tres" type="Theme" id=4]
+[ext_resource path="res://ui/StatContainer.gd" type="Script" id=5]
+
+[node name="StatContainer" type="Node2D"]
+position = Vector2( 12, 10 )
+script = ExtResource( 5 )
+
+[node name="StatLabel" type="RichTextLabel" parent="."]
+margin_left = -12.0
+margin_top = -10.0
+margin_right = 168.0
+margin_bottom = 6.0
+custom_fonts/normal_font = ExtResource( 1 )
+bbcode_enabled = true
+bbcode_text = "ATK 2000 ⮕[color=lime] 2100"
+text = "ATK 2000 ⮕ 2100"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlusButton" type="Button" parent="."]
+margin_left = 220.0
+margin_top = -18.0
+margin_right = 244.0
+margin_bottom = 14.0
+theme = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="PlusButton"]
+position = Vector2( 12, 12 )
+scale = Vector2( 2.00001, 2 )
+texture = ExtResource( 2 )
+
+[node name="MinusButton" type="Button" parent="."]
+margin_left = 188.0
+margin_top = -18.0
+margin_right = 212.0
+margin_bottom = 14.0
+theme = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="MinusButton"]
+position = Vector2( 12, 12 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 3 )
+
+[connection signal="pressed" from="PlusButton" to="." method="_on_PlusButton_pressed"]
+[connection signal="pressed" from="MinusButton" to="." method="_on_MinusButton_pressed"]

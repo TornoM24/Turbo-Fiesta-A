@@ -49,17 +49,17 @@ func updateStats (delta):
 		get_node (path+"MPBar").targetValue = int((float(x.stats.mp)/x.stats.mmp)*100)
 		if get_node (path+"HPBar").targetValue < get_node (path+"HPBar").value:
 			#print ("reducing value")
-			get_node (path+"HPBar").value -= 1
+			get_node (path+"HPBar").value -= delta * 50
 		elif get_node (path+"HPBar").targetValue > get_node (path+"HPBar").value:
 			#print ("increasing value")
-			get_node (path+"HPBar").value += 1
+			get_node (path+"HPBar").value += delta * 50
 			
 		if get_node (path+"MPBar").targetValue < get_node (path+"MPBar").value:
 			#print ("reducing value")
-			get_node (path+"MPBar").value -= 1
+			get_node (path+"MPBar").value -= delta * 50
 		elif get_node (path+"MPBar").targetValue > get_node (path+"MPBar").value:
 			#print ("increasing value")
-			get_node (path+"MPBar").value += 1
+			get_node (path+"MPBar").value += delta * 50
 			
 		get_node (path+"ATBBar").value = x.atb_val
 		if get_node (path+"HPBar").value < 100:
@@ -118,6 +118,16 @@ func attachdataenemy (instance):
 	return instance
 	pass
 var abilityPanels = []
+func hide_all():
+	for x in abilityPanels:
+		print ("hiding")
+		x.hide()
+	
+func show_all():
+	for x in abilityPanels:
+		print ("showing")
+		x.show()
+		
 func spawnAllies ():
 	var incrementer = 0
 	for x in range (0,3):
@@ -125,10 +135,10 @@ func spawnAllies ():
 			#print (Master.formation [x].len)
 			if Master.formation[x][y] != -1:
 				print ("spawning " + Master.party[Master.formation[x][y]].name)
-				abilityPanels.append (load ("res://ui/combat_abilities.tscn").instance())
 				incrementer +=1 
 				get_node("Control/Panel/CBPanel2/G" + str(incrementer)).visible = true
 				var instance = placeholder.instance()
+				
 				add_child(instance)
 				instance.position.x = 680 + (100*x) + (50*y)
 				instance.position.y = 60 + (100*y)
@@ -140,6 +150,11 @@ func spawnAllies ():
 				print ("a "+str(instance.stats.hp))
 				print ("b "+str(instance.stats.mhp))
 				alliesUnit.append(instance)
+				var aPanel = load ("res://ui/combat_abilities.tscn").instance()
+				add_child (aPanel)
+				aPanel.init (instance)
+				abilityPanels.append (aPanel)
+				aPanel.position.x += 256 * (incrementer-1)
 			
 var phBD = {
 	"formation": [["empty","empty","empty"],["empty","geode","empty"],["empty","empty","empty"]],
@@ -203,6 +218,7 @@ func causeEffect (target,source,ability):
 					target.stats.hp = target.stats.mhp
 				add_child (dmgLabel)
 				dmgLabel.global_position = target.global_position + Vector2 (0, -10)
+				dmgLabel.offset()
 				dmgLabel.get_node("RichTextLabel").bbcode_text = "[wave amp=50 freq=2]"+str(fPower)+"[/wave]"
 				dmgLabel.modulate.r = 2
 				logSomething (target.stats.name + " takes [color=red]" + str (fPower) + "[/color] damage!\n")
@@ -241,7 +257,8 @@ func causeEffect (target,source,ability):
 					dmgLabel.modulate.g = 2
 				logSomething ("All allies heal for [color=green]" + str (fPower) + "[/color] hp!\n")
 
-func cancelTargeting ():
+func cancel_targeting ():
+	show_all()
 	targeting = false
 	get_node ("Control/Panel/targethelper").visible = false
 	get_node ("Control/Panel/buttonhost/").visible=true
@@ -310,7 +327,7 @@ func _process(delta):
 						selectedTarget = enemy
 						print ("targeting " + enemy.unitName + "!!!")
 						enemy.selected = false
-						cancelTargeting()
+						cancel_targeting()
 						logSomething (selectedUnit.stats.name + " uses " + targetAbility.name + "!\n")
 						selectedUnit.sprite_attack (targetAbility, selectedTarget)
 						#causeEffect (selectedTarget,targetAbility)
@@ -346,10 +363,11 @@ func _process(delta):
 					selectedTarget = ally
 					print ("targeting " + ally.unitName + "!!!")
 					ally.selected = false
-					cancelTargeting()
+					cancel_targeting()
 					selectedUnit.sprite_attack (targetAbility, selectedTarget)
 					#causeEffect (selectedTarget,targetAbility)
 					selectedUnit.atb_val = 0
+					
 					isSelecting = false
 					selector.visible = false
 			else:
@@ -370,10 +388,7 @@ func _process(delta):
 		if targeting:
 			Input.set_custom_mouse_cursor(pointT)
 			if Input.is_action_pressed("right_click"):
-				targeting = false
-				tsPanel.visible = false
-				get_node ("Control/Panel/targethelper").visible = false
-				get_node ("Control/Panel/buttonhost/").visible=true
+				cancel_targeting()
 		else:
 			Input.set_custom_mouse_cursor(pointN)
 	updateStats(delta)

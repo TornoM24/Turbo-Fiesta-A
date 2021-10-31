@@ -6,8 +6,10 @@ extends Node2D
 # var b = "text"
 
 
+var pointN = preload ("res://ui/pointer2.png")
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Input.set_custom_mouse_cursor(pointN)
 	var tween = get_node ("Tween")
 	#var origin = card.position
 	tween.interpolate_property(self, "modulate",

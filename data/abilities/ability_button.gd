@@ -16,12 +16,9 @@ var inputType
 func _ready():
 	#print (get_tree().get_root().get_node("Controller/Control").name)
 	get_node("Button").connect ("pressed",get_tree().get_root().get_node("Controller/Control"),"_on_ability_pressed",[self, inputType])
-	var texture = ImageTexture.new()
-	var image = Image.new()
-	image.load("res://gfx/icons/empty.png")
-	texture.create_from_image(image)
-	get_node("Button").icon = texture
 	pass # Replace with function body.
+func disable_button ():
+	get_node ("Button").disabled = true
 
 func _process(delta):
 	pass

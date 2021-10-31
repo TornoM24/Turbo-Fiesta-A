@@ -1,9 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://font/pixelmix_large2.tres" type="DynamicFont" id=1]
-[ext_resource path="res://scenes/loadgame.gd" type="Script" id=2]
+[ext_resource path="res://scenes/mainmenubuttonnorm.gd" type="Script" id=2]
 [ext_resource path="res://pixel_button.tres" type="Theme" id=3]
-[ext_resource path="res://scenes/maps/mainmenubutton.gd" type="Script" id=4]
 [ext_resource path="res://scenes/gameover.gd" type="Script" id=5]
 
 [node name="Node2D" type="Node2D"]
@@ -54,26 +53,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="loadgame" type="Button" parent="."]
-margin_left = 384.0
-margin_top = 576.0
-margin_right = 896.0
-margin_bottom = 608.0
-theme = ExtResource( 3 )
-text = "Go load a game you doofus"
-script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="mainmenubutton" type="Button" parent="."]
 margin_left = 384.0
-margin_top = 640.0
+margin_top = 552.0
 margin_right = 896.0
-margin_bottom = 672.0
+margin_bottom = 584.0
 theme = ExtResource( 3 )
 text = "Main Menu"
-script = ExtResource( 4 )
+script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

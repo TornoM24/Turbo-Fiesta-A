@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://pixel_panel.theme" type="Theme" id=1]
 [ext_resource path="res://ui/partyview.gd" type="Script" id=2]
@@ -17,12 +17,38 @@
 [ext_resource path="res://pixel_button_2.tres" type="Theme" id=15]
 [ext_resource path="res://gfx/unit/unit_pedestal.png" type="Texture" id=16]
 [ext_resource path="res://data/unit/hiro/art/hiro_idle.tres" type="SpriteFrames" id=17]
+[ext_resource path="res://pixel_panel_wide.theme" type="Theme" id=18]
+[ext_resource path="res://ui/arrow_right.png" type="Texture" id=19]
+[ext_resource path="res://ui/StatsPanel.gd" type="Script" id=20]
+[ext_resource path="res://ui/spreader.png" type="Texture" id=21]
+[ext_resource path="res://ui/Spreader.gd" type="Script" id=22]
+[ext_resource path="res://ui/spreaderver.gd" type="Script" id=23]
+[ext_resource path="res://pixel_button.tres" type="Theme" id=24]
 
 [node name="partyview" type="Node2D"]
-pause_mode = 2
 z_index = 4096
 z_as_relative = false
 script = ExtResource( 2 )
+__meta__ = {
+"_edit_horizontal_guides_": [  ]
+}
+
+[node name="Spreader2" type="Sprite" parent="."]
+visible = false
+self_modulate = Color( 0.498039, 0.498039, 0.498039, 1 )
+position = Vector2( -832.375, 592 )
+scale = Vector2( 2.18274, 1 )
+texture = ExtResource( 21 )
+script = ExtResource( 22 )
+
+[node name="Spreader" type="Sprite" parent="."]
+visible = false
+self_modulate = Color( 0.498039, 0.498039, 0.498039, 1 )
+position = Vector2( 1208, -415.98 )
+rotation = 1.5708
+scale = Vector2( 1.09308, 0.963232 )
+texture = ExtResource( 21 )
+script = ExtResource( 23 )
 
 [node name="Panel2" type="Panel" parent="."]
 visible = false
@@ -48,7 +74,6 @@ __meta__ = {
 [node name="C5" type="Node2D" parent="."]
 visible = false
 position = Vector2( 840, 16 )
-z_as_relative = false
 
 [node name="Card" type="Panel" parent="C5"]
 margin_right = 192.0
@@ -195,7 +220,7 @@ texture = ExtResource( 16 )
 position = Vector2( 97, 360 )
 scale = Vector2( 2, 2 )
 frames = ExtResource( 17 )
-frame = 4
+frame = 6
 playing = true
 
 [node name="Button" type="Button" parent="C5"]
@@ -210,7 +235,6 @@ __meta__ = {
 [node name="C4" type="Node2D" parent="."]
 visible = false
 position = Vector2( 632, 16 )
-z_as_relative = false
 
 [node name="Card" type="Panel" parent="C4"]
 margin_right = 192.0
@@ -357,7 +381,7 @@ texture = ExtResource( 16 )
 position = Vector2( 97, 360 )
 scale = Vector2( 2, 2 )
 frames = ExtResource( 17 )
-frame = 8
+frame = 7
 playing = true
 
 [node name="Button" type="Button" parent="C4"]
@@ -372,7 +396,6 @@ __meta__ = {
 [node name="C3" type="Node2D" parent="."]
 visible = false
 position = Vector2( 424, 16 )
-z_as_relative = false
 
 [node name="Card" type="Panel" parent="C3"]
 margin_right = 192.0
@@ -534,7 +557,6 @@ __meta__ = {
 [node name="C2" type="Node2D" parent="."]
 visible = false
 position = Vector2( 216, 16 )
-z_as_relative = false
 
 [node name="Card" type="Panel" parent="C2"]
 margin_right = 192.0
@@ -695,7 +717,6 @@ __meta__ = {
 
 [node name="C1" type="Node2D" parent="."]
 position = Vector2( 8, -64 )
-z_as_relative = false
 
 [node name="Card" type="Panel" parent="C1"]
 margin_right = 192.0
@@ -860,84 +881,84 @@ margin_left = 208.0
 margin_top = 16.0
 margin_right = 1032.0
 margin_bottom = 592.0
+script = ExtResource( 20 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="charswitch" type="Panel" parent="StatsPanel"]
+pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 40.0
-margin_top = 56.0
+margin_top = -16.0
 margin_right = -640.0
-margin_bottom = 48.0
-theme = ExtResource( 13 )
+margin_bottom = 128.0
+theme = ExtResource( 18 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="right" type="Button" parent="StatsPanel/charswitch"]
 margin_left = 72.0
-margin_top = 512.0
+margin_top = 648.0
 margin_right = 136.0
-margin_bottom = 544.0
+margin_bottom = 680.0
 theme = ExtResource( 15 )
-text = ">"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Sprite" type="Sprite" parent="StatsPanel/charswitch/right"]
+position = Vector2( 32, 16 )
+texture = ExtResource( 19 )
 
 [node name="left" type="Button" parent="StatsPanel/charswitch"]
 margin_left = 8.0
-margin_top = 512.0
+margin_top = 648.0
 margin_right = 72.0
-margin_bottom = 544.0
+margin_bottom = 680.0
 theme = ExtResource( 15 )
-text = "<"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Tabs" type="TabContainer" parent="StatsPanel"]
-margin_left = 16.0
-margin_top = 16.0
-margin_right = 808.0
-margin_bottom = 560.0
-theme = ExtResource( 14 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Sprite2" type="Sprite" parent="StatsPanel/charswitch/left"]
+position = Vector2( 32, 16 )
+rotation = 3.14159
+texture = ExtResource( 19 )
 
-[node name="Stats" type="Panel" parent="StatsPanel/Tabs"]
+[node name="Stats" type="Panel" parent="StatsPanel"]
 self_modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 4.0
-margin_top = 30.0
-margin_right = -4.0
-margin_bottom = -4.0
+margin_left = 40.0
+margin_top = 56.0
+margin_right = -640.0
+margin_bottom = -8.0
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
-[node name="Title" type="RichTextLabel" parent="StatsPanel/Tabs/Stats"]
+[node name="Title" type="RichTextLabel" parent="StatsPanel/Stats"]
 anchor_top = 0.00784314
 anchor_bottom = 0.00784314
-margin_left = 28.0
-margin_top = 22.0
-margin_right = 276.0
-margin_bottom = 46.0
+margin_left = 8.0
+margin_top = 27.9843
+margin_right = 136.0
+margin_bottom = 51.9843
 bbcode_enabled = true
-bbcode_text = "STATS"
+bbcode_text = "[center]STATS"
 text = "STATS"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="RichTextLabel" type="RichTextLabel" parent="StatsPanel/Tabs/Stats"]
-margin_left = 44.0
+[node name="RichTextLabel" type="RichTextLabel" parent="StatsPanel/Stats"]
+margin_left = 16.0
 margin_top = 66.0
-margin_right = 284.0
+margin_right = 128.0
 margin_bottom = 538.0
 rect_pivot_offset = Vector2( 1264, 616 )
 custom_fonts/normal_font = ExtResource( 10 )
@@ -973,11 +994,22 @@ ATK : 10
 ATK : 10
 "
 __meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Tabs" type="TabContainer" parent="StatsPanel"]
+margin_left = 200.0
+margin_top = -16.0
+margin_right = 808.0
+margin_bottom = 704.0
+theme = ExtResource( 14 )
+tab_align = 0
+__meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Equipment" type="Control" parent="StatsPanel/Tabs"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -988,23 +1020,23 @@ script = ExtResource( 11 )
 
 [node name="ScrollContainer" type="ScrollContainer" parent="StatsPanel/Tabs/Equipment"]
 margin_left = 12.0
-margin_top = 6.0
-margin_right = 772.0
-margin_bottom = 134.0
-scroll_horizontal_enabled = false
+margin_top = 26.0
+margin_right = 588.0
+margin_bottom = 162.0
+scroll_vertical_enabled = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Panel" type="Panel" parent="StatsPanel/Tabs/Equipment/ScrollContainer"]
-margin_right = 760.0
-margin_bottom = 128.0
-rect_min_size = Vector2( 760, 128 )
+margin_right = 576.0
+margin_bottom = 136.0
+rect_min_size = Vector2( 576, 136 )
 
 [node name="Panel" type="Panel" parent="StatsPanel/Tabs/Equipment"]
 margin_left = 12.0
 margin_top = 222.0
-margin_right = 772.0
+margin_right = 588.0
 margin_bottom = 502.0
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1012,9 +1044,9 @@ __meta__ = {
 
 [node name="label1" type="RichTextLabel" parent="StatsPanel/Tabs/Equipment"]
 margin_left = 12.0
-margin_top = 142.0
+margin_top = 162.0
 margin_right = 340.0
-margin_bottom = 182.0
+margin_bottom = 202.0
 rect_pivot_offset = Vector2( 336, -8 )
 custom_fonts/normal_font = ExtResource( 10 )
 text = "Currently Equipped"
@@ -1024,10 +1056,10 @@ __meta__ = {
 }
 
 [node name="costlabel" type="RichTextLabel" parent="StatsPanel/Tabs/Equipment"]
-margin_left = 628.0
-margin_top = 142.0
-margin_right = 764.0
-margin_bottom = 182.0
+margin_left = 452.0
+margin_top = 162.0
+margin_right = 588.0
+margin_bottom = 202.0
 rect_pivot_offset = Vector2( 336, -8 )
 custom_fonts/normal_font = ExtResource( 10 )
 bbcode_enabled = true
@@ -1059,6 +1091,30 @@ margin_top = 30.0
 margin_right = -4.0
 margin_bottom = -4.0
 
+[node name="ScrollContainer" type="ScrollContainer" parent="StatsPanel/Tabs/Abilities"]
+margin_left = 12.0
+margin_top = 26.0
+margin_right = 588.0
+margin_bottom = 658.0
+scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="Control" parent="StatsPanel/Tabs/Abilities/ScrollContainer"]
+margin_right = 576.0
+margin_bottom = 632.0
+rect_min_size = Vector2( 576, 632 )
+
+[node name="Bonus" type="Control" parent="StatsPanel/Tabs"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 30.0
+margin_right = -4.0
+margin_bottom = -4.0
+
 [node name="Growth" type="Control" parent="StatsPanel/Tabs"]
 visible = false
 anchor_right = 1.0
@@ -1068,6 +1124,98 @@ margin_top = 30.0
 margin_right = -4.0
 margin_bottom = -4.0
 
+[node name="TabContainer" type="TabContainer" parent="StatsPanel/Tabs/Growth"]
+margin_left = 20.0
+margin_top = 18.0
+margin_right = 580.0
+margin_bottom = 666.0
+rect_pivot_offset = Vector2( -260, 194 )
+tab_align = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Stat Points" type="Control" parent="StatsPanel/Tabs/Growth/TabContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 30.0
+margin_right = -4.0
+margin_bottom = -4.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="StatsPanel/Tabs/Growth/TabContainer/Stat Points"]
+margin_left = 20.0
+margin_top = 50.0
+margin_right = 220.0
+margin_bottom = 74.0
+bbcode_enabled = true
+bbcode_text = "Spend Stat Points"
+text = "Spend Stat Points"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="StatsPanel/Tabs/Growth/TabContainer/Stat Points"]
+margin_left = 12.0
+margin_top = 74.0
+margin_right = 284.0
+margin_bottom = 370.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel2" type="Panel" parent="StatsPanel/Tabs/Growth/TabContainer/Stat Points"]
+margin_left = 12.0
+margin_top = 10.0
+margin_right = 228.0
+margin_bottom = 42.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="StatsPanel/Tabs/Growth/TabContainer/Stat Points/Panel2"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 208.0
+margin_bottom = 24.0
+bbcode_enabled = true
+bbcode_text = "[center]Remaining SP : [color=lime]9999"
+text = "Remaining SP : 9999"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Confirm" type="Button" parent="StatsPanel/Tabs/Growth/TabContainer/Stat Points"]
+margin_left = 212.0
+margin_top = 378.0
+margin_right = 276.0
+margin_bottom = 402.0
+theme = ExtResource( 24 )
+custom_fonts/font = ExtResource( 10 )
+text = "Confirm"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Reset" type="Button" parent="StatsPanel/Tabs/Growth/TabContainer/Stat Points"]
+margin_left = 132.0
+margin_top = 378.0
+margin_right = 196.0
+margin_bottom = 402.0
+theme = ExtResource( 24 )
+custom_fonts/font = ExtResource( 10 )
+text = "Reset"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="pressed" from="StatsPanel/charswitch/right" to="." method="_on_right_pressed"]
 [connection signal="pressed" from="StatsPanel/charswitch/left" to="." method="_on_left_pressed"]
 [connection signal="tab_selected" from="StatsPanel/Tabs" to="." method="_on_Tabs_tab_selected"]
+[connection signal="pressed" from="StatsPanel/Tabs/Growth/TabContainer/Stat Points/Confirm" to="." method="_on_Confirm_pressed"]
+[connection signal="pressed" from="StatsPanel/Tabs/Growth/TabContainer/Stat Points/Reset" to="." method="_on_Reset_pressed"]

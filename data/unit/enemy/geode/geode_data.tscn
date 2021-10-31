@@ -16,12 +16,12 @@ var unitDict = {
 	\"stats\": {
 		\"hp\" : 20,
 		\"mp\" : 0,
-		\"atk\" : 5,
+		\"atk\" : 0,
 		\"def\" : 3,
 		\"int\" : 0,
 		\"wis\" : 2,
 		\"apt\" : 0,
-		\"spd\" : 2,
+		\"spd\" : 8,
 		\"luk\" : 8
 	},
 	\"abilities\": [bMas[\"attack_basic_attack\"]]

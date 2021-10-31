@@ -36,9 +36,10 @@ func _on_exit_pressed():
 	var tsPanel = get_node("Panel/Panel2")
 	for x in get_node ("Panel/CBPanel/specialscroll/Panel").get_children():
 		x.queue_free()
-	skillPanel.visible = false
+	skillPanel.a_hide()
 	tsPanel.visible = false
 	get_node ("Panel/buttonhost/").visible=true
+	get_parent().show_all()
 	pass # Replace with function body.
 func generateTip (ability):
 	var tipText = ""
@@ -71,19 +72,21 @@ func generateTip (ability):
 		tipText+= "\n\n"
 	return tipText
 		
-func _on_special_pressed():
-	skillPanel.visible = !skillPanel.visible
+func _on_special_pressed(button):
+	skillPanel.a_show()
 	tsPanel.visible = !tsPanel.visible
 	get_node ("Panel/CBPanel/specialscroll").scroll_vertical = 0
 	get_node("Panel/CBPanel/specialscroll/Panel").rect_min_size.y = 0
+	get_parent().selectedUnit = button.assignment
 	var unitGet = get_parent().selectedUnit
 	var yOffset = 0
 	var xOffset = 0
-	for ability in unitGet.get_node ("Data").unitDict["abilities"]:
+	print ("creating abilities for " + unitGet.reference.unitName)
+	for ability in unitGet.reference.abilities:
 		var newButton = abilityButton.instance()
 		#print (ability.name)
 		newButton.get_node ("Button").text = ability.name
-		newButton.get_node ("Button").hint_tooltip = ability.desc + "\n\n" + generateTip (ability)
+		#newButton.get_node ("Button").hint_tooltip = ability.desc + "\n\n" + generateTip (ability)
 		newButton.uName = ability.name
 		newButton.aName = ability.id
 		get_node("Panel/CBPanel/specialscroll/Panel").add_child(newButton)
@@ -96,8 +99,11 @@ func _on_special_pressed():
 		#	xOffset = 200
 		#else:
 		#	xOffset = 0
-		yOffset += 70
-		get_node("Panel/CBPanel/specialscroll/Panel").rect_min_size.y += yOffset - 70
+		newButton.get_node ("Button").icon=load("res://gfx/icons/"+ability.icon+".png")
+		if ability.cost > unitGet.reference.stats.mp:
+			newButton.disable_button()
+		yOffset += 85
+		get_node("Panel/CBPanel/specialscroll/Panel").rect_min_size.y = yOffset
 		get_node ("Panel/buttonhost/").visible=false
 	
 func ability_pressed(bHost, inputType):
@@ -110,7 +116,7 @@ func ability_pressed(bHost, inputType):
 			if x.target == "all allies":
 				var par = get_parent()
 				get_parent().selectedUnit.sprite_attack(Master.ability_dict[bHost.aName],par.selectedUnit)
-				get_parent().cancelTargeting()
+				get_parent().cancel_targeting()
 				par.skillPanel.visible = false
 				par.selectedUnit.atb_val = 0
 				par.isSelecting = false
@@ -127,6 +133,7 @@ func ability_pressed(bHost, inputType):
 	elif inputType == 2:
 		print ("aawawa")
 		var x = load("res://ui/ability_hint.tscn").instance()
+		x.sceneBase = "combat"
 		x.generateTip (Master.ability_dict[bHost.aName])
 		get_parent().add_child(x)
 		#yield(get_tree().create_timer(0.001), "timeout") 

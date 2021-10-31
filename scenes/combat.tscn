@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://scenes/maps/runbutton.gd" type="Script" id=1]
 [ext_resource path="res://scenes/maps/scripts/control.gd" type="Script" id=2]
@@ -25,6 +25,7 @@
 [ext_resource path="res://pixel_panel_3.theme" type="Theme" id=23]
 [ext_resource path="res://pixel_panel_4.theme" type="Theme" id=24]
 [ext_resource path="res://gfx/bg/bg_plain.png" type="Texture" id=25]
+[ext_resource path="res://scenes/CBPanel.gd" type="Script" id=26]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 4
@@ -93,7 +94,7 @@ __meta__ = {
 
 [node name="Panel" type="Panel" parent="Control"]
 pause_mode = 1
-visible = false
+self_modulate = Color( 1, 1, 1, 0 )
 margin_top = 448.0
 margin_right = 256.0
 margin_bottom = 720.0
@@ -104,6 +105,7 @@ __meta__ = {
 }
 
 [node name="buttonhost" type="Node2D" parent="Control/Panel"]
+visible = false
 position = Vector2( 48, 8 )
 
 [node name="attack" type="Button" parent="Control/Panel/buttonhost"]
@@ -190,7 +192,7 @@ margin_top = 32.0
 margin_right = 256.0
 margin_bottom = 40.0
 rect_pivot_offset = Vector2( 109.152, 12.4213 )
-value = 50.0
+value = 100.0
 texture_under = ExtResource( 8 )
 texture_over = ExtResource( 14 )
 texture_progress = ExtResource( 9 )
@@ -210,7 +212,7 @@ margin_top = 40.0
 margin_right = 256.0
 margin_bottom = 48.0
 rect_pivot_offset = Vector2( 109.152, 12.4213 )
-value = 24.0
+value = 100.0
 texture_under = ExtResource( 8 )
 texture_over = ExtResource( 14 )
 texture_progress = ExtResource( 10 )
@@ -230,7 +232,7 @@ margin_top = 48.0
 margin_right = 256.0
 margin_bottom = 56.0
 rect_pivot_offset = Vector2( 109.152, 12.4213 )
-value = 24.0
+value = 100.0
 texture_under = ExtResource( 8 )
 texture_over = ExtResource( 14 )
 texture_progress = ExtResource( 13 )
@@ -271,7 +273,7 @@ margin_top = 30.0
 margin_right = 256.0
 margin_bottom = 38.0
 rect_pivot_offset = Vector2( 109.152, 12.4213 )
-value = 24.0
+value = 100.0
 texture_under = ExtResource( 8 )
 texture_over = ExtResource( 14 )
 texture_progress = ExtResource( 9 )
@@ -291,7 +293,7 @@ margin_top = 38.0
 margin_right = 256.0
 margin_bottom = 46.0
 rect_pivot_offset = Vector2( 109.152, 12.4213 )
-value = 24.0
+value = 100.0
 texture_under = ExtResource( 8 )
 texture_over = ExtResource( 14 )
 texture_progress = ExtResource( 10 )
@@ -327,7 +329,7 @@ margin_top = 46.0
 margin_right = 256.0
 margin_bottom = 54.0
 rect_pivot_offset = Vector2( 109.152, 12.4213 )
-value = 24.0
+value = 100.0
 texture_under = ExtResource( 8 )
 texture_over = ExtResource( 14 )
 texture_progress = ExtResource( 13 )
@@ -350,7 +352,7 @@ margin_top = 28.0
 margin_right = 256.0
 margin_bottom = 36.0
 rect_pivot_offset = Vector2( 109.152, 12.4213 )
-value = 24.0
+value = 100.0
 texture_under = ExtResource( 8 )
 texture_over = ExtResource( 14 )
 texture_progress = ExtResource( 9 )
@@ -370,7 +372,7 @@ margin_top = 36.0
 margin_right = 256.0
 margin_bottom = 44.0
 rect_pivot_offset = Vector2( 109.152, 12.4213 )
-value = 24.0
+value = 100.0
 texture_under = ExtResource( 8 )
 texture_over = ExtResource( 14 )
 texture_progress = ExtResource( 10 )
@@ -406,7 +408,7 @@ margin_top = 44.0
 margin_right = 256.0
 margin_bottom = 52.0
 rect_pivot_offset = Vector2( 109.152, 12.4213 )
-value = 24.0
+value = 100.0
 texture_under = ExtResource( 8 )
 texture_over = ExtResource( 14 )
 texture_progress = ExtResource( 13 )
@@ -429,7 +431,7 @@ margin_top = 26.0
 margin_right = 256.0
 margin_bottom = 34.0
 rect_pivot_offset = Vector2( 109.152, 12.4213 )
-value = 24.0
+value = 100.0
 texture_under = ExtResource( 8 )
 texture_over = ExtResource( 14 )
 texture_progress = ExtResource( 9 )
@@ -449,7 +451,7 @@ margin_top = 34.0
 margin_right = 256.0
 margin_bottom = 42.0
 rect_pivot_offset = Vector2( 109.152, 12.4213 )
-value = 24.0
+value = 100.0
 texture_under = ExtResource( 8 )
 texture_over = ExtResource( 14 )
 texture_progress = ExtResource( 10 )
@@ -485,7 +487,7 @@ margin_top = 42.0
 margin_right = 256.0
 margin_bottom = 50.0
 rect_pivot_offset = Vector2( 109.152, 12.4213 )
-value = 24.0
+value = 100.0
 texture_under = ExtResource( 8 )
 texture_over = ExtResource( 14 )
 texture_progress = ExtResource( 13 )
@@ -508,7 +510,7 @@ margin_top = 32.0
 margin_right = 256.0
 margin_bottom = 40.0
 rect_pivot_offset = Vector2( 109.152, 12.4213 )
-value = 24.0
+value = 100.0
 texture_under = ExtResource( 8 )
 texture_over = ExtResource( 14 )
 texture_progress = ExtResource( 9 )
@@ -528,7 +530,7 @@ margin_top = 40.0
 margin_right = 256.0
 margin_bottom = 48.0
 rect_pivot_offset = Vector2( 109.152, 12.4213 )
-value = 24.0
+value = 100.0
 texture_under = ExtResource( 8 )
 texture_over = ExtResource( 14 )
 texture_progress = ExtResource( 10 )
@@ -564,7 +566,7 @@ margin_top = 48.0
 margin_right = 256.0
 margin_bottom = 56.0
 rect_pivot_offset = Vector2( 109.152, 12.4213 )
-value = 24.0
+value = 100.0
 texture_under = ExtResource( 8 )
 texture_over = ExtResource( 14 )
 texture_progress = ExtResource( 13 )
@@ -631,8 +633,10 @@ __meta__ = {
 
 [node name="CBPanel" type="Panel" parent="Control/Panel"]
 visible = false
-margin_right = 640.0
+margin_left = -640.0
+margin_right = 6.10352e-05
 margin_bottom = 272.0
+script = ExtResource( 26 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -663,11 +667,13 @@ margin_right = 575.0
 margin_bottom = 250.0
 rect_min_size = Vector2( 575, 250 )
 
+[node name="Tween" type="Tween" parent="Control/Panel/CBPanel"]
+
 [node name="testbutton" type="Button" parent="Control/Panel"]
-margin_left = 1128.0
-margin_top = -64.0
-margin_right = 1228.0
-margin_bottom = -39.0
+margin_left = 1168.0
+margin_top = -432.0
+margin_right = 1268.0
+margin_bottom = -404.0
 rect_scale = Vector2( 1, 1.01685 )
 theme = ExtResource( 6 )
 text = "RETURN"
@@ -699,6 +705,8 @@ __meta__ = {
 }
 
 [node name="namedisplay" type="Panel" parent="Control/Panel"]
+visible = false
+self_modulate = Color( 1, 1, 1, 0 )
 margin_left = 24.0
 margin_top = -16.0
 margin_right = 232.0
@@ -724,7 +732,7 @@ __meta__ = {
 visible = false
 position = Vector2( 488, 136 )
 frames = SubResource( 9 )
-frame = 5
+frame = 3
 speed_scale = 2.0
 playing = true
 
@@ -744,6 +752,7 @@ __meta__ = {
 }
 
 [node name="Reader" type="Panel" parent="Control"]
+visible = false
 margin_left = 984.0
 margin_top = 8.0
 margin_right = 1576.0

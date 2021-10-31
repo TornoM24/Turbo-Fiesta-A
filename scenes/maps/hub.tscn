@@ -1,46 +1,22 @@
-[gd_scene load_steps=63 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://scenes/maps/Player.gd" type="Script" id=1]
 [ext_resource path="res://scenes/maps/obj/tilemap.tres" type="TileSet" id=2]
 [ext_resource path="res://scenes/maps/Credits.gd" type="Script" id=3]
-[ext_resource path="res://scenes/maps/testbutton.gd" type="Script" id=4]
+[ext_resource path="res://ui/esc_menu.tscn" type="PackedScene" id=4]
 [ext_resource path="res://gfx/overworld char/derp..png" type="Texture" id=5]
 [ext_resource path="res://icon.png" type="Texture" id=6]
 [ext_resource path="res://font/Ready Player One.otf" type="DynamicFontData" id=7]
 [ext_resource path="res://scenes/maps/TitleScreen.gd" type="Script" id=8]
 [ext_resource path="res://gfx/overworld char/new_char.png" type="Texture" id=9]
-[ext_resource path="res://pixel_button.tres" type="Theme" id=10]
-[ext_resource path="res://ui/button_depressed_menu.png" type="Texture" id=11]
-[ext_resource path="res://ui/button_hover_menu.png" type="Texture" id=12]
-[ext_resource path="res://ui/button_normal_menu.png" type="Texture" id=13]
-[ext_resource path="res://pixel_panel.theme" type="Theme" id=14]
-[ext_resource path="res://scenes/maps/mainmenubutton.gd" type="Script" id=15]
-[ext_resource path="res://scenes/maps/menubutton.gd" type="Script" id=16]
-[ext_resource path="res://pixel_button_red.tres" type="Theme" id=17]
-[ext_resource path="res://scenes/maps/exitmenu.gd" type="Script" id=18]
-[ext_resource path="res://pixel_button_arrow.tres" type="Theme" id=19]
 [ext_resource path="res://gfx/water_tex.png" type="Texture" id=20]
 [ext_resource path="res://scenes/maps/obj/Container.tscn" type="PackedScene" id=21]
-[ext_resource path="res://scenes/maps/inventory.gd" type="Script" id=22]
-[ext_resource path="res://scenes/maps/exit.gd" type="Script" id=23]
-[ext_resource path="res://gfx/icons/slot.png" type="Texture" id=24]
-[ext_resource path="res://ui/button_depressed_inv.png" type="Texture" id=25]
-[ext_resource path="res://ui/button_normal_inv.png" type="Texture" id=26]
-[ext_resource path="res://ui/button_hover_inv.png" type="Texture" id=27]
-[ext_resource path="res://scenes/maps/inventorybutton.gd" type="Script" id=28]
 [ext_resource path="res://gfx/sprint.png" type="Texture" id=29]
-[ext_resource path="res://scenes/maps/save.gd" type="Script" id=30]
-[ext_resource path="res://pixel_panel_arrow_n.theme" type="Theme" id=31]
 [ext_resource path="res://gfx/disk_mask.png" type="Texture" id=32]
 [ext_resource path="res://gfx/water_normal.png" type="Texture" id=33]
 [ext_resource path="res://gfx/water_uv_offset.png" type="Texture" id=34]
 [ext_resource path="res://scenes/maps/water.gd" type="Script" id=35]
 [ext_resource path="res://gfx/water_2D.shader" type="Shader" id=36]
-[ext_resource path="res://scenes/maps/party.gd" type="Script" id=37]
-[ext_resource path="res://scenes/maps/menupanel.gd" type="Script" id=38]
-[ext_resource path="res://ui/partyview.tscn" type="PackedScene" id=39]
-[ext_resource path="res://scenes/maps/formation.gd" type="Script" id=40]
-[ext_resource path="res://scenes/maps/moneypanel.gd" type="Script" id=41]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 36 )
@@ -128,26 +104,10 @@ a = Vector2( 0, -32 )
 radius = 13.0
 height = 0.0
 
-[sub_resource type="StyleBoxTexture" id=16]
-texture = ExtResource( 27 )
-region_rect = Rect2( 0, 0, 24, 24 )
-
-[sub_resource type="StyleBoxTexture" id=17]
-texture = ExtResource( 25 )
-region_rect = Rect2( 0, 0, 24, 24 )
-
-[sub_resource type="StyleBoxTexture" id=18]
-texture = ExtResource( 26 )
-region_rect = Rect2( 0, 0, 12, 12 )
-
-[sub_resource type="StyleBoxTexture" id=19]
-texture = ExtResource( 24 )
-region_rect = Rect2( 0, 0, 16, 16 )
-
-[sub_resource type="DynamicFont" id=20]
+[sub_resource type="DynamicFont" id=16]
 font_data = ExtResource( 7 )
 
-[sub_resource type="DynamicFont" id=21]
+[sub_resource type="DynamicFont" id=17]
 font_data = ExtResource( 7 )
 
 [node name="Main" type="Node2D"]
@@ -266,378 +226,7 @@ z_index = 2183
 z_as_relative = false
 current = true
 
-[node name="Control" type="Control" parent="Player/Camera2D"]
-margin_right = 40.0
-margin_bottom = 40.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="stamina" type="ProgressBar" parent="Player/Camera2D/Control"]
-margin_left = -624.0
-margin_top = 328.0
-margin_right = -472.0
-margin_bottom = 352.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="testbutton" type="Button" parent="Player/Camera2D/Control"]
-margin_left = 488.0
-margin_top = 312.0
-margin_right = 614.0
-margin_bottom = 336.0
-theme = ExtResource( 10 )
-text = "test fight"
-script = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="menubutton" type="TextureButton" parent="Player/Camera2D/Control"]
-show_behind_parent = true
-margin_left = -632.0
-margin_top = -352.0
-margin_right = -592.0
-margin_bottom = -312.0
-theme = ExtResource( 10 )
-texture_normal = ExtResource( 13 )
-texture_pressed = ExtResource( 11 )
-texture_hover = ExtResource( 12 )
-expand = true
-script = ExtResource( 16 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="inventorybutton" type="Button" parent="Player/Camera2D/Control"]
-visible = false
-margin_left = -583.0
-margin_top = -352.0
-margin_right = -543.0
-margin_bottom = -312.0
-theme = ExtResource( 10 )
-custom_styles/hover = SubResource( 16 )
-custom_styles/pressed = SubResource( 17 )
-custom_styles/normal = SubResource( 18 )
-script = ExtResource( 28 )
-__meta__ = {
-"_edit_use_anchors_": false,
-"_editor_description_": ""
-}
-
-[node name="oc" type="Node2D" parent="Player/Camera2D/Control"]
-visible = false
-position = Vector2( -128, -232 )
-z_index = 885
-z_as_relative = false
-
-[node name="occluder" type="Panel" parent="Player/Camera2D/Control/oc"]
-modulate = Color( 0, 0, 0, 0.752941 )
-margin_left = -552.0
-margin_top = -160.0
-margin_right = 792.0
-margin_bottom = 624.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="menupanel" type="Panel" parent="Player/Camera2D/Control"]
-visible = false
-self_modulate = Color( 1, 1, 1, 0 )
-margin_left = 448.0
-margin_top = -344.0
-margin_right = 624.0
-margin_bottom = 280.0
-theme = ExtResource( 14 )
-script = ExtResource( 38 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="gridcontainer" type="GridContainer" parent="Player/Camera2D/Control/menupanel"]
-visible = false
-margin_left = 26.0
-margin_top = 121.0
-margin_right = 132.0
-margin_bottom = 205.0
-rect_scale = Vector2( 3, 3 )
-columns = 5
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="slot1" type="Panel" parent="Player/Camera2D/Control/menupanel/gridcontainer"]
-margin_right = 18.0
-margin_bottom = 18.0
-rect_min_size = Vector2( 18, 18 )
-custom_styles/panel = SubResource( 19 )
-
-[node name="slot2" type="Panel" parent="Player/Camera2D/Control/menupanel/gridcontainer"]
-margin_left = 22.0
-margin_right = 40.0
-margin_bottom = 18.0
-rect_min_size = Vector2( 18, 18 )
-custom_styles/panel = SubResource( 19 )
-
-[node name="slot3" type="Panel" parent="Player/Camera2D/Control/menupanel/gridcontainer"]
-margin_left = 44.0
-margin_right = 62.0
-margin_bottom = 18.0
-rect_min_size = Vector2( 18, 18 )
-custom_styles/panel = SubResource( 19 )
-
-[node name="slot4" type="Panel" parent="Player/Camera2D/Control/menupanel/gridcontainer"]
-margin_left = 66.0
-margin_right = 84.0
-margin_bottom = 18.0
-rect_min_size = Vector2( 18, 18 )
-custom_styles/panel = SubResource( 19 )
-
-[node name="slot5" type="Panel" parent="Player/Camera2D/Control/menupanel/gridcontainer"]
-margin_left = 88.0
-margin_right = 106.0
-margin_bottom = 18.0
-rect_min_size = Vector2( 18, 18 )
-custom_styles/panel = SubResource( 19 )
-
-[node name="slot6" type="Panel" parent="Player/Camera2D/Control/menupanel/gridcontainer"]
-margin_top = 22.0
-margin_right = 18.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 18, 18 )
-custom_styles/panel = SubResource( 19 )
-
-[node name="slot7" type="Panel" parent="Player/Camera2D/Control/menupanel/gridcontainer"]
-margin_left = 22.0
-margin_top = 22.0
-margin_right = 40.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 18, 18 )
-custom_styles/panel = SubResource( 19 )
-
-[node name="slot8" type="Panel" parent="Player/Camera2D/Control/menupanel/gridcontainer"]
-margin_left = 44.0
-margin_top = 22.0
-margin_right = 62.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 18, 18 )
-custom_styles/panel = SubResource( 19 )
-
-[node name="slot9" type="Panel" parent="Player/Camera2D/Control/menupanel/gridcontainer"]
-margin_left = 66.0
-margin_top = 22.0
-margin_right = 84.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 18, 18 )
-custom_styles/panel = SubResource( 19 )
-
-[node name="slot10" type="Panel" parent="Player/Camera2D/Control/menupanel/gridcontainer"]
-margin_left = 88.0
-margin_top = 22.0
-margin_right = 106.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 18, 18 )
-custom_styles/panel = SubResource( 19 )
-
-[node name="slot11" type="Panel" parent="Player/Camera2D/Control/menupanel/gridcontainer"]
-margin_top = 44.0
-margin_right = 18.0
-margin_bottom = 62.0
-rect_min_size = Vector2( 18, 18 )
-custom_styles/panel = SubResource( 19 )
-
-[node name="slot12" type="Panel" parent="Player/Camera2D/Control/menupanel/gridcontainer"]
-margin_left = 22.0
-margin_top = 44.0
-margin_right = 40.0
-margin_bottom = 62.0
-rect_min_size = Vector2( 18, 18 )
-custom_styles/panel = SubResource( 19 )
-
-[node name="slot13" type="Panel" parent="Player/Camera2D/Control/menupanel/gridcontainer"]
-margin_left = 44.0
-margin_top = 44.0
-margin_right = 62.0
-margin_bottom = 62.0
-rect_min_size = Vector2( 18, 18 )
-custom_styles/panel = SubResource( 19 )
-
-[node name="slot14" type="Panel" parent="Player/Camera2D/Control/menupanel/gridcontainer"]
-margin_left = 66.0
-margin_top = 44.0
-margin_right = 84.0
-margin_bottom = 62.0
-rect_min_size = Vector2( 18, 18 )
-custom_styles/panel = SubResource( 19 )
-
-[node name="slot15" type="Panel" parent="Player/Camera2D/Control/menupanel/gridcontainer"]
-margin_left = 88.0
-margin_top = 44.0
-margin_right = 106.0
-margin_bottom = 62.0
-rect_min_size = Vector2( 18, 18 )
-custom_styles/panel = SubResource( 19 )
-
-[node name="slot16" type="Panel" parent="Player/Camera2D/Control/menupanel/gridcontainer"]
-margin_top = 66.0
-margin_right = 18.0
-margin_bottom = 84.0
-rect_min_size = Vector2( 18, 18 )
-custom_styles/panel = SubResource( 19 )
-
-[node name="slot17" type="Panel" parent="Player/Camera2D/Control/menupanel/gridcontainer"]
-margin_left = 22.0
-margin_top = 66.0
-margin_right = 40.0
-margin_bottom = 84.0
-rect_min_size = Vector2( 18, 18 )
-custom_styles/panel = SubResource( 19 )
-
-[node name="slot18" type="Panel" parent="Player/Camera2D/Control/menupanel/gridcontainer"]
-margin_left = 44.0
-margin_top = 66.0
-margin_right = 62.0
-margin_bottom = 84.0
-rect_min_size = Vector2( 18, 18 )
-custom_styles/panel = SubResource( 19 )
-
-[node name="slot19" type="Panel" parent="Player/Camera2D/Control/menupanel/gridcontainer"]
-margin_left = 66.0
-margin_top = 66.0
-margin_right = 84.0
-margin_bottom = 84.0
-rect_min_size = Vector2( 18, 18 )
-custom_styles/panel = SubResource( 19 )
-
-[node name="slot20" type="Panel" parent="Player/Camera2D/Control/menupanel/gridcontainer"]
-margin_left = 88.0
-margin_top = 66.0
-margin_right = 106.0
-margin_bottom = 84.0
-rect_min_size = Vector2( 18, 18 )
-custom_styles/panel = SubResource( 19 )
-
-[node name="mainmenubutton" type="Button" parent="Player/Camera2D/Control/menupanel"]
-margin_left = 24.0
-margin_top = 240.0
-margin_right = 190.0
-margin_bottom = 288.0
-theme = ExtResource( 19 )
-text = "Main Menu"
-script = ExtResource( 15 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="exitmenu" type="Button" parent="Player/Camera2D/Control/menupanel"]
-margin_left = 24.0
-margin_top = 16.0
-margin_right = 192.0
-margin_bottom = 64.0
-theme = ExtResource( 19 )
-text = "Close Menu"
-script = ExtResource( 18 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="inventory" type="Button" parent="Player/Camera2D/Control/menupanel"]
-margin_left = 24.0
-margin_top = 72.0
-margin_right = 190.0
-margin_bottom = 120.0
-theme = ExtResource( 19 )
-text = "Inventory"
-script = ExtResource( 22 )
-__meta__ = {
-"_edit_use_anchors_": false,
-"_editor_description_": ""
-}
-
-[node name="party" type="Button" parent="Player/Camera2D/Control/menupanel"]
-margin_left = 24.0
-margin_top = 128.0
-margin_right = 190.0
-margin_bottom = 176.0
-theme = ExtResource( 19 )
-text = "Party"
-script = ExtResource( 37 )
-__meta__ = {
-"_edit_use_anchors_": false,
-"_editor_description_": ""
-}
-
-[node name="formation" type="Button" parent="Player/Camera2D/Control/menupanel"]
-visible = false
-margin_left = 24.0
-margin_top = 184.0
-margin_right = 190.0
-margin_bottom = 232.0
-theme = ExtResource( 19 )
-text = "Formation"
-script = ExtResource( 40 )
-__meta__ = {
-"_edit_use_anchors_": false,
-"_editor_description_": ""
-}
-
-[node name="save" type="Button" parent="Player/Camera2D/Control/menupanel"]
-margin_left = 24.0
-margin_top = 184.0
-margin_right = 190.0
-margin_bottom = 232.0
-theme = ExtResource( 19 )
-text = "Save Game"
-script = ExtResource( 30 )
-__meta__ = {
-"_edit_use_anchors_": false,
-"_editor_description_": ""
-}
-
-[node name="inventorypanel" type="Panel" parent="Player/Camera2D/Control/menupanel"]
-visible = false
-margin_left = -129.0
-margin_top = 78.0
-margin_right = 391.0
-margin_bottom = 398.0
-__meta__ = {
-"_editor_description_": ""
-}
-
-[node name="exit" type="Button" parent="Player/Camera2D/Control/menupanel/inventorypanel"]
-margin_left = 477.0
-margin_top = 11.0
-margin_right = 509.0
-margin_bottom = 43.0
-theme = ExtResource( 17 )
-text = "X"
-script = ExtResource( 23 )
-__meta__ = {
-"_editor_description_": ""
-}
-
-[node name="partyview" parent="Player/Camera2D/Control/menupanel" instance=ExtResource( 39 )]
-position = Vector2( -1088, -16 )
-
-[node name="Tween" type="Tween" parent="Player/Camera2D/Control/menupanel"]
-
-[node name="moneypanel" type="Panel" parent="Player/Camera2D/Control/menupanel"]
-margin_top = 560.0
-margin_right = 192.0
-margin_bottom = 632.0
-theme = ExtResource( 31 )
-script = ExtResource( 41 )
-
-[node name="moneylabel" type="RichTextLabel" parent="Player/Camera2D/Control/menupanel/moneypanel"]
-margin_left = 32.0
-margin_top = 24.0
-margin_right = 184.0
-margin_bottom = 48.0
-bbcode_enabled = true
-bbcode_text = "[right]100[color=#dcb44d]G"
-text = "100G"
-scroll_active = false
+[node name="Control" parent="Player/Camera2D" instance=ExtResource( 4 )]
 
 [node name="Over" type="TileMap" parent="."]
 scale = Vector2( 2, 2 )
@@ -666,7 +255,7 @@ margin_left = 120.0
 margin_top = 232.0
 margin_right = 1160.0
 margin_bottom = 250.0
-custom_fonts/font = SubResource( 20 )
+custom_fonts/font = SubResource( 16 )
 text = "GAME UNKNOWN"
 align = 1
 valign = 1
@@ -693,7 +282,7 @@ margin_left = 504.0
 margin_top = 264.0
 margin_right = 776.0
 margin_bottom = 336.0
-custom_fonts/font = SubResource( 21 )
+custom_fonts/font = SubResource( 17 )
 text = "                    Shitty RPG 
             Goodluck with it"
 readonly = true
