@@ -30,14 +30,15 @@ var baseStats = {}
 var unitName = "Aou Mogis"
 var sp = 0
 var spendable = 0
-
+var cost = 0
+var maxCost = 0
 func level_up():
 	level += 1
 	toNext = round( 0.04 * (pow(level, 3)) + 0.8 * (pow(level, 3)) + 2 * level)
 	for stat in stats.keys():
 		if !stat=="hp" and !stat=="mp" and !stat=="unitName" and !stat=="name":
-			bonusStats[stat] += round(baseStats[stat]/10)
-			stats[stat] += bonusStats[stat]
+			#bonusStats[stat] += round(baseStats[stat]/10)
+			stats[stat] += round(baseStats[stat]/10)
 			if !stats.hp<=0:
 				stats.hp = stats.mhp
 				stats.mp = stats.mmp
@@ -63,6 +64,7 @@ func save ():
 		"baseStats": baseStats,
 		"equipment": itemInstances,
 		"abilities": abilities,
+		"cost" : cost,
 		"xp": xp,
 		"sp": sp
 	}
@@ -78,6 +80,8 @@ func load_data(data):
 	#equipment = data["equipment"]
 	abilities = data["abilities"]
 	sp = data ["sp"]
+	cost = data ["cost"]
+	maxCost = data.stats.apt
 	for x in data["abilities"]:
 		print ("ability " + x.name)
 	xp = data["xp"]
@@ -93,6 +97,8 @@ func initialize (prefab):
 	self.abilities = prefab.unitDict.abilities
 	self.unitName = prefab.unitName
 	self.sp = 10
+	self.cost = 0
+	self.maxCost = prefab.unitDict.stats.apt
 	level = 1
 	toNext = round( 0.04 * (pow(level, 3)) + 0.8 * (pow(level, 3)) + 2 * level)
 	return self
@@ -104,11 +110,33 @@ func updateStats (parameter, amount):
 func addPermanentAbility (reference):
 	stats["abilities"].append (reference)
 	pass
-
+func update_self ():
+	cost = 0
+	for equip in self.equipment:
+		cost += equip.cost
+		for stat in equip.stats.keys():
+			print ("increasing stat " + stat + " by " + str (equip.stats[stat]) + " for item " + equip.itemName)
+			if stat == "hp":
+				bonusStats.mhp += equip.stats[stat]
+			elif stat == "mp":
+				bonusStats.mmp += equip.stats[stat]
+			else:
+				bonusStats [stat] += equip.stats[stat]
 func equip (item):
+	#cost += item.cost
 	add_child (item)
 	equipment.append (item)
+	for stat in bonusStats.keys():
+		bonusStats[stat] = 0
+	update_self()
 	print ("successfully equipped " + item.itemName + " to unit " + unitName)
+
+func unequip (item):
+	#cost -= item.cost
+	equipment.erase (item)
+	for stat in bonusStats.keys():
+		bonusStats[stat] = 0
+	update_self()
 
 func loadBonuses():
 	pass

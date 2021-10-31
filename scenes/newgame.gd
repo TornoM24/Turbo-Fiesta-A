@@ -17,6 +17,7 @@ func _ready():
 func _button_pressed():
 	print("go")
 	Master.new_game()
+	#Master.save_game()
 	Master.load_game()
 	get_node("/root/Global").goto_scene("res://scenes/maps/hub.tscn")
 var oPos

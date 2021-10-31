@@ -1,0 +1,173 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://gfx/unit/bar_over.png" type="Texture" id=1]
+[ext_resource path="res://gfx/unit/hpbar_bg.png" type="Texture" id=2]
+[ext_resource path="res://gfx/unit/hpbar.png" type="Texture" id=3]
+[ext_resource path="res://gfx/unit/mpbar.png" type="Texture" id=4]
+[ext_resource path="res://font/kissinger.tres" type="DynamicFont" id=5]
+[ext_resource path="res://gfx/unit/xpbar.png" type="Texture" id=6]
+[ext_resource path="res://gfx/overworld char/derp..png" type="Texture" id=7]
+[ext_resource path="res://ui/Button.gd" type="Script" id=8]
+[ext_resource path="res://pixel_panel_arrow.theme" type="Theme" id=9]
+[ext_resource path="res://data/unit/hiro/art/hiro_idle.tres" type="SpriteFrames" id=10]
+[ext_resource path="res://gfx/unit/unit_pedestal.png" type="Texture" id=11]
+
+[node name="C" type="Node2D"]
+position = Vector2( 8, -64 )
+
+[node name="Card" type="Panel" parent="."]
+margin_right = 192.0
+margin_bottom = 600.0
+theme = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HPBar" type="TextureProgress" parent="Card"]
+margin_left = 16.0
+margin_top = 504.0
+margin_right = 176.0
+margin_bottom = 520.0
+rect_pivot_offset = Vector2( 109.152, 12.4213 )
+value = 100.0
+texture_under = ExtResource( 2 )
+texture_over = ExtResource( 1 )
+texture_progress = ExtResource( 3 )
+nine_patch_stretch = true
+stretch_margin_left = 3
+stretch_margin_top = 3
+stretch_margin_right = 3
+stretch_margin_bottom = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HPLabel" type="RichTextLabel" parent="Card/HPBar"]
+margin_top = -16.0
+margin_right = 160.0
+margin_bottom = 8.0
+rect_pivot_offset = Vector2( -97.5616, -53.0251 )
+custom_fonts/normal_font = ExtResource( 5 )
+bbcode_enabled = true
+bbcode_text = "[right]80/80"
+text = "80/80"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MPBar" type="TextureProgress" parent="Card"]
+margin_left = 16.0
+margin_top = 544.0
+margin_right = 176.0
+margin_bottom = 560.0
+rect_pivot_offset = Vector2( 109.152, 12.4213 )
+value = 100.0
+texture_under = ExtResource( 2 )
+texture_over = ExtResource( 1 )
+texture_progress = ExtResource( 4 )
+nine_patch_stretch = true
+stretch_margin_left = 3
+stretch_margin_top = 3
+stretch_margin_right = 3
+stretch_margin_bottom = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MPLabel" type="RichTextLabel" parent="Card/MPBar"]
+margin_top = -16.0
+margin_right = 160.0
+margin_bottom = 8.0
+custom_fonts/normal_font = ExtResource( 5 )
+bbcode_enabled = true
+bbcode_text = "[right]80/80"
+text = "80/80"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EXPBar" type="TextureProgress" parent="Card"]
+margin_left = 16.0
+margin_top = 472.0
+margin_right = 176.0
+margin_bottom = 480.0
+rect_pivot_offset = Vector2( 109.152, 12.4213 )
+value = 100.0
+texture_under = ExtResource( 2 )
+texture_over = ExtResource( 1 )
+texture_progress = ExtResource( 6 )
+nine_patch_stretch = true
+stretch_margin_left = 3
+stretch_margin_top = 3
+stretch_margin_right = 3
+stretch_margin_bottom = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EXPLabel" type="RichTextLabel" parent="Card/EXPBar"]
+margin_top = -16.0
+margin_right = 160.0
+custom_fonts/normal_font = ExtResource( 5 )
+bbcode_enabled = true
+bbcode_text = "[right]80/80"
+text = "80/80"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label1" type="RichTextLabel" parent="Card"]
+margin_left = 16.0
+margin_top = 439.0
+margin_right = 176.0
+margin_bottom = 463.0
+custom_fonts/normal_font = ExtResource( 5 )
+bbcode_enabled = true
+bbcode_text = "[center]HIRO LV87"
+text = "HIRO LV87"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="Card"]
+visible = false
+position = Vector2( 96, 216 )
+scale = Vector2( 2.39474, 1.716 )
+texture = ExtResource( 7 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Card"]
+visible = false
+margin_left = 16.0
+margin_top = 416.0
+margin_right = 176.0
+margin_bottom = 448.0
+custom_fonts/normal_font = ExtResource( 5 )
+bbcode_enabled = true
+bbcode_text = "[center] Crimson Daredevil"
+text = " Crimson Daredevil"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Pedestal" type="Sprite" parent="Card"]
+position = Vector2( 95, 370 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 11 )
+
+[node name="CharSprite" type="AnimatedSprite" parent="Card"]
+position = Vector2( 95, 360 )
+scale = Vector2( 2, 2 )
+frames = ExtResource( 10 )
+frame = 3
+playing = true
+
+[node name="Button" type="Button" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_right = 192.0
+margin_bottom = 576.0
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

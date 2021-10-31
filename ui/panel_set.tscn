@@ -24,6 +24,7 @@ custom_fonts/normal_font = ExtResource( 2 )
 bbcode_enabled = true
 bbcode_text = "Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text "
 text = "Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text "
+scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false
 }

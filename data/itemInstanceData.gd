@@ -10,7 +10,8 @@ var bonusStats = {}
 var effects = []
 var level = 1
 var xp = 0
-
+var cost = 0
+var desc
 var id
 var itemName = "stupid sword"
 
@@ -21,6 +22,8 @@ func save ():
 		"level": level,
 		"bonusStats": bonusStats,
 		"effects": effects,
+		"desc" : desc,
+		"cost" : cost,
 		"id":id
 	}
 	return save_dict
@@ -29,8 +32,10 @@ func load_data(data):
 	#name = itemName+"_data"
 	itemName = data["itemName"]
 	id = data["id"]
+	desc = data["desc"]
 	stats = data["stats"]
 	level = data["level"]
+	cost = data ["cost"]
 	bonusStats = data["bonusStats"]
 	effects = data["effects"]
 	return self
@@ -41,6 +46,8 @@ func initialize (prefab):
 	self.effects = prefab.effects
 	self.itemName = prefab.name
 	self.id = prefab.id
+	self.desc = prefab.desc
+	self.cost = prefab.cost
 	self.name = itemName + "_data"
 	return self
 

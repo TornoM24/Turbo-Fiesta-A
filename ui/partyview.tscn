@@ -1,22 +1,14 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://pixel_panel.theme" type="Theme" id=1]
 [ext_resource path="res://ui/partyview.gd" type="Script" id=2]
-[ext_resource path="res://gfx/unit/bar_over.png" type="Texture" id=3]
-[ext_resource path="res://gfx/unit/hpbar_bg.png" type="Texture" id=4]
-[ext_resource path="res://gfx/unit/hpbar.png" type="Texture" id=5]
-[ext_resource path="res://gfx/unit/mpbar.png" type="Texture" id=6]
-[ext_resource path="res://gfx/unit/xpbar.png" type="Texture" id=7]
-[ext_resource path="res://gfx/overworld char/derp..png" type="Texture" id=8]
-[ext_resource path="res://font/kissinger_large.tres" type="DynamicFont" id=9]
+[ext_resource path="res://pixel_border.theme" type="Theme" id=3]
+[ext_resource path="res://font/Chrono.tres" type="DynamicFont" id=4]
+[ext_resource path="res://font/ChronoLarge.tres" type="DynamicFont" id=5]
 [ext_resource path="res://font/kissinger.tres" type="DynamicFont" id=10]
 [ext_resource path="res://ui/Equipment.gd" type="Script" id=11]
-[ext_resource path="res://ui/Button.gd" type="Script" id=12]
-[ext_resource path="res://pixel_panel_arrow.theme" type="Theme" id=13]
 [ext_resource path="res://pixel_tabs.theme" type="Theme" id=14]
 [ext_resource path="res://pixel_button_2.tres" type="Theme" id=15]
-[ext_resource path="res://gfx/unit/unit_pedestal.png" type="Texture" id=16]
-[ext_resource path="res://data/unit/hiro/art/hiro_idle.tres" type="SpriteFrames" id=17]
 [ext_resource path="res://pixel_panel_wide.theme" type="Theme" id=18]
 [ext_resource path="res://ui/arrow_right.png" type="Texture" id=19]
 [ext_resource path="res://ui/StatsPanel.gd" type="Script" id=20]
@@ -70,810 +62,6 @@ __meta__ = {
 }
 
 [node name="Tween" type="Tween" parent="."]
-
-[node name="C5" type="Node2D" parent="."]
-visible = false
-position = Vector2( 840, 16 )
-
-[node name="Card" type="Panel" parent="C5"]
-margin_right = 192.0
-margin_bottom = 600.0
-theme = ExtResource( 13 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="HPBar" type="TextureProgress" parent="C5/Card"]
-margin_left = 16.0
-margin_top = 504.0
-margin_right = 176.0
-margin_bottom = 520.0
-rect_pivot_offset = Vector2( 109.152, 12.4213 )
-value = 100.0
-texture_under = ExtResource( 4 )
-texture_over = ExtResource( 3 )
-texture_progress = ExtResource( 5 )
-nine_patch_stretch = true
-stretch_margin_left = 3
-stretch_margin_top = 3
-stretch_margin_right = 3
-stretch_margin_bottom = 3
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="HPLabel" type="RichTextLabel" parent="C5/Card/HPBar"]
-margin_top = -16.0
-margin_right = 160.0
-margin_bottom = 8.0
-rect_pivot_offset = Vector2( -97.5616, -53.0251 )
-custom_fonts/normal_font = ExtResource( 10 )
-bbcode_enabled = true
-bbcode_text = "[right]80/80"
-text = "80/80"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="MPBar" type="TextureProgress" parent="C5/Card"]
-margin_left = 16.0
-margin_top = 544.0
-margin_right = 176.0
-margin_bottom = 560.0
-rect_pivot_offset = Vector2( 109.152, 12.4213 )
-value = 100.0
-texture_under = ExtResource( 4 )
-texture_over = ExtResource( 3 )
-texture_progress = ExtResource( 6 )
-nine_patch_stretch = true
-stretch_margin_left = 3
-stretch_margin_top = 3
-stretch_margin_right = 3
-stretch_margin_bottom = 3
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="MPLabel" type="RichTextLabel" parent="C5/Card/MPBar"]
-margin_top = -16.0
-margin_right = 160.0
-margin_bottom = 8.0
-custom_fonts/normal_font = ExtResource( 10 )
-bbcode_enabled = true
-bbcode_text = "[right]80/80"
-text = "80/80"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="EXPBar" type="TextureProgress" parent="C5/Card"]
-margin_left = 16.0
-margin_top = 472.0
-margin_right = 176.0
-margin_bottom = 480.0
-rect_pivot_offset = Vector2( 109.152, 12.4213 )
-value = 100.0
-texture_under = ExtResource( 4 )
-texture_over = ExtResource( 3 )
-texture_progress = ExtResource( 7 )
-nine_patch_stretch = true
-stretch_margin_left = 3
-stretch_margin_top = 3
-stretch_margin_right = 3
-stretch_margin_bottom = 3
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="EXPLabel" type="RichTextLabel" parent="C5/Card/EXPBar"]
-margin_top = -16.0
-margin_right = 160.0
-custom_fonts/normal_font = ExtResource( 10 )
-bbcode_enabled = true
-bbcode_text = "[right]80/80"
-text = "80/80"
-scroll_active = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label1" type="RichTextLabel" parent="C5/Card"]
-margin_left = 16.0
-margin_top = 440.0
-margin_right = 176.0
-margin_bottom = 464.0
-custom_fonts/normal_font = ExtResource( 9 )
-bbcode_enabled = true
-bbcode_text = "[center]HIRO LV87"
-text = "HIRO LV87"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Sprite" type="Sprite" parent="C5/Card"]
-visible = false
-position = Vector2( 96, 216 )
-scale = Vector2( 2.39474, 1.716 )
-texture = ExtResource( 8 )
-
-[node name="RichTextLabel" type="RichTextLabel" parent="C5/Card"]
-visible = false
-margin_left = 16.0
-margin_top = 416.0
-margin_right = 176.0
-margin_bottom = 448.0
-custom_fonts/normal_font = ExtResource( 10 )
-bbcode_enabled = true
-bbcode_text = "[center] Crimson Daredevil"
-text = " Crimson Daredevil"
-scroll_active = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Pedestal" type="Sprite" parent="C5/Card"]
-position = Vector2( 97, 370 )
-scale = Vector2( 2, 2 )
-texture = ExtResource( 16 )
-
-[node name="CharSprite" type="AnimatedSprite" parent="C5/Card"]
-position = Vector2( 97, 360 )
-scale = Vector2( 2, 2 )
-frames = ExtResource( 17 )
-frame = 6
-playing = true
-
-[node name="Button" type="Button" parent="C5"]
-self_modulate = Color( 1, 1, 1, 0 )
-margin_right = 192.0
-margin_bottom = 576.0
-script = ExtResource( 12 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="C4" type="Node2D" parent="."]
-visible = false
-position = Vector2( 632, 16 )
-
-[node name="Card" type="Panel" parent="C4"]
-margin_right = 192.0
-margin_bottom = 600.0
-theme = ExtResource( 13 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="HPBar" type="TextureProgress" parent="C4/Card"]
-margin_left = 16.0
-margin_top = 504.0
-margin_right = 176.0
-margin_bottom = 520.0
-rect_pivot_offset = Vector2( 109.152, 12.4213 )
-value = 100.0
-texture_under = ExtResource( 4 )
-texture_over = ExtResource( 3 )
-texture_progress = ExtResource( 5 )
-nine_patch_stretch = true
-stretch_margin_left = 3
-stretch_margin_top = 3
-stretch_margin_right = 3
-stretch_margin_bottom = 3
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="HPLabel" type="RichTextLabel" parent="C4/Card/HPBar"]
-margin_top = -16.0
-margin_right = 160.0
-margin_bottom = 8.0
-rect_pivot_offset = Vector2( -97.5616, -53.0251 )
-custom_fonts/normal_font = ExtResource( 10 )
-bbcode_enabled = true
-bbcode_text = "[right]80/80"
-text = "80/80"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="MPBar" type="TextureProgress" parent="C4/Card"]
-margin_left = 16.0
-margin_top = 544.0
-margin_right = 176.0
-margin_bottom = 560.0
-rect_pivot_offset = Vector2( 109.152, 12.4213 )
-value = 100.0
-texture_under = ExtResource( 4 )
-texture_over = ExtResource( 3 )
-texture_progress = ExtResource( 6 )
-nine_patch_stretch = true
-stretch_margin_left = 3
-stretch_margin_top = 3
-stretch_margin_right = 3
-stretch_margin_bottom = 3
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="MPLabel" type="RichTextLabel" parent="C4/Card/MPBar"]
-margin_top = -16.0
-margin_right = 160.0
-margin_bottom = 8.0
-custom_fonts/normal_font = ExtResource( 10 )
-bbcode_enabled = true
-bbcode_text = "[right]80/80"
-text = "80/80"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="EXPBar" type="TextureProgress" parent="C4/Card"]
-margin_left = 16.0
-margin_top = 472.0
-margin_right = 176.0
-margin_bottom = 480.0
-rect_pivot_offset = Vector2( 109.152, 12.4213 )
-value = 100.0
-texture_under = ExtResource( 4 )
-texture_over = ExtResource( 3 )
-texture_progress = ExtResource( 7 )
-nine_patch_stretch = true
-stretch_margin_left = 3
-stretch_margin_top = 3
-stretch_margin_right = 3
-stretch_margin_bottom = 3
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="EXPLabel" type="RichTextLabel" parent="C4/Card/EXPBar"]
-margin_top = -16.0
-margin_right = 160.0
-custom_fonts/normal_font = ExtResource( 10 )
-bbcode_enabled = true
-bbcode_text = "[right]80/80"
-text = "80/80"
-scroll_active = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label1" type="RichTextLabel" parent="C4/Card"]
-margin_left = 16.0
-margin_top = 440.0
-margin_right = 176.0
-margin_bottom = 464.0
-custom_fonts/normal_font = ExtResource( 9 )
-bbcode_enabled = true
-bbcode_text = "[center]HIRO LV87"
-text = "HIRO LV87"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Sprite" type="Sprite" parent="C4/Card"]
-visible = false
-position = Vector2( 96, 216 )
-scale = Vector2( 2.39474, 1.716 )
-texture = ExtResource( 8 )
-
-[node name="RichTextLabel" type="RichTextLabel" parent="C4/Card"]
-visible = false
-margin_left = 16.0
-margin_top = 416.0
-margin_right = 176.0
-margin_bottom = 448.0
-custom_fonts/normal_font = ExtResource( 10 )
-bbcode_enabled = true
-bbcode_text = "[center] Crimson Daredevil"
-text = " Crimson Daredevil"
-scroll_active = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Pedestal" type="Sprite" parent="C4/Card"]
-position = Vector2( 97, 370 )
-scale = Vector2( 2, 2 )
-texture = ExtResource( 16 )
-
-[node name="CharSprite" type="AnimatedSprite" parent="C4/Card"]
-position = Vector2( 97, 360 )
-scale = Vector2( 2, 2 )
-frames = ExtResource( 17 )
-frame = 7
-playing = true
-
-[node name="Button" type="Button" parent="C4"]
-self_modulate = Color( 1, 1, 1, 0 )
-margin_right = 192.0
-margin_bottom = 576.0
-script = ExtResource( 12 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="C3" type="Node2D" parent="."]
-visible = false
-position = Vector2( 424, 16 )
-
-[node name="Card" type="Panel" parent="C3"]
-margin_right = 192.0
-margin_bottom = 600.0
-theme = ExtResource( 13 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="HPBar" type="TextureProgress" parent="C3/Card"]
-margin_left = 16.0
-margin_top = 504.0
-margin_right = 176.0
-margin_bottom = 520.0
-rect_pivot_offset = Vector2( 109.152, 12.4213 )
-value = 100.0
-texture_under = ExtResource( 4 )
-texture_over = ExtResource( 3 )
-texture_progress = ExtResource( 5 )
-nine_patch_stretch = true
-stretch_margin_left = 3
-stretch_margin_top = 3
-stretch_margin_right = 3
-stretch_margin_bottom = 3
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="HPLabel" type="RichTextLabel" parent="C3/Card/HPBar"]
-margin_top = -16.0
-margin_right = 160.0
-margin_bottom = 8.0
-rect_pivot_offset = Vector2( -97.5616, -53.0251 )
-custom_fonts/normal_font = ExtResource( 10 )
-bbcode_enabled = true
-bbcode_text = "[right]80/80"
-text = "80/80"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="MPBar" type="TextureProgress" parent="C3/Card"]
-margin_left = 16.0
-margin_top = 544.0
-margin_right = 176.0
-margin_bottom = 560.0
-rect_pivot_offset = Vector2( 109.152, 12.4213 )
-value = 100.0
-texture_under = ExtResource( 4 )
-texture_over = ExtResource( 3 )
-texture_progress = ExtResource( 6 )
-nine_patch_stretch = true
-stretch_margin_left = 3
-stretch_margin_top = 3
-stretch_margin_right = 3
-stretch_margin_bottom = 3
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="MPLabel" type="RichTextLabel" parent="C3/Card/MPBar"]
-margin_top = -16.0
-margin_right = 160.0
-margin_bottom = 8.0
-custom_fonts/normal_font = ExtResource( 10 )
-bbcode_enabled = true
-bbcode_text = "[right]80/80"
-text = "80/80"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="EXPBar" type="TextureProgress" parent="C3/Card"]
-margin_left = 16.0
-margin_top = 472.0
-margin_right = 176.0
-margin_bottom = 480.0
-rect_pivot_offset = Vector2( 109.152, 12.4213 )
-value = 100.0
-texture_under = ExtResource( 4 )
-texture_over = ExtResource( 3 )
-texture_progress = ExtResource( 7 )
-nine_patch_stretch = true
-stretch_margin_left = 3
-stretch_margin_top = 3
-stretch_margin_right = 3
-stretch_margin_bottom = 3
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="EXPLabel" type="RichTextLabel" parent="C3/Card/EXPBar"]
-margin_top = -16.0
-margin_right = 160.0
-custom_fonts/normal_font = ExtResource( 10 )
-bbcode_enabled = true
-bbcode_text = "[right]80/80"
-text = "80/80"
-scroll_active = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label1" type="RichTextLabel" parent="C3/Card"]
-margin_left = 16.0
-margin_top = 440.0
-margin_right = 176.0
-margin_bottom = 464.0
-custom_fonts/normal_font = ExtResource( 9 )
-bbcode_enabled = true
-bbcode_text = "[center]HIRO LV87"
-text = "HIRO LV87"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Sprite" type="Sprite" parent="C3/Card"]
-visible = false
-position = Vector2( 96, 216 )
-scale = Vector2( 2.39474, 1.716 )
-texture = ExtResource( 8 )
-
-[node name="RichTextLabel" type="RichTextLabel" parent="C3/Card"]
-visible = false
-margin_left = 16.0
-margin_top = 416.0
-margin_right = 176.0
-margin_bottom = 448.0
-custom_fonts/normal_font = ExtResource( 10 )
-bbcode_enabled = true
-bbcode_text = "[center] Crimson Daredevil"
-text = " Crimson Daredevil"
-scroll_active = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Pedestal" type="Sprite" parent="C3/Card"]
-position = Vector2( 97, 370 )
-scale = Vector2( 2, 2 )
-texture = ExtResource( 16 )
-
-[node name="CharSprite" type="AnimatedSprite" parent="C3/Card"]
-position = Vector2( 97, 360 )
-scale = Vector2( 2, 2 )
-frames = ExtResource( 17 )
-frame = 3
-playing = true
-
-[node name="Button" type="Button" parent="C3"]
-self_modulate = Color( 1, 1, 1, 0 )
-margin_right = 192.0
-margin_bottom = 576.0
-script = ExtResource( 12 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="C2" type="Node2D" parent="."]
-visible = false
-position = Vector2( 216, 16 )
-
-[node name="Card" type="Panel" parent="C2"]
-margin_right = 192.0
-margin_bottom = 600.0
-theme = ExtResource( 13 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="HPBar" type="TextureProgress" parent="C2/Card"]
-margin_left = 16.0
-margin_top = 504.0
-margin_right = 176.0
-margin_bottom = 520.0
-rect_pivot_offset = Vector2( 109.152, 12.4213 )
-value = 100.0
-texture_under = ExtResource( 4 )
-texture_over = ExtResource( 3 )
-texture_progress = ExtResource( 5 )
-nine_patch_stretch = true
-stretch_margin_left = 3
-stretch_margin_top = 3
-stretch_margin_right = 3
-stretch_margin_bottom = 3
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="HPLabel" type="RichTextLabel" parent="C2/Card/HPBar"]
-margin_top = -16.0
-margin_right = 160.0
-margin_bottom = 8.0
-rect_pivot_offset = Vector2( -97.5616, -53.0251 )
-custom_fonts/normal_font = ExtResource( 10 )
-bbcode_enabled = true
-bbcode_text = "[right]80/80"
-text = "80/80"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="MPBar" type="TextureProgress" parent="C2/Card"]
-margin_left = 16.0
-margin_top = 544.0
-margin_right = 176.0
-margin_bottom = 560.0
-rect_pivot_offset = Vector2( 109.152, 12.4213 )
-value = 100.0
-texture_under = ExtResource( 4 )
-texture_over = ExtResource( 3 )
-texture_progress = ExtResource( 6 )
-nine_patch_stretch = true
-stretch_margin_left = 3
-stretch_margin_top = 3
-stretch_margin_right = 3
-stretch_margin_bottom = 3
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="MPLabel" type="RichTextLabel" parent="C2/Card/MPBar"]
-margin_top = -16.0
-margin_right = 160.0
-margin_bottom = 8.0
-custom_fonts/normal_font = ExtResource( 10 )
-bbcode_enabled = true
-bbcode_text = "[right]80/80"
-text = "80/80"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="EXPBar" type="TextureProgress" parent="C2/Card"]
-margin_left = 16.0
-margin_top = 472.0
-margin_right = 176.0
-margin_bottom = 480.0
-rect_pivot_offset = Vector2( 109.152, 12.4213 )
-value = 100.0
-texture_under = ExtResource( 4 )
-texture_over = ExtResource( 3 )
-texture_progress = ExtResource( 7 )
-nine_patch_stretch = true
-stretch_margin_left = 3
-stretch_margin_top = 3
-stretch_margin_right = 3
-stretch_margin_bottom = 3
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="EXPLabel" type="RichTextLabel" parent="C2/Card/EXPBar"]
-margin_top = -16.0
-margin_right = 160.0
-custom_fonts/normal_font = ExtResource( 10 )
-bbcode_enabled = true
-bbcode_text = "[right]80/80"
-text = "80/80"
-scroll_active = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label1" type="RichTextLabel" parent="C2/Card"]
-margin_left = 16.0
-margin_top = 440.0
-margin_right = 176.0
-margin_bottom = 464.0
-custom_fonts/normal_font = ExtResource( 9 )
-bbcode_enabled = true
-bbcode_text = "[center]HIRO LV87"
-text = "HIRO LV87"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Sprite" type="Sprite" parent="C2/Card"]
-visible = false
-position = Vector2( 96, 216 )
-scale = Vector2( 2.39474, 1.716 )
-texture = ExtResource( 8 )
-
-[node name="RichTextLabel" type="RichTextLabel" parent="C2/Card"]
-visible = false
-margin_left = 16.0
-margin_top = 416.0
-margin_right = 176.0
-margin_bottom = 448.0
-custom_fonts/normal_font = ExtResource( 10 )
-bbcode_enabled = true
-bbcode_text = "[center] Crimson Daredevil"
-text = " Crimson Daredevil"
-scroll_active = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Pedestal" type="Sprite" parent="C2/Card"]
-position = Vector2( 97, 370 )
-scale = Vector2( 2, 2 )
-texture = ExtResource( 16 )
-
-[node name="CharSprite" type="AnimatedSprite" parent="C2/Card"]
-position = Vector2( 97, 360 )
-scale = Vector2( 2, 2 )
-frames = ExtResource( 17 )
-frame = 5
-playing = true
-
-[node name="Button" type="Button" parent="C2"]
-self_modulate = Color( 1, 1, 1, 0 )
-margin_right = 192.0
-margin_bottom = 576.0
-script = ExtResource( 12 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="C1" type="Node2D" parent="."]
-position = Vector2( 8, -64 )
-
-[node name="Card" type="Panel" parent="C1"]
-margin_right = 192.0
-margin_bottom = 600.0
-theme = ExtResource( 13 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="HPBar" type="TextureProgress" parent="C1/Card"]
-margin_left = 16.0
-margin_top = 504.0
-margin_right = 176.0
-margin_bottom = 520.0
-rect_pivot_offset = Vector2( 109.152, 12.4213 )
-value = 100.0
-texture_under = ExtResource( 4 )
-texture_over = ExtResource( 3 )
-texture_progress = ExtResource( 5 )
-nine_patch_stretch = true
-stretch_margin_left = 3
-stretch_margin_top = 3
-stretch_margin_right = 3
-stretch_margin_bottom = 3
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="HPLabel" type="RichTextLabel" parent="C1/Card/HPBar"]
-margin_top = -16.0
-margin_right = 160.0
-margin_bottom = 8.0
-rect_pivot_offset = Vector2( -97.5616, -53.0251 )
-custom_fonts/normal_font = ExtResource( 10 )
-bbcode_enabled = true
-bbcode_text = "[right]80/80"
-text = "80/80"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="MPBar" type="TextureProgress" parent="C1/Card"]
-margin_left = 16.0
-margin_top = 544.0
-margin_right = 176.0
-margin_bottom = 560.0
-rect_pivot_offset = Vector2( 109.152, 12.4213 )
-value = 100.0
-texture_under = ExtResource( 4 )
-texture_over = ExtResource( 3 )
-texture_progress = ExtResource( 6 )
-nine_patch_stretch = true
-stretch_margin_left = 3
-stretch_margin_top = 3
-stretch_margin_right = 3
-stretch_margin_bottom = 3
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="MPLabel" type="RichTextLabel" parent="C1/Card/MPBar"]
-margin_top = -16.0
-margin_right = 160.0
-margin_bottom = 8.0
-custom_fonts/normal_font = ExtResource( 10 )
-bbcode_enabled = true
-bbcode_text = "[right]80/80"
-text = "80/80"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="EXPBar" type="TextureProgress" parent="C1/Card"]
-margin_left = 16.0
-margin_top = 472.0
-margin_right = 176.0
-margin_bottom = 480.0
-rect_pivot_offset = Vector2( 109.152, 12.4213 )
-value = 100.0
-texture_under = ExtResource( 4 )
-texture_over = ExtResource( 3 )
-texture_progress = ExtResource( 7 )
-nine_patch_stretch = true
-stretch_margin_left = 3
-stretch_margin_top = 3
-stretch_margin_right = 3
-stretch_margin_bottom = 3
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="EXPLabel" type="RichTextLabel" parent="C1/Card/EXPBar"]
-margin_top = -16.0
-margin_right = 160.0
-custom_fonts/normal_font = ExtResource( 10 )
-bbcode_enabled = true
-bbcode_text = "[right]80/80"
-text = "80/80"
-scroll_active = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label1" type="RichTextLabel" parent="C1/Card"]
-margin_left = 16.0
-margin_top = 440.0
-margin_right = 176.0
-margin_bottom = 464.0
-custom_fonts/normal_font = ExtResource( 9 )
-bbcode_enabled = true
-bbcode_text = "[center]HIRO LV87"
-text = "HIRO LV87"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Sprite" type="Sprite" parent="C1/Card"]
-visible = false
-position = Vector2( 96, 216 )
-scale = Vector2( 2.39474, 1.716 )
-texture = ExtResource( 8 )
-
-[node name="RichTextLabel" type="RichTextLabel" parent="C1/Card"]
-visible = false
-margin_left = 16.0
-margin_top = 416.0
-margin_right = 176.0
-margin_bottom = 448.0
-custom_fonts/normal_font = ExtResource( 10 )
-bbcode_enabled = true
-bbcode_text = "[center] Crimson Daredevil"
-text = " Crimson Daredevil"
-scroll_active = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Pedestal" type="Sprite" parent="C1/Card"]
-position = Vector2( 95, 370 )
-scale = Vector2( 2, 2 )
-texture = ExtResource( 16 )
-
-[node name="CharSprite" type="AnimatedSprite" parent="C1/Card"]
-position = Vector2( 95, 360 )
-scale = Vector2( 2, 2 )
-frames = ExtResource( 17 )
-frame = 3
-playing = true
-
-[node name="Button" type="Button" parent="C1"]
-self_modulate = Color( 1, 1, 1, 0 )
-margin_right = 192.0
-margin_bottom = 576.0
-script = ExtResource( 12 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="StatsPanel" type="Panel" parent="."]
 self_modulate = Color( 1, 1, 1, 0 )
@@ -937,7 +125,6 @@ margin_top = 56.0
 margin_right = -640.0
 margin_bottom = -8.0
 __meta__ = {
-"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -945,23 +132,26 @@ __meta__ = {
 anchor_top = 0.00784314
 anchor_bottom = 0.00784314
 margin_left = 8.0
-margin_top = 27.9843
+margin_top = 3.9843
 margin_right = 136.0
-margin_bottom = 51.9843
+margin_bottom = 27.9843
+custom_fonts/normal_font = ExtResource( 5 )
 bbcode_enabled = true
 bbcode_text = "[center]STATS"
 text = "STATS"
+scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="RichTextLabel" type="RichTextLabel" parent="StatsPanel/Stats"]
+visible = false
 margin_left = 16.0
 margin_top = 66.0
 margin_right = 128.0
 margin_bottom = 538.0
 rect_pivot_offset = Vector2( 1264, 616 )
-custom_fonts/normal_font = ExtResource( 10 )
+custom_fonts/normal_font = ExtResource( 4 )
 bbcode_enabled = true
 bbcode_text = "ATK : 10 [color=lime]⬆23[/color]
 ATK : 10
@@ -994,7 +184,15 @@ ATK : 10
 ATK : 10
 "
 __meta__ = {
-"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="StatsPanel/Stats"]
+margin_top = -72.0
+margin_right = 144.0
+margin_bottom = 72.0
+theme = ExtResource( 3 )
+__meta__ = {
 "_edit_use_anchors_": false
 }
 
@@ -1010,6 +208,7 @@ __meta__ = {
 }
 
 [node name="Equipment" type="Control" parent="StatsPanel/Tabs"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -1018,29 +217,80 @@ margin_right = -4.0
 margin_bottom = -4.0
 script = ExtResource( 11 )
 
-[node name="ScrollContainer" type="ScrollContainer" parent="StatsPanel/Tabs/Equipment"]
+[node name="Panel2" type="Panel" parent="StatsPanel/Tabs/Equipment"]
 margin_left = 12.0
 margin_top = 26.0
 margin_right = 588.0
+margin_bottom = 162.0
+rect_min_size = Vector2( 576, 136 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="StatsPanel/Tabs/Equipment/Panel2"]
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 328.0
+margin_bottom = 120.0
+bbcode_enabled = true
+bbcode_text = "This character has nothing equipped."
+text = "This character has nothing equipped."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="StatsPanel/Tabs/Equipment"]
+margin_left = 20.0
+margin_top = 26.0
+margin_right = 580.0
 margin_bottom = 162.0
 scroll_vertical_enabled = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Panel" type="Panel" parent="StatsPanel/Tabs/Equipment/ScrollContainer"]
-margin_right = 576.0
+[node name="Control" type="Control" parent="StatsPanel/Tabs/Equipment/ScrollContainer"]
+margin_right = 560.0
 margin_bottom = 136.0
-rect_min_size = Vector2( 576, 136 )
+rect_min_size = Vector2( 560, 136 )
 
 [node name="Panel" type="Panel" parent="StatsPanel/Tabs/Equipment"]
 margin_left = 12.0
-margin_top = 222.0
+margin_top = 234.0
 margin_right = 588.0
-margin_bottom = 502.0
+margin_bottom = 490.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="RichTextLabel" type="RichTextLabel" parent="StatsPanel/Tabs/Equipment/Panel"]
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 280.0
+margin_bottom = 120.0
+bbcode_enabled = true
+bbcode_text = "Inventory is currently empty."
+text = "Inventory is currently empty."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer2" type="ScrollContainer" parent="StatsPanel/Tabs/Equipment"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = 234.0
+margin_right = -20.0
+margin_bottom = -196.0
+scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="Control" parent="StatsPanel/Tabs/Equipment/ScrollContainer2"]
+margin_right = 560.0
+margin_bottom = 256.0
+rect_min_size = Vector2( 560, 256 )
 
 [node name="label1" type="RichTextLabel" parent="StatsPanel/Tabs/Equipment"]
 margin_left = 12.0
@@ -1116,11 +366,10 @@ margin_right = -4.0
 margin_bottom = -4.0
 
 [node name="Growth" type="Control" parent="StatsPanel/Tabs"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
-margin_top = 30.0
+margin_top = 27.0
 margin_right = -4.0
 margin_bottom = -4.0
 
@@ -1139,7 +388,7 @@ __meta__ = {
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
-margin_top = 30.0
+margin_top = 27.0
 margin_right = -4.0
 margin_bottom = -4.0
 __meta__ = {

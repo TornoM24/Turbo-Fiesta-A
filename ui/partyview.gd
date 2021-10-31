@@ -9,7 +9,10 @@ var cards = []
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	for x in range (1,6):
-		var card = get_node ("C"+str(x))
+		var card = load ("res://ui/card.tscn").instance()
+		add_child (card)
+		card.position = Vector2 (8 + (208 * x-1), -64)
+		card.name = "C" + str (x)
 		card.z_index = 998
 	pass
 export var SWITCH_SPEED = 0.5
@@ -17,40 +20,66 @@ export var SWITCH_SPEED = 0.5
 var number = 1
 var maxNumber
 var equipsDrawn = []
+
+func sort_equip (eitem):
+	if eitem.location == "inventory":
+		Master.party [number-1].equip (eitem.item)
+		var k = Master.inventory.find (eitem.item)
+		eitem.hide()
+		print (Master.inventory[k].itemName)
+		Master.inventory.remove (k)
+	else:
+		Master.party [number-1].unequip (eitem.item)
+		var k = Master.party [number-1].equipment.find (eitem.item)
+		Master.inventory.append (eitem.item)
+		Master.party [number-1].equipment.remove (k)
+		eitem.hide()
+	draw_equip (Master.party[number-1])
+	update_stats()
+
 func draw_equip (unit):
-	var CEPanel = get_node ("StatsPanel/Tabs/Equipment/ScrollContainer/Panel")
-	for x in CEPanel.get_children():
+	var CEPanel = get_node ("StatsPanel/Tabs/Equipment/ScrollContainer/Control")
+	get_node ("StatsPanel/Tabs/Equipment/costlabel").bbcode_text = "[right]Cost : ★" + str (unit.cost) + "/" + str (unit.maxCost)
+	for x in get_node ("StatsPanel/Tabs/Equipment/ScrollContainer2/Control").get_children():
+		print ("attempting to hide "+x.item.itemName)
+		x.hide()
+	for x in get_node ("StatsPanel/Tabs/Equipment/ScrollContainer/Control").get_children():
+		print ("attempting to hide "+x.item.itemName)
 		x.hide()
 	var equipment_prefab = load ("res://ui/equipment_element.tscn")
 	var fnX = 0
+	var incr = 0
 	for x in unit.equipment:
-		print (x.itemName)
+		incr += 1
+	if incr <= 0:
+		get_node ("StatsPanel/Tabs/Equipment/Panel2/RichTextLabel").show()
+	else:
+		get_node ("StatsPanel/Tabs/Equipment/Panel2/RichTextLabel").hide()
+	incr = 0
+	for x in Master.inventory:
+		incr += 1
+	if incr <= 0:
+		get_node ("StatsPanel/Tabs/Equipment/Panel/RichTextLabel").show()
+	else:
+		get_node ("StatsPanel/Tabs/Equipment/Panel/RichTextLabel").hide()
 	for x in unit.equipment:
 		var equipment_item = equipment_prefab.instance()
 		CEPanel.add_child (equipment_item)
-		#print (x)
-		equipment_item.get_node("Panel/Sprite").texture = load ("res://gfx/equip/"+x.id+ ".png")
-		equipment_item.get_node("Panel/RichTextLabel").bbcode_text = x.itemName
 		equipment_item.position = CEPanel.rect_position + Vector2 (20 + (fnX*88),20)
+		equipment_item.init (x)
+		equipment_item.location = "equipment"
 		print ("drew equipment slot at position "+str(equipment_item.position))
-		#equipsDrawn.append (equipment_item)
 		fnX += 1
-	var equipment_item = equipment_prefab.instance()
-	CEPanel.add_child (equipment_item)
-	equipment_item.position = CEPanel.rect_position + Vector2 (20 + (fnX*88),20)
-	var IPanel = get_node ("StatsPanel/Tabs/Equipment/Panel")
-	
+	var IPanel = get_node ("StatsPanel/Tabs/Equipment/ScrollContainer2/Control")
 	fnX = 0
 	for x in Master.inventory:
 		var inv_item = equipment_prefab.instance()
 		IPanel.add_child (inv_item)
-		print (x)
-		inv_item.get_node("Panel/Sprite").texture = load ("res://gfx/equip/"+x.id+ ".png")
-		inv_item.get_node("Panel/RichTextLabel").bbcode_text = x.itemName
 		inv_item.position += Vector2 (20 + (fnX*88),20)
+		inv_item.init (x)
+		inv_item.location = "inventory"
 		print ("drew inventory slot at position "+str(inv_item.position))
 		fnX += 1
-		#equipsDrawn.append (equipment_item)
 	pass
 func _input(ev):
 	if ev is InputEventKey and ev.is_action_pressed ("cheat") and not ev.is_echo():
@@ -68,12 +97,40 @@ func update_stats ():
 	var stats = unit.stats
 	var fullname = ""
 	StatsPanel.get_node("Stats/RichTextLabel").bbcode_text = ""
+	var inc = 1
 	for stat in stats.keys():
 		if stat == "mhp" or stat == "mmp":
-			StatsPanel.get_node("Stats/RichTextLabel").bbcode_text += Master.get_full(stat) + " [right]" + str(stats[stat]) + "[color=lime] ⬆" + str(unit.bonusStats[stat]) + "[/color][/right]\n"
+			var newCard = load ("res://ui/statcard.tscn").instance()
+			StatsPanel.get_node ("Stats").add_child (newCard)
+			newCard.get_node ("Title").bbcode_text = ""+Master.get_full (stat)
+			newCard.get_node ("Total").bbcode_text = "[right][color=yellow]" + str(stats[stat]) + "[/color][color=lime] + " + str(unit.bonusStats[stat]) + ""
+			newCard.get_node ("RichTextLabel").bbcode_text = "[right]" + str(stats[stat] + unit.bonusStats[stat]) + ""
+			newCard.position.y = (inc * 58)
+			StatsPanel.get_node("Stats/RichTextLabel").bbcode_text += Master.get_full(stat) + " [right]" + str(stats[stat]) + "[color=lime] +" + str(unit.bonusStats[stat]) + "[/color][/right]\n"
+			inc += 1
 	for stat in stats.keys():
 		if !stat=="hp" and !stat=="mp" and !stat=="mhp" and !stat=="mmp" and !stat=="unitName" and !stat=="name":
-			StatsPanel.get_node("Stats/RichTextLabel").bbcode_text += Master.get_full(stat) + " [right]" + str(stats[stat]) + "[color=lime] ⬆" + str(unit.bonusStats[stat]) + "[/color][/right]\n"
+			var newCard = load ("res://ui/statcard.tscn").instance()
+			StatsPanel.get_node ("Stats").add_child (newCard)
+			newCard.get_node ("Title").bbcode_text = ""+Master.get_full (stat)
+			newCard.get_node ("Total").bbcode_text = "[right][color=yellow]" + str(stats[stat]) + "[/color][color=lime] + " + str(unit.bonusStats[stat]) + ""
+			newCard.get_node ("RichTextLabel").bbcode_text = "[right]" + str(stats[stat] + unit.bonusStats[stat]) + ""
+			StatsPanel.get_node("Stats/RichTextLabel").bbcode_text += Master.get_full(stat) + " [right]" + str(stats[stat]) + "[color=lime] +" + str(unit.bonusStats[stat]) + "[/color][/right]\n"
+			newCard.position.y = (inc * 58)
+			inc += 1
+	var incr = 0
+	unit.maxCost = unit.stats.apt
+	for ally in Master.party:
+		incr += 1
+		var cNode = get_node ("C" + str (incr))
+		var card = cNode.get_node ("Card")
+		card.get_node("HPBar").value = int((float(ally.stats.hp)/ally.stats.mhp)*100)
+		card.get_node("MPBar").value = int((float(ally.stats.mp)/ally.stats.mmp)*100)
+		card.get_node("EXPBar").value = int((float(ally.xp)/ally.toNext)*100)
+		card.get_node("Label1").bbcode_text = "[center]" + ally.stats.name + " LV" + str(ally.level)
+		card.get_node("HPBar/HPLabel").bbcode_text = "[right]HP " + str(ally.stats.hp) + "/" + str(ally.stats.mhp)
+		card.get_node("MPBar/MPLabel").bbcode_text = "[right]MP " + str(ally.stats.mp) + "/" + str(ally.stats.mmp)
+		card.get_node("EXPBar/EXPLabel").bbcode_text = "[right]EXP " + str(ally.xp) + "/" + str(ally.toNext)
 
 func switch_modes(viewMode):
 	#viewMode = !viewMode
@@ -209,7 +266,7 @@ func draw_parameters (unit):
 			yOffset += 32
 func _on_Tabs_tab_selected(tab):
 	if tab == 0:
-		for x in get_node ("StatsPanel/Tabs/Equipment/ScrollContainer/Panel").get_children():
+		for x in get_node ("StatsPanel/Tabs/Equipment/ScrollContainer/Control").get_children():
 			if x!=null:
 				x.hide()
 		print ("on equips screen")
@@ -261,10 +318,16 @@ func _on_Confirm_pressed():
 	for x in get_node ("StatsPanel/Tabs/Growth/TabContainer/Stat Points/Panel").get_children():
 		var tt = x.stat
 		var unit = Master.party[number-1]
+		var increase = x.target - unit.stats[tt]
 		unit.stats[tt] = x.target
 		unit.sp = unit.spendable
 		update_sp (unit.sp)
 		x.val = unit.stats[tt]
+		if tt == "mhp":
+			print ("healing by " + str (int (float(increase)/3)))
+			unit.stats.hp += int (float(increase)/3)
+		if tt == "mmp":
+			unit.stats.hp += int (float(increase)/3)
 		x.check()
 		update_stats()
 	pass # Replace with function body.

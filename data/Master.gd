@@ -64,7 +64,7 @@ var ability_dict = {
 		"id":"attack_iai_alan",
 		"type":"phys",
 		"icon":"sword",
-		"desc": "Performs a rapid draw, dealing physical damage with a high critical ratio.",
+		"desc": "Performs a rapid sword draw, dealing physical damage with a high critical ratio.",
 		"cost": 0,
 		"effects": [
 			{
@@ -134,7 +134,7 @@ var ability_dict = {
 		]
 	},
 	"attack_stardust_ray_stella":{
-		"name": "Stardust Ray",
+		"name": "Starlight Beam",
 		"id":"attack_stardust_ray_stella",
 		"type":"ranged",
 		"icon":"shoot2",
@@ -210,7 +210,7 @@ var ability_dict = {
 		"cost": 8,
 		"effects": [
 			{
-				"type": "buff",
+				"type": "soul",
 				"target": "self",
 				"param": "next_cast",
 				"power": 25
@@ -229,12 +229,12 @@ var equip_dict = {
 	"hiro_heirloom":{
 		"name": "Hiro's Heirloom",
 		"id" : "hiro_heirloom",
-		"desc": """
-			A strange medallion in Hiro's possession, which contains 
-			an unusual pebble-sized gemstone that radiates with energy. If 
-			touched, the gem shimmers with a vibrant, pulsing crimson light. 
-			The nostalgic red shine reminds Hiro of sanguine memories, which he 
-			holds dear to his heart.""",
+		"desc": """A strange medallion in Hiro's possession, which contains 
+an unusual pebble-sized gemstone that radiates with energy. If 
+touched, the gem shimmers with a vibrant, pulsing crimson light. 
+The nostalgic red shine reminds Hiro of sanguine memories
+held dear to his heart.""",
+		"cost": 1,
 		"stats": {
 			"hp":10,
 			"def":10
@@ -250,12 +250,12 @@ var equip_dict = {
 	"alan_foraged_blade":{
 		"name": "Foraged Blade",
 		"id" : "alan_foraged_blade",
-		"desc": """
-			A beautifully-forged curved sword from a distant land forgotten with time. 
-			Through an esoteric and long-gone process, the sharpened edge of the blade was 
-			forged to excel in slicing through unprotected flesh like paper with its smooth cutting edge. 
-			Found in Alan's possession, though when questioned he says he's simply 
-			'always had it', and to 'stop asking questions.'""",
+		"desc": """A beautifully-forged curved sword from a distant land forgotten with time. 
+Through an esoteric and long-gone process, the sharpened edge of the blade was 
+forged to excel in slicing through unprotected flesh with its smooth cutting edge. 
+Found in Alan's possession, though when questioned on the circumstances of its acquisition
+he says he's simply 'always had it', and to 'stop asking questions.'""",
+		"cost": 1,
 		"stats": {
 			"spd":2,
 			"atk":10
@@ -270,12 +270,12 @@ var equip_dict = {
 	"stella_shard_coat":{
 		"name": "Shard Coat",
 		"id" : "stella_shard_coat",
-		"desc": """
-			A radiant, white-and-gold hoodie-style coat worn by Stella. 
-			The golden embellishments magnify the strength of magical power, and 
-			simultaneously appear to react to emotions that coalesce around 
-			the wearer by twitching energetically. According to Stella, 
-			these implements also approve of her wit, to the tired agreement of her companions.""",
+		"desc": """A radiant, white-and-gold hoodie-style coat worn by Stella. 
+The golden embellishments magnify the strength of magical power, and 
+simultaneously appear to react to emotions that coalesce around 
+the wearer by twitching energetically. According to Stella, 
+these implements also approve of her wit, to the tired agreement of her companions.""",
+		"cost": 1,
 		"stats": {
 			"int":4,
 			"wis":8
@@ -399,12 +399,15 @@ func save_game():
 	print ("successfully saved.")
 
 func new_game ():
+	inventory.clear()
+	for x in self.get_children():
+		x.queue_free()
 	money = 100
 	party = [fabricate("hiro"),fabricate("stella")]
 	Master.party[0].equip (give_equipment("hiro_heirloom"))
 	formation = [[-1,-1,-1],[-1,0,1],[-1,-1,-1]]
 	add_equip (give_equipment ("alan_foraged_blade"))
-	save_game()
+	#save_game()
 	
 func fabricate (name):
 	var inst = load ("res://data/unitInstanceData.tscn").instance()
@@ -430,23 +433,27 @@ func add_equip (inst):
 func get_full (stat):
 	match stat:
 		"mhp" :
-			return "MAX HP"
+			return "Max HP"
 		"mmp" :
-			return "MAX MP"
+			return "Max MP"
+		"hp" :
+			return "Max HP"
+		"mp" :
+			return "Max MP"
 		"atk" :
-			return "ATTACK"
+			return "Attack"
 		"def" : 
-			return "DEFENSE"
+			return "Defense"
 		"int" : 
-			return "INTELLIGENCE"
+			return "Intelligence"
 		"wis" :
-			return "WISDOM"
+			return "Wisdom"
 		"apt" :
-			return "APTITUDE"
+			return "Aptitude"
 		"spd" :
-			return "SPEED"
+			return "Speed"
 		"luk" : 
-			return "LUCK"
+			return "Luck"
 
 func _ready():
 	print ("singleton Master loaded successfully")

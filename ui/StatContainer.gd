@@ -47,7 +47,10 @@ func _on_PlusButton_pressed():
 
 func _on_MinusButton_pressed():
 	if unit.stats[stat] < target:
-		change (-1)
+		if stat == "mhp" or stat == "mmp":
+			change (-5)
+		else:
+			change (-1)
 		unit.spendable += 1
 		parent.update_sp (unit.spendable)
 	check()
