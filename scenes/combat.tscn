@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://scenes/maps/runbutton.gd" type="Script" id=1]
 [ext_resource path="res://scenes/maps/scripts/control.gd" type="Script" id=2]
@@ -7,21 +7,12 @@
 [ext_resource path="res://gfx/unit/unit_box.png" type="Texture" id=5]
 [ext_resource path="res://pixel_button.tres" type="Theme" id=6]
 [ext_resource path="res://pixel_panel.theme" type="Theme" id=7]
-[ext_resource path="res://gfx/unit/hpbar_bg.png" type="Texture" id=8]
-[ext_resource path="res://gfx/unit/hpbar.png" type="Texture" id=9]
-[ext_resource path="res://gfx/unit/mpbar.png" type="Texture" id=10]
-[ext_resource path="res://gfx/unit/portrait_bg.png" type="Texture" id=11]
-[ext_resource path="res://gfx/unit/mc1/portrait.png" type="Texture" id=12]
-[ext_resource path="res://gfx/unit/atb_f_bar.png" type="Texture" id=13]
-[ext_resource path="res://gfx/unit/bar_over.png" type="Texture" id=14]
-[ext_resource path="res://scenes/ATBBar.gd" type="Script" id=15]
+[ext_resource path="res://combat_stats.tscn" type="PackedScene" id=8]
 [ext_resource path="res://gfx/unit/selector.png" type="Texture" id=16]
 [ext_resource path="res://pixel_button_red.tres" type="Theme" id=17]
 [ext_resource path="res://pixel_button_2.tres" type="Theme" id=18]
 [ext_resource path="res://scenes/readyhelper.gd" type="Script" id=19]
-[ext_resource path="res://scenes/HPBar.gd" type="Script" id=20]
 [ext_resource path="res://font/pixelmix_small2.tres" type="DynamicFont" id=21]
-[ext_resource path="res://scenes/MPBar.gd" type="Script" id=22]
 [ext_resource path="res://pixel_panel_3.theme" type="Theme" id=23]
 [ext_resource path="res://pixel_panel_4.theme" type="Theme" id=24]
 [ext_resource path="res://gfx/bg/bg_plain.png" type="Texture" id=25]
@@ -184,402 +175,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="G1" type="Node2D" parent="Control/Panel/CBPanel2"]
-
-[node name="HPBar" type="TextureProgress" parent="Control/Panel/CBPanel2/G1"]
-margin_left = 64.0
-margin_top = 32.0
-margin_right = 256.0
-margin_bottom = 40.0
-rect_pivot_offset = Vector2( 109.152, 12.4213 )
-value = 100.0
-texture_under = ExtResource( 8 )
-texture_over = ExtResource( 14 )
-texture_progress = ExtResource( 9 )
-nine_patch_stretch = true
-stretch_margin_left = 3
-stretch_margin_top = 3
-stretch_margin_right = 3
-stretch_margin_bottom = 3
-script = ExtResource( 20 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="MPBar" type="TextureProgress" parent="Control/Panel/CBPanel2/G1"]
-margin_left = 64.0
-margin_top = 40.0
-margin_right = 256.0
-margin_bottom = 48.0
-rect_pivot_offset = Vector2( 109.152, 12.4213 )
-value = 100.0
-texture_under = ExtResource( 8 )
-texture_over = ExtResource( 14 )
-texture_progress = ExtResource( 10 )
-nine_patch_stretch = true
-stretch_margin_left = 3
-stretch_margin_top = 3
-stretch_margin_right = 3
-stretch_margin_bottom = 3
-script = ExtResource( 22 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ATBBar" type="TextureProgress" parent="Control/Panel/CBPanel2/G1"]
-margin_left = 112.0
-margin_top = 48.0
-margin_right = 256.0
-margin_bottom = 56.0
-rect_pivot_offset = Vector2( 109.152, 12.4213 )
-value = 100.0
-texture_under = ExtResource( 8 )
-texture_over = ExtResource( 14 )
-texture_progress = ExtResource( 13 )
-nine_patch_stretch = true
-stretch_margin_left = 3
-stretch_margin_top = 3
-stretch_margin_right = 3
-stretch_margin_bottom = 3
-script = ExtResource( 15 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Portrait" type="Sprite" parent="Control/Panel/CBPanel2/G1"]
-visible = false
-position = Vector2( 39, 29 )
-texture = ExtResource( 12 )
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Control/Panel/CBPanel2/G1"]
-margin_left = 64.0
-margin_top = 8.0
-margin_right = 264.0
-margin_bottom = 24.0
-bbcode_enabled = true
-bbcode_text = "Placeholder"
-text = "Placeholder"
-scroll_active = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="G2" type="Node2D" parent="Control/Panel/CBPanel2"]
-position = Vector2( 0, 50 )
-
-[node name="HPBar" type="TextureProgress" parent="Control/Panel/CBPanel2/G2"]
-margin_left = 64.0
-margin_top = 30.0
-margin_right = 256.0
-margin_bottom = 38.0
-rect_pivot_offset = Vector2( 109.152, 12.4213 )
-value = 100.0
-texture_under = ExtResource( 8 )
-texture_over = ExtResource( 14 )
-texture_progress = ExtResource( 9 )
-nine_patch_stretch = true
-stretch_margin_left = 3
-stretch_margin_top = 3
-stretch_margin_right = 3
-stretch_margin_bottom = 3
-script = ExtResource( 20 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="MPBar" type="TextureProgress" parent="Control/Panel/CBPanel2/G2"]
-margin_left = 64.0
-margin_top = 38.0
-margin_right = 256.0
-margin_bottom = 46.0
-rect_pivot_offset = Vector2( 109.152, 12.4213 )
-value = 100.0
-texture_under = ExtResource( 8 )
-texture_over = ExtResource( 14 )
-texture_progress = ExtResource( 10 )
-nine_patch_stretch = true
-stretch_margin_left = 3
-stretch_margin_top = 3
-stretch_margin_right = 3
-stretch_margin_bottom = 3
-script = ExtResource( 22 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Portrait" type="Sprite" parent="Control/Panel/CBPanel2/G2"]
-visible = false
-position = Vector2( 39, 29 )
-texture = ExtResource( 11 )
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Control/Panel/CBPanel2/G2"]
-margin_left = 64.0
-margin_top = 8.0
-margin_right = 264.0
-margin_bottom = 24.0
-bbcode_enabled = true
-scroll_active = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ATBBar" type="TextureProgress" parent="Control/Panel/CBPanel2/G2"]
-margin_left = 112.0
-margin_top = 46.0
-margin_right = 256.0
-margin_bottom = 54.0
-rect_pivot_offset = Vector2( 109.152, 12.4213 )
-value = 100.0
-texture_under = ExtResource( 8 )
-texture_over = ExtResource( 14 )
-texture_progress = ExtResource( 13 )
-nine_patch_stretch = true
-stretch_margin_left = 3
-stretch_margin_top = 3
-stretch_margin_right = 3
-stretch_margin_bottom = 3
-script = ExtResource( 15 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="G3" type="Node2D" parent="Control/Panel/CBPanel2"]
-position = Vector2( 0, 100 )
-
-[node name="HPBar" type="TextureProgress" parent="Control/Panel/CBPanel2/G3"]
-margin_left = 64.0
-margin_top = 28.0
-margin_right = 256.0
-margin_bottom = 36.0
-rect_pivot_offset = Vector2( 109.152, 12.4213 )
-value = 100.0
-texture_under = ExtResource( 8 )
-texture_over = ExtResource( 14 )
-texture_progress = ExtResource( 9 )
-nine_patch_stretch = true
-stretch_margin_left = 3
-stretch_margin_top = 3
-stretch_margin_right = 3
-stretch_margin_bottom = 3
-script = ExtResource( 20 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="MPBar" type="TextureProgress" parent="Control/Panel/CBPanel2/G3"]
-margin_left = 64.0
-margin_top = 36.0
-margin_right = 256.0
-margin_bottom = 44.0
-rect_pivot_offset = Vector2( 109.152, 12.4213 )
-value = 100.0
-texture_under = ExtResource( 8 )
-texture_over = ExtResource( 14 )
-texture_progress = ExtResource( 10 )
-nine_patch_stretch = true
-stretch_margin_left = 3
-stretch_margin_top = 3
-stretch_margin_right = 3
-stretch_margin_bottom = 3
-script = ExtResource( 22 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Portrait" type="Sprite" parent="Control/Panel/CBPanel2/G3"]
-visible = false
-position = Vector2( 39, 29 )
-texture = ExtResource( 11 )
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Control/Panel/CBPanel2/G3"]
-margin_left = 64.0
-margin_top = 8.0
-margin_right = 264.0
-margin_bottom = 24.0
-bbcode_enabled = true
-scroll_active = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ATBBar" type="TextureProgress" parent="Control/Panel/CBPanel2/G3"]
-margin_left = 112.0
-margin_top = 44.0
-margin_right = 256.0
-margin_bottom = 52.0
-rect_pivot_offset = Vector2( 109.152, 12.4213 )
-value = 100.0
-texture_under = ExtResource( 8 )
-texture_over = ExtResource( 14 )
-texture_progress = ExtResource( 13 )
-nine_patch_stretch = true
-stretch_margin_left = 3
-stretch_margin_top = 3
-stretch_margin_right = 3
-stretch_margin_bottom = 3
-script = ExtResource( 15 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="G4" type="Node2D" parent="Control/Panel/CBPanel2"]
-position = Vector2( 0, 150 )
-
-[node name="HPBar" type="TextureProgress" parent="Control/Panel/CBPanel2/G4"]
-margin_left = 64.0
-margin_top = 26.0
-margin_right = 256.0
-margin_bottom = 34.0
-rect_pivot_offset = Vector2( 109.152, 12.4213 )
-value = 100.0
-texture_under = ExtResource( 8 )
-texture_over = ExtResource( 14 )
-texture_progress = ExtResource( 9 )
-nine_patch_stretch = true
-stretch_margin_left = 3
-stretch_margin_top = 3
-stretch_margin_right = 3
-stretch_margin_bottom = 3
-script = ExtResource( 20 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="MPBar" type="TextureProgress" parent="Control/Panel/CBPanel2/G4"]
-margin_left = 64.0
-margin_top = 34.0
-margin_right = 256.0
-margin_bottom = 42.0
-rect_pivot_offset = Vector2( 109.152, 12.4213 )
-value = 100.0
-texture_under = ExtResource( 8 )
-texture_over = ExtResource( 14 )
-texture_progress = ExtResource( 10 )
-nine_patch_stretch = true
-stretch_margin_left = 3
-stretch_margin_top = 3
-stretch_margin_right = 3
-stretch_margin_bottom = 3
-script = ExtResource( 22 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Portrait" type="Sprite" parent="Control/Panel/CBPanel2/G4"]
-visible = false
-position = Vector2( 39, 29 )
-texture = ExtResource( 11 )
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Control/Panel/CBPanel2/G4"]
-margin_left = 64.0
-margin_top = 8.0
-margin_right = 264.0
-margin_bottom = 24.0
-bbcode_enabled = true
-scroll_active = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ATBBar" type="TextureProgress" parent="Control/Panel/CBPanel2/G4"]
-margin_left = 112.0
-margin_top = 42.0
-margin_right = 256.0
-margin_bottom = 50.0
-rect_pivot_offset = Vector2( 109.152, 12.4213 )
-value = 100.0
-texture_under = ExtResource( 8 )
-texture_over = ExtResource( 14 )
-texture_progress = ExtResource( 13 )
-nine_patch_stretch = true
-stretch_margin_left = 3
-stretch_margin_top = 3
-stretch_margin_right = 3
-stretch_margin_bottom = 3
-script = ExtResource( 15 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="G5" type="Node2D" parent="Control/Panel/CBPanel2"]
-position = Vector2( 0, 200 )
-
-[node name="HPBar" type="TextureProgress" parent="Control/Panel/CBPanel2/G5"]
-margin_left = 64.0
-margin_top = 32.0
-margin_right = 256.0
-margin_bottom = 40.0
-rect_pivot_offset = Vector2( 109.152, 12.4213 )
-value = 100.0
-texture_under = ExtResource( 8 )
-texture_over = ExtResource( 14 )
-texture_progress = ExtResource( 9 )
-nine_patch_stretch = true
-stretch_margin_left = 3
-stretch_margin_top = 3
-stretch_margin_right = 3
-stretch_margin_bottom = 3
-script = ExtResource( 20 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="MPBar" type="TextureProgress" parent="Control/Panel/CBPanel2/G5"]
-margin_left = 64.0
-margin_top = 40.0
-margin_right = 256.0
-margin_bottom = 48.0
-rect_pivot_offset = Vector2( 109.152, 12.4213 )
-value = 100.0
-texture_under = ExtResource( 8 )
-texture_over = ExtResource( 14 )
-texture_progress = ExtResource( 10 )
-nine_patch_stretch = true
-stretch_margin_left = 3
-stretch_margin_top = 3
-stretch_margin_right = 3
-stretch_margin_bottom = 3
-script = ExtResource( 22 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Portrait" type="Sprite" parent="Control/Panel/CBPanel2/G5"]
-visible = false
-position = Vector2( 39, 29 )
-texture = ExtResource( 11 )
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Control/Panel/CBPanel2/G5"]
-margin_left = 64.0
-margin_top = 8.0
-margin_right = 264.0
-margin_bottom = 24.0
-bbcode_enabled = true
-scroll_active = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ATBBar" type="TextureProgress" parent="Control/Panel/CBPanel2/G5"]
-margin_left = 112.0
-margin_top = 48.0
-margin_right = 256.0
-margin_bottom = 56.0
-rect_pivot_offset = Vector2( 109.152, 12.4213 )
-value = 100.0
-texture_under = ExtResource( 8 )
-texture_over = ExtResource( 14 )
-texture_progress = ExtResource( 13 )
-nine_patch_stretch = true
-stretch_margin_left = 3
-stretch_margin_top = 3
-stretch_margin_right = 3
-stretch_margin_bottom = 3
-script = ExtResource( 15 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="Panel" type="Panel" parent="Control/Panel/CBPanel2"]
 visible = false
 margin_left = 72.0
@@ -620,6 +215,21 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="G1" parent="Control/Panel/CBPanel2" instance=ExtResource( 8 )]
+position = Vector2( -8, -16 )
+
+[node name="G2" parent="Control/Panel/CBPanel2" instance=ExtResource( 8 )]
+position = Vector2( -8, 48 )
+
+[node name="G3" parent="Control/Panel/CBPanel2" instance=ExtResource( 8 )]
+position = Vector2( -8, 112 )
+
+[node name="G4" parent="Control/Panel/CBPanel2" instance=ExtResource( 8 )]
+position = Vector2( -8, 176 )
+
+[node name="G5" parent="Control/Panel/CBPanel2" instance=ExtResource( 8 )]
+position = Vector2( -8, 240 )
+
 [node name="Panel2" type="Panel" parent="Control/Panel"]
 visible = false
 modulate = Color( 0, 0, 0, 0.470588 )
@@ -632,7 +242,6 @@ __meta__ = {
 }
 
 [node name="CBPanel" type="Panel" parent="Control/Panel"]
-visible = false
 margin_left = -640.0
 margin_right = 6.10352e-05
 margin_bottom = 272.0
@@ -732,7 +341,7 @@ __meta__ = {
 visible = false
 position = Vector2( 488, 136 )
 frames = SubResource( 9 )
-frame = 3
+frame = 6
 speed_scale = 2.0
 playing = true
 

@@ -260,13 +260,13 @@ visible = false
 position = Vector2( 96, 352 )
 scale = Vector2( 2, 2 )
 frames = ExtResource( 10 )
-frame = 2
 playing = true
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="Portrait" type="Sprite" parent="Card"]
+visible = false
 position = Vector2( 96, 186 )
 scale = Vector2( 0.621454, 0.618794 )
 texture = ExtResource( 17 )

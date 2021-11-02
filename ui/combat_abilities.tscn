@@ -24,6 +24,9 @@ __meta__ = {
 
 [node name="buttonhost" type="Node2D" parent="Panel"]
 position = Vector2( 48, 8 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="attack" type="Button" parent="Panel/buttonhost"]
 margin_left = -40.0
@@ -33,9 +36,8 @@ margin_bottom = 55.0
 rect_scale = Vector2( 1, 1.01685 )
 theme = ExtResource( 3 )
 custom_fonts/font = ExtResource( 4 )
-text = "ATTACK"
+text = "Attack"
 __meta__ = {
-"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -48,9 +50,8 @@ rect_scale = Vector2( 1, 1.01685 )
 hint_tooltip = "Provides 50% general mitigation."
 theme = ExtResource( 3 )
 custom_fonts/font = ExtResource( 4 )
-text = "DEFEND"
+text = "Guard"
 __meta__ = {
-"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -62,9 +63,8 @@ margin_bottom = 151.0
 rect_scale = Vector2( 1, 1.01685 )
 theme = ExtResource( 3 )
 custom_fonts/font = ExtResource( 4 )
-text = "SPECIAL"
+text = "Abilities"
 __meta__ = {
-"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -76,23 +76,21 @@ margin_bottom = 199.0
 rect_scale = Vector2( 1, 1.01685 )
 theme = ExtResource( 3 )
 custom_fonts/font = ExtResource( 4 )
-text = "ITEMS"
+text = "Items"
 __meta__ = {
-"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
 [node name="escape" type="Button" parent="Panel/buttonhost"]
-margin_left = 24.0
+margin_left = -8.0
 margin_top = 216.0
-margin_right = 136.0
-margin_bottom = 247.0
+margin_right = 172.0
+margin_bottom = 250.0
 rect_scale = Vector2( 1, 1.01685 )
 theme = ExtResource( 5 )
 custom_fonts/font = ExtResource( 4 )
-text = "ESCAPE"
+text = "Escape (100%)"
 __meta__ = {
-"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -119,9 +117,9 @@ __meta__ = {
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Panel/namedisplay"]
 margin_left = 8.0
-margin_top = 6.0
+margin_top = 5.0
 margin_right = 200.0
-margin_bottom = 33.0
+margin_bottom = 32.0
 custom_fonts/normal_font = ExtResource( 4 )
 bbcode_enabled = true
 bbcode_text = "[center]Hiro"

@@ -157,7 +157,7 @@ func spawnAllies ():
 				aPanel.position.x += 256 * (incrementer-1)
 			
 var phBD = {
-	"formation": [["empty","empty","empty"],["empty","geode","empty"],["empty","empty","empty"]],
+	"formation": [["geode","geode","geode"],["geode","geode","geode"],["geode","geode","geode"]],
 	"field": "plains"
 }
 
@@ -183,7 +183,7 @@ func init_battle (battleData):
 				#get_node("Control/Panel/CBPanel2/G" + str(incrementer)).visible = true
 				var instance = placeholder.instance()
 				add_child(instance)
-				instance.position.x = 80 + (100*x) - (50*y)
+				instance.position.x = 140 + (100*x) - (50*y)
 				instance.position.y = 60 + (100*y)
 				instance.get_node("HPBar").show()
 				instance.get_node("ATBBar").show()

@@ -68,7 +68,7 @@ position = Vector2( 40, 40 )
 texture = ExtResource( 4 )
 
 [node name="CostLabel" type="RichTextLabel" parent="Panel/Sprite"]
-margin_left = -40.0
+margin_left = -32.0
 margin_top = 32.0
 margin_right = 40.0
 margin_bottom = 72.0

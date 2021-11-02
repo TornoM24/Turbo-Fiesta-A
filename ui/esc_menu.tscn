@@ -59,18 +59,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="testbutton" type="Button" parent="."]
-margin_left = 488.0
-margin_top = 312.0
-margin_right = 614.0
-margin_bottom = 336.0
-theme = ExtResource( 24 )
-text = "test fight"
-script = ExtResource( 11 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="menubutton" type="TextureButton" parent="."]
 show_behind_parent = true
 margin_left = -632.0
@@ -119,7 +107,6 @@ __meta__ = {
 }
 
 [node name="menupanel" type="Panel" parent="."]
-visible = false
 self_modulate = Color( 1, 1, 1, 0 )
 margin_left = 448.0
 margin_top = -344.0
@@ -298,6 +285,18 @@ custom_styles/panel = SubResource( 4 )
 position = Vector2( -1088, -16 )
 z_index = 0
 z_as_relative = true
+
+[node name="testbutton" type="Button" parent="menupanel"]
+margin_left = 40.0
+margin_top = 344.0
+margin_right = 166.0
+margin_bottom = 368.0
+theme = ExtResource( 24 )
+text = "test fight"
+script = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="mainmenubutton" type="Button" parent="menupanel"]
 margin_left = 24.0
