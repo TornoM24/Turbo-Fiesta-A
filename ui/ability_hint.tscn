@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://pixel_panel_fade.theme" type="Theme" id=1]
 [ext_resource path="res://ui/ability_hint.gd" type="Script" id=2]
 [ext_resource path="res://pixel_button_red.tres" type="Theme" id=3]
 [ext_resource path="res://gfx/icons/empty.png" type="Texture" id=4]
-[ext_resource path="res://font/kissinger_large.tres" type="DynamicFont" id=5]
+[ext_resource path="res://font/Chrono.tres" type="DynamicFont" id=5]
+[ext_resource path="res://font/ChronoLarge.tres" type="DynamicFont" id=6]
 
 [node name="tooltip" type="Node2D"]
 z_index = 4096
@@ -36,7 +37,7 @@ margin_left = 80.0
 margin_top = 24.0
 margin_right = 592.0
 margin_bottom = 64.0
-custom_fonts/normal_font = ExtResource( 5 )
+custom_fonts/normal_font = ExtResource( 6 )
 bbcode_enabled = true
 bbcode_text = "Sample Text
 "
@@ -71,9 +72,24 @@ margin_left = -40.0
 margin_top = 32.0
 margin_right = 40.0
 margin_bottom = 72.0
+custom_fonts/normal_font = ExtResource( 6 )
 bbcode_enabled = true
 bbcode_text = "[center]MP [color=#00c8ff]50"
 text = "MP 50"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TypeLabel" type="RichTextLabel" parent="Panel"]
+margin_left = 88.0
+margin_top = 48.0
+margin_right = 224.0
+margin_bottom = 72.0
+custom_fonts/normal_font = ExtResource( 5 )
+bbcode_enabled = true
+bbcode_text = "~ physical type ~"
+text = "~ physical type ~"
 scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false

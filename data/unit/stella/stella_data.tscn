@@ -12,7 +12,7 @@ var bMas = Master.ability_dict
 var unitName = \"stella\"
 var unitDict = {
 	\"name\" : \"Stella\",
-	\"title\": \"Shining Stardust\",
+	\"title\": \"sarcastic seeker\",
 	\"bio\" : \"Hiro's childhood friend, who ooh eeh eeh ah ah ting tang walla walla bing bang\",
 	\"stats\": {
 		\"hp\" : 25,

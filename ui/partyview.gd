@@ -6,6 +6,7 @@ extends Node2D
 # var b = "text"
 #var viewMode = false
 var cards = []
+var statcards = []
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	for x in range (1,6):
@@ -15,6 +16,14 @@ func _ready():
 		card.name = "C" + str (x)
 		card.z_index = 998
 	pass
+	var inc = 1
+	var CardPanel = get_node ("StatsPanel/Stats/CardPanel")
+	for x in Master.party [number-1].stats:
+		var newCard = load ("res://ui/statcard.tscn").instance()
+		CardPanel.add_child (newCard)
+		newCard.position.y = (inc * 36)
+		inc += 1
+		statcards.append(newCard)
 export var SWITCH_SPEED = 0.5
 	
 var number = 1
@@ -93,6 +102,21 @@ func gp_len ():
 
 func update_stats ():
 	var StatsPanel = get_node ("StatsPanel")
+	var CardPanel = get_node ("StatsPanel/Stats/CardPanel")
+	var statN = get_node ("StatsPanel/Stats/Number")
+	#◉○●●●
+	var text = ""
+	for x in range (0, 5):
+		if x == number-1:
+			text += "◉"
+		elif x <= Master.party.size()-1:
+			text += "○"
+		else:
+			text += "●"
+	statN.bbcode_text = text
+	for x in CardPanel.get_children():
+		x.hide()
+		x.get_node ("Full").hide()
 	var unit = Master.party[number-1]
 	var stats = unit.stats
 	var fullname = ""
@@ -100,23 +124,17 @@ func update_stats ():
 	var inc = 1
 	for stat in stats.keys():
 		if stat == "mhp" or stat == "mmp":
-			var newCard = load ("res://ui/statcard.tscn").instance()
-			StatsPanel.get_node ("Stats").add_child (newCard)
-			newCard.get_node ("Title").bbcode_text = ""+Master.get_full (stat)
-			newCard.get_node ("Total").bbcode_text = "[right][color=yellow]" + str(stats[stat]) + "[/color][color=lime] + " + str(unit.bonusStats[stat]) + ""
-			newCard.get_node ("RichTextLabel").bbcode_text = "[right]" + str(stats[stat] + unit.bonusStats[stat]) + ""
-			newCard.position.y = (inc * 36)
+			var newCard = statcards [inc-1]
+			newCard.init (stat, Master.party[number-1])
+			newCard.show()
 			StatsPanel.get_node("Stats/RichTextLabel").bbcode_text += Master.get_full(stat) + " [right]" + str(stats[stat]) + "[color=lime] +" + str(unit.bonusStats[stat]) + "[/color][/right]\n"
 			inc += 1
 	for stat in stats.keys():
 		if !stat=="hp" and !stat=="mp" and !stat=="mhp" and !stat=="mmp" and !stat=="unitName" and !stat=="name":
-			var newCard = load ("res://ui/statcard.tscn").instance()
-			StatsPanel.get_node ("Stats").add_child (newCard)
-			newCard.get_node ("Title").bbcode_text = ""+Master.get_full (stat)
-			newCard.get_node ("Total").bbcode_text = "[right][color=yellow]" + str(stats[stat]) + "[/color][color=lime] + " + str(unit.bonusStats[stat]) + ""
-			newCard.get_node ("RichTextLabel").bbcode_text = "[right]" + str(stats[stat] + unit.bonusStats[stat]) + ""
+			var newCard = statcards [inc-1]
+			newCard.init (stat, Master.party[number-1])
+			newCard.show()
 			StatsPanel.get_node("Stats/RichTextLabel").bbcode_text += Master.get_full(stat) + " [right]" + str(stats[stat]) + "[color=lime] +" + str(unit.bonusStats[stat]) + "[/color][/right]\n"
-			newCard.position.y = (inc * 36)
 			inc += 1
 	var incr = 0
 	unit.maxCost = unit.stats.apt
@@ -127,7 +145,9 @@ func update_stats ():
 		card.get_node("HPBar").value = int((float(ally.stats.hp)/ally.stats.mhp)*100)
 		card.get_node("MPBar").value = int((float(ally.stats.mp)/ally.stats.mmp)*100)
 		card.get_node("EXPBar").value = int((float(ally.xp)/ally.toNext)*100)
-		card.get_node("Label1").bbcode_text = "[center]" + ally.stats.name + " LV" + str(ally.level)
+		card.get_node("Label1").bbcode_text = "[center][color=#ffb100]" + ally.stats.name
+		card.get_node("Title").bbcode_text = "[center][color=gray]~ " + ally.title + " ~"
+		card.get_node("LvlLabel").bbcode_text = "[center] Level " + str(ally.level)
 		card.get_node("HPBar/HPLabel").bbcode_text = "[right]HP " + str(ally.stats.hp) + "/" + str(ally.stats.mhp)
 		card.get_node("MPBar/MPLabel").bbcode_text = "[right]MP " + str(ally.stats.mp) + "/" + str(ally.stats.mmp)
 		card.get_node("EXPBar/EXPLabel").bbcode_text = "[right]EXP " + str(ally.xp) + "/" + str(ally.toNext)
@@ -194,6 +214,7 @@ func cards_show ():
 	Tween.TRANS_QUART, Tween.EASE_OUT)
 	tween.start()
 	var cardsToShow = Master.party.size()
+	maxNumber = Master.party.size()
 	var incr = 0
 	for x in range (1,6):
 		var cNode = get_node ("C" + str (x))
@@ -208,7 +229,9 @@ func cards_show ():
 		card.get_node("HPBar").value = int((float(ally.stats.hp)/ally.stats.mhp)*100)
 		card.get_node("MPBar").value = int((float(ally.stats.mp)/ally.stats.mmp)*100)
 		card.get_node("EXPBar").value = int((float(ally.xp)/ally.toNext)*100)
-		card.get_node("Label1").bbcode_text = "[center]" + ally.stats.name + " LV" + str(ally.level)
+		card.get_node("Label1").bbcode_text = "[center][color=#ffb100]" + ally.stats.name 
+		card.get_node("Title").bbcode_text = "[center][color=gray]~ " + ally.title + " ~"
+		card.get_node("LvlLabel").bbcode_text = "[center] Level " + str(ally.level)
 		card.get_node("HPBar/HPLabel").bbcode_text = "[right]HP " + str(ally.stats.hp) + "/" + str(ally.stats.mhp)
 		card.get_node("MPBar/MPLabel").bbcode_text = "[right]MP " + str(ally.stats.mp) + "/" + str(ally.stats.mmp)
 		card.get_node("EXPBar/EXPLabel").bbcode_text = "[right]EXP " + str(ally.xp) + "/" + str(ally.toNext)

@@ -29,6 +29,7 @@ func generateTip (ability):
 	get_node ("Panel/Sprite").texture = load("res://gfx/icons/"+ability.icon+".png")
 	
 	get_node ("Panel/Sprite/CostLabel").bbcode_text = "[center]MP [color=#00c8ff]" + str (ability.cost)
+	get_node ("Panel/TypeLabel").bbcode_text = "~ " + Master.get_full(ability.type) + " type ~"
 	get_node ("Panel/AbilityName").bbcode_text = ability.name #+ "\n[Mana Cost : [color=#00c8ff]" + str(ability.cost) + "[/color]]"
 	var d = (load ("res://ui/panel_set.tscn").instance())
 	get_node("Panel/ScrollContainer/Control").add_child (d)

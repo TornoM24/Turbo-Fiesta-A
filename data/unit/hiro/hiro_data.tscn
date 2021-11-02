@@ -12,7 +12,7 @@ var bMas = Master.ability_dict
 var unitName = \"hiro\"
 var unitDict = {
 	\"name\" : \"Hiro\",
-	\"title\" : \"Scarlet Daredevil\",
+	\"title\" : \"hot-blooded daredevil\",
 	\"bio\" : \"A young man on a journey to placeholder foo bar lorem ipsum sit dolor amet\",
 	\"stats\": {
 		\"hp\" : 30,

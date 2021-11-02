@@ -32,6 +32,7 @@ var sp = 0
 var spendable = 0
 var cost = 0
 var maxCost = 0
+var title
 func level_up():
 	level += 1
 	toNext = round( 0.04 * (pow(level, 3)) + 0.8 * (pow(level, 3)) + 2 * level)
@@ -65,6 +66,7 @@ func save ():
 		"equipment": itemInstances,
 		"abilities": abilities,
 		"cost" : cost,
+		"title" : title,
 		"xp": xp,
 		"sp": sp
 	}
@@ -79,6 +81,7 @@ func load_data(data):
 	baseStats = data["baseStats"]
 	#equipment = data["equipment"]
 	abilities = data["abilities"]
+	title = data ["title"]
 	sp = data ["sp"]
 	cost = data ["cost"]
 	maxCost = data.stats.apt
@@ -99,6 +102,7 @@ func initialize (prefab):
 	self.sp = 10
 	self.cost = 0
 	self.maxCost = prefab.unitDict.stats.apt
+	self.title = prefab.unitDict.title
 	level = 1
 	toNext = round( 0.04 * (pow(level, 3)) + 0.8 * (pow(level, 3)) + 2 * level)
 	return self

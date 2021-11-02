@@ -14,6 +14,7 @@ func init(abi):
 	ability = abi
 	get_node ("Panel/AbilityName").bbcode_text = ability.name
 	get_node ("Panel/Sprite/CostLabel").bbcode_text = "[center]MP [color=#00c8ff]" + str (ability.cost)
+	get_node ("Panel/TypeLabel").bbcode_text = "~ " + Master.get_full(ability.type) + " type ~"
 	get_node ("Panel/Sprite").texture = load("res://gfx/icons/"+ability.icon+".png")
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

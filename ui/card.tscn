@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://gfx/unit/bar_over.png" type="Texture" id=1]
 [ext_resource path="res://gfx/unit/hpbar_bg.png" type="Texture" id=2]
@@ -13,9 +13,14 @@
 [ext_resource path="res://gfx/unit/unit_pedestal.png" type="Texture" id=11]
 [ext_resource path="res://font/Chrono.tres" type="DynamicFont" id=12]
 [ext_resource path="res://font/ChronoLarge.tres" type="DynamicFont" id=13]
+[ext_resource path="res://ui/embellish_2.png" type="Texture" id=14]
+[ext_resource path="res://ui/embellish_1.png" type="Texture" id=15]
+[ext_resource path="res://ui/embellish_3.png" type="Texture" id=16]
+[ext_resource path="res://data/unit/hiro/art/hiro_portrait.png" type="Texture" id=17]
+[ext_resource path="res://ui/fade.png" type="Texture" id=18]
 
 [node name="C" type="Node2D"]
-position = Vector2( 8, -64 )
+position = Vector2( 8, 0 )
 
 [node name="Card" type="Panel" parent="."]
 margin_right = 192.0
@@ -24,6 +29,33 @@ theme = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Embellishments" type="Node2D" parent="Card"]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="e1" type="Sprite" parent="Card/Embellishments"]
+position = Vector2( 32, 386 )
+scale = Vector2( 2, 1.5 )
+texture = ExtResource( 15 )
+
+[node name="e2" type="Sprite" parent="Card/Embellishments"]
+visible = false
+position = Vector2( 14, 386 )
+scale = Vector2( 2, 1 )
+texture = ExtResource( 14 )
+
+[node name="e3" type="Sprite" parent="Card/Embellishments"]
+position = Vector2( 160, 386 )
+scale = Vector2( 2, 1.5 )
+texture = ExtResource( 15 )
+
+[node name="e4" type="Sprite" parent="Card/Embellishments"]
+visible = false
+position = Vector2( 178, 386 )
+scale = Vector2( 2, 1 )
+texture = ExtResource( 16 )
 
 [node name="HPBar" type="TextureProgress" parent="Card"]
 margin_left = 16.0
@@ -41,6 +73,7 @@ stretch_margin_top = 3
 stretch_margin_right = 3
 stretch_margin_bottom = 3
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -73,6 +106,7 @@ stretch_margin_top = 3
 stretch_margin_right = 3
 stretch_margin_bottom = 3
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -104,6 +138,7 @@ stretch_margin_top = 3
 stretch_margin_right = 3
 stretch_margin_bottom = 3
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -112,24 +147,77 @@ margin_top = -16.0
 margin_right = 160.0
 custom_fonts/normal_font = ExtResource( 12 )
 bbcode_enabled = true
-bbcode_text = "[right]80/80"
-text = "80/80"
+bbcode_text = "[right]EXP 80/80"
+text = "EXP 80/80"
 scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label1" type="RichTextLabel" parent="Card"]
-margin_left = 16.0
-margin_top = 432.0
-margin_right = 176.0
-margin_bottom = 456.0
-custom_fonts/normal_font = ExtResource( 13 )
+[node name="Next" type="RichTextLabel" parent="Card/EXPBar"]
+visible = false
+margin_left = 56.0
+margin_top = -16.0
+margin_right = 160.0
+custom_fonts/normal_font = ExtResource( 12 )
 bbcode_enabled = true
-bbcode_text = "[center]HIRO LV87"
-text = "HIRO LV87"
+bbcode_text = "[right]To Next : 1000"
+text = "To Next : 1000"
 scroll_active = false
 __meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="Card"]
+visible = false
+margin_right = 192.0
+margin_bottom = 448.0
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="LvlLabel" type="RichTextLabel" parent="Card"]
+margin_left = 16.0
+margin_top = 416.0
+margin_right = 176.0
+margin_bottom = 432.0
+custom_fonts/normal_font = ExtResource( 12 )
+bbcode_enabled = true
+bbcode_text = "[center]Level 87"
+text = "Level 87"
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="RichTextLabel" parent="Card"]
+margin_left = 16.0
+margin_top = 352.0
+margin_right = 176.0
+margin_bottom = 368.0
+custom_fonts/normal_font = ExtResource( 12 )
+bbcode_enabled = true
+bbcode_text = "[center][color=gray]~ crimson daredevil ~"
+text = "~ crimson daredevil ~"
+scroll_active = false
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Label1" type="RichTextLabel" parent="Card"]
+margin_left = 16.0
+margin_top = 376.0
+margin_right = 176.0
+margin_bottom = 400.0
+custom_fonts/normal_font = ExtResource( 13 )
+bbcode_enabled = true
+bbcode_text = "[center][color=#ffb100]Hiro"
+text = "Hiro"
+scroll_active = false
+__meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -138,6 +226,9 @@ visible = false
 position = Vector2( 96, 216 )
 scale = Vector2( 2.39474, 1.716 )
 texture = ExtResource( 7 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Card"]
 visible = false
@@ -151,20 +242,43 @@ bbcode_text = "[center] Crimson Daredevil"
 text = " Crimson Daredevil"
 scroll_active = false
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
 [node name="Pedestal" type="Sprite" parent="Card"]
-position = Vector2( 95, 370 )
-scale = Vector2( 2, 2 )
-texture = ExtResource( 11 )
-
-[node name="CharSprite" type="AnimatedSprite" parent="Card"]
+visible = false
 position = Vector2( 95, 360 )
 scale = Vector2( 2, 2 )
+texture = ExtResource( 11 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CharSprite" type="AnimatedSprite" parent="Card"]
+visible = false
+position = Vector2( 96, 352 )
+scale = Vector2( 2, 2 )
 frames = ExtResource( 10 )
-frame = 6
+frame = 2
 playing = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Portrait" type="Sprite" parent="Card"]
+position = Vector2( 96, 186 )
+scale = Vector2( 0.621454, 0.618794 )
+texture = ExtResource( 17 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="fade" type="Sprite" parent="Card"]
+self_modulate = Color( 1, 1, 1, 0.560784 )
+position = Vector2( 96, 280 )
+scale = Vector2( 0.352, 0.16 )
+texture = ExtResource( 18 )
 
 [node name="Button" type="Button" parent="."]
 self_modulate = Color( 1, 1, 1, 0 )
@@ -172,5 +286,6 @@ margin_right = 192.0
 margin_bottom = 576.0
 script = ExtResource( 8 )
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }

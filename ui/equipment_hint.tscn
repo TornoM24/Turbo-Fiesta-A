@@ -87,12 +87,10 @@ __meta__ = {
 
 [node name="BG" type="Sprite" parent="Panel/Panel"]
 position = Vector2( 36, 36 )
-scale = Vector2( 1.125, 1.125 )
 texture = ExtResource( 5 )
 
 [node name="Sprite" type="Sprite" parent="Panel/Panel"]
 position = Vector2( 36, 36 )
-scale = Vector2( 1.125, 1.125 )
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Panel/Panel"]
 visible = false

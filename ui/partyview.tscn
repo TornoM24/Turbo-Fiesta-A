@@ -1,10 +1,14 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://pixel_panel.theme" type="Theme" id=1]
 [ext_resource path="res://ui/partyview.gd" type="Script" id=2]
 [ext_resource path="res://pixel_border.theme" type="Theme" id=3]
 [ext_resource path="res://font/Chrono.tres" type="DynamicFont" id=4]
 [ext_resource path="res://font/ChronoLarge.tres" type="DynamicFont" id=5]
+[ext_resource path="res://gfx/icons/equipment.png" type="Texture" id=6]
+[ext_resource path="res://gfx/icons/equipment_end.png" type="Texture" id=7]
+[ext_resource path="res://gfx/icons/inventory_end.png" type="Texture" id=8]
+[ext_resource path="res://gfx/icons/inventory.png" type="Texture" id=9]
 [ext_resource path="res://font/kissinger.tres" type="DynamicFont" id=10]
 [ext_resource path="res://ui/Equipment.gd" type="Script" id=11]
 [ext_resource path="res://pixel_tabs.theme" type="Theme" id=14]
@@ -66,9 +70,9 @@ __meta__ = {
 [node name="StatsPanel" type="Panel" parent="."]
 self_modulate = Color( 1, 1, 1, 0 )
 margin_left = 208.0
-margin_top = 16.0
+margin_top = 14.7285
 margin_right = 1032.0
-margin_bottom = 592.0
+margin_bottom = 590.729
 script = ExtResource( 20 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -88,25 +92,28 @@ __meta__ = {
 }
 
 [node name="right" type="Button" parent="StatsPanel/charswitch"]
-margin_left = 72.0
-margin_top = 648.0
-margin_right = 136.0
-margin_bottom = 680.0
+margin_left = 80.0
+margin_top = 648.561
+margin_right = 144.0
+margin_bottom = 680.561
+focus_mode = 0
 theme = ExtResource( 15 )
+enabled_focus_mode = 0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Sprite" type="Sprite" parent="StatsPanel/charswitch/right"]
-position = Vector2( 32, 16 )
+position = Vector2( 32, 15.9999 )
 texture = ExtResource( 19 )
 
 [node name="left" type="Button" parent="StatsPanel/charswitch"]
-margin_left = 8.0
-margin_top = 648.0
-margin_right = 72.0
-margin_bottom = 680.0
+margin_top = 648.561
+margin_right = 64.0
+margin_bottom = 680.561
+focus_mode = 0
 theme = ExtResource( 15 )
+enabled_focus_mode = 0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -192,6 +199,30 @@ margin_top = -72.0
 margin_right = 144.0
 margin_bottom = 72.0
 theme = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CardPanel" type="Panel" parent="StatsPanel/Stats"]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_right = 144.0
+margin_bottom = 513.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Number" type="RichTextLabel" parent="StatsPanel/Stats"]
+anchor_top = -0.000821188
+anchor_bottom = -0.000821188
+margin_left = 48.6933
+margin_top = -7.0
+margin_right = 93.6933
+margin_bottom = 3.0
+custom_fonts/normal_font = ExtResource( 4 )
+bbcode_enabled = true
+bbcode_text = "[center]◉○●●●"
+text = "◉○●●●"
+scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -291,20 +322,6 @@ margin_right = 560.0
 margin_bottom = 419.0
 rect_min_size = Vector2( 560, 419 )
 
-[node name="label1" type="RichTextLabel" parent="StatsPanel/Tabs/Equipment"]
-margin_left = 28.0
-margin_top = 165.0
-margin_right = 356.0
-margin_bottom = 205.0
-rect_pivot_offset = Vector2( 336, -8 )
-custom_fonts/normal_font = ExtResource( 5 )
-text = "Equipment
-"
-scroll_active = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="costlabel" type="RichTextLabel" parent="StatsPanel/Tabs/Equipment"]
 margin_left = 436.0
 margin_top = 165.0
@@ -320,17 +337,55 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="label2" type="RichTextLabel" parent="StatsPanel/Tabs/Equipment"]
-margin_left = 28.0
-margin_top = 229.0
-margin_right = 356.0
-margin_bottom = 253.0
+[node name="EquipLabel" type="Node2D" parent="StatsPanel/Tabs/Equipment"]
+
+[node name="Sprite2" type="Sprite" parent="StatsPanel/Tabs/Equipment/EquipLabel"]
+position = Vector2( 17.6031, 175 )
+scale = Vector2( 2.9, 2.9 )
+texture = ExtResource( 7 )
+
+[node name="Sprite" type="Sprite" parent="StatsPanel/Tabs/Equipment/EquipLabel"]
+position = Vector2( 178, 175 )
+scale = Vector2( 2.1, 2.1 )
+texture = ExtResource( 6 )
+
+[node name="label1" type="RichTextLabel" parent="StatsPanel/Tabs/Equipment/EquipLabel"]
+margin_left = 36.0
+margin_top = 165.0
+margin_right = 159.0
+margin_bottom = 205.0
+rect_pivot_offset = Vector2( 336, -8 )
+custom_fonts/normal_font = ExtResource( 5 )
+text = "Equipment
+"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="InvLabel" type="Node2D" parent="StatsPanel/Tabs/Equipment"]
+
+[node name="label2" type="RichTextLabel" parent="StatsPanel/Tabs/Equipment/InvLabel"]
+margin_left = 82.0
+margin_top = 230.0
+margin_right = 410.0
+margin_bottom = 254.0
 custom_fonts/normal_font = ExtResource( 5 )
 text = "Inventory"
 scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Sprite" type="Sprite" parent="StatsPanel/Tabs/Equipment/InvLabel"]
+position = Vector2( 47, 240 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 9 )
+
+[node name="Sprite2" type="Sprite" parent="StatsPanel/Tabs/Equipment/InvLabel"]
+position = Vector2( 212, 240 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 8 )
 
 [node name="Abilities" type="Control" parent="StatsPanel/Tabs"]
 visible = false

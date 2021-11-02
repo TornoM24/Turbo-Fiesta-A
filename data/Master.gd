@@ -42,8 +42,8 @@ var ability_dict = {
 		]
 	},
 	"attack_scarlet_razor_hiro":{
-		"name": "Crimson Saber",
-		"id":"attack_crimson_saber_hiro",
+		"name": "Scarlet Razor",
+		"id":"attack_scarlet_razor_hiro",
 		"type":"phys",
 		"icon":"sword",
 		"desc": "Attacks with Hiro's Scarlet Razor, dealing physical/fire damage.\nThe modifier on this attack increases by 1% for every stack of Impulse.",
@@ -138,7 +138,7 @@ var ability_dict = {
 		"id":"attack_stardust_ray_stella",
 		"type":"ranged",
 		"icon":"shoot2",
-		"desc": "Shoots an enemy, dealing light/magic damage.",
+		"desc": "Shoots an enemy, dealing light/magic damage.\n[color=gray]This Starlight Shooter isn't just for show!",
 		"cost": 0,
 		"effects": [
 			{
@@ -172,7 +172,7 @@ var ability_dict = {
 		"id":"spell_flare",
 		"type":"magic",
 		"icon":"blk_mag",
-		"desc": "Summons a ball of raw thermal energy, then casts it at the target.\n An elementary spell with numerous uses and a great amount of potential.\n[color=gray]The flame sings its siren song, but only few feel its voice.[/color]",
+		"desc": "Summons a ball of raw thermal energy, then casts it at the target.\nAn elementary spell with numerous uses and a great amount of potential.\n[color=gray]The flame sings its siren song, but only few feel its voice.[/color]",
 		"cost": 5,
 		"effects": [
 			{
@@ -425,6 +425,7 @@ func new_game ():
 	Master.party[0].equip (give_equipment("hiro_heirloom"))
 	formation = [[-1,-1,-1],[-1,0,1],[-1,-1,-1]]
 	add_equip (give_equipment ("alan_foraged_blade"))
+	add_equip (give_equipment ("stella_shard_coat"))
 	#save_game()
 	
 func fabricate (name):
@@ -450,6 +451,7 @@ func add_equip (inst):
 
 func get_full (stat):
 	match stat:
+		#Attribute types
 		"mhp" :
 			return "Max HP"
 		"mmp" :
@@ -472,7 +474,43 @@ func get_full (stat):
 			return "Speed"
 		"luk" : 
 			return "Luck"
-
+		#Ability types
+		"phys" :
+			return "physical"
+		"ranged" :
+			return "ranged"
+		"magic" :
+			return "magic"
+		"wht_mag" :
+			return "white magic"
+		"blk_mag" :
+			return "black magic"
+		"buff" :
+			return "support"
+		#Stat descriptions
+		"emhp" : 
+			return "[color=#8e8e8e]How much damage this character can take. Defeat occurs at 0 HP.\n\nSpending SP on this stat restores 33% of HP."
+		"emmp" : 
+			return "[color=#8e8e8e]How many spells this character can cast. Cost varies depending on spell."
+		"ehp" : 
+			return "[color=#8e8e8e]How much damage this character can take. Defeat occurs at 0 HP.\n\nSpending SP on this stat restores 33% of HP."
+		"emp" : 
+			return "[color=#8e8e8e]How many spells this character can cast. Cost varies depending on spell."
+		"eatk" : 
+			return "[color=#8e8e8e]The measure of a character's physical prowess. Mostly governs melee attacks."
+		"edef" : 
+			return "[color=#8e8e8e]The measure of a charcter's resistance to physical attacks."
+		"espd" :
+			return "[color=#8e8e8e]Determines the frequency with which a character can attack."
+		"eint" :
+			return "[color=#8e8e8e]Determines the strength of spellcasting and other magical attacks."
+		"ewis" :
+			return "[color=#8e8e8e]Determines resistance to magical attacks and the power of most White Magic."
+		"eluk" :
+			return "[color=#8e8e8e]How lucky a character is. Determines critical strike chance, among other more subtle effects."
+		"eapt" :
+			return "[color=#8e8e8e]Governs how many items a character can equip, and how powerful an item a character can equip."
+	return "error!!"
 func _ready():
 	print ("singleton Master loaded successfully")
 	#print (get_node("hiro_data").name)
