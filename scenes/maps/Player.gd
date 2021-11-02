@@ -5,6 +5,8 @@ const MOVE_SPEED = 1
 
 var velocity = Vector2()
 var stamina = 100
+var containerContact = false
+var currentObject
 
 onready var down=get_node ("Down")
 onready var side=get_node ("Side")
@@ -84,4 +86,16 @@ func _on_Start_pressed():
 	pass # Replace with function body.
 
 
+func _on_Area2D_area_entered(area):
+	if area.name == "ContainerHitbox":
+		containerContact = true
+		currentObject = area.get_parent()
+	else:
+		currentObject = null
+	pass
 
+func _input(ev):
+	if ev is InputEventKey and ev.is_action_pressed("interact") and not ev.is_echo():
+		if containerContact:
+			currentObject.open_container()
+	pass
