@@ -217,9 +217,9 @@ func causeEffect (target,source,ability):
 				if target.stats.hp > target.stats.mhp:
 					target.stats.hp = target.stats.mhp
 				add_child (dmgLabel)
-				dmgLabel.global_position = target.global_position + Vector2 (0, -10)
+				dmgLabel.global_position = target.global_position + Vector2(0,10)
 				dmgLabel.offset()
-				dmgLabel.get_node("RichTextLabel").bbcode_text = "[wave amp=50 freq=2]"+str(fPower)+"[/wave]"
+				dmgLabel.get_node("RichTextLabel").bbcode_text = "[center][wave amp=50 freq=2]"+str(fPower)+"[/wave]"
 				dmgLabel.modulate.r = 2
 				logSomething (target.stats.name + " takes [color=red]" + str (fPower) + "[/color] damage!\n")
 			if block.target == "self":

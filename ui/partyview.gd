@@ -12,9 +12,10 @@ func _ready():
 	for x in range (1,6):
 		var card = load ("res://ui/card.tscn").instance()
 		add_child (card)
-		card.position = Vector2 (8 + (208 * x-1), -64)
+		card.position = Vector2 (8 + (208 * x-1), -40)
 		card.name = "C" + str (x)
 		card.z_index = 998
+		
 	pass
 	var inc = 1
 	var CardPanel = get_node ("StatsPanel/Stats/CardPanel")

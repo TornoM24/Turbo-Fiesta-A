@@ -14,7 +14,7 @@ func _ready():
 	pass # Replace with function body.
 func offset():
 	rng.randomize()
-	offset = Vector2(rng.randf_range(-10.0, 10.0),rng.randf_range(-10.0, 10.0))
+	offset = Vector2(rng.randf_range(-20.0, 20.0),rng.randf_range(-10.0, 10.0))
 	position += offset
 func _process(delta):
 	dTimer += delta
@@ -23,7 +23,8 @@ func _process(delta):
 	velocity.y += delta * 10
 	if velocity.y < 2:
 		position += velocity
-	if modulate.a == 0:
+	if modulate.a <= 0:
+		get_parent().remove_child(self)
 		queue_free()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

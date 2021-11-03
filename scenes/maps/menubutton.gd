@@ -30,6 +30,7 @@ func open_menu():
 	path_inventory.hide()
 	path_grid.hide()
 	path_menu.pause_mode = PAUSE_MODE_PROCESS
+	get_parent().get_node ("menupanel/PStatDisplay/GoldDisplay").update()
 	get_parent().get_node("oc").show()
 	get_parent().get_node("menupanel/partyview").cards_show()
 	get_parent().get_node("menupanel/partyview").switch_modes (false)
