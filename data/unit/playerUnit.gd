@@ -74,6 +74,7 @@ func animBreak():
 	get_node ("Attack").frame=0
 	get_node ("Attack").playing=false
 var singleRun = false
+var timerComplete
 func _process(delta):
 	if inDead:
 		allyDie()
@@ -211,9 +212,27 @@ func _on_Select_mouse_exited():
 	y.modulate.b = 1
 	pass # Replace with function body.
 
+func process_end():
+	inRecovery = true
+	effCall()
+	yVelo = -1.7
+	get_node ("CastParticles").emitting = false
 
 func _on_Attack_animation_finished():
 	get_node ("AnimatedSprite").show()
-	get_node ("Attack").hide()
+	
+	if ability.type != "magic": 
+		get_node ("Attack").hide()
+		singleRun = true
+		process_end()
+	else:
+		print ("waiting for timer")
+		get_node ("AnimatedSprite").hide()
+		get_node ("Timer").start()
+	pass # Replace with function body.
+
+
+func _on_Timer_timeout():
 	singleRun = true
+	process_end()
 	pass # Replace with function body.

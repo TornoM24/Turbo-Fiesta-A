@@ -119,22 +119,32 @@ func addPermanentAbility (reference):
 	pass
 func update_self ():
 	cost = 0
+	for stat in bonusStats.keys():
+		bonusStats[stat] = 0
+		if stat == "hp":
+			stats.hp = baseStats[stat]
+			stats.mhp = baseStats[stat]
+		elif stat == "mp":
+			stats.mp = baseStats[stat]
+			stats.mmp = baseStats[stat]
 	for equip in self.equipment:
 		cost += equip.cost
 		for stat in equip.stats.keys():
 			print ("increasing stat " + stat + " by " + str (equip.stats[stat]) + " for item " + equip.itemName)
 			if stat == "hp":
 				bonusStats.mhp += equip.stats[stat]
+				#stats.hp += equip.stats[stat]
+				stats.mhp += equip.stats[stat]
 			elif stat == "mp":
 				bonusStats.mmp += equip.stats[stat]
+				#stats.mp += equip.stats[stat]
+				stats.mmp += equip.stats[stat]
 			else:
 				bonusStats [stat] += equip.stats[stat]
 func equip (item):
 	#cost += item.cost
 	add_child (item)
 	equipment.append (item)
-	for stat in bonusStats.keys():
-		bonusStats[stat] = 0
 	update_self()
 	print ("successfully equipped " + item.itemName + " to unit " + unitName)
 

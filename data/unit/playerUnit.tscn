@@ -131,8 +131,13 @@ scale = Vector2( 2, 2 )
 
 [node name="Tween" type="Tween" parent="."]
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
 [connection signal="mouse_entered" from="Select" to="." method="_on_Select_mouse_entered"]
 [connection signal="mouse_exited" from="Select" to="." method="_on_Select_mouse_exited"]
 [connection signal="pressed" from="Select" to="." method="_on_Select_pressed"]
 [connection signal="animation_finished" from="Attack" to="." method="_on_Attack_animation_finished"]
 [connection signal="animation_finished" from="Attack" to="Attack" method="_on_Attack_animation_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

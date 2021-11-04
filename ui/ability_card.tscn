@@ -1,17 +1,40 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://gfx/icons/empty.png" type="Texture" id=1]
 [ext_resource path="res://ui/DetailButton.gd" type="Script" id=2]
 [ext_resource path="res://ui/ability_card.gd" type="Script" id=3]
 [ext_resource path="res://font/ChronoLarge.tres" type="DynamicFont" id=4]
 [ext_resource path="res://font/Chrono.tres" type="DynamicFont" id=5]
+[ext_resource path="res://pixel_button.tres" type="Theme" id=6]
+[ext_resource path="res://ui/upgrade_icon.png" type="Texture" id=7]
+[ext_resource path="res://ui/question.png" type="Texture" id=8]
 
 [node name="ability_card" type="Node2D"]
 z_index = 1
 script = ExtResource( 3 )
 
+[node name="Panel2" type="Panel" parent="."]
+margin_left = 448.0
+margin_right = 552.0
+margin_bottom = 104.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="Panel2"]
+margin_left = 8.0
+margin_top = 40.0
+margin_right = 96.0
+margin_bottom = 64.0
+theme = ExtResource( 6 )
+text = "Upgrade"
+icon = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Panel" type="Panel" parent="."]
-margin_right = 512.0
+margin_right = 432.0
 margin_bottom = 104.0
 rect_pivot_offset = Vector2( 376, -136 )
 __meta__ = {
@@ -21,7 +44,7 @@ __meta__ = {
 [node name="AbilityName" type="RichTextLabel" parent="Panel"]
 margin_left = 80.0
 margin_top = 24.0
-margin_right = 560.0
+margin_right = 304.0
 margin_bottom = 64.0
 custom_fonts/normal_font = ExtResource( 4 )
 bbcode_enabled = true
@@ -53,9 +76,13 @@ __meta__ = {
 }
 
 [node name="DetailButton" type="Button" parent="Panel"]
-self_modulate = Color( 1, 1, 1, 0 )
-margin_right = 512.0
-margin_bottom = 104.0
+margin_left = 456.0
+margin_top = 8.0
+margin_right = 544.0
+margin_bottom = 32.0
+theme = ExtResource( 6 )
+text = "Details"
+icon = ExtResource( 8 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false

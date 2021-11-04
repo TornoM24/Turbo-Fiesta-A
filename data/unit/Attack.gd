@@ -18,8 +18,10 @@ func _ready():
 
 func _on_Attack_animation_finished():
 	self.playing = false
-	get_parent().inRecovery = true
-	get_parent().effCall()
-	get_parent().yVelo = -1.7
-	get_parent().get_node ("CastParticles").emitting = false
+	var lf = -1
+	while lf != frame:
+		print (frame)
+		frame += 1
+		lf +=1
+	lf = frame
 	pass # Replace with function body.

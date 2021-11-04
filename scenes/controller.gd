@@ -39,7 +39,8 @@ func updateStats (delta):
 	var inc = 0
 	for x in alliesUnit:
 		var path = "Control/Panel/CBPanel2/G" + str(inc + 1) + "/"
-		x.reference.stats = x.stats
+		x.reference.stats.hp = x.stats.hp
+		x.reference.stats.mp = x.stats.mp
 		get_node (path+"RichTextLabel").bbcode_enabled = true
 		get_node (path+"RichTextLabel").bbcode_text = x.get_node ("Data").unitDict.name
 		get_node (path+"HPLabel").bbcode_text = "[right][color=#ffeeb8]" + str (x.stats.hp)
@@ -48,9 +49,6 @@ func updateStats (delta):
 			get_node (path+"ATBLabel").bbcode_text = "[right]100%"
 		else:
 			get_node (path+"ATBLabel").bbcode_text = "[right]" + str (int(x.atb_val)) + "%"
-		#x.reference.stats.hp += 1
-		#print (x.unitName + " " + str(int((float(x.reference.stats.hp)/x.reference.stats.mhp)*100)))
-		#print (x.unitName + str(int((float(x.reference.stats.hp)/x.reference.stats.mhp)*100))+ "/" + str(get_node (path+"HPBar").value))
 		get_node (path+"HPBar").targetValue = int((float(x.stats.hp)/x.stats.mhp)*100)
 		get_node (path+"MPBar").targetValue = int((float(x.stats.mp)/x.stats.mmp)*100)
 		if get_node (path+"HPBar").targetValue < get_node (path+"HPBar").value:
@@ -68,16 +66,7 @@ func updateStats (delta):
 			get_node (path+"MPBar").value += delta * 50
 			
 		get_node (path+"ATBBar").value = x.atb_val
-		if get_node (path+"HPBar").value < 100:
-			#get_node (path+"HPBar").texture_progress = load ("res://gfx/unit/hpbar_decrement.png")
-			#get_node (path+"HPBar").stretch_margin_left = 5
-			pass
-		else:
-			#get_node (path+"HPBar").texture_progress = load ("res://gfx/unit/hpbar.png")
-			#get_node (path+"HPBar").stretch_margin_left = 1
-			pass
 		inc += 1
-		#x.reference.stats = x.stats
 		pass
 	for x in enemyUnit:
 		x.get_node ("HPBar").value = x.hp
@@ -86,7 +75,6 @@ func updateStats (delta):
 			pass
 		else:
 			pass
-		#inc += 1
 		pass
 
 func parseData():
@@ -215,7 +203,9 @@ func create_label (amount, pos):
 	dmgLabel.offset()
 	dmgLabel.get_node("RichTextLabel").bbcode_text = "[center]"+str(amount)
 	dmgLabel.modulate.r = 2
+	return dmgLabel
 var label = preload ("res://ui/dmglabel.tscn")
+const LABEL_OFFSET = 30
 func causeEffect (target,source,ability):
 	var fPower = 0
 	var eff = ability.effects
@@ -230,51 +220,35 @@ func causeEffect (target,source,ability):
 				target.stats.hp -= fPower
 				if target.stats.hp > target.stats.mhp:
 					target.stats.hp = target.stats.mhp
-				create_label (fPower,target.global_position + Vector2(0,10))
+				create_label (fPower,target.global_position + Vector2(0,LABEL_OFFSET))
 				logSomething (target.stats.name + " takes [color=red]" + str (fPower) + "[/color] damage!\n")
 			if block.target == "self":
-				var dmgLabel = label.instance()
 				var power = block.power
 				source.stats.hp -= power
 				if source.stats.hp > source.stats.mhp:
 					source.stats.hp = source.stats.mhp
-				add_child (dmgLabel)
-				dmgLabel.global_position = source.global_position + Vector2 (0, -10)
-				dmgLabel.get_node("RichTextLabel").bbcode_text = "[center]"+str(power)
-				dmgLabel.modulate.r = 2
+				create_label (fPower,target.global_position + Vector2(0,LABEL_OFFSET))
 				logSomething (source.stats.name + " takes [color=red]" + str (power) + "[/color] damage!\n")
 			if block.target == "all enemies":
 				for x in enemyUnit:
-					var dmgLabel = label.instance()
 					var power = fPower
 					x.stats.hp -= power
-					add_child (dmgLabel)
-					dmgLabel.global_position = x.global_position + Vector2 (0, -10)
-					dmgLabel.get_node("RichTextLabel").bbcode_text = "[center]"+str(power)
-					dmgLabel.modulate.r = 2
+					create_label (fPower,target.global_position + Vector2(0,LABEL_OFFSET))
 					logSomething (x.stats.name + " takes [color=red]" + str (power) + "[/color] damage!\n")
 		if block.type == "healing":
 			fPower = getPower (block,source)
 			if block.target == "single":
-				var dmgLabel = label.instance()
 				target.stats.hp += fPower
 				if target.stats.hp > target.stats.mhp:
 					target.stats.hp = target.stats.mhp
-				add_child (dmgLabel)
-				dmgLabel.global_position = target.global_position+ Vector2 (0, -10)
-				dmgLabel.get_node("RichTextLabel").bbcode_text = "[center]"+str(fPower)
-				dmgLabel.modulate.g = 2
+				create_label (fPower,target.global_position + Vector2(0,LABEL_OFFSET))
 				logSomething (target.stats.name + " heals for [color=green]" + str (fPower) + "[/color] hp!\n")
 			if block.target == "all allies":
 				for x in alliesUnit:
-					var dmgLabel = label.instance()
 					x.stats.hp += fPower
 					if x.stats.hp > x.stats.mhp:
 						x.stats.hp = x.stats.mhp
-					add_child (dmgLabel)
-					dmgLabel.global_position = x.global_position+ Vector2 (0, -10)
-					dmgLabel.get_node("RichTextLabel").bbcode_text = "[center]"+str(fPower)
-					dmgLabel.modulate.g = 2
+					create_label (fPower,target.global_position + Vector2(0,LABEL_OFFSET))
 				logSomething ("All allies heal for [color=green]" + str (fPower) + "[/color] hp!\n")
 
 func cancel_targeting ():
