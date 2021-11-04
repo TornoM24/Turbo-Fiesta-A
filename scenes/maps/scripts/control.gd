@@ -113,7 +113,7 @@ func ability_pressed(bHost, inputType):
 		var selector = get_parent().get_node("Control/Selector")
 		var flag = false
 		for x in Master.ability_dict[bHost.aName].effects:
-			if x.target == "all allies":
+			if x.target == "all allies" or x.target == "all enemies":
 				var par = get_parent()
 				get_parent().selectedUnit.sprite_attack(Master.ability_dict[bHost.aName],par.selectedUnit)
 				get_parent().cancel_targeting()
@@ -131,12 +131,10 @@ func ability_pressed(bHost, inputType):
 				get_node ("Panel/targethelper").visible = true
 		bHost.queue_free()
 	elif inputType == 2:
-		print ("aawawa")
 		var x = load("res://ui/ability_hint.tscn").instance()
 		x.sceneBase = "combat"
 		x.generateTip (Master.ability_dict[bHost.aName])
 		get_parent().add_child(x)
-		#yield(get_tree().create_timer(0.001), "timeout") 
 		get_tree().paused = true
 
 func _on_defend_pressed():

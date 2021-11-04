@@ -44,6 +44,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="RichTextLabel" type="RichTextLabel" parent="HPBar"]
+visible = false
+margin_right = 40.0
+margin_bottom = 10.0
+bbcode_enabled = true
+bbcode_text = "100%"
+text = "100%"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="MPBar" type="TextureProgress" parent="."]
 visible = false
 margin_top = -4.0

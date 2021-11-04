@@ -63,6 +63,9 @@ func generateTip (ability):
 				tipText = "Deals [color=red]" + str(x.power) + "[/color]% of character's [color=lime]" + scalers + "[/color] as [color=yellow]" + elements + "[/color] damage to a single target."
 			elif x.target == "self":
 				tipText = "Deals [color=red]" + str(x.power) + " " + elements + "[/color] damage to self."
+			elif x.target == "all enemies":
+				tipText = "Deals [color=red]" + str(x.power) + "[/color]% of character's [color=lime]" + scalers + "[/color] as [color=yellow]" + elements + "[/color] damage to all enemies."
+			
 		if x.type == "healing":
 			var scalers = ""
 			var elements = ""

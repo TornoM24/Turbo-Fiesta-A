@@ -33,6 +33,7 @@ settings/fps/force_fps=60
 window/size/width=1280
 window/size/height=720
 window/size/resizable=false
+window/dpi/allow_hidpi=true
 mouse_cursor/custom_image="res://ui/pointer2.png"
 
 [editor_plugins]

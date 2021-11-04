@@ -1,0 +1,34 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path="res://.import/kisspng-light-lens-flare-clip-art-5ae0e32035dd42.5590760415246876482206.png-77484143a31ccd4b57c9ebd7fb09217e.stex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://gfx/kisspng-light-lens-flare-clip-art-5ae0e32035dd42.5590760415246876482206.png"
+dest_files=[ "res://.import/kisspng-light-lens-flare-clip-art-5ae0e32035dd42.5590760415246876482206.png-77484143a31ccd4b57c9ebd7fb09217e.stex" ]
+
+[params]
+
+compress/mode=0
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/bptc_ldr=0
+compress/normal_map=0
+flags/repeat=0
+flags/filter=true
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+process/invert_color=false
+stream=false
+size_limit=0
+detect_3d=true
+svg/scale=1.0

@@ -107,13 +107,15 @@ var ability_dict = {
 				"type": "buff",
 				"target": "self",
 				"param": "DEF",
-				"power": 50
+				"power": 50,
+				"duration": 10
 			},
 			{
 				"type": "buff",
 				"target": "self",
 				"param": "ATK",
-				"power": 20
+				"power": 20,
+				"duration": 10
 			}
 		]
 	},
@@ -194,7 +196,7 @@ var ability_dict = {
 		"effects": [
 			{
 				"type": "damage",
-				"target": "single",
+				"target": "all enemies",
 				"scaling" : ["int"],
 				"elements" : ["fire"],
 				"power": 90,
@@ -308,7 +310,19 @@ comfortable, and often used by travelers in cold, wintery areas. It's cute too!"
 }
 
 var effect_dict = {
-	
+	"poison_weak": {
+		"name" : "Weak Poison",
+		"id" : "poison_weak",
+		"desc" : "A weak poison, which inflicts physical damage every few seconds.",
+		"frequency" : 3,
+		"effects" : 
+			[
+				{
+					"type": "damage",
+					"power": 10,
+				}
+			]
+	}
 }
 #Lists data locations for all units in the game
 var unit_list = {
@@ -495,17 +509,17 @@ func get_full (stat):
 		"ehp" : 
 			return "[color=#8e8e8e]How much damage this character can take. Defeat occurs at 0 HP.\n\nSpending SP on this stat restores 33% of HP."
 		"emp" : 
-			return "[color=#8e8e8e]How many spells this character can cast. Cost varies depending on spell."
+			return "[color=#8e8e8e]A resource determining how many spells this character can cast, depending on their power."
 		"eatk" : 
-			return "[color=#8e8e8e]The measure of a character's physical prowess. Mostly governs melee attacks."
+			return "[color=#8e8e8e]The measure of a character's physical prowess and skill with weaponry. Mostly governs attacks that use force to directly strike the enemy."
 		"edef" : 
-			return "[color=#8e8e8e]The measure of a charcter's resistance to physical attacks."
+			return "[color=#8e8e8e]The measure of a character's resistance to physical attacks, as well as the ability to counterattack."
 		"espd" :
-			return "[color=#8e8e8e]Determines the frequency with which a character can attack."
+			return "[color=#8e8e8e]Determines the frequency with which a character can take actions.\nAlso influences the power of certain quickness-based abilities."
 		"eint" :
-			return "[color=#8e8e8e]Determines the strength of spellcasting and other magical attacks."
+			return "[color=#8e8e8e]A measure of a character's innate smartness, which determines the strength of spellcasting and other magical attacks.\n"
 		"ewis" :
-			return "[color=#8e8e8e]Determines resistance to magical attacks and the power of most White Magic."
+			return "[color=#8e8e8e]A measure of a character's knowledge, which usually determines resistance to magical attacks and the power of White Magic."
 		"eluk" :
 			return "[color=#8e8e8e]How lucky a character is. Determines critical strike chance, among other more subtle effects."
 		"eapt" :

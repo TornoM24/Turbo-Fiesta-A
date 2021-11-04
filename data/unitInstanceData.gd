@@ -33,6 +33,7 @@ var spendable = 0
 var cost = 0
 var maxCost = 0
 var title
+var statusEffects = []
 func level_up():
 	level += 1
 	toNext = round( 0.04 * (pow(level, 3)) + 0.8 * (pow(level, 3)) + 2 * level)
@@ -67,6 +68,7 @@ func save ():
 		"abilities": abilities,
 		"cost" : cost,
 		"title" : title,
+		"statusEffects": statusEffects,
 		"xp": xp,
 		"sp": sp
 	}
@@ -81,6 +83,7 @@ func load_data(data):
 	baseStats = data["baseStats"]
 	#equipment = data["equipment"]
 	abilities = data["abilities"]
+	statusEffects = data ["statusEffects"]
 	title = data ["title"]
 	sp = data ["sp"]
 	cost = data ["cost"]

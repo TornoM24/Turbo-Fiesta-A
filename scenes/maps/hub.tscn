@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://scenes/maps/Player.gd" type="Script" id=1]
 [ext_resource path="res://scenes/maps/obj/tilemap.tres" type="TileSet" id=2]
@@ -109,6 +109,12 @@ font_data = ExtResource( 7 )
 
 [sub_resource type="DynamicFont" id=17]
 font_data = ExtResource( 7 )
+
+[sub_resource type="Environment" id=18]
+background_mode = 4
+auto_exposure_enabled = true
+glow_enabled = true
+adjustment_enabled = true
 
 [node name="Main" type="Node2D"]
 
@@ -342,6 +348,9 @@ visible = false
 position = Vector2( -168, -352 )
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 18 )
 
 [connection signal="area_entered" from="Player/Area2D" to="Player" method="_on_Area2D_area_entered"]
 [connection signal="pressed" from="TitleScreen/Start" to="Player" method="_on_Start_pressed"]

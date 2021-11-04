@@ -16,8 +16,10 @@ func _ready():
 func _process(delta):
 	if value>=100:
 		texture_progress = fullBar
+		get_parent().get_node ("Light2D").enabled = true
 	else:
 		texture_progress = fillBar
+		get_parent().get_node ("Light2D").enabled = false
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass

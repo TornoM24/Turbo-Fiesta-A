@@ -41,7 +41,13 @@ func updateStats (delta):
 		var path = "Control/Panel/CBPanel2/G" + str(inc + 1) + "/"
 		x.reference.stats = x.stats
 		get_node (path+"RichTextLabel").bbcode_enabled = true
-		get_node (path+"RichTextLabel").bbcode_text = x.get_node ("Data").unitDict.name + " [color=red]" + str(x.reference.stats.hp) + "[/color]" + " | [color=#00c8ff]" + str(x.reference.stats.mp) + "[/color]"
+		get_node (path+"RichTextLabel").bbcode_text = x.get_node ("Data").unitDict.name
+		get_node (path+"HPLabel").bbcode_text = "[right][color=#ffeeb8]" + str (x.stats.hp)
+		get_node (path+"MPLabel").bbcode_text = "[right][color=#edfffa]" + str (x.stats.mp)
+		if x.atb_val >= 100:
+			get_node (path+"ATBLabel").bbcode_text = "[right]100%"
+		else:
+			get_node (path+"ATBLabel").bbcode_text = "[right]" + str (int(x.atb_val)) + "%"
 		#x.reference.stats.hp += 1
 		#print (x.unitName + " " + str(int((float(x.reference.stats.hp)/x.reference.stats.mhp)*100)))
 		#print (x.unitName + str(int((float(x.reference.stats.hp)/x.reference.stats.mhp)*100))+ "/" + str(get_node (path+"HPBar").value))
@@ -201,8 +207,16 @@ func getPower (block,source):
 		fPower += source.stats[x]/inc
 		fPower = ceil(float(fPower * block.power/100))
 	return fPower
+	
+func create_label (amount, pos):
+	var dmgLabel = label.instance()
+	add_child (dmgLabel)
+	dmgLabel.global_position = pos
+	dmgLabel.offset()
+	dmgLabel.get_node("RichTextLabel").bbcode_text = "[center]"+str(amount)
+	dmgLabel.modulate.r = 2
+var label = preload ("res://ui/dmglabel.tscn")
 func causeEffect (target,source,ability):
-	var label = load ("res://ui/dmglabel.tscn")
 	var fPower = 0
 	var eff = ability.effects
 	#print ("mp first " + str(source.mp))
@@ -212,15 +226,11 @@ func causeEffect (target,source,ability):
 		if block.type == "damage":
 			fPower = getPower (block,source)
 			if block.target == "single":
-				var dmgLabel = label.instance()
+				
 				target.stats.hp -= fPower
 				if target.stats.hp > target.stats.mhp:
 					target.stats.hp = target.stats.mhp
-				add_child (dmgLabel)
-				dmgLabel.global_position = target.global_position + Vector2(0,10)
-				dmgLabel.offset()
-				dmgLabel.get_node("RichTextLabel").bbcode_text = "[center][wave amp=50 freq=2]"+str(fPower)+"[/wave]"
-				dmgLabel.modulate.r = 2
+				create_label (fPower,target.global_position + Vector2(0,10))
 				logSomething (target.stats.name + " takes [color=red]" + str (fPower) + "[/color] damage!\n")
 			if block.target == "self":
 				var dmgLabel = label.instance()
@@ -230,9 +240,19 @@ func causeEffect (target,source,ability):
 					source.stats.hp = source.stats.mhp
 				add_child (dmgLabel)
 				dmgLabel.global_position = source.global_position + Vector2 (0, -10)
-				dmgLabel.get_node("RichTextLabel").bbcode_text = "[wave amp=50 freq=2]"+str(power)+"[/wave]"
+				dmgLabel.get_node("RichTextLabel").bbcode_text = "[center]"+str(power)
 				dmgLabel.modulate.r = 2
 				logSomething (source.stats.name + " takes [color=red]" + str (power) + "[/color] damage!\n")
+			if block.target == "all enemies":
+				for x in enemyUnit:
+					var dmgLabel = label.instance()
+					var power = fPower
+					x.stats.hp -= power
+					add_child (dmgLabel)
+					dmgLabel.global_position = x.global_position + Vector2 (0, -10)
+					dmgLabel.get_node("RichTextLabel").bbcode_text = "[center]"+str(power)
+					dmgLabel.modulate.r = 2
+					logSomething (x.stats.name + " takes [color=red]" + str (power) + "[/color] damage!\n")
 		if block.type == "healing":
 			fPower = getPower (block,source)
 			if block.target == "single":
@@ -242,7 +262,7 @@ func causeEffect (target,source,ability):
 					target.stats.hp = target.stats.mhp
 				add_child (dmgLabel)
 				dmgLabel.global_position = target.global_position+ Vector2 (0, -10)
-				dmgLabel.get_node("RichTextLabel").bbcode_text = "[wave amp=50 freq=2]"+str(fPower)+"[/wave]"
+				dmgLabel.get_node("RichTextLabel").bbcode_text = "[center]"+str(fPower)
 				dmgLabel.modulate.g = 2
 				logSomething (target.stats.name + " heals for [color=green]" + str (fPower) + "[/color] hp!\n")
 			if block.target == "all allies":
@@ -253,7 +273,7 @@ func causeEffect (target,source,ability):
 						x.stats.hp = x.stats.mhp
 					add_child (dmgLabel)
 					dmgLabel.global_position = x.global_position+ Vector2 (0, -10)
-					dmgLabel.get_node("RichTextLabel").bbcode_text = "[wave amp=50 freq=2]"+str(fPower)+"[/wave]"
+					dmgLabel.get_node("RichTextLabel").bbcode_text = "[center]"+str(fPower)
 					dmgLabel.modulate.g = 2
 				logSomething ("All allies heal for [color=green]" + str (fPower) + "[/color] hp!\n")
 

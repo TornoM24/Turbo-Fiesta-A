@@ -219,16 +219,16 @@ __meta__ = {
 position = Vector2( -8, -16 )
 
 [node name="G2" parent="Control/Panel/CBPanel2" instance=ExtResource( 8 )]
-position = Vector2( -8, 48 )
+position = Vector2( -8, 24 )
 
 [node name="G3" parent="Control/Panel/CBPanel2" instance=ExtResource( 8 )]
-position = Vector2( -8, 112 )
+position = Vector2( -8, 64 )
 
 [node name="G4" parent="Control/Panel/CBPanel2" instance=ExtResource( 8 )]
-position = Vector2( -8, 176 )
+position = Vector2( -8, 104 )
 
 [node name="G5" parent="Control/Panel/CBPanel2" instance=ExtResource( 8 )]
-position = Vector2( -8, 240 )
+position = Vector2( -8, 144 )
 
 [node name="Panel2" type="Panel" parent="Control/Panel"]
 visible = false
@@ -279,9 +279,9 @@ rect_min_size = Vector2( 575, 250 )
 [node name="Tween" type="Tween" parent="Control/Panel/CBPanel"]
 
 [node name="testbutton" type="Button" parent="Control/Panel"]
-margin_left = 1168.0
+margin_left = 1056.0
 margin_top = -432.0
-margin_right = 1268.0
+margin_right = 1156.0
 margin_bottom = -404.0
 rect_scale = Vector2( 1, 1.01685 )
 theme = ExtResource( 6 )
@@ -341,7 +341,7 @@ __meta__ = {
 visible = false
 position = Vector2( 488, 136 )
 frames = SubResource( 9 )
-frame = 6
+frame = 3
 speed_scale = 2.0
 playing = true
 

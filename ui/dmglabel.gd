@@ -7,10 +7,15 @@ extends Node2D
 var decay = false
 var dTimer = 0
 var offset
-var velocity = Vector2(0, -1)
+#var velocity = Vector2(0, -1)
 var rng = RandomNumberGenerator.new()
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	var tween = get_node ("Tween")
+	tween.interpolate_property(self, "position",
+		null, null, 1,
+	Tween.TRANS_BOUNCE, Tween.EASE_OUT)
+	tween.start()
 	pass # Replace with function body.
 func offset():
 	rng.randomize()
@@ -20,9 +25,9 @@ func _process(delta):
 	dTimer += delta
 	if dTimer > 1:
 		modulate.a -= delta * 1
-	velocity.y += delta * 10
-	if velocity.y < 2:
-		position += velocity
+#	velocity.y += delta * 10
+#	if velocity.y < 2:
+#		position += velocity
 	if modulate.a <= 0:
 		get_parent().remove_child(self)
 		queue_free()
