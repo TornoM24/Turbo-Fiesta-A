@@ -41,6 +41,7 @@ func updateStats (delta):
 		var path = "Control/Panel/CBPanel2/G" + str(inc + 1) + "/"
 		x.reference.stats.hp = x.stats.hp
 		x.reference.stats.mp = x.stats.mp
+		get_node (path).unit = x
 		get_node (path+"RichTextLabel").bbcode_enabled = true
 		get_node (path+"RichTextLabel").bbcode_text = x.get_node ("Data").unitDict.name
 		get_node (path+"HPLabel").bbcode_text = "[right][color=#ffeeb8]" + str (x.stats.hp)
@@ -250,7 +251,12 @@ func causeEffect (target,source,ability):
 						x.stats.hp = x.stats.mhp
 					create_label (fPower,target.global_position + Vector2(0,LABEL_OFFSET))
 				logSomething ("All allies heal for [color=green]" + str (fPower) + "[/color] hp!\n")
-
+		if block.type == "buff":
+			var buff = Master.effect_dict["stat_buff"]
+			buff.effects[0].type = block.param
+			buff.effects[0].power = block.power	
+			target.tempEffects.append (buff)
+			
 func cancel_targeting ():
 	show_all()
 	targeting = false

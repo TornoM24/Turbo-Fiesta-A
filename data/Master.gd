@@ -106,14 +106,14 @@ var ability_dict = {
 			{
 				"type": "buff",
 				"target": "self",
-				"param": "DEF",
-				"power": 50,
+				"param": "def",
+				"power": 30,
 				"duration": 10
 			},
 			{
 				"type": "buff",
 				"target": "self",
-				"param": "ATK",
+				"param": "atk",
 				"power": 20,
 				"duration": 10
 			}
@@ -310,16 +310,33 @@ comfortable, and often used by travelers in cold, wintery areas. It's cute too!"
 }
 
 var effect_dict = {
+	"stat_buff" : {
+		"name" : "Buff",
+		"type" : "Buff",
+		"id" : "atk_buff",
+		"desc" : "A sharpened mind increases this stat for a duration.",
+		"length" : 10,
+		"freq" : 0,
+		"effects" :
+			[
+				{
+					"type": null,
+					"power": null
+				}
+			]
+	},
 	"poison_weak": {
 		"name" : "Weak Poison",
+		"type" : "debuff",
 		"id" : "poison_weak",
-		"desc" : "A weak poison, which inflicts physical damage every few seconds.",
-		"frequency" : 3,
+		"desc" : "A weak poison which inflicts physical damage every few seconds.",
+		"length" : 10,
+		"freq" : 2,
 		"effects" : 
 			[
 				{
 					"type": "damage",
-					"power": 10,
+					"power": 5,
 				}
 			]
 	}

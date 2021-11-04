@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://pixel_panel_fade.theme" type="Theme" id=1]
-[ext_resource path="res://ui/ability_hint.gd" type="Script" id=2]
+[ext_resource path="res://ui/character_status.gd" type="Script" id=2]
 [ext_resource path="res://pixel_button_red.tres" type="Theme" id=3]
 [ext_resource path="res://gfx/icons/empty.png" type="Texture" id=4]
 [ext_resource path="res://font/Chrono.tres" type="DynamicFont" id=5]
@@ -19,6 +19,7 @@ margin_top = -48.0
 margin_right = 1312.0
 margin_bottom = 744.0
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -32,10 +33,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="AbilityName" type="RichTextLabel" parent="Panel"]
-margin_left = 80.0
+[node name="UnitName" type="RichTextLabel" parent="Panel"]
+margin_left = 24.0
 margin_top = 24.0
-margin_right = 592.0
+margin_right = 536.0
 margin_bottom = 64.0
 custom_fonts/normal_font = ExtResource( 6 )
 bbcode_enabled = true
@@ -60,8 +61,76 @@ __meta__ = {
 
 [node name="Control" type="Control" parent="Panel/ScrollContainer"]
 margin_right = 740.0
-margin_bottom = 480.0
-rect_min_size = Vector2( 740, 480 )
+margin_bottom = 460.0
+rect_min_size = Vector2( 740, 460 )
+
+[node name="BuffPanel" type="Panel" parent="Panel/ScrollContainer/Control"]
+margin_left = 184.0
+margin_right = 696.0
+margin_bottom = 48.0
+theme = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel/ScrollContainer/Control/BuffPanel"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 64.0
+margin_bottom = 24.0
+text = "Buffs"
+
+[node name="DebuffPanel" type="Panel" parent="Panel/ScrollContainer/Control"]
+margin_left = 184.0
+margin_top = 56.0
+margin_right = 696.0
+margin_bottom = 104.0
+theme = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel/ScrollContainer/Control/DebuffPanel"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 64.0
+margin_bottom = 24.0
+text = "Debuffs"
+
+[node name="EffectsPanel" type="Panel" parent="Panel/ScrollContainer/Control"]
+margin_left = 184.0
+margin_top = 112.0
+margin_right = 696.0
+margin_bottom = 160.0
+theme = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel/ScrollContainer/Control/EffectsPanel"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 120.0
+margin_bottom = 24.0
+text = "Status Effects"
+
+[node name="Panel" type="Panel" parent="Panel/ScrollContainer/Control"]
+margin_left = 8.0
+margin_right = 168.0
+margin_bottom = 344.0
+theme = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel/ScrollContainer/Control/Panel"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 152.0
+margin_bottom = 32.0
+bbcode_enabled = true
+bbcode_text = "[center]Stats"
+text = "Stats"
 
 [node name="Sprite" type="Sprite" parent="Panel"]
 visible = false
@@ -69,7 +138,6 @@ position = Vector2( 40, 40 )
 texture = ExtResource( 4 )
 
 [node name="CostLabel" type="RichTextLabel" parent="Panel/Sprite"]
-visible = false
 margin_left = -32.0
 margin_top = 32.0
 margin_right = 40.0
@@ -84,9 +152,9 @@ __meta__ = {
 }
 
 [node name="TypeLabel" type="RichTextLabel" parent="Panel"]
-margin_left = 88.0
+margin_left = 32.0
 margin_top = 48.0
-margin_right = 224.0
+margin_right = 168.0
 margin_bottom = 72.0
 custom_fonts/normal_font = ExtResource( 5 )
 bbcode_enabled = true

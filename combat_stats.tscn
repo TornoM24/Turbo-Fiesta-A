@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://gfx/unit/bar_over.png" type="Texture" id=1]
 [ext_resource path="res://gfx/unit/hpbar.png" type="Texture" id=2]
@@ -12,15 +12,52 @@
 [ext_resource path="res://pixel_panel_sharp.theme" type="Theme" id=10]
 [ext_resource path="res://ui/border.png" type="Texture" id=11]
 [ext_resource path="res://gfx/kisspng-light-lens-flare-clip-art-5ae0e32035dd42.5590760415246876482206.png" type="Texture" id=12]
+[ext_resource path="res://font/Chrono.tres" type="DynamicFont" id=13]
+[ext_resource path="res://pixel_button_2.tres" type="Theme" id=14]
+[ext_resource path="res://combat_stats.gd" type="Script" id=15]
 
 [node name="G" type="Node2D"]
+script = ExtResource( 15 )
 
 [node name="Panel" type="Panel" parent="."]
 margin_left = 40.0
 margin_top = 16.0
-margin_right = 320.0
+margin_right = 264.0
 margin_bottom = 48.0
 theme = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="Panel"]
+margin_left = 24.0
+margin_top = 31.0
+margin_right = 224.0
+margin_bottom = 55.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StatusButton" type="Button" parent="Panel/Panel"]
+margin_left = 16.0
+margin_top = 1.0
+margin_right = 96.0
+margin_bottom = 22.0
+theme = ExtResource( 14 )
+custom_fonts/font = ExtResource( 13 )
+text = "Status"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Mirror" type="Button" parent="Panel/Panel"]
+margin_left = 96.0
+margin_top = 1.0
+margin_right = 199.0
+margin_bottom = 22.0
+theme = ExtResource( 14 )
+custom_fonts/font = ExtResource( 13 )
+text = "Check Mirror"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -160,3 +197,5 @@ texture = ExtResource( 12 )
 texture_scale = 0.09
 color = Color( 1, 0.772549, 0.345098, 1 )
 energy = 3.41
+
+[connection signal="pressed" from="Panel/Panel/StatusButton" to="." method="_on_StatusButton_pressed"]
