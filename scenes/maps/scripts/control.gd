@@ -32,6 +32,7 @@ func _process(delta):
 #	pass
 
 func _on_exit_pressed():
+	get_parent ().abilityPanels [get_parent().currentPan].get_node ("Panel/buttonhost/act").show_buttons()
 	var skillPanel = get_node("Panel/CBPanel")
 	var tsPanel = get_node("Panel/Panel2")
 	for x in get_node ("Panel/CBPanel/specialscroll/Panel").get_children():
@@ -137,18 +138,22 @@ func ability_pressed(bHost, inputType):
 		get_parent().add_child(x)
 		get_tree().paused = true
 
-func _on_defend_pressed():
-	pass # Replace with function body.
+func _on_defend_pressed(host):
+	if host.inReady:
+		pass # Replace with function body.
 
 
-func _on_item_pressed():
-	pass # Replace with function body.
+func _on_item_pressed(host):
+	if host.inReady:
+		pass # Replace with function body.
 
 
-func _on_attack_pressed():
-	tsPanel.visible = !tsPanel.visible
-	get_parent().targeting = true
-	get_parent().get_node ("Control/Panel/targethelper").visible = true
-	get_parent().get_node ("Control/Panel/buttonhost").visible = false
-	get_parent().targetAbility = Master.ability_dict["attack_basic_attack"]
+func _on_attack_pressed(host):
+	#if get_parent().selectedUnit.atb_val >= 100:
+	if host.inReady:
+		tsPanel.visible = !tsPanel.visible
+		get_parent().targeting = true
+		get_parent().get_node ("Control/Panel/targethelper").visible = true
+		get_parent().get_node ("Control/Panel/buttonhost").visible = false
+		get_parent().targetAbility = Master.ability_dict["attack_basic_attack"]
 	pass # Replace with function body.

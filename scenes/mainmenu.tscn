@@ -111,8 +111,8 @@ margin_right = 1264.0
 margin_bottom = 224.0
 custom_fonts/normal_font = ExtResource( 3 )
 bbcode_enabled = true
-bbcode_text = "[right]Eat My Shorts"
-text = "Eat My Shorts"
+bbcode_text = "[right]Eat My Pants"
+text = "Eat My Pants"
 __meta__ = {
 "_edit_use_anchors_": false
 }

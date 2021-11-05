@@ -122,7 +122,7 @@ func show_all():
 	for x in abilityPanels:
 		print ("showing")
 		x.show()
-		
+var currentPan = 0
 func spawnAllies ():
 	var incrementer = 0
 	for x in range (0,3):
@@ -147,8 +147,15 @@ func spawnAllies ():
 				alliesUnit.append(instance)
 				var aPanel = load ("res://ui/combat_abilities.tscn").instance()
 				add_child (aPanel)
+				if incrementer == 1:
+					aPanel.get_node ("Panel/buttonhost/act").grab_focus()
+					aPanel.get_node ("Panel/buttonhost/act").show_buttons()
+				else:
+					aPanel.get_node ("Panel/buttonhost/act").hide_buttons()
+				aPanel.ind = incrementer - 1
 				aPanel.init (instance)
 				abilityPanels.append (aPanel)
+				#print ("appendin gpanel for")
 				aPanel.position.x += 256 * (incrementer-1)
 			
 var phBD = {
@@ -262,6 +269,8 @@ func causeEffect (target,source,ability):
 			source.tempEffects.append (buff)
 			
 func cancel_targeting ():
+	abilityPanels [currentPan].get_node ("Panel/buttonhost/act").show_buttons()
+	#update_panels (abilityPanels)
 	show_all()
 	targeting = false
 	get_node ("Control/Panel/targethelper").visible = false
@@ -280,6 +289,35 @@ var phEff = [
 	}
 ]
 var animTimer = 0
+
+func update_panels (activePanels):
+	for p in activePanels:
+		p.get_node ("Panel/buttonhost/act").update_status()
+
+func _input(event):
+	var activePanels = []
+	for p in abilityPanels:
+		if p.visible:
+			activePanels.append (p)
+	var old = currentPan
+	if event.is_action_pressed ("rightshift"):
+		currentPan += 1
+		if activePanels.size()-1 < currentPan:
+			currentPan = 0
+		if !activePanels [currentPan].get_node ("Panel/buttonhost/act").disabled:
+			activePanels [currentPan].get_node ("Panel/buttonhost/act").grab_focus()
+			update_panels (activePanels)
+		else:
+			currentPan = old
+	if event.is_action_pressed ("leftshift"):
+		currentPan -= 1
+		if currentPan < 0:
+			currentPan = activePanels.size()-1
+		if !activePanels [currentPan].get_node ("Panel/buttonhost/act").disabled:
+			activePanels [currentPan].get_node ("Panel/buttonhost/act").grab_focus()
+			update_panels (activePanels)
+		else:
+			currentPan = old
 func _process(delta):
 	var buttonhost = get_node ("Control/Panel/buttonhost")
 	var selector = get_node("Control/Selector")
