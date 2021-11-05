@@ -26,6 +26,7 @@ func init (unit):
 	pass
 
 func _process(delta):
+	get_node ("Panel/ATBBar").value = assignment.atb_val
 	if active:
 		#print (assignment.stats.name + " " + str(assignment.atb_val))
 		if assignment.atb_val >= 100:

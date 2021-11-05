@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/atbbar.png-ec26bdcfd1c96815792f5cb0d17c39fd.stex"
+path="res://.import/guard2.png-95ab2ba792a9f0938b181094ded7dc53.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://gfx/unit/atbbar.png"
-dest_files=[ "res://.import/atbbar.png-ec26bdcfd1c96815792f5cb0d17c39fd.stex" ]
+source_file="res://ui/guard2.png"
+dest_files=[ "res://.import/guard2.png-95ab2ba792a9f0938b181094ded7dc53.stex" ]
 
 [params]
 

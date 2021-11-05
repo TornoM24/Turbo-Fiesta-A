@@ -8,7 +8,7 @@
 [ext_resource path="res://font/ChronoLarge.tres" type="DynamicFont" id=6]
 
 [node name="tooltip" type="Node2D"]
-z_index = 4096
+z_index = 4095
 z_as_relative = false
 script = ExtResource( 2 )
 

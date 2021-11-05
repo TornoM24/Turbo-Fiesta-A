@@ -106,17 +106,17 @@ var ability_dict = {
 			{
 				"type": "buff",
 				"target": "self",
-				"param": "def",
-				"power": 30,
+				"param": "atk",
+				"power": 20,
 				"duration": 10
 			},
 			{
 				"type": "buff",
 				"target": "self",
-				"param": "atk",
-				"power": 20,
+				"param": "def",
+				"power": 30,
 				"duration": 10
-			}
+			},
 		]
 	},
 	"buff_all_heal_hiro":{
@@ -311,19 +311,14 @@ comfortable, and often used by travelers in cold, wintery areas. It's cute too!"
 
 var effect_dict = {
 	"stat_buff" : {
-		"name" : "Buff",
-		"type" : "Buff",
-		"id" : "atk_buff",
+		"name" : "Stat Buff",
+		"type" : "buff",
+		"id" : "stat_buff",
 		"desc" : "A sharpened mind increases this stat for a duration.",
 		"length" : 10,
 		"freq" : 0,
-		"effects" :
-			[
-				{
-					"type": null,
-					"power": null
-				}
-			]
+		"effectType": null,
+		"power": null
 	},
 	"poison_weak": {
 		"name" : "Weak Poison",

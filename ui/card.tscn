@@ -260,7 +260,7 @@ visible = false
 position = Vector2( 96, 352 )
 scale = Vector2( 2, 2 )
 frames = ExtResource( 10 )
-frame = 2
+frame = 11
 playing = true
 __meta__ = {
 "_edit_lock_": true

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/atbbar.png-ec26bdcfd1c96815792f5cb0d17c39fd.stex"
+path="res://.import/background_bricks.png-7f65de8e3675d4064e3e278aaac74e5f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://gfx/unit/atbbar.png"
-dest_files=[ "res://.import/atbbar.png-ec26bdcfd1c96815792f5cb0d17c39fd.stex" ]
+source_file="res://ui/background_bricks.png"
+dest_files=[ "res://.import/background_bricks.png-7f65de8e3675d4064e3e278aaac74e5f.stex" ]
 
 [params]
 

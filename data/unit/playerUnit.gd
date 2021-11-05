@@ -19,7 +19,7 @@ var atb_val = 0
 var stats = {}
 var abilities = []
 var effects = [] 
-var tempEffects = []
+export var tempEffects = []
 
 var unitName = "Aou Mogis"
 var selected = false

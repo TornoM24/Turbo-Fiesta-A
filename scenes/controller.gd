@@ -252,10 +252,14 @@ func causeEffect (target,source,ability):
 					create_label (fPower,target.global_position + Vector2(0,LABEL_OFFSET))
 				logSomething ("All allies heal for [color=green]" + str (fPower) + "[/color] hp!\n")
 		if block.type == "buff":
-			var buff = Master.effect_dict["stat_buff"]
-			buff.effects[0].type = block.param
-			buff.effects[0].power = block.power	
-			target.tempEffects.append (buff)
+			var buff = {}
+			buff = Master.effect_dict["stat_buff"].duplicate()
+			buff.source = ability.name
+			buff.length = block.duration
+			buff.effectType = block.param
+			buff.power = block.power
+			buff.name = block.param + " stat buff"
+			source.tempEffects.append (buff)
 			
 func cancel_targeting ():
 	show_all()

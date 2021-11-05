@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/atbbar.png-ec26bdcfd1c96815792f5cb0d17c39fd.stex"
+path="res://.import/divider.png-6e388e1c634f7f38d91516b448d95e25.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://gfx/unit/atbbar.png"
-dest_files=[ "res://.import/atbbar.png-ec26bdcfd1c96815792f5cb0d17c39fd.stex" ]
+source_file="res://ui/divider.png"
+dest_files=[ "res://.import/divider.png-6e388e1c634f7f38d91516b448d95e25.stex" ]
 
 [params]
 

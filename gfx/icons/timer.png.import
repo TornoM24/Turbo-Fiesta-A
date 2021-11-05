@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/atbbar.png-ec26bdcfd1c96815792f5cb0d17c39fd.stex"
+path="res://.import/timer.png-4ee7cb538c4c556c4e3a2c869b4c6d67.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://gfx/unit/atbbar.png"
-dest_files=[ "res://.import/atbbar.png-ec26bdcfd1c96815792f5cb0d17c39fd.stex" ]
+source_file="res://gfx/icons/timer.png"
+dest_files=[ "res://.import/timer.png-4ee7cb538c4c556c4e3a2c869b4c6d67.stex" ]
 
 [params]
 

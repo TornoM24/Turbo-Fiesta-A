@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://pixel_panel.theme" type="Theme" id=1]
 [ext_resource path="res://ui/partyview.gd" type="Script" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://pixel_scroll.tres" type="Theme" id=13]
 [ext_resource path="res://pixel_tabs.theme" type="Theme" id=14]
 [ext_resource path="res://pixel_button_2.tres" type="Theme" id=15]
+[ext_resource path="res://ui/background_bricks.png" type="Texture" id=16]
 [ext_resource path="res://pixel_panel_wide.theme" type="Theme" id=18]
 [ext_resource path="res://ui/arrow_right.png" type="Texture" id=19]
 [ext_resource path="res://ui/StatsPanel.gd" type="Script" id=20]
@@ -303,6 +304,13 @@ margin_bottom = 669.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="background_bricks" type="Sprite" parent="StatsPanel/Tabs/Equipment/Panel"]
+visible = false
+self_modulate = Color( 1, 1, 1, 0.109804 )
+position = Vector2( 294.304, 294.556 )
+scale = Vector2( 5.83297, 5.83297 )
+texture = ExtResource( 16 )
 
 [node name="Sprite" type="Sprite" parent="StatsPanel/Tabs/Equipment/Panel"]
 visible = false
