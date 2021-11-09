@@ -85,7 +85,7 @@ rect_pivot_offset = Vector2( -97.5616, -53.0251 )
 custom_fonts/normal_font = ExtResource( 12 )
 bbcode_enabled = true
 bbcode_text = "[right]80/80"
-text = "80/80"
+text = "[right]80/80"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -117,7 +117,7 @@ margin_bottom = 8.0
 custom_fonts/normal_font = ExtResource( 12 )
 bbcode_enabled = true
 bbcode_text = "[right]80/80"
-text = "80/80"
+text = "[right]80/80"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -148,7 +148,7 @@ margin_right = 160.0
 custom_fonts/normal_font = ExtResource( 12 )
 bbcode_enabled = true
 bbcode_text = "[right]EXP 80/80"
-text = "EXP 80/80"
+text = "[right]EXP 80/80"
 scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false
@@ -162,7 +162,7 @@ margin_right = 160.0
 custom_fonts/normal_font = ExtResource( 12 )
 bbcode_enabled = true
 bbcode_text = "[right]To Next : 1000"
-text = "To Next : 1000"
+text = "[right]To Next : 1000"
 scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false
@@ -185,7 +185,7 @@ margin_bottom = 432.0
 custom_fonts/normal_font = ExtResource( 12 )
 bbcode_enabled = true
 bbcode_text = "[center]Level 87"
-text = "Level 87"
+text = "[center]Level 87"
 __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": false
@@ -199,7 +199,7 @@ margin_bottom = 368.0
 custom_fonts/normal_font = ExtResource( 12 )
 bbcode_enabled = true
 bbcode_text = "[center][color=gray]~ crimson daredevil ~"
-text = "~ crimson daredevil ~"
+text = "[center][color=gray]~ crimson daredevil ~"
 scroll_active = false
 __meta__ = {
 "_edit_lock_": true,
@@ -214,7 +214,7 @@ margin_bottom = 400.0
 custom_fonts/normal_font = ExtResource( 13 )
 bbcode_enabled = true
 bbcode_text = "[center][color=#ffb100]Hiro"
-text = "Hiro"
+text = "[center][color=#ffb100]Hiro"
 scroll_active = false
 __meta__ = {
 "_edit_lock_": true,
@@ -239,7 +239,7 @@ margin_bottom = 448.0
 custom_fonts/normal_font = ExtResource( 5 )
 bbcode_enabled = true
 bbcode_text = "[center] Crimson Daredevil"
-text = " Crimson Daredevil"
+text = "[center] Crimson Daredevil"
 scroll_active = false
 __meta__ = {
 "_edit_lock_": true,
@@ -260,7 +260,7 @@ visible = false
 position = Vector2( 96, 352 )
 scale = Vector2( 2, 2 )
 frames = ExtResource( 10 )
-frame = 11
+frame = 7
 playing = true
 __meta__ = {
 "_edit_lock_": true

@@ -43,10 +43,10 @@ func _init():
 	pass
 	
 func _drop():
-	randomize()
-	rng = rng.randi() % total_weight
+	rng.randomize()
+	var result = rng.randi() % total_weight
 	for i in lootTable:
-		if rng <= i.weight && i.item != null:
-			return i
+		if result <= i.weight && i.item != null:
+			return i.item
 	return null
 

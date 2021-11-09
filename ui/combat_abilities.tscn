@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://pixel_panel_wide.theme" type="Theme" id=1]
 [ext_resource path="res://scenes/readyhelper.gd" type="Script" id=2]
@@ -12,12 +12,19 @@
 [ext_resource path="res://font/Chrono.tres" type="DynamicFont" id=10]
 [ext_resource path="res://gfx/unit/atbbar.png" type="Texture" id=11]
 [ext_resource path="res://ui/ATBBar.gd" type="Script" id=12]
+[ext_resource path="res://ui/pole.png" type="Texture" id=13]
 
 [node name="abilitymenu" type="Node2D"]
 script = ExtResource( 6 )
 __meta__ = {
 "_edit_horizontal_guides_": [  ]
 }
+
+[node name="pole" type="Sprite" parent="."]
+self_modulate = Color( 0.554688, 0.554688, 0.554688, 1 )
+position = Vector2( 128, 868 )
+scale = Vector2( 4.8, 4.9 )
+texture = ExtResource( 13 )
 
 [node name="Panel" type="Panel" parent="."]
 self_modulate = Color( 1, 1, 1, 0 )

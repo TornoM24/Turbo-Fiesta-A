@@ -28,5 +28,5 @@ func _on_DetailButton_pressed():
 	get_parent().get_parent().get_parent().get_parent().get_parent().get_parent().get_parent().pause_mode = PAUSE_MODE_STOP
 	hint.sceneBase = "overworld"
 	hint.freePath = get_parent().get_parent().get_parent().get_parent().get_parent().get_parent().get_parent().get_path()
-	hint.global_position = Vector2(-640,-360)
+	#hint.global_position = Vector2(-640,-360)
 	pass # Replace with function body.

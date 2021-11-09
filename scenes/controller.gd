@@ -241,7 +241,7 @@ func causeEffect (target,source,ability):
 				for x in enemyUnit:
 					var power = fPower
 					x.stats.hp -= power
-					create_label (fPower,target.global_position + Vector2(0,LABEL_OFFSET))
+					create_label (fPower,x.global_position + Vector2(0,LABEL_OFFSET))
 					logSomething (x.stats.name + " takes [color=red]" + str (power) + "[/color] damage!\n")
 		if block.type == "healing":
 			fPower = getPower (block,source)
@@ -274,7 +274,7 @@ func cancel_targeting ():
 	show_all()
 	targeting = false
 	get_node ("Control/Panel/targethelper").visible = false
-	get_node ("Control/Panel/buttonhost/").visible=true
+	#get_node ("Control/Panel/buttonhost/").visible=true
 	for x in get_node ("Control/Panel/CBPanel/specialscroll/Panel").get_children():
 		x.queue_free()
 	tsPanel.hide()

@@ -12,3 +12,8 @@ func open_container():
 func _ready():
 	print(LootTable._init())
 	pass
+
+
+func _on_ContainerHitbox_area_entered(area):
+	print ("container detected area entered.")
+	pass # Replace with function body.

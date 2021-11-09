@@ -10,6 +10,7 @@ var sceneBase
 var freePath
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	position = Vector2(0,0)
 	print ("it is done")
 	var tween = get_node ("Tween")
 	#var origin = card.position
@@ -65,7 +66,14 @@ func generateTip (ability):
 				tipText = "Deals [color=red]" + str(x.power) + " " + elements + "[/color] damage to self."
 			elif x.target == "all enemies":
 				tipText = "Deals [color=red]" + str(x.power) + "[/color]% of character's [color=lime]" + scalers + "[/color] as [color=yellow]" + elements + "[/color] damage to all enemies."
-			
+			var trueAcc = x.acc
+			var critAcc = 0
+			if x.acc > 100:
+				trueAcc = 100
+				critAcc = x.acc - 100
+			tipText += "\nHas a " + str(trueAcc) + "% chance to successfully hit, modifiable by dodge rate."
+			if critAcc > 0:
+				tipText += "\nHas a " + str(trueAcc) + "% chance to critically strike, dealing 200% damage."
 		if x.type == "healing":
 			var scalers = ""
 			var elements = ""

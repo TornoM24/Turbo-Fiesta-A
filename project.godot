@@ -23,6 +23,8 @@ config/icon="res://icon.png"
 Global="*res://data/Global.gd"
 Master="*res://data/Master.gd"
 LootTable="*res://data/LootTable.gd"
+AudioManager="*res://data/AudioManager.gd"
+DialogManager="*res://data/DialogManager.gd"
 
 [debug]
 
@@ -46,7 +48,7 @@ font=false
 
 [gui]
 
-theme/custom="res://pixel_scroll.tres"
+theme/custom="res://pixel_panel.theme"
 theme/custom_font="res://font/Chrono.tres"
 timers/tooltip_delay_sec=0.25
 

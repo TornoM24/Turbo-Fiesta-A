@@ -12,28 +12,44 @@ func _ready():
 
 func hide_buttons ():
 	show()
-	get_parent().get_node ("attack").rect_position = self.rect_position
-	get_parent().get_node ("attack").hide()
-	get_parent().get_node ("defend").rect_position = self.rect_position
-	get_parent().get_node ("defend").hide()
-	get_parent().get_node ("special").rect_position = self.rect_position
-	get_parent().get_node ("special").hide()
-	get_parent().get_node ("item").rect_position = self.rect_position
-	get_parent().get_node ("item").hide()
-
+	tween_pos (get_parent().get_node ("attack"), self.rect_position)
+	#get_parent().get_node ("attack").hide()
+	tween_pos (get_parent().get_node ("defend"), self.rect_position)
+	#get_parent().get_node ("defend").hide()
+	tween_pos (get_parent().get_node ("special"), self.rect_position)
+	#get_parent().get_node ("special").hide()
+	tween_pos (get_parent().get_node ("item"), self.rect_position)
+	#get_parent().get_node ("item").hide()
+	
+func tween_pos (node, pos):
+	var tween = get_parent().get_parent().get_parent().get_node ("Tween")
+	#print (node.name)
+	tween.interpolate_property(node, "rect_position",
+		null, pos, 0.2,
+	Tween.TRANS_QUART, Tween.EASE_OUT)
+	tween.start()
+	
 func show_buttons ():
 	hide()
-	get_parent().get_node ("attack").rect_position = Vector2 (56,32)
+	tween_pos (get_parent().get_node ("attack"), Vector2 (56,32))
 	get_parent().get_node ("attack").show()
 	get_parent().get_node ("attack").grab_focus()
-	get_parent().get_node ("defend").rect_position = Vector2 (-8, 96)
+	tween_pos (get_parent().get_node ("defend"), Vector2 (-8, 96))
 	get_parent().get_node ("defend").show()
-	get_parent().get_node ("special").rect_position = Vector2 (120, 96)
+	tween_pos (get_parent().get_node ("special"), Vector2 (120, 96))
 	get_parent().get_node ("special").show()
-	get_parent().get_node ("item").rect_position = Vector2 (56,160)
+	tween_pos (get_parent().get_node ("item"), Vector2 (56,160))
 	get_parent().get_node ("item").show()
 
 func _process(delta):
+	if get_parent().get_node ("attack").rect_position == self.rect_position:
+		get_parent().get_node ("attack").hide()
+	if get_parent().get_node ("defend").rect_position == self.rect_position:
+		get_parent().get_node ("defend").hide()
+	if get_parent().get_node ("special").rect_position == self.rect_position:
+		get_parent().get_node ("special").hide()
+	if get_parent().get_node ("item").rect_position == self.rect_position:
+		get_parent().get_node ("item").hide()
 	if !get_parent().get_parent().get_parent().inReady:
 		self.disabled = true
 	else:

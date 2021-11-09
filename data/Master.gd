@@ -46,7 +46,7 @@ var ability_dict = {
 		"id":"attack_scarlet_razor_hiro",
 		"type":"phys",
 		"icon":"sword",
-		"desc": "Attacks with Hiro's Scarlet Razor, dealing physical/fire damage.\nThe modifier on this attack increases by 1% for every stack of Impulse.",
+		"desc": "Cleaves a target enemy, dealing physical/fire damage.",
 		"cost": 0,
 		"effects": [
 			{
@@ -100,7 +100,7 @@ var ability_dict = {
 		"id":"buff_scarlet_blaze",
 		"type":"magic",
 		"icon":"magic",
-		"desc": "User steels themselves, gaining bonus DEF and ATK and attracting enemy attention.\n[color=gray]\nI won't let it happen again...!",
+		"desc": "User steels their resolve, gaining bonus DEF and ATK and attracting enemy attention.\n[color=gray]\nI won't let it happen again...!",
 		"cost": 20,
 		"effects": [
 			{
@@ -117,6 +117,13 @@ var ability_dict = {
 				"power": 30,
 				"duration": 10
 			},
+			{ 
+				"type": "buff",
+				"target": "self",
+				"param": "def",
+				"power": 30,
+				"duration": 10
+			}
 		]
 	},
 	"buff_all_heal_hiro":{
@@ -226,7 +233,38 @@ var passive_dict = {
 		"id":"affinity_modular"
 	}
 }
-
+var consumable_dict = {
+	"health_potion_weak":{
+		"name" : "Health Potion (Small)",
+		"id" : "health_potion_weak",
+		"desc" : "A small red bottle of alchemical mixture used by field medics to rapidly and easily dress light wounds.\nIt bubbles and froths at the top of the mixture in a rather satisfying, if not unnerving, way.\nPlastered on the side is a worn brown label reading, 'Asclepius G, 100 units, distilled.'\nWritten below with charcoal is a tiny warning that reads, 'May induce vomiting, asphyxiation, momentary transcendence or other unnatural effects.'",
+		"jokename" : "E-FUEL FOR GAMERS (Diet Size)",
+		"jokedesc " : "A small green bottle of GAMER LIFE FLUIDS that BUBBLES with RAW GAMING ENERGY. The mixture has a white tinge to it, and it radiates a strange, musty odor. Written on the side in hot pink marker is a label reading, 'Estrogen 0.25L, Lard and Sugar mixture 0.50L, Gamer Tears 0.20L, Spite of God 5.0L, Actual Flavoring 0.0001L.'",
+		"effects": 
+		[
+			{
+				"type" : "restore",
+				"param" : "hp",
+				"amount" : [15,10]
+			}
+		]
+	},
+	"mana_potion_weak":{
+		"name" : "Health Potion (Small)",
+		"id" : "mana_potion_weak",
+		"desc" : "A small blue bottle of alchemical mixture used by frontline mages to keep their mana stores full.\nStrangely enough, it sits rather stagnant within its container.\nPlastered on the side is a worn brown label reading, 'Volans P., 100 units, undistilled.'",
+		"jokename" : "E-FUEL FOR GAMERS (Diet Size)",
+		"jokedesc " : "A small blue bottle of GAMER LIFE FLUIDS that BUBBLES with RAW GAMING ENERGY. The mixture has a white tinge to it, and it radiates a strange, musty odor. Written on the side in hot pink marker is a label reading, 'Estrogen 0.25L, Lard and Sugar mixture 0.50L, Gamer Tears 0.20L, Spite of God 5.0L, Actual Flavoring 0.0001L.'",
+		"effects": 
+		[
+			{
+				"type" : "restore",
+				"param" : "hp",
+				"amount" : [15,10]
+			}
+		]
+	},
+}
 var equip_dict = {
 	"hiro_heirloom":{
 		"name": "Hiro's Heirloom",
@@ -447,9 +485,9 @@ func new_game ():
 	for x in self.get_children():
 		x.queue_free()
 	money = 100
-	party = [fabricate("hiro"),fabricate("stella")]
+	party = [fabricate("hiro"),fabricate("stella"),fabricate("alan")]
 	Master.party[0].equip (give_equipment("hiro_heirloom"))
-	formation = [[-1,-1,-1],[-1,0,1],[-1,-1,-1]]
+	formation = [[-1,-1,-1],[2,0,1],[-1,-1,-1]]
 	add_equip (give_equipment ("alan_foraged_blade"))
 	add_equip (give_equipment ("stella_shard_coat"))
 	#save_game()

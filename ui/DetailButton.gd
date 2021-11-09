@@ -21,10 +21,10 @@ func _on_DetailButton_focus_entered():
 
 
 func _on_DetailButton_mouse_entered():
-	#get_parent().modulate = Color (1.2,1.2,1.2,1)
+	get_parent().modulate = Color (1.2,1.2,1.2,1)
 	pass # Replace with function body.
 
 
 func _on_DetailButton_mouse_exited():
-	#get_parent().modulate = Color (1,1,1,1)
+	get_parent().modulate = Color (1,1,1,1)
 	pass # Replace with function body.

@@ -17,6 +17,7 @@ func _ready():
 	speed = 200
 	side.hide()
 	up.hide()
+	get_node ("Area2D").rotation_degrees = 180
 
 func hideAllBut (x):
 	down.hide()
@@ -45,37 +46,42 @@ func _process(delta):
 		get_node ("smoke").emitting = false
 		speed = 200
 	velocity = Vector2()
-	if Input.is_action_pressed("right"):
-		velocity.x += 1
-		hideAllBut(side)
-		side.flip_h = true
-		side.playing = true
-		side.speed_scale = 1
+	if !DialogManager.playerStun:
+		if Input.is_action_pressed("right"):
+			velocity.x += 1
+			hideAllBut(side)
+			side.flip_h = true
+			side.playing = true
+			side.speed_scale = 1
+			get_node ("Area2D").rotation_degrees = 90
+			
+		if Input.is_action_pressed("left"):
+			velocity.x -= 1
+			hideAllBut(side)
+			side.flip_h = false
+			side.playing = true
+			side.speed_scale = 1
+			get_node ("Area2D").rotation_degrees = 270
 
-	if Input.is_action_pressed("left"):
-		velocity.x -= 1
-		hideAllBut(side)
-		side.flip_h = false
-		side.playing = true
-		side.speed_scale = 1
+		if Input.is_action_pressed("down"):
+			velocity.y += 1
+			hideAllBut(down)
+			down.playing = true
+			down.speed_scale = 1
+			get_node ("Area2D").rotation_degrees = 180
 
-	if Input.is_action_pressed("down"):
-		velocity.y += 1
-		hideAllBut(down)
-		down.playing = true
-		down.speed_scale = 1
-
-	if Input.is_action_pressed("up"):
-		velocity.y -= 1
-		hideAllBut(up)
-		up.playing = true
-		up.speed_scale = 1
-	
+		if Input.is_action_pressed("up"):
+			velocity.y -= 1
+			hideAllBut(up)
+			up.playing = true
+			up.speed_scale = 1
+			get_node ("Area2D").rotation_degrees = 0
 		
-	if (!Input.is_action_pressed("up") && !Input.is_action_pressed("down") && !Input.is_action_pressed("left") && !Input.is_action_pressed("right")):
-		down.speed_scale = 0.25
-		up.speed_scale = 0.25
-		side.speed_scale = 0.25
+			
+		if (!Input.is_action_pressed("up") && !Input.is_action_pressed("down") && !Input.is_action_pressed("left") && !Input.is_action_pressed("right")):
+			down.speed_scale = 0.25
+			up.speed_scale = 0.25
+			side.speed_scale = 0.25
 
 	velocity = velocity.normalized() * speed
 	velocity = move_and_slide(velocity)
@@ -87,15 +93,25 @@ func _on_Start_pressed():
 
 
 func _on_Area2D_area_entered(area):
-	if area.name == "ContainerHitbox":
-		containerContact = true
-		currentObject = area.get_parent()
-	else:
-		currentObject = null
+	print ("detected area entered.")
+	containerContact = true
+	currentObject = area.get_parent()
+
+func _on_Area2D_area_exited(area):
+	containerContact = false
+	currentObject = null
+	pass # Replace with function body.
+	
+func _input(ev):
+	if !DialogManager.playerStun:
+		if ev is InputEventKey and ev.is_action_pressed("interact") and not ev.is_echo():
+			print ("attempting to check for interactable item")
+			if containerContact:
+				if currentObject.name == "NPC":
+					currentObject.talk()
+				elif currentObject.name == "Chest":
+					currentObject.open_container()
+			
 	pass
 
-func _input(ev):
-	if ev is InputEventKey and ev.is_action_pressed("interact") and not ev.is_echo():
-		if containerContact:
-			currentObject.open_container()
-	pass
+

@@ -30,7 +30,7 @@ __meta__ = {
 }
 
 [node name="Panel" type="Panel" parent="Panel"]
-margin_left = 24.0
+margin_left = 136.0
 margin_top = 31.0
 margin_right = 224.0
 margin_bottom = 55.0
@@ -41,7 +41,7 @@ __meta__ = {
 [node name="StatusButton" type="Button" parent="Panel/Panel"]
 margin_left = 16.0
 margin_top = 1.0
-margin_right = 96.0
+margin_right = 88.0
 margin_bottom = 22.0
 theme = ExtResource( 14 )
 custom_fonts/font = ExtResource( 13 )
@@ -51,6 +51,7 @@ __meta__ = {
 }
 
 [node name="Mirror" type="Button" parent="Panel/Panel"]
+visible = false
 margin_left = 96.0
 margin_top = 1.0
 margin_right = 199.0

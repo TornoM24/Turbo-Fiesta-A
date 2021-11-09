@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://pixel_panel.theme" type="Theme" id=1]
 [ext_resource path="res://ui/partyview.gd" type="Script" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://pixel_tabs.theme" type="Theme" id=14]
 [ext_resource path="res://pixel_button_2.tres" type="Theme" id=15]
 [ext_resource path="res://ui/background_bricks.png" type="Texture" id=16]
+[ext_resource path="res://ui/dither_bg.png" type="Texture" id=17]
 [ext_resource path="res://pixel_panel_wide.theme" type="Theme" id=18]
 [ext_resource path="res://ui/arrow_right.png" type="Texture" id=19]
 [ext_resource path="res://ui/StatsPanel.gd" type="Script" id=20]
@@ -85,10 +86,10 @@ __meta__ = {
 pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 40.0
-margin_top = -16.0
-margin_right = -640.0
-margin_bottom = 128.0
+margin_left = 39.528
+margin_top = -14.7285
+margin_right = -640.472
+margin_bottom = 129.271
 theme = ExtResource( 18 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -146,6 +147,9 @@ margin_top = 3.9843
 margin_right = 136.0
 margin_bottom = 27.9843
 custom_fonts/normal_font = ExtResource( 5 )
+custom_colors/font_color_shadow = Color( 0, 0.0431373, 0.12549, 1 )
+custom_constants/shadow_offset_x = 2
+custom_constants/shadow_offset_y = 2
 bbcode_enabled = true
 bbcode_text = "[center]STATS"
 text = "STATS"
@@ -209,7 +213,8 @@ __meta__ = {
 
 [node name="CardPanel" type="Panel" parent="StatsPanel/Stats"]
 self_modulate = Color( 1, 1, 1, 0 )
-margin_right = 144.0
+margin_left = 0.264862
+margin_right = 144.265
 margin_bottom = 513.0
 __meta__ = {
 "_edit_use_anchors_": false
@@ -264,6 +269,7 @@ margin_top = 26.0
 margin_right = 588.0
 margin_bottom = 162.0
 rect_min_size = Vector2( 576, 136 )
+theme = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -301,6 +307,7 @@ margin_left = 12.0
 margin_top = 258.0
 margin_right = 588.0
 margin_bottom = 669.0
+theme = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -330,13 +337,19 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="dither_bg" type="Sprite" parent="StatsPanel/Tabs/Equipment/Panel"]
+self_modulate = Color( 1, 1, 1, 0.376471 )
+position = Vector2( 287.659, 314.005 )
+scale = Vector2( 2.85931, 3.16667 )
+texture = ExtResource( 17 )
+
 [node name="ScrollContainer2" type="ScrollContainer" parent="StatsPanel/Tabs/Equipment"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 20.0
-margin_top = 258.0
+margin_top = 257.901
 margin_right = -8.0
-margin_bottom = -20.0
+margin_bottom = -20.0992
 scroll_horizontal_enabled = false
 __meta__ = {
 "_edit_use_anchors_": false
