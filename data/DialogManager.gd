@@ -10,6 +10,8 @@ var dialogCooldown = 0.1
 var dProg = 0
 var usable
 
+signal completed 
+
 func write ():
 	var message = load ("res://ui/message_box_plain.tscn").instance()
 	if location == "overworld":
@@ -18,7 +20,7 @@ func write ():
 		playerStun = true
 	message.typewrite (title,dialog[prog],0.01)
 
-func queue_dialog (location, title, dialog):
+func queue_dialog (node, location, title, dialog):
 	if usable:
 		usable = false
 		dProg = 0
@@ -36,6 +38,7 @@ func next_dialog ():
 	if prog < total:
 		write()
 	else:
+		emit_signal ("completed")
 		playerStun = false
 
 func _process(delta):

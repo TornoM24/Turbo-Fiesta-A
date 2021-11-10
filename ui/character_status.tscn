@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://pixel_panel_fade.theme" type="Theme" id=1]
+[ext_resource path="res://pixel_panel.theme" type="Theme" id=1]
 [ext_resource path="res://ui/character_status.gd" type="Script" id=2]
 [ext_resource path="res://pixel_button_red.tres" type="Theme" id=3]
 [ext_resource path="res://gfx/icons/empty.png" type="Texture" id=4]
@@ -13,13 +13,12 @@ z_as_relative = false
 script = ExtResource( 2 )
 
 [node name="Panel2" type="Panel" parent="."]
-self_modulate = Color( 0, 0, 0, 0.219608 )
+self_modulate = Color( 0, 0, 0, 0.392157 )
 margin_left = -40.0
 margin_top = -48.0
 margin_right = 1312.0
 margin_bottom = 744.0
 __meta__ = {
-"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -130,7 +129,7 @@ margin_right = 152.0
 margin_bottom = 32.0
 bbcode_enabled = true
 bbcode_text = "[center]Stats"
-text = "[center]Stats"
+text = "Stats"
 
 [node name="Sprite" type="Sprite" parent="Panel"]
 visible = false
@@ -145,7 +144,7 @@ margin_bottom = 72.0
 custom_fonts/normal_font = ExtResource( 6 )
 bbcode_enabled = true
 bbcode_text = "[center]MP [color=#00c8ff]50"
-text = "[center]MP [color=#00c8ff]50"
+text = "MP 50"
 scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false
@@ -159,7 +158,7 @@ margin_bottom = 72.0
 custom_fonts/normal_font = ExtResource( 5 )
 bbcode_enabled = true
 bbcode_text = "[color=grey]~ character status ~"
-text = "[color=grey]~ character status ~"
+text = "~ character status ~"
 scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false

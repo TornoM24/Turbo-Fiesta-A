@@ -366,7 +366,7 @@ margin_top = 165.0
 margin_right = 572.0
 margin_bottom = 205.0
 rect_pivot_offset = Vector2( 336, -8 )
-custom_fonts/normal_font = ExtResource( 5 )
+custom_fonts/normal_font = ExtResource( 4 )
 bbcode_enabled = true
 bbcode_text = "[right]Cost: 30/30"
 text = "Cost: 30/30"
@@ -556,6 +556,15 @@ text = "Reset"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Info" type="Control" parent="StatsPanel/Tabs"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 27.0
+margin_right = -564.0
+margin_bottom = -645.0
 
 [connection signal="pressed" from="StatsPanel/charswitch/right" to="." method="_on_right_pressed"]
 [connection signal="pressed" from="StatsPanel/charswitch/left" to="." method="_on_left_pressed"]

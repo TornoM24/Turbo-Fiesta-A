@@ -19,7 +19,7 @@ func _button_pressed():
 	Master.new_game()
 	Master.save_game()
 	Master.load_game()
-	get_node("/root/Global").goto_scene("res://scenes/maps/hub.tscn")
+	get_node("/root/Global").goto_scene("res://scenes/intro.tscn")
 var oPos
 func _mouse_entered():
 	var tween = get_parent().get_node("Tween")

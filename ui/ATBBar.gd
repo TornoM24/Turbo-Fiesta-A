@@ -5,8 +5,8 @@ extends TextureProgress
 # var a = 2
 # var b = "text"
 
-var fullBar = preload("res://gfx/unit/atbbar.png")
-var fillBar = preload("res://gfx/unit/atb_f_bar.png")
+var fullBar = preload("res://gfx/unit/atbbar2.png")
+var fillBar = preload("res://gfx/unit/atb_f_bar_2.png")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.

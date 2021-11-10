@@ -107,9 +107,9 @@ func _input(ev):
 		if ev is InputEventKey and ev.is_action_pressed("interact") and not ev.is_echo():
 			print ("attempting to check for interactable item")
 			if containerContact:
-				if currentObject.name == "NPC":
+				if currentObject.type == "npc":
 					currentObject.talk()
-				elif currentObject.name == "Chest":
+				elif currentObject.type == "container" or currentObject.name == "Chest":
 					currentObject.open_container()
 			
 	pass

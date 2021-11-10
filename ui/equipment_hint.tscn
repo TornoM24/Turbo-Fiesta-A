@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://pixel_panel_fade.theme" type="Theme" id=1]
+[ext_resource path="res://pixel_panel.theme" type="Theme" id=1]
 [ext_resource path="res://ui/equipment_hint.gd" type="Script" id=2]
 [ext_resource path="res://pixel_button_red.tres" type="Theme" id=3]
 [ext_resource path="res://font/kissinger.tres" type="DynamicFont" id=4]
@@ -14,7 +14,7 @@ z_as_relative = false
 script = ExtResource( 2 )
 
 [node name="Panel2" type="Panel" parent="."]
-self_modulate = Color( 0, 0, 0, 0.219608 )
+self_modulate = Color( 0, 0, 0, 0.392157 )
 margin_left = -40.0
 margin_top = -48.0
 margin_right = 1312.0

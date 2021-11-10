@@ -16,7 +16,7 @@ func _ready():
 
 func init (unit):
 	parent = get_tree().get_root().get_node ("Controller")
-	get_node ("Panel/namedisplay/RichTextLabel").bbcode_text = "[center]" + unit.stats.name
+	get_node ("namedisplay/RichTextLabel").bbcode_text = "[center]" + unit.stats.name
 	get_node ("Panel/buttonhost/attack").connect ("pressed", get_tree().get_root().get_node ("Controller/Control"), "_on_attack_pressed", [self])
 	get_node ("Panel/buttonhost/defend").connect ("pressed", get_tree().get_root().get_node ("Controller/Control"), "_on_defend_pressed", [self])
 	get_node ("Panel/buttonhost/item").connect ("pressed", get_tree().get_root().get_node ("Controller/Control"), "_on_item_pressed", [self])
@@ -27,34 +27,42 @@ func init (unit):
 	origin = position
 	pass
 
+onready var panel = get_node ("Panel")
 func _process(delta):
-	get_node ("Panel/namedisplay/ATBBar").value = assignment.atb_val
+	get_node ("namedisplay/ATBBar").value = assignment.atb_val
+	get_node ("ATB2").value = assignment.atb_val
 	if active:
 		#print (assignment.stats.name + " " + str(assignment.atb_val))
 		if assignment.atb_val >= 100:
 			inReady = true
-			if position.y >= 0:
+			if panel.rect_position.y >= 704:
 				shift_up()
 		else: 
 			inReady = false
-			if position.y <= -256:
+			if panel.rect_position.y <= 424:
 				print (position.y)
 				shift_down()
 	pass
-
+onready var cir = get_node ("Panel/circle")
 func shift_up():
 	var tween = get_node ("Tween")
-	tween.interpolate_property(self, "position",
-		null, Vector2(position.x, position.y-256), 0.2,
+	tween.interpolate_property(panel, "rect_position",
+	#tween.interpolate_property(self, "position",
+		#null, Vector2(position.x, position.y-256), 0.2,
+		panel.rect_position, Vector2(panel.rect_position.x, panel.rect_position.y-280), 0.2,
 	Tween.TRANS_QUART, Tween.EASE_OUT)
 	tween.start()
 	
 func shift_down():
+	get_node ("Panel/buttonhost/act").hide_buttons()
 	var tween = get_node ("Tween")
-	tween.interpolate_property(self, "position",
-		null, Vector2(position.x, position.y+256), 0.2,
+	tween.interpolate_property(panel, "rect_position",
+	#tween.interpolate_property(self, "position",
+		#null, Vector2(position.x, position.y+256), 0.2,
+		panel.rect_position, Vector2(panel.rect_position.x, panel.rect_position.y+280), 0.2,
 	Tween.TRANS_QUART, Tween.EASE_OUT)
 	tween.start()
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
