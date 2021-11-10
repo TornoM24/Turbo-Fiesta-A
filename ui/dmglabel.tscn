@@ -14,7 +14,7 @@ custom_fonts/normal_font = ExtResource( 2 )
 bbcode_enabled = true
 bbcode_text = "[center]999"
 tab_size = 1
-text = "[center]999"
+text = "999"
 scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false

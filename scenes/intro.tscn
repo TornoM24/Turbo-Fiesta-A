@@ -14,7 +14,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
+[node name="RichTextLabel1" type="RichTextLabel" parent="."]
 margin_left = 64.0
 margin_top = 64.0
 margin_right = 1216.0
@@ -68,16 +68,14 @@ __meta__ = {
 [node name="RichTextLabel2" type="RichTextLabel" parent="."]
 visible = false
 margin_left = 64.0
-margin_top = 64.0
+margin_top = 62.6652
 margin_right = 1216.0
-margin_bottom = 640.0
+margin_bottom = 638.665
 custom_fonts/normal_font = ExtResource( 2 )
 custom_colors/font_color_shadow = Color( 0.482353, 0, 0, 1 )
 bbcode_enabled = true
 bbcode_text = "
-
-
-What does Man seek, and what does It pass?
+What does Man seek, and what does It ignore?
 
 What will Man find, and what has It lost?
 
@@ -93,9 +91,7 @@ And that name is ----
 
 {ENTER NAME HERE}"
 text = "
-
-
-What does Man seek, and what does It pass?
+What does Man seek, and what does It ignore?
 
 What will Man find, and what has It lost?
 
@@ -114,3 +110,5 @@ scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Tween" type="Tween" parent="."]

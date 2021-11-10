@@ -39,7 +39,7 @@ func _process(delta):
 				shift_up()
 		else: 
 			inReady = false
-			if panel.rect_position.y <= 424:
+			if panel.rect_position.y <= 416:
 				print (position.y)
 				shift_down()
 	pass
@@ -49,17 +49,17 @@ func shift_up():
 	tween.interpolate_property(panel, "rect_position",
 	#tween.interpolate_property(self, "position",
 		#null, Vector2(position.x, position.y-256), 0.2,
-		panel.rect_position, Vector2(panel.rect_position.x, panel.rect_position.y-280), 0.2,
+		panel.rect_position, Vector2(panel.rect_position.x, panel.rect_position.y-288), 0.2,
 	Tween.TRANS_QUART, Tween.EASE_OUT)
 	tween.start()
 	
 func shift_down():
-	get_node ("Panel/buttonhost/act").hide_buttons()
+	get_node ("Panel/buttonhost/acter/act").hide_buttons()
 	var tween = get_node ("Tween")
 	tween.interpolate_property(panel, "rect_position",
 	#tween.interpolate_property(self, "position",
 		#null, Vector2(position.x, position.y+256), 0.2,
-		panel.rect_position, Vector2(panel.rect_position.x, panel.rect_position.y+280), 0.2,
+		panel.rect_position, Vector2(panel.rect_position.x, panel.rect_position.y+288), 0.2,
 	Tween.TRANS_QUART, Tween.EASE_OUT)
 	tween.start()
 
@@ -94,6 +94,6 @@ func _on_act_pressed():
 	if inReady:
 		get_parent().currentPan = ind
 		get_parent().update_panels(get_parent().abilityPanels)
-		get_parent().abilityPanels [get_parent().currentPan].get_node ("Panel/buttonhost/act").show_buttons()
+		get_parent().abilityPanels [get_parent().currentPan].get_node ("Panel/buttonhost/acter/act").show_buttons()
 
 	pass # Replace with function body.

@@ -41,7 +41,7 @@ region_rect = Rect2( 0, 0, 24, 24 )
 texture = ExtResource( 6 )
 region_rect = Rect2( 0, 0, 12, 12 )
 
-[sub_resource type="StyleBoxTexture" id=6]
+[sub_resource type="StyleBoxTexture" id=4]
 texture = ExtResource( 5 )
 region_rect = Rect2( 0, 0, 16, 16 )
 
@@ -139,42 +139,42 @@ __meta__ = {
 margin_right = 18.0
 margin_bottom = 18.0
 rect_min_size = Vector2( 18, 18 )
-custom_styles/panel = SubResource( 6 )
+custom_styles/panel = SubResource( 4 )
 
 [node name="slot2" type="Panel" parent="menupanel/gridcontainer"]
 margin_left = 22.0
 margin_right = 40.0
 margin_bottom = 18.0
 rect_min_size = Vector2( 18, 18 )
-custom_styles/panel = SubResource( 6 )
+custom_styles/panel = SubResource( 4 )
 
 [node name="slot3" type="Panel" parent="menupanel/gridcontainer"]
 margin_left = 44.0
 margin_right = 62.0
 margin_bottom = 18.0
 rect_min_size = Vector2( 18, 18 )
-custom_styles/panel = SubResource( 6 )
+custom_styles/panel = SubResource( 4 )
 
 [node name="slot4" type="Panel" parent="menupanel/gridcontainer"]
 margin_left = 66.0
 margin_right = 84.0
 margin_bottom = 18.0
 rect_min_size = Vector2( 18, 18 )
-custom_styles/panel = SubResource( 6 )
+custom_styles/panel = SubResource( 4 )
 
 [node name="slot5" type="Panel" parent="menupanel/gridcontainer"]
 margin_left = 88.0
 margin_right = 106.0
 margin_bottom = 18.0
 rect_min_size = Vector2( 18, 18 )
-custom_styles/panel = SubResource( 6 )
+custom_styles/panel = SubResource( 4 )
 
 [node name="slot6" type="Panel" parent="menupanel/gridcontainer"]
 margin_top = 22.0
 margin_right = 18.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 18, 18 )
-custom_styles/panel = SubResource( 6 )
+custom_styles/panel = SubResource( 4 )
 
 [node name="slot7" type="Panel" parent="menupanel/gridcontainer"]
 margin_left = 22.0
@@ -182,7 +182,7 @@ margin_top = 22.0
 margin_right = 40.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 18, 18 )
-custom_styles/panel = SubResource( 6 )
+custom_styles/panel = SubResource( 4 )
 
 [node name="slot8" type="Panel" parent="menupanel/gridcontainer"]
 margin_left = 44.0
@@ -190,7 +190,7 @@ margin_top = 22.0
 margin_right = 62.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 18, 18 )
-custom_styles/panel = SubResource( 6 )
+custom_styles/panel = SubResource( 4 )
 
 [node name="slot9" type="Panel" parent="menupanel/gridcontainer"]
 margin_left = 66.0
@@ -198,7 +198,7 @@ margin_top = 22.0
 margin_right = 84.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 18, 18 )
-custom_styles/panel = SubResource( 6 )
+custom_styles/panel = SubResource( 4 )
 
 [node name="slot10" type="Panel" parent="menupanel/gridcontainer"]
 margin_left = 88.0
@@ -206,14 +206,14 @@ margin_top = 22.0
 margin_right = 106.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 18, 18 )
-custom_styles/panel = SubResource( 6 )
+custom_styles/panel = SubResource( 4 )
 
 [node name="slot11" type="Panel" parent="menupanel/gridcontainer"]
 margin_top = 44.0
 margin_right = 18.0
 margin_bottom = 62.0
 rect_min_size = Vector2( 18, 18 )
-custom_styles/panel = SubResource( 6 )
+custom_styles/panel = SubResource( 4 )
 
 [node name="slot12" type="Panel" parent="menupanel/gridcontainer"]
 margin_left = 22.0
@@ -221,7 +221,7 @@ margin_top = 44.0
 margin_right = 40.0
 margin_bottom = 62.0
 rect_min_size = Vector2( 18, 18 )
-custom_styles/panel = SubResource( 6 )
+custom_styles/panel = SubResource( 4 )
 
 [node name="slot13" type="Panel" parent="menupanel/gridcontainer"]
 margin_left = 44.0
@@ -229,7 +229,7 @@ margin_top = 44.0
 margin_right = 62.0
 margin_bottom = 62.0
 rect_min_size = Vector2( 18, 18 )
-custom_styles/panel = SubResource( 6 )
+custom_styles/panel = SubResource( 4 )
 
 [node name="slot14" type="Panel" parent="menupanel/gridcontainer"]
 margin_left = 66.0
@@ -237,7 +237,7 @@ margin_top = 44.0
 margin_right = 84.0
 margin_bottom = 62.0
 rect_min_size = Vector2( 18, 18 )
-custom_styles/panel = SubResource( 6 )
+custom_styles/panel = SubResource( 4 )
 
 [node name="slot15" type="Panel" parent="menupanel/gridcontainer"]
 margin_left = 88.0
@@ -245,14 +245,14 @@ margin_top = 44.0
 margin_right = 106.0
 margin_bottom = 62.0
 rect_min_size = Vector2( 18, 18 )
-custom_styles/panel = SubResource( 6 )
+custom_styles/panel = SubResource( 4 )
 
 [node name="slot16" type="Panel" parent="menupanel/gridcontainer"]
 margin_top = 66.0
 margin_right = 18.0
 margin_bottom = 84.0
 rect_min_size = Vector2( 18, 18 )
-custom_styles/panel = SubResource( 6 )
+custom_styles/panel = SubResource( 4 )
 
 [node name="slot17" type="Panel" parent="menupanel/gridcontainer"]
 margin_left = 22.0
@@ -260,7 +260,7 @@ margin_top = 66.0
 margin_right = 40.0
 margin_bottom = 84.0
 rect_min_size = Vector2( 18, 18 )
-custom_styles/panel = SubResource( 6 )
+custom_styles/panel = SubResource( 4 )
 
 [node name="slot18" type="Panel" parent="menupanel/gridcontainer"]
 margin_left = 44.0
@@ -268,7 +268,7 @@ margin_top = 66.0
 margin_right = 62.0
 margin_bottom = 84.0
 rect_min_size = Vector2( 18, 18 )
-custom_styles/panel = SubResource( 6 )
+custom_styles/panel = SubResource( 4 )
 
 [node name="slot19" type="Panel" parent="menupanel/gridcontainer"]
 margin_left = 66.0
@@ -276,7 +276,7 @@ margin_top = 66.0
 margin_right = 84.0
 margin_bottom = 84.0
 rect_min_size = Vector2( 18, 18 )
-custom_styles/panel = SubResource( 6 )
+custom_styles/panel = SubResource( 4 )
 
 [node name="slot20" type="Panel" parent="menupanel/gridcontainer"]
 margin_left = 88.0
@@ -284,7 +284,7 @@ margin_top = 66.0
 margin_right = 106.0
 margin_bottom = 84.0
 rect_min_size = Vector2( 18, 18 )
-custom_styles/panel = SubResource( 6 )
+custom_styles/panel = SubResource( 4 )
 
 [node name="partyview" parent="menupanel" instance=ExtResource( 13 )]
 position = Vector2( -1088, -16 )

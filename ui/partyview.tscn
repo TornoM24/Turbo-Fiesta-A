@@ -563,8 +563,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
 margin_top = 27.0
-margin_right = -564.0
-margin_bottom = -645.0
+margin_right = -4.0
+margin_bottom = -4.0
 
 [connection signal="pressed" from="StatsPanel/charswitch/right" to="." method="_on_right_pressed"]
 [connection signal="pressed" from="StatsPanel/charswitch/left" to="." method="_on_left_pressed"]

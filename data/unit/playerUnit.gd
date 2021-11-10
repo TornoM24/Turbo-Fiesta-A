@@ -85,7 +85,7 @@ func _process(delta):
 		atb_prog += delta
 		if !inDead:
 			if atb_prog >= 0.01 && !inAnimation &&!animStun:
-				atb_val += float (stats.spd)/10
+				atb_val += float (stats.spd)/30
 				atb_prog = 0
 		if inAnimation:
 			if type !="ranged" and type!= "magic":

@@ -32,7 +32,7 @@ func _process(delta):
 #	pass
 
 func _on_exit_pressed():
-	get_parent ().abilityPanels [get_parent().currentPan].get_node ("Panel/buttonhost/act").show_buttons()
+	get_parent ().abilityPanels [get_parent().currentPan].get_node ("Panel/buttonhost/acter/act").show_buttons()
 	var skillPanel = get_node("Panel/CBPanel")
 	var tsPanel = get_node("Panel/Panel2")
 	for x in get_node ("Panel/CBPanel/specialscroll/Panel").get_children():

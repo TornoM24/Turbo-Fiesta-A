@@ -148,10 +148,10 @@ func spawnAllies ():
 				var aPanel = load ("res://ui/combat_abilities.tscn").instance()
 				add_child (aPanel)
 				if incrementer == 1:
-					aPanel.get_node ("Panel/buttonhost/act").grab_focus()
-					aPanel.get_node ("Panel/buttonhost/act").show_buttons()
+					aPanel.get_node ("Panel/buttonhost/acter/act").grab_focus()
+					aPanel.get_node ("Panel/buttonhost/acter/act").show_buttons()
 				else:
-					aPanel.get_node ("Panel/buttonhost/act").hide_buttons()
+					aPanel.get_node ("Panel/buttonhost/acter/act").hide_buttons()
 				aPanel.ind = incrementer - 1
 				aPanel.init (instance)
 				abilityPanels.append (aPanel)
@@ -269,7 +269,7 @@ func causeEffect (target,source,ability):
 			source.tempEffects.append (buff)
 			
 func cancel_targeting ():
-	abilityPanels [currentPan].get_node ("Panel/buttonhost/act").show_buttons()
+	abilityPanels [currentPan].get_node ("Panel/buttonhost/acter/act").show_buttons()
 	#update_panels (abilityPanels)
 	show_all()
 	targeting = false
@@ -292,7 +292,7 @@ var animTimer = 0
 
 func update_panels (activePanels):
 	for p in activePanels:
-		p.get_node ("Panel/buttonhost/act").update_status()
+		p.get_node ("Panel/buttonhost/acter/act").update_status()
 
 func _input(event):
 	var activePanels = []
@@ -304,8 +304,8 @@ func _input(event):
 		currentPan += 1
 		if activePanels.size()-1 < currentPan:
 			currentPan = 0
-		if !activePanels [currentPan].get_node ("Panel/buttonhost/act").disabled:
-			activePanels [currentPan].get_node ("Panel/buttonhost/act").grab_focus()
+		if !activePanels [currentPan].get_node ("Panel/buttonhost/acter/act").disabled:
+			activePanels [currentPan].get_node ("Panel/buttonhost/acter/act").grab_focus()
 			update_panels (activePanels)
 		else:
 			currentPan = old
@@ -313,8 +313,8 @@ func _input(event):
 		currentPan -= 1
 		if currentPan < 0:
 			currentPan = activePanels.size()-1
-		if !activePanels [currentPan].get_node ("Panel/buttonhost/act").disabled:
-			activePanels [currentPan].get_node ("Panel/buttonhost/act").grab_focus()
+		if !activePanels [currentPan].get_node ("Panel/buttonhost/acter/act").disabled:
+			activePanels [currentPan].get_node ("Panel/buttonhost/acter/act").grab_focus()
 			update_panels (activePanels)
 		else:
 			currentPan = old
