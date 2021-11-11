@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://pixel_panel.theme" type="Theme" id=1]
 [ext_resource path="res://ui/button_depressed_menu.png" type="Texture" id=2]
@@ -28,6 +28,11 @@
 [ext_resource path="res://pixel_button_arrow.tres" type="Theme" id=26]
 [ext_resource path="res://ui/GoldDisplay.gd" type="Script" id=27]
 [ext_resource path="res://ui/blur_mat.tres" type="Material" id=28]
+[ext_resource path="res://gfx/icons/buttons/main.png" type="Texture" id=29]
+[ext_resource path="res://gfx/icons/buttons/inventory.png" type="Texture" id=30]
+[ext_resource path="res://gfx/icons/buttons/save.png" type="Texture" id=31]
+[ext_resource path="res://gfx/icons/buttons/party.png" type="Texture" id=32]
+[ext_resource path="res://gfx/icons/buttons/close.png" type="Texture" id=33]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 8 )
@@ -305,36 +310,39 @@ __meta__ = {
 }
 
 [node name="mainmenubutton" type="Button" parent="menupanel"]
-margin_left = 24.0
+margin_left = 144.0
 margin_top = 240.0
-margin_right = 192.0
+margin_right = 344.0
 margin_bottom = 288.0
 theme = ExtResource( 26 )
 text = "Main Menu"
+icon = ExtResource( 29 )
 script = ExtResource( 22 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="exitmenu" type="Button" parent="menupanel"]
-margin_left = 24.0
+margin_left = 144.0
 margin_top = 16.0
-margin_right = 192.0
+margin_right = 344.0
 margin_bottom = 64.0
 theme = ExtResource( 26 )
 text = "Close Menu"
+icon = ExtResource( 33 )
 script = ExtResource( 14 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="inventory" type="Button" parent="menupanel"]
-margin_left = 24.0
+margin_left = 144.0
 margin_top = 72.0
-margin_right = 192.0
+margin_right = 344.0
 margin_bottom = 120.0
 theme = ExtResource( 26 )
 text = "Inventory"
+icon = ExtResource( 30 )
 script = ExtResource( 21 )
 __meta__ = {
 "_edit_use_anchors_": false,
@@ -342,12 +350,13 @@ __meta__ = {
 }
 
 [node name="party" type="Button" parent="menupanel"]
-margin_left = 24.0
+margin_left = 144.0
 margin_top = 128.0
-margin_right = 192.0
+margin_right = 344.0
 margin_bottom = 176.0
 theme = ExtResource( 26 )
 text = "Party"
+icon = ExtResource( 32 )
 script = ExtResource( 16 )
 __meta__ = {
 "_edit_use_anchors_": false,
@@ -369,12 +378,13 @@ __meta__ = {
 }
 
 [node name="save" type="Button" parent="menupanel"]
-margin_left = 24.0
+margin_left = 144.0
 margin_top = 184.0
-margin_right = 192.0
+margin_right = 344.0
 margin_bottom = 232.0
 theme = ExtResource( 26 )
 text = "Save Game"
+icon = ExtResource( 31 )
 script = ExtResource( 19 )
 __meta__ = {
 "_edit_use_anchors_": false,

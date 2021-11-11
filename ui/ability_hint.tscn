@@ -64,7 +64,6 @@ margin_bottom = 480.0
 rect_min_size = Vector2( 740, 480 )
 
 [node name="Sprite" type="Sprite" parent="Panel"]
-visible = false
 position = Vector2( 40, 40 )
 texture = ExtResource( 4 )
 

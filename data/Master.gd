@@ -4,6 +4,7 @@ extends Node
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
+var atb_paused = false
 var working = true
 var ability_dict = {
 	"attack_basic_attack":{
@@ -11,6 +12,7 @@ var ability_dict = {
 		"id":"attack_basic_attack",
 		"type":"phys",
 		"icon":"sword",
+		"fx" : "slash",
 		"cost": 0,
 		"effects": [
 			{
@@ -22,12 +24,32 @@ var ability_dict = {
 				"acc": 100,
 			}
 		]
-	},	
+	},
+	"attack_snowpetal":{ #Flare, Flara, Flarada, Flarafada, Flarafacta
+		"name": "Snowpetal",
+		"id":"attack_snowpetal",
+		"type":"phys",
+		"icon":"petal",
+		"fx" : "petal",
+		"desc": "Strikes a large area with a technique fine enough to cut through petals, dealing physical damage.",
+		"cost": 2,
+		"effects": [
+			{
+				"type": "damage",
+				"target": "all enemies",
+				"elements": ["physical"],
+				"scaling": ["atk"],
+				"power": 90,
+				"acc": 100,
+			}
+		]
+	},
 	"attack_crimson_saber_hiro":{
 		"name": "Crimson Saber",
 		"id":"attack_crimson_saber_hiro",
 		"type":"phys",
 		"icon":"sword",
+		"fx" : "slash",
 		"desc": "Attacks with Hiro's Crimson Saber, dealing physical/fire damage.",
 		"cost": 0,
 		"effects": [
@@ -46,6 +68,7 @@ var ability_dict = {
 		"id":"attack_scarlet_razor_hiro",
 		"type":"phys",
 		"icon":"sword",
+		"fx" : "slash",
 		"desc": "Cleaves a target enemy, dealing physical/fire damage.",
 		"cost": 0,
 		"effects": [
@@ -63,7 +86,8 @@ var ability_dict = {
 		"name": "Iai Draw",
 		"id":"attack_iai_alan",
 		"type":"phys",
-		"icon":"sword",
+		"icon":"katana",
+		"fx" : "slash",
 		"desc": "Performs a rapid sword draw, dealing physical damage with a high critical ratio.",
 		"cost": 0,
 		"effects": [
@@ -82,6 +106,7 @@ var ability_dict = {
 		"id":"attack_final_flare_hiro",
 		"type":"ranged",
 		"icon":"sword",
+		"fx" : "slash",
 		"desc": "Deals 1 flat physical to user.\n[color=gray]Whoops!",
 		"cost": 0,
 		"effects": [
@@ -100,6 +125,7 @@ var ability_dict = {
 		"id":"buff_scarlet_blaze",
 		"type":"magic",
 		"icon":"magic",
+		"fx" : "glow",
 		"desc": "User steels their resolve, gaining bonus DEF and ATK and attracting enemy attention.\n[color=gray]\nI won't let it happen again...!",
 		"cost": 20,
 		"effects": [
@@ -131,6 +157,7 @@ var ability_dict = {
 		"id":"buff_all_heal_hiro",
 		"type":"magic",
 		"icon":"wht_mag",
+		"fx" : "glow",
 		"desc": "Heals all allies slightly.",
 		"cost": 10,
 		"effects": [
@@ -147,6 +174,7 @@ var ability_dict = {
 		"id":"attack_stardust_ray_stella",
 		"type":"ranged",
 		"icon":"shoot2",
+		"fx" : "burst",
 		"desc": "Shoots an enemy, dealing light/magic damage.\n[color=gray]This Starlight Shooter isn't just for show!",
 		"cost": 0,
 		"effects": [
@@ -165,6 +193,7 @@ var ability_dict = {
 		"id":"spell_pur",
 		"type":"magic",
 		"icon":"wht_mag",
+		"fx" : "glow",
 		"desc": "Heals a target for a slight amount of health.\n[color=grey]Sustain your life, and bask in artificial eternity.",
 		"cost": 5,
 		"effects": [
@@ -181,6 +210,7 @@ var ability_dict = {
 		"id":"spell_flare",
 		"type":"magic",
 		"icon":"blk_mag",
+		"fx" : "flare",
 		"desc": "Summons a ball of raw thermal energy, then casts it at the target.\nAn elementary spell with numerous uses and a great amount of potential.\n[color=gray]The flame sings its siren song, but only few feel its voice.[/color]",
 		"cost": 5,
 		"effects": [
@@ -190,6 +220,7 @@ var ability_dict = {
 				"scaling" : ["int"],
 				"elements" : ["fire"],
 				"power": 110,
+				"acc": 100,
 			}
 		]
 	},
@@ -198,6 +229,7 @@ var ability_dict = {
 		"id":"spell_alflare",
 		"type":"magic",
 		"icon":"blk_mag",
+		"fx" : "flare",
 		"desc": "Summons several balls of thermal energy, which are then cast over a large area.\nMost often employed by affiliated mages due to its ease of use\nand incredible area-of-effect.",
 		"cost": 13,
 		"effects": [
@@ -207,6 +239,7 @@ var ability_dict = {
 				"scaling" : ["int"],
 				"elements" : ["fire"],
 				"power": 90,
+				"acc": 100,
 			}
 		]
 	},
@@ -215,6 +248,7 @@ var ability_dict = {
 		"id":"buff_soul",
 		"type":"magic",
 		"icon":"blk_mag",
+		"fx" : "glow",
 		"desc": "Increases the damage of the caster's next magic cast slightly.\nThis spell is often used by mages to surprise their foes with a large burst of explosive power.\n[color=red]Power grows, but life wanes. Alas, none take notice. ",
 		"cost": 8,
 		"effects": [

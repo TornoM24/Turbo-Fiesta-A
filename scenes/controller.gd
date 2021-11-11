@@ -37,7 +37,10 @@ func logSomething (textToAdd):
 const BAR_SPEED = 0.1
 func updateStats (delta):
 	var inc = 0
+	Master.atb_paused = false
 	for x in alliesUnit:
+		if x.animStun and !x.casting:
+			Master.atb_paused = true
 		var path = "Control/Panel/CBPanel2/G" + str(inc + 1) + "/"
 		var path2 = "A" + str(inc + 1) + "/namedisplay"
 		x.reference.stats.hp = x.stats.hp
@@ -71,6 +74,8 @@ func updateStats (delta):
 		inc += 1
 		pass
 	for x in enemyUnit:
+		if x.animStun and !x.casting:
+			Master.atb_paused = true
 		x.get_node ("HPBar").value = x.hp
 		x.get_node ("ATBBar").value = x.atb_val
 		if x.get_node ("HPBar").value < 100:
@@ -218,6 +223,13 @@ func create_label (amount, pos):
 	return dmgLabel
 var label = preload ("res://ui/dmglabel.tscn")
 const LABEL_OFFSET = 30
+
+func spawn_particle (ability, target):
+	var particle = load ("res://gfx/fx/particle_effect.tscn").instance()
+	add_child (particle)
+	particle.position = target.position
+	particle.init(ability.fx)
+
 func causeEffect (target,source,ability):
 	var fPower = 0
 	var eff = ability.effects
@@ -228,13 +240,14 @@ func causeEffect (target,source,ability):
 		if block.type == "damage":
 			fPower = getPower (block,source)
 			if block.target == "single":
-				
+				spawn_particle (ability, target)
 				target.stats.hp -= fPower
 				if target.stats.hp > target.stats.mhp:
 					target.stats.hp = target.stats.mhp
 				create_label (fPower,target.global_position + Vector2(0,LABEL_OFFSET))
 				logSomething (target.stats.name + " takes [color=red]" + str (fPower) + "[/color] damage!\n")
 			if block.target == "self":
+				spawn_particle (ability, target)
 				var power = block.power
 				source.stats.hp -= power
 				if source.stats.hp > source.stats.mhp:
@@ -243,6 +256,7 @@ func causeEffect (target,source,ability):
 				logSomething (source.stats.name + " takes [color=red]" + str (power) + "[/color] damage!\n")
 			if block.target == "all enemies":
 				for x in enemyUnit:
+					spawn_particle (ability, x)
 					var power = fPower
 					x.stats.hp -= power
 					create_label (fPower,x.global_position + Vector2(0,LABEL_OFFSET))
@@ -250,6 +264,7 @@ func causeEffect (target,source,ability):
 		if block.type == "healing":
 			fPower = getPower (block,source)
 			if block.target == "single":
+				spawn_particle (ability, target)
 				target.stats.hp += fPower
 				if target.stats.hp > target.stats.mhp:
 					target.stats.hp = target.stats.mhp
@@ -257,6 +272,7 @@ func causeEffect (target,source,ability):
 				logSomething (target.stats.name + " heals for [color=green]" + str (fPower) + "[/color] hp!\n")
 			if block.target == "all allies":
 				for x in alliesUnit:
+					spawn_particle (ability, x)
 					x.stats.hp += fPower
 					if x.stats.hp > x.stats.mhp:
 						x.stats.hp = x.stats.mhp
@@ -264,6 +280,7 @@ func causeEffect (target,source,ability):
 				logSomething ("All allies heal for [color=green]" + str (fPower) + "[/color] hp!\n")
 		if block.type == "buff":
 			var buff = {}
+			spawn_particle (ability, target)
 			buff = Master.effect_dict["stat_buff"].duplicate()
 			buff.source = ability.name
 			buff.length = block.duration
@@ -339,11 +356,6 @@ func _process(delta):
 			enemy.enemyDie()
 		if enemy.deathAnimFinished:	
 			wins+=1
-	
-
-		
-	
-			
 	if deads == alliesUnit.size():
 		get_node ("Control/oc/occluder").show()
 		#yield(get_tree().create_timer(0.1), "timeout")
@@ -376,7 +388,6 @@ func _process(delta):
 						cancel_targeting()
 						logSomething (selectedUnit.stats.name + " uses " + targetAbility.name + "!\n")
 						selectedUnit.sprite_attack (targetAbility, selectedTarget)
-						#causeEffect (selectedTarget,targetAbility)
 						selectedUnit.atb_val = 0
 						isSelecting = false
 						selector.visible = false
@@ -396,14 +407,16 @@ func _process(delta):
 			if ally.selected && ally.alive:
 				if !targeting:
 					if !ally.atb_val < 100:
-						if !skillPanel.visible:
-							buttonhost.visible = true
-							selectedUnit = ally
-							isSelecting = true
-							selector.visible = true
-							selector.position = Vector2(selectedUnit.position.x+16,selectedUnit.position.y-40)
+						pass
+#						if !skillPanel.visible:
+#							buttonhost.visible = true
+#							selectedUnit = ally
+#							isSelecting = true
+#							selector.visible = true
+#							selector.position = Vector2(selectedUnit.position.x+16,selectedUnit.position.y-40)
 					else:
-						get_node("Control/Panel/readyhelper").modulate.a = 1
+						pass
+						#get_node("Control/Panel/readyhelper").modulate.a = 1
 					ally.selected = false
 				else:
 					selectedTarget = ally

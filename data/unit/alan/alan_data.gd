@@ -22,7 +22,7 @@ var unitDict = {
 		"spd" : 9,
 		"luk" : 10
 	},
-	"abilities": [bMas["attack_iai_alan"]]
+	"abilities": [bMas["attack_iai_alan"],bMas["attack_snowpetal"]]
 }
 
 # Called when the node enters the scene tree for the first time.

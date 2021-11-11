@@ -158,6 +158,7 @@ func switch_modes(viewMode):
 	if viewMode:
 		print ("switching viewmode (detailed)")
 		var topCard = get_node ("C"+str(number))
+		topCard.get_node ("Button").disabled = true
 		var torigin = topCard.position
 		var tween = get_node ("Tween")
 		topCard.z_index = 999
@@ -168,6 +169,7 @@ func switch_modes(viewMode):
 		var nonTops = []
 		for x in range (1,6):
 			var card = get_node ("C"+str(x))
+			card.get_node ("Button").disabled = true
 			if card != topCard:
 				nonTops.append (card)
 				print ("appended " + card.name)
@@ -192,6 +194,7 @@ func switch_modes(viewMode):
 		print ("switching viewmode (condensed)")
 		for x in range (1,6):
 			var card = get_node ("C"+str(x))
+			card.get_node ("Button").disabled = false
 			var tween = get_node ("Tween")
 			var origin = card.position
 			tween.interpolate_property(card, "position",

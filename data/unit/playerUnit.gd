@@ -51,6 +51,7 @@ const SPEED_MOD = 2000
 var yVelo = -1.3
 var dying
 var deathAnimFinished = false
+var casting = false
 func enemyDie():
 	dying = true
 func allyDie():
@@ -83,26 +84,34 @@ func _process(delta):
 		var tween = get_node ("Tween")
 		updateResources()
 		atb_prog += delta
-		if !inDead:
+		if !inDead && !Master.atb_paused:
 			if atb_prog >= 0.001 && !inAnimation &&!animStun:
 				atb_val += float (stats.spd)/30
 				atb_prog = 0
-		if inAnimation:
+		if inAnimation:		
+			if type == "magic":
+				casting = true
 			if type !="ranged" and type!= "magic":
+				var all = false
 				if singleRun:
+					for x in ability.effects:
+						if x.target == "all enemies":
+							all = true
 					tween.interpolate_property(self, "position",
 						origin, target.position + Vector2 (50,0), 0.5,
 					Tween.TRANS_QUART, Tween.EASE_OUT)
 					tween.start()
 					singleRun = false
 				
-				if global_position == target.position + Vector2 (50,0):
+				if (global_position == target.position + Vector2 (50,0)) or all:
 					animReset()
 					inAnimation = false
 			else:
 				animReset()
 				inAnimation = false
 		if inRecovery:
+			if type == "magic":
+				casting = false
 			if type !="ranged" and type!= "magic":
 				if singleRun:
 					tween.interpolate_property(self, "position",

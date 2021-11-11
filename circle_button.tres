@@ -5,21 +5,21 @@
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 1 )
 region_rect = Rect2( 0, 0, 51, 77 )
+modulate_color = Color( 1.1, 1.1, 1.1, 1 )
 
 [sub_resource type="StyleBoxTexture" id=2]
 texture = ExtResource( 1 )
 region_rect = Rect2( 0, 0, 51, 77 )
-modulate_color = Color( 1.1, 1.1, 1.1, 1 )
+modulate_color = Color( 0.788235, 0.788235, 0.788235, 1 )
 
 [sub_resource type="StyleBoxTexture" id=3]
 texture = ExtResource( 1 )
 region_rect = Rect2( 0, 0, 51, 77 )
-modulate_color = Color( 0.788235, 0.788235, 0.788235, 1 )
+modulate_color = Color( 0.607843, 0.607843, 0.607843, 1 )
 
 [sub_resource type="StyleBoxTexture" id=4]
 texture = ExtResource( 1 )
 region_rect = Rect2( 0, 0, 51, 77 )
-modulate_color = Color( 0.607843, 0.607843, 0.607843, 1 )
 
 [resource]
 Button/colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
