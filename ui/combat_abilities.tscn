@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://pixel_panel_wide.theme" type="Theme" id=1]
 [ext_resource path="res://scenes/readyhelper.gd" type="Script" id=2]
@@ -11,7 +11,6 @@
 [ext_resource path="res://ui/act.gd" type="Script" id=9]
 [ext_resource path="res://font/Chrono.tres" type="DynamicFont" id=10]
 [ext_resource path="res://gfx/unit/atbbar.png" type="Texture" id=11]
-[ext_resource path="res://ui/ATBBar.gd" type="Script" id=12]
 [ext_resource path="res://ui/pole.png" type="Texture" id=13]
 [ext_resource path="res://gfx/icons/circle.png" type="Texture" id=14]
 [ext_resource path="res://circle.tres" type="Theme" id=15]
@@ -23,6 +22,8 @@
 [ext_resource path="res://gfx/icons/circle_resource.png" type="Texture" id=21]
 [ext_resource path="res://gfx/icons/circle_resource_bg_2.png" type="Texture" id=22]
 [ext_resource path="res://gfx/icons/circle_resource_2.png" type="Texture" id=23]
+[ext_resource path="res://ui/HPBar.gd" type="Script" id=24]
+[ext_resource path="res://ui/MPBar.gd" type="Script" id=25]
 
 [node name="abilitymenu" type="Node2D"]
 script = ExtResource( 6 )
@@ -53,33 +54,35 @@ __meta__ = {
 }
 
 [node name="HPBar" type="TextureProgress" parent="namedisplay"]
-visible = false
 self_modulate = Color( 1, 0.313726, 0.313726, 1 )
-margin_left = -17.0
-margin_top = -248.0
-margin_right = 297.0
-margin_bottom = 61.0001
+margin_left = -21.0
+margin_top = -248.421
+margin_right = 293.0
+margin_bottom = 60.5791
 rect_scale = Vector2( 0.8, 0.8 )
+step = 0.1
 value = 100.0
 texture_under = ExtResource( 20 )
 texture_progress = ExtResource( 21 )
 fill_mode = 3
+script = ExtResource( 24 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="MPBar" type="TextureProgress" parent="namedisplay"]
-visible = false
 self_modulate = Color( 0.376471, 0.807843, 1, 1 )
-margin_left = 103.0
-margin_top = -248.0
-margin_right = 417.0
-margin_bottom = 61.0001
+margin_left = 99.0
+margin_top = -248.421
+margin_right = 413.0
+margin_bottom = 60.5791
 rect_scale = Vector2( 0.8, 0.8 )
+step = 0.1
 value = 100.0
 texture_under = ExtResource( 22 )
 texture_progress = ExtResource( 23 )
 fill_mode = 3
+script = ExtResource( 25 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -94,7 +97,6 @@ texture_progress = ExtResource( 11 )
 nine_patch_stretch = true
 stretch_margin_top = 2
 stretch_margin_bottom = 2
-script = ExtResource( 12 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -116,11 +118,12 @@ __meta__ = {
 }
 
 [node name="ATB2" type="TextureProgress" parent="."]
-margin_left = 22.5546
-margin_top = 439.0
-margin_right = 322.555
-margin_bottom = 748.0
+margin_left = 22.0
+margin_top = 438.58
+margin_right = 322.0
+margin_bottom = 747.58
 rect_scale = Vector2( 0.7, 0.7 )
+step = 0.1
 value = 32.0
 texture_under = ExtResource( 17 )
 texture_progress = ExtResource( 16 )
@@ -291,7 +294,7 @@ __meta__ = {
 
 [node name="Sprite" type="Sprite" parent="Panel/buttonhost/acter"]
 position = Vector2( 80, 120 )
-scale = Vector2( 1, 1.01685 )
+scale = Vector2( 2, 2 )
 texture = ExtResource( 18 )
 
 [node name="Label2" type="RichTextLabel" parent="Panel/buttonhost/acter"]
@@ -317,8 +320,8 @@ margin_left = 56.0
 margin_top = 96.0
 margin_right = 104.0
 margin_bottom = 143.0
-rect_scale = Vector2( 1, 1.01685 )
-hint_tooltip = "Provides 50% general mitigation."
+rect_scale = Vector2( 2, 2 )
+rect_pivot_offset = Vector2( 24, 23.5 )
 theme = ExtResource( 3 )
 custom_fonts/font = ExtResource( 10 )
 text = "READY"

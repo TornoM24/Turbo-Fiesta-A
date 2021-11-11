@@ -216,18 +216,23 @@ __meta__ = {
 }
 
 [node name="G1" parent="Control/Panel/CBPanel2" instance=ExtResource( 8 )]
+visible = false
 position = Vector2( 0, -16 )
 
 [node name="G2" parent="Control/Panel/CBPanel2" instance=ExtResource( 8 )]
+visible = false
 position = Vector2( 0, 40 )
 
 [node name="G3" parent="Control/Panel/CBPanel2" instance=ExtResource( 8 )]
+visible = false
 position = Vector2( 0, 96 )
 
 [node name="G4" parent="Control/Panel/CBPanel2" instance=ExtResource( 8 )]
+visible = false
 position = Vector2( 0, 152 )
 
 [node name="G5" parent="Control/Panel/CBPanel2" instance=ExtResource( 8 )]
+visible = false
 position = Vector2( 0, 208 )
 
 [node name="Panel2" type="Panel" parent="Control/Panel"]
@@ -342,7 +347,7 @@ __meta__ = {
 visible = false
 position = Vector2( 488, 136 )
 frames = SubResource( 9 )
-frame = 1
+frame = 6
 speed_scale = 2.0
 playing = true
 

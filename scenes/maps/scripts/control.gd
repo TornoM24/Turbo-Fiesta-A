@@ -108,9 +108,7 @@ func _on_special_pressed(button):
 		get_node ("Panel/buttonhost/").visible=false
 	
 func ability_pressed(bHost, inputType):
-	#print (inputType)
 	if inputType == 1:
-		#print ("get pressed!")
 		var selector = get_parent().get_node("Control/Selector")
 		var flag = false
 		for x in Master.ability_dict[bHost.aName].effects:

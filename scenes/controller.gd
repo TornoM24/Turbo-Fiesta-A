@@ -39,6 +39,7 @@ func updateStats (delta):
 	var inc = 0
 	for x in alliesUnit:
 		var path = "Control/Panel/CBPanel2/G" + str(inc + 1) + "/"
+		var path2 = "A" + str(inc + 1) + "/namedisplay"
 		x.reference.stats.hp = x.stats.hp
 		x.reference.stats.mp = x.stats.mp
 		get_node (path).unit = x
@@ -123,6 +124,7 @@ func show_all():
 		print ("showing")
 		x.show()
 var currentPan = 0
+export var showOldCards = false
 func spawnAllies ():
 	var incrementer = 0
 	for x in range (0,3):
@@ -131,7 +133,8 @@ func spawnAllies ():
 			if Master.formation[x][y] != -1:
 				print ("spawning " + Master.party[Master.formation[x][y]].name)
 				incrementer +=1 
-				get_node("Control/Panel/CBPanel2/G" + str(incrementer)).visible = true
+				if showOldCards:
+					get_node("Control/Panel/CBPanel2/G" + str(incrementer)).visible = true
 				var instance = placeholder.instance()
 				
 				add_child(instance)
@@ -146,6 +149,7 @@ func spawnAllies ():
 				print ("b "+str(instance.stats.mhp))
 				alliesUnit.append(instance)
 				var aPanel = load ("res://ui/combat_abilities.tscn").instance()
+				aPanel.name = "A" + str(incrementer)
 				add_child (aPanel)
 				if incrementer == 1:
 					aPanel.get_node ("Panel/buttonhost/acter/act").grab_focus()

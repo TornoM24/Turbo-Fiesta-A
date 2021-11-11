@@ -84,7 +84,7 @@ func _process(delta):
 		updateResources()
 		atb_prog += delta
 		if !inDead:
-			if atb_prog >= 0.01 && !inAnimation &&!animStun:
+			if atb_prog >= 0.001 && !inAnimation &&!animStun:
 				atb_val += float (stats.spd)/30
 				atb_prog = 0
 		if inAnimation:
