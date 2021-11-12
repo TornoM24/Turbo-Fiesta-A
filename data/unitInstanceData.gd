@@ -41,9 +41,9 @@ func level_up():
 		if !stat=="hp" and !stat=="mp" and !stat=="unitName" and !stat=="name":
 			#bonusStats[stat] += round(baseStats[stat]/10)
 			stats[stat] += round(baseStats[stat]/10)
-			if !stats.hp<=0:
-				stats.hp = stats.mhp
-				stats.mp = stats.mmp
+	if !stats.hp<=0:
+		stats.hp = stats.mhp
+		stats.mp = stats.mmp
 	sp += 2
 	return level
 

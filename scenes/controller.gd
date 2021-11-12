@@ -28,6 +28,7 @@ var alliesUnit = []
 var enemyUnit = []
 
 var targeting = false
+var victory = false
 
 func logSomething (textToAdd):
 	var mlog = get_node ("Control/Panel/CBPanel2/Panel/log")
@@ -43,8 +44,9 @@ func updateStats (delta):
 			Master.atb_paused = true
 		var path = "Control/Panel/CBPanel2/G" + str(inc + 1) + "/"
 		var path2 = "A" + str(inc + 1) + "/namedisplay"
-		x.reference.stats.hp = x.stats.hp
-		x.reference.stats.mp = x.stats.mp
+		if !victory:
+			x.reference.stats.hp = x.stats.hp
+			x.reference.stats.mp = x.stats.mp
 		get_node (path).unit = x
 		get_node (path+"RichTextLabel").bbcode_enabled = true
 		get_node (path+"RichTextLabel").bbcode_text = x.get_node ("Data").unitDict.name
@@ -57,17 +59,12 @@ func updateStats (delta):
 		get_node (path+"HPBar").targetValue = int((float(x.stats.hp)/x.stats.mhp)*100)
 		get_node (path+"MPBar").targetValue = int((float(x.stats.mp)/x.stats.mmp)*100)
 		if get_node (path+"HPBar").targetValue < get_node (path+"HPBar").value:
-			#print ("reducing value")
 			get_node (path+"HPBar").value -= delta * 50
 		elif get_node (path+"HPBar").targetValue > get_node (path+"HPBar").value:
-			#print ("increasing value")
 			get_node (path+"HPBar").value += delta * 50
-			
 		if get_node (path+"MPBar").targetValue < get_node (path+"MPBar").value:
-			#print ("reducing value")
 			get_node (path+"MPBar").value -= delta * 50
 		elif get_node (path+"MPBar").targetValue > get_node (path+"MPBar").value:
-			#print ("increasing value")
 			get_node (path+"MPBar").value += delta * 50
 			
 		get_node (path+"ATBBar").value = x.atb_val
@@ -120,13 +117,13 @@ func attachdataenemy (instance):
 	pass
 var abilityPanels = []
 func hide_all():
+	print ("hiding")
 	for x in abilityPanels:
-		print ("hiding")
 		x.hide()
 	
 func show_all():
+	print ("showing")
 	for x in abilityPanels:
-		print ("showing")
 		x.show()
 var currentPan = 0
 export var showOldCards = false
@@ -134,7 +131,6 @@ func spawnAllies ():
 	var incrementer = 0
 	for x in range (0,3):
 		for y in range (0,3):
-			#print (Master.formation [x].len)
 			if Master.formation[x][y] != -1:
 				print ("spawning " + Master.party[Master.formation[x][y]].name)
 				incrementer +=1 
@@ -163,7 +159,6 @@ func spawnAllies ():
 				aPanel.ind = incrementer - 1
 				aPanel.init (instance)
 				abilityPanels.append (aPanel)
-				#print ("appendin gpanel for")
 				aPanel.position.x += 256 * (incrementer-1)
 			
 var phBD = {
@@ -190,15 +185,12 @@ func init_battle (battleData):
 			if battleData.formation[x][y] != "empty":
 				print ("spawning " + battleData.formation[x][y])
 				incrementer +=1 
-				#get_node("Control/Panel/CBPanel2/G" + str(incrementer)).visible = true
 				var instance = placeholder.instance()
 				add_child(instance)
 				instance.position.x = 140 + (100*x) - (50*y)
 				instance.position.y = 60 + (100*y)
 				instance.get_node("HPBar").show()
 				instance.get_node("ATBBar").show()
-				#instance.get_node("MPBar").show()
-				#instance.get_node("Sprite").texture = defaultSprite
 				instance.unitName = battleData.formation[x][y]
 				instance = attachdataenemy (instance)
 				enemyUnit.append(instance)
@@ -226,15 +218,13 @@ const LABEL_OFFSET = 30
 func spawn_particle (ability, target):
 	var particle = load ("res://gfx/fx/particle_effect.tscn").instance()
 	add_child (particle)
-	particle.position = target.position
+	particle.position = target.position - Vector2 (20,20)
 	particle.init(ability.fx)
 
 func causeEffect (target,source,ability):
 	var fPower = 0
 	var eff = ability.effects
-	#print ("mp first " + str(source.mp))
 	source.stats.mp -= ability.cost
-	#print ("mp after " + str(source.mp))
 	for block in eff:
 		if block.type == "damage":
 			fPower = getPower (block,source)
@@ -357,19 +347,17 @@ func _process(delta):
 			wins+=1
 	if deads == alliesUnit.size():
 		get_node ("Control/oc/occluder").show()
-		#yield(get_tree().create_timer(0.1), "timeout")
 		get_node ("Control/oc/occluder").modulate.a += delta
-		#print (str(get_node ("Control/oc/occluder").modulate.a))
 		if get_node ("Control/oc/occluder").modulate.a > 1:
 			get_node("/root/Global").goto_scene("res://scenes/gameover.tscn")
 	else:	
 		if wins == enemyUnit.size():
+			victory = true
 			var z = get_node ("Control/oc/occluder")
 			z.show()
 			animTimer += delta
 			if z.modulate.a < 0.5:
 				if animTimer > 0.01:
-					print (str(z.modulate.a))
 					z.modulate.a += 0.01
 					animTimer = 0
 			if z.modulate.a >= 0.5:

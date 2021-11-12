@@ -129,9 +129,9 @@ one_shot = true
 
 [node name="TextureProgress" type="TextureProgress" parent="."]
 self_modulate = Color( 0.14902, 1, 0, 1 )
-margin_left = -168.0
+margin_left = -184.0
 margin_top = -112.0
-margin_right = 132.0
+margin_right = 116.0
 margin_bottom = 188.0
 grow_horizontal = 2
 grow_vertical = 2

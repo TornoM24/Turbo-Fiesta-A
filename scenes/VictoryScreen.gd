@@ -9,6 +9,8 @@ extends Node2D
 var pointN = preload ("res://ui/pointer2.png")
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	get_tree().paused = true
+	self.set_process(true)
 	Input.set_custom_mouse_cursor(pointN)
 	var tween = get_node ("Tween")
 	#var origin = card.position
