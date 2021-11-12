@@ -17,6 +17,20 @@ var atb_prog = 0
 var atb_val = 0
 
 var stats = {}
+var bonus = {
+		"mhp" : 0,
+		"mmp" : 0,
+		"hp" : 0,
+		"mp" : 0,
+		"atk" : 0,
+		"def" : 0,
+		"int" : 0,
+		"wis" : 0,
+		"apt" : 0,
+		"spd" : 0,
+		"luk" : 0
+	}
+var equipBonus = {}
 var abilities = []
 var effects = [] 
 export var tempEffects = []
@@ -175,6 +189,14 @@ func glow_cast (abi, tar):
 	spr.modulate.r = 1.0
 	spr.modulate.g = 1.0
 	spr.modulate.b = 1.0
+
+func parse_buff (buff):
+	target.tempEffects.append (buff)
+	bonus[buff.effectType] += int (stats[buff.effectType] * float(buff.power)/100)
+	print ("old stats : " + str(stats[buff.effectType]))
+	stats[buff.effectType] += bonus[buff.effectType]
+	print ("new stats : " + str(stats[buff.effectType]))
+	print ("set bonus to " + str(bonus [buff.effectType]) + "using " + str (buff.power))
 
 func sprite_attack (abi, tar):
 	ability = abi

@@ -1,7 +1,6 @@
 [gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://pixel_panel_wide.theme" type="Theme" id=1]
-[ext_resource path="res://scenes/readyhelper.gd" type="Script" id=2]
 [ext_resource path="res://pixel_button_round.tres" type="Theme" id=3]
 [ext_resource path="res://font/ChronoLarge.tres" type="DynamicFont" id=4]
 [ext_resource path="res://pixel_button_red.tres" type="Theme" id=5]
@@ -24,6 +23,7 @@
 [ext_resource path="res://gfx/icons/circle_resource_2.png" type="Texture" id=23]
 [ext_resource path="res://ui/HPBar.gd" type="Script" id=24]
 [ext_resource path="res://ui/MPBar.gd" type="Script" id=25]
+[ext_resource path="res://ui/Status.gd" type="Script" id=26]
 
 [node name="abilitymenu" type="Node2D"]
 script = ExtResource( 6 )
@@ -53,6 +53,19 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Status" type="Button" parent="namedisplay"]
+margin_left = 35.0
+margin_top = 1.0
+margin_right = 163.0
+margin_bottom = 33.0
+theme = ExtResource( 3 )
+custom_fonts/font = ExtResource( 4 )
+text = "Shumford"
+script = ExtResource( 26 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="HPBar" type="TextureProgress" parent="namedisplay"]
 self_modulate = Color( 1, 0.313726, 0.313726, 1 )
 margin_left = -21.0
@@ -60,7 +73,6 @@ margin_top = -248.421
 margin_right = 293.0
 margin_bottom = 60.5791
 rect_scale = Vector2( 0.8, 0.8 )
-step = 0.1
 value = 100.0
 texture_under = ExtResource( 20 )
 texture_progress = ExtResource( 21 )
@@ -73,11 +85,10 @@ __meta__ = {
 [node name="MPBar" type="TextureProgress" parent="namedisplay"]
 self_modulate = Color( 0.376471, 0.807843, 1, 1 )
 margin_left = 99.0
-margin_top = -248.421
+margin_top = -248.0
 margin_right = 413.0
-margin_bottom = 60.5791
+margin_bottom = 61.0002
 rect_scale = Vector2( 0.8, 0.8 )
-step = 0.1
 value = 100.0
 texture_under = ExtResource( 22 )
 texture_progress = ExtResource( 23 )
@@ -102,6 +113,7 @@ __meta__ = {
 }
 
 [node name="RichTextLabel" type="RichTextLabel" parent="namedisplay"]
+visible = false
 margin_left = 8.0
 margin_top = 5.0
 margin_right = 200.0
@@ -135,8 +147,7 @@ __meta__ = {
 [node name="Panel" type="Panel" parent="."]
 self_modulate = Color( 1, 1, 1, 0 )
 margin_top = 704.0
-margin_right = 256.0
-margin_bottom = 976.0
+margin_bottom = 704.0
 theme = ExtResource( 7 )
 __meta__ = {
 "_edit_lock_": true,
@@ -330,18 +341,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="readyhelper" type="RichTextLabel" parent="Panel"]
-margin_left = 56.0
-margin_top = -48.0
-margin_right = 336.0
-margin_bottom = -21.0
-text = "Character not ready yet!"
-scroll_active = false
-script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="pole" type="Sprite" parent="Panel"]
 visible = false
 self_modulate = Color( 0.554688, 0.554688, 0.554688, 1 )
@@ -351,6 +350,7 @@ texture = ExtResource( 13 )
 
 [node name="Tween" type="Tween" parent="."]
 
+[connection signal="pressed" from="namedisplay/Status" to="namedisplay/Status" method="_on_Status_pressed"]
 [connection signal="pressed" from="Panel/buttonhost/attack" to="." method="_on_attack_pressed"]
 [connection signal="pressed" from="Panel/buttonhost/defend" to="." method="_on_defend_pressed"]
 [connection signal="pressed" from="Panel/buttonhost/special" to="." method="_on_special_pressed"]

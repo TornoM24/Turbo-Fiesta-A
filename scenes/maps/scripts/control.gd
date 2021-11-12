@@ -107,19 +107,23 @@ func _on_special_pressed(button):
 		get_node("Panel/CBPanel/specialscroll/Panel").rect_min_size.y = yOffset
 		get_node ("Panel/buttonhost/").visible=false
 	
+func autokill ():
+	var par = get_parent()
+	var selector = get_parent().get_node("Control/Selector")
+	get_parent().cancel_targeting()
+	par.skillPanel.visible = false
+	par.selectedUnit.atb_val = 0
+	par.isSelecting = false
+	selector.visible = false
 func ability_pressed(bHost, inputType):
 	if inputType == 1:
 		var selector = get_parent().get_node("Control/Selector")
+		var par = get_parent()
 		var flag = false
 		for x in Master.ability_dict[bHost.aName].effects:
-			if x.target == "all allies" or x.target == "all enemies":
-				var par = get_parent()
+			if x.target == "all allies" or x.target == "all enemies" or x.target == "self":
 				get_parent().selectedUnit.sprite_attack(Master.ability_dict[bHost.aName],par.selectedUnit)
-				get_parent().cancel_targeting()
-				par.skillPanel.visible = false
-				par.selectedUnit.atb_val = 0
-				par.isSelecting = false
-				selector.visible = false
+				autokill()
 			else:
 				bHost.selected = false
 				skillPanel.visible = false

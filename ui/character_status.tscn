@@ -130,6 +130,9 @@ margin_bottom = 32.0
 bbcode_enabled = true
 bbcode_text = "[center]Stats"
 text = "Stats"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Sprite" type="Sprite" parent="Panel"]
 visible = false

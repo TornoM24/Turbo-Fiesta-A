@@ -149,9 +149,8 @@ func spawnAllies ():
 				#instance.get_node("Sprite").texture = defaultSprite
 				instance.unitName = Master.party[Master.formation[x][y]].unitName
 				instance = attachdata (instance)
-				instance.stats = instance.reference.stats
-				print ("a "+str(instance.stats.hp))
-				print ("b "+str(instance.stats.mhp))
+				instance.stats = instance.reference.stats.duplicate()
+				instance.equipBonus = instance.reference.bonusStats.duplicate()
 				alliesUnit.append(instance)
 				var aPanel = load ("res://ui/combat_abilities.tscn").instance()
 				aPanel.name = "A" + str(incrementer)
@@ -287,7 +286,7 @@ func causeEffect (target,source,ability):
 			buff.effectType = block.param
 			buff.power = block.power
 			buff.name = block.param + " stat buff"
-			source.tempEffects.append (buff)
+			target.parse_buff (buff)
 			
 func cancel_targeting ():
 	abilityPanels [currentPan].get_node ("Panel/buttonhost/acter/act").show_buttons()

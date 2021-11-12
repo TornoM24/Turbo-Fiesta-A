@@ -19,10 +19,10 @@ var unitDict = {
 		"int" : 2,
 		"wis" : 3,
 		"apt" : 5,
-		"spd" : 9,
+		"spd" : 99,
 		"luk" : 10
 	},
-	"abilities": [bMas["attack_iai_alan"],bMas["attack_snowpetal"]]
+	"abilities": [bMas["buff_super_atk"],bMas["attack_iai_alan"],bMas["attack_snowpetal"]]
 }
 
 # Called when the node enters the scene tree for the first time.

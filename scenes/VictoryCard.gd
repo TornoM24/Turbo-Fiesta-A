@@ -35,7 +35,7 @@ func start (C, T, tV, iV):
 
 func _process(delta):
 	maxValue = calcNext (currentLevel)
-	xpBar.max_value = maxValue
+	xpBar.max_value = float(currentValue / maxValue)
 	xpBar.value = currentValue
 	if trueValue < targetValue:
 		if currentValue < maxValue:

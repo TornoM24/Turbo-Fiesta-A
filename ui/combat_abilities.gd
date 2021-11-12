@@ -17,6 +17,7 @@ func _ready():
 func init (unit):
 	parent = get_tree().get_root().get_node ("Controller")
 	get_node ("namedisplay/RichTextLabel").bbcode_text = "[center]" + unit.stats.name
+	get_node ("namedisplay/Status").text = unit.stats.name
 	get_node ("Panel/buttonhost/attack").connect ("pressed", get_tree().get_root().get_node ("Controller/Control"), "_on_attack_pressed", [self])
 	get_node ("Panel/buttonhost/defend").connect ("pressed", get_tree().get_root().get_node ("Controller/Control"), "_on_defend_pressed", [self])
 	get_node ("Panel/buttonhost/item").connect ("pressed", get_tree().get_root().get_node ("Controller/Control"), "_on_item_pressed", [self])

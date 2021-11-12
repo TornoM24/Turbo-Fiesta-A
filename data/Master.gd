@@ -25,7 +25,7 @@ var ability_dict = {
 			}
 		]
 	},
-	"attack_snowpetal":{ #Flare, Flara, Flarada, Flarafada, Flarafacta
+	"attack_snowpetal":{ 
 		"name": "Snowpetal",
 		"id":"attack_snowpetal",
 		"type":"phys",
@@ -44,22 +44,28 @@ var ability_dict = {
 			}
 		]
 	},
-	"attack_crimson_saber_hiro":{
-		"name": "Crimson Saber",
-		"id":"attack_crimson_saber_hiro",
-		"type":"phys",
-		"icon":"sword",
-		"fx" : "slash",
-		"desc": "Attacks with Hiro's Crimson Saber, dealing physical/fire damage.",
+	"buff_super_atk":{
+		"name": "Gamer Rage",
+		"id":"buff_super_atk",
+		"type":"magic",
+		"icon":"magic",
+		"fx" : "glow",
+		"desc": "GOOD LORD IM SO ABSOLUTELY PUMPED RIGHT NOW",
 		"cost": 0,
 		"effects": [
 			{
-				"type": "damage",
-				"target": "single",
-				"elements": ["physical","fire"],
-				"scaling": ["atk"],
-				"power": 100,
-				"acc": 100,
+				"type": "buff",
+				"target": "self",
+				"param": "atk",
+				"power": 999,
+				"duration": 10
+			},
+			{
+				"type": "buff",
+				"target": "self",
+				"param": "def",
+				"power": 999,
+				"duration": 10
 			}
 		]
 	},
@@ -142,13 +148,6 @@ var ability_dict = {
 				"param": "def",
 				"power": 30,
 				"duration": 10
-			},
-			{ 
-				"type": "buff",
-				"target": "self",
-				"param": "def",
-				"power": 30,
-				"duration": 10
 			}
 		]
 	},
@@ -157,7 +156,7 @@ var ability_dict = {
 		"id":"buff_all_heal_hiro",
 		"type":"magic",
 		"icon":"wht_mag",
-		"fx" : "glow",
+		"fx" : "heal",
 		"desc": "Heals all allies slightly.",
 		"cost": 10,
 		"effects": [
@@ -189,11 +188,11 @@ var ability_dict = {
 		]
 	},
 	"spell_pur":{ #Pur, Pura, Purada, Purafada, Purafacta
-		"name": "Pur",
+		"name": "Repur",
 		"id":"spell_pur",
 		"type":"magic",
 		"icon":"wht_mag",
-		"fx" : "glow",
+		"fx" : "heal",
 		"desc": "Heals a target for a slight amount of health.\n[color=grey]Sustain your life, and bask in artificial eternity.",
 		"cost": 5,
 		"effects": [
