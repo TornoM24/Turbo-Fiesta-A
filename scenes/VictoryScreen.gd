@@ -9,6 +9,7 @@ extends Node2D
 var pointN = preload ("res://ui/pointer2.png")
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	modulate.a = 0
 	get_tree().paused = true
 	self.set_process(true)
 	Input.set_custom_mouse_cursor(pointN)
@@ -16,7 +17,7 @@ func _ready():
 	#var origin = card.position
 	tween.interpolate_property(self, "modulate",
 		Color (1,1,1,0), Color (1,1,1,1), 1,
-	Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	Tween.TRANS_QUART, Tween.EASE_IN_OUT)
 	tween.start()                
 	print ("victory screen displaying")
 	render_cards()
@@ -35,8 +36,9 @@ func render_cards():
 		vCard.get_node ("Panel/RichTextLabel").bbcode_text = ally.stats.name
 		var cLevel = ally.level
 		var iValue = ally.xp
-		var tValue = ally.give_xp (100)
+		var tValue = ally.give_xp (1200)
 		var tLevel = ally.level
+		vCard.assignment = ally
 		vCard.start(cLevel, tLevel, tValue, iValue)
 		#vCard.modulate.a = 0                      
 # Called every frame. 'delta' is the elapsed time since the previous frame.

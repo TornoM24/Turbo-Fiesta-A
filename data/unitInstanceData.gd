@@ -36,11 +36,14 @@ var title
 var statusEffects = []
 func level_up():
 	level += 1
-	toNext = round( 0.04 * (pow(level, 3)) + 0.8 * (pow(level, 3)) + 2 * level)
+	xp -= toNext
+	toNext = round( 0.04 * (pow(level, 3.0)) + 0.8 * (pow(level, 2.0)) + 2 * level)
+	#toNext = round(10 + (float(pow (2, level))))
 	for stat in stats.keys():
 		if !stat=="hp" and !stat=="mp" and !stat=="unitName" and !stat=="name":
 			#bonusStats[stat] += round(baseStats[stat]/10)
-			stats[stat] += round(baseStats[stat]/10)
+			baseStats[stat] += round(prefab.unitDict[stat]/10)
+			stats[stat] = baseStats[stat]
 	if !stats.hp<=0:
 		stats.hp = stats.mhp
 		stats.mp = stats.mmp
@@ -91,12 +94,13 @@ func load_data(data):
 	for x in data["abilities"]:
 		print ("ability " + x.name)
 	xp = data["xp"]
-	toNext = round( 0.04 * (pow(level, 3)) + 0.8 * (pow(level, 3)) + 2 * level)
+	toNext = round( 0.04 * (pow(level, 3.0)) + 0.8 * (pow(level, 2.0)) + 2 * level)
+	#toNext = round(10 + (float(pow (2, level))))
 	return self
 
 func initialize (prefab):
-	self.baseStats = prefab.unitDict.stats
-	self.stats = prefab.unitDict.stats
+	self.baseStats = prefab.unitDict.stats.duplicate()
+	self.stats = prefab.unitDict.stats.duplicate()
 	self.stats.mhp = prefab.unitDict.stats.hp
 	self.stats.mmp = prefab.unitDict.stats.mp
 	self.stats.name = prefab.unitDict.name
@@ -106,8 +110,10 @@ func initialize (prefab):
 	self.cost = 0
 	self.maxCost = prefab.unitDict.stats.apt
 	self.title = prefab.unitDict.title
+	self.prefab = prefab
 	level = 1
-	toNext = round( 0.04 * (pow(level, 3)) + 0.8 * (pow(level, 3)) + 2 * level)
+	toNext = round( 0.04 * (pow(level, 3.0)) + 0.8 * (pow(level, 2.0)) + 2 * level)
+	#toNext = round(10 + (float(pow (2, level))))
 	return self
 
 func updateStats (parameter, amount):

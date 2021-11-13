@@ -39,7 +39,7 @@ var ability_dict = {
 				"target": "all enemies",
 				"elements": ["physical"],
 				"scaling": ["atk"],
-				"power": 90,
+				"power": 9999, #90%
 				"acc": 100,
 			}
 		]
@@ -50,6 +50,7 @@ var ability_dict = {
 		"type":"magic",
 		"icon":"magic",
 		"fx" : "glow",
+		"casttime" : 0,
 		"desc": "GOOD LORD IM SO ABSOLUTELY PUMPED RIGHT NOW",
 		"cost": 0,
 		"effects": [
