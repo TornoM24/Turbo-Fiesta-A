@@ -50,7 +50,7 @@ func start (C, T, tV, iV):
 		tween.start()
 	else:
 		tween.interpolate_property(get_node("Panel/EXPBar"), "value",
-			0.0, 100.0, 1,
+			0.0, 100.0, speed,
 		Tween.TRANS_LINEAR, Tween.EASE_IN)
 		tween.start()
 

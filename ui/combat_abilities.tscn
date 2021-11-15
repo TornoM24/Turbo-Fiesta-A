@@ -1,6 +1,7 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://pixel_panel_wide.theme" type="Theme" id=1]
+[ext_resource path="res://ui/return.gd" type="Script" id=2]
 [ext_resource path="res://pixel_button_round.tres" type="Theme" id=3]
 [ext_resource path="res://font/ChronoLarge.tres" type="DynamicFont" id=4]
 [ext_resource path="res://pixel_button_red.tres" type="Theme" id=5]
@@ -10,6 +11,7 @@
 [ext_resource path="res://ui/act.gd" type="Script" id=9]
 [ext_resource path="res://font/Chrono.tres" type="DynamicFont" id=10]
 [ext_resource path="res://gfx/unit/atbbar.png" type="Texture" id=11]
+[ext_resource path="res://ui/orb2.png" type="Texture" id=12]
 [ext_resource path="res://ui/pole.png" type="Texture" id=13]
 [ext_resource path="res://gfx/icons/circle.png" type="Texture" id=14]
 [ext_resource path="res://circle.tres" type="Theme" id=15]
@@ -171,7 +173,7 @@ margin_top = 8.0
 margin_right = 104.0
 margin_bottom = 76.0
 rect_pivot_offset = Vector2( 24, 23.5 )
-focus_neighbour_bottom = NodePath("../item")
+focus_neighbour_bottom = NodePath("../../../actor2/return")
 theme = ExtResource( 19 )
 custom_fonts/font = ExtResource( 4 )
 __meta__ = {
@@ -201,7 +203,7 @@ margin_bottom = 165.0
 rect_rotation = -90.0
 rect_pivot_offset = Vector2( 24, 23.5 )
 hint_tooltip = "Provides 50% general mitigation."
-focus_neighbour_right = NodePath("../special")
+focus_neighbour_right = NodePath("../../../actor2/return")
 theme = ExtResource( 19 )
 custom_fonts/font = ExtResource( 4 )
 __meta__ = {
@@ -237,7 +239,7 @@ margin_right = 192.0
 margin_bottom = 163.0
 rect_rotation = 90.0
 rect_pivot_offset = Vector2( 24, 23.5 )
-focus_neighbour_left = NodePath("../defend")
+focus_neighbour_left = NodePath("../../../actor2/return")
 theme = ExtResource( 19 )
 custom_fonts/font = ExtResource( 4 )
 __meta__ = {
@@ -266,7 +268,7 @@ margin_right = 104.0
 margin_bottom = 253.0
 rect_rotation = 180.0
 rect_pivot_offset = Vector2( 24, 23.5 )
-focus_neighbour_top = NodePath("../attack")
+focus_neighbour_top = NodePath("../../../actor2/return")
 theme = ExtResource( 19 )
 custom_fonts/font = ExtResource( 4 )
 __meta__ = {
@@ -350,6 +352,52 @@ texture = ExtResource( 13 )
 
 [node name="Tween" type="Tween" parent="."]
 
+[node name="orb2" type="Sprite" parent="."]
+visible = false
+position = Vector2( 160, 512 )
+texture = ExtResource( 12 )
+
+[node name="actor2" type="Node2D" parent="."]
+z_index = 4096
+
+[node name="Sprite" type="Sprite" parent="actor2"]
+position = Vector2( 128, 544 )
+texture = ExtResource( 18 )
+
+[node name="Label3" type="RichTextLabel" parent="actor2"]
+margin_left = 104.0
+margin_top = 526.0
+margin_right = 152.0
+margin_bottom = 557.0
+bbcode_enabled = true
+bbcode_text = "[center]
+RETURN"
+text = "
+RETURN"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="return" type="Button" parent="actor2"]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = 103.0
+margin_top = 520.0
+margin_right = 152.0
+margin_bottom = 568.0
+rect_pivot_offset = Vector2( 24, 23.5 )
+focus_neighbour_left = NodePath("../../Panel/buttonhost/defend")
+focus_neighbour_top = NodePath("../../Panel/buttonhost/attack")
+focus_neighbour_right = NodePath("../../Panel/buttonhost/special")
+focus_neighbour_bottom = NodePath("../../Panel/buttonhost/item")
+theme = ExtResource( 3 )
+custom_fonts/font = ExtResource( 10 )
+text = "Back"
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="pressed" from="namedisplay/Status" to="namedisplay/Status" method="_on_Status_pressed"]
 [connection signal="pressed" from="Panel/buttonhost/attack" to="." method="_on_attack_pressed"]
 [connection signal="pressed" from="Panel/buttonhost/defend" to="." method="_on_defend_pressed"]
@@ -359,3 +407,8 @@ texture = ExtResource( 13 )
 [connection signal="mouse_exited" from="Panel/buttonhost/acter/act" to="Panel/buttonhost/acter/act" method="_on_act_mouse_exited"]
 [connection signal="pressed" from="Panel/buttonhost/acter/act" to="." method="_on_act_pressed"]
 [connection signal="tween_all_completed" from="Tween" to="." method="_on_Tween_tween_all_completed"]
+[connection signal="focus_entered" from="actor2/return" to="actor2/return" method="_on_return_focus_entered"]
+[connection signal="focus_exited" from="actor2/return" to="actor2/return" method="_on_return_focus_exited"]
+[connection signal="mouse_entered" from="actor2/return" to="actor2/return" method="_on_return_mouse_entered"]
+[connection signal="mouse_exited" from="actor2/return" to="actor2/return" method="_on_return_mouse_exited"]
+[connection signal="pressed" from="actor2/return" to="actor2/return" method="_on_return_pressed"]

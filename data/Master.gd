@@ -31,6 +31,7 @@ var ability_dict = {
 		"type":"phys",
 		"icon":"petal",
 		"fx" : "petal",
+		"quote" : "Like spring--!",
 		"desc": "Strikes a large area with a technique fine enough to cut through petals, dealing physical damage.",
 		"cost": 2,
 		"effects": [
@@ -39,7 +40,7 @@ var ability_dict = {
 				"target": "all enemies",
 				"elements": ["physical"],
 				"scaling": ["atk"],
-				"power": 9999, #90%
+				"power": 90, #90%
 				"acc": 100,
 			}
 		]
@@ -50,7 +51,8 @@ var ability_dict = {
 		"type":"magic",
 		"icon":"magic",
 		"fx" : "glow",
-		"casttime" : 0,
+		"castTime" : 0.1,
+		"quote" : "REEEEE",
 		"desc": "GOOD LORD IM SO ABSOLUTELY PUMPED RIGHT NOW",
 		"cost": 0,
 		"effects": [
@@ -71,11 +73,12 @@ var ability_dict = {
 		]
 	},
 	"attack_scarlet_razor_hiro":{
-		"name": "Scarlet Razor",
+		"name": "Razorcut",
 		"id":"attack_scarlet_razor_hiro",
 		"type":"phys",
-		"icon":"sword",
+		"icon":"razor",
 		"fx" : "slash",
+		"quote" : "Right there!",
 		"desc": "Cleaves a target enemy, dealing physical/fire damage.",
 		"cost": 0,
 		"effects": [
@@ -95,6 +98,7 @@ var ability_dict = {
 		"type":"phys",
 		"icon":"katana",
 		"fx" : "slash",
+		"quote" : "Sei!!",
 		"desc": "Performs a rapid sword draw, dealing physical damage with a high critical ratio.",
 		"cost": 0,
 		"effects": [
@@ -114,7 +118,7 @@ var ability_dict = {
 		"type":"ranged",
 		"icon":"sword",
 		"fx" : "slash",
-		"desc": "Deals 1 flat physical to user.\n[color=gray]Whoops!",
+		"desc": "Deals 1 flat physical damage to user.\n[color=gray]Whoops!",
 		"cost": 0,
 		"effects": [
 			{
@@ -133,6 +137,7 @@ var ability_dict = {
 		"type":"magic",
 		"icon":"magic",
 		"fx" : "glow",
+		"quote" : "This is it...!",
 		"desc": "User steels their resolve, gaining bonus DEF and ATK and attracting enemy attention.\n[color=gray]\nI won't let it happen again...!",
 		"cost": 20,
 		"effects": [
@@ -170,12 +175,12 @@ var ability_dict = {
 		]
 	},
 	"attack_stardust_ray_stella":{
-		"name": "Starlight Beam",
+		"name": "Starshot",
 		"id":"attack_stardust_ray_stella",
 		"type":"ranged",
 		"icon":"shoot2",
 		"fx" : "burst",
-		"desc": "Shoots an enemy, dealing light/magic damage.\n[color=gray]This Starlight Shooter isn't just for show!",
+		"desc": "Shoots an enemy, dealing light/magic damage.\n[color=gray]'Stand still, or I won't be able to miss your center!'",
 		"cost": 0,
 		"effects": [
 			{
@@ -189,12 +194,12 @@ var ability_dict = {
 		]
 	},
 	"spell_pur":{ #Pur, Pura, Purada, Purafada, Purafacta
-		"name": "Repur",
+		"name": "Recell",
 		"id":"spell_pur",
 		"type":"magic",
 		"icon":"wht_mag",
 		"fx" : "heal",
-		"desc": "Heals a target for a slight amount of health.\n[color=grey]Sustain your life, and bask in artificial eternity.",
+		"desc": "Heals a target for a slight amount of health.\n[color=grey]Palliative eternity. Quaint, but comforting.",
 		"cost": 5,
 		"effects": [
 			{
@@ -206,12 +211,13 @@ var ability_dict = {
 		]
 	},
 	"spell_flare":{ #Flare, Flara, Flarada, Flarafada, Flarafacta
-		"name": "Flare",
+		"name": "Ignia",
 		"id":"spell_flare",
 		"type":"magic",
 		"icon":"blk_mag",
 		"fx" : "flare",
-		"desc": "Summons a ball of raw thermal energy, then casts it at the target.\nAn elementary spell with numerous uses and a great amount of potential.\n[color=gray]The flame sings its siren song, but only few feel its voice.[/color]",
+		"quote" : "Burn to ash!",
+		"desc": "Summons a ball of raw thermal energy, then casts it at the target.\nAn elementary spell with numerous uses and a great amount of potential.",
 		"cost": 5,
 		"effects": [
 			{
@@ -225,11 +231,12 @@ var ability_dict = {
 		]
 	},
 	"spell_alflare":{ #AlFlare, AlFlara, AlFlarada, AlFlarafada, AlFlarafacta
-		"name": "AlFlare",
+		"name": "Arignia",
 		"id":"spell_alflare",
 		"type":"magic",
 		"icon":"blk_mag",
 		"fx" : "flare",
+		"quote" : "To call flame!",
 		"desc": "Summons several balls of thermal energy, which are then cast over a large area.\nMost often employed by affiliated mages due to its ease of use\nand incredible area-of-effect.",
 		"cost": 13,
 		"effects": [

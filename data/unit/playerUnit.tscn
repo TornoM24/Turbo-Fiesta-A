@@ -124,7 +124,6 @@ scale = Vector2( 2, 2 )
 [node name="Tween" type="Tween" parent="."]
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 2.0
 one_shot = true
 
 [node name="TextureProgress" type="TextureProgress" parent="."]
@@ -137,7 +136,8 @@ grow_horizontal = 2
 grow_vertical = 2
 rect_scale = Vector2( 0.1, 0.2 )
 rect_pivot_offset = Vector2( 150, 150 )
-value = 50.0
+step = 0.1
+value = 54.0
 texture_progress = ExtResource( 13 )
 fill_mode = 4
 script = ExtResource( 14 )

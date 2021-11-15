@@ -17,6 +17,19 @@ var atb_prog = 0
 var atb_val = 0
 
 var stats = {}
+var originalStats = {
+		"mhp" : 0,
+		"mmp" : 0,
+		"hp" : 0,
+		"mp" : 0,
+		"atk" : 0,
+		"def" : 0,
+		"int" : 0,
+		"wis" : 0,
+		"apt" : 0,
+		"spd" : 0,
+		"luk" : 0
+	}
 var bonus = {
 		"mhp" : 0,
 		"mmp" : 0,
@@ -33,7 +46,7 @@ var bonus = {
 var equipBonus = {}
 var abilities = []
 var effects = [] 
-export var tempEffects = []
+var tempEffects = []
 
 var unitName = "Aou Mogis"
 var selected = false
@@ -52,8 +65,6 @@ var ability
 var target
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	#var timeTween = Tween.new()
-	#add_child(timeTween)
 	pass # Replace with function body.
 
 func updateResources():
@@ -69,9 +80,7 @@ var casting = false
 func enemyDie():
 	dying = true
 func allyDie():
-	#show()
 	get_node ("AnimatedSprite").hide()
-	#get_node ("UnitSprite").texture = load ("res://data/unit/"+unitName+"/art/"+unitName+"_dead.png")
 	get_node ("UnitSprite").texture = load ("res://data/unit/hiro/art/hiro_dead.png")
 	get_node ("UnitSprite").show()
 
@@ -91,7 +100,24 @@ func animBreak():
 	get_node ("Attack").playing=false
 var singleRun = false
 var timerComplete
+
+func decay_effects(delta):
+	for eff in tempEffects:
+		#print (originalStats)
+		stats[eff.effectType] = originalStats [eff.effectType] + eff.realPower
+		eff.timer += delta
+		if eff.timer >= 1:
+			eff.length -= 1
+			eff.timer = 0
+		if eff.length <= 0:
+			stats[eff.effectType] = originalStats [eff.effectType]
+			eff.particle.queue_free()
+			tempEffects.erase (eff)
+			pass
+	pass
+
 func _process(delta):
+	decay_effects (delta)
 	if inDead:
 		allyDie()
 	if !dying:
@@ -190,22 +216,33 @@ func glow_cast (abi, tar):
 	spr.modulate.g = 1.0
 	spr.modulate.b = 1.0
 
+func create_message (message):
+	
+	var msg = load ("res://gfx/fx/message.tscn").instance()
+	msg.init (message)
+	add_child (msg)
+
 func parse_buff (buff):
-	target.tempEffects.append (buff)
-	bonus[buff.effectType] += int (stats[buff.effectType] * float(buff.power)/100)
-	print ("old stats : " + str(stats[buff.effectType]))
-	stats[buff.effectType] += bonus[buff.effectType]
-	print ("new stats : " + str(stats[buff.effectType]))
-	print ("set bonus to " + str(bonus [buff.effectType]) + "using " + str (buff.power))
+	print ("gave " + unitName + " the buff " + buff.name)
+	buff ["timer"] = 0
+	buff ["maxLength"] = buff.length
+	buff ["realPower"] = int (stats[buff.effectType] * float(buff.power)/100)
+	buff ["particle"] = load ("res://gfx/fx/particle_effect.tscn").instance()
+	buff.particle.get_node ("Sprite").hide()
+	add_child (buff.particle)
+	#stats[buff.effectType] += buff.realPower
+	#stats[buff.effectType] += bonus[buff.effectType]
+	tempEffects.append (buff)
 
 func sprite_attack (abi, tar):
 	ability = abi
 	type = ability.type
 	target = tar
-	#print (type)
 	inAnimation = true
 	singleRun = true
 	animStun = true
+	if ability.has ("quote"):
+		create_message (ability.quote)
 	if type == "magic":
 		get_node ("Attack").frames = load ("res://data/unit/"+unitName+"/art/"+unitName+"_cast.tres")
 		get_node ("CastParticles").emitting = true
@@ -216,7 +253,6 @@ func sprite_attack (abi, tar):
 	
 
 func _on_Select_pressed():
-	print ("Selected the unit "+unitName)
 	selected = true
 	pass # Replace with function body.
 
@@ -258,9 +294,11 @@ func _on_Attack_animation_finished():
 		singleRun = true
 		process_end()
 	else:
-		print ("waiting for timer")
 		get_node ("AnimatedSprite").hide()
-		get_node ("Timer").start()
+		var timer = get_node ("Timer")
+		if ability.has ("castTime"):
+			timer.wait_time = ability.castTime
+		timer.start()
 	pass # Replace with function body.
 
 

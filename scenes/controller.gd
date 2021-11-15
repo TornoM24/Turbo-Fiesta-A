@@ -71,8 +71,8 @@ func updateStats (delta):
 		inc += 1
 		pass
 	for x in enemyUnit:
-		if x.animStun and !x.casting:
-			Master.atb_paused = true
+		#if x.animStun and !x.casting:
+			#Master.atb_paused = true
 		x.get_node ("HPBar").value = x.hp
 		x.get_node ("ATBBar").value = x.atb_val
 		if x.get_node ("HPBar").value < 100:
@@ -146,6 +146,7 @@ func spawnAllies ():
 				instance.unitName = Master.party[Master.formation[x][y]].unitName
 				instance = attachdata (instance)
 				instance.stats = instance.reference.stats.duplicate()
+				instance.originalStats = instance.stats.duplicate()
 				instance.equipBonus = instance.reference.bonusStats.duplicate()
 				alliesUnit.append(instance)
 				var aPanel = load ("res://ui/combat_abilities.tscn").instance()
@@ -268,15 +269,16 @@ func causeEffect (target,source,ability):
 					create_label (fPower,target.global_position + Vector2(0,LABEL_OFFSET))
 				logSomething ("All allies heal for [color=green]" + str (fPower) + "[/color] hp!\n")
 		if block.type == "buff":
-			var buff = {}
-			spawn_particle (ability, target)
-			buff = Master.effect_dict["stat_buff"].duplicate()
-			buff.source = ability.name
-			buff.length = block.duration
-			buff.effectType = block.param
-			buff.power = block.power
-			buff.name = block.param + " stat buff"
-			target.parse_buff (buff)
+			if block.target == "self":
+				var buff = {}
+				spawn_particle (ability, source)
+				buff = Master.effect_dict["stat_buff"].duplicate()
+				buff.source = ability.name
+				buff.length = block.duration
+				buff.effectType = block.param
+				buff.power = block.power
+				buff.name = block.param + " stat buff"
+				source.parse_buff (buff)
 			
 func cancel_targeting ():
 	abilityPanels [currentPan].get_node ("Panel/buttonhost/acter/act").show_buttons()
@@ -441,3 +443,5 @@ func _process(delta):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+func scan():
+	pass

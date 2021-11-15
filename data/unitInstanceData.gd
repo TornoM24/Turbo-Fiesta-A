@@ -19,6 +19,19 @@ var bonusStats = {
 		"spd" : 0,
 		"luk" : 0
 	}
+var dict = {
+		"mhp" : 0,
+		"mmp" : 0,
+		"hp" : 0,
+		"mp" : 0,
+		"atk" : 0,
+		"def" : 0,
+		"int" : 0,
+		"wis" : 0,
+		"apt" : 0,
+		"spd" : 0,
+		"luk" : 0
+	}
 var equipment = []
 var abilities = []
 var level = 1
@@ -40,10 +53,19 @@ func level_up():
 	toNext = round( 0.04 * (pow(level, 3.0)) + 0.8 * (pow(level, 2.0)) + 2 * level)
 	#toNext = round(10 + (float(pow (2, level))))
 	for stat in stats.keys():
-		if !stat=="hp" and !stat=="mp" and !stat=="unitName" and !stat=="name":
+		if !stat=="mhp" and !stat=="mmp" and !stat=="unitName" and !stat=="name":
 			#bonusStats[stat] += round(baseStats[stat]/10)
-			baseStats[stat] += round(prefab.unitDict[stat]/10)
-			stats[stat] = baseStats[stat]
+			if stat == "hp" :
+				baseStats["hp"] += ceil(dict[stat]/10)
+				stats["mhp"] = baseStats[stat]
+			elif stat == "mp":
+				baseStats["mp"] += ceil(dict[stat]/10)
+				stats["mmp"] = baseStats[stat]
+			else:
+				print ("value of " + stat + " " + str(dict[stat]))
+				baseStats[stat] += ceil(dict[stat]/10)
+				stats[stat] = baseStats[stat]
+	update_self()
 	if !stats.hp<=0:
 		stats.hp = stats.mhp
 		stats.mp = stats.mmp
@@ -67,6 +89,7 @@ func save ():
 		"level": level,
 		"bonusStats": bonusStats,
 		"baseStats": baseStats,
+		"dict" : dict,
 		"equipment": itemInstances,
 		"abilities": abilities,
 		"cost" : cost,
@@ -84,6 +107,7 @@ func load_data(data):
 	level = data["level"]
 	bonusStats = data["bonusStats"]
 	baseStats = data["baseStats"]
+	dict = data["dict"]
 	#equipment = data["equipment"]
 	abilities = data["abilities"]
 	statusEffects = data ["statusEffects"]
@@ -101,6 +125,7 @@ func load_data(data):
 func initialize (prefab):
 	self.baseStats = prefab.unitDict.stats.duplicate()
 	self.stats = prefab.unitDict.stats.duplicate()
+	self.dict = prefab.unitDict.stats.duplicate()
 	self.stats.mhp = prefab.unitDict.stats.hp
 	self.stats.mmp = prefab.unitDict.stats.mp
 	self.stats.name = prefab.unitDict.name
@@ -110,7 +135,6 @@ func initialize (prefab):
 	self.cost = 0
 	self.maxCost = prefab.unitDict.stats.apt
 	self.title = prefab.unitDict.title
-	self.prefab = prefab
 	level = 1
 	toNext = round( 0.04 * (pow(level, 3.0)) + 0.8 * (pow(level, 2.0)) + 2 * level)
 	#toNext = round(10 + (float(pow (2, level))))

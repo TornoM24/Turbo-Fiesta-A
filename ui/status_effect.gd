@@ -6,6 +6,7 @@ extends Node2D
 # var b = "text"
 
 var source
+var eff
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -14,10 +15,21 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+func process(delta):
+	pass
+
 func init (effect):
-	get_node ("Sprite").texture = load ("res://gfx/icons/buff/" + effect.effectType + "_buff.png")
+	eff = effect
+	print (eff.length)
+	get_node ("Progress").value = eff.length
+	get_node ("Progress").max_value = eff.maxLength
+	get_node ("Progress").texture_under = load ("res://gfx/icons/buff/" + effect.effectType + "_buff.png")
+	#get_node ("Progress").texture_progress = load ("res://gfx/icons/buff/" + effect.effectType + "_buff.png")
 	#get_node ("Full/Name").bbcode_text = "Source: " + source
 	var desc = get_node ("Full/Explanation")
+	var dur = get_node ("Full/Duration")
+	dur.bbcode_text = "Duration Remaining:\n" + str (effect.length) + "s ◷"
 	if effect.id == "stat_buff":
 		desc.bbcode_text = "A sharpened mind grants a [color=red]" + str (effect.power) + "%[/color] increase to " + effect.effectType.to_upper() + "."
 

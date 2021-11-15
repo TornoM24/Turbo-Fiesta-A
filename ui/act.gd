@@ -14,6 +14,7 @@ const SMALL = 0.3
 const LARGE = 0.5
 
 func hide_buttons ():
+	get_parent().get_parent().get_parent().get_parent().get_node ("actor2").hide()
 	var cir = get_parent().get_parent().get_parent().get_node ("circle")
 	get_parent().show()
 	tween.interpolate_property(cir, "scale",
@@ -51,6 +52,7 @@ onready var spc = get_parent().get_parent().get_node ("special")
 onready var item = get_parent().get_parent().get_node ("item")
 func show_buttons ():
 	get_parent().hide()
+	get_parent().get_parent().get_parent().get_parent().get_node ("actor2").show()
 	tween.interpolate_property(cir, "scale",
 		Vector2 (SMALL,SMALL), Vector2(LARGE,LARGE), 0.2,
 	Tween.TRANS_QUART, Tween.EASE_OUT)

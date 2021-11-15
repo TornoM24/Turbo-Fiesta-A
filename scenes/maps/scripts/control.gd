@@ -142,6 +142,7 @@ func ability_pressed(bHost, inputType):
 
 func _on_defend_pressed(host):
 	if host.inReady:
+		get_parent().scan()
 		pass # Replace with function body.
 
 

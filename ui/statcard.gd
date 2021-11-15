@@ -21,10 +21,19 @@ func _process(delta):
 func init (stat, unit):
 	var stats = unit.stats
 	get_node ("Title").bbcode_text = ""+Master.get_full (stat)
-	get_node ("Full/Total").bbcode_text = "Base : [color=yellow]" + str(stats[stat]) + "[/color]"
+	if stat != "mhp" and stat!= "mmp":
+		get_node ("Full/Total").bbcode_text = "Base : [color=yellow]" + str(unit.baseStats[stat]) + "[/color]"
+		if stat == "hp":
+			get_node ("Full/Total").bbcode_text = "Base : [color=yellow]" + str(unit.baseStats["mhp"]) + "[/color]"
+		if stat == "mp":
+			get_node ("Full/Total").bbcode_text = "Base : [color=yellow]" + str(unit.baseStats["mmp"]) + "[/color]"
+	
 	get_node ("Full/Equip").bbcode_text = "Equipment : [color=lime]" + str(unit.bonusStats[stat]) + ""
 	get_node ("Full/Explanation").bbcode_text = Master.get_full ("e"+stat)
-	get_node ("RichTextLabel").bbcode_text = "[right]" + str(stats[stat] + unit.bonusStats[stat]) + ""
+	if stat != "mhp" and stat!= "mmp":
+		get_node ("RichTextLabel").bbcode_text = "[right]" + str(stats[stat] + unit.bonusStats[stat]) + ""
+	else:
+		get_node ("RichTextLabel").bbcode_text = "[right]" + str(stats[stat]) + ""
 
 func _on_Button_mouse_entered():
 	modulate = Color (1.2,1.2,1.2,1)

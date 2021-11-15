@@ -47,7 +47,7 @@ func generate_status (pUnit):
 				newCard.position = Vector2(10,20 + inc * 36)
 				inc += 1
 				newCard.init (stat, pUnit.reference)
-				if pUnit.bonus[stat] > 0:
+				if pUnit.stats[stat] > pUnit.originalStats[stat]:
 					newCard.get_node ("RichTextLabel").bbcode_text = "[right][color=lime]"+str(pUnit.stats[stat] + pUnit.equipBonus[stat])
 				newCard.show()
 	inc = 0
