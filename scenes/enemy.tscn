@@ -1,49 +1,60 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://gfx/unit/enemy/generic.png" type="Texture" id=1]
-[ext_resource path="res://scenes/Navigation2D.gd" type="Script" id=2]
+[ext_resource path="res://scenes/enemy_parent.gd" type="Script" id=3]
 
-[sub_resource type="AtlasTexture" id=2]
+[sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 1 )
 region = Rect2( 30, 0, 30, 30 )
 
-[sub_resource type="AtlasTexture" id=1]
+[sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 1 )
 region = Rect2( 0, 0, 30, 30 )
 
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
-"frames": [ SubResource( 2 ), SubResource( 1 ) ],
+"frames": [ SubResource( 1 ), SubResource( 2 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
 } ]
 
-[sub_resource type="CapsuleShape2D" id=5]
+[sub_resource type="CapsuleShape2D" id=4]
 radius = 5.0
 
-[sub_resource type="CircleShape2D" id=6]
+[sub_resource type="CircleShape2D" id=5]
 radius = 144.184
 
+[sub_resource type="CapsuleShape2D" id=6]
+radius = 6.0
+height = 18.0
+
 [node name="Node2D" type="Node2D"]
+script = ExtResource( 3 )
 
-[node name="Navigation2D" type="Navigation2D" parent="."]
-script = ExtResource( 2 )
-
-[node name="Enemy" type="AnimatedSprite" parent="Navigation2D"]
+[node name="Enemy" type="AnimatedSprite" parent="."]
 frames = SubResource( 3 )
+frame = 1
+playing = true
 
-[node name="Area2D" type="Area2D" parent="Navigation2D/Enemy"]
+[node name="Area2D" type="Area2D" parent="Enemy"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Navigation2D/Enemy/Area2D"]
+[node name="CollisionArea" type="CollisionShape2D" parent="Enemy/Area2D"]
 position = Vector2( 0, 2 )
 rotation = 1.5708
+shape = SubResource( 4 )
+
+[node name="Area2D2" type="Area2D" parent="Enemy"]
+
+[node name="DetectionRadius" type="CollisionShape2D" parent="Enemy/Area2D2"]
 shape = SubResource( 5 )
 
-[node name="Area2D2" type="Area2D" parent="Navigation2D/Enemy"]
+[node name="KinematicBody2D" type="KinematicBody2D" parent="Enemy"]
 
-[node name="DetectionRadius" type="CollisionShape2D" parent="Navigation2D/Enemy/Area2D2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy/KinematicBody2D"]
+position = Vector2( 0, 1 )
+rotation = 1.5708
 shape = SubResource( 6 )
 
-[connection signal="area_entered" from="Navigation2D/Enemy/Area2D2" to="Navigation2D" method="_on_detection_area_entered"]
-[connection signal="area_exited" from="Navigation2D/Enemy/Area2D2" to="Navigation2D" method="_on_detection_area_exited"]
+[connection signal="body_entered" from="Enemy/Area2D" to="." method="_on_Collision_body_entered"]
+[connection signal="area_entered" from="Enemy/Area2D2" to="." method="_on_Detection_area_entered"]

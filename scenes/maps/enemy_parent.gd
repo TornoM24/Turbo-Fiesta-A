@@ -1,21 +1,17 @@
 extends Navigation2D
 
-export (int) var speed = 250
-
 var path = []
-var walk_distance = 0
-var enemyPos 
 onready var character = $Enemy
+export (int) var speed = 250
 
 func _process(delta):
 	var walk_distance = speed * delta
 	_update_navigation_path(character.position, Master.partyPosition)
 	move_along_path(walk_distance)
+	pass
 	
-
-
 func move_along_path(distance):
-	var last_point = character.position	
+	var last_point = character.position
 	while path.size():
 		var distance_between_points = last_point.distance_to(path[0])
 		# The position to move to falls between two points.
@@ -30,15 +26,11 @@ func move_along_path(distance):
 	character.position = last_point
 	set_process(false)
 
-func _on_Detection_area_entered(area):
-	pass # Replace with function body.
-
 func _update_navigation_path(start_position, end_position):
 	path = get_simple_path(start_position, end_position, true)
 	path.remove(0)
 	set_process(true)
 
-func _on_Collision_body_entered(body):
-	pass # Replace with function body.
+
 
 

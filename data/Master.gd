@@ -385,6 +385,27 @@ comfortable, and often used by travelers in cold, wintery areas. It's cute too!"
 				"power": 10
 			}
 		]
+	},
+	"stella_stuffed_rabbit": {
+		"name" : "Fluffy Stuffed Rabbit",
+		"id" : "stella_stuffed_rabbit",
+		"desc" : """A small, fluffy, nostalgic friend of Stella's. It was given by her mother,
+		gives her a sense of warmth.""",
+		"cost" : 1,
+		"stats" : {
+			"hp" : 10,
+			"int" : 8,
+			"wis" : 20
+		},
+		"effects" : [
+			{
+				"type" : "regen",
+				"param" : "hp",
+				"power" : 10,
+				"length" : 5,
+				"misc" : "sleep"
+			}
+		]
 	}
 }
 
