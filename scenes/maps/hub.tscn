@@ -1,8 +1,9 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/maps/obj/tilemap.tres" type="TileSet" id=2]
 [ext_resource path="res://scenes/maps/Credits.gd" type="Script" id=3]
+[ext_resource path="res://scenes/enemy.tscn" type="PackedScene" id=4]
 [ext_resource path="res://icon.png" type="Texture" id=6]
 [ext_resource path="res://font/Ready Player One.otf" type="DynamicFontData" id=7]
 [ext_resource path="res://scenes/maps/TitleScreen.gd" type="Script" id=8]
@@ -119,7 +120,10 @@ tile_data = PoolIntArray( 65541, 32, 0, 262159, 1610612769, 0, 327691, 33, 0, 32
 
 [node name="NPC" parent="TileMap" instance=ExtResource( 10 )]
 position = Vector2( 208, 144 )
-frame = 1
+frame = 3
+
+[node name="Enemy" parent="TileMap" instance=ExtResource( 4 )]
+position = Vector2( 362, 158.5 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 
