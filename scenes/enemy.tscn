@@ -18,3 +18,5 @@ script = ExtResource( 2 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/Area2D"]
 position = Vector2( 0, 6 )
 shape = SubResource( 1 )
+
+[node name="Navigation2D" type="Navigation2D" parent="Sprite"]
