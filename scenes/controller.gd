@@ -312,24 +312,25 @@ func _input(event):
 		if p.visible:
 			activePanels.append (p)
 	var old = currentPan
-	if event.is_action_pressed ("rightshift"):
-		currentPan += 1
-		if activePanels.size()-1 < currentPan:
-			currentPan = 0
-		if !activePanels [currentPan].get_node ("Panel/buttonhost/acter/act").disabled:
-			activePanels [currentPan].get_node ("Panel/buttonhost/acter/act").grab_focus()
-			update_panels (activePanels)
-		else:
-			currentPan = old
-	if event.is_action_pressed ("leftshift"):
-		currentPan -= 1
-		if currentPan < 0:
-			currentPan = activePanels.size()-1
-		if !activePanels [currentPan].get_node ("Panel/buttonhost/acter/act").disabled:
-			activePanels [currentPan].get_node ("Panel/buttonhost/acter/act").grab_focus()
-			update_panels (activePanels)
-		else:
-			currentPan = old
+	if !targeting:
+		if event.is_action_pressed ("rightshift"):
+			currentPan += 1
+			if activePanels.size()-1 < currentPan:
+				currentPan = 0
+			if !activePanels [currentPan].get_node ("Panel/buttonhost/acter/act").disabled:
+				activePanels [currentPan].get_node ("Panel/buttonhost/acter/act").grab_focus()
+				update_panels (activePanels)
+			else:
+				currentPan = old
+		if event.is_action_pressed ("leftshift"):
+			currentPan -= 1
+			if currentPan < 0:
+				currentPan = activePanels.size()-1
+			if !activePanels [currentPan].get_node ("Panel/buttonhost/acter/act").disabled:
+				activePanels [currentPan].get_node ("Panel/buttonhost/acter/act").grab_focus()
+				update_panels (activePanels)
+			else:
+				currentPan = old
 func _process(delta):
 	var buttonhost = get_node ("Control/Panel/buttonhost")
 	var selector = get_node("Control/Selector")
