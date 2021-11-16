@@ -138,12 +138,12 @@ func _process(delta):
 						if x.target == "all enemies":
 							all = true
 					tween.interpolate_property(self, "position",
-						origin, target.position + Vector2 (100,0), 0.5,
+						origin, target.position + Vector2 (150,0), 0.5,
 					Tween.TRANS_QUART, Tween.EASE_OUT)
 					tween.start()
 					singleRun = false
 				
-				if (global_position == target.position + Vector2 (100,0)) or all:
+				if (global_position == target.position + Vector2 (150,0)) or all:
 					animReset()
 					inAnimation = false
 			else:
