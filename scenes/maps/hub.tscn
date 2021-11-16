@@ -66,6 +66,19 @@ __meta__ = {
 "_editor_description_": " "
 }
 
+[node name="Over" type="TileMap" parent="TileMap"]
+z_index = 378
+z_as_relative = false
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 16, 16 )
+cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+show_collision = true
+format = 1
+tile_data = PoolIntArray( -393209, 24, 0, -393199, 24, 0, 131073, 24, 0, 786460, 24, 0 )
+__meta__ = {
+"_editor_description_": " "
+}
+
 [node name="Container" parent="TileMap" instance=ExtResource( 21 )]
 position = Vector2( 344, 88 )
 
@@ -109,19 +122,6 @@ position = Vector2( 208, 144 )
 frame = 4
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-
-[node name="Over" type="TileMap" parent="."]
-scale = Vector2( 2, 2 )
-z_index = 378
-tile_set = ExtResource( 2 )
-cell_size = Vector2( 16, 16 )
-cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-show_collision = true
-format = 1
-tile_data = PoolIntArray( -393209, 24, 0, -393199, 24, 0, 131073, 24, 0, 786460, 24, 0 )
-__meta__ = {
-"_editor_description_": " "
-}
 
 [node name="TitleScreen" type="Control" parent="."]
 visible = false
