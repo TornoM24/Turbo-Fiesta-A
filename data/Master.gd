@@ -179,8 +179,8 @@ var ability_dict = {
 		"id":"attack_stardust_ray_stella",
 		"type":"ranged",
 		"icon":"shoot2",
-		"fx" : "burst",
-		"desc": "Shoots an enemy, dealing light/magic damage.\n[color=gray]'Stand still, or I won't be able to miss your center!'",
+		"fx" : "shoot",
+		"desc": "Shoots an enemy, dealing light/magic damage.\n[color=gray]'Stand still, or I won't be able to miss your vitals!'",
 		"cost": 0,
 		"effects": [
 			{
