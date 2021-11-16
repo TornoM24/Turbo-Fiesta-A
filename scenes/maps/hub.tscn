@@ -140,10 +140,6 @@ position = Vector2( 1426, 165 )
 scale = Vector2( 2, 2 )
 script = null
 
-[node name="Node2D" parent="Navigation2D" instance=ExtResource( 4 )]
-position = Vector2( 872, -43 )
-script = null
-
 [node name="Player" parent="." instance=ExtResource( 1 )]
 
 [node name="TitleScreen" type="Control" parent="."]
