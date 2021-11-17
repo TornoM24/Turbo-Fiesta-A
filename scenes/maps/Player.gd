@@ -7,10 +7,12 @@ var velocity = Vector2()
 var stamina = 100
 var containerContact = false
 var currentObject
+signal inBounds
 
 onready var down=get_node ("Down")
 onready var side=get_node ("Side")
 onready var up=get_node ("Up")
+onready var enemy = load("res://scenes/enemy.gd").new()
 
 func _ready():
 	position = Master.partyPosition
@@ -94,8 +96,14 @@ func _on_Start_pressed():
 
 func _on_Area2D_area_entered(area):
 	print ("detected area entered.")
-	containerContact = true
+	print(area.get_parent().type)
+	if (area.get_parent().name == "Enemy"):
+		emit_signal("inBounds")
+	elif (area.get_parent().type == "container" or area.get_parent().type == "npc"):
+		containerContact = true
 	currentObject = area.get_parent()
+
+	
 
 func _on_Area2D_area_exited(area):
 	containerContact = false
