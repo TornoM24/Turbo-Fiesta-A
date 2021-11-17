@@ -4,7 +4,7 @@
 [ext_resource path="res://scenes/maps/obj/Chest.gd" type="Script" id=2]
 [ext_resource path="res://gfx/tileset/obj/chest1.png" type="Texture" id=3]
 
-[sub_resource type="Shader" id=5]
+[sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
 render_mode unshaded;
 
@@ -65,32 +65,32 @@ void fragment()
 	COLOR = final_color; 
 }"
 
-[sub_resource type="ShaderMaterial" id=6]
-shader = SubResource( 5 )
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
 shader_param/intensity = 0
 shader_param/precision = 0.02
 shader_param/outline_color = Color( 1, 1, 1, 1 )
 
-[sub_resource type="AtlasTexture" id=7]
+[sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 1 )
 region = Rect2( 16, 16, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=8]
+[sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 1 )
 region = Rect2( 32, 16, 16, 16 )
 
-[sub_resource type="SpriteFrames" id=9]
+[sub_resource type="SpriteFrames" id=5]
 animations = [ {
-"frames": [ SubResource( 7 ), SubResource( 8 ) ],
+"frames": [ SubResource( 3 ), SubResource( 4 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
 } ]
 
-[sub_resource type="CircleShape2D" id=4]
+[sub_resource type="CircleShape2D" id=6]
 radius = 8.0
 
-[sub_resource type="Shader" id=10]
+[sub_resource type="Shader" id=7]
 code = "shader_type canvas_item;
 render_mode unshaded;
 
@@ -151,15 +151,15 @@ void fragment()
 	COLOR = final_color; 
 }"
 
-[sub_resource type="ShaderMaterial" id=11]
-shader = SubResource( 10 )
+[sub_resource type="ShaderMaterial" id=8]
+shader = SubResource( 7 )
 shader_param/intensity = 40
 shader_param/precision = 0.02
 shader_param/outline_color = Color( 1, 1, 1, 1 )
 
 [node name="Chest" type="AnimatedSprite"]
-material = SubResource( 6 )
-frames = SubResource( 9 )
+material = SubResource( 2 )
+frames = SubResource( 5 )
 script = ExtResource( 2 )
 __meta__ = {
 "_editor_description_": ""
@@ -178,11 +178,11 @@ collision_layer = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ContainerHitbox"]
 visible = false
-shape = SubResource( 4 )
+shape = SubResource( 6 )
 
 [node name="Sprite" type="Sprite" parent="."]
 visible = false
-material = SubResource( 11 )
+material = SubResource( 8 )
 texture = ExtResource( 3 )
 
 [connection signal="area_entered" from="ContainerHitbox" to="." method="_on_ContainerHitbox_area_entered"]

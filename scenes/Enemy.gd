@@ -1,8 +1,10 @@
 extends Node2D
 
+var type = "enemy"
 var speed = 100
 var velocity = Vector2()
 var chasing = false
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

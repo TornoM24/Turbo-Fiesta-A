@@ -96,14 +96,12 @@ func _on_Start_pressed():
 
 func _on_Area2D_area_entered(area):
 	print ("detected area entered.")
-	print(area.get_parent().type)
 	if (area.get_parent().name == "Enemy"):
 		emit_signal("inBounds")
 	elif (area.get_parent().type == "container" or area.get_parent().type == "npc"):
 		containerContact = true
 	currentObject = area.get_parent()
 
-	
 
 func _on_Area2D_area_exited(area):
 	containerContact = false
