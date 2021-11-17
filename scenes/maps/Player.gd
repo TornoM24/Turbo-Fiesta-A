@@ -7,14 +7,17 @@ var velocity = Vector2()
 var stamina = 100
 var containerContact = false
 var currentObject
+
 signal inBounds
+signal outBounds
 
 onready var down=get_node ("Down")
 onready var side=get_node ("Side")
 onready var up=get_node ("Up")
-onready var enemy = load("res://scenes/enemy.gd").new()
+
 
 func _ready():
+	Global.player = self
 	position = Master.partyPosition
 	speed = 200
 	side.hide()
@@ -96,6 +99,7 @@ func _on_Start_pressed():
 
 func _on_Area2D_area_entered(area):
 	print ("detected area entered.")
+	# Unsure how to call function for enemy
 	if (area.get_parent().name == "Enemy"):
 		emit_signal("inBounds")
 	elif (area.get_parent().type == "container" or area.get_parent().type == "npc"):
@@ -104,19 +108,23 @@ func _on_Area2D_area_entered(area):
 
 
 func _on_Area2D_area_exited(area):
-	containerContact = false
+	if (area.get_parent().name == "Enemy"):
+		emit_signal("outBounds")
+	elif (area.get_parent().type == "container" or area.get_parent().type == "npc"):
+		containerContact = false
 	currentObject = null
 	pass # Replace with function body.
 	
+# Bug: Enemy will cause an error when walking over you and pressing e on a chest
 func _input(ev):
 	if !DialogManager.playerStun:
 		if ev is InputEventKey and ev.is_action_pressed("interact") and not ev.is_echo():
 			print ("attempting to check for interactable item")
-			if containerContact:
-				if currentObject.type == "npc":
-					currentObject.talk()
-				elif currentObject.type == "container" or currentObject.name == "Chest":
-					currentObject.open_container()
+			if containerContact and currentObject != null:
+					if currentObject.type == "npc":
+						currentObject.talk()
+					elif currentObject.type == "container" or currentObject.name == "Chest":
+						currentObject.open_container()
 			
 	pass
 

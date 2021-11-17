@@ -33,7 +33,7 @@ func _mouse_entered():
 func _mouse_exited():
 	var tween = get_parent().get_node("Tween")
 	tween.interpolate_property(self, "rect_size",
-			 Vector2(320, 48), Vector2(256, 48), 0.1,
+			Vector2(320, 48), Vector2(256, 48), 0.1,
 			Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	tween.interpolate_property(self, "rect_position",
 			Vector2 (oPos.x - 64, oPos.y), oPos, 0.1,

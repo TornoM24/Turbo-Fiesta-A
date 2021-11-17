@@ -27,7 +27,7 @@ func _on_Timer_timeout():
 #	pass
 
 func spawnEnemy():
-	var mob_spawn_location = get_node("Navigation2D/MobPath/MobSpawnLocation")
+	var mob_spawn_location
 	mob_spawn_location.offset = rand.randi()
 	if (rand.randf_range(0.0, 100.0) <= percent):
 		var mob = mob_scene.instance()
