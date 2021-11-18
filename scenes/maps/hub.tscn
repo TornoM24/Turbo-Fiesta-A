@@ -29,10 +29,10 @@ shader_param/sine_offset_scale = Vector2( 0.4, 1.4 )
 shader_param/sine_wave_size = 0.06
 shader_param/texture_offset_uv = ExtResource( 34 )
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=2]
 font_data = ExtResource( 7 )
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=3]
 font_data = ExtResource( 7 )
 
 [node name="Main" type="Node2D"]
@@ -121,9 +121,13 @@ tile_data = PoolIntArray( 65541, 32, 0, 262159, 1610612769, 0, 327691, 33, 0, 32
 
 [node name="NPC" parent="TileMap" instance=ExtResource( 10 )]
 position = Vector2( 208, 144 )
+frame = 4
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 639, 358 )
+
+[node name="Enemy2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 607, 580 )
 
 [node name="Enemy" parent="." instance=ExtResource( 4 )]
 position = Vector2( 1072, 353 )
@@ -142,7 +146,7 @@ margin_left = 120.0
 margin_top = 232.0
 margin_right = 1160.0
 margin_bottom = 250.0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 2 )
 text = "GAME UNKNOWN"
 align = 1
 valign = 1
@@ -169,7 +173,7 @@ margin_left = 504.0
 margin_top = 264.0
 margin_right = 776.0
 margin_bottom = 336.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 3 )
 text = "                    Shitty RPG 
             Goodluck with it"
 readonly = true
@@ -232,6 +236,6 @@ position = Vector2( -168, -352 )
 [node name="Polygon2D" type="Polygon2D" parent="."]
 
 [connection signal="inBounds" from="Player" to="Enemy" method="_on_Player_inBounds"]
-[connection signal="outBounds" from="Player" to="Enemy" method="_on_Player_outBounds"]
+[connection signal="inBounds" from="Player" to="Enemy2" method="_on_Player_inBounds"]
 [connection signal="pressed" from="TitleScreen/Start" to="TitleScreen" method="_on_Start_pressed"]
 [connection signal="pressed" from="TitleScreen/Button" to="TitleScreen/Button/Credits" method="_on_Button_pressed"]

@@ -9,7 +9,6 @@ var containerContact = false
 var currentObject
 
 signal inBounds
-signal outBounds
 
 onready var down=get_node ("Down")
 onready var side=get_node ("Side")
@@ -101,7 +100,7 @@ func _on_Area2D_area_entered(area):
 	print ("detected area entered.")
 	# Unsure how to call function for enemy
 	if (area.get_parent().name == "Enemy"):
-		emit_signal("inBounds")
+		emit_signal("inBounds", true)
 	elif (area.get_parent().type == "container" or area.get_parent().type == "npc"):
 		containerContact = true
 	currentObject = area.get_parent()
@@ -109,13 +108,12 @@ func _on_Area2D_area_entered(area):
 
 func _on_Area2D_area_exited(area):
 	if (area.get_parent().name == "Enemy"):
-		emit_signal("outBounds")
+		emit_signal("inBounds", false)
 	elif (area.get_parent().type == "container" or area.get_parent().type == "npc"):
 		containerContact = false
 	currentObject = null
 	pass # Replace with function body.
 	
-# Bug: Enemy will cause an error when walking over you and pressing e on a chest
 func _input(ev):
 	if !DialogManager.playerStun:
 		if ev is InputEventKey and ev.is_action_pressed("interact") and not ev.is_echo():
