@@ -5,11 +5,13 @@ var speed = 100
 var chasing = false
 var original
 var velocity = Vector2()
+var bound = false
 
 func _ready():
+	connect("inBounds", get_tree().get_root().get_node("/root/Main/Player"), "_on_Player_inBounds", [bound])
 	Global.enemy = self
 	original = Global.enemy.global_position
-	pass # Replace with function body.
+	pass
 	
 func _process(delta):
 	if Global.player != null:
@@ -21,11 +23,6 @@ func _process(delta):
 			global_position += velocity * speed * delta
 	pass
 
-
-func _on_Player_inBounds():
-	chasing = true
-	pass # Replace with function body.
-
-func _on_Player_outBounds():
-	chasing = false
+func _on_Player_inBounds(bound):
+	chasing = bound
 	pass # Replace with function body.
