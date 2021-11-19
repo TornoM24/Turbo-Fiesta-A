@@ -92,9 +92,9 @@ var ability_dict = {
 			}
 		]
 	},
-	"attack_iai_alan":{
+	"attack_iai":{
 		"name": "Iai Draw",
-		"id":"attack_iai_alan",
+		"id":"attack_iai",
 		"type":"phys",
 		"icon":"katana",
 		"fx" : "slash",
@@ -328,13 +328,13 @@ held dear to his heart.""",
 			}
 		]
 	},
-	"alan_foraged_blade":{
+	"akai_foraged_blade":{
 		"name": "Foraged Blade",
-		"id" : "alan_foraged_blade",
+		"id" : "akai_foraged_blade",
 		"desc": """A beautifully-forged curved sword from a distant land forgotten with time. 
 Through an esoteric and long-gone process, the sharpened edge of the blade was 
 forged to excel in slicing through unprotected flesh with its smooth cutting edge. 
-Found in Alan's possession, though when questioned on the circumstances of its acquisition
+Found in Akai's possession, though when questioned on the circumstances of its acquisition
 he says he's simply 'always had it', and to 'stop asking questions.'""",
 		"cost": 1,
 		"stats": {
@@ -344,7 +344,7 @@ he says he's simply 'always had it', and to 'stop asking questions.'""",
 		"effects":[
 			{
 				"type":"ability",
-				"misc":"attack_iai_alan"
+				"misc":"attack_iai"
 			}
 		]
 	},
@@ -547,10 +547,10 @@ func new_game ():
 	for x in self.get_children():
 		x.queue_free()
 	money = 100
-	party = [fabricate("hiro"),fabricate("stella"),fabricate("alan")]
+	party = [fabricate("hiro"),fabricate("stella"),fabricate("akai")]
 	Master.party[0].equip (give_equipment("hiro_heirloom"))
 	formation = [[-1,-1,-1],[2,0,1],[-1,-1,-1]]
-	add_equip (give_equipment ("alan_foraged_blade"))
+	add_equip (give_equipment ("akai_foraged_blade"))
 	add_equip (give_equipment ("stella_shard_coat"))
 	#save_game()
 	

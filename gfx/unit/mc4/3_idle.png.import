@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/alan_foraged_blade.png-b9cb5244a9250eabca9108b651d5869a.stex"
+path="res://.import/3_idle.png-37e2c0ef546922ee3cfe945830c0a15e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://gfx/equip/alan_foraged_blade.png"
-dest_files=[ "res://.import/alan_foraged_blade.png-b9cb5244a9250eabca9108b651d5869a.stex" ]
+source_file="res://gfx/unit/mc4/3_idle.png"
+dest_files=[ "res://.import/3_idle.png-37e2c0ef546922ee3cfe945830c0a15e.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

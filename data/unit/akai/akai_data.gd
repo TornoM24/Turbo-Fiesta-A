@@ -6,10 +6,10 @@ extends Node2D
 # var b = "text"
 #onready var ref_Master = get_node ("/root/Master")
 var bMas = Master.ability_dict
-var unitName = "alan"
+var unitName = "akai"
 var unitDict = {
-	"name" : "Alan",
-	"title" : "time-lost struggler",
+	"name" : "Akai",
+	"title" : "time-lost swordsman",
 	"bio" : "A wanderer who BLUE aba dee aba dieeee aba dee aba dieee abadeeabadie",
 	"stats": {
 		"hp" : 25,
@@ -22,7 +22,7 @@ var unitDict = {
 		"spd" : 99,
 		"luk" : 10
 	},
-	"abilities": [bMas["buff_super_atk"],bMas["attack_iai_alan"],bMas["attack_snowpetal"]]
+	"abilities": [bMas["buff_super_atk"],bMas["attack_iai"],bMas["attack_snowpetal"]]
 }
 
 # Called when the node enters the scene tree for the first time.

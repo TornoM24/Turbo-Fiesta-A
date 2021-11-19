@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/cast.png-03715eb27f83d7b4f838bed903027bc2.stex"
+path="res://.import/3_idle - Copy.png-cec22268752b0da20b4ea16ef914ebfd.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://data/unit/alan/art/cast.png"
-dest_files=[ "res://.import/cast.png-03715eb27f83d7b4f838bed903027bc2.stex" ]
+source_file="res://data/unit/akai/art/3_idle - Copy.png"
+dest_files=[ "res://.import/3_idle - Copy.png-cec22268752b0da20b4ea16ef914ebfd.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

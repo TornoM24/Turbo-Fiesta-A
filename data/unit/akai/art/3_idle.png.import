@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/swing.png-27f55478a2098daebe7f07a26cf06f16.stex"
+path="res://.import/3_idle.png-637435caf5643d87784298b299631e5a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://data/unit/alan/art/swing.png"
-dest_files=[ "res://.import/swing.png-27f55478a2098daebe7f07a26cf06f16.stex" ]
+source_file="res://data/unit/akai/art/3_idle.png"
+dest_files=[ "res://.import/3_idle.png-637435caf5643d87784298b299631e5a.stex" ]
 
 [params]
 
