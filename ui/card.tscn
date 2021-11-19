@@ -6,7 +6,7 @@
 [ext_resource path="res://gfx/unit/mpbar.png" type="Texture" id=4]
 [ext_resource path="res://font/kissinger.tres" type="DynamicFont" id=5]
 [ext_resource path="res://gfx/unit/xpbar.png" type="Texture" id=6]
-[ext_resource path="res://gfx/overworld char/derp..png" type="Texture" id=7]
+[ext_resource path="res://gfx/unit/mc1/splash.png" type="Texture" id=7]
 [ext_resource path="res://ui/Button.gd" type="Script" id=8]
 [ext_resource path="res://pixel_panel_arrow.theme" type="Theme" id=9]
 [ext_resource path="res://data/unit/hiro/art/hiro_idle.tres" type="SpriteFrames" id=10]
@@ -16,7 +16,7 @@
 [ext_resource path="res://ui/embellish_2.png" type="Texture" id=14]
 [ext_resource path="res://ui/embellish_1.png" type="Texture" id=15]
 [ext_resource path="res://ui/embellish_3.png" type="Texture" id=16]
-[ext_resource path="res://data/unit/hiro/art/hiro_portrait.png" type="Texture" id=17]
+[ext_resource path="res://pixel_panel.theme" type="Theme" id=17]
 [ext_resource path="res://ui/fade.png" type="Texture" id=18]
 
 [node name="C" type="Node2D"]
@@ -36,7 +36,7 @@ __meta__ = {
 }
 
 [node name="e1" type="Sprite" parent="Card/Embellishments"]
-position = Vector2( 32, 386 )
+position = Vector2( 32, 427 )
 scale = Vector2( 2, 1.5 )
 texture = ExtResource( 15 )
 
@@ -47,7 +47,7 @@ scale = Vector2( 2, 1 )
 texture = ExtResource( 14 )
 
 [node name="e3" type="Sprite" parent="Card/Embellishments"]
-position = Vector2( 160, 386 )
+position = Vector2( 160, 427 )
 scale = Vector2( 2, 1.5 )
 texture = ExtResource( 15 )
 
@@ -179,55 +179,43 @@ __meta__ = {
 
 [node name="LvlLabel" type="RichTextLabel" parent="Card"]
 margin_left = 16.0
-margin_top = 416.0
+margin_top = 440.0
 margin_right = 176.0
-margin_bottom = 432.0
+margin_bottom = 456.0
 custom_fonts/normal_font = ExtResource( 12 )
 bbcode_enabled = true
 bbcode_text = "[center]Level 87"
 text = "Level 87"
 __meta__ = {
-"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
 [node name="Title" type="RichTextLabel" parent="Card"]
 margin_left = 16.0
-margin_top = 352.0
+margin_top = 400.0
 margin_right = 176.0
-margin_bottom = 368.0
+margin_bottom = 416.0
 custom_fonts/normal_font = ExtResource( 12 )
 bbcode_enabled = true
 bbcode_text = "[center][color=gray]~ crimson daredevil ~"
 text = "~ crimson daredevil ~"
 scroll_active = false
 __meta__ = {
-"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
 [node name="Label1" type="RichTextLabel" parent="Card"]
 margin_left = 16.0
-margin_top = 376.0
+margin_top = 416.0
 margin_right = 176.0
-margin_bottom = 400.0
+margin_bottom = 440.0
 custom_fonts/normal_font = ExtResource( 13 )
 bbcode_enabled = true
 bbcode_text = "[center][color=#ffb100]Hiro"
 text = "Hiro"
 scroll_active = false
 __meta__ = {
-"_edit_lock_": true,
 "_edit_use_anchors_": false
-}
-
-[node name="Sprite" type="Sprite" parent="Card"]
-visible = false
-position = Vector2( 96, 216 )
-scale = Vector2( 2.39474, 1.716 )
-texture = ExtResource( 7 )
-__meta__ = {
-"_edit_lock_": true
 }
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Card"]
@@ -260,26 +248,42 @@ visible = false
 position = Vector2( 96, 352 )
 scale = Vector2( 2, 2 )
 frames = ExtResource( 10 )
-frame = 11
+frame = 4
 playing = true
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Portrait" type="Sprite" parent="Card"]
-visible = false
-position = Vector2( 96, 186 )
-scale = Vector2( 0.621454, 0.618794 )
-texture = ExtResource( 17 )
+[node name="Panel2" type="Panel" parent="Card"]
+margin_left = 8.0
+margin_top = 24.0
+margin_right = 184.0
+margin_bottom = 384.0
+theme = ExtResource( 17 )
 __meta__ = {
-"_edit_lock_": true
+"_edit_use_anchors_": false
 }
 
-[node name="fade" type="Sprite" parent="Card"]
+[node name="fade" type="Sprite" parent="Card/Panel2"]
 self_modulate = Color( 1, 1, 1, 0.560784 )
-position = Vector2( 96, 280 )
-scale = Vector2( 0.352, 0.16 )
+position = Vector2( 88, 320 )
+scale = Vector2( 0.32, 0.144 )
 texture = ExtResource( 18 )
+
+[node name="Control" type="Control" parent="Card/Panel2"]
+margin_left = 5.0
+margin_top = 6.0
+margin_right = 170.0
+margin_bottom = 356.0
+rect_clip_content = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Portrait" type="Sprite" parent="Card/Panel2/Control"]
+position = Vector2( 72, 200 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 7 )
 
 [node name="Button" type="Button" parent="."]
 self_modulate = Color( 1, 1, 1, 0 )

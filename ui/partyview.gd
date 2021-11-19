@@ -228,8 +228,10 @@ func cards_show ():
 		var cNode = get_node ("C" + str (incr))
 		cNode.show()
 		var card = cNode.get_node ("Card")
+		var path = "res://data/unit/"+ally.unitName+"/art/"
 		var idlePath = load("res://data/unit/"+ally.unitName+"/art/"+ally.unitName+"_idle.tres")
-		cNode.get_node("Card/CharSprite").frames = idlePath
+		card.get_node("Card/Panel2/Control/Portrait").texture = load(path + "splash.png")
+		card.get_node("HPBar").sprite = int((float(ally.stats.hp)/ally.stats.mhp)*100)
 		card.get_node("HPBar").value = int((float(ally.stats.hp)/ally.stats.mhp)*100)
 		card.get_node("MPBar").value = int((float(ally.stats.mp)/ally.stats.mmp)*100)
 		card.get_node("EXPBar").value = int((float(ally.xp)/ally.toNext)*100)

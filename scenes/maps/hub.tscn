@@ -235,7 +235,7 @@ position = Vector2( -168, -352 )
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 
-[connection signal="inBounds" from="Player" to="Enemy" method="_on_Player_inBounds"]
 [connection signal="inBounds" from="Player" to="Enemy2" method="_on_Player_inBounds"]
+[connection signal="inBounds" from="Player" to="Enemy" method="_on_Player_inBounds"]
 [connection signal="pressed" from="TitleScreen/Start" to="TitleScreen" method="_on_Start_pressed"]
 [connection signal="pressed" from="TitleScreen/Button" to="TitleScreen/Button/Credits" method="_on_Button_pressed"]
