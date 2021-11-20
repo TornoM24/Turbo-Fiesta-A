@@ -275,6 +275,7 @@ func causeEffect (target,source,ability):
 				buff = Master.effect_dict["stat_buff"].duplicate()
 				buff.source = ability.name
 				buff.length = block.duration
+				buff["maxLength"] = block.duration
 				buff.effectType = block.param
 				buff.power = block.power
 				buff.name = block.param + " stat buff"

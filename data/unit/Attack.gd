@@ -17,11 +17,11 @@ func _ready():
 
 
 func _on_Attack_animation_finished():
-	self.playing = false
-	var lf = -1
-	while lf != frame:
-		print (frame)
-		frame += 1
-		lf +=1
-	lf = frame
+#	self.playing = false
+#	var lf = -1
+#	while lf != frame:
+#		print (frame)
+#		frame += 1
+#		lf +=1
+#	lf = frame
 	pass # Replace with function body.

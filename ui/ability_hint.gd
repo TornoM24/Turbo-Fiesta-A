@@ -34,7 +34,10 @@ func generateTip (ability):
 	get_node ("Panel/AbilityName").bbcode_text = ability.name #+ "\n[Mana Cost : [color=#00c8ff]" + str(ability.cost) + "[/color]]"
 	var d = (load ("res://ui/panel_set.tscn").instance())
 	get_node("Panel/ScrollContainer/Control").add_child (d)
-	d.setText ("DESCRIPTION",ability.desc)
+	if ability.has ("castTime"):
+		d.setText ("DESCRIPTION",ability.desc + "\n\nCast Time: [color=lime]" + str (ability.castTime) + "[/color] seconds ◷")
+	else:
+		d.setText ("DESCRIPTION",ability.desc)
 	d.position = Vector2(0, 20+yOffset)
 	yOffset+= 128
 	var tipText = ""
@@ -92,7 +95,7 @@ func generateTip (ability):
 				tipText = "Heals [color=lime]" + str(x.power) + "[/color]% of character's [color=lime]" + scalers + "[/color] to all allies."
 		if x.type == "buff":
 			if x.target == "self":
-				tipText = "Applies [color=lime]" + str (x.power) + "%[/color] modifier to user's [color=yellow]" + x.param.to_upper() + "[/color] stat."
+				tipText = "Applies [color=lime]" + str (x.power) + "%[/color] modifier to user's [color=yellow]" + x.param.to_upper() + "[/color] stat for " + str(x.duration) + " seconds."
 		var y = (load ("res://ui/panel_set.tscn").instance())
 		get_node ("Panel/ScrollContainer/Control").add_child (y)
 		y.setText ("EFFECT "+ str (inc), tipText)

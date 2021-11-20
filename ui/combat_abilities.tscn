@@ -131,6 +131,32 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="HPLabel" type="RichTextLabel" parent="namedisplay"]
+margin_left = 51.0
+margin_top = -12.0
+margin_right = 91.0
+margin_bottom = 4.0
+bbcode_enabled = true
+bbcode_text = "[right]59"
+text = "59"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MPLabel" type="RichTextLabel" parent="namedisplay"]
+margin_left = 107.0
+margin_top = -12.0
+margin_right = 147.0
+margin_bottom = 4.0
+bbcode_enabled = true
+bbcode_text = "59"
+text = "59"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="ATB2" type="TextureProgress" parent="."]
 margin_left = 22.0
 margin_top = 438.58

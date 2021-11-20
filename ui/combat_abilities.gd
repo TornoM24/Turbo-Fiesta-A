@@ -32,6 +32,8 @@ onready var panel = get_node ("Panel")
 func _process(delta):
 	get_node ("namedisplay/ATBBar").value = assignment.atb_val
 	get_node ("ATB2").value = assignment.atb_val
+	get_node("namedisplay/HPLabel").bbcode_text = "[right]" + str (assignment.stats.hp) + "/" + str (assignment.stats.mhp)
+	get_node("namedisplay/MPLabel").bbcode_text = "" + str (assignment.stats.mp) + "/" + str (assignment.stats.mmp)
 	if active:
 		#print (assignment.stats.name + " " + str(assignment.atb_val))
 		if assignment.atb_val >= 100:

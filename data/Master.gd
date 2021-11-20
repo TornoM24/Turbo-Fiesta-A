@@ -46,29 +46,21 @@ var ability_dict = {
 		]
 	},
 	"buff_super_atk":{
-		"name": "Gamer Rage",
+		"name": "Focus",
 		"id":"buff_super_atk",
 		"type":"magic",
 		"icon":"magic",
 		"fx" : "glow",
-		"castTime" : 0.1,
-		"quote" : "REEEEE",
-		"desc": "GOOD LORD IM SO ABSOLUTELY PUMPED RIGHT NOW",
-		"cost": 0,
+		"castTime" : 8,
+		"desc": "User focuses self, granting heavily increased attack power but taking an immense amount of time.",
+		"cost": 10,
 		"effects": [
 			{
 				"type": "buff",
 				"target": "self",
 				"param": "atk",
-				"power": 999,
-				"duration": 10
-			},
-			{
-				"type": "buff",
-				"target": "self",
-				"param": "def",
-				"power": 999,
-				"duration": 10
+				"power": 50,
+				"duration": 30
 			}
 		]
 	},
@@ -146,14 +138,14 @@ var ability_dict = {
 				"target": "self",
 				"param": "atk",
 				"power": 20,
-				"duration": 10
+				"duration": 30
 			},
 			{
 				"type": "buff",
 				"target": "self",
 				"param": "def",
 				"power": 30,
-				"duration": 10
+				"duration": 30
 			}
 		]
 	},

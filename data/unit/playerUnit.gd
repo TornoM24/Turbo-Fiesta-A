@@ -94,7 +94,7 @@ func animReset():
 	get_node ("Attack").playing=true
 	
 func animBreak():
-	get_node ("AnimatedSprite").show()
+	#get_node ("AnimatedSprite").show()
 	get_node ("Attack").hide()
 	get_node ("Attack").frame=0
 	get_node ("Attack").playing=false
@@ -131,6 +131,13 @@ func _process(delta):
 		if inAnimation:		
 			if type == "magic":
 				casting = true
+				get_node ("AnimatedSprite").hide()
+				var timer = get_node ("Timer")
+				if ability.has ("castTime"):
+					timer.wait_time = ability.castTime
+				else:
+					timer.wait_time = 4
+				timer.start()
 			if type !="ranged" and type!= "magic":
 				var all = false
 				if singleRun:
@@ -146,7 +153,7 @@ func _process(delta):
 				if (global_position == target.position + Vector2 (150,0)) or all:
 					animReset()
 					inAnimation = false
-			else:
+			else:#if type *is* magic then
 				animReset()
 				inAnimation = false
 		if inRecovery:
@@ -161,9 +168,10 @@ func _process(delta):
 					singleRun = false
 				if global_position == origin:
 					animBreak()
+					get_node ("AnimatedSprite").show()
 					inRecovery = false
 					animStun = false
-			else:
+			else: #if type *is* magic then
 				animBreak()
 				inRecovery = false
 				animStun = false
@@ -225,7 +233,6 @@ func create_message (message):
 func parse_buff (buff):
 	print ("gave " + unitName + " the buff " + buff.name)
 	buff ["timer"] = 0
-	buff ["maxLength"] = buff.length
 	buff ["realPower"] = int (stats[buff.effectType] * float(buff.power)/100)
 	buff ["particle"] = load ("res://gfx/fx/particle_effect.tscn").instance()
 	buff.particle.get_node ("Sprite").hide()
@@ -287,22 +294,16 @@ func process_end():
 	get_node ("CastParticles").emitting = false
 
 func _on_Attack_animation_finished():
-	get_node ("AnimatedSprite").show()
-	
 	if ability.type != "magic": 
+		get_node ("AnimatedSprite").show()
 		get_node ("Attack").hide()
 		singleRun = true
 		process_end()
-	else:
-		get_node ("AnimatedSprite").hide()
-		var timer = get_node ("Timer")
-		if ability.has ("castTime"):
-			timer.wait_time = ability.castTime
-		timer.start()
 	pass # Replace with function body.
 
 
 func _on_Timer_timeout():
 	singleRun = true
+	get_node ("AnimatedSprite").show()
 	process_end()
 	pass # Replace with function body.
