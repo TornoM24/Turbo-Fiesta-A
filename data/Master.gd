@@ -172,7 +172,7 @@ var ability_dict = {
 		"type":"ranged",
 		"icon":"shoot2",
 		"fx" : "shoot",
-		"desc": "Shoots an enemy, dealing light/magic damage.\n[color=gray]'Stand still, or I won't be able to miss your vitals!'",
+		"desc": "Flings stars at an enemy, dealing light/magic damage.\n[color=gray]",
 		"cost": 0,
 		"effects": [
 			{
@@ -181,6 +181,26 @@ var ability_dict = {
 				"scaling" : ["int"],
 				"elements": ["magic","light"],
 				"power": 100,
+				"acc": 100,
+			}
+		]
+	},
+	"attack_interceptor":{
+		"name": "Igelschütze",
+		"id":"attack_interceptor",
+		"type":"ranged",
+		"icon":"shoot2",
+		"fx" : "shoot",
+		"desc": "Shoots a target unit with built-in weaponry, dealing light physical damage over ten shots.\n[color=gray]'Stand still. Or move. It's all the same to me, really.'",
+		"cost": 0,
+		"effects": [
+			{
+				"type": "damage",
+				"target": "single",
+				"scaling" : ["atk"],
+				"elements": ["physical"],
+				"power": 100,
+				"hits":10,
 				"acc": 100,
 			}
 		]
@@ -539,9 +559,9 @@ func new_game ():
 	for x in self.get_children():
 		x.queue_free()
 	money = 100
-	party = [fabricate("hiro"),fabricate("stella"),fabricate("akai")]
+	party = [fabricate("hiro"),fabricate("stella"),fabricate("akai"),fabricate("sabot")]
 	Master.party[0].equip (give_equipment("hiro_heirloom"))
-	formation = [[-1,-1,-1],[2,0,1],[-1,-1,-1]]
+	formation = [[-1,3,-1],[2,0,1],[-1,-1,-1]]
 	add_equip (give_equipment ("akai_foraged_blade"))
 	add_equip (give_equipment ("stella_shard_coat"))
 	#save_game()

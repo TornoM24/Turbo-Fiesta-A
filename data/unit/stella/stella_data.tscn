@@ -12,8 +12,12 @@ var bMas = Master.ability_dict
 var unitName = \"stella\"
 var unitDict = {
 	\"name\" : \"Stella\",
-	\"title\": \"sarcastic seeker\",
+	\"title\": \"laid-back mage\",
+	\"class\" : \"Straightforward Mage\",
+	\"types\" : \"Mage, Support\",
 	\"bio\" : \"Hiro's childhood friend, who ooh eeh eeh ah ah ting tang walla walla bing bang\",
+	\"weapon\" : \"\",
+	\"facts\": \"Favorite food: Caramel\",
 	\"stats\": {
 		\"hp\" : 25,
 		\"mp\" : 30,

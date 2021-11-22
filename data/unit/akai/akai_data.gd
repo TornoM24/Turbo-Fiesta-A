@@ -10,7 +10,15 @@ var unitName = "akai"
 var unitDict = {
 	"name" : "Akai",
 	"title" : "time-lost swordsman",
-	"bio" : "A wanderer who BLUE aba dee aba dieeee aba dee aba dieee abadeeabadie",
+	"class" : "High-speed Assassin",
+	"types" : "Assassin, Fighter",
+	"bio" : "A wanderer hailing from somewhere in the East. According to himself, he is a seasoned swordsman and a practitioner of a long-lost meditative discipline borne only by the most steel-hearted of warriors, although his drunkard tendencies and questionable (albeit certainly effective) fighting style causes a bit of confusion about his peers.\nIronically enough, despite these flaws, he is rather charismatic, and likeable enough, if not for the constant smell of Vallant brew lingering on his breath.",
+	"weapon": """FORAGED BLADE: A beautifully-forged curved sword from a distant land forgotten with time. 
+Through an esoteric and long-gone process, the sharpened edge of the blade was 
+forged to excel in slicing through unprotected flesh with its smooth cutting edge. 
+Found in Akai's possession, though when questioned on the circumstances of its acquisition
+he says he's simply 'always had it', and to 'stop asking questions.'""",
+	"facts": "Favorite food: Peaches",
 	"stats": {
 		"hp" : 25,
 		"mp" : 25,

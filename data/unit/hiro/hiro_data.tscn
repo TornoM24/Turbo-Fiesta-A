@@ -13,7 +13,11 @@ var unitName = \"hiro\"
 var unitDict = {
 	\"name\" : \"Hiro\",
 	\"title\" : \"hot-blooded daredevil\",
-	\"bio\" : \"A young man on a journey to placeholder foo bar lorem ipsum sit dolor amet\",
+	\"class\" : \"Hybrid All-Rounder\",
+	\"types\" : \"All-Rounder\",
+	\"bio\" : \"A young man hailing from VILLAGE, wandering the land after it was burnt down in an unknown incident.\\nHe is notorious among his companions for his hot-blooded nature, which drives him to ridiculous and often obscenely reckless actions. 'For fun,' he claims, but everyone is more or less skeptical of this rather lazy claim.\",
+	\"weapon\": \"Hiro fights practically unarmed, with a single warped red gauntlet strapped to his wrist, a relic of his traumatic past. AS such, his techniques primarily consist of a combination of unarmed physical impacts, close-range flame magic, and protective shields (just in case).\",
+	\"facts\": \"Favorite food: ADRENALINE\",
 	\"stats\": {
 		\"hp\" : 30,
 		\"mp\" : 20,
