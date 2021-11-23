@@ -25,6 +25,7 @@ Master="*res://data/Master.gd"
 LootTable="*res://data/LootTable.gd"
 AudioManager="*res://data/AudioManager.gd"
 DialogManager="*res://data/DialogManager.gd"
+AbilityTable="*res://data/AbilityTable.gd"
 
 [debug]
 

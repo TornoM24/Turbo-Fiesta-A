@@ -313,6 +313,9 @@ func _on_Tabs_tab_selected(tab):
 					x.hide()
 			print ("on abilities screen")
 			draw_parameters (Master.party[number-1])
+	if tab == 4:
+		var bio = get_node ("StatsPanel/Tabs/Info/Bio")
+		bio.bbcode_text = Master.party[number-1].stats.name + "\n\n" + Master.party[number-1].prefab.class + " [" + Master.party[number-1].prefab.types + "]" + "\n\nBIO:\n" + Master.party[number-1].prefab.bio + "\n\nWEAPON:\n" + Master.party[number-1].prefab.weapon
 	pass # Replace with function body.
 
 

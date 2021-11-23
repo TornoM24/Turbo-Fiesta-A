@@ -15,6 +15,7 @@ var unitDict = {
 	"bio" : "A humanoid weapon constructed (or modified?) by the Almerian Federation as part of a series of prototype shock assault experiments.\nThey were once something- or someone, but their identity was lost the moment they became a weapon, an issue that Sabot seems to have no qualms about.\nYet, flashes of a haunted past yet remain, swirling about their ever-online fire control systems, and that attitude may just yet change with time...",
 	"weapon" : "This particular unit is equipped with several anti-personnel autocannons and an enormous metal jaw grafted onto their right arm, which appears to move semi-independently. Within the cruel metal jaws lies a lethally sharp spiked rod that not only brutally impales its foes, but obliterates armor with frightening efficacy, albeit with an extreme weight imbalance, a result of the unrefined Almerian mass-produced weapons development at the time of Sabot's manufacturing.",
 	"facts": "Favorite food: None (Fuel?)",
+	"specialRanged": true,
 	"stats": {
 		"hp" : 40,
 		"mp" : 30,

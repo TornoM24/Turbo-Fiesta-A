@@ -90,6 +90,7 @@ func save ():
 		"bonusStats": bonusStats,
 		"baseStats": baseStats,
 		"dict" : dict,
+		"prefab" : prefab,
 		"equipment": itemInstances,
 		"abilities": abilities,
 		"cost" : cost,
@@ -102,6 +103,7 @@ func save ():
 
 func load_data(data):
 	#name = unitName+"_data"
+	prefab = data["prefab"]
 	unitName = data["unitName"]
 	stats = data["stats"]
 	level = data["level"]
@@ -121,8 +123,9 @@ func load_data(data):
 	toNext = round( 0.04 * (pow(level, 3.0)) + 0.8 * (pow(level, 2.0)) + 2 * level)
 	#toNext = round(10 + (float(pow (2, level))))
 	return self
-
+var details = {}
 func initialize (prefab):
+	self.prefab = prefab.unitDict.duplicate()
 	self.baseStats = prefab.unitDict.stats.duplicate()
 	self.stats = prefab.unitDict.stats.duplicate()
 	self.dict = prefab.unitDict.stats.duplicate()

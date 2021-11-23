@@ -15,8 +15,8 @@ var unitDict = {
 	\"title\" : \"hot-blooded daredevil\",
 	\"class\" : \"Hybrid All-Rounder\",
 	\"types\" : \"All-Rounder\",
-	\"bio\" : \"A young man hailing from VILLAGE, wandering the land after it was burnt down in an unknown incident.\\nHe is notorious among his companions for his hot-blooded nature, which drives him to ridiculous and often obscenely reckless actions. 'For fun,' he claims, but everyone is more or less skeptical of this rather lazy claim.\",
-	\"weapon\": \"Hiro fights practically unarmed, with a single warped red gauntlet strapped to his wrist, a relic of his traumatic past. AS such, his techniques primarily consist of a combination of unarmed physical impacts, close-range flame magic, and protective shields (just in case).\",
+	\"bio\" : \"A young man hailing from VILLAGE, wandering the land after it was burnt down in an unknown incident.\\nHe is notorious among his companions for his hot-blooded nature, which drives him to ridiculous and often obscenely reckless actions. 'For fun,' he claims, but everyone is more or less skeptical of this rather lazy claim. This recklessness has led to a tendency for him to not take even the most dire of situations with any particular seriousness, no matter how detrimental.\",
+	\"weapon\": \"Hiro fights practically unarmed, with a single warped red gauntlet strapped to his wrist, a relic of his traumatic past. However, the gauntlet itself appears to hold no combative significance, and its usability is dangerously hampered by its extreme flame-fed wear. Due to his lack of any considerable weaponry, his techniques primarily consist of a combination of unarmed physical impacts, close-range flame magic, and protective shields (just in case).\",
 	\"facts\": \"Favorite food: ADRENALINE\",
 	\"stats\": {
 		\"hp\" : 30,
