@@ -49,7 +49,7 @@ func updateStats (delta):
 			x.reference.stats.mp = x.stats.mp
 		get_node (path).unit = x
 		get_node (path+"RichTextLabel").bbcode_enabled = true
-		get_node (path+"RichTextLabel").bbcode_text = x.get_node ("Data").unitDict.name
+		#get_node (path+"RichTextLabel").bbcode_text = x.get_node ("Data").unitDict.name
 		get_node (path+"HPLabel").bbcode_text = "[right][color=#ffeeb8]" + str (x.stats.hp)
 		get_node (path+"MPLabel").bbcode_text = "[right][color=#edfffa]" + str (x.stats.mp)
 		if x.atb_val >= 100:

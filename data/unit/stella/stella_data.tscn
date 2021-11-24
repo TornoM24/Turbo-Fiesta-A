@@ -42,5 +42,5 @@ func _ready():
 #	pass
 "
 
-[node name="Data" type="Node2D"]
+[node name="Data2" type="Node2D"]
 script = SubResource( 1 )

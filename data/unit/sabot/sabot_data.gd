@@ -19,15 +19,15 @@ var unitDict = {
 	"stats": {
 		"hp" : 40,
 		"mp" : 30,
-		"atk" : 4,
+		"atk" : 10,
 		"def" : 10,
-		"int" : 4,
+		"int" : 2,
 		"wis" : 4,
-		"apt" : 4,
-		"spd" : 99,
-		"luk" : 6
+		"apt" : 3,
+		"spd" : 4,
+		"luk" : 5
 	},
-	"abilities": [bMas["attack_interceptor"]]
+	"abilities": [bMas["attack_interceptor"],bMas["buff_light_atk"]]
 }
 
 # Called when the node enters the scene tree for the first time.
