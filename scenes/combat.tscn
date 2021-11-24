@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://scenes/maps/runbutton.gd" type="Script" id=1]
 [ext_resource path="res://scenes/maps/scripts/control.gd" type="Script" id=2]
@@ -8,6 +8,8 @@
 [ext_resource path="res://pixel_button.tres" type="Theme" id=6]
 [ext_resource path="res://pixel_panel.theme" type="Theme" id=7]
 [ext_resource path="res://combat_stats.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/fps.gd" type="Script" id=9]
+[ext_resource path="res://ui/fade.png" type="Texture" id=10]
 [ext_resource path="res://gfx/unit/selector.png" type="Texture" id=16]
 [ext_resource path="res://pixel_button_red.tres" type="Theme" id=17]
 [ext_resource path="res://pixel_button_2.tres" type="Theme" id=18]
@@ -73,6 +75,22 @@ script = ExtResource( 3 )
 position = Vector2( 640, 359 )
 scale = Vector2( 4, 4.01111 )
 texture = ExtResource( 25 )
+
+[node name="fade" type="Sprite" parent="."]
+self_modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 639, 553 )
+scale = Vector2( 2.564, 0.676 )
+texture = ExtResource( 10 )
+
+[node name="Panel2" type="Panel" parent="."]
+visible = false
+margin_left = -8.0
+margin_top = 384.0
+margin_right = 1288.0
+margin_bottom = 720.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Control" type="Control" parent="."]
 margin_right = 40.0
@@ -308,9 +326,9 @@ __meta__ = {
 }
 
 [node name="readyhelper" type="RichTextLabel" parent="Control/Panel"]
-margin_top = -40.0
+margin_top = -80.0
 margin_right = 280.0
-margin_bottom = -13.0
+margin_bottom = -53.0
 text = "Character not ready yet!"
 scroll_active = false
 script = ExtResource( 19 )
@@ -346,7 +364,7 @@ __meta__ = {
 visible = false
 position = Vector2( 488, 136 )
 frames = SubResource( 9 )
-frame = 4
+frame = 3
 speed_scale = 2.0
 playing = true
 
@@ -461,6 +479,16 @@ texture = ExtResource( 5 )
 [node name="unit_box7" type="Sprite" parent="Enemy/boxes2"]
 position = Vector2( 1016, 96 )
 texture = ExtResource( 5 )
+
+[node name="fps" type="Label" parent="."]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 48.0
+margin_bottom = 21.0
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [connection signal="pressed" from="Control/Panel/buttonhost/attack" to="Control" method="_on_attack_pressed"]
 [connection signal="toggled" from="Control/Panel/buttonhost/attack" to="Control" method="_on_attack_toggled"]

@@ -326,7 +326,7 @@ func _on_Timer_timeout():
 	tween.start()
 	process_end()
 	pass # Replace with function body.
-
+onready var bar = get_node ("TextureProgress")
 
 func _on_Tween_tween_all_completed():
 	tween.interpolate_property(get_node ("AnimatedSprite"), "position",

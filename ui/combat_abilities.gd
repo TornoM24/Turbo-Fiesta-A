@@ -29,20 +29,22 @@ func init (unit):
 	pass
 
 onready var panel = get_node ("Panel")
+var targetPosition = Vector2(704,456)
+var offset = 288
 func _process(delta):
 	get_node ("namedisplay/ATBBar").value = assignment.atb_val
 	get_node ("ATB2").value = assignment.atb_val
 	get_node("namedisplay/HPLabel").bbcode_text = "[right]" + str (assignment.stats.hp) + "/" + str (assignment.stats.mhp)
-	get_node("namedisplay/MPLabel").bbcode_text = "" + str (assignment.stats.mp) + "/" + str (assignment.stats.mmp)
+	get_node("namedisplay/MPLabel").bbcode_text = "[right]" + str (assignment.stats.mp) + "/" + str (assignment.stats.mmp)
 	if active:
 		#print (assignment.stats.name + " " + str(assignment.atb_val))
 		if assignment.atb_val >= 100:
 			inReady = true
-			if panel.rect_position.y >= 704:
+			if panel.rect_position.y >= targetPosition.x:
 				shift_up()
 		else: 
 			inReady = false
-			if panel.rect_position.y <= 416:
+			if panel.rect_position.y <= targetPosition.y:
 				print (position.y)
 				shift_down()
 	pass
@@ -52,7 +54,7 @@ func shift_up():
 	tween.interpolate_property(panel, "rect_position",
 	#tween.interpolate_property(self, "position",
 		#null, Vector2(position.x, position.y-256), 0.2,
-		panel.rect_position, Vector2(panel.rect_position.x, panel.rect_position.y-288), 0.2,
+		panel.rect_position, Vector2(panel.rect_position.x, panel.rect_position.y-248), 0.2,
 	Tween.TRANS_QUART, Tween.EASE_OUT)
 	tween.start()
 	
@@ -62,7 +64,7 @@ func shift_down():
 	tween.interpolate_property(panel, "rect_position",
 	#tween.interpolate_property(self, "position",
 		#null, Vector2(position.x, position.y+256), 0.2,
-		panel.rect_position, Vector2(panel.rect_position.x, panel.rect_position.y+288), 0.2,
+		panel.rect_position, Vector2(panel.rect_position.x, panel.rect_position.y+248), 0.2,
 	Tween.TRANS_QUART, Tween.EASE_OUT)
 	tween.start()
 

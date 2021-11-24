@@ -151,14 +151,15 @@ func spawnAllies ():
 				instance.originalStats = instance.stats.duplicate()
 				instance.equipBonus = instance.reference.bonusStats.duplicate()
 				alliesUnit.append(instance)
-				var aPanel = load ("res://ui/combat_abilities.tscn").instance()
+				var aPanel = load ("res://ui/combat_abilities_2.tscn").instance()
 				aPanel.name = "A" + str(incrementer)
 				add_child (aPanel)
-				if incrementer == 1:
-					aPanel.get_node ("Panel/buttonhost/acter/act").grab_focus()
-					aPanel.get_node ("Panel/buttonhost/acter/act").show_buttons()
-				else:
-					aPanel.get_node ("Panel/buttonhost/acter/act").hide_buttons()
+#				if incrementer == 1:
+#					aPanel.get_node ("Panel/buttonhost/acter/act").grab_focus()
+#					aPanel.get_node ("Panel/buttonhost/acter/act").show_buttons()
+#					aPanel.get_node ("actor2").hide()
+#				else:
+				aPanel.get_node ("Panel/buttonhost/acter/act").hide_buttons()
 				aPanel.ind = incrementer - 1
 				aPanel.init (instance)
 				abilityPanels.append (aPanel)

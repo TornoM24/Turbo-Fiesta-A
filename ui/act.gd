@@ -74,8 +74,9 @@ func show_buttons ():
 	tween_pos (item, Vector2 (56,185))
 	tween_mod (item, 1)
 	item.show()
-
+onready var closer = get_parent().get_parent().get_parent().get_parent().get_node ("actor2")
 func _process(delta):
+	closer.global_position = rect_global_position + Vector2 (rect_size.x, rect_size.y)
 	if atk.rect_position == self.rect_position:
 		atk.hide()
 	if def.rect_position == self.rect_position:

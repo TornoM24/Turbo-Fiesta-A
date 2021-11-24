@@ -1,4 +1,4 @@
-extends Timer
+extends Node2D
 
 
 # Declare member variables here. Examples:
@@ -10,13 +10,6 @@ extends Timer
 func _ready():
 	pass # Replace with function body.
 
-onready var bar = get_parent().get_node ("TextureProgress")
-onready var tween = get_parent().get_node ("Tween")
-var runOnce = true
-func _process (delta):
-	paused = Master.atb_paused
-	bar.max_value = wait_time
-	bar.value = (wait_time - time_left)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

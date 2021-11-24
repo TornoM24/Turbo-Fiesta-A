@@ -14,17 +14,17 @@ func _ready():
 
 func _process(delta):
 	if get_parent().get_node ("Timer").time_left > 0:
-		if !tweened:
-			value = 0
-			tweened = true
-			passOnce = true
-			rect_scale = Vector2 (0.1,0.2)
-			modulate.a = 1
-			#value = 100 * (1- float (get_parent().get_node ("Timer").time_left/get_parent().get_node ("Timer").wait_time))
-			tween.interpolate_property(self, "value",
-				0.0,100.0,get_parent().get_node ("Timer").wait_time,
-			Tween.TRANS_SINE, Tween.EASE_IN_OUT)
-			tween.start()
+#		if !tweened:
+#			value = 0
+#			tweened = true
+		passOnce = true
+		rect_scale = Vector2 (0.1,0.2)
+		modulate.a = 1
+#			#value = 100 * (1- float (get_parent().get_node ("Timer").time_left/get_parent().get_node ("Timer").wait_time))
+#			tween.interpolate_property(self, "value",
+#				0.0,100.0,get_parent().get_node ("Timer").wait_time,
+#			Tween.TRANS_SINE, Tween.EASE_IN_OUT)
+#			tween.start()
 	else:
 		if passOnce:
 			expandPass()

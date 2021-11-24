@@ -1,0 +1,440 @@
+[gd_scene load_steps=27 format=2]
+
+[ext_resource path="res://font/Chrono.tres" type="DynamicFont" id=1]
+[ext_resource path="res://gfx/unit/hpbar_bg.png" type="Texture" id=2]
+[ext_resource path="res://font/ChronoLarge.tres" type="DynamicFont" id=3]
+[ext_resource path="res://gfx/icons/circle.png" type="Texture" id=4]
+[ext_resource path="res://ui/guard2.png" type="Texture" id=5]
+[ext_resource path="res://ui/return.gd" type="Script" id=6]
+[ext_resource path="res://ui/act.gd" type="Script" id=7]
+[ext_resource path="res://ui/combat_abilities.gd" type="Script" id=8]
+[ext_resource path="res://pixel_button_round.tres" type="Theme" id=9]
+[ext_resource path="res://circle.tres" type="Theme" id=10]
+[ext_resource path="res://pixel_button_red.tres" type="Theme" id=11]
+[ext_resource path="res://circle_button.tres" type="Theme" id=12]
+[ext_resource path="res://pixel_panel_fade.theme" type="Theme" id=13]
+[ext_resource path="res://pixel_panel_wide.theme" type="Theme" id=14]
+[ext_resource path="res://ui/orb2.png" type="Texture" id=15]
+[ext_resource path="res://gfx/icons/circle_atb.png" type="Texture" id=16]
+[ext_resource path="res://gfx/icons/circle_atb_bg.png" type="Texture" id=17]
+[ext_resource path="res://ui/orb.png" type="Texture" id=18]
+[ext_resource path="res://gfx/unit/mpbar.png" type="Texture" id=19]
+[ext_resource path="res://ui/pole.png" type="Texture" id=20]
+[ext_resource path="res://gfx/unit/hpbar.png" type="Texture" id=21]
+[ext_resource path="res://ui/ATB2.gd" type="Script" id=22]
+[ext_resource path="res://gfx/unit/atbbar.png" type="Texture" id=23]
+[ext_resource path="res://ui/Status.gd" type="Script" id=24]
+[ext_resource path="res://ui/MPBar.gd" type="Script" id=25]
+[ext_resource path="res://ui/HPBar.gd" type="Script" id=26]
+
+[node name="abilitymenu" type="Node2D"]
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_horizontal_guides_": [  ]
+}
+
+[node name="circle2" type="Panel" parent="."]
+visible = false
+margin_left = 56.0
+margin_top = 760.0
+margin_right = 200.0
+margin_bottom = 904.0
+theme = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="namedisplay" type="Panel" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = 29.0
+margin_top = 672.0
+margin_right = 237.0
+margin_bottom = 704.0
+theme = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Status" type="Button" parent="namedisplay"]
+margin_left = 35.0
+margin_top = 8.0
+margin_right = 163.0
+margin_bottom = 40.0
+theme = ExtResource( 9 )
+custom_fonts/font = ExtResource( 3 )
+text = "Shumford"
+script = ExtResource( 24 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HPBar" type="TextureProgress" parent="namedisplay"]
+self_modulate = Color( 1, 0.313726, 0.313726, 1 )
+margin_left = 35.0
+margin_top = -192.0
+margin_right = 195.0
+margin_bottom = -181.0
+rect_scale = Vector2( 0.8, 0.8 )
+value = 100.0
+texture_under = ExtResource( 2 )
+texture_progress = ExtResource( 21 )
+nine_patch_stretch = true
+stretch_margin_left = 3
+stretch_margin_top = 3
+stretch_margin_right = 3
+stretch_margin_bottom = 3
+script = ExtResource( 26 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MPBar" type="TextureProgress" parent="namedisplay"]
+self_modulate = Color( 0.376471, 0.807843, 1, 1 )
+margin_left = 35.0
+margin_top = -184.0
+margin_right = 195.0
+margin_bottom = -174.0
+rect_scale = Vector2( 0.8, 0.8 )
+value = 100.0
+texture_under = ExtResource( 2 )
+texture_progress = ExtResource( 19 )
+nine_patch_stretch = true
+stretch_margin_left = 3
+stretch_margin_top = 3
+stretch_margin_right = 3
+stretch_margin_bottom = 3
+script = ExtResource( 25 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ATBBar" type="TextureProgress" parent="namedisplay"]
+visible = false
+self_modulate = Color( 1, 1, 1, 0.254902 )
+margin_right = 208.0
+margin_bottom = 32.0
+value = 100.0
+texture_progress = ExtResource( 23 )
+nine_patch_stretch = true
+stretch_margin_top = 2
+stretch_margin_bottom = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="namedisplay"]
+visible = false
+margin_left = 8.0
+margin_top = 5.0
+margin_right = 200.0
+margin_bottom = 32.0
+custom_fonts/normal_font = ExtResource( 3 )
+bbcode_enabled = true
+bbcode_text = "[center]Shumford "
+text = "Shumford "
+fit_content_height = true
+scroll_active = false
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="HPLabel" type="RichTextLabel" parent="namedisplay"]
+margin_left = 11.0
+margin_top = -196.0
+margin_right = 51.0
+margin_bottom = -180.0
+bbcode_enabled = true
+bbcode_text = "[right]59"
+text = "59"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MPLabel" type="RichTextLabel" parent="namedisplay"]
+margin_left = -21.0
+margin_top = -181.0
+margin_right = 51.0
+margin_bottom = -165.0
+bbcode_enabled = true
+bbcode_text = "[right] 59"
+text = " 59"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ATB2" type="TextureProgress" parent="."]
+margin_left = 53.0
+margin_top = 633.0
+margin_right = 353.0
+margin_bottom = 942.0
+rect_scale = Vector2( 0.5, 0.12 )
+value = 32.0
+texture_under = ExtResource( 17 )
+texture_progress = ExtResource( 16 )
+fill_mode = 4
+script = ExtResource( 22 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_top = 704.0
+margin_bottom = 704.0
+theme = ExtResource( 13 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="circle" type="Sprite" parent="Panel"]
+visible = false
+position = Vector2( 128, 128 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 4 )
+
+[node name="buttonhost" type="Node2D" parent="Panel"]
+position = Vector2( 48, 8 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="attack" type="Button" parent="Panel/buttonhost"]
+margin_left = 56.0
+margin_top = 8.0
+margin_right = 104.0
+margin_bottom = 76.0
+rect_pivot_offset = Vector2( 24, 23.5 )
+focus_neighbour_bottom = NodePath("../../../actor2/return")
+theme = ExtResource( 12 )
+custom_fonts/font = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="RichTextLabel" parent="Panel/buttonhost/attack"]
+margin_top = 56.0
+margin_right = 48.0
+margin_bottom = 70.0
+rect_pivot_offset = Vector2( 24, 7 )
+bbcode_enabled = true
+bbcode_text = "[center]Attack
+"
+text = "Attack
+"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="defend" type="Button" parent="Panel/buttonhost"]
+margin_left = -33.0
+margin_top = 96.0
+margin_right = 15.0
+margin_bottom = 165.0
+rect_rotation = -90.0
+rect_pivot_offset = Vector2( 24, 23.5 )
+hint_tooltip = "Provides 50% general mitigation."
+focus_neighbour_right = NodePath("../../../actor2/return")
+theme = ExtResource( 12 )
+custom_fonts/font = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="Panel/buttonhost/defend"]
+visible = false
+self_modulate = Color( 0.4, 0.380392, 0.67451, 1 )
+position = Vector2( 23.6005, 44.75 )
+scale = Vector2( 2.46154, 1.96685 )
+texture = ExtResource( 5 )
+
+[node name="Label" type="RichTextLabel" parent="Panel/buttonhost/defend"]
+margin_left = -24.5
+margin_top = 40.5
+margin_right = 23.5
+margin_bottom = 54.5
+rect_rotation = 90.0
+rect_pivot_offset = Vector2( 24, 7 )
+bbcode_enabled = true
+bbcode_text = "[center]Defend"
+text = "Defend"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="special" type="Button" parent="Panel/buttonhost"]
+margin_left = 144.0
+margin_top = 96.0
+margin_right = 192.0
+margin_bottom = 163.0
+rect_rotation = 90.0
+rect_pivot_offset = Vector2( 24, 23.5 )
+focus_neighbour_left = NodePath("../../../actor2/return")
+theme = ExtResource( 12 )
+custom_fonts/font = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="RichTextLabel" parent="Panel/buttonhost/special"]
+margin_left = 24.5
+margin_top = 31.5
+margin_right = 72.5
+margin_bottom = 45.5
+rect_rotation = 270.0
+rect_pivot_offset = Vector2( 24, 7 )
+bbcode_enabled = true
+bbcode_text = "[center]Abilities"
+text = "Abilities"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="item" type="Button" parent="Panel/buttonhost"]
+margin_left = 56.0
+margin_top = 185.0
+margin_right = 104.0
+margin_bottom = 253.0
+rect_rotation = 180.0
+rect_pivot_offset = Vector2( 24, 23.5 )
+focus_neighbour_top = NodePath("../../../actor2/return")
+theme = ExtResource( 12 )
+custom_fonts/font = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="RichTextLabel" parent="Panel/buttonhost/item"]
+margin_top = 56.0
+margin_right = 48.0
+margin_bottom = 70.0
+rect_rotation = 180.0
+rect_pivot_offset = Vector2( 24, 7 )
+bbcode_enabled = true
+bbcode_text = "[center]Items"
+text = "Items"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="escape" type="Button" parent="Panel/buttonhost"]
+visible = false
+margin_left = -8.0
+margin_top = 216.0
+margin_right = 172.0
+margin_bottom = 250.0
+rect_scale = Vector2( 1, 1.01685 )
+theme = ExtResource( 11 )
+custom_fonts/font = ExtResource( 3 )
+text = "Escape (100%)"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="acter" type="Node2D" parent="Panel/buttonhost"]
+
+[node name="Sprite" type="Sprite" parent="Panel/buttonhost/acter"]
+position = Vector2( 80, 120 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 18 )
+
+[node name="Label2" type="RichTextLabel" parent="Panel/buttonhost/acter"]
+margin_left = 57.0
+margin_top = 104.135
+margin_right = 105.0
+margin_bottom = 135.135
+bbcode_enabled = true
+bbcode_text = "[center]
+~ ACT ~
+"
+text = "
+~ ACT ~
+"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="act" type="Button" parent="Panel/buttonhost/acter"]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = 56.0
+margin_top = 96.0
+margin_right = 104.0
+margin_bottom = 143.0
+rect_scale = Vector2( 2, 2 )
+rect_pivot_offset = Vector2( 24, 23.5 )
+theme = ExtResource( 9 )
+custom_fonts/font = ExtResource( 1 )
+text = "READY"
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="pole" type="Sprite" parent="Panel"]
+visible = false
+self_modulate = Color( 0.554688, 0.554688, 0.554688, 1 )
+position = Vector2( 128, 164 )
+scale = Vector2( 4.8, 4.9 )
+texture = ExtResource( 20 )
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="orb2" type="Sprite" parent="."]
+visible = false
+position = Vector2( 160, 512 )
+texture = ExtResource( 15 )
+
+[node name="actor2" type="Node2D" parent="."]
+position = Vector2( 128, 576 )
+z_index = 4094
+
+[node name="Sprite" type="Sprite" parent="actor2"]
+position = Vector2( -2.38419e-07, 1.508e-05 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 18 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="return" type="Button" parent="actor2"]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = -24.0
+margin_top = -24.0001
+margin_right = 25.0
+margin_bottom = 23.9999
+rect_pivot_offset = Vector2( 24, 23.5 )
+focus_neighbour_left = NodePath("../../Panel/buttonhost/defend")
+focus_neighbour_top = NodePath("../../Panel/buttonhost/attack")
+focus_neighbour_right = NodePath("../../Panel/buttonhost/special")
+focus_neighbour_bottom = NodePath("../../Panel/buttonhost/item")
+theme = ExtResource( 9 )
+custom_fonts/font = ExtResource( 1 )
+text = "Back"
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="namedisplay/Status" to="namedisplay/Status" method="_on_Status_pressed"]
+[connection signal="pressed" from="Panel/buttonhost/attack" to="." method="_on_attack_pressed"]
+[connection signal="pressed" from="Panel/buttonhost/defend" to="." method="_on_defend_pressed"]
+[connection signal="pressed" from="Panel/buttonhost/special" to="." method="_on_special_pressed"]
+[connection signal="pressed" from="Panel/buttonhost/item" to="." method="_on_item_pressed"]
+[connection signal="mouse_entered" from="Panel/buttonhost/acter/act" to="Panel/buttonhost/acter/act" method="_on_act_mouse_entered"]
+[connection signal="mouse_exited" from="Panel/buttonhost/acter/act" to="Panel/buttonhost/acter/act" method="_on_act_mouse_exited"]
+[connection signal="pressed" from="Panel/buttonhost/acter/act" to="." method="_on_act_pressed"]
+[connection signal="tween_all_completed" from="Tween" to="." method="_on_Tween_tween_all_completed"]
+[connection signal="focus_entered" from="actor2/return" to="actor2/return" method="_on_return_focus_entered"]
+[connection signal="focus_exited" from="actor2/return" to="actor2/return" method="_on_return_focus_exited"]
+[connection signal="mouse_entered" from="actor2/return" to="actor2/return" method="_on_return_mouse_entered"]
+[connection signal="mouse_exited" from="actor2/return" to="actor2/return" method="_on_return_mouse_exited"]
+[connection signal="pressed" from="actor2/return" to="actor2/return" method="_on_return_pressed"]
