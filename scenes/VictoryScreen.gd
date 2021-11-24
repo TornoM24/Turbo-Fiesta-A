@@ -16,7 +16,7 @@ func _ready():
 	var tween = get_node ("Tween")
 	#var origin = card.position
 	tween.interpolate_property(self, "modulate",
-		Color (1,1,1,0), Color (1,1,1,1), 1,
+		Color (1,1,1,0), Color (1,1,1,1), 0.5,
 	Tween.TRANS_QUART, Tween.EASE_IN_OUT)
 	tween.start()                
 	print ("victory screen displaying")

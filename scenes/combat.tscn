@@ -70,7 +70,6 @@ animations = [ {
 script = ExtResource( 3 )
 
 [node name="bg" type="Sprite" parent="."]
-visible = false
 position = Vector2( 640, 359 )
 scale = Vector2( 4, 4.01111 )
 texture = ExtResource( 25 )
@@ -347,7 +346,7 @@ __meta__ = {
 visible = false
 position = Vector2( 488, 136 )
 frames = SubResource( 9 )
-frame = 1
+frame = 4
 speed_scale = 2.0
 playing = true
 

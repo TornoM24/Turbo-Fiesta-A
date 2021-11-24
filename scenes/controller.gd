@@ -127,10 +127,11 @@ func show_all():
 		x.show()
 var currentPan = 0
 export var showOldCards = false
+var offset = 50
 func spawnAllies ():
 	var incrementer = 0
-	for x in range (0,3):
-		for y in range (0,3):
+	for y in range (0,3):
+		for x in range (0,3):
 			if Master.formation[x][y] != -1:
 				print ("spawning " + Master.party[Master.formation[x][y]].name)
 				incrementer +=1 
@@ -139,8 +140,9 @@ func spawnAllies ():
 				var instance = placeholder.instance()
 				
 				add_child(instance)
+				instance.affiliation = "ally"
 				instance.position.x = 680 + (100*x) + (50*y)
-				instance.position.y = 60 + (100*y)
+				instance.position.y = 200 + (offset*y)
 				instance.origin = instance.position
 				#instance.get_node("Sprite").texture = defaultSprite
 				instance.unitName = Master.party[Master.formation[x][y]].unitName
@@ -188,8 +190,9 @@ func init_battle (battleData):
 				incrementer +=1 
 				var instance = placeholder.instance()
 				add_child(instance)
+				instance.affiliation = "enemy"
 				instance.position.x = 140 + (100*x) - (50*y)
-				instance.position.y = 60 + (100*y)
+				instance.position.y = 200 + (offset*y)
 				instance.get_node("HPBar").show()
 				instance.get_node("ATBBar").show()
 				instance.unitName = battleData.formation[x][y]
@@ -230,6 +233,10 @@ func causeEffect (target,source,ability):
 		if block.type == "damage":
 			fPower = getPower (block,source)
 			if block.target == "single":
+				if target.affiliation == "enemy":
+					target.shake("back")
+				else:
+					target.shake("front")
 				spawn_particle (ability, target)
 				target.stats.hp -= fPower
 				if target.stats.hp > target.stats.mhp:
@@ -237,6 +244,10 @@ func causeEffect (target,source,ability):
 				create_label (fPower,target.global_position + Vector2(0,LABEL_OFFSET))
 				logSomething (target.stats.name + " takes [color=red]" + str (fPower) + "[/color] damage!\n")
 			if block.target == "self":
+				if target.affiliation == "enemy":
+					target.shake("back")
+				else:
+					target.shake("front")
 				spawn_particle (ability, target)
 				var power = block.power
 				source.stats.hp -= power
@@ -246,6 +257,7 @@ func causeEffect (target,source,ability):
 				logSomething (source.stats.name + " takes [color=red]" + str (power) + "[/color] damage!\n")
 			if block.target == "all enemies":
 				for x in enemyUnit:
+					x.shake("back")
 					spawn_particle (ability, x)
 					var power = fPower
 					x.stats.hp -= power

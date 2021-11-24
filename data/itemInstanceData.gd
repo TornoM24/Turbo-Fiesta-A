@@ -14,7 +14,7 @@ var cost = 0
 var desc
 var id
 var itemName = "stupid sword"
-
+var enhancements = []
 func save ():
 	var save_dict = {
 		"itemName" : itemName,

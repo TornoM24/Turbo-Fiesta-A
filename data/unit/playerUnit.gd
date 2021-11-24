@@ -60,6 +60,7 @@ var animStun = false
 var alive = true
 var inDead = false
 
+var affiliation = "ally"
 var type
 var ability 
 var target
@@ -77,8 +78,14 @@ var yVelo = -1.3
 var dying
 var deathAnimFinished = false
 var casting = false
+onready var tween = get_node ("Tween")
 func enemyDie():
-	dying = true
+	if !dying:
+		dying = true
+		tween.interpolate_property(get_node ("UnitSprite"), "modulate",
+			Color (1,1,1,1), Color (0.7,0,1,0), 1,
+		Tween.TRANS_QUART, Tween.EASE_IN)
+		tween.start()
 func allyDie():
 	get_node ("AnimatedSprite").hide()
 	get_node ("UnitSprite").texture = load ("res://data/unit/hiro/art/hiro_dead.png")
@@ -121,7 +128,6 @@ func _process(delta):
 	if inDead:
 		allyDie()
 	if !dying:
-		var tween = get_node ("Tween")
 		updateResources()
 		atb_prog += delta
 		if !inDead && !Master.atb_paused:
@@ -186,14 +192,9 @@ func _process(delta):
 #func _process(delta):
 #	pass
 func die():
-	var spr = get_node ("UnitSprite")
-	for x in range (0,20):
-		get_node("HPBar").hide()
-		get_node("ATBBar").hide()
-		animStun = true
-		spr.modulate.r = 1.5
-		spr.modulate.b = 1.5
-		spr.modulate.a -= 0.05
+	get_node("HPBar").hide()
+	get_node("ATBBar").hide()
+	animStun = true
 func glow ():
 	var spr = get_node ("UnitSprite")
 	yield(get_tree().create_timer(0.10), "timeout")
@@ -240,6 +241,20 @@ func parse_buff (buff):
 	#stats[buff.effectType] += buff.realPower
 	#stats[buff.effectType] += bonus[buff.effectType]
 	tempEffects.append (buff)
+
+func shake(direction):
+	var par = 0
+	if direction == "back":
+		par = -20
+	else:
+		par = 20
+	tween.interpolate_property(get_node ("AnimatedSprite"), "position",
+		null, get_node ("AnimatedSprite").position + Vector2 (par, 0), 0.5,
+	Tween.TRANS_ELASTIC, Tween.EASE_OUT)
+	tween.interpolate_property(get_node ("UnitSprite"), "position",
+		null, get_node ("UnitSprite").position + Vector2 (par, 0), 0.5,
+	Tween.TRANS_ELASTIC, Tween.EASE_OUT)
+	tween.start()
 
 func sprite_attack (abi, tar):
 	ability = abi
@@ -305,5 +320,20 @@ func _on_Attack_animation_finished():
 func _on_Timer_timeout():
 	singleRun = true
 	get_node ("AnimatedSprite").show()
+	tween.interpolate_property(get_node ("AnimatedSprite"), "modulate",
+		Color (1.2,1.2,1.2,1), Color (1,1,1,1), 1,
+	Tween.TRANS_QUART, Tween.EASE_IN)
+	tween.start()
 	process_end()
+	pass # Replace with function body.
+
+
+func _on_Tween_tween_all_completed():
+	tween.interpolate_property(get_node ("AnimatedSprite"), "position",
+		null, Vector2(16,28), 0.5,
+	Tween.TRANS_QUART, Tween.EASE_IN)
+	tween.interpolate_property(get_node ("UnitSprite"), "position",
+		null, Vector2(24,50), 0.5,
+	Tween.TRANS_QUART, Tween.EASE_IN)
+	tween.start()
 	pass # Replace with function body.

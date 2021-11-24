@@ -385,7 +385,7 @@ texture = ExtResource( 12 )
 
 [node name="actor2" type="Node2D" parent="."]
 visible = false
-z_index = 4096
+z_index = 4094
 
 [node name="Sprite" type="Sprite" parent="actor2"]
 position = Vector2( 128, 544 )

@@ -10,7 +10,8 @@ var ability_dict
 var passive_dict = {
 	"affinity_modular":{
 		"name":"set name here",
-		"id":"affinity_modular"
+		"id":"affinity_modular",
+		"param": "set parameter"
 	}
 }
 var consumable_dict = {

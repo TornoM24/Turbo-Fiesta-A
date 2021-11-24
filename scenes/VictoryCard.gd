@@ -41,7 +41,10 @@ func start (C, T, tV, iV):
 	trueValue = currentLevel
 	initValue = iV
 	currentValue = initValue
-	
+	speed = 5/(targetLevel + 2 - currentLevel)
+	get_node ("Panel/LevelUp").modulate.a = 0
+
+func true_start():
 	if currentLevel == targetLevel:
 		complete = true
 		tween.interpolate_property(get_node("Panel/EXPBar"), "value",
@@ -53,9 +56,9 @@ func start (C, T, tV, iV):
 			0.0, 100.0, speed,
 		Tween.TRANS_LINEAR, Tween.EASE_IN)
 		tween.start()
-
+		
 var complete = false
-var speed = 0.01
+var speed = 0.5
 onready var tween = get_node ("Tween")
 func _process(delta):
 	
@@ -76,17 +79,24 @@ func _process(delta):
 func _on_Tween_tween_all_completed():
 	if !complete:
 		currentLevel +=1
+		get_node ("Panel/LevelUp").modulate.a = 1
 		if currentLevel == targetLevel:
+			#get_node ("Panel/LevelUp").modulate.a = 1
 			var final = calc_final (targetLevel)
 			tween.interpolate_property(get_node("Panel/EXPBar"), "value",
 				0.0, (assignment.xp / assignment.toNext) * 100, speed,
 			Tween.TRANS_LINEAR, Tween.EASE_IN)
 			tween.start()
 			complete = true
-			#currentLevel += 1
 		elif currentLevel < targetLevel:
+			get_node ("Panel/LevelUp").modulate.a = 1
 			tween.interpolate_property(get_node("Panel/EXPBar"), "value",
 				0.0, 100.0, speed,
 			Tween.TRANS_LINEAR, Tween.EASE_IN)
 			tween.start()
+	pass # Replace with function body.
+
+
+func _on_Timer_timeout():
+	true_start()
 	pass # Replace with function body.
