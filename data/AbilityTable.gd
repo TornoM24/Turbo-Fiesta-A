@@ -38,14 +38,33 @@ var ability_dict = {
 			}
 		]
 	},
+	"buff_light_atk":{
+		"name": "FOCUS ~Seeing Red~",
+		"id":"buff_light_atk",
+		"type":"magic",
+		"icon":"magic",
+		"fx" : "glow",
+		"castTime" : 3,
+		"desc": "User focuses, granting lightly increased attack power.",
+		"cost": 10,
+		"effects": [
+			{
+				"type": "buff",
+				"target": "self",
+				"param": "atk",
+				"power": 50,
+				"duration": 30
+			}
+		]
+	},
 	"buff_super_atk":{
-		"name": "Focus",
+		"name": "FOCUS ~Mind Ablaze~",
 		"id":"buff_super_atk",
 		"type":"magic",
 		"icon":"magic",
 		"fx" : "glow",
 		"castTime" : 8,
-		"desc": "User focuses self, granting heavily increased attack power but taking an immense amount of time.",
+		"desc": "User ignites their fighting spirit, granting heavily increased attack power but taking an immense amount of time to execute.",
 		"cost": 10,
 		"effects": [
 			{
