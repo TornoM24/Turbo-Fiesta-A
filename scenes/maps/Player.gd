@@ -15,6 +15,7 @@ onready var side=get_node ("Side")
 onready var up=get_node ("Up")
 onready var smoke = get_node ("smoke")
 onready var visDetect = get_node ("Area2D")
+onready var indicator = get_node ("Camera2D/Panel")
 func _ready():
 	Global.player = self
 	position = Master.partyPosition
@@ -99,14 +100,17 @@ func _on_Start_pressed():
 	pass # Replace with function body.
 
 
-#func _on_Area2D_area_entered(area):
-#	if (area.get_parent().type == "container" or area.get_parent().type == "npc"):
+func _on_Area2D_area_entered(area):
+	if (area.get_parent().type == "container" or area.get_parent().type == "npc"):
+		indicator.show()
+		indicator.warble()
 #		containerContact = true
 #	currentObject = area.get_parent()
 #
 #
-#func _on_Area2D_area_exited(area):
-#	if (area.get_parent().type == "container" or area.get_parent().type == "npc"):
+func _on_Area2D_area_exited(area):
+	if (area.get_parent().type == "container" or area.get_parent().type == "npc"):
+		indicator.hide()
 #		containerContact = false
 #	currentObject = null
 #	pass # Replace with function body.

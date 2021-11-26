@@ -11,15 +11,22 @@ func _ready():
 	#connect ("pressed", get_tree().get_root().get_node("partyview"), "_on_item_pressed", [self])
 	pass # Replace with function body.
 
+var glow = load ("res://pixel_panel_inwards_glow.theme")
+var plain = load ("res://pixel_panel_inwards.theme")
+onready var panel = get_node ("Panel")
+
 func init (item):
 	self.item = item
 	get_node("Panel/Sprite").texture = load ("res://gfx/equip/"+item.id+ ".png")
 	get_node("Panel/RichTextLabel").bbcode_text = item.itemName
 	get_node("Panel/RichTextLabel2").bbcode_text = "[right]◉" + str (item.cost)
-
+	if location == "inventory":
+		panel.theme = plain
+	elif location == "equipment":
+		panel.theme = glow
+	#queue_enter()
+	
 func _process(delta):
-	if !visible:
-		queue_free()
 	#print (str (global_position))
 	pass
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -61,18 +68,21 @@ func queue_kill():
 
 func queue_enter():
 	#hide()
+	show()
+	var tar = position+ Vector2(0, 20)
+	var org = position+ Vector2(0, -20)
 	tween.interpolate_property(self, "position",
-		position + Vector2(0, -20), null,  0.1,
+		org, tar,  0.1,
 	Tween.TRANS_QUART, Tween.EASE_IN)
 	tween.start()
 	tween.interpolate_property(self, "modulate",
-		Color (1,1,1,0), null,  0.1,
+		null, Color (1,1,1,1),  0.1,
 	Tween.TRANS_QUART, Tween.EASE_IN)
 	tween.start()
 	new = false
-	pass
 	
 func _on_Tween_tween_all_completed():
-	hide()
-	queue_free()
+	if deleting:
+		hide()
+		queue_free()
 	pass # Replace with function body.

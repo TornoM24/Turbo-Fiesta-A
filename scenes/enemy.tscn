@@ -24,7 +24,7 @@ radius = 15.9999
 height = 16.0001
 
 [sub_resource type="CircleShape2D" id=5]
-radius = 289.043
+radius = 192.0
 
 [sub_resource type="CapsuleShape2D" id=6]
 radius = 6.0
@@ -38,6 +38,7 @@ __meta__ = {
 
 [node name="Enemy" type="AnimatedSprite" parent="."]
 frames = SubResource( 3 )
+frame = 1
 playing = true
 
 [node name="Area2D" type="Area2D" parent="."]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://gfx/tileset/obj/objects.png" type="Texture" id=1]
 [ext_resource path="res://scenes/maps/obj/Chest.gd" type="Script" id=2]
@@ -87,6 +87,9 @@ animations = [ {
 "speed": 5.0
 } ]
 
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 8, 6.87751 )
+
 [sub_resource type="CircleShape2D" id=6]
 radius = 8.0
 
@@ -167,9 +170,8 @@ __meta__ = {
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
-visible = false
-polygon = PoolVector2Array( -8.07212, -5.071, -4.36906, -6.67233, 3.93781, -6.62228, 7.94113, -4.82079, 7.94113, 5.78798, -7.922, 5.78798 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource( 9 )
 
 [node name="ContainerHitbox" type="Area2D" parent="."]
 gravity_vec = Vector2( 0, 0 )

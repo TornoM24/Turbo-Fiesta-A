@@ -79,8 +79,8 @@ func draw_equip (unit):
 		var equipment_item = equipment_prefab.instance()
 		CEPanel.add_child (equipment_item)
 		equipment_item.position = CEPanel.rect_position + Vector2 (20 + (fnX*88),20)
-		equipment_item.init (x)
 		equipment_item.location = "equipment"
+		equipment_item.init (x)
 		print ("drew equipment slot at position "+str(equipment_item.position))
 		fnX += 1
 	var IPanel = get_node ("StatsPanel/Tabs/Equipment/ScrollContainer2/Control")
@@ -89,8 +89,8 @@ func draw_equip (unit):
 		var inv_item = equipment_prefab.instance()
 		IPanel.add_child (inv_item)
 		inv_item.position += Vector2 (20 + (fnX*88),20)
-		inv_item.init (x)
 		inv_item.location = "inventory"
+		inv_item.init (x)
 		print ("drew inventory slot at position "+str(inv_item.position))
 		fnX += 1
 	pass
