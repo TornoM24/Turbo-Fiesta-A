@@ -13,12 +13,11 @@ signal inBounds
 onready var down=get_node ("Down")
 onready var side=get_node ("Side")
 onready var up=get_node ("Up")
-
-
+onready var smoke = get_node ("smoke")
+onready var visDetect = get_node ("Area2D")
 func _ready():
 	Global.player = self
 	position = Master.partyPosition
-	speed = 200
 	side.hide()
 	up.hide()
 	get_node ("Area2D").rotation_degrees = 180
@@ -35,19 +34,19 @@ func _process(delta):
 	if Input.is_action_pressed("shift"):
 		if stamina > 0:
 			if velocity != Vector2(0,0):
-				speed = 5000
-				get_node ("smoke").emitting = true
+				speed = 400
+				smoke.emitting = true
 				stamina -= 0.01
 	else:
 		if stamina < 100:
 			speed = 200
 			if velocity != Vector2(0,0):
-				get_node ("smoke").emitting = false
+				smoke.emitting = false
 			stamina += 0.02
 	if stamina <= 0:
 		speed = 200
 	if stamina <= 0:
-		get_node ("smoke").emitting = false
+		smoke.emitting = false
 		speed = 200
 	velocity = Vector2()
 	if !DialogManager.playerStun:
@@ -58,6 +57,7 @@ func _process(delta):
 			side.playing = true
 			side.speed_scale = 1
 			ray.rotation_degrees = 270
+			visDetect.rotation_degrees = 90
 			
 		if Input.is_action_pressed("left"):
 			velocity.x -= 1
@@ -66,6 +66,7 @@ func _process(delta):
 			side.playing = true
 			side.speed_scale = 1
 			ray.rotation_degrees = 90
+			visDetect.rotation_degrees = 270
 
 		if Input.is_action_pressed("down"):
 			velocity.y += 1
@@ -73,6 +74,7 @@ func _process(delta):
 			down.playing = true
 			down.speed_scale = 1
 			ray.rotation_degrees = 0
+			visDetect.rotation_degrees = 180
 
 		if Input.is_action_pressed("up"):
 			velocity.y -= 1
@@ -80,6 +82,7 @@ func _process(delta):
 			up.playing = true
 			up.speed_scale = 1
 			ray.rotation_degrees = 180
+			visDetect.rotation_degrees = 0
 		
 			
 		if (!Input.is_action_pressed("up") && !Input.is_action_pressed("down") && !Input.is_action_pressed("left") && !Input.is_action_pressed("right")):
