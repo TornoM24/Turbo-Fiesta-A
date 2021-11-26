@@ -9,6 +9,7 @@ var cards = []
 var statcards = []
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	rng.randomize()
 	for x in range (1,6):
 		var card = load ("res://ui/card.tscn").instance()
 		add_child (card)
@@ -30,32 +31,34 @@ export var SWITCH_SPEED = 0.5
 var number = 1
 var maxNumber
 var equipsDrawn = []
-
+var rng = RandomNumberGenerator.new()
 func sort_equip (eitem):
 	if eitem.location == "inventory":
+		AudioManager.play (AudioManager.Type.NON_POSITIONAL, self, load("res://sfx/ui/cloth-inventory.wav"),-20,rng.randf_range(0.9, 1.1))
 		Master.party [number-1].equip (eitem.item)
 		var k = Master.inventory.find (eitem.item)
-		eitem.hide()
-		print (Master.inventory[k].itemName)
 		Master.inventory.remove (k)
+		eitem.queue_kill()
 	else:
+		eitem.queue_kill()
+		AudioManager.play (AudioManager.Type.NON_POSITIONAL, self, load("res://sfx/ui/leather_inventory.wav"),-20,rng.randf_range(0.9, 1.1))
 		Master.party [number-1].unequip (eitem.item)
 		var k = Master.party [number-1].equipment.find (eitem.item)
 		Master.inventory.append (eitem.item)
 		Master.party [number-1].equipment.remove (k)
-		eitem.hide()
 	draw_equip (Master.party[number-1])
 	update_stats()
 
 func draw_equip (unit):
 	var CEPanel = get_node ("StatsPanel/Tabs/Equipment/ScrollContainer/Control")
+	var CIPanel = get_node ("StatsPanel/Tabs/Equipment/ScrollContainer2/Control")
+	for x in CEPanel.get_children():
+		if !x.deleting:
+			x.hide()
+	for x in CIPanel.get_children():
+		if !x.deleting:
+			x.hide()
 	get_node ("StatsPanel/Tabs/Equipment/costlabel").bbcode_text = "[right]Cost : ◉" + str (unit.cost) + "/" + str (unit.maxCost)
-	for x in get_node ("StatsPanel/Tabs/Equipment/ScrollContainer2/Control").get_children():
-		print ("attempting to hide "+x.item.itemName)
-		x.hide()
-	for x in get_node ("StatsPanel/Tabs/Equipment/ScrollContainer/Control").get_children():
-		print ("attempting to hide "+x.item.itemName)
-		x.hide()
 	var equipment_prefab = load ("res://ui/equipment_element.tscn")
 	var fnX = 0
 	var incr = 0

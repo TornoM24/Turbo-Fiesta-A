@@ -8,13 +8,13 @@ var velocity = Vector2()
 var bound = false
 
 func _ready():
-	connect("inBounds", get_tree().get_root().get_node("/root/Main/Player"), "_on_Player_inBounds", [bound])
+	connect("inBounds", get_tree().get_root().get_node("/root/Main/Player"), "_on_Player_inBounds", [bound, self])
 	Global.enemy = self
 	original = Global.enemy.global_position
 	pass
 	
 func _process(delta):
-	if Global.player != null:
+	if Global.player != null && !DialogManager.playerStun:
 		if (chasing == true):
 			velocity = global_position.direction_to(Global.player.global_position)
 			global_position += velocity * speed * delta
@@ -23,6 +23,7 @@ func _process(delta):
 			global_position += velocity * speed * delta
 	pass
 
-func _on_Player_inBounds(bound):
-	chasing = bound
+func _on_Player_inBounds(bound, unit):
+	if unit == self:
+		chasing = bound
 	pass # Replace with function body.

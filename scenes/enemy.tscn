@@ -20,8 +20,8 @@ animations = [ {
 } ]
 
 [sub_resource type="CapsuleShape2D" id=4]
-radius = 7.99996
-height = 22.0
+radius = 15.9999
+height = 16.0001
 
 [sub_resource type="CircleShape2D" id=5]
 radius = 289.043
@@ -38,22 +38,21 @@ __meta__ = {
 
 [node name="Enemy" type="AnimatedSprite" parent="."]
 frames = SubResource( 3 )
-frame = 1
 playing = true
 
-[node name="Area2D" type="Area2D" parent="Enemy"]
+[node name="Area2D" type="Area2D" parent="."]
 
-[node name="CollisionArea" type="CollisionShape2D" parent="Enemy/Area2D"]
+[node name="CollisionArea" type="CollisionShape2D" parent="Area2D"]
 rotation = 1.5708
 shape = SubResource( 4 )
 
-[node name="Area2D2" type="Area2D" parent="Enemy"]
+[node name="Area2D2" type="Area2D" parent="."]
 
-[node name="DetectionRadius" type="CollisionShape2D" parent="Enemy/Area2D2"]
+[node name="DetectionRadius" type="CollisionShape2D" parent="Area2D2"]
 shape = SubResource( 5 )
 
-[node name="KinematicBody2D" type="KinematicBody2D" parent="Enemy"]
+[node name="KinematicBody2D" type="KinematicBody2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy/KinematicBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D"]
 rotation = 1.5708
 shape = SubResource( 6 )

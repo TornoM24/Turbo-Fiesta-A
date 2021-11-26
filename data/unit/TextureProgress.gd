@@ -46,5 +46,3 @@ func expandPass():
 	Tween.TRANS_QUART, Tween.EASE_OUT)
 	tween.start()
 
-func _on_Tween_tween_completed(object, key):
-	pass # Replace with function body.

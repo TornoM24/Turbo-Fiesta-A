@@ -127,7 +127,7 @@ func show_all():
 		x.show()
 var currentPan = 0
 export var showOldCards = false
-var offset = 50
+var offset = 80
 func spawnAllies ():
 	var incrementer = 0
 	for y in range (0,3):
@@ -141,7 +141,7 @@ func spawnAllies ():
 				
 				add_child(instance)
 				instance.affiliation = "ally"
-				instance.position.x = 680 + (100*x) + (50*y)
+				instance.position.x = 680 + (150*x) + (50*y)
 				instance.position.y = 200 + (offset*y)
 				instance.origin = instance.position
 				#instance.get_node("Sprite").texture = defaultSprite
@@ -192,7 +192,7 @@ func init_battle (battleData):
 				var instance = placeholder.instance()
 				add_child(instance)
 				instance.affiliation = "enemy"
-				instance.position.x = 140 + (100*x) - (50*y)
+				instance.position.x = 200 + (100*x) - (50*y)
 				instance.position.y = 200 + (offset*y)
 				instance.get_node("HPBar").show()
 				instance.get_node("ATBBar").show()
@@ -379,6 +379,7 @@ func _process(delta):
 					animTimer = 0
 			if z.modulate.a >= 0.5:
 				var vScn = load("res://scenes/VictoryScreen.tscn").instance()
+				print ("victory")
 				add_child (vScn)
 		else:
 			animTimer = 0

@@ -56,7 +56,9 @@ color = Color( 1, 0.74902, 0, 1 )
 range_height = 66.0
 range_item_cull_mask = 2
 
-[node name="TileMap" type="TileMap" parent="."]
+[node name="YSort" type="YSort" parent="."]
+
+[node name="TileMap" type="TileMap" parent="YSort"]
 position = Vector2( -0.00299072, 0 )
 scale = Vector2( 2, 2 )
 tile_set = ExtResource( 2 )
@@ -68,7 +70,7 @@ __meta__ = {
 "_editor_description_": " "
 }
 
-[node name="Over" type="TileMap" parent="TileMap"]
+[node name="Over" type="TileMap" parent="YSort/TileMap"]
 z_index = 378
 z_as_relative = false
 tile_set = ExtResource( 2 )
@@ -81,16 +83,16 @@ __meta__ = {
 "_editor_description_": " "
 }
 
-[node name="Container" parent="TileMap" instance=ExtResource( 21 )]
+[node name="Container" parent="YSort/TileMap" instance=ExtResource( 21 )]
 position = Vector2( 344, 88 )
 
-[node name="Container2" parent="TileMap" instance=ExtResource( 21 )]
+[node name="Container2" parent="YSort/TileMap" instance=ExtResource( 21 )]
 position = Vector2( 372, 88 )
 
-[node name="Container3" parent="TileMap" instance=ExtResource( 21 )]
+[node name="Container3" parent="YSort/TileMap" instance=ExtResource( 21 )]
 position = Vector2( 316, 88 )
 
-[node name="L1" type="TileMap" parent="TileMap"]
+[node name="L1" type="TileMap" parent="YSort/TileMap"]
 tile_set = ExtResource( 2 )
 cell_size = Vector2( 16, 16 )
 cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
@@ -101,7 +103,7 @@ __meta__ = {
 "_editor_description_": " "
 }
 
-[node name="Obj" type="TileMap" parent="TileMap"]
+[node name="Obj" type="TileMap" parent="YSort/TileMap"]
 tile_set = ExtResource( 2 )
 cell_size = Vector2( 16, 16 )
 cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
@@ -112,16 +114,16 @@ __meta__ = {
 "_editor_description_": " "
 }
 
-[node name="Obj2" type="TileMap" parent="TileMap"]
+[node name="Obj2" type="TileMap" parent="YSort/TileMap"]
 tile_set = ExtResource( 2 )
 cell_size = Vector2( 16, 16 )
 cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 format = 1
 tile_data = PoolIntArray( 65541, 32, 0, 262159, 1610612769, 0, 327691, 33, 0, 327697, 1610612770, 0, 327698, -1073741791, 0, 393227, -1073741792, 0, 393229, 1610612770, 0, 393230, -1610612703, 0, 393232, 32, 0, 458767, 1610612770, 0, 458769, -1073741790, 0, 458770, -1610612704, 0 )
 
-[node name="NPC" parent="TileMap" instance=ExtResource( 10 )]
+[node name="NPC" parent="YSort/TileMap" instance=ExtResource( 10 )]
 position = Vector2( 208, 144 )
-frame = 4
+frame = 2
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 639, 358 )

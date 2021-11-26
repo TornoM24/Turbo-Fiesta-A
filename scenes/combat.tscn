@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://scenes/maps/runbutton.gd" type="Script" id=1]
 [ext_resource path="res://scenes/maps/scripts/control.gd" type="Script" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://combat_stats.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/fps.gd" type="Script" id=9]
 [ext_resource path="res://ui/fade.png" type="Texture" id=10]
+[ext_resource path="res://gfx/disk_mask.png" type="Texture" id=11]
 [ext_resource path="res://gfx/unit/selector.png" type="Texture" id=16]
 [ext_resource path="res://pixel_button_red.tres" type="Theme" id=17]
 [ext_resource path="res://pixel_button_2.tres" type="Theme" id=18]
@@ -72,8 +73,9 @@ animations = [ {
 script = ExtResource( 3 )
 
 [node name="bg" type="Sprite" parent="."]
-position = Vector2( 640, 359 )
-scale = Vector2( 4, 4.01111 )
+self_modulate = Color( 0.760784, 0.760784, 0.760784, 1 )
+position = Vector2( 640, 288 )
+scale = Vector2( 4.01111, 4.01111 )
 texture = ExtResource( 25 )
 
 [node name="fade" type="Sprite" parent="."]
@@ -364,7 +366,7 @@ __meta__ = {
 visible = false
 position = Vector2( 488, 136 )
 frames = SubResource( 9 )
-frame = 3
+frame = 7
 speed_scale = 2.0
 playing = true
 
@@ -488,6 +490,18 @@ margin_bottom = 21.0
 script = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
+}
+
+[node name="Light2D" type="Light2D" parent="."]
+position = Vector2( 640, 248 )
+scale = Vector2( 2, 1 )
+texture = ExtResource( 11 )
+texture_scale = 2.79
+energy = 0.38
+range_height = 15.2
+shadow_enabled = true
+__meta__ = {
+"_edit_lock_": true
 }
 
 [connection signal="pressed" from="Control/Panel/buttonhost/attack" to="Control" method="_on_attack_pressed"]

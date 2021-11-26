@@ -62,7 +62,7 @@ func level_up():
 				baseStats["mp"] += ceil(dict[stat]/10)
 				stats["mmp"] = baseStats[stat]
 			else:
-				print ("value of " + stat + " " + str(dict[stat]))
+				#print ("value of " + stat + " " + str(dict[stat]))
 				baseStats[stat] += ceil(dict[stat]/10)
 				stats[stat] = baseStats[stat]
 	update_self()
@@ -163,7 +163,7 @@ func update_self ():
 	for equip in self.equipment:
 		cost += equip.cost
 		for stat in equip.stats.keys():
-			print ("increasing stat " + stat + " by " + str (equip.stats[stat]) + " for item " + equip.itemName)
+			#print ("increasing stat " + stat + " by " + str (equip.stats[stat]) + " for item " + equip.itemName)
 			if stat == "hp":
 				bonusStats.mhp += equip.stats[stat]
 				#stats.hp += equip.stats[stat]

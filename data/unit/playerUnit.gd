@@ -112,7 +112,8 @@ func decay_effects(delta):
 	for eff in tempEffects:
 		#print (originalStats)
 		stats[eff.effectType] = originalStats [eff.effectType] + eff.realPower
-		eff.timer += delta
+		if !Master.atb_paused:
+			eff.timer += delta
 		if eff.timer >= 1:
 			eff.length -= 1
 			eff.timer = 0
@@ -143,6 +144,7 @@ func _process(delta):
 					timer.wait_time = ability.castTime
 				else:
 					timer.wait_time = 4
+				get_node ("TextureProgress").max_value = timer.wait_time
 				timer.start()
 			if type !="ranged" and type!= "magic":
 				var all = false

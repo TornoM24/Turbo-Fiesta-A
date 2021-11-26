@@ -33,6 +33,7 @@ func _on_ContainerHitbox_area_entered(area):
 	pass # Replace with function body.
 
 
+
 func _on_ContainerHitbox_area_exited(area):
 	if area.get_parent().name == "Player":
 		modulate = Color (1,1,1,1)

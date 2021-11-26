@@ -378,20 +378,22 @@ __meta__ = {
 [node name="EquipLabel" type="Node2D" parent="StatsPanel/Tabs/Equipment"]
 
 [node name="Sprite2" type="Sprite" parent="StatsPanel/Tabs/Equipment/EquipLabel"]
+visible = false
 position = Vector2( 17.6031, 175 )
 scale = Vector2( 2.9, 2.9 )
 texture = ExtResource( 7 )
 
 [node name="Sprite" type="Sprite" parent="StatsPanel/Tabs/Equipment/EquipLabel"]
+visible = false
 position = Vector2( 178, 175 )
 scale = Vector2( 2.1, 2.1 )
 texture = ExtResource( 6 )
 
 [node name="label1" type="RichTextLabel" parent="StatsPanel/Tabs/Equipment/EquipLabel"]
-margin_left = 36.0
-margin_top = 165.0
-margin_right = 159.0
-margin_bottom = 205.0
+margin_left = 35.528
+margin_top = 165.272
+margin_right = 158.528
+margin_bottom = 205.272
 rect_pivot_offset = Vector2( 336, -8 )
 custom_fonts/normal_font = ExtResource( 5 )
 text = "Equipment
@@ -404,10 +406,10 @@ __meta__ = {
 [node name="InvLabel" type="Node2D" parent="StatsPanel/Tabs/Equipment"]
 
 [node name="label2" type="RichTextLabel" parent="StatsPanel/Tabs/Equipment/InvLabel"]
-margin_left = 82.0
-margin_top = 230.0
-margin_right = 410.0
-margin_bottom = 254.0
+margin_left = 35.528
+margin_top = 229.272
+margin_right = 363.528
+margin_bottom = 253.272
 custom_fonts/normal_font = ExtResource( 5 )
 text = "Inventory"
 scroll_active = false
@@ -416,11 +418,13 @@ __meta__ = {
 }
 
 [node name="Sprite" type="Sprite" parent="StatsPanel/Tabs/Equipment/InvLabel"]
+visible = false
 position = Vector2( 47, 240 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 9 )
 
 [node name="Sprite2" type="Sprite" parent="StatsPanel/Tabs/Equipment/InvLabel"]
+visible = false
 position = Vector2( 212, 240 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 8 )

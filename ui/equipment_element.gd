@@ -8,7 +8,7 @@ var location
 var item 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	connect ("pressed", get_tree().get_root().get_node("partyview"), "_on_item_pressed", [self])
+	#connect ("pressed", get_tree().get_root().get_node("partyview"), "_on_item_pressed", [self])
 	pass # Replace with function body.
 
 func init (item):
@@ -32,6 +32,7 @@ func _on_DetailButton_gui_input(event):
 	if event is InputEventMouseButton and event.pressed:
 		match event.button_index:
 			BUTTON_LEFT:
+				self.queue_kill()
 				get_parent().get_parent().get_parent().get_parent().get_parent().get_parent().sort_equip (self)
 			BUTTON_RIGHT:
 				var hint = load ("res://ui/equipment_hint.tscn").instance()
@@ -39,4 +40,39 @@ func _on_DetailButton_gui_input(event):
 				hint.freePath = get_parent().get_parent().get_parent().get_parent().get_parent().get_parent().get_parent().get_path()
 				get_parent().get_parent().get_parent().get_parent().get_parent().get_parent().add_child (hint)
 				get_parent().get_parent().get_parent().get_parent().get_parent().get_parent().get_parent().pause_mode = PAUSE_MODE_STOP
+	pass # Replace with function body.
+onready var tween = get_node("Tween")
+var deleting = false
+var new = false
+func queue_kill():
+	deleting = true
+	get_node ("Panel/DetailButton").disabled = true
+	get_node ("Panel/DetailButton").hide()
+	#hide()
+	tween.interpolate_property(self, "position",
+		null, position + Vector2(0, -20), 0.1,
+	Tween.TRANS_QUART, Tween.EASE_IN)
+	tween.start()
+	tween.interpolate_property(self, "modulate",
+		null, Color (1,1,1,0), 0.1,
+	Tween.TRANS_QUART, Tween.EASE_IN)
+	tween.start()
+	pass
+
+func queue_enter():
+	#hide()
+	tween.interpolate_property(self, "position",
+		position + Vector2(0, -20), null,  0.1,
+	Tween.TRANS_QUART, Tween.EASE_IN)
+	tween.start()
+	tween.interpolate_property(self, "modulate",
+		Color (1,1,1,0), null,  0.1,
+	Tween.TRANS_QUART, Tween.EASE_IN)
+	tween.start()
+	new = false
+	pass
+	
+func _on_Tween_tween_all_completed():
+	hide()
+	queue_free()
 	pass # Replace with function body.
