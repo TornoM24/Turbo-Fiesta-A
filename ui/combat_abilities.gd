@@ -14,6 +14,11 @@ var ind = -1
 func _ready():
 	pass # Replace with function body.
 
+onready var shake = get_node ("shakenode")
+onready var hpbar = get_node ("namedisplay/HPBar")
+func shake():
+	shake.start(hpbar, 0.2, 50, 4)
+
 func init (unit):
 	parent = get_tree().get_root().get_node ("Controller")
 	get_node ("namedisplay/RichTextLabel").bbcode_text = "[center]" + unit.stats.name

@@ -59,7 +59,7 @@ var inRecovery = false
 var animStun = false
 var alive = true
 var inDead = false
-
+var panel
 var affiliation = "ally"
 var type
 var ability 
@@ -79,29 +79,38 @@ var dying
 var deathAnimFinished = false
 var casting = false
 onready var tween = get_node ("Tween")
+onready var uSprite = get_node ("UnitSprite")
 func enemyDie():
 	if !dying:
+		get_node ("AnimatedSprite/Shadow").hide()
 		dying = true
-		tween.interpolate_property(get_node ("UnitSprite"), "modulate",
+		tween.interpolate_property(uSprite, "modulate",
 			Color (1,1,1,1), Color (0.7,0,1,0), 1,
+		Tween.TRANS_LINEAR)
+		tween.interpolate_property(uSprite, "scale",
+			null, Vector2 (1,3), 1,
+		Tween.TRANS_QUART, Tween.EASE_IN)
+		tween.interpolate_property(uSprite, "position",
+			null, uSprite.position + Vector2 (0,-20), 1,
 		Tween.TRANS_QUART, Tween.EASE_IN)
 		tween.start()
 func allyDie():
-	get_node ("AnimatedSprite").hide()
+	animSprite.hide()
 	get_node ("UnitSprite").texture = load ("res://data/unit/hiro/art/hiro_dead.png")
 	get_node ("UnitSprite").show()
+	panel.shift_down()
 
 func effCall ():
 	get_parent().causeEffect (target,self,ability)
 
 func animReset():
-	get_node ("AnimatedSprite").hide()
+	animSprite.hide()
 	get_node ("Attack").show()
 	get_node ("Attack").frame=0
 	get_node ("Attack").playing=true
 	
 func animBreak():
-	#get_node ("AnimatedSprite").show()
+	#animSprite.show()
 	get_node ("Attack").hide()
 	get_node ("Attack").frame=0
 	get_node ("Attack").playing=false
@@ -123,7 +132,7 @@ func decay_effects(delta):
 			tempEffects.erase (eff)
 			pass
 	pass
-
+onready var animSprite = get_node("AnimatedSprite")
 func _process(delta):
 	decay_effects (delta)
 	if inDead:
@@ -138,7 +147,7 @@ func _process(delta):
 		if inAnimation:		
 			if type == "magic":
 				casting = true
-				get_node ("AnimatedSprite").hide()
+				animSprite.hide()
 				var timer = get_node ("Timer")
 				if ability.has ("castTime"):
 					timer.wait_time = ability.castTime
@@ -152,9 +161,15 @@ func _process(delta):
 					for x in ability.effects:
 						if x.target == "all enemies":
 							all = true
-					tween.interpolate_property(self, "position",
-						origin, target.position + Vector2 (150,0), 0.5,
+					tween.interpolate_property(self, "position:x",
+						origin.x, target.position.x + 150, 0.5,
 					Tween.TRANS_QUART, Tween.EASE_OUT)
+					tween.interpolate_property(self, "position:y",
+						origin.y, target.position.y, 0.5,
+					Tween.TRANS_QUART, Tween.EASE_OUT)
+#					tween.interpolate_property(self, "position:y",
+#						target.position.y-30, target.position.y, 0.25,
+#					Tween.TRANS_QUAD, Tween.EASE_IN, 0.25)
 					tween.start()
 					singleRun = false
 				
@@ -176,7 +191,7 @@ func _process(delta):
 					singleRun = false
 				if global_position == origin:
 					animBreak()
-					get_node ("AnimatedSprite").show()
+					animSprite.show()
 					inRecovery = false
 					animStun = false
 			else: #if type *is* magic then
@@ -250,8 +265,8 @@ func shake(direction):
 		par = -20
 	else:
 		par = 20
-	tween.interpolate_property(get_node ("AnimatedSprite"), "position",
-		null, get_node ("AnimatedSprite").position + Vector2 (par, 0), 0.5,
+	tween.interpolate_property(animSprite, "position",
+		null, animSprite.position + Vector2 (par, 0), 0.5,
 	Tween.TRANS_ELASTIC, Tween.EASE_OUT)
 	tween.interpolate_property(get_node ("UnitSprite"), "position",
 		null, get_node ("UnitSprite").position + Vector2 (par, 0), 0.5,
@@ -283,7 +298,7 @@ func _on_Select_pressed():
 
 func _on_Select_mouse_entered():
 	var x = get_node ("UnitSprite")
-	var y = get_node ("AnimatedSprite")
+	var y = animSprite
 	x.modulate.r = 1.2
 	x.modulate.g = 1.2
 	x.modulate.b = 1.2
@@ -295,7 +310,7 @@ func _on_Select_mouse_entered():
 
 func _on_Select_mouse_exited():
 	var x = get_node ("UnitSprite")
-	var y = get_node ("AnimatedSprite")
+	var y = animSprite
 	x.modulate.r = 1
 	x.modulate.g = 1
 	x.modulate.b = 1
@@ -312,7 +327,7 @@ func process_end():
 
 func _on_Attack_animation_finished():
 	if ability.type != "magic": 
-		get_node ("AnimatedSprite").show()
+		animSprite.show()
 		get_node ("Attack").hide()
 		singleRun = true
 		process_end()
@@ -321,8 +336,8 @@ func _on_Attack_animation_finished():
 
 func _on_Timer_timeout():
 	singleRun = true
-	get_node ("AnimatedSprite").show()
-	tween.interpolate_property(get_node ("AnimatedSprite"), "modulate",
+	animSprite.show()
+	tween.interpolate_property(animSprite, "modulate",
 		Color (1.2,1.2,1.2,1), Color (1,1,1,1), 1,
 	Tween.TRANS_QUART, Tween.EASE_IN)
 	tween.start()
@@ -331,11 +346,11 @@ func _on_Timer_timeout():
 onready var bar = get_node ("TextureProgress")
 
 func _on_Tween_tween_all_completed():
-	tween.interpolate_property(get_node ("AnimatedSprite"), "position",
+	tween.interpolate_property(animSprite, "position",
 		null, Vector2(16,28), 0.5,
-	Tween.TRANS_QUART, Tween.EASE_IN)
+	Tween.TRANS_LINEAR, Tween.EASE_IN)
 	tween.interpolate_property(get_node ("UnitSprite"), "position",
 		null, Vector2(24,50), 0.5,
-	Tween.TRANS_QUART, Tween.EASE_IN)
+	Tween.TRANS_LINEAR, Tween.EASE_IN)
 	tween.start()
 	pass # Replace with function body.

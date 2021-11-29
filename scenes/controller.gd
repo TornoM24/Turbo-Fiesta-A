@@ -154,6 +154,7 @@ func spawnAllies ():
 				var aPanel = load ("res://ui/combat_abilities_2.tscn").instance()
 				aPanel.name = "A" + str(incrementer)
 				add_child (aPanel)
+				instance.panel = aPanel
 #				if incrementer == 1:
 #					aPanel.get_node ("Panel/buttonhost/acter/act").grab_focus()
 #					aPanel.get_node ("Panel/buttonhost/acter/act").show_buttons()
@@ -238,6 +239,7 @@ func causeEffect (target,source,ability):
 					target.shake("back")
 				else:
 					target.shake("front")
+					target.panel.shake()
 				spawn_particle (ability, target)
 				target.stats.hp -= fPower
 				if target.stats.hp > target.stats.mhp:
