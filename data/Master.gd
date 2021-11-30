@@ -5,6 +5,9 @@ extends Node
 # var a = 2
 # var b = "text"
 var atb_paused = false
+var abiOpen = false
+
+var combatMode = "simple"
 var working = true
 var ability_dict
 var passive_dict = {

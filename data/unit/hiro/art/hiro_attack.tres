@@ -1,6 +1,7 @@
-[gd_resource type="SpriteFrames" load_steps=19 format=2]
+[gd_resource type="SpriteFrames" load_steps=20 format=2]
 
 [ext_resource path="res://data/unit/hiro/art/mc4-redesign-reanimate_atk_alt_3.png" type="Texture" id=1]
+[ext_resource path="res://data/unit/hiro/art/mc4-redesign-reanimate_atk_alt.png" type="Texture" id=2]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 1 )
@@ -67,7 +68,7 @@ atlas = ExtResource( 1 )
 region = Rect2( 1920, 0, 128, 64 )
 
 [sub_resource type="AtlasTexture" id=17]
-atlas = ExtResource( 1 )
+atlas = ExtResource( 2 )
 region = Rect2( 2048, 0, 128, 64 )
 
 [resource]

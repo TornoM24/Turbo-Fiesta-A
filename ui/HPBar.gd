@@ -7,6 +7,7 @@ extends TextureProgress
 
 var targetValue
 var origin
+const DEC_SPEED = 150
 onready var src = get_parent().get_parent()
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -18,9 +19,11 @@ func _process (delta):
 		var x = src.assignment
 		targetValue = int((float(x.stats.hp)/x.stats.mhp)*100)
 		if value < targetValue:
-			value += 50 * delta
+			value += DEC_SPEED * delta
 		elif value > targetValue:
-			value -= 50 * delta
+			value -= DEC_SPEED * delta
+		if abs (targetValue - value) < DEC_SPEED * delta:
+			value = targetValue
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

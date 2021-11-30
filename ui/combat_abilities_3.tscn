@@ -1,37 +1,37 @@
 [gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://font/Chrono.tres" type="DynamicFont" id=1]
-[ext_resource path="res://gfx/unit/hpbar_bg.png" type="Texture" id=2]
-[ext_resource path="res://font/ChronoLarge.tres" type="DynamicFont" id=3]
+[ext_resource path="res://font/ChronoLarge.tres" type="DynamicFont" id=2]
+[ext_resource path="res://gfx/unit/mpbar.png" type="Texture" id=3]
 [ext_resource path="res://gfx/icons/circle.png" type="Texture" id=4]
-[ext_resource path="res://ui/guard2.png" type="Texture" id=5]
-[ext_resource path="res://ui/return.gd" type="Script" id=6]
-[ext_resource path="res://ui/act.gd" type="Script" id=7]
-[ext_resource path="res://ui/combat_abilities.gd" type="Script" id=8]
-[ext_resource path="res://pixel_button_round.tres" type="Theme" id=9]
-[ext_resource path="res://circle.tres" type="Theme" id=10]
-[ext_resource path="res://pixel_button_red.tres" type="Theme" id=11]
-[ext_resource path="res://circle_button.tres" type="Theme" id=12]
-[ext_resource path="res://pixel_panel_fade.theme" type="Theme" id=13]
-[ext_resource path="res://pixel_panel_wide.theme" type="Theme" id=14]
-[ext_resource path="res://ui/orb2.png" type="Texture" id=15]
-[ext_resource path="res://gfx/icons/circle_atb.png" type="Texture" id=16]
-[ext_resource path="res://gfx/icons/circle_atb_bg.png" type="Texture" id=17]
-[ext_resource path="res://ui/orb.png" type="Texture" id=18]
-[ext_resource path="res://gfx/unit/mpbar.png" type="Texture" id=19]
-[ext_resource path="res://ui/pole.png" type="Texture" id=20]
-[ext_resource path="res://gfx/unit/hpbar.png" type="Texture" id=21]
-[ext_resource path="res://ui/ATB2.gd" type="Script" id=22]
-[ext_resource path="res://gfx/unit/atbbar.png" type="Texture" id=23]
-[ext_resource path="res://ui/Status.gd" type="Script" id=24]
-[ext_resource path="res://ui/MPBar.gd" type="Script" id=25]
-[ext_resource path="res://ui/HPBar.gd" type="Script" id=26]
-[ext_resource path="res://shakenode.tscn" type="PackedScene" id=27]
+[ext_resource path="res://gfx/unit/hpbar_bg.png" type="Texture" id=5]
+[ext_resource path="res://gfx/fx/cast_particles.png" type="Texture" id=6]
+[ext_resource path="res://gfx/unit/hpbar.png" type="Texture" id=7]
+[ext_resource path="res://ui/MPBar.gd" type="Script" id=8]
+[ext_resource path="res://ui/HPBar.gd" type="Script" id=9]
+[ext_resource path="res://gfx/unit/hpbar_hit.png" type="Texture" id=10]
+[ext_resource path="res://gfx/unit/hpbar_fg.png" type="Texture" id=11]
+[ext_resource path="res://ui/act_variant.gd" type="Script" id=12]
+[ext_resource path="res://ui/combat_abilities.gd" type="Script" id=13]
+[ext_resource path="res://circle.tres" type="Theme" id=14]
+[ext_resource path="res://circle_button.tres" type="Theme" id=15]
+[ext_resource path="res://pixel_panel_fade.theme" type="Theme" id=16]
+[ext_resource path="res://pixel_panel_wide.theme" type="Theme" id=17]
+[ext_resource path="res://pixel_panel_inwards.theme" type="Theme" id=18]
+[ext_resource path="res://pixel_button_red.tres" type="Theme" id=19]
+[ext_resource path="res://pixel_button_round.tres" type="Theme" id=20]
+[ext_resource path="res://ui/guard2.png" type="Texture" id=21]
+[ext_resource path="res://ui/orb2.png" type="Texture" id=22]
+[ext_resource path="res://gfx/icons/circle_atb.png" type="Texture" id=23]
+[ext_resource path="res://ui/orb.png" type="Texture" id=24]
+[ext_resource path="res://ui/pole.png" type="Texture" id=25]
+[ext_resource path="res://gfx/icons/circle_atb_bg.png" type="Texture" id=26]
+[ext_resource path="res://gfx/unit/atbbar.png" type="Texture" id=27]
 [ext_resource path="res://ui/TrueBar.gd" type="Script" id=28]
-[ext_resource path="res://gfx/unit/hpbar_hit.png" type="Texture" id=29]
-[ext_resource path="res://gfx/fx/cast_particles.png" type="Texture" id=30]
-[ext_resource path="res://gfx/unit/hpbar_fg.png" type="Texture" id=31]
-[ext_resource path="res://pixel_panel_inwards.theme" type="Theme" id=32]
+[ext_resource path="res://ui/ATB2.gd" type="Script" id=29]
+[ext_resource path="res://ui/return.gd" type="Script" id=30]
+[ext_resource path="res://ui/Status.gd" type="Script" id=31]
+[ext_resource path="res://shakenode.tscn" type="PackedScene" id=32]
 
 [sub_resource type="ParticlesMaterial" id=1]
 flag_disable_z = true
@@ -40,7 +40,7 @@ orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 
 [node name="abilitymenu" type="Node2D"]
-script = ExtResource( 8 )
+script = ExtResource( 13 )
 __meta__ = {
 "_edit_horizontal_guides_": [  ]
 }
@@ -51,7 +51,7 @@ margin_left = 56.0
 margin_top = 760.0
 margin_right = 200.0
 margin_bottom = 904.0
-theme = ExtResource( 10 )
+theme = ExtResource( 14 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -62,7 +62,7 @@ margin_left = 29.0
 margin_top = 672.0
 margin_right = 237.0
 margin_bottom = 704.0
-theme = ExtResource( 14 )
+theme = ExtResource( 17 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -72,7 +72,7 @@ margin_left = 27.0
 margin_top = -208.0
 margin_right = 171.0
 margin_bottom = -152.0
-theme = ExtResource( 32 )
+theme = ExtResource( 18 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -82,10 +82,10 @@ margin_left = 35.0
 margin_top = -240.0
 margin_right = 163.0
 margin_bottom = -208.0
-theme = ExtResource( 9 )
-custom_fonts/font = ExtResource( 3 )
+theme = ExtResource( 20 )
+custom_fonts/font = ExtResource( 2 )
 text = "Shumford"
-script = ExtResource( 24 )
+script = ExtResource( 31 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -97,15 +97,15 @@ margin_right = 195.0
 margin_bottom = -190.0
 rect_scale = Vector2( 0.8, 0.8 )
 value = 100.0
-texture_under = ExtResource( 2 )
-texture_over = ExtResource( 31 )
-texture_progress = ExtResource( 29 )
+texture_under = ExtResource( 5 )
+texture_over = ExtResource( 11 )
+texture_progress = ExtResource( 10 )
 nine_patch_stretch = true
 stretch_margin_left = 1
 stretch_margin_top = 1
 stretch_margin_right = 2
 stretch_margin_bottom = 1
-script = ExtResource( 26 )
+script = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -115,8 +115,8 @@ margin_right = 200.0
 margin_bottom = 12.0
 rect_scale = Vector2( 0.8, 0.8 )
 value = 100.0
-texture_over = ExtResource( 31 )
-texture_progress = ExtResource( 21 )
+texture_over = ExtResource( 11 )
+texture_progress = ExtResource( 7 )
 nine_patch_stretch = true
 stretch_margin_left = 1
 stretch_margin_top = 1
@@ -135,15 +135,15 @@ margin_right = 195.0
 margin_bottom = -171.0
 rect_scale = Vector2( 0.8, 0.8 )
 value = 100.0
-texture_under = ExtResource( 2 )
-texture_over = ExtResource( 31 )
-texture_progress = ExtResource( 19 )
+texture_under = ExtResource( 5 )
+texture_over = ExtResource( 11 )
+texture_progress = ExtResource( 3 )
 nine_patch_stretch = true
 stretch_margin_left = 1
 stretch_margin_top = 1
 stretch_margin_right = 1
 stretch_margin_bottom = 1
-script = ExtResource( 25 )
+script = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -154,7 +154,7 @@ self_modulate = Color( 1, 1, 1, 0.254902 )
 margin_right = 208.0
 margin_bottom = 32.0
 value = 100.0
-texture_progress = ExtResource( 23 )
+texture_progress = ExtResource( 27 )
 nine_patch_stretch = true
 stretch_margin_top = 2
 stretch_margin_bottom = 2
@@ -168,7 +168,7 @@ margin_left = 8.0
 margin_top = 5.0
 margin_right = 200.0
 margin_bottom = 32.0
-custom_fonts/normal_font = ExtResource( 3 )
+custom_fonts/normal_font = ExtResource( 2 )
 bbcode_enabled = true
 bbcode_text = "[center]Shumford "
 text = "Shumford "
@@ -213,10 +213,10 @@ margin_bottom = 795.0
 rect_scale = Vector2( 0.5, 0.12 )
 rect_pivot_offset = Vector2( 150, 154.5 )
 step = 0.1
-texture_under = ExtResource( 17 )
-texture_progress = ExtResource( 16 )
+texture_under = ExtResource( 26 )
+texture_progress = ExtResource( 23 )
 fill_mode = 4
-script = ExtResource( 22 )
+script = ExtResource( 29 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -225,7 +225,7 @@ __meta__ = {
 self_modulate = Color( 1, 1, 1, 0 )
 margin_top = 704.0
 margin_bottom = 704.0
-theme = ExtResource( 13 )
+theme = ExtResource( 16 )
 __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": false
@@ -243,25 +243,38 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Panel" type="Panel" parent="Panel/buttonhost"]
-visible = false
-margin_left = 16.0
+[node name="attack2" type="Node2D" parent="Panel/buttonhost"]
+
+[node name="panel" type="Panel" parent="Panel/buttonhost/attack2"]
+margin_left = -40.0
 margin_top = 56.0
-margin_right = 144.0
-margin_bottom = 184.0
+margin_right = 24.0
+margin_bottom = 120.0
+theme = ExtResource( 18 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="Panel/buttonhost/attack2"]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = -40.0
+margin_top = 56.0
+margin_right = 24.0
+margin_bottom = 120.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="attack" type="Button" parent="Panel/buttonhost"]
+visible = false
 margin_left = 56.0
 margin_top = 8.0
 margin_right = 104.0
 margin_bottom = 76.0
 rect_pivot_offset = Vector2( 24, 23.5 )
 focus_neighbour_bottom = NodePath("../../../actor2/return")
-theme = ExtResource( 12 )
-custom_fonts/font = ExtResource( 3 )
+theme = ExtResource( 15 )
+custom_fonts/font = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -282,6 +295,7 @@ __meta__ = {
 }
 
 [node name="defend" type="Button" parent="Panel/buttonhost"]
+visible = false
 margin_left = -33.0
 margin_top = 96.0
 margin_right = 15.0
@@ -290,8 +304,8 @@ rect_rotation = -90.0
 rect_pivot_offset = Vector2( 24, 23.5 )
 hint_tooltip = "Provides 50% general mitigation."
 focus_neighbour_right = NodePath("../../../actor2/return")
-theme = ExtResource( 12 )
-custom_fonts/font = ExtResource( 3 )
+theme = ExtResource( 15 )
+custom_fonts/font = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -301,7 +315,7 @@ visible = false
 self_modulate = Color( 0.4, 0.380392, 0.67451, 1 )
 position = Vector2( 23.6005, 44.75 )
 scale = Vector2( 2.46154, 1.96685 )
-texture = ExtResource( 5 )
+texture = ExtResource( 21 )
 
 [node name="Label" type="RichTextLabel" parent="Panel/buttonhost/defend"]
 margin_left = -24.5
@@ -319,6 +333,7 @@ __meta__ = {
 }
 
 [node name="special" type="Button" parent="Panel/buttonhost"]
+visible = false
 margin_left = 144.0
 margin_top = 96.0
 margin_right = 192.0
@@ -326,8 +341,8 @@ margin_bottom = 163.0
 rect_rotation = 90.0
 rect_pivot_offset = Vector2( 24, 23.5 )
 focus_neighbour_left = NodePath("../../../actor2/return")
-theme = ExtResource( 12 )
-custom_fonts/font = ExtResource( 3 )
+theme = ExtResource( 15 )
+custom_fonts/font = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -348,6 +363,7 @@ __meta__ = {
 }
 
 [node name="item" type="Button" parent="Panel/buttonhost"]
+visible = false
 margin_left = 56.0
 margin_top = 185.0
 margin_right = 104.0
@@ -355,8 +371,8 @@ margin_bottom = 253.0
 rect_rotation = 180.0
 rect_pivot_offset = Vector2( 24, 23.5 )
 focus_neighbour_top = NodePath("../../../actor2/return")
-theme = ExtResource( 12 )
-custom_fonts/font = ExtResource( 3 )
+theme = ExtResource( 15 )
+custom_fonts/font = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -382,19 +398,20 @@ margin_top = 216.0
 margin_right = 172.0
 margin_bottom = 250.0
 rect_scale = Vector2( 1, 1.01685 )
-theme = ExtResource( 11 )
-custom_fonts/font = ExtResource( 3 )
+theme = ExtResource( 19 )
+custom_fonts/font = ExtResource( 2 )
 text = "Escape (100%)"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="acter" type="Node2D" parent="Panel/buttonhost"]
+visible = false
 
 [node name="Sprite" type="Sprite" parent="Panel/buttonhost/acter"]
 position = Vector2( 80, 120 )
 scale = Vector2( 0.3, 0.3 )
-texture = ExtResource( 18 )
+texture = ExtResource( 24 )
 
 [node name="Label2" type="RichTextLabel" parent="Panel/buttonhost/acter"]
 margin_left = 57.0
@@ -421,10 +438,10 @@ margin_right = 104.0
 margin_bottom = 143.0
 rect_scale = Vector2( 2, 2 )
 rect_pivot_offset = Vector2( 24, 23.5 )
-theme = ExtResource( 9 )
+theme = ExtResource( 20 )
 custom_fonts/font = ExtResource( 1 )
 text = "READY"
-script = ExtResource( 7 )
+script = ExtResource( 12 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -434,14 +451,14 @@ visible = false
 self_modulate = Color( 0.554688, 0.554688, 0.554688, 1 )
 position = Vector2( 128, 164 )
 scale = Vector2( 4.8, 4.9 )
-texture = ExtResource( 20 )
+texture = ExtResource( 25 )
 
 [node name="Tween" type="Tween" parent="."]
 
 [node name="orb2" type="Sprite" parent="."]
 visible = false
 position = Vector2( 160, 512 )
-texture = ExtResource( 15 )
+texture = ExtResource( 22 )
 
 [node name="actor2" type="Node2D" parent="."]
 position = Vector2( 128, 576 )
@@ -450,7 +467,7 @@ z_index = 4094
 [node name="Sprite" type="Sprite" parent="actor2"]
 position = Vector2( -2.38419e-07, 1.508e-05 )
 scale = Vector2( 0.2, 0.2 )
-texture = ExtResource( 18 )
+texture = ExtResource( 24 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -466,25 +483,26 @@ focus_neighbour_left = NodePath("../../Panel/buttonhost/defend")
 focus_neighbour_top = NodePath("../../Panel/buttonhost/attack")
 focus_neighbour_right = NodePath("../../Panel/buttonhost/special")
 focus_neighbour_bottom = NodePath("../../Panel/buttonhost/item")
-theme = ExtResource( 9 )
+theme = ExtResource( 20 )
 custom_fonts/font = ExtResource( 1 )
 text = "Back"
-script = ExtResource( 6 )
+script = ExtResource( 30 )
 __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
-[node name="shakenode" parent="." instance=ExtResource( 27 )]
+[node name="shakenode" parent="." instance=ExtResource( 32 )]
 
 [node name="Particles2D" type="Particles2D" parent="."]
 visible = false
 position = Vector2( 128, 648 )
 lifetime = 5.0
 process_material = SubResource( 1 )
-texture = ExtResource( 30 )
+texture = ExtResource( 6 )
 
 [connection signal="pressed" from="namedisplay/Status" to="namedisplay/Status" method="_on_Status_pressed"]
+[connection signal="pressed" from="Panel/buttonhost/attack2/Button" to="." method="_on_attack_pressed"]
 [connection signal="pressed" from="Panel/buttonhost/attack" to="." method="_on_attack_pressed"]
 [connection signal="pressed" from="Panel/buttonhost/defend" to="." method="_on_defend_pressed"]
 [connection signal="pressed" from="Panel/buttonhost/special" to="." method="_on_special_pressed"]

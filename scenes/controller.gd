@@ -40,34 +40,34 @@ func updateStats (delta):
 	var inc = 0
 	Master.atb_paused = false
 	for x in alliesUnit:
-		if x.animStun and !x.casting:
+		if (x.animStun and !x.casting) or Master.abiOpen:
 			Master.atb_paused = true
 		var path = "Control/Panel/CBPanel2/G" + str(inc + 1) + "/"
 		var path2 = "A" + str(inc + 1) + "/namedisplay"
 		if !victory:
 			x.reference.stats.hp = x.stats.hp
 			x.reference.stats.mp = x.stats.mp
-		get_node (path).unit = x
-		get_node (path+"RichTextLabel").bbcode_enabled = true
-		#get_node (path+"RichTextLabel").bbcode_text = x.get_node ("Data").unitDict.name
-		get_node (path+"HPLabel").bbcode_text = "[right][color=#ffeeb8]" + str (x.stats.hp)
-		get_node (path+"MPLabel").bbcode_text = "[right][color=#edfffa]" + str (x.stats.mp)
-		if x.atb_val >= 100:
-			get_node (path+"ATBLabel").bbcode_text = "[right]100%"
-		else:
-			get_node (path+"ATBLabel").bbcode_text = "[right]" + str (int(x.atb_val)) + "%"
-		get_node (path+"HPBar").targetValue = int((float(x.stats.hp)/x.stats.mhp)*100)
-		get_node (path+"MPBar").targetValue = int((float(x.stats.mp)/x.stats.mmp)*100)
-		if get_node (path+"HPBar").targetValue < get_node (path+"HPBar").value:
-			get_node (path+"HPBar").value -= delta * 50
-		elif get_node (path+"HPBar").targetValue > get_node (path+"HPBar").value:
-			get_node (path+"HPBar").value += delta * 50
-		if get_node (path+"MPBar").targetValue < get_node (path+"MPBar").value:
-			get_node (path+"MPBar").value -= delta * 50
-		elif get_node (path+"MPBar").targetValue > get_node (path+"MPBar").value:
-			get_node (path+"MPBar").value += delta * 50
+#		get_node (path).unit = x
+#		get_node (path+"RichTextLabel").bbcode_enabled = true
+#		#get_node (path+"RichTextLabel").bbcode_text = x.get_node ("Data").unitDict.name
+#		get_node (path+"HPLabel").bbcode_text = "[right][color=#ffeeb8]" + str (x.stats.hp)
+#		get_node (path+"MPLabel").bbcode_text = "[right][color=#edfffa]" + str (x.stats.mp)
+#		if x.atb_val >= 100:
+#			get_node (path+"ATBLabel").bbcode_text = "[right]100%"
+#		else:
+#			get_node (path+"ATBLabel").bbcode_text = "[right]" + str (int(x.atb_val)) + "%"
+#		get_node (path+"HPBar").targetValue = int((float(x.stats.hp)/x.stats.mhp)*100)
+#		get_node (path+"MPBar").targetValue = int((float(x.stats.mp)/x.stats.mmp)*100)
+#		if get_node (path+"HPBar").targetValue < get_node (path+"HPBar").value:
+#			get_node (path+"HPBar").value -= delta * 50
+#		elif get_node (path+"HPBar").targetValue > get_node (path+"HPBar").value:
+#			get_node (path+"HPBar").value += delta * 50
+#		if get_node (path+"MPBar").targetValue < get_node (path+"MPBar").value:
+#			get_node (path+"MPBar").value -= delta * 50
+#		elif get_node (path+"MPBar").targetValue > get_node (path+"MPBar").value:
+#			get_node (path+"MPBar").value += delta * 50
 			
-		get_node (path+"ATBBar").value = x.atb_val
+#		get_node (path+"ATBBar").value = x.atb_val
 		inc += 1
 		pass
 	for x in enemyUnit:
@@ -150,8 +150,14 @@ func spawnAllies ():
 				instance.stats = instance.reference.stats.duplicate()
 				instance.originalStats = instance.stats.duplicate()
 				instance.equipBonus = instance.reference.bonusStats.duplicate()
-				alliesUnit.append(instance)
-				var aPanel = load ("res://ui/combat_abilities_2.tscn").instance()
+				alliesUnit.append(instance)	
+				var interface = "res://ui/combat_abilities_2.tscn"
+				
+				if Master.combatMode == "fancy":
+					interface = "res://ui/combat_abilities_2.tscn"
+				else:
+					interface = "res://ui/combat_abilities_3.tscn"
+				var aPanel = load (interface).instance()
 				aPanel.name = "A" + str(incrementer)
 				add_child (aPanel)
 				instance.panel = aPanel
@@ -167,7 +173,7 @@ func spawnAllies ():
 				aPanel.position.x += 256 * (incrementer-1)
 			
 var phBD = {
-	"formation": [["geode","geode","geode"],["geode","geode","geode"],["geode","geode","geode"]],
+	"formation": [[null,null,null],[null,"geode",null],[null,null,null]],
 	"field": "plains"
 }
 
@@ -187,7 +193,7 @@ func init_battle (battleData):
 	var incrementer = 0
 	for x in range (0,3):
 		for y in range (0,3):
-			if battleData.formation[x][y] != "empty":
+			if battleData.formation[x][y] != "empty" && battleData.formation[x][y] != null:
 				print ("spawning " + battleData.formation[x][y])
 				incrementer +=1 
 				var instance = placeholder.instance()
@@ -297,6 +303,7 @@ func causeEffect (target,source,ability):
 				source.parse_buff (buff)
 			
 func cancel_targeting ():
+	Master.abiOpen = false
 	abilityPanels [currentPan].get_node ("Panel/buttonhost/acter/act").show_buttons()
 	#update_panels (abilityPanels)
 	show_all()

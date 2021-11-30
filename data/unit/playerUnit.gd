@@ -78,11 +78,15 @@ var yVelo = -1.3
 var dying
 var deathAnimFinished = false
 var casting = false
+onready var attack = get_node ("Attack")
 onready var tween = get_node ("Tween")
 onready var uSprite = get_node ("UnitSprite")
+onready var sh = get_node ("AnimatedSprite/Shadow")
+onready var timer = get_node ("Timer")
+onready var castParticles = get_node ("CastParticles")
 func enemyDie():
 	if !dying:
-		get_node ("AnimatedSprite/Shadow").hide()
+		sh.hide()
 		dying = true
 		tween.interpolate_property(uSprite, "modulate",
 			Color (1,1,1,1), Color (0.7,0,1,0), 1,
@@ -95,10 +99,28 @@ func enemyDie():
 		Tween.TRANS_QUART, Tween.EASE_IN)
 		tween.start()
 func allyDie():
-	animSprite.hide()
-	get_node ("UnitSprite").texture = load ("res://data/unit/hiro/art/hiro_dead.png")
-	get_node ("UnitSprite").show()
+	#animSprite.hide()
+	#get_node ("UnitSprite").texture = load ("res://data/unit/hiro/art/hiro_dead.png")
+	#get_node ("UnitSprite").show()
+	casting = false
+	animStun = false
+	attack.hide()
+	timer.stop()
+	bar.hide()
+	castParticles.emitting = false
 	panel.shift_down()
+	if !deathAnimFinished:
+		animSprite.show()
+		deathAnimFinished = true
+		panel.atb.kill()
+		panel.shift_down()
+		tween.interpolate_property(animSprite, "modulate",
+			Color (1,1,1,1), Color (0.7,0,1,0), 1,
+		Tween.TRANS_LINEAR)
+		tween.interpolate_property(animSprite, "scale",
+			null, Vector2 (1,3), 1,
+		Tween.TRANS_QUART, Tween.EASE_IN)
+		tween.start()
 
 func effCall ():
 	get_parent().causeEffect (target,self,ability)
@@ -135,6 +157,10 @@ func decay_effects(delta):
 onready var animSprite = get_node("AnimatedSprite")
 func _process(delta):
 	decay_effects (delta)
+	if Master.abiOpen:
+		animSprite.playing = false
+	else:
+		animSprite.playing = true
 	if inDead:
 		allyDie()
 	if !dying:
@@ -148,12 +174,11 @@ func _process(delta):
 			if type == "magic":
 				casting = true
 				animSprite.hide()
-				var timer = get_node ("Timer")
 				if ability.has ("castTime"):
 					timer.wait_time = ability.castTime
 				else:
 					timer.wait_time = 4
-				get_node ("TextureProgress").max_value = timer.wait_time
+				bar.max_value = timer.wait_time
 				timer.start()
 			if type !="ranged" and type!= "magic":
 				var all = false
@@ -203,15 +228,11 @@ func _process(delta):
 			alive = false
 	else:
 		die()
-		yield(get_tree().create_timer(1), "timeout")
 		deathAnimFinished = true
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
 func die():
 	get_node("HPBar").hide()
 	get_node("ATBBar").hide()
-	animStun = true
+	#animStun = true
 func glow ():
 	var spr = get_node ("UnitSprite")
 	yield(get_tree().create_timer(0.10), "timeout")
@@ -284,7 +305,7 @@ func sprite_attack (abi, tar):
 		create_message (ability.quote)
 	if type == "magic":
 		get_node ("Attack").frames = load ("res://data/unit/"+unitName+"/art/"+unitName+"_cast.tres")
-		get_node ("CastParticles").emitting = true
+		castParticles.emitting = true
 	else:
 		get_node ("Attack").frames = load ("res://data/unit/"+unitName+"/art/"+unitName+"_attack.tres")
 	yVelo = -2.6
@@ -344,13 +365,21 @@ func _on_Timer_timeout():
 	process_end()
 	pass # Replace with function body.
 onready var bar = get_node ("TextureProgress")
-
+var deadSpr = load ("res://gfx/dead.tres")
 func _on_Tween_tween_all_completed():
-	tween.interpolate_property(animSprite, "position",
-		null, Vector2(16,28), 0.5,
-	Tween.TRANS_LINEAR, Tween.EASE_IN)
-	tween.interpolate_property(get_node ("UnitSprite"), "position",
-		null, Vector2(24,50), 0.5,
-	Tween.TRANS_LINEAR, Tween.EASE_IN)
-	tween.start()
+	if !deathAnimFinished:
+		tween.interpolate_property(animSprite, "position",
+			null, Vector2(16,28), 0.5,
+		Tween.TRANS_LINEAR, Tween.EASE_IN)
+		tween.interpolate_property(get_node ("UnitSprite"), "position",
+			null, Vector2(24,50), 0.5,
+		Tween.TRANS_LINEAR, Tween.EASE_IN)
+		tween.start()
+	else:
+		sh.hide()
+		animSprite.show()
+		animSprite.modulate = Color (1,1,1,1)
+		animSprite.scale = Vector2 (2,2)
+		animSprite.frames = deadSpr
+		animSprite.speed_scale = 1
 	pass # Replace with function body.

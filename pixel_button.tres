@@ -1,25 +1,26 @@
-[gd_resource type="Theme" load_steps=7 format=2]
+[gd_resource type="Theme" load_steps=10 format=2]
 
 [ext_resource path="res://font/Chrono.tres" type="DynamicFont" id=1]
 [ext_resource path="res://ui/button_normal.png" type="Texture" id=2]
+[ext_resource path="res://ui/button_depressed.png" type="Texture" id=3]
+[ext_resource path="res://ui/button_hover.png" type="Texture" id=4]
+[ext_resource path="res://ui/button_disabled.png" type="Texture" id=5]
 
 [sub_resource type="StyleBoxTexture" id=1]
-texture = ExtResource( 2 )
+texture = ExtResource( 5 )
 region_rect = Rect2( 0, 0, 24, 24 )
 margin_left = 4.0
 margin_right = 4.0
 margin_top = 4.0
 margin_bottom = 8.0
-modulate_color = Color( 0.294118, 0.294118, 0.294118, 1 )
 
 [sub_resource type="StyleBoxTexture" id=2]
-texture = ExtResource( 2 )
+texture = ExtResource( 4 )
 region_rect = Rect2( 0, 0, 24, 24 )
 margin_left = 4.0
 margin_right = 4.0
 margin_top = 4.0
 margin_bottom = 4.0
-modulate_color = Color( 1.2, 1.2, 1.2, 1 )
 
 [sub_resource type="StyleBoxTexture" id=3]
 texture = ExtResource( 2 )
@@ -30,13 +31,12 @@ margin_top = 4.0
 margin_bottom = 4.0
 
 [sub_resource type="StyleBoxTexture" id=4]
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 region_rect = Rect2( 0, 0, 24, 24 )
 margin_left = 4.0
 margin_right = 4.0
 margin_top = 4.0
 margin_bottom = 4.0
-modulate_color = Color( 0.419608, 0.419608, 0.419608, 1 )
 
 [resource]
 default_font = ExtResource( 1 )

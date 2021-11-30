@@ -27,21 +27,12 @@ func _ready():
 
 func _process(delta):
 	pass
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-
+	
 func _on_exit_pressed():
-	get_parent ().abilityPanels [get_parent().currentPan].get_node ("Panel/buttonhost/acter/act").show_buttons()
-	var skillPanel = get_node("Panel/CBPanel")
-	var tsPanel = get_node("Panel/Panel2")
-	for x in get_node ("Panel/CBPanel/specialscroll/Panel").get_children():
-		x.queue_free()
-	skillPanel.a_hide()
-	tsPanel.visible = false
+	autokill()
 	get_node ("Panel/buttonhost/").visible=true
 	get_parent().show_all()
-	pass # Replace with function body.
+	
 func generateTip (ability):
 	var tipText = ""
 	var inc = 0
@@ -108,6 +99,7 @@ func _on_special_pressed(button):
 		get_node ("Panel/buttonhost/").visible=false
 	
 func autokill ():
+	Master.abiOpen = false
 	var par = get_parent()
 	var selector = get_parent().get_node("Control/Selector")
 	get_parent().cancel_targeting()

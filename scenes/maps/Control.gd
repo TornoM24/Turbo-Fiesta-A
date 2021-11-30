@@ -17,3 +17,11 @@ func _process(delta):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+
+func _on_SimpleButton_toggled(button_pressed):
+	if Master.combatMode == "simple":
+		Master.combatMode = "fancy"
+	else:
+		Master.combatMode = "simple"
+	pass # Replace with function body.

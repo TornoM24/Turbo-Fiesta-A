@@ -19,7 +19,7 @@ func hide_buttons ():
 		b.disabled = true
 	get_parent().get_parent().get_parent().get_parent().get_node ("actor2").hide()
 	var cir = get_parent().get_parent().get_parent().get_node ("circle")
-	get_parent().show()
+	#get_parent().show()
 	tween.interpolate_property(cir, "scale",
 		cir.scale, Vector2(SMALL,SMALL), 0.2,
 	Tween.TRANS_QUART, Tween.EASE_OUT)
@@ -57,8 +57,8 @@ func show_buttons ():
 	var buttons = [atk, def, spc, item]
 	for b in buttons:
 		b.disabled = false
-	get_parent().hide()
-	get_parent().get_parent().get_parent().get_parent().get_node ("actor2").show()
+	#get_parent().hide()
+	#get_parent().get_parent().get_parent().get_parent().get_node ("actor2").show()
 	tween.interpolate_property(cir, "scale",
 		Vector2 (SMALL,SMALL), Vector2(LARGE,LARGE), 0.2,
 	Tween.TRANS_QUART, Tween.EASE_OUT)
@@ -69,17 +69,17 @@ func show_buttons ():
 	tween.start()
 	tween_pos (atk, Vector2 (56,8))
 	tween_mod (atk, 1)
-	atk.show()
+	#atk.show()
 	atk.grab_focus()
 	tween_pos (def, Vector2 (-33, 96))
 	tween_mod (def, 1)
-	def.show()
+	#def.show()
 	tween_pos (spc, Vector2 (144, 96))
 	tween_mod (spc, 1)
-	spc.show()
+	#spc.show()
 	tween_pos (item, Vector2 (56,185))
 	tween_mod (item, 1)
-	item.show()
+	#item.show()
 onready var closer = get_parent().get_parent().get_parent().get_parent().get_node ("actor2")
 func _process(delta):
 	closer.global_position = rect_global_position + Vector2 (rect_size.x, rect_size.y)

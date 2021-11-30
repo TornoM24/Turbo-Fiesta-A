@@ -10,6 +10,9 @@ var active = false
 var origin
 var inReady = false
 var ind = -1
+
+onready var atb = get_node ("ATB2")
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -27,6 +30,7 @@ func init (unit):
 	get_node ("Panel/buttonhost/defend").connect ("pressed", get_tree().get_root().get_node ("Controller/Control"), "_on_defend_pressed", [self])
 	get_node ("Panel/buttonhost/item").connect ("pressed", get_tree().get_root().get_node ("Controller/Control"), "_on_item_pressed", [self])
 	get_node ("Panel/buttonhost/special").connect ("pressed", get_tree().get_root().get_node ("Controller/Control"), "_on_special_pressed", [self])
+	get_node ("namedisplay/HPBar").value = unit.stats.hp
 	assignment = unit
 	#parent.selectedUnit = assignment
 	active = true
@@ -34,13 +38,14 @@ func init (unit):
 	pass
 
 onready var panel = get_node ("Panel")
-var targetPosition = Vector2(704,456)
-var offset = 288
+const ORIENTATION = ""
+var targetPosition = Vector2(704,376)
+var offset = 208
 func _process(delta):
 	get_node ("namedisplay/ATBBar").value = assignment.atb_val
 	get_node ("ATB2").value = assignment.atb_val
-	get_node("namedisplay/HPLabel").bbcode_text = "[right]" + str (assignment.stats.hp) + "/" + str (assignment.stats.mhp)
-	get_node("namedisplay/MPLabel").bbcode_text = "[right]" + str (assignment.stats.mp) + "/" + str (assignment.stats.mmp)
+	get_node("namedisplay/HPLabel").bbcode_text = ORIENTATION + str (assignment.stats.hp) + "/" + str (assignment.stats.mhp)
+	get_node("namedisplay/MPLabel").bbcode_text = ORIENTATION + str (assignment.stats.mp) + "/" + str (assignment.stats.mmp)
 	if active:
 		#print (assignment.stats.name + " " + str(assignment.atb_val))
 		if assignment.atb_val >= 100:
@@ -59,7 +64,7 @@ func shift_up():
 	tween.interpolate_property(panel, "rect_position",
 	#tween.interpolate_property(self, "position",
 		#null, Vector2(position.x, position.y-256), 0.2,
-		panel.rect_position, Vector2(panel.rect_position.x, panel.rect_position.y-248), 0.2,
+		panel.rect_position, Vector2(panel.rect_position.x, panel.rect_position.y-offset), 0.2,
 	Tween.TRANS_QUART, Tween.EASE_OUT)
 	tween.start()
 	
@@ -69,7 +74,7 @@ func shift_down():
 	tween.interpolate_property(panel, "rect_position",
 	#tween.interpolate_property(self, "position",
 		#null, Vector2(position.x, position.y+256), 0.2,
-		panel.rect_position, Vector2(panel.rect_position.x, panel.rect_position.y+248), 0.2,
+		panel.rect_position, Vector2(panel.rect_position.x, panel.rect_position.y+offset), 0.2,
 	Tween.TRANS_QUART, Tween.EASE_OUT)
 	tween.start()
 
@@ -90,6 +95,7 @@ func _on_defend_pressed():
 
 func _on_special_pressed():
 	if inReady:
+		Master.abiOpen = true
 		parent.selectedUnit = assignment
 		parent.hide_all()
 	pass # Replace with function body.

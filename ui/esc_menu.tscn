@@ -116,7 +116,6 @@ __meta__ = {
 }
 
 [node name="menupanel" type="Panel" parent="."]
-visible = false
 self_modulate = Color( 1, 1, 1, 0 )
 margin_left = 448.0
 margin_top = -344.0
@@ -437,3 +436,17 @@ script = ExtResource( 27 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="SimpleButton" type="CheckButton" parent="menupanel"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -192.0
+margin_top = 304.0
+margin_right = 16.0
+margin_bottom = 344.0
+text = "Simple Combat Layout"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="toggled" from="menupanel/SimpleButton" to="." method="_on_SimpleButton_toggled"]
