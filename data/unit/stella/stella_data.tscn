@@ -15,7 +15,7 @@ var unitDict = {
 	\"title\": \"laid-back mage\",
 	\"class\" : \"High-power Mage\",
 	\"types\" : \"Mage\",
-	\"bio\" : \"Hiro's childhood friend, a bubbly and laid-back girl clad in a fluffy purple-and-white cloak. Often lazy and almost consistently unhelpful, she tends to prioritize the path of least resistance in any efforts she may undertake, which is unoffensive to most but quite annoying in the middle of a conflict. She's appeared to adopt a sort of absent-minded, endearingly clingy demeanour, something Hiro, for once, can't make a snarky comment on. However, it's purported by her close friends that she does take things seriously every once in a while, to an intimidating and rather devastating effect.\",
+	\"bio\" : \"\\n'Can... can I go to sleep instead? Please?'\\n\\nHiro's childhood friend, a bubbly and laid-back girl clad in a fluffy purple-and-white cloak. Often lazy and almost consistently unhelpful, she tends to prioritize the path of least resistance in any efforts she may undertake, which is unoffensive to most but quite annoying in the middle of a conflict. She's appeared to adopt a sort of absent-minded, endearingly clingy demeanour, something Hiro, for once, can't make a snarky comment on. However, it's purported by her close friends that she does take things seriously every once in a while, to an intimidating and rather devastating effect.\",
 	\"weapon\" : \"None. Utilizes an array of high-power light-based magic, which she uses with seemingly reckless abandon to, terrifyingly enough, annihilate her foes at a moment's notice.\",
 	\"facts\": \"Favorite food: Caramel\",
 	\"stats\": {

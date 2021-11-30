@@ -16,7 +16,7 @@ var unitDict = {
 	\"stats\": {
 		\"hp\" : 20,
 		\"mp\" : 0,
-		\"atk\" : 9000,
+		\"atk\" : 2,
 		\"def\" : 3,
 		\"int\" : 0,
 		\"wis\" : 2,

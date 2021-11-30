@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://font/Chrono.tres" type="DynamicFont" id=1]
 [ext_resource path="res://font/ChronoLarge.tres" type="DynamicFont" id=2]
@@ -12,7 +12,7 @@
 [ext_resource path="res://gfx/unit/hpbar_hit.png" type="Texture" id=10]
 [ext_resource path="res://gfx/unit/hpbar_fg.png" type="Texture" id=11]
 [ext_resource path="res://ui/act_variant.gd" type="Script" id=12]
-[ext_resource path="res://ui/combat_abilities.gd" type="Script" id=13]
+[ext_resource path="res://ui/combat_abilities_3.gd" type="Script" id=13]
 [ext_resource path="res://circle.tres" type="Theme" id=14]
 [ext_resource path="res://circle_button.tres" type="Theme" id=15]
 [ext_resource path="res://pixel_panel_fade.theme" type="Theme" id=16]
@@ -32,6 +32,7 @@
 [ext_resource path="res://ui/return.gd" type="Script" id=30]
 [ext_resource path="res://ui/Status.gd" type="Script" id=31]
 [ext_resource path="res://shakenode.tscn" type="PackedScene" id=32]
+[ext_resource path="res://pixel_button.tres" type="Theme" id=33]
 
 [sub_resource type="ParticlesMaterial" id=1]
 flag_disable_z = true
@@ -227,7 +228,6 @@ margin_top = 704.0
 margin_bottom = 704.0
 theme = ExtResource( 16 )
 __meta__ = {
-"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -243,24 +243,55 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="attack2" type="Node2D" parent="Panel/buttonhost"]
-
-[node name="panel" type="Panel" parent="Panel/buttonhost/attack2"]
-margin_left = -40.0
-margin_top = 56.0
-margin_right = 24.0
-margin_bottom = 120.0
-theme = ExtResource( 18 )
+[node name="Panel" type="Panel" parent="Panel/buttonhost"]
+margin_left = -24.0
+margin_top = 48.0
+margin_right = 184.0
+margin_bottom = 112.0
+theme = ExtResource( 16 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button" type="Button" parent="Panel/buttonhost/attack2"]
-self_modulate = Color( 1, 1, 1, 0 )
-margin_left = -40.0
+[node name="attack2" type="Button" parent="Panel/buttonhost"]
+margin_left = -16.0
 margin_top = 56.0
 margin_right = 24.0
-margin_bottom = 120.0
+margin_bottom = 96.0
+theme = ExtResource( 33 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="label" type="RichTextLabel" parent="Panel/buttonhost/attack2"]
+margin_top = 40.0
+margin_right = 40.0
+margin_bottom = 80.0
+bbcode_enabled = true
+bbcode_text = "[center]Attack"
+text = "Attack"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="defend2" type="Button" parent="Panel/buttonhost"]
+margin_left = 32.0
+margin_top = 56.0
+margin_right = 72.0
+margin_bottom = 96.0
+theme = ExtResource( 33 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="label" type="RichTextLabel" parent="Panel/buttonhost/defend2"]
+margin_left = -8.0
+margin_top = 40.0
+margin_right = 48.0
+margin_bottom = 80.0
+bbcode_enabled = true
+bbcode_text = "[center]Defend"
+text = "Defend"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -502,7 +533,8 @@ process_material = SubResource( 1 )
 texture = ExtResource( 6 )
 
 [connection signal="pressed" from="namedisplay/Status" to="namedisplay/Status" method="_on_Status_pressed"]
-[connection signal="pressed" from="Panel/buttonhost/attack2/Button" to="." method="_on_attack_pressed"]
+[connection signal="pressed" from="Panel/buttonhost/attack2" to="." method="_on_attack_pressed"]
+[connection signal="pressed" from="Panel/buttonhost/defend2" to="." method="_on_defend_pressed"]
 [connection signal="pressed" from="Panel/buttonhost/attack" to="." method="_on_attack_pressed"]
 [connection signal="pressed" from="Panel/buttonhost/defend" to="." method="_on_defend_pressed"]
 [connection signal="pressed" from="Panel/buttonhost/special" to="." method="_on_special_pressed"]
