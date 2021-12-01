@@ -20,7 +20,7 @@ func _ready():
 onready var shake = get_node ("shakenode")
 onready var hpbar = get_node ("namedisplay/HPBar")
 func shake():
-	shake.start(hpbar, 0.2, 50, 4)
+	shake.start("rect",hpbar, 0.2, 50, 4)
 
 func init (unit):
 	parent = get_tree().get_root().get_node ("Controller")

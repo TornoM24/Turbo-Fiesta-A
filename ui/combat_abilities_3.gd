@@ -20,16 +20,16 @@ func _ready():
 onready var shake = get_node ("shakenode")
 onready var hpbar = get_node ("namedisplay/HPBar")
 func shake():
-	shake.start(hpbar, 0.2, 50, 4)
+	shake.start("rect", hpbar, 0.2, 50, 4)
 
 func init (unit):
 	parent = get_tree().get_root().get_node ("Controller")
 	get_node ("namedisplay/RichTextLabel").bbcode_text = "[center]" + unit.stats.name
 	get_node ("namedisplay/Status").text = unit.stats.name
 	get_node ("Panel/buttonhost/attack2").connect ("pressed", get_tree().get_root().get_node ("Controller/Control"), "_on_attack_pressed", [self])
-	get_node ("Panel/buttonhost/defend").connect ("pressed", get_tree().get_root().get_node ("Controller/Control"), "_on_defend_pressed", [self])
+	get_node ("Panel/buttonhost/defend2").connect ("pressed", get_tree().get_root().get_node ("Controller/Control"), "_on_defend_pressed", [self])
 	get_node ("Panel/buttonhost/item").connect ("pressed", get_tree().get_root().get_node ("Controller/Control"), "_on_item_pressed", [self])
-	get_node ("Panel/buttonhost/special").connect ("pressed", get_tree().get_root().get_node ("Controller/Control"), "_on_special_pressed", [self])
+	get_node ("Panel/buttonhost/special2").connect ("pressed", get_tree().get_root().get_node ("Controller/Control"), "_on_special_pressed", [self])
 	get_node ("namedisplay/HPBar").value = unit.stats.hp
 	assignment = unit
 	#parent.selectedUnit = assignment
@@ -54,9 +54,7 @@ func _process(delta):
 				shift_up()
 		else: 
 			inReady = false
-			print (panel.rect_position.y)
 			if panel.rect_position.y <= targetPosition.y:
-				print (panel.rect_position.y)
 				shift_down()
 	pass
 onready var cir = get_node ("Panel/circle")

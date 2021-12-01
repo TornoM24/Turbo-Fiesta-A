@@ -73,7 +73,7 @@ animations = [ {
 script = ExtResource( 3 )
 
 [node name="bg" type="Sprite" parent="."]
-self_modulate = Color( 0.760784, 0.760784, 0.760784, 1 )
+self_modulate = Color( 0.25098, 0.25098, 0.25098, 1 )
 position = Vector2( 640, 288 )
 scale = Vector2( 4.01111, 4.01111 )
 texture = ExtResource( 25 )
@@ -366,7 +366,6 @@ __meta__ = {
 visible = false
 position = Vector2( 488, 136 )
 frames = SubResource( 9 )
-frame = 2
 speed_scale = 2.0
 playing = true
 

@@ -53,7 +53,8 @@ var selected = false
 
 var queue = []
 var reference
-
+var nFrames = []
+var host = null
 var inAnimation = false
 var inRecovery = false
 var animStun = false
@@ -80,7 +81,7 @@ var deathAnimFinished = false
 var casting = false
 onready var attack = get_node ("Attack")
 onready var tween = get_node ("Tween")
-onready var uSprite = get_node ("UnitSprite")
+onready var unitSprite = get_node ("UnitSprite")
 onready var sh = get_node ("AnimatedSprite/Shadow")
 onready var timer = get_node ("Timer")
 onready var castParticles = get_node ("CastParticles")
@@ -88,14 +89,14 @@ func enemyDie():
 	if !dying:
 		sh.hide()
 		dying = true
-		tween.interpolate_property(uSprite, "modulate",
+		tween.interpolate_property(unitSprite, "modulate",
 			Color (1,1,1,1), Color (0.7,0,1,0), 1,
 		Tween.TRANS_LINEAR)
-		tween.interpolate_property(uSprite, "scale",
+		tween.interpolate_property(unitSprite, "scale",
 			null, Vector2 (1,3), 1,
 		Tween.TRANS_QUART, Tween.EASE_IN)
-		tween.interpolate_property(uSprite, "position",
-			null, uSprite.position + Vector2 (0,-20), 1,
+		tween.interpolate_property(unitSprite, "position",
+			null, unitSprite.position + Vector2 (0,-20), 1,
 		Tween.TRANS_QUART, Tween.EASE_IN)
 		tween.start()
 func allyDie():
@@ -155,6 +156,7 @@ func decay_effects(delta):
 			pass
 	pass
 onready var animSprite = get_node("AnimatedSprite")
+var meleeState = false
 func _process(delta):
 	decay_effects (delta)
 	if Master.abiOpen:
@@ -172,8 +174,8 @@ func _process(delta):
 				atb_prog = 0
 		if inAnimation:		
 			if type == "magic":
-				casting = true
 				animSprite.hide()
+				casting = true
 				if ability.has ("castTime"):
 					timer.wait_time = ability.castTime
 				else:
@@ -181,6 +183,8 @@ func _process(delta):
 				bar.max_value = timer.wait_time
 				timer.start()
 			if type !="ranged" and type!= "magic":
+				animSprite.hide()
+				unitSprite.show()
 				var all = false
 				if singleRun:
 					for x in ability.effects:
@@ -188,7 +192,7 @@ func _process(delta):
 							all = true
 					tween.interpolate_property(self, "position:x",
 						origin.x, target.position.x + 150, 0.5,
-					Tween.TRANS_QUART, Tween.EASE_OUT)
+					Tween.TRANS_QUART, Tween.EASE_IN_OUT)
 					tween.interpolate_property(self, "position:y",
 						origin.y, target.position.y, 0.5,
 					Tween.TRANS_QUART, Tween.EASE_OUT)
@@ -200,11 +204,14 @@ func _process(delta):
 				
 				if (global_position == target.position + Vector2 (150,0)) or all:
 					animReset()
+					unitSprite.hide()
+					meleeState = true
 					inAnimation = false
 			else:#if type *is* magic then
 				animReset()
 				inAnimation = false
 		if inRecovery:
+			meleeState = false
 			if type == "magic":
 				casting = false
 			if type !="ranged" and type!= "magic":
@@ -365,6 +372,7 @@ func _on_Timer_timeout():
 	process_end()
 	pass # Replace with function body.
 onready var bar = get_node ("TextureProgress")
+onready var shaker = get_node ("shakenode")
 var deadSpr = load ("res://gfx/dead.tres")
 func _on_Tween_tween_all_completed():
 	if !deathAnimFinished:

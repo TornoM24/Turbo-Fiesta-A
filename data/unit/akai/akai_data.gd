@@ -19,6 +19,7 @@ forged to excel in slicing through unprotected flesh with its smooth cutting edg
 Found in Akai's possession, though when questioned on the circumstances of its acquisition
 he says he's simply 'always had it', and to 'stop asking questions.'""",
 	"facts": "Favorite food: Peaches",
+	"nFrames": [11],
 	"stats": {
 		"hp" : 25,
 		"mp" : 25,

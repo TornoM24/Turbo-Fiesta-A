@@ -23,7 +23,6 @@ func _process (delta):
 		elif value > targetValue:
 			value -= DEC_SPEED * delta
 		if abs (targetValue - value) <= DEC_SPEED * delta:
-			print ('setting at ' + str (DEC_SPEED * delta))
 			value = targetValue
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

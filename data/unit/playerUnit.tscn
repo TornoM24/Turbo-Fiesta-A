@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://data/unit/playerUnit.gd" type="Script" id=1]
 [ext_resource path="res://gfx/unit/hpbar_bg.png" type="Texture" id=2]
@@ -15,6 +15,8 @@
 [ext_resource path="res://gfx/icons/circle.png" type="Texture" id=13]
 [ext_resource path="res://data/unit/TextureProgress.gd" type="Script" id=14]
 [ext_resource path="res://data/unit/PTimer.gd" type="Script" id=15]
+[ext_resource path="res://shakenode.tscn" type="PackedScene" id=16]
+[ext_resource path="res://data/unit/UnitSprite.gd" type="Script" id=17]
 
 [node name="Unit" type="Node2D"]
 script = ExtResource( 1 )
@@ -143,6 +145,7 @@ script = ExtResource( 9 )
 [node name="UnitSprite" type="Sprite" parent="."]
 position = Vector2( 24, 50 )
 scale = Vector2( 2, 2 )
+script = ExtResource( 17 )
 
 [node name="Tween" type="Tween" parent="."]
 
@@ -152,17 +155,19 @@ script = ExtResource( 15 )
 
 [node name="Select" type="Button" parent="."]
 self_modulate = Color( 1, 1, 1, 0 )
-margin_left = -8.0
-margin_top = -20.0
-margin_right = 36.0
+margin_left = -32.0
+margin_top = -24.0
+margin_right = 48.0
 margin_bottom = 76.0
 __meta__ = {
-"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
+[node name="shakenode" parent="." instance=ExtResource( 16 )]
+
 [connection signal="animation_finished" from="Attack" to="." method="_on_Attack_animation_finished"]
 [connection signal="animation_finished" from="Attack" to="Attack" method="_on_Attack_animation_finished"]
+[connection signal="frame_changed" from="Attack" to="Attack" method="_on_Attack_frame_changed"]
 [connection signal="tween_all_completed" from="Tween" to="." method="_on_Tween_tween_all_completed"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="mouse_entered" from="Select" to="." method="_on_Select_mouse_entered"]

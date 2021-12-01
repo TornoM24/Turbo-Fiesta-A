@@ -53,6 +53,7 @@ var baseStats = {
 		"luk" : 0
 	}
 var unitName = "Aou Mogis"
+var nFrames = []
 var sp = 0
 var spendable = 0
 var cost = 0
@@ -104,6 +105,7 @@ func save ():
 		"dict" : dict,
 		"prefab" : prefab,
 		"equipment": itemInstances,
+		"nFrames" : nFrames,
 		"abilities": abilities,
 		"cost" : cost,
 		"title" : title,
@@ -122,6 +124,7 @@ func load_data(data):
 	bonusStats = data["bonusStats"]
 	baseStats = data["baseStats"]
 	dict = data["dict"]
+	nFrames = data["nFrames"]
 	#equipment = data["equipment"]
 	abilities = data["abilities"]
 	statusEffects = data ["statusEffects"]
@@ -146,6 +149,10 @@ func initialize (prefab):
 	self.stats.name = prefab.unitDict.name
 	self.abilities = prefab.unitDict.abilities
 	self.unitName = prefab.unitName
+	if prefab.unitDict.has("nFrames"):
+		self.nFrames = prefab.unitDict.nFrames
+	else:
+		self.nFrames = []
 	self.sp = 10
 	self.cost = 0
 	self.maxCost = prefab.unitDict.stats.apt

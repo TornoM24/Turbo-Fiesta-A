@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://pixel_panel.theme" type="Theme" id=1]
 [ext_resource path="res://ui/button_depressed_menu.png" type="Texture" id=2]
@@ -34,6 +34,7 @@
 [ext_resource path="res://gfx/icons/buttons/party.png" type="Texture" id=32]
 [ext_resource path="res://gfx/icons/buttons/close.png" type="Texture" id=33]
 [ext_resource path="res://pixel_tabs.theme" type="Theme" id=34]
+[ext_resource path="res://ui/ModeToggle.gd" type="Script" id=35]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 8 )
@@ -477,7 +478,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="SimpleButton" type="CheckButton" parent="menupanel"]
+[node name="ModeToggle" type="CheckButton" parent="menupanel"]
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -192.0
@@ -485,8 +486,9 @@ margin_top = 304.0
 margin_right = 16.0
 margin_bottom = 344.0
 text = "Simple Combat Layout"
+script = ExtResource( 35 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[connection signal="toggled" from="menupanel/SimpleButton" to="." method="_on_SimpleButton_toggled"]
+[connection signal="toggled" from="menupanel/ModeToggle" to="." method="_on_ModeToggle_toggled"]

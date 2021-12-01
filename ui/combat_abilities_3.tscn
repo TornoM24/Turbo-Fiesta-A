@@ -254,9 +254,9 @@ __meta__ = {
 }
 
 [node name="attack2" type="Button" parent="Panel/buttonhost"]
-margin_left = -16.0
+margin_left = -15.0
 margin_top = 56.0
-margin_right = 24.0
+margin_right = 25.0
 margin_bottom = 96.0
 theme = ExtResource( 33 )
 __meta__ = {
@@ -275,9 +275,9 @@ __meta__ = {
 }
 
 [node name="defend2" type="Button" parent="Panel/buttonhost"]
-margin_left = 32.0
+margin_left = 33.0
 margin_top = 56.0
-margin_right = 72.0
+margin_right = 73.0
 margin_bottom = 96.0
 theme = ExtResource( 33 )
 __meta__ = {
@@ -292,6 +292,28 @@ margin_bottom = 80.0
 bbcode_enabled = true
 bbcode_text = "[center]Defend"
 text = "Defend"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="special2" type="Button" parent="Panel/buttonhost"]
+margin_left = 81.0
+margin_top = 56.0
+margin_right = 121.0
+margin_bottom = 96.0
+theme = ExtResource( 33 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="label" type="RichTextLabel" parent="Panel/buttonhost/special2"]
+margin_left = -8.0
+margin_top = 40.0
+margin_right = 48.0
+margin_bottom = 80.0
+bbcode_enabled = true
+bbcode_text = "[center]Abilities"
+text = "Abilities"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -535,6 +557,7 @@ texture = ExtResource( 6 )
 [connection signal="pressed" from="namedisplay/Status" to="namedisplay/Status" method="_on_Status_pressed"]
 [connection signal="pressed" from="Panel/buttonhost/attack2" to="." method="_on_attack_pressed"]
 [connection signal="pressed" from="Panel/buttonhost/defend2" to="." method="_on_defend_pressed"]
+[connection signal="pressed" from="Panel/buttonhost/special2" to="." method="_on_special_pressed"]
 [connection signal="pressed" from="Panel/buttonhost/attack" to="." method="_on_attack_pressed"]
 [connection signal="pressed" from="Panel/buttonhost/defend" to="." method="_on_defend_pressed"]
 [connection signal="pressed" from="Panel/buttonhost/special" to="." method="_on_special_pressed"]

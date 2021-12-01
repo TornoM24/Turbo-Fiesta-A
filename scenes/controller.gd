@@ -96,10 +96,14 @@ func attachdata (instance):
 	var attackPath = load("res://data/unit/"+instance.unitName+"/art/"+instance.unitName+"_attack.tres")
 	instance.add_child (obj)
 	instance.get_node ("AnimatedSprite").frames = idlePath
+	instance.get_node ("UnitSprite").texture = load ("res://data/unit/" + instance.unitName + "/art/move.png")
+	instance.unitSprite.hide()
 	instance.get_node ("Attack").frames = attackPath
 	instance.reference = Master.get_node (instance.unitName+"_data")
 	instance.stats = instance.reference.stats
 	instance.stats.name = instance.reference.stats.name
+	instance.nFrames = instance.reference.nFrames
+	instance.host = self
 	print ("attaching " + instance.reference.name)
 	return instance
 	pass

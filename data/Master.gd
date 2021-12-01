@@ -7,7 +7,7 @@ extends Node
 var atb_paused = false
 var abiOpen = false
 
-var combatMode = "fancy"
+var combatMode = "simple"
 var shakeBar = true
 
 var working = true
