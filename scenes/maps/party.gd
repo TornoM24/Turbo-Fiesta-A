@@ -19,6 +19,7 @@ func _ready():
 	
 func _button_pressed():
 	print("go")
+	get_parent().get_node("inventorypanel").hide()
 	get_parent().get_node("partyview").show()
 	get_parent().get_node("partyview").switch_modes(false)
 

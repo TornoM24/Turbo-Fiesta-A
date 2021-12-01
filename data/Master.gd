@@ -7,7 +7,9 @@ extends Node
 var atb_paused = false
 var abiOpen = false
 
-var combatMode = "simple"
+var combatMode = "fancy"
+var shakeBar = true
+
 var working = true
 var ability_dict
 var passive_dict = {
@@ -193,6 +195,7 @@ var formation = []
 var party = []
 var partyPosition = Vector2()
 var inventory = []
+var consumableInv = []
 var money
 # Called when the node enters the scene tree for the first time.
 func save():
@@ -311,6 +314,9 @@ func give_equipment (name):
 	inst.name = name
 	#inst.updateStats ("atk",10)
 	return inst
+
+func add_consumable (ref):
+	consumableInv.append (ref)
 
 func add_equip (inst):
 	self.add_child (inst)

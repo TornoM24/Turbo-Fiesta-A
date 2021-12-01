@@ -18,10 +18,10 @@ func _process(delta):
 #func _process(delta):
 #	pass
 
-
+onready var toggle = get_node ("menupanel/SimpleButton")
 func _on_SimpleButton_toggled(button_pressed):
-	if Master.combatMode == "simple":
-		Master.combatMode = "fancy"
-	else:
+	if toggle.pressed:
 		Master.combatMode = "simple"
+	else:
+		Master.combatMode = "fancy"
 	pass # Replace with function body.

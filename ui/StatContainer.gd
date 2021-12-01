@@ -20,7 +20,12 @@ func check ():
 		get_node ("StatLabel").bbcode_text = Master.get_full(stat) + " " + str(val) + " ▸ " + str (target)
 		
 func init(stat, value):
-	self.stat = stat
+	if stat == "mhp":
+		self.stat = "hp"
+	elif stat == "mmp":
+		self.stat = "mp"
+	else:
+		self.stat = stat
 	target = value
 	val = value
 	check()
@@ -46,7 +51,7 @@ func _on_PlusButton_pressed():
 
 
 func _on_MinusButton_pressed():
-	if unit.stats[stat] < target:
+	if unit.baseStats[stat] < target:
 		if stat == "mhp" or stat == "mmp":
 			change (-5)
 		else:

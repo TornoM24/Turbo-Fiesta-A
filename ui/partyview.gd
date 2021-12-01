@@ -278,9 +278,9 @@ func draw_parameters (unit):
 	update_sp (unit.sp)
 	unit.spendable = unit.sp
 	for stat in stats.keys():
-		if stat == "mhp" or stat == "mmp":
+		if stat == "hp" or stat == "mp":
 			var statBox = load ("res://ui/StatContainer.tscn").instance()
-			statBox.init (stat, unit.stats[stat])
+			statBox.init (stat, unit.baseStats[stat])
 			statPan.add_child(statBox)
 			statBox.position = Vector2 (24, yOffset)
 			statBox.parent = self
@@ -350,20 +350,23 @@ func _on_item_pressed (item):
 
 func _on_Confirm_pressed():
 	for x in get_node ("StatsPanel/Tabs/Growth/TabContainer/Stat Points/Panel").get_children():
-		var tt = x.stat
-		var unit = Master.party[number-1]
-		var increase = x.target - unit.stats[tt]
-		unit.stats[tt] = x.target
-		unit.sp = unit.spendable
-		update_sp (unit.sp)
-		x.val = unit.stats[tt]
-		if tt == "mhp":
-			print ("healing by " + str (int (float(increase)/3)))
-			unit.stats.hp += int (float(increase)/3)
-		if tt == "mmp":
-			unit.stats.hp += int (float(increase)/3)
-		x.check()
-		update_stats()
+		if x.stat != "mhp" and x.stat != "mmp":
+			var tt = x.stat
+			var unit = Master.party[number-1]
+			var increase = x.target - unit.baseStats[tt]
+			unit.baseStats[tt] = x.target
+			unit.sp = unit.spendable
+			update_sp (unit.sp)
+			x.val = unit.baseStats[tt]
+			if tt == "mhp":
+				print ("healing by " + str (int (float(increase)/3)))
+				unit.stats.hp += int (float(increase)/3)
+			if tt == "mmp":
+				unit.stats.hp += int (float(increase)/3)
+			x.check()
+	Master.party[number-1].update_self()
+	update_stats()
+	update_stats()
 	pass # Replace with function body.
 
 
@@ -371,10 +374,11 @@ func _on_Reset_pressed():
 	for x in get_node ("StatsPanel/Tabs/Growth/TabContainer/Stat Points/Panel").get_children():
 		var tt = x.stat
 		var unit = Master.party[number-1]
-		x.val = unit.stats[tt]
+		x.val = unit.baseStats[tt]
 		x.target = x.val
 		unit.spendable = unit.sp
 		x.check()
 		update_sp(unit.sp)
-		update_stats()
+	Master.party[number-1].update_self()
+	update_stats()
 	pass # Replace with function body.

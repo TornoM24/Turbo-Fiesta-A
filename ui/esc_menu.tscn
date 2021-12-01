@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://pixel_panel.theme" type="Theme" id=1]
 [ext_resource path="res://ui/button_depressed_menu.png" type="Texture" id=2]
@@ -33,6 +33,7 @@
 [ext_resource path="res://gfx/icons/buttons/save.png" type="Texture" id=31]
 [ext_resource path="res://gfx/icons/buttons/party.png" type="Texture" id=32]
 [ext_resource path="res://gfx/icons/buttons/close.png" type="Texture" id=33]
+[ext_resource path="res://pixel_tabs.theme" type="Theme" id=34]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 8 )
@@ -116,6 +117,7 @@ __meta__ = {
 }
 
 [node name="menupanel" type="Panel" parent="."]
+visible = false
 self_modulate = Color( 1, 1, 1, 0 )
 margin_left = 448.0
 margin_top = -344.0
@@ -291,6 +293,7 @@ rect_min_size = Vector2( 18, 18 )
 custom_styles/panel = SubResource( 4 )
 
 [node name="partyview" parent="menupanel" instance=ExtResource( 13 )]
+visible = false
 position = Vector2( -1088, -16 )
 z_index = 0
 z_as_relative = true
@@ -391,26 +394,63 @@ __meta__ = {
 }
 
 [node name="inventorypanel" type="Panel" parent="menupanel"]
-visible = false
-margin_left = -129.0
-margin_top = 78.0
-margin_right = 391.0
-margin_bottom = 398.0
+margin_left = -832.0
+margin_top = 32.0
+margin_right = -64.0
+margin_bottom = 664.0
 __meta__ = {
 "_editor_description_": ""
 }
 
 [node name="exit" type="Button" parent="menupanel/inventorypanel"]
-margin_left = 477.0
-margin_top = 11.0
-margin_right = 509.0
-margin_bottom = 43.0
+visible = false
+margin_left = 728.0
+margin_top = 16.0
+margin_right = 760.0
+margin_bottom = 48.0
 theme = ExtResource( 25 )
 text = "X"
 script = ExtResource( 12 )
 __meta__ = {
 "_editor_description_": ""
 }
+
+[node name="TabContainer" type="TabContainer" parent="menupanel/inventorypanel"]
+margin_left = 24.0
+margin_top = 16.0
+margin_right = 744.0
+margin_bottom = 608.0
+theme = ExtResource( 34 )
+tab_align = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Consumable" type="Control" parent="menupanel/inventorypanel/TabContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 27.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="Equipment" type="Control" parent="menupanel/inventorypanel/TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 31.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="Materials" type="Control" parent="menupanel/inventorypanel/TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 27.0
+margin_right = -4.0
+margin_bottom = -4.0
 
 [node name="Tween" type="Tween" parent="menupanel"]
 

@@ -369,10 +369,10 @@ var deadSpr = load ("res://gfx/dead.tres")
 func _on_Tween_tween_all_completed():
 	if !deathAnimFinished:
 		tween.interpolate_property(animSprite, "position",
-			null, Vector2(16,28), 0.5,
+			null, Vector2(16,28), 0.2,
 		Tween.TRANS_LINEAR, Tween.EASE_IN)
 		tween.interpolate_property(get_node ("UnitSprite"), "position",
-			null, Vector2(24,50), 0.5,
+			null, Vector2(24,50), 0.2,
 		Tween.TRANS_LINEAR, Tween.EASE_IN)
 		tween.start()
 	else:

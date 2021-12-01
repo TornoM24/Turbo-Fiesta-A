@@ -39,7 +39,19 @@ var xp = 0
 var toNext = 10
 var equipAbilities = []
 var prefab
-var baseStats = {}
+var baseStats = {
+		"mhp" : 0,
+		"mmp" : 0,
+		"hp" : 0,
+		"mp" : 0,
+		"atk" : 0,
+		"def" : 0,
+		"int" : 0,
+		"wis" : 0,
+		"apt" : 0,
+		"spd" : 0,
+		"luk" : 0
+	}
 var unitName = "Aou Mogis"
 var sp = 0
 var spendable = 0
