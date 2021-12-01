@@ -318,7 +318,7 @@ func _on_Tabs_tab_selected(tab):
 			draw_parameters (Master.party[number-1])
 	if tab == 4:
 		var bio = get_node ("StatsPanel/Tabs/Info/Bio")
-		bio.bbcode_text = Master.party[number-1].stats.name + "\n\n" + Master.party[number-1].prefab.class + " [" + Master.party[number-1].prefab.types + "]" + "\n\nBIO:\n" + Master.party[number-1].prefab.bio + "\n\nWEAPON:\n" + Master.party[number-1].prefab.weapon
+		bio.bbcode_text = Master.party[number-1].stats.name + "\n\n" + Master.party[number-1].prefab.class + " [" + Master.party[number-1].prefab.types + "]" + "\n\nBIO:\n" + Master.party[number-1].prefab.bio #+ "\n\nWEAPON:\n" + Master.party[number-1].prefab.weapon
 	pass # Replace with function body.
 
 
@@ -358,10 +358,10 @@ func _on_Confirm_pressed():
 			unit.sp = unit.spendable
 			update_sp (unit.sp)
 			x.val = unit.baseStats[tt]
-			if tt == "mhp":
+			if tt == "hp":
 				print ("healing by " + str (int (float(increase)/3)))
 				unit.stats.hp += int (float(increase)/3)
-			if tt == "mmp":
+			if tt == "mp":
 				unit.stats.hp += int (float(increase)/3)
 			x.check()
 	Master.party[number-1].update_self()
