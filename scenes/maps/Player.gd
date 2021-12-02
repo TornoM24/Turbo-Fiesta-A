@@ -11,6 +11,7 @@ var type = "player"
 signal inBounds
 
 onready var down=get_node ("Down")
+onready var downSprint=get_node ("DownSprint")
 onready var side=get_node ("Side")
 onready var up=get_node ("Up")
 onready var smoke = get_node ("smoke")
@@ -25,14 +26,25 @@ func _ready():
 
 func hideAllBut (x):
 	down.hide()
+	downSprint.hide()
 	side.hide()
 	up.hide()
 	x.show()
-	
+#	if sprinting:
+#		#get_node (x.name + "Sprint").show()
+#		pass
+#	else:
+#		x.show()
 
+var frd = {
+	"down": load ("res://gfx/overworld char/hiro_move_down.tres"),
+	"down_sprint": load ("res://gfx/overworld char/hiro_move_down_sprint.tres")
+}
+var sprinting = false
 func _process(delta):
 	get_node ("Camera2D/Control/stamina").value = stamina
-	if Input.is_action_pressed("shift"):
+	sprinting = Input.is_action_pressed("shift")
+	if sprinting:
 		if stamina > 0:
 			if velocity != Vector2(0,0):
 				speed = 400
@@ -87,9 +99,9 @@ func _process(delta):
 		
 			
 		if (!Input.is_action_pressed("up") && !Input.is_action_pressed("down") && !Input.is_action_pressed("left") && !Input.is_action_pressed("right")):
-			down.speed_scale = 0.25
-			up.speed_scale = 0.25
-			side.speed_scale = 0.25
+			down.frame = 1
+			up.frame = 1
+			side.frame = 1
 
 	velocity = velocity.normalized() * speed
 	velocity = move_and_slide(velocity)

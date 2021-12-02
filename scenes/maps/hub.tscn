@@ -123,7 +123,7 @@ tile_data = PoolIntArray( 65541, 32, 0, 262159, 1610612769, 0, 327691, 33, 0, 32
 
 [node name="NPC" parent="YSort/TileMap" instance=ExtResource( 10 )]
 position = Vector2( 240.001, 152 )
-frame = 3
+frame = 2
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 639, 358 )
