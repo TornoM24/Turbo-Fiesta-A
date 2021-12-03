@@ -142,6 +142,22 @@
     "spriteSourceSize": { "x": 0, "y": 0, "w": 160, "h": 64 },
     "sourceSize": { "w": 160, "h": 64 },
     "duration": 100
+   },
+   "mc4-re-final-atk 18.aseprite": {
+    "frame": { "x": 2880, "y": 0, "w": 160, "h": 64 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 160, "h": 64 },
+    "sourceSize": { "w": 160, "h": 64 },
+    "duration": 100
+   },
+   "mc4-re-final-atk 19.aseprite": {
+    "frame": { "x": 3040, "y": 0, "w": 160, "h": 64 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 160, "h": 64 },
+    "sourceSize": { "w": 160, "h": 64 },
+    "duration": 100
    }
  },
  "meta": {
@@ -149,7 +165,7 @@
   "version": "1.2.15-x64",
   "image": "mc4-re-final-atk.png",
   "format": "RGBA8888",
-  "size": { "w": 2880, "h": 64 },
+  "size": { "w": 3200, "h": 64 },
   "scale": "1",
   "frameTags": [
   ],

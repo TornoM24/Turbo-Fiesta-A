@@ -269,7 +269,7 @@ margin_right = 40.0
 margin_bottom = 80.0
 bbcode_enabled = true
 bbcode_text = "[center]Attack"
-text = "Attack"
+text = "[center]Attack"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -291,7 +291,7 @@ margin_right = 48.0
 margin_bottom = 80.0
 bbcode_enabled = true
 bbcode_text = "[center]Defend"
-text = "Defend"
+text = "[center]Defend"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -313,7 +313,7 @@ margin_right = 48.0
 margin_bottom = 80.0
 bbcode_enabled = true
 bbcode_text = "[center]Abilities"
-text = "Abilities"
+text = "[center]Abilities"
 __meta__ = {
 "_edit_use_anchors_": false
 }
