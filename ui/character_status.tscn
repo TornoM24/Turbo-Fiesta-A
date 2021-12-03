@@ -3,7 +3,7 @@
 [ext_resource path="res://pixel_panel.theme" type="Theme" id=1]
 [ext_resource path="res://ui/character_status.gd" type="Script" id=2]
 [ext_resource path="res://pixel_button_red.tres" type="Theme" id=3]
-[ext_resource path="res://gfx/icons/empty.png" type="Texture" id=4]
+[ext_resource path="res://ui/empty.png" type="Texture" id=4]
 [ext_resource path="res://font/Chrono.tres" type="DynamicFont" id=5]
 [ext_resource path="res://font/ChronoLarge.tres" type="DynamicFont" id=6]
 
