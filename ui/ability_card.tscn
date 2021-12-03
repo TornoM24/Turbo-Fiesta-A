@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://gfx/icons/empty.png" type="Texture" id=1]
+[ext_resource path="res://ui/empty.png" type="Texture" id=1]
 [ext_resource path="res://ui/DetailButton.gd" type="Script" id=2]
 [ext_resource path="res://ui/ability_card.gd" type="Script" id=3]
 [ext_resource path="res://font/ChronoLarge.tres" type="DynamicFont" id=4]
@@ -9,6 +9,7 @@
 [ext_resource path="res://ui/upgrade_icon.png" type="Texture" id=7]
 [ext_resource path="res://ui/question.png" type="Texture" id=8]
 [ext_resource path="res://pixel_panel.theme" type="Theme" id=9]
+
 
 [node name="ability_card" type="Node2D"]
 z_index = 1
