@@ -12,7 +12,8 @@ signal inBounds
 
 onready var down=get_node ("Down")
 onready var downSprint=get_node ("DownSprint")
-onready var side=get_node ("Side")
+onready var left=get_node ("Left")
+onready var right=get_node ("Right")
 onready var up=get_node ("Up")
 onready var smoke = get_node ("smoke")
 onready var visDetect = get_node ("Area2D")
@@ -20,14 +21,16 @@ onready var indicator = get_node ("Camera2D/Panel")
 func _ready():
 	Global.player = self
 	position = Master.partyPosition
-	side.hide()
+	left.hide()
+	right.hide()
 	up.hide()
 	get_node ("Area2D").rotation_degrees = 180
 
 func hideAllBut (x):
 	down.hide()
 	downSprint.hide()
-	side.hide()
+	right.hide()
+	left.hide()
 	up.hide()
 	x.show()
 #	if sprinting:
@@ -65,19 +68,17 @@ func _process(delta):
 	if !DialogManager.playerStun:
 		if Input.is_action_pressed("right"):
 			velocity.x += 1
-			hideAllBut(side)
-			side.flip_h = true
-			side.playing = true
-			side.speed_scale = 1
+			hideAllBut(right)
+			right.playing = true
+			right.speed_scale = 1
 			ray.rotation_degrees = 270
 			visDetect.rotation_degrees = 90
 			
 		if Input.is_action_pressed("left"):
 			velocity.x -= 1
-			hideAllBut(side)
-			side.flip_h = false
-			side.playing = true
-			side.speed_scale = 1
+			hideAllBut(left)
+			left.playing = true
+			left.speed_scale = 1
 			ray.rotation_degrees = 90
 			visDetect.rotation_degrees = 270
 
@@ -101,7 +102,8 @@ func _process(delta):
 		if (!Input.is_action_pressed("up") && !Input.is_action_pressed("down") && !Input.is_action_pressed("left") && !Input.is_action_pressed("right")):
 			down.frame = 1
 			up.frame = 1
-			side.frame = 1
+			right.frame = 1
+			left.frame = 1
 
 	velocity = velocity.normalized() * speed
 	velocity = move_and_slide(velocity)
