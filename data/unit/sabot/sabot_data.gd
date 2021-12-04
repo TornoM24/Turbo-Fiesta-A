@@ -16,6 +16,7 @@ var unitDict = {
 	"weapon" : "This particular unit is equipped with several anti-personnel autocannons and an enormous metal jaw grafted onto their right arm, which appears to move semi-independently. Within the cruel metal jaws lies a lethally sharp spiked rod that not only brutally impales its foes, but obliterates armor with frightening efficacy, albeit with an extreme weight imbalance, a result of the unrefined Almerian mass-produced weapons development at the time of Sabot's manufacturing.",
 	"facts": "Favorite food: None (Fuel?)",
 	"specialRanged": true,
+	"offset" : 150,
 	"stats": {
 		"hp" : 40,
 		"mp" : 30,

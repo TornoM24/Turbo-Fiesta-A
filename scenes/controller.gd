@@ -103,6 +103,7 @@ func attachdata (instance):
 	instance.stats = instance.reference.stats
 	instance.stats.name = instance.reference.stats.name
 	instance.nFrames = instance.reference.nFrames
+	instance.offset = instance.reference.offset
 	instance.host = self
 	print ("attaching " + instance.reference.name)
 	return instance

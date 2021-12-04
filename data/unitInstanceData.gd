@@ -59,6 +59,7 @@ var spendable = 0
 var cost = 0
 var maxCost = 0
 var title
+var offset
 var statusEffects = []
 func level_up():
 	level += 1
@@ -106,6 +107,7 @@ func save ():
 		"prefab" : prefab,
 		"equipment": itemInstances,
 		"nFrames" : nFrames,
+		"offset" : offset,
 		"abilities": abilities,
 		"cost" : cost,
 		"title" : title,
@@ -125,6 +127,7 @@ func load_data(data):
 	baseStats = data["baseStats"]
 	dict = data["dict"]
 	nFrames = data["nFrames"]
+	offset = data ["offset"]
 	#equipment = data["equipment"]
 	abilities = data["abilities"]
 	statusEffects = data ["statusEffects"]
@@ -153,6 +156,10 @@ func initialize (prefab):
 		self.nFrames = prefab.unitDict.nFrames
 	else:
 		self.nFrames = []
+	if prefab.unitDict.has("offset"):
+		self.offset = prefab.unitDict.offset
+	else:
+		self.offset = 150
 	self.sp = 10
 	self.cost = 0
 	self.maxCost = prefab.unitDict.stats.apt

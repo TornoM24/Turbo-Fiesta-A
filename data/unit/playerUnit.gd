@@ -65,6 +65,7 @@ var affiliation = "ally"
 var type
 var ability 
 var target
+var offset
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -191,7 +192,7 @@ func _process(delta):
 						if x.target == "all enemies":
 							all = true
 					tween.interpolate_property(self, "position:x",
-						origin.x, target.position.x + 150, 0.5,
+						origin.x, target.position.x + offset, 0.5,
 					Tween.TRANS_QUART, Tween.EASE_IN_OUT)
 					tween.interpolate_property(self, "position:y",
 						origin.y, target.position.y, 0.5,
@@ -202,7 +203,7 @@ func _process(delta):
 					tween.start()
 					singleRun = false
 				
-				if (global_position == target.position + Vector2 (150,0)) or all:
+				if (global_position == target.position + Vector2 (offset,0)) or all:
 					animReset()
 					unitSprite.hide()
 					meleeState = true

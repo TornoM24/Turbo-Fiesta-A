@@ -20,6 +20,7 @@ Found in Akai's possession, though when questioned on the circumstances of its a
 he says he's simply 'always had it', and to 'stop asking questions.'""",
 	"facts": "Favorite food: Peaches",
 	"nFrames": [11],
+	"offset": 150,
 	"stats": {
 		"hp" : 25,
 		"mp" : 25,
