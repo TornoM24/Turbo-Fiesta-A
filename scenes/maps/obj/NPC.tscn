@@ -43,6 +43,7 @@ radius = 8.0
 
 [node name="NPC" type="AnimatedSprite"]
 frames = SubResource( 7 )
+frame = 1
 speed_scale = 2.0
 playing = true
 script = ExtResource( 2 )

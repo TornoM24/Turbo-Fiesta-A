@@ -18,8 +18,7 @@ var unitDict = {
 	\"bio\" : \"\\n'I couldn't protect anyone that time... but I've changed since then!'\\n\\nA young man hailing from VILLAGE, wandering the land after it was burnt down in an unknown incident.\\nHe is notorious among his companions for his hot-blooded nature, which drives him to ridiculous and often obscenely reckless actions. 'For fun,' he claims, but everyone is more or less skeptical of this rather lazy claim. One could practically feel that, indeed, he's driven by a desire for something more - the passionate blue glint in his eyes when striking down foes left and right, flames searing from his wrist as plasma slices through matter is an unparalleled sight. Despite his oddly serene laughter during battle, his tired eyes betray his unseen emotions...\",
 	\"weapon\": \"Hiro fights practically unarmed, with a single warped red gauntlet strapped to his wrist, a relic of his traumatic past. However, the gauntlet itself appears to hold no combative significance, and its usability is dangerously hampered by its extreme flame-fed wear. Due to his lack of any considerable weaponry, his techniques primarily consist of a combination of unarmed physical impacts, close-range flame magic, and protective shields (just in case).\",
 	\"facts\": \"Favorite food: ADRENALINE\",
-	\"nFrames\": [6,8,10,12,19],
-	\"offset\" : 250,
+	\"nFrames\": [4,6,8,10,13,14],
 	\"stats\": {
 		\"hp\" : 30,
 		\"mp\" : 20,

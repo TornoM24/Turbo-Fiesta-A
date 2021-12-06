@@ -491,4 +491,27 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="bars" type="Node2D" parent="."]
+visible = false
+
+[node name="top" type="Panel" parent="bars"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = -648.0
+margin_top = -384.0
+margin_right = 648.0
+margin_bottom = -320.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="top2" type="Panel" parent="bars"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = -648.0
+margin_top = 320.0
+margin_right = 648.0
+margin_bottom = 384.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="toggled" from="menupanel/ModeToggle" to="." method="_on_ModeToggle_toggled"]

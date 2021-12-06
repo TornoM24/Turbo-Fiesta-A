@@ -20,7 +20,10 @@ func write ():
 		playerStun = true
 	message.typewrite (title,dialog[prog],0.01)
 
-func queue_dialog (node, location, title, dialog):
+func queue_dialog (node, location, title, dialog, type = "cinematic"):
+	if type == "cinematic":
+		#get_tree().get_root().get_node("Main/Player/Camera2D/Control").show_bars()
+		pass
 	if usable:
 		usable = false
 		dProg = 0
