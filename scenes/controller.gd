@@ -17,6 +17,7 @@ var pointT = preload ("res://ui/pointer_target.png")
 
 onready var skillPanel = get_node("Control/Panel/CBPanel")
 onready var tsPanel = get_node("Control/Panel/Panel2")
+onready var camera = get_node ("Camera2D")
 
 var selectedUnit
 var selectedTarget

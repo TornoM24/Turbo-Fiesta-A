@@ -26,6 +26,7 @@ func _ready():
 	pass # Replace with function body.
 
 func _process(delta):
+	self.rect_position = get_parent().camera.position
 	pass
 	
 func _on_exit_pressed():

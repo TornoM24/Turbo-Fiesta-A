@@ -186,6 +186,8 @@ func _process(delta):
 			if type !="ranged" and type!= "magic":
 				animSprite.hide()
 				unitSprite.show()
+				#host.camera.position = self.position
+				#host.camera.zoom = Vector2 (0.5,0.5)
 				var all = false
 				if singleRun:
 					for x in ability.effects:
@@ -212,10 +214,14 @@ func _process(delta):
 				animReset()
 				inAnimation = false
 		if inRecovery:
+			
 			meleeState = false
 			if type == "magic":
 				casting = false
 			if type !="ranged" and type!= "magic":
+				
+				#host.camera.position = Vector2(640,368)
+				#host.camera.zoom = Vector2 (1,1)
 				if singleRun:
 					tween.interpolate_property(self, "position",
 						null, origin, 0.5,
