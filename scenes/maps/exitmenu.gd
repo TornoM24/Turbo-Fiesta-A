@@ -25,11 +25,12 @@ func close_menu():
 	#get_parent().get_node("partyview").hide()
 	get_tree().paused = false
 	#get_parent().hide()
-
+onready var tween = get_parent().get_node ("Tween")
+onready var menu = get_parent()
+onready var oc = get_parent().get_parent().get_node("oc")
+onready var menubutton = get_parent().get_parent().get_node("menubutton")
 func fadeout ():
-	var tween = get_parent().get_node ("Tween")
-	var menu = get_parent()
-	var oc = get_parent().get_parent().get_node("oc")
+	menubutton.bars_toggle()
 	tween.interpolate_property(menu, "modulate",
 		Color (1,1,1,1), Color (1,1,1,0), 0.5,
 	Tween.TRANS_QUART, Tween.EASE_OUT)

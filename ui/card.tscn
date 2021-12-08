@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://gfx/unit/bar_over.png" type="Texture" id=1]
 [ext_resource path="res://gfx/unit/hpbar_bg.png" type="Texture" id=2]
@@ -18,17 +18,24 @@
 [ext_resource path="res://ui/embellish_3.png" type="Texture" id=16]
 [ext_resource path="res://pixel_panel.theme" type="Theme" id=17]
 [ext_resource path="res://ui/fade.png" type="Texture" id=18]
+[ext_resource path="res://ui/card.png" type="Texture" id=19]
 
 [node name="C" type="Node2D"]
 position = Vector2( 8, 0 )
 
 [node name="Card" type="Panel" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
 margin_right = 192.0
 margin_bottom = 600.0
 theme = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="card" type="Sprite" parent="Card"]
+position = Vector2( 96, 320 )
+scale = Vector2( 1, 1.07333 )
+texture = ExtResource( 19 )
 
 [node name="Embellishments" type="Node2D" parent="Card"]
 __meta__ = {
@@ -248,7 +255,6 @@ visible = false
 position = Vector2( 96, 352 )
 scale = Vector2( 2, 2 )
 frames = ExtResource( 10 )
-frame = 1
 playing = true
 __meta__ = {
 "_edit_lock_": true

@@ -130,6 +130,29 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="cinematics" type="Node2D" parent="menupanel"]
+position = Vector2( -1232, -80 )
+
+[node name="bar1" type="Panel" parent="menupanel/cinematics"]
+self_modulate = Color( 0, 0, 0, 1 )
+margin_left = 16.0
+margin_top = -96.0
+margin_right = 1424.0
+margin_bottom = 32.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="bar2" type="Panel" parent="menupanel/cinematics"]
+self_modulate = Color( 0, 0, 0, 1 )
+margin_left = 16.0
+margin_top = 824.0
+margin_right = 1424.0
+margin_bottom = 984.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="gridcontainer" type="GridContainer" parent="menupanel"]
 visible = false
 margin_left = 26.0

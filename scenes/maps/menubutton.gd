@@ -5,24 +5,45 @@ extends TextureButton
 # var a = 2
 # var b = "text"
 var press
+var isOpen = false
 # Test1
 # Called when the node enters the scene tree for the first time.
+onready var path_menu = get_parent().get_node ("menupanel")
+onready var path_inventory = get_parent().get_node ("menupanel/inventorypanel")
+onready var path_grid = get_parent().get_node ("menupanel/gridcontainer")
+onready var oc = get_parent().get_node ("oc")
+onready var tween = get_parent().get_node("menupanel/Tween")
+onready var bar1 = get_parent().get_node ("menupanel/cinematics/bar1")
+onready var bar2 = get_parent().get_node ("menupanel/cinematics/bar2")
 func _ready():
 	var button = self
 	button.connect("pressed", self, "_button_pressed")
+
+func bars_toggle():
+	isOpen=!isOpen
+	if isOpen:
+		tween.interpolate_property(bar1, "rect_position",
+			null, Vector2 (bar1.rect_position.x, bar1.rect_position.y + 136), 0.5,
+		Tween.TRANS_QUART, Tween.EASE_OUT)
+		tween.interpolate_property(bar2, "rect_position",
+			null, Vector2 (bar2.rect_position.x, bar2.rect_position.y - 136), 0.5,
+		Tween.TRANS_QUART, Tween.EASE_OUT)
+	else:
+		tween.interpolate_property(bar1, "rect_position",
+			null, Vector2 (bar1.rect_position.x, bar1.rect_position.y - 136), 0.5,
+		Tween.TRANS_QUART, Tween.EASE_IN)
+		tween.interpolate_property(bar2, "rect_position",
+			null, Vector2 (bar2.rect_position.x, bar2.rect_position.y + 136), 0.5,
+		Tween.TRANS_QUART, Tween.EASE_IN)
+	tween.start()
 func open_menu():
 	if !DialogManager.playerStun:
 		print ("opened menu")
-		var path_menu = get_parent().get_node ("menupanel")
-		var path_inventory = get_parent().get_node ("menupanel/inventorypanel")
-		var path_grid = get_parent().get_node ("menupanel/gridcontainer")
-		var oc = get_parent().get_node ("oc")
-		var tween = get_parent().get_node("menupanel/Tween")
 		tween.stop_all()
+		bars_toggle()
 		tween.interpolate_property(path_menu, "modulate",
 			Color (1,1,1,0), Color (1,1,1,1), 0.5,
 		Tween.TRANS_QUART, Tween.EASE_OUT)
-		tween.start()
 		tween.interpolate_property(oc, "modulate",
 			Color (1,1,1,0), Color (1,1,1,1), 0.5,
 		Tween.TRANS_QUART, Tween.EASE_OUT)
