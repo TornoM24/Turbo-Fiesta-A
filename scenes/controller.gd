@@ -219,6 +219,8 @@ func getPower (block,source):
 		inc += 1
 	for x in block.scaling:
 		fPower += source.stats[x]/inc
+		if source.affiliation == "ally":
+			fPower += source.bonus[x]/inc
 		fPower = ceil(float(fPower * block.power/100))
 	return fPower
 	

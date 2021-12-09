@@ -366,7 +366,7 @@ __meta__ = {
 visible = false
 position = Vector2( 488, 136 )
 frames = SubResource( 9 )
-frame = 4
+frame = 2
 speed_scale = 2.0
 playing = true
 
@@ -503,11 +503,6 @@ shadow_enabled = true
 __meta__ = {
 "_edit_lock_": true
 }
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 640, 368 )
-current = true
-smoothing_enabled = true
 
 [connection signal="pressed" from="Control/Panel/buttonhost/attack" to="Control" method="_on_attack_pressed"]
 [connection signal="toggled" from="Control/Panel/buttonhost/attack" to="Control" method="_on_attack_toggled"]

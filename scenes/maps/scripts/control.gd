@@ -26,7 +26,7 @@ func _ready():
 	pass # Replace with function body.
 
 func _process(delta):
-	self.rect_position = get_parent().camera.position
+	#self.rect_position = get_parent().camera.position
 	pass
 	
 func _on_exit_pressed():
@@ -66,6 +66,7 @@ func generateTip (ability):
 	return tipText
 		
 func _on_special_pressed(button):
+	print ("showing panel")
 	skillPanel.a_show()
 	tsPanel.visible = !tsPanel.visible
 	get_node ("Panel/CBPanel/specialscroll").scroll_vertical = 0
