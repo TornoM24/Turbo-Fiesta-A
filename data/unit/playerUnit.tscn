@@ -124,7 +124,7 @@ texture = ExtResource( 10 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 16, 28 )
 scale = Vector2( 2, 2 )
-speed_scale = 1.5
+speed_scale = 2.0
 playing = true
 
 [node name="Shadow" type="Sprite" parent="AnimatedSprite"]

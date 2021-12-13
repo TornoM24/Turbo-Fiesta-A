@@ -293,9 +293,9 @@ func new_game ():
 	for x in self.get_children():
 		x.queue_free()
 	money = 100
-	party = [fabricate("hiro"),fabricate("stella"),fabricate("akai"),fabricate("sabot")]
+	party = [fabricate("hiro")]
 	Master.party[0].equip (give_equipment("hiro_heirloom"))
-	formation = [[-1,3,-1],[2,0,1],[-1,-1,-1]]
+	formation = [[-1,-1,-1],[-1,0,-1],[-1,-1,-1]]
 	add_equip (give_equipment ("akai_foraged_blade"))
 	add_equip (give_equipment ("stella_shard_coat"))
 	#save_game()
