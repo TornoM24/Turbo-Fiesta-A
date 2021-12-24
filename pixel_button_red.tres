@@ -1,33 +1,33 @@
-[gd_resource type="Theme" load_steps=8 format=2]
+[gd_resource type="Theme" load_steps=6 format=2]
 
 [ext_resource path="res://font/pixelmix.tres" type="DynamicFont" id=1]
-[ext_resource path="res://ui/button_r_normal.png" type="Texture" id=2]
-[ext_resource path="res://ui/button_r_depressed.png" type="Texture" id=3]
-[ext_resource path="res://ui/button_r_hover.png" type="Texture" id=4]
+[ext_resource path="res://ui/adv_ui/exit_button.png" type="Texture" id=2]
 
 [sub_resource type="StyleBoxTexture" id=1]
-texture = ExtResource( 4 )
-region_rect = Rect2( 0, 0, 24, 24 )
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 32, 32 )
 margin_left = 4.0
 margin_right = 4.0
 margin_top = 4.0
 margin_bottom = 4.0
+modulate_color = Color( 1.2, 1.2, 1.2, 1 )
 
 [sub_resource type="StyleBoxTexture" id=2]
 texture = ExtResource( 2 )
-region_rect = Rect2( 0, 0, 24, 24 )
+region_rect = Rect2( 0, 0, 32, 32 )
 margin_left = 4.0
 margin_right = 4.0
 margin_top = 4.0
 margin_bottom = 4.0
 
 [sub_resource type="StyleBoxTexture" id=3]
-texture = ExtResource( 3 )
-region_rect = Rect2( 0, 0, 24, 24 )
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 32, 32 )
 margin_left = 4.0
 margin_right = 4.0
 margin_top = 4.0
 margin_bottom = 4.0
+modulate_color = Color( 0.470588, 0.470588, 0.470588, 1 )
 
 [resource]
 default_font = ExtResource( 1 )

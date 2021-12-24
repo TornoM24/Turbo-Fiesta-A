@@ -181,10 +181,10 @@ func update_self ():
 	for stat in bonusStats.keys():
 		bonusStats[stat] = 0
 		if stat == "hp":
-			stats.hp = baseStats[stat]
+			#stats.hp = baseStats[stat]
 			stats.mhp = baseStats[stat]
 		elif stat == "mp":
-			stats.mp = baseStats[stat]
+			#stats.mp = baseStats[stat]
 			stats.mmp = baseStats[stat]
 	for equip in self.equipment:
 		cost += equip.cost

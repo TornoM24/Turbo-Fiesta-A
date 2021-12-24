@@ -139,7 +139,7 @@ position = Vector2( -44, 28 )
 scale = Vector2( 2, 2 )
 z_index = 771
 frames = ExtResource( 8 )
-speed_scale = 2.0
+speed_scale = 3.0
 script = ExtResource( 9 )
 
 [node name="UnitSprite" type="Sprite" parent="."]

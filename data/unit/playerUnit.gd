@@ -80,12 +80,15 @@ var yVelo = -1.3
 var dying
 var deathAnimFinished = false
 var casting = false
+#onready references
 onready var attack = get_node ("Attack")
 onready var tween = get_node ("Tween")
 onready var unitSprite = get_node ("UnitSprite")
 onready var sh = get_node ("AnimatedSprite/Shadow")
 onready var timer = get_node ("Timer")
 onready var castParticles = get_node ("CastParticles")
+onready var animSprite = get_node("AnimatedSprite")
+####################
 func enemyDie():
 	if !dying:
 		sh.hide()
@@ -156,7 +159,6 @@ func decay_effects(delta):
 			tempEffects.erase (eff)
 			pass
 	pass
-onready var animSprite = get_node("AnimatedSprite")
 var meleeState = false
 func _process(delta):
 	decay_effects (delta)
@@ -194,11 +196,11 @@ func _process(delta):
 						if x.target == "all enemies":
 							all = true
 					tween.interpolate_property(self, "position:x",
-						origin.x, target.position.x + offset, 0.5,
-					Tween.TRANS_QUART, Tween.EASE_IN_OUT)
+						origin.x, target.position.x + offset, 0.2,
+					Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 					tween.interpolate_property(self, "position:y",
-						origin.y, target.position.y, 0.5,
-					Tween.TRANS_QUART, Tween.EASE_OUT)
+						origin.y, target.position.y, 0.2,
+					Tween.TRANS_LINEAR, Tween.EASE_OUT)
 #					tween.interpolate_property(self, "position:y",
 #						target.position.y-30, target.position.y, 0.25,
 #					Tween.TRANS_QUAD, Tween.EASE_IN, 0.25)
@@ -293,20 +295,24 @@ func parse_buff (buff):
 	#stats[buff.effectType] += buff.realPower
 	#stats[buff.effectType] += bonus[buff.effectType]
 	tempEffects.append (buff)
-
+const SHAKE_ELAS = false
 func shake(direction):
-	var par = 0
-	if direction == "back":
-		par = -20
+	if SHAKE_ELAS:
+		var par = 0
+		if direction == "back":
+			par = -20
+		else:
+			par = 20
+		tween.interpolate_property(animSprite, "position",
+			null, animSprite.position + Vector2 (par, 0), 0.5,
+		Tween.TRANS_ELASTIC, Tween.EASE_OUT)
+		tween.interpolate_property(get_node ("UnitSprite"), "position",
+			null, get_node ("UnitSprite").position + Vector2 (par, 0), 0.5,
+		Tween.TRANS_ELASTIC, Tween.EASE_OUT)
+		tween.start()
 	else:
-		par = 20
-	tween.interpolate_property(animSprite, "position",
-		null, animSprite.position + Vector2 (par, 0), 0.5,
-	Tween.TRANS_ELASTIC, Tween.EASE_OUT)
-	tween.interpolate_property(get_node ("UnitSprite"), "position",
-		null, get_node ("UnitSprite").position + Vector2 (par, 0), 0.5,
-	Tween.TRANS_ELASTIC, Tween.EASE_OUT)
-	tween.start()
+		shaker.start("normal", animSprite, 0.2, 50, 4)
+		#shaker.start("normal", unitSprite, 0.2, 50, 4)
 
 func sprite_attack (abi, tar):
 	ability = abi
@@ -365,6 +371,7 @@ func _on_Attack_animation_finished():
 		animSprite.show()
 		get_node ("Attack").hide()
 		singleRun = true
+		print ("attack ended 2")
 		process_end()
 	pass # Replace with function body.
 

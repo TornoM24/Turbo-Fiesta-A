@@ -14,7 +14,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _on_Attack_animation_finished():
-#	self.playing = false
+	if par.meleeState:
+		self.playing = false
 #	var lf = -1
 #	while lf != frame:
 #		print (frame)

@@ -12,7 +12,7 @@ func _ready():
 	pass # Replace with function body.
 
 var glow = load ("res://pixel_panel_inwards_glow.theme")
-var plain = load ("res://pixel_panel_inwards.theme")
+var plain = load ("res://pixel_panel.theme")
 onready var panel = get_node ("Panel")
 
 func init (item):
@@ -23,7 +23,7 @@ func init (item):
 	if location == "inventory":
 		panel.theme = plain
 	elif location == "equipment":
-		panel.theme = glow
+		panel.theme = plain
 	#queue_enter()
 	
 func _process(delta):

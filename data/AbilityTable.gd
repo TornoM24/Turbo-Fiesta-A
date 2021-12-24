@@ -39,7 +39,7 @@ var ability_dict = {
 		]
 	},
 	"buff_light_atk":{
-		"name": "FOCUS ~Seeing Red~",
+		"name": "Focus I",
 		"id":"buff_light_atk",
 		"type":"magic",
 		"icon":"magic",
@@ -58,7 +58,7 @@ var ability_dict = {
 		]
 	},
 	"buff_super_atk":{
-		"name": "FOCUS ~Mind Ablaze~",
+		"name": "Blazing Focus",
 		"id":"buff_super_atk",
 		"type":"magic",
 		"icon":"magic",
@@ -77,7 +77,7 @@ var ability_dict = {
 		]
 	},
 	"attack_scarlet_razor_hiro":{
-		"name": "Razorcut",
+		"name": "Heroic Blade",
 		"id":"attack_scarlet_razor_hiro",
 		"type":"phys",
 		"icon":"razor",
@@ -134,7 +134,7 @@ var ability_dict = {
 		]
 	},
 	"buff_scarlet_blaze":{
-		"name": "No Time to Think",
+		"name": "Heroic Taunt",
 		"id":"buff_scarlet_blaze",
 		"type":"magic",
 		"icon":"magic",
@@ -159,7 +159,7 @@ var ability_dict = {
 		]
 	},
 	"buff_all_heal_hiro":{
-		"name": "'One more shot!'",
+		"name": "Heroic Revitalize",
 		"id":"buff_all_heal_hiro",
 		"type":"magic",
 		"icon":"wht_mag",

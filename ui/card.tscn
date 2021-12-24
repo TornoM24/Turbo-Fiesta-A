@@ -25,22 +25,21 @@ position = Vector2( 8, 0 )
 
 [node name="Card" type="Panel" parent="."]
 self_modulate = Color( 1, 1, 1, 0 )
+margin_top = 1.0
 margin_right = 192.0
-margin_bottom = 600.0
+margin_bottom = 601.0
 theme = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="card" type="Sprite" parent="Card"]
-position = Vector2( 96, 320 )
-scale = Vector2( 1, 1.07333 )
+position = Vector2( 96, 355 )
+scale = Vector2( 1, 1.17667 )
 texture = ExtResource( 19 )
 
 [node name="Embellishments" type="Node2D" parent="Card"]
-__meta__ = {
-"_edit_lock_": true
-}
+position = Vector2( 0, 35 )
 
 [node name="e1" type="Sprite" parent="Card/Embellishments"]
 position = Vector2( 32, 427 )
@@ -66,9 +65,9 @@ texture = ExtResource( 16 )
 
 [node name="HPBar" type="TextureProgress" parent="Card"]
 margin_left = 16.0
-margin_top = 504.0
+margin_top = 539.0
 margin_right = 176.0
-margin_bottom = 520.0
+margin_bottom = 555.0
 rect_pivot_offset = Vector2( 109.152, 12.4213 )
 value = 100.0
 texture_under = ExtResource( 2 )
@@ -80,7 +79,6 @@ stretch_margin_top = 3
 stretch_margin_right = 3
 stretch_margin_bottom = 3
 __meta__ = {
-"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -99,9 +97,9 @@ __meta__ = {
 
 [node name="MPBar" type="TextureProgress" parent="Card"]
 margin_left = 16.0
-margin_top = 544.0
+margin_top = 579.0
 margin_right = 176.0
-margin_bottom = 560.0
+margin_bottom = 595.0
 rect_pivot_offset = Vector2( 109.152, 12.4213 )
 value = 100.0
 texture_under = ExtResource( 2 )
@@ -113,7 +111,6 @@ stretch_margin_top = 3
 stretch_margin_right = 3
 stretch_margin_bottom = 3
 __meta__ = {
-"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -131,9 +128,9 @@ __meta__ = {
 
 [node name="EXPBar" type="TextureProgress" parent="Card"]
 margin_left = 16.0
-margin_top = 472.0
+margin_top = 507.0
 margin_right = 176.0
-margin_bottom = 480.0
+margin_bottom = 515.0
 rect_pivot_offset = Vector2( 109.152, 12.4213 )
 value = 100.0
 texture_under = ExtResource( 2 )
@@ -145,7 +142,6 @@ stretch_margin_top = 3
 stretch_margin_right = 3
 stretch_margin_bottom = 3
 __meta__ = {
-"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -180,15 +176,14 @@ visible = false
 margin_right = 192.0
 margin_bottom = 448.0
 __meta__ = {
-"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
 [node name="LvlLabel" type="RichTextLabel" parent="Card"]
 margin_left = 16.0
-margin_top = 440.0
+margin_top = 479.0
 margin_right = 176.0
-margin_bottom = 456.0
+margin_bottom = 495.0
 custom_fonts/normal_font = ExtResource( 12 )
 bbcode_enabled = true
 bbcode_text = "[center]Level 87"
@@ -199,9 +194,9 @@ __meta__ = {
 
 [node name="Title" type="RichTextLabel" parent="Card"]
 margin_left = 16.0
-margin_top = 400.0
+margin_top = 439.0
 margin_right = 176.0
-margin_bottom = 416.0
+margin_bottom = 455.0
 custom_fonts/normal_font = ExtResource( 12 )
 bbcode_enabled = true
 bbcode_text = "[center][color=gray]~ crimson daredevil ~"
@@ -213,9 +208,9 @@ __meta__ = {
 
 [node name="Label1" type="RichTextLabel" parent="Card"]
 margin_left = 16.0
-margin_top = 416.0
+margin_top = 455.0
 margin_right = 176.0
-margin_bottom = 440.0
+margin_bottom = 479.0
 custom_fonts/normal_font = ExtResource( 13 )
 bbcode_enabled = true
 bbcode_text = "[center][color=#ffb100]Hiro"
@@ -237,7 +232,6 @@ bbcode_text = "[center] Crimson Daredevil"
 text = " Crimson Daredevil"
 scroll_active = false
 __meta__ = {
-"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -246,25 +240,20 @@ visible = false
 position = Vector2( 95, 360 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 11 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="CharSprite" type="AnimatedSprite" parent="Card"]
 visible = false
 position = Vector2( 96, 352 )
 scale = Vector2( 2, 2 )
 frames = ExtResource( 10 )
+frame = 3
 playing = true
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="Panel2" type="Panel" parent="Card"]
 margin_left = 8.0
-margin_top = 24.0
+margin_top = 63.0
 margin_right = 184.0
-margin_bottom = 384.0
+margin_bottom = 423.0
 theme = ExtResource( 17 )
 __meta__ = {
 "_edit_use_anchors_": false

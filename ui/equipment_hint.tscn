@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://pixel_panel.theme" type="Theme" id=1]
 [ext_resource path="res://ui/equipment_hint.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://gfx/equip/pedestal.png" type="Texture" id=5]
 [ext_resource path="res://font/ChronoLarge.tres" type="DynamicFont" id=6]
 [ext_resource path="res://font/Chrono.tres" type="DynamicFont" id=7]
+[ext_resource path="res://pixel_scroll.tres" type="Theme" id=8]
 
 [node name="tooltip" type="Node2D"]
 z_index = 4096
@@ -63,9 +64,10 @@ __meta__ = {
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Panel"]
 margin_left = 8.0
-margin_top = 96.0
+margin_top = 104.0
 margin_right = 760.0
-margin_bottom = 568.0
+margin_bottom = 552.0
+theme = ExtResource( 8 )
 scroll_horizontal_enabled = false
 __meta__ = {
 "_edit_use_anchors_": false
@@ -107,13 +109,12 @@ __meta__ = {
 }
 
 [node name="Button" type="Button" parent="."]
-margin_left = 968.0
+margin_left = 976.0
 margin_top = 80.0
 margin_right = 1008.0
-margin_bottom = 120.0
+margin_bottom = 112.0
 theme = ExtResource( 3 )
 button_mask = 3
-text = "X"
 __meta__ = {
 "_edit_use_anchors_": false
 }

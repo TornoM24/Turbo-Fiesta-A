@@ -133,7 +133,7 @@ func show_all():
 		x.show()
 var currentPan = 0
 export var showOldCards = false
-var offset = 80
+var offset = 100
 func spawnAllies ():
 	var incrementer = 0
 	for y in range (0,3):
@@ -148,7 +148,7 @@ func spawnAllies ():
 				add_child(instance)
 				instance.affiliation = "ally"
 				instance.position.x = 680 + (150*x) + (50*y)
-				instance.position.y = 200 + (offset*y)
+				instance.position.y = 100 + (offset*y)
 				instance.origin = instance.position
 				#instance.get_node("Sprite").texture = defaultSprite
 				instance.unitName = Master.party[Master.formation[x][y]].unitName
@@ -197,16 +197,16 @@ func _ready():
 
 func init_battle (battleData):
 	var incrementer = 0
+	Master.atb_paused = false
 	for x in range (0,3):
 		for y in range (0,3):
 			if battleData.formation[x][y] != "empty" && battleData.formation[x][y] != null:
-				print ("spawning " + battleData.formation[x][y])
 				incrementer +=1 
 				var instance = placeholder.instance()
 				add_child(instance)
 				instance.affiliation = "enemy"
 				instance.position.x = 200 + (100*x) - (50*y)
-				instance.position.y = 200 + (offset*y)
+				instance.position.y = 100 + (offset*y)
 				instance.get_node("HPBar").show()
 				instance.get_node("ATBBar").show()
 				instance.unitName = battleData.formation[x][y]
@@ -446,7 +446,6 @@ func _process(delta):
 					ally.selected = false
 					cancel_targeting()
 					selectedUnit.sprite_attack (targetAbility, selectedTarget)
-					#causeEffect (selectedTarget,targetAbility)
 					selectedUnit.atb_val = 0
 					
 					isSelecting = false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://pixel_panel.theme" type="Theme" id=1]
 [ext_resource path="res://ui/ability_hint.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://ui/empty.png" type="Texture" id=4]
 [ext_resource path="res://font/Chrono.tres" type="DynamicFont" id=5]
 [ext_resource path="res://font/ChronoLarge.tres" type="DynamicFont" id=6]
+[ext_resource path="res://pixel_scroll.tres" type="Theme" id=7]
 
 [node name="tooltip2" type="Node2D"]
 z_index = 4096
@@ -53,6 +54,7 @@ margin_left = 8.0
 margin_top = 96.0
 margin_right = 760.0
 margin_bottom = 568.0
+theme = ExtResource( 7 )
 scroll_horizontal_enabled = false
 __meta__ = {
 "_edit_use_anchors_": false
@@ -97,13 +99,12 @@ __meta__ = {
 }
 
 [node name="Button" type="Button" parent="."]
-margin_left = 968.0
+margin_left = 976.0
 margin_top = 80.0
 margin_right = 1008.0
-margin_bottom = 120.0
+margin_bottom = 112.0
 theme = ExtResource( 3 )
 button_mask = 3
-text = "X"
 __meta__ = {
 "_edit_use_anchors_": false
 }

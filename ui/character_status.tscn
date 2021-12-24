@@ -168,13 +168,12 @@ __meta__ = {
 }
 
 [node name="Button" type="Button" parent="."]
-margin_left = 968.0
+margin_left = 976.0
 margin_top = 80.0
 margin_right = 1008.0
-margin_bottom = 120.0
+margin_bottom = 112.0
 theme = ExtResource( 3 )
 button_mask = 3
-text = "X"
 __meta__ = {
 "_edit_use_anchors_": false
 }
