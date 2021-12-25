@@ -98,19 +98,20 @@ playing = true
 position = Vector2( 1, 0 )
 scale = Vector2( 2, 2 )
 frames = ExtResource( 5 )
-frame = 1
+frame = 2
 playing = true
 
 [node name="Right" type="AnimatedSprite" parent="."]
 position = Vector2( 1, 0 )
 scale = Vector2( 2, 2 )
 frames = ExtResource( 11 )
+frame = 1
 playing = true
 
 [node name="Up" type="AnimatedSprite" parent="."]
 scale = Vector2( 2, 2 )
 frames = ExtResource( 10 )
-frame = 1
+frame = 2
 playing = true
 
 [node name="Area2D" type="Area2D" parent="."]
