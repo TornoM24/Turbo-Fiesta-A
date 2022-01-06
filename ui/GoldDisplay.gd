@@ -11,7 +11,7 @@ func _ready():
 	pass # Replace with function body.
 
 func update():
-	bbcode_text = "[right]GL[color=#ffb100] " + str (Master.money)
+	bbcode_text = "[right]G[color=#ffb100] " + str (Master.money)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

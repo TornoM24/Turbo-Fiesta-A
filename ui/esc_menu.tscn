@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=2]
+[gd_scene load_steps=42 format=2]
 
 [ext_resource path="res://pixel_panel.theme" type="Theme" id=1]
 [ext_resource path="res://ui/button_depressed_menu.png" type="Texture" id=2]
@@ -35,6 +35,8 @@
 [ext_resource path="res://gfx/icons/buttons/close.png" type="Texture" id=33]
 [ext_resource path="res://pixel_tabs.theme" type="Theme" id=34]
 [ext_resource path="res://ui/ModeToggle.gd" type="Script" id=35]
+[ext_resource path="res://pixel_button_2.tres" type="Theme" id=36]
+[ext_resource path="res://gfx/icons/buttons/testcombat.png" type="Texture" id=37]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 8 )
@@ -103,6 +105,7 @@ __meta__ = {
 
 [node name="oc" type="Node2D" parent="."]
 visible = false
+self_modulate = Color( 0.639216, 0.639216, 0.639216, 1 )
 position = Vector2( -128, -232 )
 script = ExtResource( 10 )
 
@@ -118,7 +121,6 @@ __meta__ = {
 }
 
 [node name="menupanel" type="Panel" parent="."]
-visible = false
 self_modulate = Color( 1, 1, 1, 0 )
 margin_left = 448.0
 margin_top = -344.0
@@ -127,6 +129,7 @@ margin_bottom = 280.0
 theme = ExtResource( 1 )
 script = ExtResource( 17 )
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -149,6 +152,16 @@ margin_left = 16.0
 margin_top = 824.0
 margin_right = 1424.0
 margin_bottom = 984.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="menupanel"]
+self_modulate = Color( 0.376471, 0.376471, 0.376471, 1 )
+margin_left = -8.0
+margin_top = -176.0
+margin_right = 208.0
+margin_bottom = 904.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -323,24 +336,23 @@ z_index = 0
 z_as_relative = true
 
 [node name="testbutton" type="Button" parent="menupanel"]
-margin_left = 88.0
-margin_top = 352.0
+margin_top = 288.0
 margin_right = 192.0
-margin_bottom = 376.0
-theme = ExtResource( 26 )
+margin_bottom = 312.0
+theme = ExtResource( 36 )
 custom_fonts/font = ExtResource( 20 )
 text = "Test Loadout"
+icon = ExtResource( 37 )
 script = ExtResource( 11 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="mainmenubutton" type="Button" parent="menupanel"]
-margin_left = 144.0
-margin_top = 240.0
-margin_right = 344.0
-margin_bottom = 288.0
-theme = ExtResource( 26 )
+margin_top = 256.0
+margin_right = 192.0
+margin_bottom = 286.0
+theme = ExtResource( 36 )
 text = "Main Menu"
 icon = ExtResource( 29 )
 script = ExtResource( 22 )
@@ -349,11 +361,10 @@ __meta__ = {
 }
 
 [node name="exitmenu" type="Button" parent="menupanel"]
-margin_left = 144.0
-margin_top = 16.0
-margin_right = 344.0
-margin_bottom = 64.0
-theme = ExtResource( 26 )
+margin_top = 128.0
+margin_right = 192.0
+margin_bottom = 158.0
+theme = ExtResource( 36 )
 text = "Close Menu"
 icon = ExtResource( 33 )
 script = ExtResource( 14 )
@@ -362,11 +373,10 @@ __meta__ = {
 }
 
 [node name="inventory" type="Button" parent="menupanel"]
-margin_left = 144.0
-margin_top = 72.0
-margin_right = 344.0
-margin_bottom = 120.0
-theme = ExtResource( 26 )
+margin_top = 160.0
+margin_right = 192.0
+margin_bottom = 190.0
+theme = ExtResource( 36 )
 text = "Inventory"
 icon = ExtResource( 30 )
 script = ExtResource( 21 )
@@ -376,11 +386,10 @@ __meta__ = {
 }
 
 [node name="party" type="Button" parent="menupanel"]
-margin_left = 144.0
-margin_top = 128.0
-margin_right = 344.0
-margin_bottom = 176.0
-theme = ExtResource( 26 )
+margin_top = 192.0
+margin_right = 192.0
+margin_bottom = 222.0
+theme = ExtResource( 36 )
 text = "Party"
 icon = ExtResource( 32 )
 script = ExtResource( 16 )
@@ -404,11 +413,10 @@ __meta__ = {
 }
 
 [node name="save" type="Button" parent="menupanel"]
-margin_left = 144.0
-margin_top = 184.0
-margin_right = 344.0
-margin_bottom = 232.0
-theme = ExtResource( 26 )
+margin_top = 224.0
+margin_right = 192.0
+margin_bottom = 254.0
+theme = ExtResource( 36 )
 text = "Save Game"
 icon = ExtResource( 31 )
 script = ExtResource( 19 )
@@ -479,10 +487,10 @@ margin_bottom = -4.0
 [node name="Tween" type="Tween" parent="menupanel"]
 
 [node name="PStatDisplay" type="Panel" parent="menupanel"]
-margin_left = 48.0
-margin_top = 408.0
-margin_right = 192.0
-margin_bottom = 432.0
+margin_left = 24.0
+margin_top = 344.0
+margin_right = 168.0
+margin_bottom = 472.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -502,6 +510,7 @@ __meta__ = {
 }
 
 [node name="ModeToggle" type="CheckButton" parent="menupanel"]
+visible = false
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -192.0

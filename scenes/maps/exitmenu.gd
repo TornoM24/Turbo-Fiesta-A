@@ -54,23 +54,24 @@ func _input(event):
 		else:
 			get_parent().get_parent().get_node("menubutton").open_menu()
 func _mouse_entered():
-	var tween = get_parent().get_node("Tween")
-	tween.interpolate_property(self, "rect_size",
-			null, oSize+ Vector2(30, 0), 0.1,
-			Tween.TRANS_QUART, Tween.EASE_IN_OUT)
-	tween.interpolate_property(self, "rect_position",
-			null, Vector2 (oPos.x - 180, oPos.y), 0.1,
-			Tween.TRANS_QUART, Tween.EASE_IN_OUT)
-	tween.start()
-	pass
+	if Master.fancy:
+		var tween = get_parent().get_node("Tween")
+		tween.interpolate_property(self, "rect_size",
+				null, oSize+ Vector2(30, 0), 0.1,
+				Tween.TRANS_QUART, Tween.EASE_IN_OUT)
+		tween.interpolate_property(self, "rect_position",
+				null, Vector2 (oPos.x - 180, oPos.y), 0.1,
+				Tween.TRANS_QUART, Tween.EASE_IN_OUT)
+		tween.start()
 
 func _mouse_exited():
-	var tween = get_parent().get_node("Tween")
-	tween.interpolate_property(self, "rect_size",
-			null, oSize, 0.1,
-			Tween.TRANS_QUART, Tween.EASE_IN_OUT)
-	tween.interpolate_property(self, "rect_position",
-			null, oPos, 0.1,
-			Tween.TRANS_QUART, Tween.EASE_IN_OUT)
-	tween.start()
-	pass
+	if Master.fancy:
+		var tween = get_parent().get_node("Tween")
+		tween.interpolate_property(self, "rect_size",
+				null, oSize, 0.1,
+				Tween.TRANS_QUART, Tween.EASE_IN_OUT)
+		tween.interpolate_property(self, "rect_position",
+				null, oPos, 0.1,
+				Tween.TRANS_QUART, Tween.EASE_IN_OUT)
+		tween.start()
+		pass

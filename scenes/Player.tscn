@@ -87,11 +87,13 @@ texture = ExtResource( 4 )
 visible = false
 scale = Vector2( 2, 2 )
 frames = SubResource( 8 )
+frame = 1
 playing = true
 
 [node name="Down" type="AnimatedSprite" parent="."]
 scale = Vector2( 2, 2 )
 frames = SubResource( 8 )
+frame = 1
 playing = true
 
 [node name="Left" type="AnimatedSprite" parent="."]

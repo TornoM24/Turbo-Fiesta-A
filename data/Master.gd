@@ -8,6 +8,7 @@ var atb_paused = false
 var abiOpen = false
 
 var combatMode = "simple"
+var fancy = false
 var shakeBar = true
 
 var working = true

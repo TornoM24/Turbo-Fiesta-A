@@ -8,6 +8,7 @@ extends Panel
 var menu
 # Called when the node enters the scene tree for the first time.
 func _ready():	
+	hide()
 	pass
 func _process(delta):
 	if modulate.a <= 0:
