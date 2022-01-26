@@ -1,13 +1,97 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://scenes/maps/runbutton.gd" type="Script" id=1]
 [ext_resource path="res://scenes/maps/scripts/control.gd" type="Script" id=2]
 [ext_resource path="res://scenes/controller.gd" type="Script" id=3]
 [ext_resource path="res://scenes/Party.gd" type="Script" id=4]
 [ext_resource path="res://gfx/unit/unit_box.png" type="Texture" id=5]
+[ext_resource path="res://pixel_button.tres" type="Theme" id=6]
+[ext_resource path="res://pixel_panel.theme" type="Theme" id=7]
+[ext_resource path="res://combat_stats.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/fps.gd" type="Script" id=9]
+[ext_resource path="res://ui/fade.png" type="Texture" id=10]
+[ext_resource path="res://gfx/disk_mask.png" type="Texture" id=11]
+[ext_resource path="res://gfx/unit/selector.png" type="Texture" id=16]
+[ext_resource path="res://pixel_button_red.tres" type="Theme" id=17]
+[ext_resource path="res://pixel_button_2.tres" type="Theme" id=18]
+[ext_resource path="res://scenes/readyhelper.gd" type="Script" id=19]
+[ext_resource path="res://font/pixelmix_small2.tres" type="DynamicFont" id=21]
+[ext_resource path="res://pixel_panel_3.theme" type="Theme" id=23]
+[ext_resource path="res://pixel_panel_4.theme" type="Theme" id=24]
+[ext_resource path="res://gfx/bg/bg_plain.png" type="Texture" id=25]
+[ext_resource path="res://scenes/CBPanel.gd" type="Script" id=26]
+
+[sub_resource type="AtlasTexture" id=1]
+flags = 4
+atlas = ExtResource( 16 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=2]
+flags = 4
+atlas = ExtResource( 16 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=3]
+flags = 4
+atlas = ExtResource( 16 )
+region = Rect2( 64, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=4]
+flags = 4
+atlas = ExtResource( 16 )
+region = Rect2( 96, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=5]
+flags = 4
+atlas = ExtResource( 16 )
+region = Rect2( 128, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=6]
+flags = 4
+atlas = ExtResource( 16 )
+region = Rect2( 160, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=7]
+flags = 4
+atlas = ExtResource( 16 )
+region = Rect2( 192, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=8]
+flags = 4
+atlas = ExtResource( 16 )
+region = Rect2( 224, 0, 32, 32 )
+
+[sub_resource type="SpriteFrames" id=9]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
 
 [node name="Controller" type="Node2D"]
 script = ExtResource( 3 )
+
+[node name="bg" type="Sprite" parent="."]
+position = Vector2( 640, 288 )
+scale = Vector2( 4.01111, 4.01111 )
+texture = ExtResource( 25 )
+
+[node name="fade" type="Sprite" parent="."]
+self_modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 639, 553 )
+scale = Vector2( 2.564, 0.676 )
+texture = ExtResource( 10 )
+
+[node name="Panel2" type="Panel" parent="."]
+visible = false
+margin_left = -8.0
+margin_top = 384.0
+margin_right = 1288.0
+margin_bottom = 720.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Control" type="Control" parent="."]
 margin_right = 40.0
@@ -18,34 +102,295 @@ __meta__ = {
 }
 
 [node name="Panel" type="Panel" parent="Control"]
-margin_left = 6.10352e-05
-margin_top = 388.0
-margin_right = 1024.0
-margin_bottom = 600.0
+pause_mode = 1
+self_modulate = Color( 1, 1, 1, 0 )
+margin_top = 448.0
+margin_right = 256.0
+margin_bottom = 720.0
+theme = ExtResource( 7 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="buttonhost" type="Node2D" parent="Control/Panel"]
+visible = false
+position = Vector2( 48, 8 )
+
+[node name="attack" type="Button" parent="Control/Panel/buttonhost"]
+margin_left = -40.0
+margin_top = 24.0
+margin_right = 200.0
+margin_bottom = 55.0
+rect_scale = Vector2( 1, 1.01685 )
+theme = ExtResource( 18 )
+text = "ATTACK"
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="defend" type="Button" parent="Control/Panel/buttonhost"]
+margin_left = -40.0
+margin_top = 72.0
+margin_right = 200.0
+margin_bottom = 103.0
+rect_scale = Vector2( 1, 1.01685 )
+hint_tooltip = "Provides 50% general mitigation."
+theme = ExtResource( 18 )
+text = "DEFEND"
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="special" type="Button" parent="Control/Panel/buttonhost"]
+margin_left = -40.0
+margin_top = 120.0
+margin_right = 200.0
+margin_bottom = 151.0
+rect_scale = Vector2( 1, 1.01685 )
+theme = ExtResource( 18 )
+text = "SPECIAL"
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="item" type="Button" parent="Control/Panel/buttonhost"]
+margin_left = -40.0
+margin_top = 168.0
+margin_right = 200.0
+margin_bottom = 199.0
+rect_scale = Vector2( 1, 1.01685 )
+theme = ExtResource( 18 )
+text = "ITEMS"
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="escape" type="Button" parent="Control/Panel/buttonhost"]
+margin_left = 24.0
+margin_top = 216.0
+margin_right = 136.0
+margin_bottom = 247.0
+rect_scale = Vector2( 1, 1.01685 )
+theme = ExtResource( 17 )
+text = "ESCAPE"
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="CBPanel2" type="Panel" parent="Control/Panel"]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = 1016.0
+margin_top = -384.0
+margin_right = 1280.0
+margin_bottom = -112.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="testbutton" type="Button" parent="Control"]
-margin_left = 20.0
-margin_top = 550.0
-margin_right = 85.0
-margin_bottom = 570.0
+[node name="Panel" type="Panel" parent="Control/Panel/CBPanel2"]
+visible = false
+margin_left = 72.0
+margin_top = 384.0
+margin_right = 264.0
+margin_bottom = 656.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="log" type="RichTextLabel" parent="Control/Panel/CBPanel2/Panel"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 184.0
+margin_bottom = 264.0
+custom_fonts/normal_font = ExtResource( 21 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="Control/Panel/CBPanel2/Panel"]
+margin_left = 40.0
+margin_top = -32.0
+margin_right = 152.0
+theme = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/Panel/CBPanel2/Panel/Panel"]
+margin_left = 40.0
+margin_top = 8.0
+margin_right = 80.0
+margin_bottom = 48.0
+text = "LOG"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="G1" parent="Control/Panel/CBPanel2" instance=ExtResource( 8 )]
+visible = false
+position = Vector2( 0, -16 )
+
+[node name="G2" parent="Control/Panel/CBPanel2" instance=ExtResource( 8 )]
+visible = false
+position = Vector2( 0, 40 )
+
+[node name="G3" parent="Control/Panel/CBPanel2" instance=ExtResource( 8 )]
+visible = false
+position = Vector2( 0, 96 )
+
+[node name="G4" parent="Control/Panel/CBPanel2" instance=ExtResource( 8 )]
+visible = false
+position = Vector2( 0, 152 )
+
+[node name="G5" parent="Control/Panel/CBPanel2" instance=ExtResource( 8 )]
+visible = false
+position = Vector2( 0, 208 )
+
+[node name="Panel2" type="Panel" parent="Control/Panel"]
+visible = false
+modulate = Color( 0, 0, 0, 0.470588 )
+margin_left = -40.0
+margin_right = 1328.0
+margin_bottom = 304.0
+theme = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CBPanel" type="Panel" parent="Control/Panel"]
+margin_left = -640.0
+margin_right = 6.10352e-05
+margin_bottom = 272.0
+script = ExtResource( 26 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="exit" type="Button" parent="Control/Panel/CBPanel"]
+margin_left = 592.0
+margin_top = 8.0
+margin_right = 617.0
+margin_bottom = 33.0
+theme = ExtResource( 6 )
+text = "X"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="specialscroll" type="ScrollContainer" parent="Control/Panel/CBPanel"]
+margin_top = 8.0
+margin_right = 587.0
+margin_bottom = 264.0
+scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="Control/Panel/CBPanel/specialscroll"]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_right = 575.0
+margin_bottom = 250.0
+rect_min_size = Vector2( 575, 250 )
+
+[node name="Tween" type="Tween" parent="Control/Panel/CBPanel"]
+
+[node name="testbutton" type="Button" parent="Control/Panel"]
+margin_left = 1056.0
+margin_top = -432.0
+margin_right = 1156.0
+margin_bottom = -404.0
 rect_scale = Vector2( 1, 1.01685 )
-text = "return"
+theme = ExtResource( 6 )
+text = "RETURN"
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="attack" type="Button" parent="Control"]
-margin_left = 20.0
-margin_top = 400.0
-margin_right = 85.0
-margin_bottom = 420.0
-rect_scale = Vector2( 1, 1.01685 )
-text = "Attack"
-script = ExtResource( 1 )
+[node name="targethelper" type="RichTextLabel" parent="Control/Panel"]
+visible = false
+margin_left = 66.2578
+margin_top = -64.0
+margin_right = 458.258
+margin_bottom = -37.0
+text = "Right click to cancel targeting"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="readyhelper" type="RichTextLabel" parent="Control/Panel"]
+margin_top = -80.0
+margin_right = 280.0
+margin_bottom = -53.0
+text = "Character not ready yet!"
+scroll_active = false
+script = ExtResource( 19 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="namedisplay" type="Panel" parent="Control/Panel"]
+visible = false
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = 24.0
+margin_top = -16.0
+margin_right = 232.0
+margin_bottom = 16.0
+theme = ExtResource( 23 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/Panel/namedisplay"]
+margin_top = 8.0
+margin_right = 200.0
+margin_bottom = 32.0
+bbcode_enabled = true
+bbcode_text = "[center]Hiro"
+text = "Hiro"
+fit_content_height = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Selector" type="AnimatedSprite" parent="Control"]
+visible = false
+position = Vector2( 488, 136 )
+frames = SubResource( 9 )
+frame = 6
+speed_scale = 2.0
+playing = true
+
+[node name="oc" type="Node2D" parent="Control"]
+z_index = 999
+z_as_relative = false
+
+[node name="occluder" type="Panel" parent="Control/oc"]
+visible = false
+modulate = Color( 0, 0, 0, 1 )
+margin_left = -24.0
+margin_top = -24.0
+margin_right = 1320.0
+margin_bottom = 760.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Reader" type="Panel" parent="Control"]
+visible = false
+margin_left = 984.0
+margin_top = 8.0
+margin_right = 1576.0
+margin_bottom = 48.0
+theme = ExtResource( 24 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -54,6 +399,8 @@ __meta__ = {
 script = ExtResource( 4 )
 
 [node name="boxes" type="Node2D" parent="Party"]
+visible = false
+modulate = Color( 1, 1, 1, 0.498039 )
 
 [node name="unit_box" type="Sprite" parent="Party/boxes"]
 position = Vector2( 800, 300 )
@@ -90,3 +437,77 @@ texture = ExtResource( 5 )
 [node name="unit_box7" type="Sprite" parent="Party/boxes"]
 position = Vector2( 900, 100 )
 texture = ExtResource( 5 )
+
+[node name="Enemy" type="Node2D" parent="."]
+
+[node name="boxes2" type="Node2D" parent="Enemy"]
+visible = false
+modulate = Color( 1, 1, 1, 0.498039 )
+position = Vector2( -600, 0 )
+
+[node name="unit_box" type="Sprite" parent="Enemy/boxes2"]
+position = Vector2( 852, 296 )
+texture = ExtResource( 5 )
+
+[node name="unit_box3" type="Sprite" parent="Enemy/boxes2"]
+position = Vector2( 752, 296 )
+texture = ExtResource( 5 )
+
+[node name="unit_box2" type="Sprite" parent="Enemy/boxes2"]
+position = Vector2( 1016, 352 )
+texture = ExtResource( 5 )
+
+[node name="unit_box6" type="Sprite" parent="Enemy/boxes2"]
+position = Vector2( 852, 196 )
+texture = ExtResource( 5 )
+
+[node name="unit_box5" type="Sprite" parent="Enemy/boxes2"]
+position = Vector2( 752, 196 )
+texture = ExtResource( 5 )
+
+[node name="unit_box4" type="Sprite" parent="Enemy/boxes2"]
+position = Vector2( 952, 224 )
+texture = ExtResource( 5 )
+
+[node name="unit_box9" type="Sprite" parent="Enemy/boxes2"]
+position = Vector2( 888, 96 )
+texture = ExtResource( 5 )
+
+[node name="unit_box8" type="Sprite" parent="Enemy/boxes2"]
+position = Vector2( 760, 96 )
+texture = ExtResource( 5 )
+
+[node name="unit_box7" type="Sprite" parent="Enemy/boxes2"]
+position = Vector2( 1016, 96 )
+texture = ExtResource( 5 )
+
+[node name="fps" type="Label" parent="."]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 48.0
+margin_bottom = 21.0
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Light2D" type="Light2D" parent="."]
+visible = false
+position = Vector2( 640, 248 )
+scale = Vector2( 2, 1 )
+texture = ExtResource( 11 )
+texture_scale = 2.79
+energy = 0.38
+range_height = 15.2
+shadow_enabled = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[connection signal="pressed" from="Control/Panel/buttonhost/attack" to="Control" method="_on_attack_pressed"]
+[connection signal="toggled" from="Control/Panel/buttonhost/attack" to="Control" method="_on_attack_toggled"]
+[connection signal="pressed" from="Control/Panel/buttonhost/defend" to="Control" method="_on_defend_pressed"]
+[connection signal="pressed" from="Control/Panel/buttonhost/special" to="Control" method="_on_special_pressed"]
+[connection signal="pressed" from="Control/Panel/buttonhost/item" to="Control" method="_on_item_pressed"]
+[connection signal="pressed" from="Control/Panel/CBPanel/exit" to="Control" method="_on_exit_pressed"]
+[connection signal="toggled" from="Control/Panel/CBPanel/exit" to="Control" method="_on_exit_toggled"]

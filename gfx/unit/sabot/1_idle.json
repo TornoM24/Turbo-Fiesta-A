@@ -1,0 +1,42 @@
+{ "frames": {
+   "1_cast 0.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 128, "h": 64 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 128, "h": 64 },
+    "sourceSize": { "w": 128, "h": 64 },
+    "duration": 100
+   },
+   "1_cast 1.aseprite": {
+    "frame": { "x": 128, "y": 0, "w": 128, "h": 64 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 128, "h": 64 },
+    "sourceSize": { "w": 128, "h": 64 },
+    "duration": 100
+   }
+ },
+ "meta": {
+  "app": "http://www.aseprite.org/",
+  "version": "1.2.15-x64",
+  "image": "1_cast.png",
+  "format": "RGBA8888",
+  "size": { "w": 256, "h": 64 },
+  "scale": "1",
+  "frameTags": [
+  ],
+  "layers": [
+   { "name": "overlord armor", "opacity": 255, "blendMode": "normal" },
+   { "name": "overlord", "opacity": 255, "blendMode": "normal" },
+   { "name": "torso", "opacity": 255, "blendMode": "normal" },
+   { "name": "regGun", "opacity": 255, "blendMode": "normal" },
+   { "name": "ummm", "opacity": 255, "blendMode": "normal" },
+   { "name": "protector Copy", "opacity": 255, "blendMode": "normal" },
+   { "name": "farm", "opacity": 255, "blendMode": "normal" },
+   { "name": "eff", "opacity": 255, "blendMode": "normal" },
+   { "name": "ref", "opacity": 122, "blendMode": "normal" }
+  ],
+  "slices": [
+  ]
+ }
+}

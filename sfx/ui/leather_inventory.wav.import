@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/leather_inventory.wav-9f1f6c19478b9141782e0f956e22ee92.sample"
+
+[deps]
+
+source_file="res://sfx/ui/leather_inventory.wav"
+dest_files=[ "res://.import/leather_inventory.wav-9f1f6c19478b9141782e0f956e22ee92.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

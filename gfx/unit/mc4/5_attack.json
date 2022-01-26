@@ -1,0 +1,269 @@
+{ "frames": {
+   "5_attack 0.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 128, "h": 64 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 128, "h": 64 },
+    "sourceSize": { "w": 128, "h": 64 },
+    "duration": 70
+   },
+   "5_attack 1.aseprite": {
+    "frame": { "x": 128, "y": 0, "w": 128, "h": 64 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 128, "h": 64 },
+    "sourceSize": { "w": 128, "h": 64 },
+    "duration": 70
+   },
+   "5_attack 2.aseprite": {
+    "frame": { "x": 256, "y": 0, "w": 128, "h": 64 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 128, "h": 64 },
+    "sourceSize": { "w": 128, "h": 64 },
+    "duration": 70
+   },
+   "5_attack 3.aseprite": {
+    "frame": { "x": 384, "y": 0, "w": 128, "h": 64 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 128, "h": 64 },
+    "sourceSize": { "w": 128, "h": 64 },
+    "duration": 70
+   },
+   "5_attack 4.aseprite": {
+    "frame": { "x": 512, "y": 0, "w": 128, "h": 64 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 128, "h": 64 },
+    "sourceSize": { "w": 128, "h": 64 },
+    "duration": 70
+   },
+   "5_attack 5.aseprite": {
+    "frame": { "x": 640, "y": 0, "w": 128, "h": 64 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 128, "h": 64 },
+    "sourceSize": { "w": 128, "h": 64 },
+    "duration": 70
+   },
+   "5_attack 6.aseprite": {
+    "frame": { "x": 768, "y": 0, "w": 128, "h": 64 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 128, "h": 64 },
+    "sourceSize": { "w": 128, "h": 64 },
+    "duration": 70
+   },
+   "5_attack 7.aseprite": {
+    "frame": { "x": 896, "y": 0, "w": 128, "h": 64 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 128, "h": 64 },
+    "sourceSize": { "w": 128, "h": 64 },
+    "duration": 70
+   },
+   "5_attack 8.aseprite": {
+    "frame": { "x": 1024, "y": 0, "w": 128, "h": 64 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 128, "h": 64 },
+    "sourceSize": { "w": 128, "h": 64 },
+    "duration": 70
+   },
+   "5_attack 9.aseprite": {
+    "frame": { "x": 1152, "y": 0, "w": 128, "h": 64 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 128, "h": 64 },
+    "sourceSize": { "w": 128, "h": 64 },
+    "duration": 70
+   },
+   "5_attack 10.aseprite": {
+    "frame": { "x": 1280, "y": 0, "w": 128, "h": 64 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 128, "h": 64 },
+    "sourceSize": { "w": 128, "h": 64 },
+    "duration": 70
+   },
+   "5_attack 11.aseprite": {
+    "frame": { "x": 1408, "y": 0, "w": 128, "h": 64 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 128, "h": 64 },
+    "sourceSize": { "w": 128, "h": 64 },
+    "duration": 70
+   },
+   "5_attack 12.aseprite": {
+    "frame": { "x": 1536, "y": 0, "w": 128, "h": 64 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 128, "h": 64 },
+    "sourceSize": { "w": 128, "h": 64 },
+    "duration": 70
+   },
+   "5_attack 13.aseprite": {
+    "frame": { "x": 1664, "y": 0, "w": 128, "h": 64 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 128, "h": 64 },
+    "sourceSize": { "w": 128, "h": 64 },
+    "duration": 70
+   },
+   "5_attack 14.aseprite": {
+    "frame": { "x": 1792, "y": 0, "w": 128, "h": 64 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 128, "h": 64 },
+    "sourceSize": { "w": 128, "h": 64 },
+    "duration": 70
+   },
+   "5_attack 15.aseprite": {
+    "frame": { "x": 1920, "y": 0, "w": 128, "h": 64 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 128, "h": 64 },
+    "sourceSize": { "w": 128, "h": 64 },
+    "duration": 70
+   },
+   "5_attack 16.aseprite": {
+    "frame": { "x": 2048, "y": 0, "w": 128, "h": 64 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 128, "h": 64 },
+    "sourceSize": { "w": 128, "h": 64 },
+    "duration": 70
+   },
+   "5_attack 17.aseprite": {
+    "frame": { "x": 2176, "y": 0, "w": 128, "h": 64 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 128, "h": 64 },
+    "sourceSize": { "w": 128, "h": 64 },
+    "duration": 70
+   },
+   "5_attack 18.aseprite": {
+    "frame": { "x": 2304, "y": 0, "w": 128, "h": 64 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 128, "h": 64 },
+    "sourceSize": { "w": 128, "h": 64 },
+    "duration": 70
+   },
+   "5_attack 19.aseprite": {
+    "frame": { "x": 2432, "y": 0, "w": 128, "h": 64 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 128, "h": 64 },
+    "sourceSize": { "w": 128, "h": 64 },
+    "duration": 70
+   },
+   "5_attack 20.aseprite": {
+    "frame": { "x": 2560, "y": 0, "w": 128, "h": 64 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 128, "h": 64 },
+    "sourceSize": { "w": 128, "h": 64 },
+    "duration": 70
+   },
+   "5_attack 21.aseprite": {
+    "frame": { "x": 2688, "y": 0, "w": 128, "h": 64 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 128, "h": 64 },
+    "sourceSize": { "w": 128, "h": 64 },
+    "duration": 70
+   },
+   "5_attack 22.aseprite": {
+    "frame": { "x": 2816, "y": 0, "w": 128, "h": 64 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 128, "h": 64 },
+    "sourceSize": { "w": 128, "h": 64 },
+    "duration": 70
+   },
+   "5_attack 23.aseprite": {
+    "frame": { "x": 2944, "y": 0, "w": 128, "h": 64 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 128, "h": 64 },
+    "sourceSize": { "w": 128, "h": 64 },
+    "duration": 70
+   },
+   "5_attack 24.aseprite": {
+    "frame": { "x": 3072, "y": 0, "w": 128, "h": 64 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 128, "h": 64 },
+    "sourceSize": { "w": 128, "h": 64 },
+    "duration": 70
+   },
+   "5_attack 25.aseprite": {
+    "frame": { "x": 3200, "y": 0, "w": 128, "h": 64 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 128, "h": 64 },
+    "sourceSize": { "w": 128, "h": 64 },
+    "duration": 70
+   },
+   "5_attack 26.aseprite": {
+    "frame": { "x": 3328, "y": 0, "w": 128, "h": 64 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 128, "h": 64 },
+    "sourceSize": { "w": 128, "h": 64 },
+    "duration": 70
+   },
+   "5_attack 27.aseprite": {
+    "frame": { "x": 3456, "y": 0, "w": 128, "h": 64 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 128, "h": 64 },
+    "sourceSize": { "w": 128, "h": 64 },
+    "duration": 70
+   },
+   "5_attack 28.aseprite": {
+    "frame": { "x": 3584, "y": 0, "w": 128, "h": 64 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 128, "h": 64 },
+    "sourceSize": { "w": 128, "h": 64 },
+    "duration": 70
+   },
+   "5_attack 29.aseprite": {
+    "frame": { "x": 3712, "y": 0, "w": 128, "h": 64 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 128, "h": 64 },
+    "sourceSize": { "w": 128, "h": 64 },
+    "duration": 70
+   }
+ },
+ "meta": {
+  "app": "http://www.aseprite.org/",
+  "version": "1.2.15-x64",
+  "image": "5_attack.png",
+  "format": "RGBA8888",
+  "size": { "w": 3840, "h": 64 },
+  "scale": "1",
+  "frameTags": [
+  ],
+  "layers": [
+   { "name": "Layer 32", "opacity": 255, "blendMode": "normal" },
+   { "name": "scabbard2", "opacity": 255, "blendMode": "normal" },
+   { "name": "sword2", "opacity": 255, "blendMode": "normal" },
+   { "name": "arm 2", "opacity": 255, "blendMode": "normal" },
+   { "name": "Layer 35", "opacity": 255, "blendMode": "normal" },
+   { "name": "Layer 36", "opacity": 255, "blendMode": "normal" },
+   { "name": "torso", "opacity": 255, "blendMode": "normal" },
+   { "name": "larm", "opacity": 255, "blendMode": "normal" },
+   { "name": "scabbar3", "opacity": 255, "blendMode": "normal" },
+   { "name": "rarm", "opacity": 255, "blendMode": "normal" },
+   { "name": "eff", "opacity": 255, "blendMode": "normal" },
+   { "name": "Layer 37", "opacity": 255, "blendMode": "normal" }
+  ],
+  "slices": [
+  ]
+ }
+}

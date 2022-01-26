@@ -1,0 +1,292 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://gfx/unit/bar_over.png" type="Texture" id=1]
+[ext_resource path="res://gfx/unit/hpbar_bg.png" type="Texture" id=2]
+[ext_resource path="res://gfx/unit/hpbar.png" type="Texture" id=3]
+[ext_resource path="res://gfx/unit/mpbar.png" type="Texture" id=4]
+[ext_resource path="res://font/kissinger.tres" type="DynamicFont" id=5]
+[ext_resource path="res://gfx/unit/xpbar.png" type="Texture" id=6]
+[ext_resource path="res://gfx/unit/mc1/splash.png" type="Texture" id=7]
+[ext_resource path="res://ui/Button.gd" type="Script" id=8]
+[ext_resource path="res://pixel_panel_arrow.theme" type="Theme" id=9]
+[ext_resource path="res://data/unit/hiro/art/hiro_idle.tres" type="SpriteFrames" id=10]
+[ext_resource path="res://gfx/unit/unit_pedestal.png" type="Texture" id=11]
+[ext_resource path="res://font/Chrono.tres" type="DynamicFont" id=12]
+[ext_resource path="res://font/ChronoLarge.tres" type="DynamicFont" id=13]
+[ext_resource path="res://ui/embellish_2.png" type="Texture" id=14]
+[ext_resource path="res://ui/embellish_1.png" type="Texture" id=15]
+[ext_resource path="res://ui/embellish_3.png" type="Texture" id=16]
+[ext_resource path="res://pixel_panel.theme" type="Theme" id=17]
+[ext_resource path="res://ui/fade.png" type="Texture" id=18]
+[ext_resource path="res://ui/card.png" type="Texture" id=19]
+
+[node name="C" type="Node2D"]
+position = Vector2( 8, 0 )
+
+[node name="Card" type="Panel" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_top = 1.0
+margin_right = 192.0
+margin_bottom = 601.0
+theme = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="card" type="Sprite" parent="Card"]
+position = Vector2( 96, 355 )
+scale = Vector2( 1, 1.17667 )
+texture = ExtResource( 19 )
+
+[node name="Embellishments" type="Node2D" parent="Card"]
+position = Vector2( 0, 35 )
+
+[node name="e1" type="Sprite" parent="Card/Embellishments"]
+position = Vector2( 32, 427 )
+scale = Vector2( 2, 1.5 )
+texture = ExtResource( 15 )
+
+[node name="e2" type="Sprite" parent="Card/Embellishments"]
+visible = false
+position = Vector2( 14, 386 )
+scale = Vector2( 2, 1 )
+texture = ExtResource( 14 )
+
+[node name="e3" type="Sprite" parent="Card/Embellishments"]
+position = Vector2( 160, 427 )
+scale = Vector2( 2, 1.5 )
+texture = ExtResource( 15 )
+
+[node name="e4" type="Sprite" parent="Card/Embellishments"]
+visible = false
+position = Vector2( 178, 386 )
+scale = Vector2( 2, 1 )
+texture = ExtResource( 16 )
+
+[node name="HPBar" type="TextureProgress" parent="Card"]
+margin_left = 16.0
+margin_top = 539.0
+margin_right = 176.0
+margin_bottom = 555.0
+rect_pivot_offset = Vector2( 109.152, 12.4213 )
+value = 100.0
+texture_under = ExtResource( 2 )
+texture_over = ExtResource( 1 )
+texture_progress = ExtResource( 3 )
+nine_patch_stretch = true
+stretch_margin_left = 3
+stretch_margin_top = 3
+stretch_margin_right = 3
+stretch_margin_bottom = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HPLabel" type="RichTextLabel" parent="Card/HPBar"]
+margin_top = -16.0
+margin_right = 160.0
+margin_bottom = 8.0
+rect_pivot_offset = Vector2( -97.5616, -53.0251 )
+custom_fonts/normal_font = ExtResource( 12 )
+bbcode_enabled = true
+bbcode_text = "[right]80/80"
+text = "80/80"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MPBar" type="TextureProgress" parent="Card"]
+margin_left = 16.0
+margin_top = 579.0
+margin_right = 176.0
+margin_bottom = 595.0
+rect_pivot_offset = Vector2( 109.152, 12.4213 )
+value = 100.0
+texture_under = ExtResource( 2 )
+texture_over = ExtResource( 1 )
+texture_progress = ExtResource( 4 )
+nine_patch_stretch = true
+stretch_margin_left = 3
+stretch_margin_top = 3
+stretch_margin_right = 3
+stretch_margin_bottom = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MPLabel" type="RichTextLabel" parent="Card/MPBar"]
+margin_top = -16.0
+margin_right = 160.0
+margin_bottom = 8.0
+custom_fonts/normal_font = ExtResource( 12 )
+bbcode_enabled = true
+bbcode_text = "[right]80/80"
+text = "80/80"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EXPBar" type="TextureProgress" parent="Card"]
+margin_left = 16.0
+margin_top = 507.0
+margin_right = 176.0
+margin_bottom = 515.0
+rect_pivot_offset = Vector2( 109.152, 12.4213 )
+value = 100.0
+texture_under = ExtResource( 2 )
+texture_over = ExtResource( 1 )
+texture_progress = ExtResource( 6 )
+nine_patch_stretch = true
+stretch_margin_left = 3
+stretch_margin_top = 3
+stretch_margin_right = 3
+stretch_margin_bottom = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EXPLabel" type="RichTextLabel" parent="Card/EXPBar"]
+margin_top = -16.0
+margin_right = 160.0
+custom_fonts/normal_font = ExtResource( 12 )
+bbcode_enabled = true
+bbcode_text = "[right]EXP 80/80"
+text = "EXP 80/80"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Next" type="RichTextLabel" parent="Card/EXPBar"]
+visible = false
+margin_left = 56.0
+margin_top = -16.0
+margin_right = 160.0
+custom_fonts/normal_font = ExtResource( 12 )
+bbcode_enabled = true
+bbcode_text = "[right]To Next : 1000"
+text = "To Next : 1000"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="Card"]
+visible = false
+margin_right = 192.0
+margin_bottom = 448.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LvlLabel" type="RichTextLabel" parent="Card"]
+margin_left = 16.0
+margin_top = 479.0
+margin_right = 176.0
+margin_bottom = 495.0
+custom_fonts/normal_font = ExtResource( 12 )
+bbcode_enabled = true
+bbcode_text = "[center]Level 87"
+text = "Level 87"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="RichTextLabel" parent="Card"]
+margin_left = 16.0
+margin_top = 439.0
+margin_right = 176.0
+margin_bottom = 455.0
+custom_fonts/normal_font = ExtResource( 12 )
+bbcode_enabled = true
+bbcode_text = "[center][color=gray]~ crimson daredevil ~"
+text = "~ crimson daredevil ~"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label1" type="RichTextLabel" parent="Card"]
+margin_left = 16.0
+margin_top = 455.0
+margin_right = 176.0
+margin_bottom = 479.0
+custom_fonts/normal_font = ExtResource( 13 )
+bbcode_enabled = true
+bbcode_text = "[center][color=#ffb100]Hiro"
+text = "Hiro"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Card"]
+visible = false
+margin_left = 16.0
+margin_top = 416.0
+margin_right = 176.0
+margin_bottom = 448.0
+custom_fonts/normal_font = ExtResource( 5 )
+bbcode_enabled = true
+bbcode_text = "[center] Crimson Daredevil"
+text = " Crimson Daredevil"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Pedestal" type="Sprite" parent="Card"]
+visible = false
+position = Vector2( 95, 360 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 11 )
+
+[node name="CharSprite" type="AnimatedSprite" parent="Card"]
+visible = false
+position = Vector2( 96, 352 )
+scale = Vector2( 2, 2 )
+frames = ExtResource( 10 )
+frame = 3
+playing = true
+
+[node name="Panel2" type="Panel" parent="Card"]
+margin_left = 8.0
+margin_top = 63.0
+margin_right = 184.0
+margin_bottom = 423.0
+theme = ExtResource( 17 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="fade" type="Sprite" parent="Card/Panel2"]
+self_modulate = Color( 1, 1, 1, 0.560784 )
+position = Vector2( 88, 320 )
+scale = Vector2( 0.32, 0.144 )
+texture = ExtResource( 18 )
+
+[node name="Control" type="Control" parent="Card/Panel2"]
+margin_left = 5.0
+margin_top = 6.0
+margin_right = 170.0
+margin_bottom = 356.0
+rect_clip_content = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Portrait" type="Sprite" parent="Card/Panel2/Control"]
+visible = false
+position = Vector2( 72, 200 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 7 )
+
+[node name="Button" type="Button" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_right = 192.0
+margin_bottom = 576.0
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}

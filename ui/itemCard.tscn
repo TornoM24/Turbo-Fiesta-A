@@ -1,0 +1,60 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://font/ChronoLarge.tres" type="DynamicFont" id=1]
+[ext_resource path="res://pixel_button.tres" type="Theme" id=2]
+[ext_resource path="res://gfx/icons/items/potion_red.png" type="Texture" id=3]
+[ext_resource path="res://pixel_panel_inwards.theme" type="Theme" id=4]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Button" type="Button" parent="."]
+margin_right = 192.0
+margin_bottom = 64.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource( 2 )
+custom_fonts/font = ExtResource( 1 )
+button_mask = 3
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Name" type="RichTextLabel" parent="."]
+margin_left = 64.0
+margin_top = 8.0
+margin_right = 176.0
+margin_bottom = 32.0
+bbcode_enabled = true
+bbcode_text = "Red Potion"
+text = "Red Potion"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Desc" type="RichTextLabel" parent="."]
+margin_left = 64.0
+margin_top = 24.0
+margin_right = 184.0
+margin_bottom = 56.0
+bbcode_enabled = true
+bbcode_text = "[color=grey]Heals a small portion of health."
+text = "Heals a small portion of health."
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="bg" type="Panel" parent="."]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 56.0
+margin_bottom = 56.0
+theme = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="icon" type="Sprite" parent="bg"]
+position = Vector2( 24, 24 )
+texture = ExtResource( 3 )

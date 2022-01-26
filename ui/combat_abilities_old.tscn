@@ -1,0 +1,141 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://font/ChronoLarge.tres" type="DynamicFont" id=1]
+[ext_resource path="res://scenes/readyhelper.gd" type="Script" id=2]
+[ext_resource path="res://ui/combat_abilities.gd" type="Script" id=3]
+[ext_resource path="res://pixel_button_red.tres" type="Theme" id=4]
+[ext_resource path="res://pixel_panel.theme" type="Theme" id=5]
+[ext_resource path="res://pixel_panel_fade.theme" type="Theme" id=6]
+[ext_resource path="res://pixel_button_2.tres" type="Theme" id=7]
+
+[node name="abilitymenu" type="Node2D"]
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_horizontal_guides_": [  ]
+}
+
+[node name="Panel" type="Panel" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_top = 704.0
+margin_right = 256.0
+margin_bottom = 976.0
+theme = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="buttonhost" type="Node2D" parent="Panel"]
+position = Vector2( 48, 8 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="attack" type="Button" parent="Panel/buttonhost"]
+margin_left = -40.0
+margin_top = 24.0
+margin_right = 200.0
+margin_bottom = 55.0
+rect_scale = Vector2( 1, 1.01685 )
+theme = ExtResource( 7 )
+custom_fonts/font = ExtResource( 1 )
+text = "Attack"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="defend" type="Button" parent="Panel/buttonhost"]
+margin_left = -40.0
+margin_top = 72.0
+margin_right = 200.0
+margin_bottom = 103.0
+rect_scale = Vector2( 1, 1.01685 )
+hint_tooltip = "Provides 50% general mitigation."
+theme = ExtResource( 7 )
+custom_fonts/font = ExtResource( 1 )
+text = "Guard"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="special" type="Button" parent="Panel/buttonhost"]
+margin_left = -40.0
+margin_top = 120.0
+margin_right = 200.0
+margin_bottom = 151.0
+rect_scale = Vector2( 1, 1.01685 )
+theme = ExtResource( 7 )
+custom_fonts/font = ExtResource( 1 )
+text = "Abilities"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="item" type="Button" parent="Panel/buttonhost"]
+margin_left = -40.0
+margin_top = 168.0
+margin_right = 200.0
+margin_bottom = 199.0
+rect_scale = Vector2( 1, 1.01685 )
+theme = ExtResource( 7 )
+custom_fonts/font = ExtResource( 1 )
+text = "Items"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="escape" type="Button" parent="Panel/buttonhost"]
+margin_left = -8.0
+margin_top = 216.0
+margin_right = 172.0
+margin_bottom = 250.0
+rect_scale = Vector2( 1, 1.01685 )
+theme = ExtResource( 4 )
+custom_fonts/font = ExtResource( 1 )
+text = "Escape (100%)"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="readyhelper" type="RichTextLabel" parent="Panel"]
+margin_top = -48.0
+margin_right = 280.0
+margin_bottom = -21.0
+text = "Character not ready yet!"
+scroll_active = false
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="namedisplay" type="Panel" parent="Panel"]
+margin_left = 24.0
+margin_top = -24.0
+margin_right = 232.0
+margin_bottom = 8.0
+theme = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel/namedisplay"]
+margin_left = 8.0
+margin_top = 5.0
+margin_right = 200.0
+margin_bottom = 32.0
+custom_fonts/normal_font = ExtResource( 1 )
+bbcode_enabled = true
+bbcode_text = "[center]Hiro"
+text = "[center]Hiro"
+fit_content_height = true
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tween" type="Tween" parent="."]
+
+[connection signal="pressed" from="Panel/buttonhost/attack" to="." method="_on_attack_pressed"]
+[connection signal="pressed" from="Panel/buttonhost/defend" to="." method="_on_defend_pressed"]
+[connection signal="pressed" from="Panel/buttonhost/special" to="." method="_on_special_pressed"]
+[connection signal="pressed" from="Panel/buttonhost/item" to="." method="_on_item_pressed"]
+[connection signal="tween_all_completed" from="Tween" to="." method="_on_Tween_tween_all_completed"]

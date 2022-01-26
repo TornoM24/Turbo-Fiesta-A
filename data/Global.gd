@@ -1,11 +1,20 @@
 extends Node
 
 var current_scene = null
+var node_creation_parent = null
+var player = null
+var enemy = null
 
 func _ready():
 		var root = get_tree().get_root()
 		current_scene = root.get_child(root.get_child_count() -1)
-
+		
+func instance_node(node, location, parent):
+	var node_instance = node.instance()
+	parent.add_child(node_instance)
+	node_instance.global.position = location
+	return node_instance
+	
 func goto_scene(path):
 	# This function will usually be called from a signal callback,
 	# or some other function from the running scene.

@@ -5,17 +5,475 @@ extends Node2D
 # var a = 2
 # var b = "text"
 
-var allies = ["mc","1","2","3","4"]
+var unitDict
+var rng = RandomNumberGenerator.new()
+
+#var allies = [1]
+
 var placeholder = preload("res://data/unit/playerUnit.tscn")
+var defaultSprite = preload ("res://gfx/unit/mc1/mc2.png")
+var pointN = preload ("res://ui/pointer2.png")
+var pointT = preload ("res://ui/pointer_target.png")
+
+onready var skillPanel = get_node("Control/Panel/CBPanel")
+onready var tsPanel = get_node("Control/Panel/Panel2")
+onready var camera = get_node ("Camera2D")
+
+var selectedUnit
+var selectedTarget
+var targetAbility
+
+var isSelecting = false
+
+var alliesUnit = []
+var enemyUnit = []
+
+var targeting = false
+var victory = false
+
+func logSomething (textToAdd):
+	var mlog = get_node ("Control/Panel/CBPanel2/Panel/log")
+	mlog.bbcode_enabled = true
+	mlog.bbcode_text += textToAdd + ""
+	pass
+const BAR_SPEED = 0.1
+func updateStats (delta):
+	var inc = 0
+	Master.atb_paused = false
+	for x in alliesUnit:
+		if (x.animStun and !x.casting) or Master.abiOpen:
+			Master.atb_paused = true
+		var path = "Control/Panel/CBPanel2/G" + str(inc + 1) + "/"
+		var path2 = "A" + str(inc + 1) + "/namedisplay"
+		if !victory:
+			x.reference.stats.hp = x.stats.hp
+			x.reference.stats.mp = x.stats.mp
+#		get_node (path).unit = x
+#		get_node (path+"RichTextLabel").bbcode_enabled = true
+#		#get_node (path+"RichTextLabel").bbcode_text = x.get_node ("Data").unitDict.name
+#		get_node (path+"HPLabel").bbcode_text = "[right][color=#ffeeb8]" + str (x.stats.hp)
+#		get_node (path+"MPLabel").bbcode_text = "[right][color=#edfffa]" + str (x.stats.mp)
+#		if x.atb_val >= 100:
+#			get_node (path+"ATBLabel").bbcode_text = "[right]100%"
+#		else:
+#			get_node (path+"ATBLabel").bbcode_text = "[right]" + str (int(x.atb_val)) + "%"
+#		get_node (path+"HPBar").targetValue = int((float(x.stats.hp)/x.stats.mhp)*100)
+#		get_node (path+"MPBar").targetValue = int((float(x.stats.mp)/x.stats.mmp)*100)
+#		if get_node (path+"HPBar").targetValue < get_node (path+"HPBar").value:
+#			get_node (path+"HPBar").value -= delta * 50
+#		elif get_node (path+"HPBar").targetValue > get_node (path+"HPBar").value:
+#			get_node (path+"HPBar").value += delta * 50
+#		if get_node (path+"MPBar").targetValue < get_node (path+"MPBar").value:
+#			get_node (path+"MPBar").value -= delta * 50
+#		elif get_node (path+"MPBar").targetValue > get_node (path+"MPBar").value:
+#			get_node (path+"MPBar").value += delta * 50
+			
+#		get_node (path+"ATBBar").value = x.atb_val
+		inc += 1
+		pass
+	for x in enemyUnit:
+		#if x.animStun and !x.casting:
+			#Master.atb_paused = true
+		x.get_node ("HPBar").value = x.hp
+		x.get_node ("ATBBar").value = x.atb_val
+		if x.get_node ("HPBar").value < 100:
+			pass
+		else:
+			pass
+		pass
+
+func parseData():
+	var file = File.new()
+	file.open("res://data/abilities/abilites.cdb", file.READ)
+	var text = file.get_as_text()
+	var parse = JSON.parse(text)
+	unitDict = parse.result
+	file.close()	
+
 # Called when the node enters the scene tree for the first time.
+func attachdata (instance):
+	var obj = load("res://data/unit/"+instance.unitName+"/"+instance.unitName+"_data.tscn"	).instance()
+	var idlePath = load("res://data/unit/"+instance.unitName+"/art/"+instance.unitName+"_idle.tres")
+	var attackPath = load("res://data/unit/"+instance.unitName+"/art/"+instance.unitName+"_attack.tres")
+	instance.add_child (obj)
+	instance.get_node ("AnimatedSprite").frames = idlePath
+	instance.get_node ("UnitSprite").texture = load ("res://data/unit/" + instance.unitName + "/art/move.png")
+	instance.unitSprite.hide()
+	instance.get_node ("Attack").frames = attackPath
+	instance.reference = Master.get_node (instance.unitName+"_data")
+	instance.stats = instance.reference.stats
+	instance.stats.name = instance.reference.stats.name
+	instance.nFrames = instance.reference.nFrames
+	instance.offset = instance.reference.offset
+	instance.host = self
+	print ("attaching " + instance.reference.name)
+	return instance
+	pass
+
+func attachdataenemy (instance):
+	var obj = load("res://data/unit/enemy/"+instance.unitName+"/"+instance.unitName+"_data.tscn").instance()
+	var idlePath = load("res://data/unit/enemy/"+instance.unitName+"/art/"+instance.unitName+".png")
+	instance.add_child (obj)
+	instance.get_node ("UnitSprite").texture = idlePath
+	instance.stats = obj.unitDict.stats
+	instance.stats.mhp = obj.unitDict.stats.hp
+	instance.abilities = obj.unitDict.abilities
+	instance.stats.name = obj.unitDict.name
+	return instance
+	pass
+var abilityPanels = []
+func hide_all():
+	print ("hiding")
+	for x in abilityPanels:
+		x.hide()
+	
+func show_all():
+	print ("showing")
+	for x in abilityPanels:
+		x.show()
+var currentPan = 0
+export var showOldCards = false
+var offset = 100
+func spawnAllies ():
+	var incrementer = 0
+	for y in range (0,3):
+		for x in range (0,3):
+			if Master.formation[x][y] != -1:
+				print ("spawning " + Master.party[Master.formation[x][y]].name)
+				incrementer +=1 
+				if showOldCards:
+					get_node("Control/Panel/CBPanel2/G" + str(incrementer)).visible = true
+				var instance = placeholder.instance()
+				
+				add_child(instance)
+				instance.affiliation = "ally"
+				instance.position.x = 680 + (150*x) + (50*y)
+				instance.position.y = 100 + (offset*y)
+				instance.origin = instance.position
+				#instance.get_node("Sprite").texture = defaultSprite
+				instance.unitName = Master.party[Master.formation[x][y]].unitName
+				instance = attachdata (instance)
+				instance.stats = instance.reference.stats.duplicate()
+				instance.originalStats = instance.stats.duplicate()
+				instance.equipBonus = instance.reference.bonusStats.duplicate()
+				alliesUnit.append(instance)	
+				var interface = "res://ui/combat_abilities_2.tscn"
+				
+				if Master.combatMode == "fancy":
+					interface = "res://ui/combat_abilities_2.tscn"
+				else:
+					interface = "res://ui/combat_abilities_3.tscn"
+				var aPanel = load (interface).instance()
+				aPanel.name = "A" + str(incrementer)
+				add_child (aPanel)
+				instance.panel = aPanel
+#				if incrementer == 1:
+#					aPanel.get_node ("Panel/buttonhost/acter/act").grab_focus()
+#					aPanel.get_node ("Panel/buttonhost/acter/act").show_buttons()
+#					aPanel.get_node ("actor2").hide()
+#				else:
+				aPanel.get_node ("Panel/buttonhost/acter/act").hide_buttons()
+				aPanel.ind = incrementer - 1
+				aPanel.init (instance)
+				abilityPanels.append (aPanel)
+				aPanel.position.x += 256 * (incrementer-1)
+			
+var phBD = {
+	"formation": [[null,null,null],[null,"geode",null],[null,null,null]],
+	"field": "plains"
+}
+
 func _ready():
-	var instance = placeholder.instance()
-	add_child(instance)
-	instance.position.x = 783
-	instance.position.y = 265
-	pass # Replace with function body.
+	rng.randomize()
+	get_node ("Control/oc/occluder").hide()
+	get_node ("Control/oc/occluder").modulate.a = 0
+	for x in range (1,5):
+		var path = "Control/Panel/CBPanel2/G" + str(x + 1) + "/"
+		get_node (path).visible = false
+	spawnAllies()
+	init_battle(phBD)
+	#parseData()
 
 
+func init_battle (battleData):
+	var incrementer = 0
+	Master.atb_paused = false
+	for x in range (0,3):
+		for y in range (0,3):
+			if battleData.formation[x][y] != "empty" && battleData.formation[x][y] != null:
+				incrementer +=1 
+				var instance = placeholder.instance()
+				add_child(instance)
+				instance.affiliation = "enemy"
+				instance.position.x = 200 + (100*x) - (50*y)
+				instance.position.y = 100 + (offset*y)
+				instance.get_node("HPBar").show()
+				instance.get_node("ATBBar").show()
+				instance.unitName = battleData.formation[x][y]
+				instance = attachdataenemy (instance)
+				enemyUnit.append(instance)
+func getPower (block,source):
+	var inc = 0
+	var fPower = 0
+	for x in block.scaling:
+		inc += 1
+	for x in block.scaling:
+		fPower += source.stats[x]/inc
+		if source.affiliation == "ally":
+			fPower += source.bonus[x]/inc
+		fPower = ceil(float(fPower * block.power/100))
+	return fPower
+	
+func create_label (amount, pos):
+	var dmgLabel = label.instance()
+	add_child (dmgLabel)
+	dmgLabel.global_position = pos
+	dmgLabel.offset()
+	dmgLabel.get_node("RichTextLabel").bbcode_text = "[center]"+str(amount)
+	dmgLabel.modulate.r = 2
+	return dmgLabel
+var label = preload ("res://ui/dmglabel.tscn")
+const LABEL_OFFSET = 30
+
+func spawn_particle (ability, target):
+	var particle = load ("res://gfx/fx/particle_effect.tscn").instance()
+	add_child (particle)
+	particle.position = target.position - Vector2 (20,20)
+	particle.init(ability.fx)
+
+func causeEffect (target,source,ability):
+	var fPower = 0
+	var eff = ability.effects
+	source.stats.mp -= ability.cost
+	for block in eff:
+		if block.type == "damage":
+			fPower = getPower (block,source)
+			if block.target == "single":
+				if target.affiliation == "enemy":
+					target.shake("back")
+				else:
+					target.shake("front")
+					target.panel.shake()
+				spawn_particle (ability, target)
+				target.stats.hp -= fPower
+				if target.stats.hp > target.stats.mhp:
+					target.stats.hp = target.stats.mhp
+				create_label (fPower,target.global_position + Vector2(0,LABEL_OFFSET))
+				logSomething (target.stats.name + " takes [color=red]" + str (fPower) + "[/color] damage!\n")
+			if block.target == "self":
+				if target.affiliation == "enemy":
+					target.shake("back")
+				else:
+					target.shake("front")
+				spawn_particle (ability, target)
+				var power = block.power
+				source.stats.hp -= power
+				if source.stats.hp > source.stats.mhp:
+					source.stats.hp = source.stats.mhp
+				create_label (fPower,target.global_position + Vector2(0,LABEL_OFFSET))
+				logSomething (source.stats.name + " takes [color=red]" + str (power) + "[/color] damage!\n")
+			if block.target == "all enemies":
+				for x in enemyUnit:
+					x.shake("back")
+					spawn_particle (ability, x)
+					var power = fPower
+					x.stats.hp -= power
+					create_label (fPower,x.global_position + Vector2(0,LABEL_OFFSET))
+					logSomething (x.stats.name + " takes [color=red]" + str (power) + "[/color] damage!\n")
+		if block.type == "healing":
+			fPower = getPower (block,source)
+			if block.target == "single":
+				spawn_particle (ability, target)
+				target.stats.hp += fPower
+				if target.stats.hp > target.stats.mhp:
+					target.stats.hp = target.stats.mhp
+				create_label (fPower,target.global_position + Vector2(0,LABEL_OFFSET))
+				logSomething (target.stats.name + " heals for [color=green]" + str (fPower) + "[/color] hp!\n")
+			if block.target == "all allies":
+				for x in alliesUnit:
+					spawn_particle (ability, x)
+					x.stats.hp += fPower
+					if x.stats.hp > x.stats.mhp:
+						x.stats.hp = x.stats.mhp
+					create_label (fPower,target.global_position + Vector2(0,LABEL_OFFSET))
+				logSomething ("All allies heal for [color=green]" + str (fPower) + "[/color] hp!\n")
+		if block.type == "buff":
+			if block.target == "self":
+				var buff = {}
+				spawn_particle (ability, source)
+				buff = Master.effect_dict["stat_buff"].duplicate()
+				buff.source = ability.name
+				buff.length = block.duration
+				buff["maxLength"] = block.duration
+				buff.effectType = block.param
+				buff.power = block.power
+				buff.name = block.param + " stat buff"
+				source.parse_buff (buff)
+			
+func cancel_targeting ():
+	Master.abiOpen = false
+	abilityPanels [currentPan].get_node ("Panel/buttonhost/acter/act").show_buttons()
+	#update_panels (abilityPanels)
+	show_all()
+	targeting = false
+	get_node ("Control/Panel/targethelper").visible = false
+	#get_node ("Control/Panel/buttonhost/").visible=true
+	for x in get_node ("Control/Panel/CBPanel/specialscroll/Panel").get_children():
+		x.queue_free()
+	tsPanel.hide()
+	
+var phEff = [
+	{
+		"type": "healing",
+		"target": "single",
+		"elements": ["physical"],
+		"power": 10,
+		"acc": 100,
+	}
+]
+var animTimer = 0
+
+func update_panels (activePanels):
+	for p in activePanels:
+		p.get_node ("Panel/buttonhost/acter/act").update_status()
+
+func _input(event):
+	var activePanels = []
+	for p in abilityPanels:
+		if p.visible:
+			activePanels.append (p)
+	var old = currentPan
+	if !targeting:
+		if event.is_action_pressed ("rightshift"):
+			currentPan += 1
+			if activePanels.size()-1 < currentPan:
+				currentPan = 0
+			if !activePanels [currentPan].get_node ("Panel/buttonhost/acter/act").disabled:
+				activePanels [currentPan].get_node ("Panel/buttonhost/acter/act").grab_focus()
+				update_panels (activePanels)
+			else:
+				currentPan = old
+		if event.is_action_pressed ("leftshift"):
+			currentPan -= 1
+			if currentPan < 0:
+				currentPan = activePanels.size()-1
+			if !activePanels [currentPan].get_node ("Panel/buttonhost/acter/act").disabled:
+				activePanels [currentPan].get_node ("Panel/buttonhost/acter/act").grab_focus()
+				update_panels (activePanels)
+			else:
+				currentPan = old
+func _process(delta):
+	var buttonhost = get_node ("Control/Panel/buttonhost")
+	var selector = get_node("Control/Selector")
+	var deads = 0
+	var wins = 0
+	for ally in alliesUnit:
+		if ally.alive == false:
+			ally.stats.hp = 0
+			deads += 1
+			ally.inDead = true
+	
+	for enemy in enemyUnit:
+		if enemy.alive == false:
+			enemy.stats.hp = 0
+			enemy.enemyDie()
+		if enemy.deathAnimFinished:	
+			wins+=1
+	if deads == alliesUnit.size():
+		get_node ("Control/oc/occluder").show()
+		get_node ("Control/oc/occluder").modulate.a += delta
+		if get_node ("Control/oc/occluder").modulate.a > 1:
+			get_node("/root/Global").goto_scene("res://scenes/gameover.tscn")
+	else:	
+		if wins == enemyUnit.size():
+			victory = true
+			var z = get_node ("Control/oc/occluder")
+			z.show()
+			animTimer += delta
+			if z.modulate.a < 0.5:
+				if animTimer > 0.01:
+					z.modulate.a += 0.01
+					animTimer = 0
+			if z.modulate.a >= 0.5:
+				var vScn = load("res://scenes/VictoryScreen.tscn").instance()
+				print ("victory")
+				add_child (vScn)
+		else:
+			animTimer = 0
+		for enemy in enemyUnit:
+			if enemy.alive:
+				if enemy.selected:
+					if targeting:
+						selectedTarget = enemy
+						print ("targeting " + enemy.unitName + "!!!")
+						enemy.selected = false
+						cancel_targeting()
+						logSomething (selectedUnit.stats.name + " uses " + targetAbility.name + "!\n")
+						selectedUnit.sprite_attack (targetAbility, selectedTarget)
+						selectedUnit.atb_val = 0
+						isSelecting = false
+						selector.visible = false
+					else:
+						enemy.selected = false
+				if enemy.atb_val > 99:
+					var ch = rng.randf_range (0,enemy.abilities.size())
+					var tar = rng.randf_range (0, alliesUnit.size()) 
+					while alliesUnit[tar].stats.hp <= 0:
+						tar = rng.randf_range (0, alliesUnit.size())
+					logSomething (enemy.stats.name + " uses " + enemy.abilities[ch].name + "!\n")
+					#enemy.sprite_attack (enemy.abilities[ch],alliesUnit[tar])
+					enemy.glow_cast (enemy.abilities[ch],alliesUnit[tar])
+					enemy.atb_val = 0
+
+		for ally in alliesUnit:
+			if ally.selected && ally.alive:
+				if !targeting:
+					if !ally.atb_val < 100:
+						pass
+#						if !skillPanel.visible:
+#							buttonhost.visible = true
+#							selectedUnit = ally
+#							isSelecting = true
+#							selector.visible = true
+#							selector.position = Vector2(selectedUnit.position.x+16,selectedUnit.position.y-40)
+					else:
+						pass
+						#get_node("Control/Panel/readyhelper").modulate.a = 1
+					ally.selected = false
+				else:
+					selectedTarget = ally
+					print ("targeting " + ally.unitName + "!!!")
+					ally.selected = false
+					cancel_targeting()
+					selectedUnit.sprite_attack (targetAbility, selectedTarget)
+					selectedUnit.atb_val = 0
+					
+					isSelecting = false
+					selector.visible = false
+			else:
+				if !isSelecting:
+					buttonhost.visible = false
+					get_node ("Control/Panel").self_modulate.a = 0
+					get_node ("Control/Panel/namedisplay").modulate.a = 0
+				else:
+					get_node ("Control/Panel").self_modulate.a = 1
+					get_node ("Control/Panel/namedisplay").modulate.a = 1
+					get_node ("Control/Panel/namedisplay/RichTextLabel").bbcode_text = "[center]" + selectedUnit.stats.name
+					if Input.is_action_pressed("click"):
+						if get_viewport().get_mouse_position().y < 400 && !get_node("Control/Panel/CBPanel").visible && !targeting:
+							#isSelecting = false
+							#selector.visible = false
+							pass
+					pass
+		if targeting:
+			Input.set_custom_mouse_cursor(pointT)
+			if Input.is_action_pressed("right_click"):
+				cancel_targeting()
+		else:
+			Input.set_custom_mouse_cursor(pointN)
+	updateStats(delta)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+func scan():
+	pass

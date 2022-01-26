@@ -1,0 +1,120 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://gfx/unit/bar_over.png" type="Texture" id=1]
+[ext_resource path="res://gfx/unit/hpbar_bg.png" type="Texture" id=2]
+[ext_resource path="res://scenes/LevelUp.gd" type="Script" id=3]
+[ext_resource path="res://gfx/unit/xpbar.png" type="Texture" id=4]
+[ext_resource path="res://scenes/VictoryCard.gd" type="Script" id=5]
+
+[node name="Card" type="Node2D"]
+pause_mode = 2
+z_index = 4096
+script = ExtResource( 5 )
+
+[node name="Panel" type="Panel" parent="."]
+margin_right = 640.0
+margin_bottom = 64.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel2" type="Panel" parent="Panel"]
+margin_left = 192.0
+margin_right = 640.0
+margin_bottom = 64.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel"]
+margin_left = 8.0
+margin_top = 24.0
+margin_right = 192.0
+margin_bottom = 40.0
+bbcode_text = "PLACEHOLDER"
+text = "PLACEHOLDER"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EXPBar" type="TextureProgress" parent="Panel"]
+margin_left = 200.0
+margin_top = 24.0
+margin_right = 624.0
+margin_bottom = 32.0
+rect_pivot_offset = Vector2( 109.152, 12.4213 )
+step = 0.1
+texture_under = ExtResource( 2 )
+texture_over = ExtResource( 1 )
+texture_progress = ExtResource( 4 )
+nine_patch_stretch = true
+stretch_margin_left = 3
+stretch_margin_top = 3
+stretch_margin_right = 3
+stretch_margin_bottom = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EXPLabel" type="RichTextLabel" parent="Panel/EXPBar"]
+margin_left = 264.0
+margin_top = -16.0
+margin_right = 424.0
+bbcode_enabled = true
+bbcode_text = "[right]3809[color=lime]+9492"
+text = "3809+9492"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EXPLabelNext" type="RichTextLabel" parent="Panel/EXPBar"]
+margin_left = 264.0
+margin_top = 16.0
+margin_right = 424.0
+margin_bottom = 32.0
+bbcode_enabled = true
+bbcode_text = "[right]To Next Level: 69420"
+text = "To Next Level: 69420"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LVLabel" type="RichTextLabel" parent="Panel/EXPBar"]
+margin_top = -16.0
+margin_right = 152.0
+bbcode_enabled = true
+bbcode_text = "LV100"
+text = "LV100"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LevelUp" type="RichTextLabel" parent="Panel"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 472.0
+margin_top = -8.0
+margin_right = 536.0
+margin_bottom = 32.0
+bbcode_enabled = true
+bbcode_text = "
+[wave] [color=lime]LEVEL UP!!"
+text = "
+ LEVEL UP!!"
+scroll_active = false
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[connection signal="tween_all_completed" from="Tween" to="." method="_on_Tween_tween_all_completed"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

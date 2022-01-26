@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://pixel_panel.theme" type="Theme" id=1]
+[ext_resource path="res://font/Chrono.tres" type="DynamicFont" id=2]
+[ext_resource path="res://ui/panel_set.gd" type="Script" id=3]
+[ext_resource path="res://font/ChronoLarge.tres" type="DynamicFont" id=4]
+
+[node name="panel" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="Panel" type="Panel" parent="."]
+margin_right = 736.0
+margin_bottom = 128.0
+theme = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ability_desc" type="RichTextLabel" parent="Panel"]
+margin_left = 16.0
+margin_top = 48.0
+margin_right = 720.0
+margin_bottom = 120.0
+custom_fonts/normal_font = ExtResource( 2 )
+bbcode_enabled = true
+bbcode_text = "Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text "
+text = "Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text "
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ability_name" type="RichTextLabel" parent="Panel"]
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 712.0
+margin_bottom = 40.0
+custom_fonts/normal_font = ExtResource( 4 )
+bbcode_enabled = true
+bbcode_text = "Ability"
+text = "Ability"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}

@@ -1,0 +1,41 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Node2D
+
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+#onready var ref_Master = get_node (\"/root/Master\")
+var bMas = Master.ability_dict
+var unitName = \"geode\"
+var unitDict = {
+	\"name\" : \"Small Geode\",
+	\"bio\" : \"A small, living rock, peppered with valuable-looking crystals. How cruel of you.\",
+	\"stats\": {
+		\"hp\" : 20,
+		\"mp\" : 0,
+		\"atk\" : 0,
+		\"def\" : 3,
+		\"int\" : 0,
+		\"wis\" : 2,
+		\"apt\" : 0,
+		\"spd\" : 9,
+		\"luk\" : 8
+	},
+	\"abilities\": [bMas[\"attack_basic_attack\"]]
+}
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+"
+
+[node name="Data" type="Node2D"]
+script = SubResource( 1 )

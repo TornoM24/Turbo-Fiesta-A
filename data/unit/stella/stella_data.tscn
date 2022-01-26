@@ -1,0 +1,47 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Node2D
+
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+#onready var ref_Master = get_node (\"/root/Master\")
+var bMas = Master.ability_dict
+var unitName = \"stella\"
+var unitDict = {
+	\"name\" : \"Stella\",
+	\"title\": \"laid-back mage\",
+	\"class\" : \"High-power Mage\",
+	\"types\" : \"Mage\",
+	\"bio\" : \"\\n'Can... can I go to sleep instead? Please?'\\n\\nHiro's childhood friend, a bubbly and laid-back girl clad in a fluffy purple-and-white cloak. Often lazy and almost consistently unhelpful, she tends to prioritize the path of least resistance in any efforts she may undertake, which is unoffensive to most but quite annoying in the middle of a conflict. She's appeared to adopt a sort of absent-minded, endearingly clingy demeanour, something Hiro, for once, can't make a snarky comment on. However, it's purported by her close friends that she does take things seriously every once in a while, to an intimidating and rather devastating effect.\",
+	\"weapon\" : \"None. Utilizes an array of high-power light-based magic, which she uses with seemingly reckless abandon to, terrifyingly enough, annihilate her foes at a moment's notice.\",
+	\"facts\": \"Favorite food: Caramel\",
+	\"offset\":150,
+	\"stats\": {
+		\"hp\" : 25,
+		\"mp\" : 30,
+		\"atk\" : 4,
+		\"def\" : 6,
+		\"int\" : 10,
+		\"wis\" : 9,
+		\"apt\" : 4,
+		\"spd\" : 4,
+		\"luk\" : 8
+	},
+	\"abilities\": [bMas[\"attack_stardust_ray_stella\"],bMas[\"spell_pur\"],bMas[\"spell_flare\"],bMas[\"spell_alflare\"]]
+}
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+"
+
+[node name="Data2" type="Node2D"]
+script = SubResource( 1 )

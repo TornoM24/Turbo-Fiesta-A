@@ -1,0 +1,198 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://pixel_button_arrow.tres" type="Theme" id=1]
+[ext_resource path="res://scenes/newgame.gd" type="Script" id=2]
+[ext_resource path="res://font/pixelmix_large.tres" type="DynamicFont" id=3]
+[ext_resource path="res://scenes/loadgame.gd" type="Script" id=4]
+[ext_resource path="res://scenes/quitgame.gd" type="Script" id=5]
+[ext_resource path="res://scenes/credits.gd" type="Script" id=6]
+[ext_resource path="res://scenes/message.gd" type="Script" id=7]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Panel" type="Panel" parent="."]
+self_modulate = Color( 0.470588, 0.470588, 0.470588, 1 )
+margin_left = -8.0
+margin_top = -8.0
+margin_right = 1288.0
+margin_bottom = 728.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+visible = false
+margin_left = 832.0
+margin_top = 192.0
+margin_right = 1216.0
+margin_bottom = 384.0
+bbcode_enabled = true
+bbcode_text = "[right]
+featuring:
+[wave amp=50 freq=2]My Balls[/wave]
+
+Also, My Balls
+
+IN MEMORIAM
+
+[wave amp=50 freq=2]My Actual Balls[/wave]"
+text = "
+featuring:
+My Balls
+
+Also, My Balls
+
+IN MEMORIAM
+
+My Actual Balls"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="newgame" type="Button" parent="."]
+margin_left = 1024.0
+margin_top = 400.0
+margin_right = 1280.0
+margin_bottom = 448.0
+focus_mode = 0
+theme = ExtResource( 1 )
+enabled_focus_mode = 0
+text = "New Game"
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="loadgame" type="Button" parent="."]
+margin_left = 1024.0
+margin_top = 464.0
+margin_right = 1280.0
+margin_bottom = 512.0
+focus_mode = 0
+theme = ExtResource( 1 )
+enabled_focus_mode = 0
+text = "Load Game"
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="quitgame" type="Button" parent="."]
+margin_left = 1024.0
+margin_top = 592.0
+margin_right = 1280.0
+margin_bottom = 640.0
+focus_mode = 0
+theme = ExtResource( 1 )
+enabled_focus_mode = 0
+text = "Quit Game"
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="credits" type="Button" parent="."]
+margin_left = 1024.0
+margin_top = 528.0
+margin_right = 1280.0
+margin_bottom = 576.0
+focus_mode = 0
+theme = ExtResource( 1 )
+enabled_focus_mode = 0
+text = "Credits"
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="message" type="Button" parent="."]
+margin_left = 1024.0
+margin_top = 656.0
+margin_right = 1280.0
+margin_bottom = 704.0
+focus_mode = 0
+theme = ExtResource( 1 )
+enabled_focus_mode = 0
+text = "Secret Message!"
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+margin_left = 896.0
+margin_top = 136.0
+margin_right = 1264.0
+margin_bottom = 224.0
+custom_fonts/normal_font = ExtResource( 3 )
+bbcode_enabled = true
+bbcode_text = "[right]Eat My Pants"
+text = "Eat My Pants"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="creditpanel" type="Panel" parent="."]
+visible = false
+margin_left = 56.0
+margin_top = 56.0
+margin_right = 392.0
+margin_bottom = 456.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="creditpanel"]
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 320.0
+margin_bottom = 384.0
+bbcode_enabled = true
+bbcode_text = "[wave]CREDITS[/wave]
+
+	Matthew Torno
+
+	Vinh Pham
+
+	Anson Chen
+
+	Chau Nguyen
+
+	Alon Evron
+
+[wave]With the help of [/wave]
+
+	Daniel Atid
+
+	Luca Danzi
+
+	Max Umminger
+	
+	Nick Gee"
+text = "CREDITS
+
+	Matthew Torno
+
+	Vinh Pham
+
+	Anson Chen
+
+	Chau Nguyen
+
+	Alon Evron
+
+With the help of 
+
+	Daniel Atid
+
+	Luca Danzi
+
+	Max Umminger
+	
+	Nick Gee"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}

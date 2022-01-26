@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Demos/Water2D/disk_mask.png" type="Texture" id=1]
+[ext_resource path="res://Demos/Water2D/water_normal.png" type="Texture" id=2]
+[ext_resource path="res://Demos/Water2D/water_diffuse.png" type="Texture" id=3]
+[ext_resource path="res://Demos/Water2D/water_2D_material.tres" type="Material" id=4]
+[ext_resource path="res://Demos/Water2D/Water2D.gd" type="Script" id=5]
+
+[node name="Water2D" type="Sprite"]
+modulate = Color( 0.27451, 0.32549, 0.517647, 1 )
+material = ExtResource( 4 )
+position = Vector2( 960, 540 )
+scale = Vector2( 7.5, 4.218 )
+texture = ExtResource( 3 )
+normal_map = ExtResource( 2 )
+script = ExtResource( 5 )
+
+[node name="Light2D" type="Light2D" parent="."]
+visible = false
+position = Vector2( -48, 5.6889 )
+scale = Vector2( 0.203903, 0.355556 )
+texture = ExtResource( 1 )
+texture_scale = 1.54
+color = Color( 0.909804, 0.698039, 0.2, 1 )
+energy = 1.1
+range_height = 66.4
+
+[node name="Light2D2" type="Light2D" parent="."]
+visible = false
+position = Vector2( 88, 79.6445 )
+scale = Vector2( 0.203903, 0.355556 )
+texture = ExtResource( 1 )
+texture_scale = 1.54
+color = Color( 0.909804, 0.698039, 0.2, 1 )
+energy = 1.1
+range_height = 66.4
+
+[connection signal="item_rect_changed" from="." to="." method="_on_item_rect_changed"]

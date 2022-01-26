@@ -1,0 +1,320 @@
+{
+	"sheets": [
+		{
+			"name": "Abilities",
+			"columns": [
+				{
+					"typeStr": "1",
+					"name": "Class"
+				},
+				{
+					"typeStr": "8",
+					"name": "Active",
+					"display": null
+				},
+				{
+					"typeStr": "8",
+					"name": "Passive",
+					"display": null
+				}
+			],
+			"lines": [
+				{
+					"Active": [
+						{
+							"id": 0,
+							"name": "Deft Cuts",
+							"desc": "Takes a series of deft swings at the target, finishing with a more powerful last strike. Has a small chance to inflict light bleeding on the target.",
+							"effects": [
+								{
+									"Type": "Damage",
+									"Power": 30,
+									"Hits": 3,
+									"Delay": true,
+									"Chance": 1,
+									"Subdiv": "Physical",
+									"GFX": "",
+									"TargetType": "one"
+								},
+								{
+									"Type": "Damage",
+									"Power": 70,
+									"Hits": 1,
+									"Delay": true,
+									"Chance": 1,
+									"Subdiv": "Physical",
+									"GFX": "",
+									"TargetType": "one"
+								},
+								{
+									"Type": "Debuff",
+									"Power": 5,
+									"Chance": 0.1,
+									"Hits": 0,
+									"Delay": false,
+									"Subdiv": "Bleed",
+									"GFX": "",
+									"TargetType": "one"
+								}
+							],
+							"cost": 10
+						}
+					],
+					"Passive": [
+						{
+							"id": 0,
+							"name": ""
+						}
+					],
+					"Class": "Offense"
+				}
+			],
+			"separators": [],
+			"props": {}
+		},
+		{
+			"name": "Abilities@Active",
+			"props": {
+				"hide": true
+			},
+			"separators": [],
+			"lines": [],
+			"columns": [
+				{
+					"typeStr": "3",
+					"name": "id"
+				},
+				{
+					"typeStr": "1",
+					"name": "name"
+				},
+				{
+					"typeStr": "1",
+					"name": "desc"
+				},
+				{
+					"typeStr": "8",
+					"name": "effects"
+				},
+				{
+					"typeStr": "3",
+					"name": "cost"
+				},
+				{
+					"typeStr": "1",
+					"name": "misc",
+					"opt": true,
+					"display": null
+				}
+			]
+		},
+		{
+			"name": "Abilities@Passive",
+			"props": {
+				"hide": true
+			},
+			"separators": [],
+			"lines": [],
+			"columns": [
+				{
+					"typeStr": "3",
+					"name": "id",
+					"display": null
+				},
+				{
+					"typeStr": "1",
+					"name": "name",
+					"display": null
+				}
+			]
+		},
+		{
+			"name": "Abilities@Active@effects",
+			"props": {
+				"hide": true
+			},
+			"separators": [],
+			"lines": [],
+			"columns": [
+				{
+					"typeStr": "1",
+					"name": "Type",
+					"display": null
+				},
+				{
+					"typeStr": "1",
+					"name": "Subdiv",
+					"display": null
+				},
+				{
+					"typeStr": "1",
+					"name": "TargetType"
+				},
+				{
+					"typeStr": "3",
+					"name": "Target",
+					"opt": true
+				},
+				{
+					"typeStr": "3",
+					"name": "Power"
+				},
+				{
+					"typeStr": "4",
+					"name": "Chance",
+					"display": 1
+				},
+				{
+					"typeStr": "3",
+					"name": "Hits"
+				},
+				{
+					"typeStr": "2",
+					"name": "Delay",
+					"display": null
+				},
+				{
+					"typeStr": "1",
+					"name": "GFX",
+					"display": null
+				}
+			]
+		},
+		{
+			"name": "Units",
+			"columns": [
+				{
+					"typeStr": "8",
+					"name": "Allies"
+				},
+				{
+					"typeStr": "8",
+					"name": "Enemies",
+					"display": null
+				}
+			],
+			"lines": [
+				{
+					"Enemies": [],
+					"allies": [
+						{
+							"stats": [
+								{
+									"atk": 10,
+									"def": 8,
+									"int": 6,
+									"wis": 5,
+									"hp": 30,
+									"mp": 20
+								}
+							],
+							"desc": "A young man out on a journey to seek the forces that burned down his village.",
+							"name": "Hiro",
+							"id": 0,
+							"skills": []
+						}
+					]
+				}
+			],
+			"separators": [],
+			"props": {}
+		},
+		{
+			"name": "Units@Enemies",
+			"props": {
+				"hide": true
+			},
+			"separators": [],
+			"lines": [],
+			"columns": []
+		},
+		{
+			"name": "Units@allies",
+			"props": {
+				"hide": true
+			},
+			"separators": [],
+			"lines": [],
+			"columns": [
+				{
+					"typeStr": "3",
+					"name": "id"
+				},
+				{
+					"typeStr": "1",
+					"name": "name"
+				},
+				{
+					"typeStr": "1",
+					"name": "desc"
+				},
+				{
+					"typeStr": "8",
+					"name": "stats"
+				},
+				{
+					"typeStr": "8",
+					"name": "skills",
+					"display": null
+				}
+			]
+		},
+		{
+			"name": "Units@Allies@stats",
+			"props": {
+				"hide": true
+			},
+			"separators": [],
+			"lines": [],
+			"columns": [
+				{
+					"typeStr": "3",
+					"name": "hp"
+				},
+				{
+					"typeStr": "3",
+					"name": "mp",
+					"display": null
+				},
+				{
+					"typeStr": "3",
+					"name": "atk"
+				},
+				{
+					"typeStr": "3",
+					"name": "def"
+				},
+				{
+					"typeStr": "3",
+					"name": "int"
+				},
+				{
+					"typeStr": "3",
+					"name": "wis",
+					"display": null
+				}
+			]
+		},
+		{
+			"name": "Units@Allies@skills",
+			"props": {
+				"hide": true
+			},
+			"separators": [],
+			"lines": [],
+			"columns": [
+				{
+					"typeStr": "3",
+					"name": "passive",
+					"display": null
+				},
+				{
+					"typeStr": "3",
+					"name": "active"
+				}
+			]
+		}
+	],
+	"customTypes": [],
+	"compress": false
+}

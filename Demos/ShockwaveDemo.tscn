@@ -1,0 +1,109 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Shared/theme/gdquest.theme" type="Theme" id=1]
+[ext_resource path="res://Shaders/shockwave.shader" type="Shader" id=2]
+[ext_resource path="res://Demos/Shockwave/Shockwave.gd" type="Script" id=3]
+[ext_resource path="res://Demos/Shockwave/ShockwaveScene.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Shared/DemoInterface.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Shared/Demo3DEnvironment.tscn" type="PackedScene" id=6]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 2 )
+shader_param/torus_thickness = 0.286
+shader_param/torus_hardness = 0.19
+shader_param/torus_radius = -0.25
+shader_param/torus_invert = -1.0
+shader_param/torus_center = Vector2( 0.5, 0.25 )
+shader_param/torus_size = Vector2( 1.78, 1 )
+shader_param/displacement_amount = 0.5
+
+[sub_resource type="Shader" id=2]
+code = "shader_type canvas_item;
+
+uniform float torus_thickness : hint_range(0.001, 1.0) = 0.5;
+uniform float torus_hardness = 1.0;
+uniform float torus_radius = 1.0;
+uniform float torus_invert : hint_range(-1.0, 1.0) = 0.0;
+uniform vec2 torus_center = vec2(0.5, 0.5);
+uniform vec2 torus_size = vec2(1.0, 1.0);
+
+void fragment() {
+	float torus_distance = length((UV - torus_center) * torus_size);
+	float radius_distance = torus_thickness / 2.0;
+	float inner_radius = torus_radius - radius_distance;
+	
+	float circle_value = clamp(abs(torus_distance - inner_radius) / torus_thickness, 0.0, 1.0);
+	float circle_alpha = pow(circle_value, pow(torus_hardness, 2.0));
+	
+	float mask = abs(clamp(abs(sign(torus_invert)) - sign(torus_invert), 0.0, 1.0) - circle_alpha) * abs(torus_invert);
+	
+	COLOR = vec4(vec3(1.0), mask);
+}"
+
+[sub_resource type="ShaderMaterial" id=3]
+shader = SubResource( 2 )
+shader_param/torus_thickness = 0.635
+shader_param/torus_hardness = 1.176
+shader_param/torus_radius = -0.25
+shader_param/torus_invert = -1.0
+shader_param/torus_center = Vector2( 0.5, 0.5 )
+shader_param/torus_size = Vector2( 4.45, 2.5 )
+
+[node name="ShockwaveDemo" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DemoView" type="ViewportContainer" parent="."]
+material = SubResource( 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+stretch = true
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+shockwave_duration = 0.75
+
+[node name="Viewport" type="Viewport" parent="DemoView"]
+size = Vector2( 1920, 1080 )
+handle_input_locally = false
+msaa = 2
+render_target_update_mode = 3
+shadow_atlas_size = 8192
+
+[node name="ShockwaveScene" parent="DemoView/Viewport" instance=ExtResource( 4 )]
+
+[node name="Demo3DEnvironment" parent="DemoView/Viewport" instance=ExtResource( 6 )]
+
+[node name="Tween" type="Tween" parent="DemoView"]
+
+[node name="MaskPreview" type="Control" parent="."]
+margin_top = 120.0
+margin_right = 128.0
+margin_bottom = 192.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="MaskPreview"]
+margin_right = 128.0
+margin_bottom = 72.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Mask" type="ColorRect" parent="MaskPreview"]
+material = SubResource( 3 )
+margin_right = 128.0
+margin_bottom = 72.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DemoInterface" parent="." instance=ExtResource( 5 )]
+text_bbcode = "Uses a shader to generate a torus, black and white mask, the data of which is used to distort the UVs of the demo viewports to make a shockwave heat distortion effect."

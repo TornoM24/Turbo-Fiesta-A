@@ -5,7 +5,7 @@ extends Button
 # var a = 2
 # var b = "text"
 
-# Test
+# Test1
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var button = self
@@ -13,6 +13,7 @@ func _ready():
 
 func _button_pressed():
 	print("Attempting to open combat interface!")
+	get_tree().paused = false
 	get_node("/root/Global").goto_scene("res://scenes/combat.tscn")
 
 

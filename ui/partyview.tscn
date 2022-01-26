@@ -1,0 +1,572 @@
+[gd_scene load_steps=26 format=2]
+
+[ext_resource path="res://pixel_panel.theme" type="Theme" id=1]
+[ext_resource path="res://ui/partyview.gd" type="Script" id=2]
+[ext_resource path="res://pixel_border.theme" type="Theme" id=3]
+[ext_resource path="res://font/Chrono.tres" type="DynamicFont" id=4]
+[ext_resource path="res://font/ChronoLarge.tres" type="DynamicFont" id=5]
+[ext_resource path="res://gfx/icons/equipment.png" type="Texture" id=6]
+[ext_resource path="res://gfx/icons/equipment_end.png" type="Texture" id=7]
+[ext_resource path="res://gfx/icons/inventory_end.png" type="Texture" id=8]
+[ext_resource path="res://gfx/icons/inventory.png" type="Texture" id=9]
+[ext_resource path="res://ui/background_shift_1.png" type="Texture" id=10]
+[ext_resource path="res://ui/Equipment.gd" type="Script" id=11]
+[ext_resource path="res://ui/fill1.png" type="Texture" id=12]
+[ext_resource path="res://pixel_scroll.tres" type="Theme" id=13]
+[ext_resource path="res://pixel_tabs.theme" type="Theme" id=14]
+[ext_resource path="res://pixel_button_2.tres" type="Theme" id=15]
+[ext_resource path="res://ui/background_bricks.png" type="Texture" id=16]
+[ext_resource path="res://ui/dither_bg.png" type="Texture" id=17]
+[ext_resource path="res://pixel_panel_wide.theme" type="Theme" id=18]
+[ext_resource path="res://ui/arrow_right.png" type="Texture" id=19]
+[ext_resource path="res://ui/StatsPanel.gd" type="Script" id=20]
+[ext_resource path="res://ui/spreader.png" type="Texture" id=21]
+[ext_resource path="res://ui/Spreader.gd" type="Script" id=22]
+[ext_resource path="res://ui/spreaderver.gd" type="Script" id=23]
+[ext_resource path="res://pixel_button.tres" type="Theme" id=24]
+[ext_resource path="res://ui/adv_ui/stats_sign.png" type="Texture" id=25]
+
+[node name="partyview" type="Node2D"]
+z_index = 4096
+z_as_relative = false
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_horizontal_guides_": [  ]
+}
+
+[node name="Spreader2" type="Sprite" parent="."]
+visible = false
+self_modulate = Color( 0.498039, 0.498039, 0.498039, 1 )
+position = Vector2( -832.375, 592 )
+scale = Vector2( 2.18274, 1 )
+texture = ExtResource( 21 )
+script = ExtResource( 22 )
+
+[node name="Spreader" type="Sprite" parent="."]
+visible = false
+self_modulate = Color( 0.498039, 0.498039, 0.498039, 1 )
+position = Vector2( 1208, -415.98 )
+rotation = 1.5708
+scale = Vector2( 1.09308, 0.963232 )
+texture = ExtResource( 21 )
+script = ExtResource( 23 )
+
+[node name="Panel2" type="Panel" parent="."]
+visible = false
+margin_right = 1280.0
+margin_bottom = 704.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="."]
+visible = false
+margin_left = 1048.0
+margin_top = 16.0
+margin_right = 1272.0
+margin_bottom = 592.0
+theme = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="StatsPanel" type="Panel" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = 208.472
+margin_top = 14.7285
+margin_right = 1032.47
+margin_bottom = 590.729
+script = ExtResource( 20 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="charswitch" type="Panel" parent="StatsPanel"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 39.528
+margin_top = -14.7285
+margin_right = -640.472
+margin_bottom = 129.271
+theme = ExtResource( 18 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="right" type="Button" parent="StatsPanel/charswitch"]
+margin_left = 80.0
+margin_top = 648.561
+margin_right = 144.0
+margin_bottom = 680.561
+focus_mode = 0
+theme = ExtResource( 15 )
+enabled_focus_mode = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="StatsPanel/charswitch/right"]
+position = Vector2( 32, 15.9999 )
+texture = ExtResource( 19 )
+
+[node name="left" type="Button" parent="StatsPanel/charswitch"]
+margin_top = 648.561
+margin_right = 64.0
+margin_bottom = 680.561
+focus_mode = 0
+theme = ExtResource( 15 )
+enabled_focus_mode = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite2" type="Sprite" parent="StatsPanel/charswitch/left"]
+position = Vector2( 32, 16 )
+rotation = 3.14159
+texture = ExtResource( 19 )
+
+[node name="Stats" type="Panel" parent="StatsPanel"]
+self_modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 40.0
+margin_top = 56.0
+margin_right = -640.0
+margin_bottom = -8.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="StatsPanel/Stats"]
+visible = false
+margin_left = 16.0
+margin_top = 66.0
+margin_right = 128.0
+margin_bottom = 538.0
+rect_pivot_offset = Vector2( 1264, 616 )
+custom_fonts/normal_font = ExtResource( 4 )
+bbcode_enabled = true
+bbcode_text = "ATK : 10 [color=lime]⬆23[/color]
+ATK : 10
+ATK : 10
+ATK : 10
+ATK : 10
+ATK : 10
+ATK : 10
+ATK : 10
+ATK : 10
+ATK : 10
+ATK : 10
+ATK : 10
+ATK : 10
+ATK : 10
+"
+text = "ATK : 10 ⬆23
+ATK : 10
+ATK : 10
+ATK : 10
+ATK : 10
+ATK : 10
+ATK : 10
+ATK : 10
+ATK : 10
+ATK : 10
+ATK : 10
+ATK : 10
+ATK : 10
+ATK : 10
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="StatsPanel/Stats"]
+visible = false
+margin_top = -72.0
+margin_right = 144.0
+margin_bottom = 72.0
+theme = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CardPanel" type="Panel" parent="StatsPanel/Stats"]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = 0.264862
+margin_right = 144.265
+margin_bottom = 513.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Number" type="RichTextLabel" parent="StatsPanel/Stats"]
+anchor_top = -0.000821188
+anchor_bottom = -0.000821188
+margin_left = 48.6933
+margin_top = -16.0
+margin_right = 93.6933
+margin_bottom = -6.0
+custom_fonts/normal_font = ExtResource( 4 )
+bbcode_enabled = true
+bbcode_text = "[center]◉○●●●"
+text = "◉○●●●"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="StatsPanel"]
+position = Vector2( 504, 0.839375 )
+scale = Vector2( 60.8, 3.11357 )
+texture = ExtResource( 12 )
+
+[node name="Tabs" type="TabContainer" parent="StatsPanel"]
+anchor_top = 0.00220744
+anchor_bottom = 0.00220744
+margin_left = 200.0
+margin_top = -8.2715
+margin_right = 808.0
+margin_bottom = 703.729
+theme = ExtResource( 14 )
+tab_align = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Equipment" type="Control" parent="StatsPanel/Tabs"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 27.0
+margin_right = -4.0
+margin_bottom = -4.0
+script = ExtResource( 11 )
+
+[node name="Panel2" type="Panel" parent="StatsPanel/Tabs/Equipment"]
+margin_left = 12.0
+margin_top = 26.0
+margin_right = 588.0
+margin_bottom = 162.0
+rect_min_size = Vector2( 576, 136 )
+theme = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="StatsPanel/Tabs/Equipment/Panel2"]
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 328.0
+margin_bottom = 120.0
+bbcode_enabled = true
+bbcode_text = "This character has nothing equipped."
+text = "This character has nothing equipped."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="StatsPanel/Tabs/Equipment"]
+margin_left = 20.0
+margin_top = 45.0
+margin_right = 580.0
+margin_bottom = 141.0
+theme = ExtResource( 13 )
+scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="Control" parent="StatsPanel/Tabs/Equipment/ScrollContainer"]
+margin_right = 550.0
+margin_bottom = 180.0
+rect_min_size = Vector2( 550, 180 )
+
+[node name="Panel" type="Panel" parent="StatsPanel/Tabs/Equipment"]
+margin_left = 12.0
+margin_top = 258.0
+margin_right = 588.0
+margin_bottom = 669.0
+theme = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="background_bricks" type="Sprite" parent="StatsPanel/Tabs/Equipment/Panel"]
+visible = false
+self_modulate = Color( 1, 1, 1, 0.109804 )
+position = Vector2( 294.304, 294.556 )
+scale = Vector2( 5.83297, 5.83297 )
+texture = ExtResource( 16 )
+
+[node name="Sprite" type="Sprite" parent="StatsPanel/Tabs/Equipment/Panel"]
+visible = false
+position = Vector2( 101.076, 103.271 )
+scale = Vector2( 6.18277, 6.25 )
+texture = ExtResource( 10 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="StatsPanel/Tabs/Equipment/Panel"]
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 280.0
+margin_bottom = 120.0
+bbcode_enabled = true
+bbcode_text = "Inventory is currently empty."
+text = "Inventory is currently empty."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="dither_bg" type="Sprite" parent="StatsPanel/Tabs/Equipment/Panel"]
+visible = false
+self_modulate = Color( 1, 1, 1, 0.376471 )
+position = Vector2( 287.659, 314.005 )
+scale = Vector2( 2.85931, 3.16667 )
+texture = ExtResource( 17 )
+
+[node name="ScrollContainer2" type="ScrollContainer" parent="StatsPanel/Tabs/Equipment"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = 257.901
+margin_right = -8.0
+margin_bottom = -20.0992
+scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="Control" parent="StatsPanel/Tabs/Equipment/ScrollContainer2"]
+margin_right = 560.0
+margin_bottom = 403.0
+rect_min_size = Vector2( 560, 403 )
+
+[node name="costlabel" type="RichTextLabel" parent="StatsPanel/Tabs/Equipment"]
+margin_left = 436.0
+margin_top = 165.0
+margin_right = 572.0
+margin_bottom = 205.0
+rect_pivot_offset = Vector2( 336, -8 )
+custom_fonts/normal_font = ExtResource( 4 )
+bbcode_enabled = true
+bbcode_text = "[right]Cost: 30/30"
+text = "Cost: 30/30"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EquipLabel" type="Node2D" parent="StatsPanel/Tabs/Equipment"]
+
+[node name="Sprite2" type="Sprite" parent="StatsPanel/Tabs/Equipment/EquipLabel"]
+visible = false
+position = Vector2( 17.6031, 175 )
+scale = Vector2( 2.9, 2.9 )
+texture = ExtResource( 7 )
+
+[node name="Sprite" type="Sprite" parent="StatsPanel/Tabs/Equipment/EquipLabel"]
+visible = false
+position = Vector2( 178, 175 )
+scale = Vector2( 2.1, 2.1 )
+texture = ExtResource( 6 )
+
+[node name="label1" type="RichTextLabel" parent="StatsPanel/Tabs/Equipment/EquipLabel"]
+margin_left = 35.528
+margin_top = 165.272
+margin_right = 158.528
+margin_bottom = 205.272
+rect_pivot_offset = Vector2( 336, -8 )
+custom_fonts/normal_font = ExtResource( 5 )
+text = "Equipment
+"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="InvLabel" type="Node2D" parent="StatsPanel/Tabs/Equipment"]
+
+[node name="label2" type="RichTextLabel" parent="StatsPanel/Tabs/Equipment/InvLabel"]
+margin_left = 35.528
+margin_top = 229.272
+margin_right = 363.528
+margin_bottom = 253.272
+custom_fonts/normal_font = ExtResource( 5 )
+text = "Inventory"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="StatsPanel/Tabs/Equipment/InvLabel"]
+visible = false
+position = Vector2( 47, 240 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 9 )
+
+[node name="Sprite2" type="Sprite" parent="StatsPanel/Tabs/Equipment/InvLabel"]
+visible = false
+position = Vector2( 212, 240 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 8 )
+
+[node name="Abilities" type="Control" parent="StatsPanel/Tabs"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 27.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="StatsPanel/Tabs/Abilities"]
+margin_left = 12.0
+margin_top = 26.0
+margin_right = 588.0
+margin_bottom = 658.0
+scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="Control" parent="StatsPanel/Tabs/Abilities/ScrollContainer"]
+margin_right = 576.0
+margin_bottom = 632.0
+rect_min_size = Vector2( 576, 632 )
+
+[node name="Bonus" type="Control" parent="StatsPanel/Tabs"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 27.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="Growth" type="Control" parent="StatsPanel/Tabs"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 27.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="TabContainer" type="TabContainer" parent="StatsPanel/Tabs/Growth"]
+margin_left = 20.0
+margin_top = 18.0
+margin_right = 580.0
+margin_bottom = 666.0
+rect_pivot_offset = Vector2( -260, 194 )
+tab_align = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Stat Points" type="Control" parent="StatsPanel/Tabs/Growth/TabContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 27.0
+margin_right = -4.0
+margin_bottom = -4.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="StatsPanel/Tabs/Growth/TabContainer/Stat Points"]
+margin_left = 20.0
+margin_top = 50.0
+margin_right = 220.0
+margin_bottom = 74.0
+bbcode_enabled = true
+bbcode_text = "Spend Stat Points"
+text = "Spend Stat Points"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="StatsPanel/Tabs/Growth/TabContainer/Stat Points"]
+margin_left = 12.0
+margin_top = 74.0
+margin_right = 284.0
+margin_bottom = 370.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel2" type="Panel" parent="StatsPanel/Tabs/Growth/TabContainer/Stat Points"]
+margin_left = 12.0
+margin_top = 10.0
+margin_right = 228.0
+margin_bottom = 42.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="StatsPanel/Tabs/Growth/TabContainer/Stat Points/Panel2"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 208.0
+margin_bottom = 22.0
+bbcode_enabled = true
+bbcode_text = "[center]Remaining SP : [color=lime]9999"
+text = "Remaining SP : 9999"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Confirm" type="Button" parent="StatsPanel/Tabs/Growth/TabContainer/Stat Points"]
+margin_left = 212.0
+margin_top = 378.0
+margin_right = 276.0
+margin_bottom = 402.0
+theme = ExtResource( 24 )
+custom_fonts/font = ExtResource( 4 )
+text = "Confirm"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Reset" type="Button" parent="StatsPanel/Tabs/Growth/TabContainer/Stat Points"]
+margin_left = 132.0
+margin_top = 378.0
+margin_right = 196.0
+margin_bottom = 402.0
+theme = ExtResource( 24 )
+custom_fonts/font = ExtResource( 4 )
+text = "Reset"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Info" type="Control" parent="StatsPanel/Tabs"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 27.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="Bio" type="RichTextLabel" parent="StatsPanel/Tabs/Info"]
+margin_left = 12.0
+margin_top = 61.0
+margin_right = 588.0
+margin_bottom = 669.0
+text = "akfjahkfhafhkafhakf"
+
+[node name="stats_sign" type="Sprite" parent="."]
+position = Vector2( 319, 80 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 25 )
+
+[connection signal="pressed" from="StatsPanel/charswitch/right" to="." method="_on_right_pressed"]
+[connection signal="pressed" from="StatsPanel/charswitch/left" to="." method="_on_left_pressed"]
+[connection signal="tab_selected" from="StatsPanel/Tabs" to="." method="_on_Tabs_tab_selected"]
+[connection signal="pressed" from="StatsPanel/Tabs/Growth/TabContainer/Stat Points/Confirm" to="." method="_on_Confirm_pressed"]
+[connection signal="pressed" from="StatsPanel/Tabs/Growth/TabContainer/Stat Points/Reset" to="." method="_on_Reset_pressed"]

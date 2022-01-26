@@ -1,0 +1,191 @@
+{
+	"sheets": [
+		{
+			"name": "Abilities",
+			"columns": [
+				{
+					"typeStr": "1",
+					"name": "Class"
+				},
+				{
+					"typeStr": "8",
+					"name": "Active",
+					"display": null
+				},
+				{
+					"typeStr": "8",
+					"name": "Passive",
+					"display": null
+				}
+			],
+			"lines": [
+				{
+					"Active": [
+						{
+							"Name": "Deft Cuts",
+							"Desc": "Takes a series of deft swings at the target, finishing with a more powerful last strike. Has a small chance to inflict light bleeding on the target.",
+							"Effects": [
+								{
+									"Type": "Damage",
+									"Power": 30,
+									"Hits": 3,
+									"Delay": true,
+									"Chance": 1,
+									"Subdiv": "Physical",
+									"GFX": ""
+								},
+								{
+									"Type": "Damage",
+									"Power": 70,
+									"Hits": 1,
+									"Delay": true,
+									"Chance": 1,
+									"Subdiv": "Physical",
+									"GFX": ""
+								},
+								{
+									"Type": "Debuff",
+									"Power": 5,
+									"Chance": 0.1,
+									"Hits": 0,
+									"Delay": false,
+									"Subdiv": "Bleed",
+									"GFX": ""
+								}
+							],
+							"Cost": 10,
+							"ID": 0
+						}
+					],
+					"Passive": [],
+					"Class": "Offense"
+				}
+			],
+			"separators": [],
+			"props": {}
+		},
+		{
+			"name": "Abilities@Active",
+			"props": {
+				"hide": true
+			},
+			"separators": [],
+			"lines": [],
+			"columns": [
+				{
+					"typeStr": "3",
+					"name": "ID"
+				},
+				{
+					"typeStr": "1",
+					"name": "Name",
+					"display": null
+				},
+				{
+					"typeStr": "1",
+					"name": "Desc",
+					"display": null
+				},
+				{
+					"typeStr": "8",
+					"name": "Effects",
+					"display": null
+				},
+				{
+					"typeStr": "3",
+					"name": "Cost",
+					"display": null
+				}
+			]
+		},
+		{
+			"name": "Abilities@Passive",
+			"props": {
+				"hide": true
+			},
+			"separators": [],
+			"lines": [],
+			"columns": []
+		},
+		{
+			"name": "Abilities@Active@Effects",
+			"props": {
+				"hide": true
+			},
+			"separators": [],
+			"lines": [],
+			"columns": [
+				{
+					"typeStr": "1",
+					"name": "Type",
+					"display": null
+				},
+				{
+					"typeStr": "1",
+					"name": "Subdiv",
+					"display": null
+				},
+				{
+					"typeStr": "3",
+					"name": "Power"
+				},
+				{
+					"typeStr": "4",
+					"name": "Chance",
+					"display": 1
+				},
+				{
+					"typeStr": "3",
+					"name": "Hits"
+				},
+				{
+					"typeStr": "2",
+					"name": "Delay",
+					"display": null
+				},
+				{
+					"typeStr": "1",
+					"name": "GFX",
+					"display": null
+				}
+			]
+		},
+		{
+			"name": "Units",
+			"columns": [
+				{
+					"typeStr": "8",
+					"name": "Allies"
+				},
+				{
+					"typeStr": "8",
+					"name": "Enemies",
+					"display": null
+				}
+			],
+			"lines": [],
+			"separators": [],
+			"props": {}
+		},
+		{
+			"name": "Units@Enemies",
+			"props": {
+				"hide": true
+			},
+			"separators": [],
+			"lines": [],
+			"columns": []
+		},
+		{
+			"name": "Units@Allies",
+			"props": {
+				"hide": true
+			},
+			"separators": [],
+			"lines": [],
+			"columns": []
+		}
+	],
+	"customTypes": [],
+	"compress": false
+}

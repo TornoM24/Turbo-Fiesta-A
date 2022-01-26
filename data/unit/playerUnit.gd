@@ -5,11 +5,67 @@ extends Node2D
 # var a = 2
 # var b = "text"
 
+var origin = Vector2()
+
 var mhp = 100
-var hp = 100
+var hp = 90
 
 var mmp = 100
 var mp = 100
+
+var atb_prog = 0
+var atb_val = 0
+
+var stats = {}
+var originalStats = {
+		"mhp" : 0,
+		"mmp" : 0,
+		"hp" : 0,
+		"mp" : 0,
+		"atk" : 0,
+		"def" : 0,
+		"int" : 0,
+		"wis" : 0,
+		"apt" : 0,
+		"spd" : 0,
+		"luk" : 0
+	}
+var bonus = {
+		"mhp" : 0,
+		"mmp" : 0,
+		"hp" : 0,
+		"mp" : 0,
+		"atk" : 0,
+		"def" : 0,
+		"int" : 0,
+		"wis" : 0,
+		"apt" : 0,
+		"spd" : 0,
+		"luk" : 0
+	}
+var equipBonus = {}
+var abilities = []
+var effects = [] 
+var tempEffects = []
+
+var unitName = "Aou Mogis"
+var selected = false
+
+var queue = []
+var reference
+var nFrames = []
+var host = null
+var inAnimation = false
+var inRecovery = false
+var animStun = false
+var alive = true
+var inDead = false
+var panel
+var affiliation = "ally"
+var type
+var ability 
+var target
+var offset
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -17,11 +73,335 @@ func _ready():
 func updateResources():
 	var hpb = get_node("HPBar")
 	var mpb = get_node("MPBar")
-	hpb.value = hp
-	mpb.value = mp
+	hpb.value = (float(stats.hp)/stats.mhp)*100
+	#mpb.value =  (float(stats.mp)/
+const SPEED_MOD = 2000
+var yVelo = -1.3
+var dying
+var deathAnimFinished = false
+var casting = false
+#onready references
+onready var attack = get_node ("Attack")
+onready var tween = get_node ("Tween")
+onready var unitSprite = get_node ("UnitSprite")
+onready var sh = get_node ("AnimatedSprite/Shadow")
+onready var timer = get_node ("Timer")
+onready var castParticles = get_node ("CastParticles")
+onready var animSprite = get_node("AnimatedSprite")
+####################
+func enemyDie():
+	if !dying:
+		sh.hide()
+		dying = true
+		tween.interpolate_property(unitSprite, "modulate",
+			Color (1,1,1,1), Color (0.7,0,1,0), 1,
+		Tween.TRANS_LINEAR)
+		tween.interpolate_property(unitSprite, "scale",
+			null, Vector2 (1,3), 1,
+		Tween.TRANS_QUART, Tween.EASE_IN)
+		tween.interpolate_property(unitSprite, "position",
+			null, unitSprite.position + Vector2 (0,-20), 1,
+		Tween.TRANS_QUART, Tween.EASE_IN)
+		tween.start()
+func allyDie():
+	#animSprite.hide()
+	#get_node ("UnitSprite").texture = load ("res://data/unit/hiro/art/hiro_dead.png")
+	#get_node ("UnitSprite").show()
+	casting = false
+	animStun = false
+	attack.hide()
+	timer.stop()
+	bar.hide()
+	castParticles.emitting = false
+	panel.shift_down()
+	if !deathAnimFinished:
+		animSprite.show()
+		deathAnimFinished = true
+		panel.atb.kill()
+		panel.shift_down()
+		tween.interpolate_property(animSprite, "modulate",
+			Color (1,1,1,1), Color (0.7,0,1,0), 1,
+		Tween.TRANS_LINEAR)
+		tween.interpolate_property(animSprite, "scale",
+			null, Vector2 (1,3), 1,
+		Tween.TRANS_QUART, Tween.EASE_IN)
+		tween.start()
 
+func effCall ():
+	get_parent().causeEffect (target,self,ability)
+
+func animReset():
+	animSprite.hide()
+	get_node ("Attack").show()
+	get_node ("Attack").frame=0
+	get_node ("Attack").playing=true
+	
+func animBreak():
+	#animSprite.show()
+	get_node ("Attack").hide()
+	get_node ("Attack").frame=0
+	get_node ("Attack").playing=false
+var singleRun = false
+var timerComplete
+
+func decay_effects(delta):
+	for eff in tempEffects:
+		#print (originalStats)
+		stats[eff.effectType] = originalStats [eff.effectType] + eff.realPower
+		if !Master.atb_paused:
+			eff.timer += delta
+		if eff.timer >= 1:
+			eff.length -= 1
+			eff.timer = 0
+		if eff.length <= 0:
+			stats[eff.effectType] = originalStats [eff.effectType]
+			eff.particle.queue_free()
+			tempEffects.erase (eff)
+			pass
+	pass
+var meleeState = false
 func _process(delta):
-	updateResources()
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+	decay_effects (delta)
+	if Master.abiOpen:
+		animSprite.playing = false
+	else:
+		animSprite.playing = true
+	if inDead:
+		allyDie()
+	if !dying:
+		updateResources()
+		atb_prog += delta
+		if !inDead && !Master.atb_paused:
+			if atb_prog >= 0.001 && !inAnimation &&!animStun:
+				atb_val += float (stats.spd)/30
+				atb_prog = 0
+		if inAnimation:		
+			if type == "magic":
+				animSprite.hide()
+				casting = true
+				if ability.has ("castTime"):
+					timer.wait_time = ability.castTime
+				else:
+					timer.wait_time = 4
+				bar.max_value = timer.wait_time
+				timer.start()
+			if type !="ranged" and type!= "magic":
+				animSprite.hide()
+				unitSprite.show()
+				#host.camera.position = self.position
+				#host.camera.zoom = Vector2 (0.5,0.5)
+				var all = false
+				if singleRun:
+					for x in ability.effects:
+						if x.target == "all enemies":
+							all = true
+					tween.interpolate_property(self, "position:x",
+						origin.x, target.position.x + offset, 0.2,
+					Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+					tween.interpolate_property(self, "position:y",
+						origin.y, target.position.y, 0.2,
+					Tween.TRANS_LINEAR, Tween.EASE_OUT)
+#					tween.interpolate_property(self, "position:y",
+#						target.position.y-30, target.position.y, 0.25,
+#					Tween.TRANS_QUAD, Tween.EASE_IN, 0.25)
+					tween.start()
+					singleRun = false
+				
+				if (global_position == target.position + Vector2 (offset,0)) or all:
+					animReset()
+					unitSprite.hide()
+					meleeState = true
+					inAnimation = false
+			else:#if type *is* magic then
+				animReset()
+				inAnimation = false
+		if inRecovery:
+			
+			meleeState = false
+			if type == "magic":
+				casting = false
+			if type !="ranged" and type!= "magic":
+				
+				#host.camera.position = Vector2(640,368)
+				#host.camera.zoom = Vector2 (1,1)
+				if singleRun:
+					tween.interpolate_property(self, "position",
+						null, origin, 0.5,
+					Tween.TRANS_QUART, Tween.EASE_OUT)
+					tween.start()
+					singleRun = false
+				if global_position == origin:
+					animBreak()
+					animSprite.show()
+					inRecovery = false
+					animStun = false
+			else: #if type *is* magic then
+				animBreak()
+				inRecovery = false
+				animStun = false
+		if stats.hp <= 0:
+			stats.hp = 0
+			alive = false
+	else:
+		die()
+		deathAnimFinished = true
+func die():
+	get_node("HPBar").hide()
+	get_node("ATBBar").hide()
+	#animStun = true
+func glow ():
+	var spr = get_node ("UnitSprite")
+	yield(get_tree().create_timer(0.10), "timeout")
+	spr.modulate.r = 1.5
+	spr.modulate.g = 1.5
+	spr.modulate.b = 1.5
+	
+const GLOW_SPEED = 0.075
+func glow_cast (abi, tar):
+	ability = abi
+	type = ability.type
+	target = tar
+	animStun = true
+	#inAnimation = true
+	var spr = get_node ("UnitSprite")
+	for x in range (0,3):
+		spr.modulate.r = 1.5
+		spr.modulate.g = 1.5
+		spr.modulate.b = 1.5
+		yield(get_tree().create_timer(GLOW_SPEED), "timeout")
+		spr.modulate.r = 1.0
+		spr.modulate.g = 1.0
+		spr.modulate.b = 1.0
+		yield(get_tree().create_timer(GLOW_SPEED), "timeout")
+	effCall () 
+	animStun = false
+	spr.modulate.r = 1.0
+	spr.modulate.g = 1.0
+	spr.modulate.b = 1.0
+
+func create_message (message):
+	
+	var msg = load ("res://gfx/fx/message.tscn").instance()
+	msg.init (message)
+	add_child (msg)
+
+func parse_buff (buff):
+	print ("gave " + unitName + " the buff " + buff.name)
+	buff ["timer"] = 0
+	buff ["realPower"] = int (stats[buff.effectType] * float(buff.power)/100)
+	buff ["particle"] = load ("res://gfx/fx/particle_effect.tscn").instance()
+	buff.particle.get_node ("Sprite").hide()
+	add_child (buff.particle)
+	#stats[buff.effectType] += buff.realPower
+	#stats[buff.effectType] += bonus[buff.effectType]
+	tempEffects.append (buff)
+const SHAKE_ELAS = false
+func shake(direction):
+	if SHAKE_ELAS:
+		var par = 0
+		if direction == "back":
+			par = -20
+		else:
+			par = 20
+		tween.interpolate_property(animSprite, "position",
+			null, animSprite.position + Vector2 (par, 0), 0.5,
+		Tween.TRANS_ELASTIC, Tween.EASE_OUT)
+		tween.interpolate_property(get_node ("UnitSprite"), "position",
+			null, get_node ("UnitSprite").position + Vector2 (par, 0), 0.5,
+		Tween.TRANS_ELASTIC, Tween.EASE_OUT)
+		tween.start()
+	else:
+		shaker.start("normal", animSprite, 0.2, 50, 4)
+		#shaker.start("normal", unitSprite, 0.2, 50, 4)
+
+func sprite_attack (abi, tar):
+	ability = abi
+	type = ability.type
+	target = tar
+	inAnimation = true
+	singleRun = true
+	animStun = true
+	if ability.has ("quote"):
+		create_message (ability.quote)
+	if type == "magic":
+		get_node ("Attack").frames = load ("res://data/unit/"+unitName+"/art/"+unitName+"_cast.tres")
+		castParticles.emitting = true
+	else:
+		get_node ("Attack").frames = load ("res://data/unit/"+unitName+"/art/"+unitName+"_attack.tres")
+	yVelo = -2.6
+	origin = global_position
+	
+
+func _on_Select_pressed():
+	selected = true
+	pass # Replace with function body.
+
+
+func _on_Select_mouse_entered():
+	var x = get_node ("UnitSprite")
+	var y = animSprite
+	x.modulate.r = 1.2
+	x.modulate.g = 1.2
+	x.modulate.b = 1.2
+	y.modulate.r = 1.2
+	y.modulate.g = 1.2
+	y.modulate.b = 1.2
+	pass # Replace with function body.
+
+
+func _on_Select_mouse_exited():
+	var x = get_node ("UnitSprite")
+	var y = animSprite
+	x.modulate.r = 1
+	x.modulate.g = 1
+	x.modulate.b = 1
+	y.modulate.r = 1
+	y.modulate.g = 1
+	y.modulate.b = 1
+	pass # Replace with function body.
+
+func process_end():
+	inRecovery = true
+	effCall()
+	yVelo = -1.7
+	get_node ("CastParticles").emitting = false
+
+func _on_Attack_animation_finished():
+	if ability.type != "magic": 
+		animSprite.show()
+		get_node ("Attack").hide()
+		singleRun = true
+		print ("attack ended 2")
+		process_end()
+	pass # Replace with function body.
+
+
+func _on_Timer_timeout():
+	singleRun = true
+	animSprite.show()
+	tween.interpolate_property(animSprite, "modulate",
+		Color (1.2,1.2,1.2,1), Color (1,1,1,1), 1,
+	Tween.TRANS_QUART, Tween.EASE_IN)
+	tween.start()
+	process_end()
+	pass # Replace with function body.
+onready var bar = get_node ("TextureProgress")
+onready var shaker = get_node ("shakenode")
+var deadSpr = load ("res://gfx/dead.tres")
+func _on_Tween_tween_all_completed():
+	if !deathAnimFinished:
+		tween.interpolate_property(animSprite, "position",
+			null, Vector2(16,28), 0.2,
+		Tween.TRANS_LINEAR, Tween.EASE_IN)
+		tween.interpolate_property(get_node ("UnitSprite"), "position",
+			null, Vector2(24,50), 0.2,
+		Tween.TRANS_LINEAR, Tween.EASE_IN)
+		tween.start()
+	else:
+		sh.hide()
+		animSprite.show()
+		animSprite.modulate = Color (1,1,1,1)
+		animSprite.scale = Vector2 (2,2)
+		animSprite.frames = deadSpr
+		animSprite.speed_scale = 1
+	pass # Replace with function body.

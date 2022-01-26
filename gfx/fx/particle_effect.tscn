@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://gfx/fx/slash.tres" type="SpriteFrames" id=1]
+[ext_resource path="res://gfx/fx/particle_effect.gd" type="Script" id=2]
+[ext_resource path="res://gfx/fx/buff_part.png" type="Texture" id=3]
+[ext_resource path="res://gfx/fx/buff.tres" type="Material" id=4]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Sprite" type="AnimatedSprite" parent="."]
+position = Vector2( 32, 32 )
+scale = Vector2( 2, 2 )
+frames = ExtResource( 1 )
+speed_scale = 3.0
+
+[node name="Particles2D" type="Particles2D" parent="."]
+position = Vector2( 16, 72 )
+amount = 10
+lifetime = 5.0
+process_material = ExtResource( 4 )
+texture = ExtResource( 3 )
+
+[connection signal="animation_finished" from="Sprite" to="." method="_on_Sprite_animation_finished"]
