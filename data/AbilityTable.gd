@@ -58,7 +58,7 @@ var ability_dict = {
 		]
 	},
 	"buff_super_atk":{
-		"name": "Blazing Focus",
+		"name": "Focus X",
 		"id":"buff_super_atk",
 		"type":"magic",
 		"icon":"magic",
@@ -134,12 +134,12 @@ var ability_dict = {
 		]
 	},
 	"buff_scarlet_blaze":{
-		"name": "Heroic Taunt",
+		"name": "'Isn't this fun!?'",
 		"id":"buff_scarlet_blaze",
 		"type":"magic",
 		"icon":"magic",
 		"fx" : "glow",
-		"desc": "User steels their resolve, gaining bonus DEF and ATK and attracting enemy attention.\n[color=gray]\nI won't let it happen again...!",
+		"desc": "User steels their resolve, gaining bonus DEF and ATK and attracting enemy attention.\n[color=gray]\nThe last thing he needs is a boring fight.",
 		"cost": 20,
 		"effects": [
 			{
